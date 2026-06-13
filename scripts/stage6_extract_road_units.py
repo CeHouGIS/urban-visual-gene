@@ -29,6 +29,7 @@ def extract_road_units(
     min_road_nodes: int = 3,
     min_road_length_m: float = 50.0,
     min_panos: int = 3,
+    return_unit_activations: bool = False,
 ) -> tuple[gpd.GeoDataFrame, gpd.GeoDataFrame, pd.DataFrame, dict]:
     """
     Returns
@@ -132,6 +133,7 @@ def extract_road_units(
 
     unit_records: list[dict] = []
     unit_geoms:   list       = []
+    unit_mean_acts: list     = []   # full K-dim mean activation per unit
 
     for comp_idx, component in enumerate(nx.connected_components(G)):
         comp_list = list(component)
@@ -215,6 +217,7 @@ def extract_road_units(
             "stability_score":            None,
         })
         unit_geoms.append(geom)
+        unit_mean_acts.append(mean_a.astype(np.float32))
 
     stats_df = pd.DataFrame(unit_records)
 
@@ -249,6 +252,10 @@ def extract_road_units(
         "boundary_quantile": boundary_quantile,
     }
 
+    if return_unit_activations:
+        acts = (np.vstack(unit_mean_acts) if unit_mean_acts
+                else np.empty((0, K), dtype=np.float32))
+        return boundaries_gdf, units_gdf, stats_df, report, acts
     return boundaries_gdf, units_gdf, stats_df, report
 
 

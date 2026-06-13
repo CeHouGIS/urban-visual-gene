@@ -83,13 +83,15 @@ python run_experiment.py --city HongKong --max-panos 500 --K 32 --epochs 50 --sk
 
 **(a)** 香港单元数（911）多于 Vienna（611）；**(b)** 香港单元道路长度整体偏短（峰值 500–1000m），Vienna 偏长（3–6km）；**(c)** 香港每单元节点集中在 10–50，Vienna 偏 100–300；**(d)** 32 个视觉基全部被用到，两城各有偏好（香港 basis 27/7/11 突出，Vienna basis 30/18/31 突出）。
 
-### MRLU 空间分布（按主导视觉基着色）
+### MRLU 空间分布（按视觉激活 PCA→RGB 着色）
+
+每个单元的 32 维平均基激活经**两城联合 PCA** 投影到 3 主成分映射为 RGB（连续配色，颜色相近=风貌相近，两城可比）：
 
 | Vienna | Hong Kong |
 |:---:|:---:|
-| ![vienna units](outputs/figures/map_units_Vienna.png) | ![hk units](outputs/figures/map_units_HongKong.png) |
+| ![vienna units pca](outputs/figures/map_units_pca_Vienna.png) | ![hk units pca](outputs/figures/map_units_pca_HongKong.png) |
 
-同色路段在空间上聚成片 = 视觉相似的连续街景被划入同一单元。
+同色路段在空间上聚成片 = 视觉相似的连续街景被划入相近表征。（按离散主导基着色的旧版：`outputs/figures/map_units_<City>.png`。）
 
 ### MRLU 按单元长度着色（log）
 
