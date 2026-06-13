@@ -1,0 +1,10 @@
+{
+  "n_road_nodes": 237590,
+  "n_nodes_with_panos": 9656,
+  "n_nodes_interpolated": 227934,
+  "coverage_ratio": 0.0406,
+  "embedding_dim": 3072,
+  "search_radius_m": 100.0,
+  "kernel_sigma_m": 30.0,
+  "method": "multi_road_decay"
+}

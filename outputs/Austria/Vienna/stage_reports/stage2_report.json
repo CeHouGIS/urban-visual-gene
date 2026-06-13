@@ -1,0 +1,10 @@
+{
+  "n_panos_total": 500,
+  "n_panos_matched": 500,
+  "n_panos_unmatched": 0,
+  "matched_ratio": 1.0,
+  "n_road_nodes": 237590,
+  "n_road_edges": 509346,
+  "lcc_ratio": 0.777,
+  "unmatched_pano_ids": []
+}

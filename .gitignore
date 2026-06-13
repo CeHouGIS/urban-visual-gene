@@ -1,0 +1,28 @@
+# ── Local data (copied from NAS — never upload) ─────────────────────────────
+data/
+/workplace/nas_data/
+
+# ── Trained models & large / regenerable artefacts ──────────────────────────
+# (git does not support trailing inline comments on pattern lines)
+models/
+# pano features, road graph, Z_road context, activations
+*.parquet
+# basis matrix
+*.npy
+# autoencoder checkpoint
+*.pt
+# MRLU units & boundaries (regenerable from the pipeline)
+*.geojson
+*.log
+
+# Kept under outputs/ (NOT ignored): EXPERIMENT_REPORT.md, figures/*.png,
+# unit_statistics.csv, stage_reports/*.json
+
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.venv/
+venv/
