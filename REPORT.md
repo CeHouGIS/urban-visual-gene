@@ -90,66 +90,117 @@ $$
 
 ### 3.5 Stage 4 — 稀疏视觉基学习
 
-以稀疏自编码器拟合 $Z_{\mathrm{road}}\approx AX$。编码器为 $D\!\to\!\mathrm{hidden}\!\to\!K$，末端采用 Softplus 以保证 $A\ge 0$；解码器为无偏置线性层，其权重矩阵记为 $X\in\mathbb{R}^{K\times D}$，每一行 $x_k$ 为一个视觉基向量，并逐基 L2 归一化，即 $\|x_k\|_2=1$。训练目标为：
+以稀疏自编码器拟合 $Z_{\mathrm{road}}\approx AX$。其中 $Z_{\mathrm{road}}\in\mathbb{R}^{N\times D}$ 表示路网节点视觉特征矩阵，$A\in\mathbb{R}^{N\times K}$ 表示基激活矩阵，$X\in\mathbb{R}^{K\times D}$ 表示视觉基矩阵。编码器结构为 $D!\to!\mathrm{hidden}!\to!K$，末端采用 Softplus 以保证 $A\ge 0$；解码器为无偏置线性层，其权重矩阵记为 $X$，每一行 $x_k$ 为一个视觉基向量，并进行逐基 L2 归一化，即 $|x_k|_2=1$。训练目标为：
 
 $$
 \mathcal{L}
-=
-\mathcal{L}_{\mathrm{rec}}
+===========
+
+\mathcal{L}*{\mathrm{rec}}
 +
-\lambda_{\mathrm{sp}}\|A\|_1
+\lambda*{\mathrm{sp}}|A|*1
 +
-\lambda_{\mathrm{spa}}\sum_{(i,j)\in E}\|a_i-a_j\|_2^2
+\lambda*{\mathrm{spa}}\sum_{(i,j)\in E}|a_i-a_j|*2^2
 +
-\lambda_{\mathrm{div}}\|XX^\top-I_K\|_F^2 .
+\lambda*{\mathrm{div}}|XX^\top-I_K|_F^2 .
 $$
 
-其中重建项为
+其中重建项为：
 
 $$
 \mathcal{L}_{\mathrm{rec}}
-=
+==========================
+
 \frac{1}{B}\sum_i
 \left(1-\cos(z_i,\hat z_i)\right).
 $$
 
-四项分别促成：重建保真、激活稀疏、沿路网平滑，即相邻节点激活相近，使单元在空间上连续，以及基去冗余，即基之间近正交、可解释。本文取 $\lambda_{\mathrm{sp}}=5\times10^{-3}$，$\lambda_{\mathrm{spa}}=10^{-3}$，$\lambda_{\mathrm{div}}=10^{-3}$。为效率，仅在有街景直接覆盖的节点子集上训练。
+上述四项分别促成重建保真、激活稀疏、沿路网平滑以及基去冗余。其中，沿路网平滑项使相邻节点的激活向量保持相近，从而促使提取出的空间单元在路网结构上连续；基去冗余项则约束不同视觉基之间近似正交，以减少重复基并提高基表示的可分性。本文取 $\lambda_{\mathrm{sp}}=5\times10^{-3}$、$\lambda_{\mathrm{spa}}=10^{-3}$、$\lambda_{\mathrm{div}}=10^{-3}$。为提高训练效率，仅在有街景直接覆盖的路网节点子集上训练该稀疏自编码器。
 
 ### 3.6 Stage 5 — 基激活推断
 
-对全部 $M$ 个路网节点前向得到
+训练完成后，对全部 $M$ 个路网节点进行前向推断，得到每个节点的基激活向量：
 
 $$
 a_n=\mathrm{Enc}(z_n).
 $$
 
-记激活阈值 $\tau_a=0.01$，定义节点的活跃基数为
+记激活阈值为 $\tau_a=0.01$。对于每个路网节点 $n$，定义其活跃基数为：
 
 $$
-\left|\{k: a_{n,k}>\tau_a\}\right|,
+K_n^{\mathrm{active}}
+=====================
+
+\left|{k: a_{n,k}>\tau_a}\right|.
 $$
 
-重建误差为
+同时计算节点的重建误差：
 
 $$
+e_n^{\mathrm{rec}}
+==================
+
 1-\cos(z_n,\hat z_n),
 $$
 
-以及激活熵 $H(\tilde a_n)$，其中 $\tilde a_n$ 为归一化激活。
+以及激活熵：
+
+$$
+H(\tilde a_n)
+=============
+
+-\sum_k \tilde a_{n,k}\log(\tilde a_{n,k}+\epsilon),
+$$
+
+其中 $\tilde a_n$ 为归一化后的激活向量，$\epsilon$ 为避免 $\log 0$ 的小常数。这些指标分别用于刻画节点视觉表示的基复杂度、重建可靠性以及激活分布的集中程度。
 
 ### 3.7 Stage 6 — 最小单元提取
 
-在路网每条边上计算**激活余弦距离**：
+在路网每条边 $(i,j)\in E$ 上计算相邻节点之间的激活余弦距离：
 
 $$
-d_{ij}=1-\cos(a_i,a_j).
+d_{ij}
+======
+
+1-\cos(a_i,a_j).
 $$
 
-取分布的 0.90 分位为边界阈值 $\tau_c=Q_{0.90}(\{d_{ij}\})$，**移除 $d_{ij}>\tau_c$ 的边**；剩余图的连通分量即候选单元。按 $\ge3$ 节点、$\ge50\,\text{m}$ 道路长度、$\ge3$ 街景点过滤。每个单元记录主导基（$\arg\max$ 平均激活）、激活熵、单元内方差、边界对比度，以及置信度
+取所有边激活距离分布的 $0.90$ 分位数作为边界阈值：
 
 $$
-\text{conf}=\sigma\big(\text{boundary\_contrast}-\text{within\_var}\big).
+\tau_c
+======
+
+Q_{0.90}\left({d_{ij}:(i,j)\in E}\right).
 $$
+
+随后移除满足 $d_{ij}>\tau_c$ 的边，并将剩余图中的连通分量作为候选最小空间单元。为避免过小或不稳定的片段，进一步按照 $\ge 3$ 个路网节点、$\ge 50,\mathrm{m}$ 道路长度、以及 $\ge 3$ 个街景点的标准进行过滤。
+
+对于每个候选单元，记录其主导基、激活熵、单元内方差、边界对比度以及置信度。其中，主导基定义为单元平均激活最大的基：
+
+$$
+k_{\mathrm{dom}}
+================
+
+\arg\max_k \bar a_k,
+$$
+
+其中 $\bar a_k$ 表示该单元内所有节点在第 $k$ 个视觉基上的平均激活。单元置信度定义为：
+
+$$
+\mathrm{conf}
+=============
+
+\sigma\left(
+\mathrm{boundaryContrast}
+-------------------------
+
+\mathrm{withinVar}
+\right).
+$$
+
+其中 $\mathrm{boundaryContrast}$ 表示单元边界两侧的平均激活差异，$\mathrm{withinVar}$ 表示单元内部节点激活的平均方差，$\sigma(\cdot)$ 为 Sigmoid 函数。该置信度越高，表示该单元内部越一致、边界越清晰。
+
 
 ---
 
