@@ -55,7 +55,7 @@ def main():
     panos = pd.read_parquet(out / "road_matched_panos.parquet")
     a_cols = sorted([c for c in act.columns if c.startswith("a_")])
     K = len(a_cols)
-    bases = range(K if args.bases is None else min(args.bases, K))
+    A = act[a_cols].values
 
     # nearest pano for each node (by coordinates)
     ptree = cKDTree(panos[["lat", "lon"]].values)
@@ -63,19 +63,32 @@ def main():
     _, nn = ptree.query(node_ll, k=1)
     node_pano = panos["pano_id"].values[nn]
 
-    A = act[a_cols].values
-    fig, axes = plt.subplots(len(list(bases)), args.top,
-                             figsize=(args.top * 1.8, len(list(bases)) * 1.8))
+    # Only show bases that are some node's DOMINANT basis (argmax). Ranking by
+    # raw a_k otherwise picks globally high-activation nodes shared across bases,
+    # making weak/never-dominant bases produce near-identical montages. We also
+    # assign each pano to at most one basis (greedy) so no two rows repeat an
+    # image.
+    dom = A.argmax(axis=1)
+    dom_count = np.bincount(dom, minlength=K)
+    cand_bases = [k for k in np.argsort(-dom_count) if dom_count[k] > 0]
+    if args.bases is not None:
+        cand_bases = cand_bases[:args.bases]
+    print(f"{int((dom_count > 0).sum())}/{K} bases are some node's dominant basis; "
+          f"showing {len(cand_bases)}", flush=True)
+
+    used = set()
+    fig, axes = plt.subplots(len(cand_bases), args.top,
+                             figsize=(args.top * 1.8, len(cand_bases) * 1.8))
     axes = np.atleast_2d(axes)
-    for r, k in enumerate(bases):
-        order = np.argsort(-A[:, k])
+    for r, k in enumerate(cand_bases):
+        cand = np.where(dom == k)[0]
+        cand = cand[np.argsort(-A[cand, k])]      # dominant nodes, strongest first
         shown, ci = 0, 0
-        seen = set()
-        while shown < args.top and ci < len(order):
-            pid = node_pano[order[ci]]; ci += 1
-            if pid in seen:
+        while shown < args.top and ci < len(cand):
+            pid = node_pano[cand[ci]]; ci += 1
+            if pid in used:
                 continue
-            seen.add(pid)
+            used.add(pid)
             ax = axes[r, shown]; ax.axis("off")
             try:
                 img = Image.open(_resolve(args.city, pid, 0)).convert("RGB")
@@ -83,14 +96,14 @@ def main():
             except Exception:
                 ax.text(0.5, 0.5, "n/a", ha="center", va="center")
             if shown == 0:
-                ax.set_ylabel(f"b{k}", rotation=0, labelpad=18,
-                              fontsize=9, va="center")
+                ax.set_ylabel(f"b{k}\n(n={dom_count[k]})", rotation=0, labelpad=24,
+                              fontsize=8, va="center")
             shown += 1
         for j in range(shown, args.top):
             axes[r, j].axis("off")
 
-    fig.suptitle(f"{args.city} — top-activated street views per visual basis "
-                 f"(K={K})", fontsize=13)
+    fig.suptitle(f"{args.city} — representative street views of dominant visual "
+                 f"bases ({int((dom_count>0).sum())}/{K} ever dominant)", fontsize=13)
     fig.tight_layout(rect=[0, 0, 1, 0.99])
     p = FIG / f"basis_interpret_{args.city}.png"
     fig.savefig(p, dpi=120, bbox_inches="tight")
