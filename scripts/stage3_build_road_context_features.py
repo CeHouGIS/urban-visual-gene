@@ -57,35 +57,39 @@ def build_road_context_features(
     D = len(emb_list[0])
     pano_emb = np.stack(emb_list).astype(np.float32)   # (N_panos, D)
 
-    # Build KD-tree on pano positions (in degrees, but distance check is approx)
-    pano_tree = cKDTree(pano_xy)
-
     agg_emb   = np.zeros((len(road_nodes), D), dtype=np.float64)
     agg_w     = np.zeros(len(road_nodes), dtype=np.float64)
     n_panos   = np.zeros(len(road_nodes), dtype=np.int32)
 
-    for ni, (nx_, ny_) in enumerate(node_xy):
-        # find panos within search_radius_deg (approximate)
-        idxs = pano_tree.query_ball_point([nx_, ny_], r=search_radius_deg)
-        if not idxs:
+    # Iterate over PANOS (typically a few hundred–thousand), not road NODES
+    # (~10^5–10^6). Each pano contributes a Gaussian-weighted copy of its
+    # embedding to every nearby node — mathematically identical to the
+    # node-centric form, but it issues ~N_panos KD-tree queries instead of
+    # ~N_nodes, which is both far faster and far less likely to trip the
+    # environment's intermittent native numpy/scipy corruption on big graphs.
+    node_tree = cKDTree(node_xy)
+    for pi in range(len(pano_xy)):
+        px, py = pano_xy[pi]
+        node_idxs = node_tree.query_ball_point([px, py], r=search_radius_deg)
+        if not node_idxs:
             continue
-        idxs = np.array(idxs)
-        # compute metric distances (metres)
-        dlat = (pano_xy[idxs, 1] - ny_) * DEG_TO_M
-        dlon = (pano_xy[idxs, 0] - nx_) * DEG_TO_M * np.cos(np.radians(ny_))
+        node_idxs = np.asarray(node_idxs, dtype=np.int64)
+        dlat = (node_xy[node_idxs, 1] - py) * DEG_TO_M
+        dlon = (node_xy[node_idxs, 0] - px) * DEG_TO_M * np.cos(np.radians(py))
         dists_m = np.sqrt(dlat ** 2 + dlon ** 2)
 
         within = dists_m <= search_radius_m
-        idxs   = idxs[within]
-        dists_m = dists_m[within]
-        if len(idxs) == 0:
+        node_idxs = node_idxs[within]
+        dists_m   = dists_m[within]
+        if len(node_idxs) == 0:
             continue
 
-        weights = _gaussian_weight(dists_m, kernel_sigma_m)  # (n,)
-        # weighted sum — NOT normalised across roads
-        agg_emb[ni] += (weights[:, None] * pano_emb[idxs]).sum(axis=0)
-        agg_w[ni]   += weights.sum()
-        n_panos[ni] += len(idxs)
+        weights = _gaussian_weight(dists_m, kernel_sigma_m)   # (k,)
+        # add this pano's weighted embedding to each nearby node (NOT
+        # normalised across roads — every road independently gets full weight)
+        agg_emb[node_idxs] += weights[:, None] * pano_emb[pi][None, :]
+        agg_w[node_idxs]   += weights
+        n_panos[node_idxs] += 1
 
     # Nodes with zero weight: interpolate from nearest node that has data
     zero_mask = agg_w == 0
