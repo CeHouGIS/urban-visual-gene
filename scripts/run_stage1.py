@@ -12,7 +12,8 @@ import scripts._env  # noqa: F401  (sets thread limits before numpy/torch)
 import argparse
 from pathlib import Path
 
-from scripts.cities import img_root, load_panos, out_dir, path_style
+from scripts.cities import (img_root, img_root_fallback, load_panos, out_dir,
+                            path_style)
 from scripts.io_utils import save_report
 from scripts.stage1_extract_pano_features import extract_pano_features
 
@@ -34,6 +35,7 @@ def main():
         pano_df, img_root(args.city),
         model_name=args.model, batch_size=args.batch_size,
         path_style=path_style(args.city),
+        img_root_fallback=img_root_fallback(args.city),
     )
     feat_df.to_parquet(out / "pano_features.parquet", index=False)
     save_report(out / "stage_reports/stage1_report.json", r1)

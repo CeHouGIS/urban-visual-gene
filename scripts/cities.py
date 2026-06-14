@@ -45,6 +45,15 @@ def img_root(city: str) -> Path:
     return DATA_ROOT / CITY_CONFIG[city]["images"]
 
 
+def img_root_fallback(city: str) -> Path | None:
+    """NAS image root, used when the local mirror is incomplete (e.g. HK is only
+    partially copied locally). None if we are already reading from NAS."""
+    if DATA_ROOT == _NAS:
+        return None
+    nas_imgs = _NAS / CITY_CONFIG[city]["images"]
+    return nas_imgs if nas_imgs.exists() else None
+
+
 def path_style(city: str) -> str:
     return CITY_CONFIG[city]["path_style"]
 

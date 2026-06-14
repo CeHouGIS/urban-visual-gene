@@ -72,6 +72,7 @@ def extract_pano_features(
     device: str | None = None,
     path_style: Literal["vienna", "hongkong", "auto"] = "auto",
     max_panos: int | None = None,
+    img_root_fallback: str | None = None,
 ) -> tuple[pd.DataFrame, dict]:
     """
     Extract 4-heading DINOv2 embeddings per pano, concat to (4D,), L2 norm.
@@ -84,6 +85,7 @@ def extract_pano_features(
     max_panos  : limit for testing (None = all)
     """
     img_root = Path(img_root)
+    fb_root  = Path(img_root_fallback) if img_root_fallback else None
     _device  = torch.device(device or ("cuda" if torch.cuda.is_available() else "cpu"))
 
     print(f"Loading {model_name} on {_device}...")
@@ -118,6 +120,8 @@ def extract_pano_features(
             missing_headings = 0
             for h in HEADINGS:
                 p = path_fn(img_root, pid, h)
+                if fb_root is not None and not p.exists():
+                    p = path_fn(fb_root, pid, h)   # fall back to NAS for missing images
                 t = _load_image(p)
                 if t is None:
                     t = torch.zeros(3, 224, 224)

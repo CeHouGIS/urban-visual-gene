@@ -37,14 +37,22 @@ THREAD_ENV = {
 }
 
 
-def _run(label: str, module: str, *cli: str) -> None:
-    """Run one stage as an isolated subprocess; abort the pipeline on failure."""
+def _run(label: str, module: str, *cli: str, retries: int = 3) -> None:
+    """Run one stage as an isolated subprocess, retrying on failure.
+
+    Geo/scipy stages intermittently die from the environment's native
+    numpy/OpenMP instability; a fresh subprocess retry almost always succeeds.
+    """
     env = {**os.environ, **THREAD_ENV}
     cmd = [sys.executable, "-u", "-m", module, *cli]
     print(f"\n=== {label} ===\n$ {' '.join(cmd)}", flush=True)
-    res = subprocess.run(cmd, cwd=ROOT, env=env)
-    if res.returncode != 0:
-        raise SystemExit(f"[{label}] failed with exit code {res.returncode}")
+    for attempt in range(1, retries + 1):
+        res = subprocess.run(cmd, cwd=ROOT, env=env)
+        if res.returncode == 0:
+            return
+        print(f"[{label}] attempt {attempt}/{retries} failed "
+              f"(exit {res.returncode}); retrying", flush=True)
+    raise SystemExit(f"[{label}] failed after {retries} attempts")
 
 
 def run_city(city: str, max_panos, model, K, batch_size, epochs,

@@ -28,13 +28,20 @@ THREAD_ENV = {
 }
 
 
-def _run(module: str, *cli: str) -> None:
+def _run(module: str, *cli: str, retries: int = 3) -> None:
+    # Geo/scipy stages intermittently die from the environment's native
+    # numpy/OpenMP instability (segfault / "axis remapping"); a fresh retry
+    # almost always succeeds. Retry each stage in a clean subprocess.
     env = {**os.environ, **THREAD_ENV}
     cmd = [sys.executable, "-u", "-m", module, *cli]
     print(f"  $ {' '.join(cmd)}", flush=True)
-    r = subprocess.run(cmd, cwd=ROOT, env=env)
-    if r.returncode != 0:
-        raise SystemExit(f"{module} failed ({r.returncode})")
+    for attempt in range(1, retries + 1):
+        r = subprocess.run(cmd, cwd=ROOT, env=env)
+        if r.returncode == 0:
+            return
+        print(f"  [{module}] attempt {attempt}/{retries} failed "
+              f"(exit {r.returncode}); retrying", flush=True)
+    raise SystemExit(f"{module} failed after {retries} attempts")
 
 
 def _report(out: Path, stage: str) -> dict:
