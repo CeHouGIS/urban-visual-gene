@@ -92,7 +92,13 @@ def main():
     df = pd.DataFrame(rows)
     sweep_dir = ROOT / "outputs/sweep"
     sweep_dir.mkdir(parents=True, exist_ok=True)
-    df.to_csv(sweep_dir / "summary.csv", index=False)
+    # Merge with any existing summary (keep other cities/sizes already run).
+    csv = sweep_dir / "summary.csv"
+    if csv.exists():
+        old = pd.read_csv(csv)
+        df = pd.concat([old, df]).drop_duplicates(["city", "n_panos"], keep="last")
+        df = df.sort_values(["city", "n_panos"]).reset_index(drop=True)
+    df.to_csv(csv, index=False)
     print("\n===== SWEEP SUMMARY =====")
     print(df.to_string(index=False))
     print(f"\nsaved {sweep_dir/'summary.csv'}")

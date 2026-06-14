@@ -15,7 +15,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
 
-from scripts.io_utils import checkpoint, save_report
+from scripts.io_utils import checkpoint, save_report, stack_embeddings
 from scripts.road_basis_model import (
     RoadBasisAutoEncoder,
     cosine_recon_loss,
@@ -44,7 +44,7 @@ def train_basis_model(
 
     # ── Data ──────────────────────────────────────────────────────────────────
     emb_list = context_features["road_context_embedding"].values
-    Z = torch.tensor(np.stack(emb_list), dtype=torch.float32)   # (M, D)
+    Z = torch.tensor(stack_embeddings(emb_list), dtype=torch.float32)   # (M, D)
     D = Z.shape[1]
     M = Z.shape[0]
 

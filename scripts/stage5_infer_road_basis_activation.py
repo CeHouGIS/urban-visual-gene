@@ -13,7 +13,7 @@ import pandas as pd
 import torch
 from scipy.special import entr
 
-from scripts.io_utils import checkpoint, save_report
+from scripts.io_utils import checkpoint, save_report, stack_embeddings
 from scripts.road_basis_model import RoadBasisAutoEncoder
 
 
@@ -32,7 +32,7 @@ def infer_activation(
     """
     model.eval()
     emb_list = context_features["road_context_embedding"].values
-    Z = torch.tensor(np.stack(emb_list), dtype=torch.float32)
+    Z = torch.tensor(stack_embeddings(emb_list), dtype=torch.float32)
 
     all_a: list[np.ndarray] = []
     all_zhat: list[np.ndarray] = []
