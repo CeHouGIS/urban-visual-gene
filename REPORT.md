@@ -269,6 +269,24 @@ $$
 
 > 诚实备注：自转移绝对值偏高（~0.98–0.99）部分源于聚合平滑（同一 pano 邻域的覆盖节点共享主导基），有效信号在**两城差异**（熵 2.2×、gap $z$、JSD）；更细粒度需更大 $N$ 或 per-pano 分析。复现：`scripts/{visual_syntax,spatial_organization,unit_coherence}.py`。
 
+### 5.10 跨城视觉基对齐（H1/H4）
+
+若在**单城独立训练**的视觉基彼此可匹配，则视觉基不是偶然，而是**可迁移的共享词汇**。分别用 Vienna、香港的覆盖节点各训练一组基 $X^{(V)},X^{(H)}$（及两城联合 $X^{(J)}$），按余弦相似度做匈牙利匹配，并与随机基零模型比较：
+
+$$
+\mathrm{align}(A,B)=\max_{\pi}\frac{1}{K}\sum_k \cos\!\big(x_k^{(A)},\,x_{\pi(k)}^{(B)}\big).
+$$
+
+![basis alignment](outputs/figures/basis_alignment.png)
+
+| 配对 | 对齐度 | 随机零模型 | $z$ |
+|---|--:|--:|--:|
+| Vienna ↔ 香港 | 0.175 | 0.034 | **+79** |
+| Vienna ↔ 联合 | 0.259 | 0.034 | +127 |
+| 香港 ↔ 联合 | 0.340 | 0.034 | +172 |
+
+独立学到的 Vienna 与香港基对齐度远高于随机（$z=79$）：约 **20/32** 个基有明显的跨城对应（top 匹配余弦 ~0.5，图 b），其余落入零模型噪声带。这支持 H1/H4——**存在一部分跨城复用的视觉基（共享词汇）**，同时也有城市特异的基。需要强调这是**部分对齐**（整体余弦 0.175），而非两城基完全相同；更强的迁移结论需多城市 leave-one-city-out（见 `docs/GRAND_DESIGN.md`）。复现：`scripts/{run_basis_train,basis_align}.py`。
+
 ---
 
 ## 6. 讨论 (Discussion)
