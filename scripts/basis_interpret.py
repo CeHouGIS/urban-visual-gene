@@ -46,6 +46,9 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--top", type=int, default=6, help="examples per basis")
     ap.add_argument("--bases", type=int, default=None, help="limit #bases shown")
+    ap.add_argument("--offset", type=int, default=0, help="skip first N dominant bases")
+    ap.add_argument("--label-file", default=None,
+                    help="json {basis_id: label} to annotate rows")
     args = ap.parse_args()
     out = Path(args.out)
 
@@ -63,41 +66,51 @@ def main():
     _, nn = ptree.query(node_ll, k=1)
     node_pano = panos["pano_id"].values[nn]
 
-    # Only show bases that are some node's DOMINANT basis (argmax). Ranking by
-    # raw a_k otherwise picks globally high-activation nodes shared across bases,
-    # making weak/never-dominant bases produce near-identical montages. We also
-    # assign each pano to at most one basis (greedy) so no two rows repeat an
-    # image.
+    # Only show bases that are some node's DOMINANT basis (argmax==k). Each node
+    # belongs to exactly one basis, so rows can't duplicate at the node level;
+    # we dedupe panos WITHIN a row only (a global dedupe starves later rows).
     dom = A.argmax(axis=1)
     dom_count = np.bincount(dom, minlength=K)
     cand_bases = [k for k in np.argsort(-dom_count) if dom_count[k] > 0]
+    cand_bases = cand_bases[args.offset:]
     if args.bases is not None:
         cand_bases = cand_bases[:args.bases]
     print(f"{int((dom_count > 0).sum())}/{K} bases are some node's dominant basis; "
           f"showing {len(cand_bases)}", flush=True)
 
-    used = set()
+    import json
+    labels = json.loads(Path(args.label_file).read_text()) if args.label_file else {}
+
     fig, axes = plt.subplots(len(cand_bases), args.top,
-                             figsize=(args.top * 1.8, len(cand_bases) * 1.8))
+                             figsize=(args.top * 1.8, len(cand_bases) * 1.7))
     axes = np.atleast_2d(axes)
     for r, k in enumerate(cand_bases):
         cand = np.where(dom == k)[0]
         cand = cand[np.argsort(-A[cand, k])]      # dominant nodes, strongest first
         shown, ci = 0, 0
+        seen = set()                              # per-row pano dedup only
         while shown < args.top and ci < len(cand):
             pid = node_pano[cand[ci]]; ci += 1
-            if pid in used:
+            if pid in seen:
                 continue
-            used.add(pid)
-            ax = axes[r, shown]; ax.axis("off")
+            seen.add(pid)
+            ax = axes[r, shown]
             try:
                 img = Image.open(_resolve(args.city, pid, 0)).convert("RGB")
                 ax.imshow(img.resize((160, 160)))
             except Exception:
                 ax.text(0.5, 0.5, "n/a", ha="center", va="center")
             if shown == 0:
-                ax.set_ylabel(f"b{k}\n(n={dom_count[k]})", rotation=0, labelpad=24,
-                              fontsize=8, va="center")
+                # keep the axis on (so the ylabel shows) but hide ticks/spines
+                ax.set_xticks([]); ax.set_yticks([])
+                for sp in ax.spines.values():
+                    sp.set_visible(False)
+                lab = labels.get(str(k), "")
+                ax.set_ylabel(f"b{k}" + (f"\n{lab}" if lab else "") +
+                              f"\n(n={dom_count[k]})", rotation=0, labelpad=50,
+                              fontsize=8, va="center", ha="right")
+            else:
+                ax.axis("off")
             shown += 1
         for j in range(shown, args.top):
             axes[r, j].axis("off")

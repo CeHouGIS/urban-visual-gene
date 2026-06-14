@@ -1,0 +1,21 @@
+{
+  "16": "low-rise residential + green",
+  "10": "open rural / fields",
+  "1": "suburban res. + parked cars",
+  "26": "urban canyon (mid-rise + traffic)",
+  "25": "urban avenue (mid-rise)",
+  "29": "modern high-rise / glass + plaza",
+  "3": "residential + sidewalk / green",
+  "19": "highway / expressway",
+  "22": "dense residential blocks + parking",
+  "12": "overexposed glare (artifact)",
+  "28": "suburban arterial + low/industrial",
+  "15": "peripheral road + fields",
+  "9": "road w/ sound / retaining walls",
+  "2": "modern office / mid-rise + trees",
+  "7": "older low-rise / shopfronts",
+  "4": "tree-lined avenue (mid-rise res.)",
+  "27": "residential street + parking + green",
+  "31": "apartment blocks + crossings",
+  "17": "open road + grass verge"
+}
