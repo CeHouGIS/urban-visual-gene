@@ -100,7 +100,7 @@ $$
 
 ### 3.6 Stage 5 — 基激活推断
 
-对全部 $M$ 个路网节点前向得 $a_n=\text{Enc}(z_n)$。记激活阈值 $\tau_a=0.01$，定义节点的**活跃基数** $\#\{k:a_{n,k}>\tau_a\}$、重建误差 $1-\cos(z_n,\hat z_n)$、以及激活熵 $H(\tilde a_n)$（$\tilde a_n$ 为归一化激活）。
+对全部 $M$ 个路网节点前向得 $a_n=\text{Enc}(z_n)$。记激活阈值 $\tau_a=0.01$，定义节点的**活跃基数** $\left|\{k: a_{n,k}>\tau_a\}\right|$、重建误差 $1-\cos(z_n,\hat z_n)$、以及激活熵 $H(\tilde a_n)$（$\tilde a_n$ 为归一化激活）。
 
 ### 3.7 Stage 6 — 最小单元提取
 
