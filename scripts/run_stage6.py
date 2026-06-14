@@ -27,6 +27,8 @@ def main():
     ap.add_argument("--min-road-nodes", type=int, default=3)
     ap.add_argument("--min-road-length-m", type=float, default=50.0)
     ap.add_argument("--min-panos", type=int, default=3)
+    ap.add_argument("--covered-only", action="store_true",
+                    help="segment only pano-covered nodes (drop interpolated)")
     args = ap.parse_args()
     out = Path(args.out)
 
@@ -45,6 +47,7 @@ def main():
         min_road_nodes=args.min_road_nodes,
         min_road_length_m=args.min_road_length_m,
         min_panos=args.min_panos,
+        covered_only=args.covered_only,
     )
     if len(b_gdf) > 0:
         b_gdf.to_file(out / "road_activation_boundaries.geojson", driver="GeoJSON")

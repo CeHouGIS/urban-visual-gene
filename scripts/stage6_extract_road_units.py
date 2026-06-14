@@ -30,6 +30,7 @@ def extract_road_units(
     min_road_length_m: float = 50.0,
     min_panos: int = 3,
     return_unit_activations: bool = False,
+    covered_only: bool = False,
 ) -> tuple[gpd.GeoDataFrame, gpd.GeoDataFrame, pd.DataFrame, dict]:
     """
     Returns
@@ -39,6 +40,19 @@ def extract_road_units(
     stats_df       : DataFrame    — unit_statistics schema
     report         : dict
     """
+    # ── Covered-subgraph mode ────────────────────────────────────────────────
+    # Restrict segmentation to road nodes with DIRECT pano coverage (n_panos>0)
+    # and edges between two such nodes. The full graph is ~95% interpolated
+    # (zero-coverage nodes copy their nearest covered node), so segmenting it
+    # mixes real visual signal with interpolation artefacts. covered_only keeps
+    # only observed nodes, so boundaries reflect actual street-view evidence.
+    if covered_only and "n_panos" in road_nodes.columns:
+        cov_ids = set(road_nodes.loc[road_nodes["n_panos"] > 0, "road_node_id"])
+        road_nodes = road_nodes[road_nodes["road_node_id"].isin(cov_ids)].reset_index(drop=True)
+        road_edges = road_edges[road_edges["src_node_id"].isin(cov_ids)
+                                & road_edges["dst_node_id"].isin(cov_ids)].reset_index(drop=True)
+        activation_df = activation_df[activation_df["road_node_id"].isin(cov_ids)].reset_index(drop=True)
+
     # ── Extract A matrix (dedup road_node_id to be safe) ─────────────────────
     activation_df = activation_df.drop_duplicates(subset="road_node_id") \
                                   .reset_index(drop=True)
@@ -265,6 +279,7 @@ def extract_road_units(
         "n_components_raw":  nx.number_connected_components(G),
         "n_units_after_filter": n_units,
         "boundary_quantile": boundary_quantile,
+        "covered_only": covered_only,
     }
 
     if return_unit_activations:

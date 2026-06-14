@@ -7,6 +7,7 @@ from __future__ import annotations
 import scripts._env  # noqa: F401  (sets thread limits before numpy/scipy)
 
 import argparse
+from pathlib import Path
 
 import pandas as pd
 
@@ -20,9 +21,10 @@ def main():
     ap.add_argument("--city", required=True, choices=["Vienna", "HongKong"])
     ap.add_argument("--max-dist-m", type=float, default=30.0)
     ap.add_argument("--node-spacing-m", type=float, default=25.0)
+    ap.add_argument("--out", default=None, help="override output dir")
     args = ap.parse_args()
 
-    out = out_dir(args.city)
+    out = Path(args.out) if args.out else out_dir(args.city)
     (out / "stage_reports").mkdir(parents=True, exist_ok=True)
 
     feat_df = pd.read_parquet(out / "pano_features.parquet")

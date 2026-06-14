@@ -23,9 +23,10 @@ def main():
     ap.add_argument("--max-panos", type=int, default=None)
     ap.add_argument("--model", default="dinov2_vitb14")
     ap.add_argument("--batch-size", type=int, default=32)
+    ap.add_argument("--out", default=None, help="override output dir")
     args = ap.parse_args()
 
-    out = out_dir(args.city)
+    out = Path(args.out) if args.out else out_dir(args.city)
     (out / "stage_reports").mkdir(parents=True, exist_ok=True)
 
     pano_df = load_panos(args.city, args.max_panos)
