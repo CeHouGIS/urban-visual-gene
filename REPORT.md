@@ -90,17 +90,52 @@ $$
 
 ### 3.5 Stage 4 — 稀疏视觉基学习
 
-以稀疏自编码器拟合 $Z_{road}\approx A X$。编码器 $D\!\to\!\text{hidden}\!\to\!K$（末端 Softplus 保证 $A\ge 0$）；解码器为无偏置线性层，其权重列即基向量，**逐基 L2 归一化**（$\|x_k\|_2=1$）。训练目标：
+以稀疏自编码器拟合 $Z_{\mathrm{road}}\approx AX$。编码器为 $D\!\to\!\mathrm{hidden}\!\to\!K$，末端采用 Softplus 以保证 $A\ge 0$；解码器为无偏置线性层，其权重矩阵记为 $X\in\mathbb{R}^{K\times D}$，每一行 $x_k$ 为一个视觉基向量，并逐基 L2 归一化，即 $\|x_k\|_2=1$。训练目标为：
 
 $$
-\mathcal{L} = \mathcal{L}_{rec} + \lambda_{sp}\,\|A\|_1 + \lambda_{spa}\sum_{(i,j)\in E}\|a_i-a_j\|_2^2 + \lambda_{div}\,\|XX^\top-I\|_F^2 ,
+\mathcal{L}
+=
+\mathcal{L}_{\mathrm{rec}}
++
+\lambda_{\mathrm{sp}}\|A\|_1
++
+\lambda_{\mathrm{spa}}\sum_{(i,j)\in E}\|a_i-a_j\|_2^2
++
+\lambda_{\mathrm{div}}\|XX^\top-I_K\|_F^2 .
 $$
 
-其中重建项 $\mathcal{L}_{rec} = \frac{1}{B}\sum_i \big(1-\cos(z_i,\hat z_i)\big)$。四项分别促成：重建保真、激活稀疏、**沿路网平滑**（相邻节点激活相近，使单元在空间上连续）、**基去冗余**（基之间近正交、可解释）。本文取 $\lambda_{sp}=5\times10^{-3},\ \lambda_{spa}=10^{-3},\ \lambda_{div}=10^{-3}$。为效率，仅在**有街景直接覆盖的节点子集**上训练。
+其中重建项为
+
+$$
+\mathcal{L}_{\mathrm{rec}}
+=
+\frac{1}{B}\sum_i
+\left(1-\cos(z_i,\hat z_i)\right).
+$$
+
+四项分别促成：重建保真、激活稀疏、沿路网平滑，即相邻节点激活相近，使单元在空间上连续，以及基去冗余，即基之间近正交、可解释。本文取 $\lambda_{\mathrm{sp}}=5\times10^{-3}$，$\lambda_{\mathrm{spa}}=10^{-3}$，$\lambda_{\mathrm{div}}=10^{-3}$。为效率，仅在有街景直接覆盖的节点子集上训练。
 
 ### 3.6 Stage 5 — 基激活推断
 
-对全部 $M$ 个路网节点前向得 $a_n=\text{Enc}(z_n)$。记激活阈值 $\tau_a=0.01$，定义节点的**活跃基数** $\left|\{k: a_{n,k}>\tau_a\}\right|$、重建误差 $1-\cos(z_n,\hat z_n)$、以及激活熵 $H(\tilde a_n)$（$\tilde a_n$ 为归一化激活）。
+对全部 $M$ 个路网节点前向得到
+
+$$
+a_n=\mathrm{Enc}(z_n).
+$$
+
+记激活阈值 $\tau_a=0.01$，定义节点的活跃基数为
+
+$$
+\left|\{k: a_{n,k}>\tau_a\}\right|,
+$$
+
+重建误差为
+
+$$
+1-\cos(z_n,\hat z_n),
+$$
+
+以及激活熵 $H(\tilde a_n)$，其中 $\tilde a_n$ 为归一化激活。
 
 ### 3.7 Stage 6 — 最小单元提取
 
