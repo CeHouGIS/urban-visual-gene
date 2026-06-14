@@ -25,12 +25,18 @@ def main():
     ap.add_argument("--model", default="dinov2_vitb14")
     ap.add_argument("--batch-size", type=int, default=32)
     ap.add_argument("--out", default=None, help="override output dir")
+    ap.add_argument("--exclude-bad", action="store_true",
+                    help="drop low-quality panos via models/quality_model.joblib")
     args = ap.parse_args()
 
     out = Path(args.out) if args.out else out_dir(args.city)
     (out / "stage_reports").mkdir(parents=True, exist_ok=True)
 
     pano_df = load_panos(args.city, args.max_panos)
+    if args.exclude_bad:
+        from scripts.image_quality import filter_panos
+        pano_df, qrep = filter_panos(pano_df, args.city)
+        print(f"  quality filter: excluded {qrep['excluded']}/{qrep['n_panos']} panos")
     feat_df, r1 = extract_pano_features(
         pano_df, img_root(args.city),
         model_name=args.model, batch_size=args.batch_size,

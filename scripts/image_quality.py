@@ -102,6 +102,37 @@ def _load(city, pid, h):
                       dtype=np.float32) / 255.0
 
 
+def filter_panos(pano_df, city, model_path="models/quality_model.joblib",
+                 bad_headings=1, threshold=0.5):
+    """Drop bad-quality panos before feature extraction.
+
+    Scores each pano's 4 headings with the trained quality model and removes any
+    pano with >= bad_headings headings classified bad. Returns (kept_df, report).
+    If the model is missing, returns the input unchanged.
+    """
+    import joblib
+    if not Path(model_path).exists():
+        return pano_df, {"excluded": 0, "note": "no quality model; pass-through"}
+    bundle = joblib.load(model_path)
+    clf, cols = bundle["model"], bundle["features"]
+
+    n_bad = {}
+    for pid in pano_df["pano_id"]:
+        bad = 0
+        for h in HEADINGS:
+            rgb = _load(city, pid, h)
+            if rgb is None:
+                continue
+            f = image_features(rgb)
+            if clf.predict_proba(np.array([[f[c] for c in cols]]))[0, 1] > threshold:
+                bad += 1
+        n_bad[pid] = bad
+    keep = pano_df[pano_df["pano_id"].map(lambda p: n_bad.get(p, 0) < bad_headings)]
+    rep = {"n_panos": len(pano_df), "excluded": len(pano_df) - len(keep),
+           "bad_headings_threshold": bad_headings}
+    return keep.reset_index(drop=True), rep
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--city", required=True, choices=["Vienna", "HongKong"])
