@@ -1,0 +1,3 @@
+city,n_covered,S_road,S_perm_mean,S_z,S_euclidean,road_vs_eucl,morans_I_road,morans_I_eucl
+Vienna,32324,0.0028,0.2518,-981.3,0.0039,0.713,1.016,0.998
+HongKong,60535,0.0063,0.2431,-1325.2,0.0067,0.936,0.964,0.994
