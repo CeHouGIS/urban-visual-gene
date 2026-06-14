@@ -4,8 +4,8 @@
   "n_panos_unmatched": 1,
   "matched_ratio": 0.998,
   "n_road_nodes": 247772,
-  "n_road_edges": 548074,
-  "lcc_ratio": 0.5994,
+  "n_road_edges": 700502,
+  "lcc_ratio": 0.9999,
   "unmatched_pano_ids": [
     "zBEjNDmZRYTOgUr8NhzzuA"
   ]

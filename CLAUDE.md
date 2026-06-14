@@ -146,6 +146,15 @@ pytest tests/test_pipeline_e2e.py -v
 
 ---
 
+## 关键约束：进程隔离（防 OpenMP 崩溃）
+
+PyTorch（Intel OpenMP/MKL，`libiomp5`）与 numpy/scipy/geopandas（GNU OpenMP，`libgomp`）
+在**同一进程**会冲突，导致随机 native segfault（详见 `crash_report_20260613.md`）。
+
+- **切勿在同一进程同时 `import torch` 与做 scipy/geopandas 重运算。**
+- 真实数据流水线统一经 `run_experiment.py`（纯子进程编排器）运行，每个 stage 独立进程。
+- 任何新脚本若用 numpy/scipy/torch，第一行 import `scripts._env`（锁定线程池为 1）。
+
 ## 禁止事项
 
 - **不要跳过测试直接实现下一个 stage**。测试是唯一验收标准。

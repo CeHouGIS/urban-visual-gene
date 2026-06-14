@@ -4,6 +4,8 @@ Outputs PNGs into outputs/figures/.
 """
 from __future__ import annotations
 
+import scripts._env  # noqa: F401  (sets thread limits before numpy/scipy)
+
 from pathlib import Path
 
 import geopandas as gpd
@@ -32,12 +34,12 @@ def map_units(city, out):
     """Spatial map of MRLU units coloured by dominant basis."""
     units, _ = _load(out)
     fig, ax = plt.subplots(figsize=(11, 11))
-    # colour by dominant_basis_id (categorical, tab20 repeated)
-    ncol = 32
+    # colour by dominant_basis_id (categorical, tab20 repeated). Use a single
+    # plot call with a per-row colour list — many small .plot() calls in one
+    # process can trigger native segfaults in this environment.
     cmap = plt.get_cmap("tab20")
-    colors = [cmap(i % 20) for i in range(ncol)]
-    for bid, grp in units.groupby("dominant_basis_id"):
-        grp.plot(ax=ax, color=colors[int(bid) % ncol], linewidth=0.8)
+    color_list = [cmap(int(b) % 20) for b in units["dominant_basis_id"]]
+    units.plot(ax=ax, color=color_list, linewidth=0.8)
     ax.set_title(f"{city} — Minimum Road Landscape Units (n={len(units)})\n"
                  f"coloured by dominant visual basis (K=32)", fontsize=13)
     ax.set_xlabel("longitude"); ax.set_ylabel("latitude")

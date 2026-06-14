@@ -7,19 +7,24 @@ import geopandas as gpd
 import networkx as nx
 import numpy as np
 import pandas as pd
+from scipy.spatial import cKDTree
 from shapely.geometry import LineString
 
 
 def sample_road_nodes(roads_gdf: gpd.GeoDataFrame, spacing_m: float = 25.0) -> pd.DataFrame:
     """Sample nodes at fixed intervals along each road geometry.
 
-    Returns DataFrame: road_node_id, road_id, lat, lon, chainage_m
+    Returns DataFrame: road_node_id, road_id, seg_id, lat, lon, chainage_m
+
+    `seg_id` uniquely identifies the source geometry row (a single polyline).
+    It backs the node_id prefix because `road_id` (OSM osmid) is NOT unique —
+    one osmid may span many segments, which would otherwise collide.
     """
     # 1 degree latitude ≈ 111 000 m; use as rough scale for projected length
     DEG_TO_M = 111_000.0
 
     records = []
-    for _, row in roads_gdf.iterrows():
+    for seg_id, (_, row) in enumerate(roads_gdf.iterrows()):
         road_id = str(row.get("road_id", row.get("LS_id", row.name)))
         geom = row.geometry
         if geom is None or geom.is_empty:
@@ -53,16 +58,17 @@ def sample_road_nodes(roads_gdf: gpd.GeoDataFrame, spacing_m: float = 25.0) -> p
             if pt_key in seen_pts:
                 continue          # skip duplicate points on degenerate geometries
             seen_pts.add(pt_key)
-            nid = f"{road_id}__{seq_idx:04d}"
+            nid = f"s{seg_id}__{seq_idx:04d}"
             records.append({
                 "road_node_id": nid,
                 "road_id":      road_id,
+                "seg_id":       seg_id,
                 "lat":          lat_v,
                 "lon":          lon_v,
                 "chainage_m":   float(chainages_m[seq_idx]),
             })
     return pd.DataFrame(records) if records else pd.DataFrame(
-        columns=["road_node_id", "road_id", "lat", "lon", "chainage_m"]
+        columns=["road_node_id", "road_id", "seg_id", "lat", "lon", "chainage_m"]
     )
 
 
@@ -78,7 +84,11 @@ def build_road_graph_edges(
     edges: list[dict] = []
 
     # ── same_road_next ────────────────────────────────────────────────────────
-    for road_id, grp in road_nodes.groupby("road_id"):
+    # Group by seg_id (one polyline) — NOT road_id (osmid), which is non-unique
+    # and would interleave unrelated segments. Fall back to road_id if seg_id
+    # is absent (e.g. hand-built synthetic fixtures with one geometry per road).
+    group_key = "seg_id" if "seg_id" in road_nodes.columns else "road_id"
+    for _, grp in road_nodes.groupby(group_key):
         grp_sorted = grp.sort_values("chainage_m").reset_index(drop=True)
         for i in range(len(grp_sorted) - 1):
             a = grp_sorted.iloc[i]
@@ -94,47 +104,44 @@ def build_road_graph_edges(
                 })
 
     # ── intersection_connect ─────────────────────────────────────────────────
-    # collect first/last node per road
-    endpoint_nodes: list[dict] = []
-    for road_id, grp in road_nodes.groupby("road_id"):
-        grp_sorted = grp.sort_values("chainage_m")
-        for idx in [0, -1]:
-            ep = grp_sorted.iloc[idx]
-            endpoint_nodes.append({
-                "nid": ep["road_node_id"],
-                "lat": ep["lat"],
-                "lon": ep["lon"],
-                "road_id": road_id,
-            })
+    # Connect segment endpoints that are spatially coincident (a junction).
+    # osmnx splits every street at its intersections, so all junctions occur at
+    # exact segment endpoints — snapping endpoints within a small tolerance via
+    # a KDTree recovers the full topology. This is orientation-independent
+    # (unlike using OSM u/v, whose geometry orientation is inconsistent in some
+    # exports) and connects segments regardless of road_id (osmid).
+    ep_nid: list = []
+    ep_lat: list = []
+    ep_lon: list = []
+    for _, grp in road_nodes.groupby(group_key):
+        gs = grp.sort_values("chainage_m")
+        for r in (gs.iloc[0], gs.iloc[-1]):
+            ep_nid.append(r["road_node_id"])
+            ep_lat.append(float(r["lat"]))
+            ep_lon.append(float(r["lon"]))
 
-    # grid-snap endpoints by tolerance
-    tol_deg = junction_tol_m / 111_000.0
-    grid: dict[tuple, list[dict]] = defaultdict(list)
-    for ep in endpoint_nodes:
-        key = (round(ep["lat"] / tol_deg), round(ep["lon"] / tol_deg))
-        grid[key].append(ep)
-
-    seen: set[tuple] = set()
-    for group in grid.values():
-        if len(group) < 2:
-            continue
-        for i in range(len(group)):
-            for j in range(i + 1, len(group)):
-                a, b = group[i], group[j]
-                if a["road_id"] == b["road_id"]:
-                    continue
-                key = tuple(sorted([a["nid"], b["nid"]]))
-                if key in seen:
-                    continue
-                seen.add(key)
-                dist = _haversine_m(a["lat"], a["lon"], b["lat"], b["lon"])
-                for src, dst in [(a["nid"], b["nid"]), (b["nid"], a["nid"])]:
-                    edges.append({
-                        "src_node_id": src, "dst_node_id": dst,
-                        "edge_type": "intersection_connect",
-                        "network_distance_m": dist,
-                        "edge_confidence": 0.9,
-                    })
+    if len(ep_nid) >= 2:
+        ep_lat_a = np.asarray(ep_lat)
+        ep_lon_a = np.asarray(ep_lon)
+        tree = cKDTree(np.column_stack([ep_lat_a, ep_lon_a]))
+        tol_deg = junction_tol_m / 111_000.0
+        seen: set[tuple] = set()
+        for i, j in tree.query_pairs(tol_deg):
+            ni, nj = ep_nid[i], ep_nid[j]
+            if ni == nj:
+                continue
+            key = tuple(sorted([ni, nj]))
+            if key in seen:
+                continue
+            seen.add(key)
+            dist = _haversine_m(ep_lat[i], ep_lon[i], ep_lat[j], ep_lon[j])
+            for src, dst in [(ni, nj), (nj, ni)]:
+                edges.append({
+                    "src_node_id": src, "dst_node_id": dst,
+                    "edge_type": "intersection_connect",
+                    "network_distance_m": dist,
+                    "edge_confidence": 0.95,
+                })
 
     return pd.DataFrame(edges) if edges else pd.DataFrame(
         columns=["src_node_id", "dst_node_id", "edge_type",

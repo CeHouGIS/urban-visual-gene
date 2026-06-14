@@ -14,6 +14,8 @@ Outputs: outputs/figures/map_units_pca_<City>.png
 """
 from __future__ import annotations
 
+import scripts._env  # noqa: F401  (sets thread limits before numpy/scipy)
+
 import argparse
 from pathlib import Path
 

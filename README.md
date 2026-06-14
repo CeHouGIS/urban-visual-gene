@@ -24,10 +24,13 @@ scripts/        各阶段实现（均可 import，也支持 CLI）
   stage5_infer_road_basis_activation.py
   stage6_extract_road_units.py       MRLU 提取
   road_graph_utils.py / road_basis_model.py / io_utils.py
+  _env.py                            线程池锁定（每个 runner 最先导入）
+  cities.py                          城市数据加载（torch-free）
+  run_stage1.py … run_stage6.py      各 stage 的隔离进程入口
   copy_data.py                       从 NAS 复制数据到本地 ./data
-  plot_results.py                    出图
+  plot_results.py / plot_pca_maps.py 出图
 tests/          48 个合成数据单元测试（pytest，CPU，无需真实数据/GPU）
-run_experiment.py    端到端实验入口（Vienna / HongKong）
+run_experiment.py    端到端编排器（纯子进程，避免 OpenMP 冲突崩溃）
 outputs/        EXPERIMENT_REPORT.md + figures/ + 统计（大产物已 gitignore）
 ```
 
@@ -41,10 +44,28 @@ pip install pytest numpy pandas scipy networkx geopandas shapely torch matplotli
 pytest tests/ -q
 
 # 实验（读本地 ./data，需先用 scripts/copy_data.py 准备数据）
-#   注意：Stage1(DINOv2) 需与 Stage2-6 分进程运行，避免 native 库 segfault
-python run_experiment.py --city Vienna   --max-panos 500 --K 32 --epochs 50 --skip-stage1
-python run_experiment.py --city HongKong --max-panos 500 --K 32 --epochs 50 --skip-stage1
+python run_experiment.py --city both --max-panos 500 --K 32 --epochs 50
+# 复用已提取特征 / 已建路网图：
+python run_experiment.py --city Vienna --max-panos 500 --skip-stage1 --skip-stage2
 ```
+
+### 进程隔离架构（避免崩溃）
+
+PyTorch 用 Intel OpenMP/MKL（`libiomp5`），numpy/scipy/geopandas 用 GNU OpenMP
+（`libgomp`）。两套线程库在**同一进程**会冲突，导致随机 native segfault
+（详见 `crash_report_20260613.md`）。因此 `run_experiment.py` 是一个**纯子进程编排器**
+（自身不导入任何重库），每个 stage 在独立进程运行：
+
+| Stage | runner | 栈 |
+|---|---|---|
+| 1 特征提取 | `scripts/run_stage1.py` | torch |
+| 2 地图匹配+路网图 | `scripts/run_stage2.py` | geopandas/scipy |
+| 3 Z_road | `scripts/run_stage3.py` | scipy |
+| 4-5 基学习+激活 | `scripts/run_stage45.py` | torch |
+| 6 单元提取 | `scripts/run_stage6.py` | networkx/scipy |
+
+`scripts/_env.py` 在每个 runner 最先导入，将所有 BLAS/OpenMP 线程池锁为 1。
+**切勿在同一进程同时 `import torch` 与做 scipy/geopandas 重运算。**
 
 ## 实验结果（每城 500 抽样点）
 
@@ -56,32 +77,30 @@ python run_experiment.py --city HongKong --max-panos 500 --K 32 --epochs 50 --sk
 |------|-------:|---------:|
 | 抽样街景点 / 缺失图片 | 500 / 0 | 500 / 0 |
 | 街景点匹配率 | 500/500 (100%) | 499/500 (99.8%) |
-| 道路图节点 / 边 | 237,590 / 509,346 | 247,772 / 548,074 |
+| 道路图节点 / 边 | 237,590 / 565,412 | 247,772 / 700,502 |
+| 路网最大连通分量比 (LCC) | 99.98% | 99.99% |
 | 有 pano 直接覆盖的节点 | 9,656 (4.1%) | 17,806 (7.2%) |
-| 训练节点（覆盖子集）train/val | 8,691 / 965 | 16,026 / 1,780 |
 | 重建误差 (mean cosine) | 0.220 | 0.237 |
 | 激活稀疏度 (median active / 32) | 18 | 9 |
-| 激活边界数 | 20,206 | 43,558 |
-| **MRLU 单元数** | **611** | **911** |
-| 单进程耗时 | 89 s | 106 s |
+| 激活边界数 | 19,898 | 48,664 |
+| **MRLU 单元数** | **549** | **744** |
 
 ### 单元统计（`unit_statistics.csv`）
 
-| 统计量 | Vienna (611) | HongKong (911) |
+| 统计量 | Vienna (549) | HongKong (744) |
 |--------|-------------:|---------------:|
-| 每单元路网节点 mean / median | 165.5 / 96 | 84.0 / 37 |
-| 每单元 pano mean / median | 12.3 / 10 | 13.0 / 8 |
-| 单元道路长度 (m) mean / median | 3,696 / 2,214 | 1,822 / 825 |
+| 每单元路网节点 mean / median | 343.3 / 267 | 242.2 / 98 |
+| 每单元 pano mean / median | 16.2 / 15 | 21.1 / 16 |
+| 单元道路长度 (m) mean / median | 7,716 / 5,941 | 5,427 / 2,075 |
 | 激活熵 mean | 3.35 | 3.33 |
 | 单元置信度 mean | 0.53 | 0.53 |
-| 边界对比度 mean | 0.11 | 0.11 |
 | 主导基（dominant basis）覆盖 | 32 / 32 | 32 / 32 |
 
 ### 两城对比图
 
 ![comparison](outputs/figures/comparison_charts.png)
 
-**(a)** 香港单元数（911）多于 Vienna（611）；**(b)** 香港单元道路长度整体偏短（峰值 500–1000m），Vienna 偏长（3–6km）；**(c)** 香港每单元节点集中在 10–50，Vienna 偏 100–300；**(d)** 32 个视觉基全部被用到，两城各有偏好（香港 basis 27/7/11 突出，Vienna basis 30/18/31 突出）。
+**(a)** 香港单元数（744）多于 Vienna（549）；**(b)** 香港单元道路长度整体偏短，Vienna 偏长；**(c)** 香港每单元节点中位 98，Vienna 偏大（中位 267）；**(d)** 32 个视觉基全部被用到，两城各有偏好（香港 basis 7/27/11 突出，Vienna basis 30/31/18 突出）。
 
 ### MRLU 空间分布（按视觉激活 PCA→RGB 着色）
 
@@ -103,13 +122,14 @@ python run_experiment.py --city HongKong --max-panos 500 --K 32 --epochs 50 --sk
 
 ### 核心观察
 
-- **香港比 Vienna 切得更多更细**（911 vs 611，中位 37 vs 96 节点），且激活更稀疏（median 9 vs 18）——符合「香港高密度异质街景 → 更频繁的视觉边界」的直觉。
+- **香港比 Vienna 切得更多更细**（744 vs 549，中位 98 vs 267 节点），且激活更稀疏（median 9 vs 18）——符合「香港高密度异质街景 → 更频繁的视觉边界」的直觉。
 - 32 个学到的视觉基在两城激活出**不同的主导模式**，说明基具备跨城区分能力。
+- 路网经 OSM `u/v` 拓扑修复后 LCC ≈ 100%（旧建图为 77.7% / 59.9%）。
 
 ### 已知局限
 
 - **边界阈值 τ=0**：两城激活余弦距离的 0.90 分位都为 0（>90% 相邻节点激活完全相同），实际成了「只要有差异即设边界」，单元对噪声偏敏感。建议改用非零分位阈值，或 Stage4 末端用 ReLU / top-k 激活以获得精确零值、增强区分度。
-- **覆盖率低（4–7%）**：500 抽样点仅覆盖路网很小一部分，LCC 偏碎（Vienna 77.7%、HK 59.9%），多数单元几何来自插值节点，置信度普遍 ~0.53。扩大抽样量（5k–全量）可显著改善。
+- **覆盖率低（4–7%）**：500 抽样点仅覆盖路网很小一部分，多数单元几何来自插值节点，置信度普遍 ~0.53。扩大抽样量（5k–全量）可显著改善。
 
 > 完整说明见 [`outputs/EXPERIMENT_REPORT.md`](outputs/EXPERIMENT_REPORT.md)。
 

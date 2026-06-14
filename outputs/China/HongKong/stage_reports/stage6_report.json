@@ -1,9 +1,9 @@
 {
-  "n_edges_total": 453823,
-  "n_boundary_edges": 43558,
-  "boundary_ratio": 0.096,
+  "n_edges_total": 697126,
+  "n_boundary_edges": 48664,
+  "boundary_ratio": 0.0698,
   "tau": 0.0,
-  "n_components_raw": 18357,
-  "n_units_after_filter": 911,
+  "n_components_raw": 14921,
+  "n_units_after_filter": 744,
   "boundary_quantile": 0.9
 }
