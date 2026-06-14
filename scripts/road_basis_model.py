@@ -26,12 +26,15 @@ class RoadBasisAutoEncoder(nn.Module):
         self.D = D
         self.K = K
 
-        # Encoder: D → hidden → K, activation via Softplus → A ≥ 0
+        # Encoder: D → hidden → K, final ReLU → A ≥ 0 with EXACT zeros.
+        # (Softplus was used previously but never produces 0, so activations were
+        # dense and near-identical between regions, collapsing the Stage-6
+        # boundary threshold τ_c to 0. ReLU gives genuine sparsity.)
         self.encoder = nn.Sequential(
             nn.Linear(D, hidden),
             nn.ReLU(),
             nn.Linear(hidden, K),
-            nn.Softplus(),   # ensures A ≥ 0
+            nn.ReLU(),   # ensures A ≥ 0, exact zeros
         )
 
         # Decoder: K → D  (no bias — linear combination of basis vectors)
