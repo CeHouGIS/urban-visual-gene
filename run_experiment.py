@@ -56,7 +56,7 @@ def _run(label: str, module: str, *cli: str, retries: int = 3) -> None:
 
 
 def run_city(city: str, max_panos, model, K, batch_size, epochs,
-             skip_stage1, skip_stage2, exclude_bad=False):
+             skip_stage1, skip_stage2, exclude_bad=False, min_confidence=0.5):
     out = ROOT / OUT_DIR[city]
     mp = ["--max-panos", str(max_panos)] if max_panos else []
     qf = ["--exclude-bad"] if exclude_bad else []
@@ -76,7 +76,8 @@ def run_city(city: str, max_panos, model, K, batch_size, epochs,
     _run(f"{city} Stage 3 (geo)",   "scripts.run_stage3", "--out", str(out))
     _run(f"{city} Stage 4-5 (torch)", "scripts.run_stage45",
          "--out", str(out), "--K", str(K), "--epochs", str(epochs))
-    _run(f"{city} Stage 6 (geo)",   "scripts.run_stage6", "--out", str(out))
+    _run(f"{city} Stage 6 (geo)",   "scripts.run_stage6", "--out", str(out),
+         "--min-confidence", str(min_confidence))
     print(f"\n[{city}] pipeline complete → {out}")
 
 
@@ -94,10 +95,12 @@ if __name__ == "__main__":
                     help="Reuse existing road graph")
     ap.add_argument("--exclude-bad", action="store_true",
                     help="Drop low-quality panos (quality model) before Stage 1")
+    ap.add_argument("--min-confidence", type=float, default=0.5,
+                    help="Stage-6 coverage-confidence boundary gate (0 = off)")
     args = ap.parse_args()
 
     cities = ["Vienna", "HongKong"] if args.city == "both" else [args.city]
     for c in cities:
         run_city(c, args.max_panos, args.model, args.K, args.batch_size,
                  args.epochs, args.skip_stage1, args.skip_stage2,
-                 exclude_bad=args.exclude_bad)
+                 exclude_bad=args.exclude_bad, min_confidence=args.min_confidence)
