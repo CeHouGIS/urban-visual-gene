@@ -29,6 +29,9 @@ def main():
     ap.add_argument("--min-panos", type=int, default=3)
     ap.add_argument("--covered-only", action="store_true",
                     help="segment only pano-covered nodes (drop interpolated)")
+    ap.add_argument("--min-confidence", type=float, default=0.0,
+                    help="only let edges with both endpoints' coverage_confidence "
+                         ">= this become boundaries (0 = off)")
     args = ap.parse_args()
     out = Path(args.out)
 
@@ -37,9 +40,12 @@ def main():
     edges = pd.read_parquet(out / "road_graph_edges.parquet")
     ctx = pd.read_parquet(out / "road_context_features.parquet")
 
-    npano = ctx.drop_duplicates("road_node_id").set_index("road_node_id")["n_panos"]
+    cd = ctx.drop_duplicates("road_node_id").set_index("road_node_id")
     nodes = nodes.copy()
-    nodes["n_panos"] = nodes["road_node_id"].map(npano).fillna(0).astype(int)
+    nodes["n_panos"] = nodes["road_node_id"].map(cd["n_panos"]).fillna(0).astype(int)
+    if "coverage_confidence" in cd.columns:
+        nodes["coverage_confidence"] = nodes["road_node_id"].map(
+            cd["coverage_confidence"]).fillna(0.0)
 
     b_gdf, u_gdf, stats, r6 = extract_road_units(
         act, nodes, edges,
@@ -48,6 +54,7 @@ def main():
         min_road_length_m=args.min_road_length_m,
         min_panos=args.min_panos,
         covered_only=args.covered_only,
+        min_confidence=args.min_confidence,
     )
     if len(b_gdf) > 0:
         b_gdf.to_file(out / "road_activation_boundaries.geojson", driver="GeoJSON")

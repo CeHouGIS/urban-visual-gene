@@ -31,6 +31,7 @@ def extract_road_units(
     min_panos: int = 3,
     return_unit_activations: bool = False,
     covered_only: bool = False,
+    min_confidence: float = 0.0,
 ) -> tuple[gpd.GeoDataFrame, gpd.GeoDataFrame, pd.DataFrame, dict]:
     """
     Returns
@@ -60,6 +61,19 @@ def extract_road_units(
     K = len(a_cols)
     nid2idx = {n: i for i, n in enumerate(activation_df["road_node_id"])}
     A = activation_df[a_cols].values.astype(np.float32)   # (M, K)
+
+    # Coverage-confidence gate: an edge may only become a boundary if BOTH
+    # endpoints are confidently observed (conf >= min_confidence). Far-from-
+    # observation interpolated nodes thus never create boundaries (they stay
+    # merged), so diffusion artefacts don't drive the segmentation.
+    conf = {}
+    if min_confidence > 0 and "coverage_confidence" in road_nodes.columns:
+        conf = dict(zip(road_nodes["road_node_id"], road_nodes["coverage_confidence"]))
+
+    def _eligible(s, d):
+        if not conf:
+            return True
+        return conf.get(s, 1.0) >= min_confidence and conf.get(d, 1.0) >= min_confidence
 
     # ── Compute edge activation distances ────────────────────────────────────
     # Iterate over plain Python tuples (itertuples-free zip on the relevant
@@ -98,9 +112,13 @@ def extract_road_units(
     # the quantile over the full distribution degenerates to 0 and "any nonzero
     # difference" becomes a boundary. Restricting to positive distances yields a
     # meaningful threshold; fall back to the full distribution only if needed.
+    # τ_c is computed over CONFIDENT edges only (when gating is on), so the
+    # threshold reflects real observed transitions, not interpolation gradients.
+    elig_dist = np.array([d for (s, t), d in edge_dist.items() if _eligible(s, t)]) \
+        if conf else np.array(list(edge_dist.values()))
     dist_vals = np.array(list(edge_dist.values()))
     _eps = 1e-6
-    _pos = dist_vals[dist_vals > _eps]
+    _pos = elig_dist[elig_dist > _eps]
     if _pos.size:
         tau = float(np.quantile(_pos, boundary_quantile))
     else:
@@ -112,7 +130,7 @@ def extract_road_units(
 
     bid = 0
     for (src, dst), d in edge_dist.items():
-        if d <= tau:
+        if d <= tau or not _eligible(src, dst):   # low-confidence edges never cut
             continue
         s_ll = node_latlon.get(src)
         d_ll = node_latlon.get(dst)
