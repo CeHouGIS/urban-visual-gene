@@ -28,6 +28,47 @@ def _gaussian_weight(dist_m: float | np.ndarray, sigma_m: float) -> np.ndarray:
     return np.exp(-(d ** 2) / (2 * sigma_m ** 2))
 
 
+def _graph_diffuse(z0, covered, road_nodes, road_edges, n_iter=60):
+    """Harmonic interpolation along the ROAD graph via label propagation.
+
+    Covered nodes are anchors (fixed to z0); uncovered nodes iterate to the
+    degree-normalised average of their graph neighbours. In the limit this is
+    the harmonic (Laplacian) solution — a smooth blend ALONG roads between
+    observations, instead of a hard Euclidean nearest-neighbour copy. Nodes in a
+    component with no covered anchor stay at 0 (and get ~0 confidence).
+    """
+    import scipy.sparse as sp
+    n = len(road_nodes)
+    nid2idx = {nid: i for i, nid in enumerate(road_nodes["road_node_id"])}
+    si = road_edges["src_node_id"].map(nid2idx).to_numpy()
+    di = road_edges["dst_node_id"].map(nid2idx).to_numpy()
+    ok = ~(pd.isna(si) | pd.isna(di))
+    si, di = si[ok].astype(np.int64), di[ok].astype(np.int64)
+    # symmetric adjacency
+    rows = np.concatenate([si, di]); cols = np.concatenate([di, si])
+    A = sp.csr_matrix((np.ones(len(rows)), (rows, cols)), shape=(n, n))
+    deg = np.asarray(A.sum(axis=1)).ravel()
+    inv_deg = np.where(deg > 0, 1.0 / deg, 0.0)
+    Dinv = sp.diags(inv_deg)
+    P = Dinv @ A                                   # row-normalised transition
+
+    # Process embedding dimensions in chunks so the dense intermediate stays
+    # small (full 3072-D × ~10^5 nodes would be multi-GB and unstable here).
+    z = z0.astype(np.float32).copy()
+    cov = covered.copy()
+    z0_cov = z0[cov]
+    D = z.shape[1]
+    chunk = 128
+    for c0 in range(0, D, chunk):
+        zc = z[:, c0:c0 + chunk].copy()
+        anc = z0_cov[:, c0:c0 + chunk]
+        for _ in range(n_iter):
+            zc = P @ zc
+            zc[cov] = anc
+        z[:, c0:c0 + chunk] = zc
+    return z
+
+
 def build_road_context_features(
     matched_panos: pd.DataFrame,
     road_nodes: pd.DataFrame,
@@ -36,6 +77,8 @@ def build_road_context_features(
     kernel_sigma_m: float = 30.0,
     context_radius_m: float = 100.0,
     method: str = "multi_road_decay",
+    interp: str = "diffusion",
+    confidence_lambda_m: float = 150.0,
 ) -> Tuple[pd.DataFrame, dict]:
     """Aggregate pano embeddings onto road nodes with distance-decay weighting.
 
@@ -91,21 +134,44 @@ def build_road_context_features(
         agg_w[node_idxs]   += weights
         n_panos[node_idxs] += 1
 
-    # Nodes with zero weight: interpolate from nearest node that has data
-    zero_mask = agg_w == 0
-    if zero_mask.any() and (~zero_mask).any():
-        have_tree = cKDTree(node_xy[~zero_mask])
-        _, nn_idxs = have_tree.query(node_xy[zero_mask], k=1)
-        have_indices = np.where(~zero_mask)[0]
-        agg_emb[zero_mask] = agg_emb[have_indices[nn_idxs]]
-        agg_w[zero_mask]   = agg_w[have_indices[nn_idxs]]
+    # Per-node weighted-mean embedding (covered nodes only); 0 elsewhere.
+    covered_mask = agg_w > 0
+    denom = np.where(covered_mask, agg_w, 1.0)[:, None]
+    z0 = (agg_emb / denom).astype(np.float32)
 
-    # Normalise each node embedding by its own weight sum, then L2 norm
-    denom = np.where(agg_w > 0, agg_w, 1.0)[:, None]
-    z_road = (agg_emb / denom).astype(np.float32)
+    # Coverage confidence: decays with Euclidean distance (m) to the nearest
+    # OBSERVED node. Covered -> 1; far interpolated -> ~0.
+    if covered_mask.any():
+        ctree = cKDTree(node_xy[covered_mask])
+        d_deg, _ = ctree.query(node_xy, k=1)
+        coverage_confidence = np.exp(-(d_deg * DEG_TO_M) / confidence_lambda_m)
+    else:
+        coverage_confidence = np.zeros(len(road_nodes))
+
+    # Fill uncovered nodes by ROAD-graph diffusion (harmonic) instead of a hard
+    # Euclidean nearest-copy. Falls back to nearest-copy on any failure / when
+    # diffusion is disabled. (No uncovered nodes -> z_road is just z0.)
+    z_road = z0.copy()
+    use_diff = interp == "diffusion"
+    if covered_mask.any() and (~covered_mask).any():
+        if use_diff:
+            try:
+                z_road = _graph_diffuse(z0, covered_mask, road_nodes, road_edges)
+            except Exception as e:  # pragma: no cover
+                print(f"[stage3] diffusion failed ({e}); nearest-copy fallback")
+                use_diff = False
+        # nearest-covered copy for: the nearest method, OR any node still a zero
+        # vector after diffusion (component with no observed anchor)
+        zero_mask = (np.linalg.norm(z_road, axis=1) < 1e-9) if use_diff else (~covered_mask)
+        if zero_mask.any():
+            ct = cKDTree(node_xy[covered_mask])
+            _, nn = ct.query(node_xy[zero_mask], k=1)
+            z_road[zero_mask] = z0[covered_mask][nn]
+
+    # L2-normalise
     row_norms = np.linalg.norm(z_road, axis=1, keepdims=True)
     row_norms = np.where(row_norms > 0, row_norms, 1.0)
-    z_road = z_road / row_norms
+    z_road = (z_road / row_norms).astype(np.float32)
 
     assert_l2_normed(z_road, name="road_context_embedding")
 
@@ -113,6 +179,7 @@ def build_road_context_features(
     context_df["road_context_embedding"] = list(z_road)
     context_df["n_panos"]            = n_panos
     context_df["total_weight"]       = agg_w.round(4)
+    context_df["coverage_confidence"] = coverage_confidence.round(4)
     context_df["context_radius_m"]   = context_radius_m
     context_df["aggregation_method"] = method
     if "city" not in context_df.columns:
@@ -125,12 +192,14 @@ def build_road_context_features(
     report  = {
         "n_road_nodes":        total,
         "n_nodes_with_panos":  covered,
-        "n_nodes_interpolated": int(zero_mask.sum()),
+        "n_nodes_interpolated": int((~covered_mask).sum()),
         "coverage_ratio":      round(covered / max(total, 1), 4),
         "embedding_dim":       D,
         "search_radius_m":     search_radius_m,
         "kernel_sigma_m":      kernel_sigma_m,
         "method":              method,
+        "interp":              interp,
+        "mean_coverage_confidence": round(float(coverage_confidence.mean()), 4),
     }
 
     # Direct coverage will be low for sparse pano sets; interpolation fills the rest.
