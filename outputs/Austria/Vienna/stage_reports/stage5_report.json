@@ -3,6 +3,6 @@
   "K": 32,
   "activation_threshold": 0.01,
   "median_active_basis": 18.0,
-  "mean_recon_error": 0.219,
-  "mean_entropy": 2.6931
+  "mean_recon_error": 0.2189,
+  "mean_entropy": 2.6951
 }

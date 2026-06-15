@@ -14,6 +14,7 @@ import scripts._env  # noqa: F401  (sets thread limits before numpy/torch)
 import argparse
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from scripts.io_utils import save_report
@@ -43,6 +44,12 @@ def main():
         lambda_spatial=1e-3, lambda_div=1e-3,
         output_dir=Path("models"),
     )
+    # Also snapshot the basis in the CITY dir: models/ is a single shared path
+    # that the next city's training overwrites, so per-city analyses (basis
+    # alignment/similarity across cities) need their own copy here.
+    import torch
+    np.save(out / "road_landscape_basis.npy", model.basis.detach().cpu().numpy())
+    torch.save(model.state_dict(), out / "road_basis_model.pt")
     save_report(out / "stage_reports/stage4_report.json", r4)
     print(f"  ✓ loss {r4['initial_train_loss']:.4f} → {r4['final_train_loss']:.4f}")
 

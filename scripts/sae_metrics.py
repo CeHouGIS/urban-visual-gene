@@ -105,15 +105,23 @@ def main():
     p = FIG / f"sae_metrics_{tag}.png"
     fig.savefig(p, dpi=130, bbox_inches="tight"); plt.close(fig)
 
-    pd.DataFrame([{
+    # NB: use bracket indexing — `hist.sparse` collides with pandas' .sparse accessor
+    row = pd.DataFrame([{
+        "city": tag,
         "final_train_loss": r["final_train_loss"],
         "final_val_loss": r["final_val_loss"],
         "mean_recon_error": round(float(rec.mean()), 4),
         "median_active": int(np.median(act_cnt)),
         "mean_entropy": round(float(ent.mean()), 4),
-        "final_recon": hist.recon.iloc[-1], "final_sparse": hist.sparse.iloc[-1],
-        "final_spatial": hist.spatial.iloc[-1], "final_div": hist.div.iloc[-1],
-    }]).to_csv("outputs/sweep/sae_metrics.csv", index=False)
+        "final_recon": hist["recon"].iloc[-1], "final_sparse": hist["sparse"].iloc[-1],
+        "final_spatial": hist["spatial"].iloc[-1], "final_div": hist["div"].iloc[-1],
+    }])
+    csv = Path("outputs/sweep/sae_metrics.csv")
+    if csv.exists():
+        prev = pd.read_csv(csv)
+        prev = prev[prev.get("city", "") != tag] if "city" in prev else prev
+        row = pd.concat([prev, row], ignore_index=True)
+    row.to_csv(csv, index=False)
     print("saved", p)
     print(f"recon={rec.mean():.3f} median_active={int(np.median(act_cnt))}/{args.K} "
           f"final loss {r['final_train_loss']:.3f}")
