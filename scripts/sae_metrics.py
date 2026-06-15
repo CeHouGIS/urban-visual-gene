@@ -98,10 +98,11 @@ def main():
     else:
         ax[1, 2].axis("off")
 
+    tag = out.name.split("_")[0]          # e.g. Vienna / HongKong
     fig.suptitle(f"SAE metrics — {out.name} (K={args.K}, recon={rec.mean():.3f}, "
                  f"median active={int(np.median(act_cnt))}/{args.K})", fontsize=14)
     fig.tight_layout(rect=[0, 0, 1, 0.96])
-    p = FIG / "sae_metrics.png"
+    p = FIG / f"sae_metrics_{tag}.png"
     fig.savefig(p, dpi=130, bbox_inches="tight"); plt.close(fig)
 
     pd.DataFrame([{
