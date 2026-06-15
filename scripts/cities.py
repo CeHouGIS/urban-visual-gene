@@ -58,8 +58,15 @@ def path_style(city: str) -> str:
     return CITY_CONFIG[city]["path_style"]
 
 
-def load_panos(city: str, max_panos: int | None) -> pd.DataFrame:
-    """Return pano metadata DataFrame (pano_id, lat, lon, city)."""
+def load_panos(city: str, max_panos: int | None,
+               sampling: str = "random") -> pd.DataFrame:
+    """Return pano metadata DataFrame (pano_id, lat, lon, city).
+
+    sampling="random": uniform random subsample (default, reproducible seed).
+    sampling="greedy": keep the panos pre-selected by `scripts.select_panos`
+    (max road-network coverage), in greedy rank order — far fewer downstream
+    nodes need interpolation. Falls back to random if the selection is missing.
+    """
     cfg = CITY_CONFIG[city]
     if city == "Vienna":
         df = pd.read_parquet(DATA_ROOT / cfg["panoids"]).rename(columns={"panoid": "pano_id"})
@@ -68,6 +75,18 @@ def load_panos(city: str, max_panos: int | None) -> pd.DataFrame:
         df = pd.read_sql("SELECT panoid as pano_id, lat, lon FROM gsv WHERE download=1", con)
         con.close()
     df["city"] = city
+    if sampling == "greedy":
+        sel_path = out_dir(city) / "selected_pano_ids.parquet"
+        if sel_path.exists():
+            sel = pd.read_parquet(sel_path).sort_values("rank")
+            if max_panos:
+                sel = sel.head(max_panos)
+            order = {pid: r for r, pid in enumerate(sel["pano_id"])}
+            df = df[df["pano_id"].isin(order)].copy()
+            df["_rank"] = df["pano_id"].map(order)
+            return df.sort_values("_rank").drop(columns="_rank").reset_index(drop=True)
+        print(f"[load_panos] no greedy selection at {sel_path}; "
+              f"falling back to random")
     if max_panos:
         df = df.sample(max_panos, random_state=MAX_PANOS_SEED).reset_index(drop=True)
     return df

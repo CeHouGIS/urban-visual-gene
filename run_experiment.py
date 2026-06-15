@@ -56,17 +56,24 @@ def _run(label: str, module: str, *cli: str, retries: int = 3) -> None:
 
 
 def run_city(city: str, max_panos, model, K, batch_size, epochs,
-             skip_stage1, skip_stage2, exclude_bad=False, min_confidence=0.5):
+             skip_stage1, skip_stage2, exclude_bad=False, min_confidence=0.5,
+             sampling="random"):
     out = ROOT / OUT_DIR[city]
     mp = ["--max-panos", str(max_panos)] if max_panos else []
     qf = ["--exclude-bad"] if exclude_bad else []
+    sf = ["--sampling", sampling]
 
     if skip_stage1 and (out / "pano_features.parquet").exists():
         print(f"\n[{city}] Stage 1 — skipping (features exist)")
     else:
+        # Greedy max-coverage pano selection (geo pre-step, own process) so far
+        # fewer road nodes need interpolation downstream. Needs a budget.
+        if sampling == "greedy" and max_panos:
+            _run(f"{city} Select panos (geo)", "scripts.select_panos",
+                 "--city", city, "--max-panos", str(max_panos))
         _run(f"{city} Stage 1 (torch)", "scripts.run_stage1",
              "--city", city, "--model", model, "--batch-size", str(batch_size),
-             *qf, *mp)
+             *qf, *sf, *mp)
 
     if skip_stage2 and (out / "road_graph_edges.parquet").exists():
         print(f"\n[{city}] Stage 2 — skipping (road graph exists)")
@@ -97,10 +104,14 @@ if __name__ == "__main__":
                     help="Drop low-quality panos (quality model) before Stage 1")
     ap.add_argument("--min-confidence", type=float, default=0.5,
                     help="Stage-6 coverage-confidence boundary gate (0 = off)")
+    ap.add_argument("--sampling", choices=["random", "greedy"], default="random",
+                    help="greedy = max road-coverage pano selection (fewer "
+                         "interpolated nodes); needs --max-panos")
     args = ap.parse_args()
 
     cities = ["Vienna", "HongKong"] if args.city == "both" else [args.city]
     for c in cities:
         run_city(c, args.max_panos, args.model, args.K, args.batch_size,
                  args.epochs, args.skip_stage1, args.skip_stage2,
-                 exclude_bad=args.exclude_bad, min_confidence=args.min_confidence)
+                 exclude_bad=args.exclude_bad, min_confidence=args.min_confidence,
+                 sampling=args.sampling)

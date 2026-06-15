@@ -27,12 +27,14 @@ def main():
     ap.add_argument("--out", default=None, help="override output dir")
     ap.add_argument("--exclude-bad", action="store_true",
                     help="drop low-quality panos via models/quality_model.joblib")
+    ap.add_argument("--sampling", choices=["random", "greedy"], default="random",
+                    help="greedy = use scripts.select_panos max-coverage set")
     args = ap.parse_args()
 
     out = Path(args.out) if args.out else out_dir(args.city)
     (out / "stage_reports").mkdir(parents=True, exist_ok=True)
 
-    pano_df = load_panos(args.city, args.max_panos)
+    pano_df = load_panos(args.city, args.max_panos, sampling=args.sampling)
     if args.exclude_bad:
         from scripts.image_quality import filter_panos
         pano_df, qrep = filter_panos(pano_df, args.city)
