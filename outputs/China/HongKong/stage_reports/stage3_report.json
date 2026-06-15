@@ -1,10 +1,12 @@
 {
-  "n_road_nodes": 247579,
-  "n_nodes_with_panos": 17557,
-  "n_nodes_interpolated": 230022,
-  "coverage_ratio": 0.0709,
+  "n_road_nodes": 241774,
+  "n_nodes_with_panos": 37427,
+  "n_nodes_interpolated": 204347,
+  "coverage_ratio": 0.1548,
   "embedding_dim": 3072,
   "search_radius_m": 100.0,
   "kernel_sigma_m": 30.0,
-  "method": "multi_road_decay"
+  "method": "multi_road_decay",
+  "interp": "diffusion",
+  "mean_coverage_confidence": 0.32
 }

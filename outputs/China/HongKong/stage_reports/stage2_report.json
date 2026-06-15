@@ -1,12 +1,10 @@
 {
-  "n_panos_total": 490,
-  "n_panos_matched": 489,
-  "n_panos_unmatched": 1,
-  "matched_ratio": 0.998,
-  "n_road_nodes": 247579,
-  "n_road_edges": 700018,
-  "lcc_ratio": 0.9999,
-  "unmatched_pano_ids": [
-    "zBEjNDmZRYTOgUr8NhzzuA"
-  ]
+  "n_panos_total": 497,
+  "n_panos_matched": 497,
+  "n_panos_unmatched": 0,
+  "matched_ratio": 1.0,
+  "n_road_nodes": 241774,
+  "n_road_edges": 686316,
+  "lcc_ratio": 0.9982,
+  "unmatched_pano_ids": []
 }

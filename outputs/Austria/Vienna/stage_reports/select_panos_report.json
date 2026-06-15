@@ -1,0 +1,10 @@
+{
+  "budget": 500,
+  "n_selected": 500,
+  "n_candidates": 5943,
+  "n_nodes": 237623,
+  "covered": 25379,
+  "coverage_pct": 10.68,
+  "interp_pct": 89.32,
+  "radius_m": 100.0
+}
