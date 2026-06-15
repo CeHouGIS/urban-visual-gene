@@ -1,9 +1,11 @@
 {
   "n_edges_total": 564362,
-  "n_boundary_edges": 19958,
-  "boundary_ratio": 0.0354,
-  "tau": 0.0,
-  "n_components_raw": 5630,
-  "n_units_after_filter": 549,
-  "boundary_quantile": 0.9
+  "n_boundary_edges": 1260,
+  "boundary_ratio": 0.0022,
+  "frac_positive_edges": 0.0225,
+  "tau": 0.35159,
+  "n_components_raw": 140,
+  "n_units_after_filter": 22,
+  "boundary_quantile": 0.9,
+  "covered_only": false
 }

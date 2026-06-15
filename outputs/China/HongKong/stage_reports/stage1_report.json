@@ -1,5 +1,5 @@
 {
-  "n_panos": 500,
+  "n_panos": 490,
   "n_missing_all": 0,
   "n_partial": 0,
   "model": "dinov2_vitb14",
