@@ -56,15 +56,17 @@ def _run(label: str, module: str, *cli: str, retries: int = 3) -> None:
 
 
 def run_city(city: str, max_panos, model, K, batch_size, epochs,
-             skip_stage1, skip_stage2):
+             skip_stage1, skip_stage2, exclude_bad=False):
     out = ROOT / OUT_DIR[city]
     mp = ["--max-panos", str(max_panos)] if max_panos else []
+    qf = ["--exclude-bad"] if exclude_bad else []
 
     if skip_stage1 and (out / "pano_features.parquet").exists():
         print(f"\n[{city}] Stage 1 — skipping (features exist)")
     else:
         _run(f"{city} Stage 1 (torch)", "scripts.run_stage1",
-             "--city", city, "--model", model, "--batch-size", str(batch_size), *mp)
+             "--city", city, "--model", model, "--batch-size", str(batch_size),
+             *qf, *mp)
 
     if skip_stage2 and (out / "road_graph_edges.parquet").exists():
         print(f"\n[{city}] Stage 2 — skipping (road graph exists)")
@@ -90,9 +92,12 @@ if __name__ == "__main__":
                     help="Reuse existing pano_features.parquet")
     ap.add_argument("--skip-stage2", action="store_true",
                     help="Reuse existing road graph")
+    ap.add_argument("--exclude-bad", action="store_true",
+                    help="Drop low-quality panos (quality model) before Stage 1")
     args = ap.parse_args()
 
     cities = ["Vienna", "HongKong"] if args.city == "both" else [args.city]
     for c in cities:
         run_city(c, args.max_panos, args.model, args.K, args.batch_size,
-                 args.epochs, args.skip_stage1, args.skip_stage2)
+                 args.epochs, args.skip_stage1, args.skip_stage2,
+                 exclude_bad=args.exclude_bad)
