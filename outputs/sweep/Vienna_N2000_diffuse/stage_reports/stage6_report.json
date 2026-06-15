@@ -1,0 +1,11 @@
+{
+  "n_edges_total": 564444,
+  "n_boundary_edges": 6820,
+  "boundary_ratio": 0.0121,
+  "frac_positive_edges": 0.43,
+  "tau": 0.0032,
+  "n_components_raw": 1763,
+  "n_units_after_filter": 159,
+  "boundary_quantile": 0.9,
+  "covered_only": false
+}

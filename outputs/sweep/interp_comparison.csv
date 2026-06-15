@@ -1,0 +1,4 @@
+config,frac_pos_edges,boundaries,tau,units
+nearest-copy (no gate),0.057,3196,0.261,96
+diffusion (no gate),0.43,24270,0.004,813
+diffusion + gate(0.5),0.43,6820,0.003,159
