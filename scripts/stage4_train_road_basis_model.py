@@ -83,6 +83,7 @@ def train_basis_model(
     for epoch in range(epochs):
         model.train()
         train_loss = 0.0
+        ep = {"recon": 0.0, "sparse": 0.0, "spatial": 0.0, "div": 0.0}
         for z_batch, idx_batch in train_dl:
             opt.zero_grad()
             a, z_hat = model(z_batch)
@@ -116,9 +117,16 @@ def train_basis_model(
             opt.step()
             # Re-normalise basis after each step
             model._normalise_basis()
-            train_loss += loss.item() * len(z_batch)
+            nb = len(z_batch)
+            train_loss += loss.item() * nb
+            ep["recon"] += l_recon.item() * nb
+            ep["sparse"] += float(l_sparse) * nb
+            ep["spatial"] += float(l_spatial) * nb
+            ep["div"] += float(l_div) * nb
 
         train_loss /= len(train_idx)
+        for kk in ep:
+            ep[kk] /= len(train_idx)
         if initial_loss is None:
             initial_loss = train_loss
 
@@ -130,7 +138,8 @@ def train_basis_model(
                 a, z_hat = model(z_batch)
                 val_loss += cosine_recon_loss(z_batch, z_hat).item() * len(z_batch)
         val_loss /= max(len(val_idx), 1)
-        history.append({"epoch": epoch, "train_loss": train_loss, "val_loss": val_loss})
+        history.append({"epoch": epoch, "train_loss": train_loss,
+                        "val_loss": val_loss, **ep})
 
     final_loss = history[-1]["train_loss"]
 
@@ -160,6 +169,7 @@ def train_basis_model(
         "lambda_sparse": lambda_sparse,
         "lambda_spatial": lambda_spatial,
         "lambda_div": lambda_div,
+        "history": [{k: round(v, 6) for k, v in h.items()} for h in history],
     }
 
     if output_dir is not None:
