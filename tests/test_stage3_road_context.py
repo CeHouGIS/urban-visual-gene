@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from scripts.stage3_build_road_context_features import build_road_context_features
+from scripts.pipeline.stage3_build_road_context_features import build_road_context_features
 
 
 @pytest.fixture(scope="module")

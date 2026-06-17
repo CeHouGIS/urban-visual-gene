@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Visual Gene · 特征空间</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/deck.gl@9.0.36/dist.min.js"></script>
+<style>
+:root{--bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
+  --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;overflow:hidden}
+#top{position:absolute;top:0;left:0;right:0;height:52px;z-index:30;display:flex;align-items:center;
+  gap:18px;padding:0 18px;background:rgba(7,11,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.brand{font-weight:700;display:flex;align-items:center;gap:9px;font-size:15px;white-space:nowrap}
+.brand .dot{width:10px;height:10px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent3),var(--accent));box-shadow:0 0 12px var(--accent)}
+.tabs{display:flex;gap:6px;margin-left:8px}
+.tab{font-size:13px;color:var(--muted);padding:6px 13px;border-radius:8px;border:1px solid transparent;text-decoration:none}
+.tab.active{color:var(--accent);border-color:var(--border);background:var(--panel2)}
+.tab:hover{color:var(--text)}
+.spacer{flex:1}
+.cityseg{display:flex;border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.cityseg button{background:transparent;color:var(--muted);border:0;padding:7px 16px;cursor:pointer;font-size:13px}
+.cityseg button.active{background:var(--accent);color:#04121a;font-weight:700}
+
+#wrap{position:absolute;top:52px;left:0;right:0;bottom:0;display:flex}
+#left{position:relative;flex:1.25;border-right:1px solid var(--border)}
+#right{position:relative;flex:1}
+#scatter{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#0b1322,#070b14)}
+#map{position:absolute;inset:0}
+.panetag{position:absolute;top:12px;left:14px;z-index:5;font-size:12px;letter-spacing:1px;
+  color:var(--accent);background:rgba(7,11,20,.7);border:1px solid var(--border);padding:5px 11px;border-radius:8px}
+.panetag small{color:var(--muted);letter-spacing:0}
+
+#ctrl{position:absolute;top:64px;right:14px;z-index:20;width:230px;background:var(--panel);
+  border:1px solid var(--border);border-radius:14px;padding:14px;backdrop-filter:blur(12px)}
+#ctrl h4{margin:0 0 8px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)}
+.modebtns{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.modebtns button{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 4px;font-size:12px;cursor:pointer}
+.modebtns button.active{border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px rgba(57,214,255,.25)}
+#leg{margin-top:10px;font-size:11.5px;color:var(--muted);line-height:1.5}
+.hint{position:absolute;bottom:14px;left:14px;z-index:5;font-size:12px;color:var(--muted);
+  background:rgba(7,11,20,.7);border:1px solid var(--border);padding:8px 12px;border-radius:9px;max-width:340px}
+.hint b{color:var(--accent3)}
+#selinfo{position:absolute;bottom:14px;right:14px;z-index:20;background:var(--panel);border:1px solid var(--border);
+  border-radius:12px;padding:11px 15px;backdrop-filter:blur(12px);font-size:13px;display:none;min-width:170px}
+#selinfo .n{font-size:22px;font-weight:800;color:var(--accent);line-height:1.1}
+#selinfo button{margin-top:8px;background:var(--panel2);color:var(--muted);border:1px solid var(--border);
+  border-radius:7px;padding:4px 10px;font-size:12px;cursor:pointer}
+.selbox{position:absolute;border:1.5px dashed var(--accent);background:rgba(57,214,255,.1);z-index:10;pointer-events:none;display:none}
+.selbtn{position:absolute;top:12px;right:14px;z-index:6;font-size:12px;color:var(--muted);
+  background:rgba(7,11,20,.7);border:1px solid var(--border);padding:6px 11px;border-radius:8px;cursor:pointer}
+.selbtn.on{color:#04121a;background:var(--accent);font-weight:700;border-color:var(--accent)}
+#panos{position:absolute;left:14px;bottom:14px;z-index:26;background:var(--panel);border:1px solid var(--border);
+  border-radius:12px;padding:12px;backdrop-filter:blur(12px);display:none;width:312px}
+#panos .hd{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin-bottom:8px}
+#panos .hd b{color:var(--text)}
+#panos .x{cursor:pointer;color:var(--muted);font-size:15px;padding:0 4px}
+#panos .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#panos .cell{position:relative}
+#panos img{width:100%;height:98px;object-fit:cover;border-radius:6px;background:#0b1322;display:block;cursor:zoom-in}
+#panos .deg{position:absolute;top:3px;left:4px;font-size:10px;color:#fff;background:rgba(0,0,0,.6);padding:0 6px;border-radius:4px}
+#lb{position:fixed;inset:0;background:rgba(3,6,12,.94);z-index:200;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+#lb img{max-width:94vw;max-height:92vh;border-radius:8px}
+#tip{position:absolute;z-index:27;pointer-events:none;display:none;font-size:12px;color:#fff;
+  background:rgba(7,11,20,.92);border:1px solid var(--border);padding:4px 9px;border-radius:7px;white-space:nowrap;transform:translate(0,-50%)}
+#tip .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+#loading{position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;background:var(--bg);flex-direction:column;gap:14px}
+.spin{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:s 1s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="top">
+  <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
+  <div class="tabs">
+    <a class="tab" href="index.html">街道景观地图</a>
+    <a class="tab active" href="feature.html">特征空间</a>
+    <a class="tab" href="analysis.html">分析</a>
+  </div>
+  <div class="spacer"></div>
+  <div class="cityseg" id="cityseg">
+    <button data-city="Both" class="active">两城</button>
+    <button data-city="Vienna">维也纳</button>
+    <button data-city="HongKong">香港</button>
+  </div>
+</div>
+
+<div id="wrap">
+  <div id="left">
+    <canvas id="scatter"></canvas>
+    <div class="panetag">视觉激活空间 <small>· 32维 → 两城联合 UMAP 2D(全部节点)</small></div>
+    <div class="selbtn on" id="selScatter">▭ 框选(拖拽)</div>
+    <div class="selbox" id="boxS"></div>
+    <div id="tip"></div>
+    <div class="hint">每个点 = 一个路网节点的 <b>32 维联合基激活</b>,经两城联合 UMAP(PCA 初始化)投到 2D。<br>
+      「按城市」着色下可见<b>维也纳 / 香港分居两侧</b> = 两城用同一套词汇、组合方式不同的真实差异。框选一簇 → 右侧地图高亮其地理位置。</div>
+  </div>
+  <div id="right">
+    <div id="map"></div>
+    <div class="panetag" style="left:auto;right:14px">地理空间 <small>· 同色=同选区</small></div>
+    <div class="selbtn" id="selMap" style="left:14px;right:auto">▭ 在地图框选</div>
+    <div class="selbox" id="boxM"></div>
+  </div>
+</div>
+
+<div id="ctrl">
+  <h4>着色模式</h4>
+  <div class="modebtns" id="modebtns">
+    <button data-mode="city" class="active">按城市</button>
+    <button data-mode="pca">PCA 风貌</button>
+    <button data-mode="basis">主导视觉基</button>
+    <button data-mode="entropy">激活熵</button>
+    <button data-mode="active">活跃基数</button>
+  </div>
+  <div id="leg"></div>
+</div>
+
+<div id="selinfo"><div class="n" id="seln">0</div><div class="muted" style="color:var(--muted)">已选节点</div>
+  <button onclick="clearSel()">清除选择</button></div>
+
+<div id="panos"></div>
+<div id="lb"><img id="lbimg" src="" alt=""></div>
+
+<div id="loading"><div class="spin"></div><div style="color:var(--muted)">加载特征空间…</div></div>
+
+<script src="config.js"></script>
+<script>
+const IMGB=(new URLSearchParams(location.search).get('img')||window.IMG_BASE||'').replace(/\/$/,'');
+const DATA="data/";
+let META=null,CITY="Both",MODE="city";
+let deckS=null,map=null,deckOverlay=null;
+const cache={};
+let SEL=null;          // Uint8Array mask or null
+let selMode={scatter:true,map:false};
+const CITY_IDX={Vienna:0,HongKong:1};
+const CITYCOLORS=[[57,214,255],[255,126,182]];   // Vienna=cyan, HongKong=pink
+
+const PALETTE=Array.from({length:32},(_,i)=>{const[r,g,b]=hsl2rgb(i*360/32/360,0.62,0.58);return[r,g,b];});
+function hsl2rgb(h,s,l){const f=n=>{const k=(n+h*12)%12;const a=s*Math.min(l,1-l);
+  return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1))));};return[f(0),f(8),f(4)];}
+const VIRIDIS=[[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]];
+const PLASMA=[[13,8,135],[126,3,168],[204,71,120],[248,149,64],[240,249,33]];
+function ramp(s,t){t=Math.max(0,Math.min(1,t));const x=t*(s.length-1),i=Math.floor(x),f=x-i;
+  const a=s[i],b=s[Math.min(i+1,s.length-1)];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f].map(Math.round);}
+async function loadBin(u,T){return new T(await (await fetch(u)).arrayBuffer());}
+
+async function loadCity(c){
+  if(cache[c])return cache[c];
+  const[pos,rgb,attr,embed]=await Promise.all([
+    loadBin(DATA+c+"_pos.bin",Float32Array),loadBin(DATA+c+"_rgb.bin",Uint8Array),
+    loadBin(DATA+c+"_attr.bin",Uint8Array),loadBin(DATA+c+"_embed.bin",Float32Array)]);
+  const N=pos.length/2, cityId=new Uint8Array(N).fill(CITY_IDX[c]);
+  cache[c]={N,pos,rgb,attr,embed,cityId,meta:{active_range:META.cities[c].active_range,center:META.cities[c].center}};
+  return cache[c];
+}
+async function loadBoth(){
+  if(cache.Both)return cache.Both;
+  const V=await loadCity("Vienna"),H=await loadCity("HongKong"),N=V.N+H.N;
+  const cat=(a,b,T)=>{const o=new T(a.length+b.length);o.set(a,0);o.set(b,a.length);return o;};
+  const cityId=new Uint8Array(N);cityId.fill(1,V.N);   // 0..V.N=Vienna(0), rest=HK(1)
+  const ar=[Math.min(V.meta.active_range[0],H.meta.active_range[0]),
+            Math.max(V.meta.active_range[1],H.meta.active_range[1])];
+  cache.Both={N,pos:cat(V.pos,H.pos,Float32Array),rgb:cat(V.rgb,H.rgb,Uint8Array),
+    attr:cat(V.attr,H.attr,Uint8Array),embed:cat(V.embed,H.embed,Float32Array),
+    cityId,meta:{active_range:ar}};
+  return cache.Both;
+}
+function colorOf(d,i,m){
+  const dom=d.attr[i*4],act=d.attr[i*4+1],entq=d.attr[i*4+2];
+  if(MODE==="city")return CITYCOLORS[d.cityId[i]];
+  if(MODE==="pca")return[d.rgb[i*3],d.rgb[i*3+1],d.rgb[i*3+2]];
+  if(MODE==="basis")return PALETTE[dom];
+  if(MODE==="entropy")return ramp(PLASMA,entq/255);
+  return ramp(VIRIDIS,(act-m.active_range[0])/(m.active_range[1]-m.active_range[0]||1));
+}
+function buildColors(c){
+  const d=cache[c],m=d.meta,out=new Uint8Array(d.N*4);
+  for(let i=0;i<d.N;i++){const col=colorOf(d,i,m);
+    let a=200;if(SEL){a=SEL[i]?255:8;}
+    out[i*4]=col[0];out[i*4+1]=col[1];out[i*4+2]=col[2];out[i*4+3]=a;}
+  d._colors=out;return out;
+}
+// ---- click a node -> nearest pano's 4 views (FULL on-disk pano index, lazy-loaded) ----
+const PANOS={};   // city -> {xy:Float32Array, ids:[...]} | 'loading'
+async function ensurePanos(city){
+  if(PANOS[city]&&PANOS[city].ids)return PANOS[city];
+  const [buf,txt]=await Promise.all([
+    fetch(DATA+"panos_"+city+"_xy.bin?v=d2").then(r=>r.arrayBuffer()),
+    fetch(DATA+"panos_"+city+"_ids.txt?v=d2").then(r=>r.text())]);
+  PANOS[city]={xy:new Float32Array(buf),ids:txt.split("\n")};
+  return PANOS[city];
+}
+function nearestPano(city,lon,lat){const P=PANOS[city];if(!P||!P.ids)return null;
+  const xy=P.xy,n=xy.length/2,cz=Math.cos(lat*Math.PI/180);let bi=-1,bd=1e30;
+  for(let i=0;i<n;i++){const dx=(xy[i*2]-lon)*cz,dy=xy[i*2+1]-lat,d=dx*dx+dy*dy;if(d<bd){bd=d;bi=i;}}
+  return bi<0?null:{id:P.ids[bi],dist:Math.sqrt(bd)*111320};}
+function panoURL(city,id,h){return city==="Vienna"
+  ?`${IMGB}/data/SVIs/GSV/images/Austria/Vienna/${id[0]}/${id[1]}/${id}/${id}_${h}.jpg`
+  :`${IMGB}/data/SVIs/GSV/images/China/HongKong/${id[0].toLowerCase()}/${id[1].toLowerCase()}/${id[2].toLowerCase()}/${id}_${h}.jpg`;}
+const closeX=`<span class="x" onclick="document.getElementById('panos').style.display='none'">✕</span>`;
+function renderPano(city,lon,lat){const el=document.getElementById('panos');el.style.display='block';
+  if(!PANOS[city]||!PANOS[city].ids){
+    el.innerHTML=`<div class="hd"><span>加载 ${city} 街景索引…</span>${closeX}</div>`;
+    ensurePanos(city).then(()=>renderPano(city,lon,lat));return;}
+  const r=nearestPano(city,lon,lat);
+  if(!r){el.innerHTML=`<div class="hd"><span>该处无可用街景</span>${closeX}</div>`;return;}
+  el.innerHTML=`<div class="hd"><span>四方向街景 · <b>${city}</b> · 最近 pano ${Math.round(r.dist)}m</span>${closeX}</div>`+
+    `<div class="grid">`+[0,90,180,270].map(h=>{const u=panoURL(city,r.id,h);
+      return `<div class="cell"><span class="deg">${h}°</span><img loading="lazy" src="${u}" onclick="openLB('${u}')" onerror="this.style.opacity=.15"></div>`;}).join('')+`</div>`;
+}
+function showPanoFor(i){const d=cache[CITY];if(i==null||i<0)return;
+  const city=(CITY==="Both")?(d.cityId[i]?"HongKong":"Vienna"):CITY;
+  renderPano(city,d.pos[i*2],d.pos[i*2+1]);
+}
+function showPanoLL(lon,lat){renderPano(lon>80?"HongKong":"Vienna",lon,lat);}  // geo click: city by longitude
+function openLB(u){const lb=document.getElementById('lb');document.getElementById('lbimg').src=u;lb.style.display='flex';}
+
+let HOVER=-1;
+function scatterLayer(){const d=cache[CITY];
+  return new deck.ScatterplotLayer({id:'pts',coordinateSystem:deck.COORDINATE_SYSTEM.CARTESIAN,
+    data:{length:d.N,attributes:{getPosition:{value:d.embed,size:2},getFillColor:{value:d._colors,size:4}}},
+    radiusUnits:'pixels',getRadius:1.6,radiusMinPixels:0.7,radiusMaxPixels:5,pickable:true,
+    onHover:hoverScatter,updateTriggers:{getFillColor:[MODE,SEL]}});}
+function highlightLayer(){if(HOVER<0)return null;const d=cache[CITY];
+  return new deck.ScatterplotLayer({id:'hl',coordinateSystem:deck.COORDINATE_SYSTEM.CARTESIAN,
+    data:[[d.embed[HOVER*2],d.embed[HOVER*2+1]]],getPosition:p=>p,
+    radiusUnits:'pixels',getRadius:7,radiusMinPixels:6,stroked:true,filled:true,
+    getFillColor:[255,255,255,60],getLineColor:[255,255,255,235],lineWidthUnits:'pixels',getLineWidth:2,
+    pickable:false,updateTriggers:{getPosition:[HOVER,CITY]}});}
+function scatterLayers(){return [scatterLayer(),highlightLayer()].filter(Boolean);}
+function hoverScatter(info){
+  const idx=(info&&info.index!=null)?info.index:-1;
+  if(idx!==HOVER){HOVER=idx;deckS.setProps({layers:scatterLayers()});}
+  const tip=document.getElementById('tip');
+  if(idx>=0){const d=cache[CITY];
+    const ci=(CITY==="Both")?d.cityId[idx]:CITY_IDX[CITY];
+    const cn=ci?"香港":"维也纳",col=CITYCOLORS[ci];
+    tip.style.display='block';tip.style.left=(info.x+14)+'px';tip.style.top=info.y+'px';
+    tip.innerHTML=`<span class="sw" style="background:rgb(${col.join(',')})"></span>${cn} · 基#${d.attr[idx*4]} · 熵${(d.attr[idx*4+2]/255*4).toFixed(2)}`;
+  }else tip.style.display='none';
+}
+function mapLayer(){const d=cache[CITY];
+  return new deck.ScatterplotLayer({id:'geo',
+    data:{length:d.N,attributes:{getPosition:{value:d.pos,size:2},getFillColor:{value:d._colors,size:4}}},
+    radiusUnits:'pixels',getRadius:1.5,radiusMinPixels:0.6,radiusMaxPixels:5,
+    updateTriggers:{getFillColor:[MODE,SEL]}});}
+function redraw(){buildColors(CITY);if(deckS)deckS.setProps({layers:scatterLayers()});if(deckOverlay)deckOverlay.setProps({layers:[mapLayer()]});}
+function fail(msg){const l=document.getElementById('loading');l.style.display='flex';
+  l.innerHTML='<div style="color:#ff8a8a;max-width:560px;padding:24px;font-size:13px;line-height:1.7;text-align:left">'+
+  '<b style="font-size:15px">特征空间加载失败</b><br>'+String(msg).replace(/</g,'&lt;')+
+  '<br><br><span style="color:#8a9bb5">按 F12 看控制台可获更多信息。</span></div>';}
+window.addEventListener('error',e=>fail(e.message||e.error||'unknown error'));
+window.addEventListener('unhandledrejection',e=>fail('Promise: '+(e.reason&&e.reason.message||e.reason)));
+
+function renderLeg(){const el=document.getElementById('leg');
+  if(MODE==="city")el.innerHTML=`<div style="display:flex;gap:14px;margin:4px 0">`+
+    `<span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:rgb(57,214,255)"></span> 维也纳</span>`+
+    `<span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:rgb(255,126,182)"></span> 香港</span></div>`+
+    `两城分居 UMAP 两侧 = 同一套联合基、组合用法不同的<b style="color:var(--text)">真实风貌差异</b>。`;
+  else if(MODE==="pca")el.innerHTML=`32 维激活经<b style="color:var(--text)">联合 PCA→RGB</b>,颜色相近=风貌相近。`;
+  else if(MODE==="basis")el.innerHTML=`按<b style="color:var(--text)">主导视觉基</b>(argmax)着色,同色=同一视觉原语主导;特征空间中应局部成簇。`;
+  else if(MODE==="entropy")el.innerHTML=`<div style="height:10px;border-radius:3px;background:linear-gradient(90deg,#0d0887,#cc4778,#f0f921);margin:4px 0"></div>激活熵 低→高`;
+  else el.innerHTML=`<div style="height:10px;border-radius:3px;background:linear-gradient(90deg,#440154,#35b779,#fde725);margin:4px 0"></div>活跃基数 少→多`;
+}
+
+// ---- generic box-select via SCREEN PROJECTION (correct in 3D & geo): a node is
+//      selected if its world position projects to a screen pixel inside the drag rect ----
+function attachBox(elCanvas,boxEl,getActive,screenOf,onClick){
+  let sx,sy,down=false,moved=false;
+  const dn=e=>{down=true;moved=false;const r=elCanvas.getBoundingClientRect();
+    sx=e.clientX-r.left;sy=e.clientY-r.top;
+    if(getActive()){boxEl.style.display='block';boxEl.style.left=sx+'px';boxEl.style.top=sy+'px';
+      boxEl.style.width='0';boxEl.style.height='0';e.preventDefault();e.stopPropagation();}};
+  const mv=e=>{if(!down)return;const r=elCanvas.getBoundingClientRect();
+    const x=e.clientX-r.left,y=e.clientY-r.top;
+    if(Math.abs(x-sx)>3||Math.abs(y-sy)>3)moved=true;
+    if(getActive()){boxEl.style.left=Math.min(sx,x)+'px';boxEl.style.top=Math.min(sy,y)+'px';
+      boxEl.style.width=Math.abs(x-sx)+'px';boxEl.style.height=Math.abs(y-sy)+'px';}};
+  const up=e=>{if(!down)return;down=false;boxEl.style.display='none';
+    const r=elCanvas.getBoundingClientRect();const x=e.clientX-r.left,y=e.clientY-r.top;
+    if(!moved){if(onClick)onClick(x,y);return;}                 // a click (either mode) -> pano
+    if(getActive())applySelect(Math.min(sx,x),Math.min(sy,y),Math.max(sx,x),Math.max(sy,y),screenOf);};
+  elCanvas.addEventListener('mousedown',dn,true);
+  window.addEventListener('mousemove',mv);window.addEventListener('mouseup',up);
+}
+function applySelect(x0,y0,x1,y1,screenOf){
+  const d=cache[CITY];const mask=new Uint8Array(d.N);let n=0;
+  for(let i=0;i<d.N;i++){const p=screenOf(d,i);
+    if(p&&p[0]>=x0&&p[0]<=x1&&p[1]>=y0&&p[1]<=y1){mask[i]=1;n++;}}
+  SEL=n?mask:null;redraw();
+  const si=document.getElementById('selinfo');
+  if(n){si.style.display='block';document.getElementById('seln').textContent=n.toLocaleString();}
+  else si.style.display='none';
+}
+function clearSel(){SEL=null;redraw();document.getElementById('selinfo').style.display='none';}
+
+async function switchCity(c){
+  CITY=c;SEL=null;document.getElementById('selinfo').style.display='none';
+  document.getElementById('loading').style.display='flex';
+  if(c==="Both"){await loadBoth();}else{await loadCity(c);}
+  buildColors(c);fitScatter();
+  if(deckS)deckS.setProps({layers:scatterLayers()});
+  if(deckOverlay)deckOverlay.setProps({layers:[mapLayer()]});
+  if(map){
+    if(c==="Both") map.fitBounds([[8,20],[118,50]],{padding:24,duration:0});   // world view: both cities
+    else map.jumpTo({center:cache[c].meta.center,zoom:c==="HongKong"?10.5:11});
+  }
+  renderLeg();document.getElementById('loading').style.display='none';
+}
+function fitScatter(){const w=document.getElementById('left').clientWidth,h=document.getElementById('left').clientHeight;
+  const z=Math.log2(Math.min(w,h)/1100);
+  deckS.setProps({initialViewState:{target:[500,500,0],zoom:z,minZoom:z-1,maxZoom:z+6}});}
+
+async function init(){
+ try{
+  META=await fetch(DATA+"meta.json").then(r=>r.json());
+  // ---- scatter first (independent of the map) so the main panel always shows ----
+  // dragPan off while box-select is on (default), so drag = select; scroll always zooms
+  deckS=new deck.Deck({canvas:'scatter',views:[new deck.OrthographicView({id:'o'})],
+    initialViewState:{target:[500,500,0],zoom:-1},
+    controller:{dragPan:!selMode.scatter,scrollZoom:true,dragRotate:false},
+    getCursor:({isDragging,isHovering})=>isDragging?'grabbing':(isHovering?'pointer':'default'),layers:[]});
+  await loadBoth();buildColors("Both");fitScatter();
+  deckS.setProps({layers:scatterLayers()});renderLeg();
+  document.getElementById('loading').style.display='none';   // scatter is up
+
+  // ---- map initialized separately; if it fails the scatter still works ----
+  try{
+    map=new maplibregl.Map({container:'map',style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+      center:META.cities.Vienna.center,zoom:2,attributionControl:{compact:true}});
+    deckOverlay=new deck.MapboxOverlay({interleaved:false,layers:[]});
+    map.addControl(deckOverlay);
+    map.on('load',()=>{deckOverlay.setProps({layers:[mapLayer()]});
+      map.fitBounds([[8,20],[118,50]],{padding:24,duration:0});});
+  }catch(e){console.warn('map init failed',e);}
+
+  // box-select bindings
+  attachBox(document.getElementById('scatter'),document.getElementById('boxS'),
+    ()=>selMode.scatter,
+    (d,i)=>{const vp=deckS.getViewports()[0];if(!vp)return null;
+      return vp.project([d.embed[i*2],d.embed[i*2+1]]);},
+    (x,y)=>{const info=deckS&&deckS.pickObject({x,y,radius:10,layerIds:['pts']});
+      if(info&&info.index!=null)showPanoFor(info.index);});   // any click -> nearest node's pano
+  attachBox(document.getElementById('map'),document.getElementById('boxM'),
+    ()=>selMode.map,
+    (d,i)=>{const p=map.project([d.pos[i*2],d.pos[i*2+1]]);return[p.x,p.y];});
+  if(map)map.on('click',e=>showPanoLL(e.lngLat.lng,e.lngLat.lat));   // click geo map -> pano
+  document.getElementById('lb').onclick=()=>{document.getElementById('lb').style.display='none';};
+
+  document.getElementById('selScatter').onclick=function(){selMode.scatter=!selMode.scatter;
+    this.classList.toggle('on',selMode.scatter);
+    deckS.setProps({controller:{dragPan:!selMode.scatter,scrollZoom:true,dragRotate:false}});};
+  document.getElementById('selMap').onclick=function(){if(!map)return;selMode.map=!selMode.map;
+    this.classList.toggle('on',selMode.map);
+    if(selMode.map)map.dragPan.disable();else map.dragPan.enable();};
+
+  document.getElementById('cityseg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+    document.querySelectorAll('#cityseg button').forEach(x=>x.classList.remove('active'));b.classList.add('active');switchCity(b.dataset.city);});
+  document.getElementById('modebtns').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+    document.querySelectorAll('#modebtns button').forEach(x=>x.classList.remove('active'));b.classList.add('active');MODE=b.dataset.mode;redraw();renderLeg();});
+  window.addEventListener('resize',fitScatter);
+ }catch(err){fail(err.message+(err.stack?'\n\n'+err.stack:''));}
+}
+init();
+</script>
+</body>
+</html>

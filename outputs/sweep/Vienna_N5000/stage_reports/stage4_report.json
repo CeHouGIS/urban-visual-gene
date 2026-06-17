@@ -1,0 +1,14 @@
+{
+  "D": 3072,
+  "K": 32,
+  "hidden": 512,
+  "epochs": 50,
+  "n_train": 51265,
+  "n_val": 5696,
+  "initial_train_loss": 0.465446,
+  "final_train_loss": 0.244709,
+  "final_val_loss": 0.245597,
+  "lambda_sparse": 0.005,
+  "lambda_spatial": 0.001,
+  "lambda_div": 0.001
+}

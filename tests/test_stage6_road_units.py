@@ -2,11 +2,11 @@ import numpy as np
 import pytest
 import networkx as nx
 
-from scripts.road_basis_model import RoadBasisAutoEncoder
-from scripts.stage4_train_road_basis_model import train_basis_model
-from scripts.stage5_infer_road_basis_activation import infer_activation
-from scripts.stage6_extract_road_units import extract_road_units
-from scripts.road_graph_utils import build_nx_graph
+from scripts.core.road_basis_model import RoadBasisAutoEncoder
+from scripts.pipeline.stage4_train_road_basis_model import train_basis_model
+from scripts.pipeline.stage5_infer_road_basis_activation import infer_activation
+from scripts.pipeline.stage6_extract_road_units import extract_road_units
+from scripts.core.road_graph_utils import build_nx_graph
 
 
 @pytest.fixture(scope="module")

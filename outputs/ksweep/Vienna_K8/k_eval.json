@@ -1,0 +1,9 @@
+{
+  "K": 8,
+  "recon_error": 0.3191,
+  "median_active": 4.0,
+  "dominant": 5,
+  "dead": 3,
+  "eff_vocab_90": 5,
+  "n_covered": 32324
+}

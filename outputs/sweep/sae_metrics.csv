@@ -1,3 +1,3 @@
 city,final_train_loss,final_val_loss,mean_recon_error,median_active,mean_entropy,final_recon,final_sparse,final_spatial,final_div
-Vienna,0.220185,0.219658,0.2196,18,2.6904,0.219674,0.000208,0.0,0.000304
-HongKong,0.265294,0.265255,0.2646,17,2.7139,0.264827,0.000131,0.0,0.000336
+Vienna,0.260921,0.260514,0.2484,22,2.937,,,,
+HongKong,0.260921,0.260514,0.2728,24,3.0353,,,,

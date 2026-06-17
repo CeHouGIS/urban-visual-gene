@@ -1,8 +1,8 @@
-"""Unit tests for greedy max-coverage pano sampling (scripts.pano_sampling)."""
+"""Unit tests for greedy max-coverage pano sampling (scripts.sampling.pano_sampling)."""
 import numpy as np
 import pandas as pd
 
-from scripts.pano_sampling import greedy_select, select_greedy_pano_ids
+from scripts.sampling.pano_sampling import greedy_select, select_greedy_pano_ids
 
 
 def test_greedy_prefers_max_marginal_coverage():

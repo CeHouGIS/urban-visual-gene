@@ -2,7 +2,7 @@ import numpy as np
 import networkx as nx
 import pytest
 
-from scripts.road_graph_utils import build_nx_graph, largest_component_ratio
+from scripts.core.road_graph_utils import build_nx_graph, largest_component_ratio
 
 
 def test_road_nodes_schema(synthetic_road_graph_nodes):

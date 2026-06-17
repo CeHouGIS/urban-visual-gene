@@ -69,21 +69,21 @@ def run_city(city: str, max_panos, model, K, batch_size, epochs,
         # Greedy max-coverage pano selection (geo pre-step, own process) so far
         # fewer road nodes need interpolation downstream. Needs a budget.
         if sampling == "greedy" and max_panos:
-            _run(f"{city} Select panos (geo)", "scripts.select_panos",
+            _run(f"{city} Select panos (geo)", "scripts.sampling.select_panos",
                  "--city", city, "--max-panos", str(max_panos))
-        _run(f"{city} Stage 1 (torch)", "scripts.run_stage1",
+        _run(f"{city} Stage 1 (torch)", "scripts.pipeline.run_stage1",
              "--city", city, "--model", model, "--batch-size", str(batch_size),
              *qf, *sf, *mp)
 
     if skip_stage2 and (out / "road_graph_edges.parquet").exists():
         print(f"\n[{city}] Stage 2 — skipping (road graph exists)")
     else:
-        _run(f"{city} Stage 2 (geo)", "scripts.run_stage2", "--city", city)
+        _run(f"{city} Stage 2 (geo)", "scripts.pipeline.run_stage2", "--city", city)
 
-    _run(f"{city} Stage 3 (geo)",   "scripts.run_stage3", "--out", str(out))
-    _run(f"{city} Stage 4-5 (torch)", "scripts.run_stage45",
+    _run(f"{city} Stage 3 (geo)",   "scripts.pipeline.run_stage3", "--out", str(out))
+    _run(f"{city} Stage 4-5 (torch)", "scripts.pipeline.run_stage45",
          "--out", str(out), "--K", str(K), "--epochs", str(epochs))
-    _run(f"{city} Stage 6 (geo)",   "scripts.run_stage6", "--out", str(out),
+    _run(f"{city} Stage 6 (geo)",   "scripts.pipeline.run_stage6", "--out", str(out),
          "--min-confidence", str(min_confidence))
     print(f"\n[{city}] pipeline complete → {out}")
 

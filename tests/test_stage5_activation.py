@@ -1,9 +1,9 @@
 import numpy as np
 import pytest
 
-from scripts.road_basis_model import RoadBasisAutoEncoder
-from scripts.stage4_train_road_basis_model import train_basis_model
-from scripts.stage5_infer_road_basis_activation import infer_activation
+from scripts.core.road_basis_model import RoadBasisAutoEncoder
+from scripts.pipeline.stage4_train_road_basis_model import train_basis_model
+from scripts.pipeline.stage5_infer_road_basis_activation import infer_activation
 
 
 @pytest.fixture(scope="module")

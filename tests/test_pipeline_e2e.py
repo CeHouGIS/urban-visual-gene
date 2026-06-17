@@ -1,10 +1,10 @@
 """End-to-end pipeline test on synthetic data. Must complete in < 60s."""
 import pytest
 
-from scripts.stage3_build_road_context_features import build_road_context_features
-from scripts.stage4_train_road_basis_model import train_basis_model
-from scripts.stage5_infer_road_basis_activation import infer_activation
-from scripts.stage6_extract_road_units import extract_road_units
+from scripts.pipeline.stage3_build_road_context_features import build_road_context_features
+from scripts.pipeline.stage4_train_road_basis_model import train_basis_model
+from scripts.pipeline.stage5_infer_road_basis_activation import infer_activation
+from scripts.pipeline.stage6_extract_road_units import extract_road_units
 
 
 def test_e2e_pipeline(synthetic_road_matched_panos, synthetic_road_graph_nodes,

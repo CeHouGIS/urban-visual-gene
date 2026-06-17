@@ -2,8 +2,8 @@ import numpy as np
 import pytest
 import torch
 
-from scripts.road_basis_model import RoadBasisAutoEncoder, cosine_recon_loss
-from scripts.stage4_train_road_basis_model import train_basis_model
+from scripts.core.road_basis_model import RoadBasisAutoEncoder, cosine_recon_loss
+from scripts.pipeline.stage4_train_road_basis_model import train_basis_model
 
 
 def test_model_instantiation():

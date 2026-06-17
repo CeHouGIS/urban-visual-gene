@@ -149,7 +149,7 @@ def synthetic_road_graph_nodes(synthetic_road_network):
     Road nodes sampled every 25m along each road.
     Returns pd.DataFrame with road_node_id, road_id, lat, lon, chainage_m.
     """
-    from scripts.road_graph_utils import sample_road_nodes
+    from scripts.core.road_graph_utils import sample_road_nodes
     return sample_road_nodes(synthetic_road_network, spacing_m=ROAD_SPACING_M)
 
 
@@ -159,7 +159,7 @@ def synthetic_road_graph_edges(synthetic_road_network, synthetic_road_graph_node
     same_road_next + intersection_connect edges.
     Returns pd.DataFrame with src_node_id, dst_node_id, edge_type, network_distance_m.
     """
-    from scripts.road_graph_utils import build_road_graph_edges
+    from scripts.core.road_graph_utils import build_road_graph_edges
     return build_road_graph_edges(synthetic_road_graph_nodes, synthetic_road_network)
 
 

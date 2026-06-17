@@ -1,0 +1,10 @@
+{
+  "n_panos": 2000,
+  "n_missing_all": 0,
+  "n_partial": 0,
+  "model": "dinov2_vitb14",
+  "D_single": 768,
+  "D_total": 3072,
+  "device": "cuda",
+  "path_style": "vienna"
+}
