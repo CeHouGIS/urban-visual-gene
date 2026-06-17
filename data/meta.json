@@ -1,0 +1,151 @@
+{
+ "cities": {
+  "Vienna": {
+   "n_nodes": 237623,
+   "n_edges": 282222,
+   "center": [
+    16.36953353881836,
+    48.190696716308594
+   ],
+   "bounds": [
+    16.20355987548828,
+    48.04285430908203,
+    16.558635711669922,
+    48.316925048828125
+   ],
+   "basis_usage": [
+    0,
+    5221,
+    0,
+    221,
+    0,
+    73912,
+    144,
+    67589,
+    3094,
+    11995,
+    277,
+    99,
+    4606,
+    0,
+    0,
+    437,
+    148,
+    1074,
+    631,
+    3759,
+    0,
+    0,
+    0,
+    0,
+    995,
+    0,
+    1925,
+    113,
+    1,
+    0,
+    640,
+    60742
+   ],
+   "entropy_range": [
+    2.4828615188598633,
+    3.1905715465545654
+   ],
+   "active_range": [
+    11.0,
+    26.0
+   ],
+   "recon_range": [
+    0.06613582372665405,
+    0.6236274242401123
+   ],
+   "n_units": 5283,
+   "n_boundaries": 2048
+  },
+  "HongKong": {
+   "n_nodes": 249859,
+   "n_edges": 351408,
+   "center": [
+    114.12657165527344,
+    22.374866485595703
+   ],
+   "bounds": [
+    113.8622817993164,
+    22.205158233642578,
+    114.3742904663086,
+    22.558622360229492
+   ],
+   "basis_usage": [
+    0,
+    1192,
+    334,
+    8084,
+    20,
+    175,
+    2315,
+    6541,
+    1839,
+    22173,
+    10402,
+    22108,
+    15356,
+    0,
+    0,
+    55030,
+    17169,
+    13110,
+    9366,
+    8033,
+    3301,
+    0,
+    858,
+    0,
+    4351,
+    34895,
+    11216,
+    1143,
+    429,
+    0,
+    419,
+    0
+   ],
+   "entropy_range": [
+    2.343043804168701,
+    3.2217094898223877
+   ],
+   "active_range": [
+    8.0,
+    26.0
+   ],
+   "recon_range": [
+    0.08140790462493896,
+    0.799356997013092
+   ],
+   "n_units": 7878,
+   "n_boundaries": 3536
+  }
+ },
+ "pca_explained_variance": [
+  0.26529053385997825,
+  0.13792463022834275,
+  0.10226538939355447
+ ],
+ "config": {
+  "Vienna": "outputs/dedup_bld/Vienna",
+  "HongKong": "outputs/dedup_bld/HongKong"
+ },
+ "formal_basis_labels_vienna": {
+  "1": "residential street + parked cars",
+  "0": "suburban / fields + low-rise",
+  "7": "dense urban / shopfronts",
+  "8": "open road + grass/sky",
+  "10": "urban canyon + traffic",
+  "15": "arterial / sound walls + fields",
+  "16": "highway / expressway",
+  "6": "dense apartment blocks + shops",
+  "13": "open arterial road",
+  "2": "modern buildings + wide streets",
+  "20": "dense residential + traffic",
+  "4": "residential + greenery"
+ }
+}

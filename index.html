@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Visual Gene · 街道景观地图</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/deck.gl@9.0.36/dist.min.js"></script>
+<style>
+:root{
+  --bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
+  --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;overflow:hidden}
+#map{position:absolute;inset:0}
+.maplibregl-ctrl-attrib{font-size:10px;opacity:.5}
+canvas{outline:none}
+
+/* top bar */
+#top{position:absolute;top:0;left:0;right:0;height:52px;z-index:10;display:flex;align-items:center;
+  gap:18px;padding:0 18px;background:rgba(7,11,20,.82);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+.brand{font-weight:700;display:flex;align-items:center;gap:9px;font-size:15px;white-space:nowrap}
+.brand .dot{width:10px;height:10px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent3),var(--accent));
+  box-shadow:0 0 12px var(--accent)}
+.tabs{display:flex;gap:6px;margin-left:8px}
+.tab{font-size:13px;color:var(--muted);padding:6px 13px;border-radius:8px;border:1px solid transparent;cursor:pointer;text-decoration:none}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-color:var(--border);background:var(--panel2)}
+.tab.soon{opacity:.45;cursor:default}
+.tab.soon::after{content:" ·待建";font-size:10px}
+.spacer{flex:1}
+.cityseg{display:flex;border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.cityseg button{background:transparent;color:var(--muted);border:0;padding:7px 16px;cursor:pointer;font-size:13px}
+.cityseg button.active{background:var(--accent);color:#04121a;font-weight:700}
+
+/* control panel (left) */
+#ctrl{position:absolute;top:64px;left:14px;z-index:9;width:248px;background:var(--panel);
+  border:1px solid var(--border);border-radius:14px;padding:15px;backdrop-filter:blur(12px);
+  max-height:calc(100% - 80px);overflow-y:auto}
+#ctrl h4{margin:0 0 8px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)}
+.group{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(30,45,71,.6)}
+.group:last-child{border:0;margin:0;padding:0}
+.modebtns{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.modebtns button{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;
+  padding:7px 4px;font-size:12px;cursor:pointer;transition:.15s}
+.modebtns button.active{border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px rgba(57,214,255,.25)}
+.row{display:flex;align-items:center;justify-content:space-between;font-size:13px;margin:9px 0;color:var(--muted)}
+.row label{cursor:pointer;user-select:none}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.switch{position:relative;width:38px;height:20px}
+.switch input{display:none}
+.slider{position:absolute;inset:0;background:#2a3a55;border-radius:20px;transition:.2s;cursor:pointer}
+.slider::before{content:"";position:absolute;width:14px;height:14px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+.switch input:checked+.slider{background:var(--accent)}
+.switch input:checked+.slider::before{transform:translateX(18px)}
+#legend{margin-top:6px;font-size:11.5px;color:var(--muted);max-height:230px;overflow-y:auto}
+.legrow{display:flex;align-items:center;gap:7px;padding:2px 0;cursor:pointer;border-radius:5px;padding-left:4px}
+.legrow:hover{background:rgba(57,214,255,.08)}
+.legrow.dim{opacity:.32}
+.swatch{width:13px;height:13px;border-radius:3px;flex:none}
+.legbar{height:11px;border-radius:3px;background:linear-gradient(90deg,#440154,#31688e,#35b779,#fde725);margin:5px 0}
+.legbar.ent{background:linear-gradient(90deg,#0d0887,#7e03a8,#cc4778,#f89540,#f0f921)}
+
+/* info panel (right) */
+#info{position:absolute;top:64px;right:14px;z-index:9;width:262px;background:var(--panel);
+  border:1px solid var(--border);border-radius:14px;padding:16px;backdrop-filter:blur(12px);display:none}
+#info h4{margin:0 0 4px;font-size:15px;color:#fff}
+#info .sub{font-size:12px;color:var(--muted);margin-bottom:12px}
+#info .stat{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid rgba(30,45,71,.5)}
+#info .stat b{color:var(--accent3);font-variant-numeric:tabular-nums}
+#info .close{position:absolute;top:12px;right:14px;cursor:pointer;color:var(--muted);font-size:18px}
+
+/* stats footer */
+#stats{position:absolute;bottom:14px;left:14px;z-index:9;display:flex;gap:10px}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:9px 15px;backdrop-filter:blur(12px)}
+.kpi .n{font-size:19px;font-weight:800;color:var(--accent);line-height:1.1}
+.kpi .l{font-size:11px;color:var(--muted)}
+
+#loading{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);flex-direction:column;gap:14px}
+.spin{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:s 1s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+.panogrid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.pcell{position:relative}
+.pcell img{width:100%;height:84px;object-fit:cover;border-radius:6px;background:#0b1322;display:block;cursor:zoom-in}
+.pdeg{position:absolute;top:3px;left:4px;font-size:10px;color:#fff;background:rgba(0,0,0,.6);padding:0 6px;border-radius:4px}
+#lb{position:fixed;inset:0;background:rgba(3,6,12,.94);z-index:200;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+#lb img{max-width:94vw;max-height:92vh;border-radius:8px}
+#tip{position:fixed;z-index:60;pointer-events:none;display:none;font-size:12px;color:#fff;
+  background:rgba(7,11,20,.92);border:1px solid var(--border);padding:4px 9px;border-radius:7px;white-space:nowrap;transform:translateY(-50%)}
+@media(max-width:760px){#ctrl{width:200px}#info{display:none!important}}
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div id="top">
+  <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
+  <div class="tabs">
+    <a class="tab active" href="index.html">街道景观地图</a>
+    <a class="tab" href="feature.html">特征空间</a>
+    <a class="tab" href="analysis.html">分析</a>
+  </div>
+  <div class="spacer"></div>
+  <div class="cityseg" id="cityseg">
+    <button data-city="Vienna" class="active">维也纳</button>
+    <button data-city="HongKong">香港</button>
+  </div>
+</div>
+
+<div id="ctrl">
+  <div class="group">
+    <h4>着色模式</h4>
+    <div class="modebtns" id="modebtns">
+      <button data-mode="pca" class="active">PCA 风貌</button>
+      <button data-mode="basis">主导视觉基</button>
+      <button data-mode="entropy">激活熵</button>
+      <button data-mode="active">活跃基数</button>
+      <button data-mode="recon">重建误差</button>
+    </div>
+    <div id="legend"></div>
+  </div>
+  <div class="group">
+    <h4>图层</h4>
+    <div class="row"><label for="tRoads">道路网络</label>
+      <label class="switch"><input type="checkbox" id="tRoads" checked><span class="slider"></span></label></div>
+    <div class="row"><label for="tNodes">节点点云</label>
+      <label class="switch"><input type="checkbox" id="tNodes"><span class="slider"></span></label></div>
+    <div class="row"><label for="tPanos">街景点 (pano)</label>
+      <label class="switch"><input type="checkbox" id="tPanos"><span class="slider"></span></label></div>
+    <div class="row" style="padding-left:12px"><label for="tPanosDrop" style="font-size:12px">└ 被排除点(灰)</label>
+      <label class="switch"><input type="checkbox" id="tPanosDrop"><span class="slider"></span></label></div>
+    <div class="row"><label for="tUnits">单元轮廓</label>
+      <label class="switch"><input type="checkbox" id="tUnits"><span class="slider"></span></label></div>
+    <div class="row"><label for="tBound">风貌突变边界</label>
+      <label class="switch"><input type="checkbox" id="tBound"><span class="slider"></span></label></div>
+  </div>
+  <div class="group">
+    <h4>道路线宽</h4>
+    <input type="range" id="rdwidth" min="0.5" max="6" step="0.5" value="2">
+    <h4 style="margin-top:12px">点大小</h4>
+    <input type="range" id="ptsize" min="0.5" max="5" step="0.5" value="1.5">
+  </div>
+</div>
+
+<div id="info"><span class="close" onclick="document.getElementById('info').style.display='none'">×</span>
+  <div id="infobody"></div></div>
+
+<div id="stats"></div>
+
+<div id="loading"><div class="spin"></div><div style="color:var(--muted)">加载城市数据…</div></div>
+<div id="lb" onclick="this.style.display='none'"><img id="lbimg" src="" alt=""></div>
+<div id="tip"></div>
+
+<script src="config.js"></script>
+<script>
+const IMGB=(new URLSearchParams(location.search).get('img')||window.IMG_BASE||'').replace(/\/$/,'');
+const DATA = "data/";
+let META=null, CITY="Vienna", MODE="pca", PTSIZE=1.5, RDWIDTH=2, FILTER=null;
+const cache = {};         // city -> {N,pos,rgb,attr,units,bound}
+let deckOverlay=null, map=null;
+
+// ---- 32-color categorical palette (HSL wheel) ----
+const PALETTE = Array.from({length:32},(_,i)=>{
+  const h=(i*360/32); const [r,g,b]=hsl2rgb(h/360, 0.62, 0.58); return [r,g,b];
+});
+function hsl2rgb(h,s,l){
+  const f=n=>{const k=(n+h*12)%12;const a=s*Math.min(l,1-l);
+    return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1))));};
+  return [f(0),f(8),f(4)];
+}
+// viridis-ish & plasma-ish stops for sequential
+const VIRIDIS=[[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]];
+const PLASMA=[[13,8,135],[126,3,168],[204,71,120],[248,149,64],[240,249,33]];
+function ramp(stops,t){t=Math.max(0,Math.min(1,t));const x=t*(stops.length-1);
+  const i=Math.floor(x),f=x-i;const a=stops[i],b=stops[Math.min(i+1,stops.length-1)];
+  return [a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f].map(Math.round);}
+
+async function loadBin(url,Type){const r=await fetch(url);const b=await r.arrayBuffer();return new Type(b);}
+
+async function loadCity(city){
+  if(cache[city]) return cache[city];
+  const [pos,rgb,attr,edges] = await Promise.all([
+    loadBin(DATA+city+"_pos.bin",Float32Array),
+    loadBin(DATA+city+"_rgb.bin",Uint8Array),
+    loadBin(DATA+city+"_attr.bin",Uint8Array),   // [dom, active, ent_q, rec_q] uint8
+    loadBin(DATA+city+"_edges.bin",Uint32Array), // [srcIdx, dstIdx] per road edge
+  ]);
+  const d={N:pos.length/2, pos, rgb, attr, edges, nE:edges.length/2, units:null, bound:null};
+  // materialize edge endpoint coords once (roads = lines between connected nodes)
+  const sp=new Float32Array(d.nE*2), tp=new Float32Array(d.nE*2);
+  for(let e=0;e<d.nE;e++){const a=edges[e*2],b=edges[e*2+1];
+    sp[e*2]=pos[a*2];sp[e*2+1]=pos[a*2+1];tp[e*2]=pos[b*2];tp[e*2+1]=pos[b*2+1];}
+  d.srcPos=sp; d.tgtPos=tp;
+  cache[city]=d;
+  return d;
+}
+// lazy-load the heavier geojson only when its layer is switched on
+async function ensureGeo(city, kind){
+  const d=cache[city];
+  if(kind==='units' && !d.units) d.units=await fetch(DATA+city+"_units.geojson").then(r=>r.json());
+  if(kind==='bound' && !d.bound) d.bound=await fetch(DATA+city+"_boundaries.geojson").then(r=>r.json());
+}
+
+// build RGBA Uint8 color buffer for current MODE + FILTER
+function buildColors(city){
+  const d=cache[city], N=d.N, out=new Uint8Array(N*4);
+  const m=META.cities[city];
+  const er=m.entropy_range, ar=m.active_range, rr=m.recon_range;
+  for(let i=0;i<N;i++){
+    const dom=d.attr[i*4], act=d.attr[i*4+1], entq=d.attr[i*4+2], recq=d.attr[i*4+3];
+    let c;
+    if(MODE==="pca"){c=[d.rgb[i*3],d.rgb[i*3+1],d.rgb[i*3+2]];}
+    else if(MODE==="basis"){c=PALETTE[dom];}
+    else if(MODE==="entropy"){c=ramp(PLASMA,entq/255);}
+    else if(MODE==="active"){c=ramp(VIRIDIS,(act-ar[0])/(ar[1]-ar[0]||1));}
+    else {c=ramp(PLASMA,recq/255);}
+    let a=220;
+    if(FILTER!==null && dom!==FILTER) a=12;
+    out[i*4]=c[0];out[i*4+1]=c[1];out[i*4+2]=c[2];out[i*4+3]=a;
+  }
+  return out;
+}
+// per-edge RGBA: a road segment takes the color of its source node (built from node colors)
+function buildEdgeColors(city){
+  const d=cache[city], nodeC=d._colors, out=new Uint8Array(d.nE*4);
+  for(let e=0;e<d.nE;e++){const s=d.edges[e*2];
+    out[e*4]=nodeC[s*4];out[e*4+1]=nodeC[s*4+1];out[e*4+2]=nodeC[s*4+2];out[e*4+3]=nodeC[s*4+3];}
+  d._edgeColors=out;return out;
+}
+
+function buildLayers(){
+  const d=cache[CITY]; if(!d) return [];
+  const layers=[];
+  // draw order: road lines (the main "road feature" view) -> nodes -> unit outlines -> boundaries
+  if(document.getElementById('tRoads').checked && d.srcPos){
+    layers.push(new deck.LineLayer({id:'roads',
+      data:{length:d.nE,attributes:{
+        getSourcePosition:{value:d.srcPos,size:2},
+        getTargetPosition:{value:d.tgtPos,size:2},
+        getColor:{value:d._edgeColors,size:4}}},
+      getWidth:RDWIDTH,widthUnits:'pixels',widthMinPixels:0.8,
+      pickable:false,updateTriggers:{getColor:[MODE,FILTER]}}));
+  }
+  // node<->pano binding lines (shown when both node cloud + panos are on)
+  if(document.getElementById('tNodes').checked && document.getElementById('tPanos').checked && d.bindSrc){
+    layers.push(new deck.LineLayer({id:'bind',
+      data:{length:d.bindN,attributes:{
+        getSourcePosition:{value:d.bindSrc,size:2},getTargetPosition:{value:d.bindTgt,size:2}}},
+      getColor:[57,214,255,120],getWidth:1,widthUnits:'pixels',widthMinPixels:0.5,pickable:false}));
+  }
+  if(document.getElementById('tNodes').checked){
+    layers.push(new deck.ScatterplotLayer({id:'nodes',
+      data:{length:d.N,attributes:{
+        getPosition:{value:d.pos,size:2},
+        getFillColor:{value:d._colors,size:4}}},
+      radiusUnits:'pixels',getRadius:PTSIZE,radiusMinPixels:0.6,radiusMaxPixels:6,
+      pickable:true,onClick:info=>showNode(info.index),onHover:hoverNode,
+      updateTriggers:{getFillColor:[MODE,FILTER]}}));
+    if(HOVER>=0)
+      layers.push(new deck.ScatterplotLayer({id:'nodehl',
+        data:[[d.pos[HOVER*2],d.pos[HOVER*2+1]]],getPosition:p=>p,
+        radiusUnits:'pixels',getRadius:7,radiusMinPixels:6,stroked:true,filled:true,
+        getFillColor:[255,255,255,60],getLineColor:[255,255,255,235],lineWidthUnits:'pixels',getLineWidth:2,
+        pickable:false,updateTriggers:{getPosition:[HOVER,CITY]}}));
+  }
+  if(document.getElementById('tUnits').checked && d.units){
+    layers.push(new deck.GeoJsonLayer({id:'units',data:d.units,stroked:true,filled:false,pickable:true,
+      getLineColor:f=>{const k=f.properties.dominant_basis_id|0;
+        if(FILTER!==null&&k!==FILTER)return [120,140,170,25];return [...PALETTE[k],235];},
+      lineWidthMinPixels:2.2,lineWidthMaxPixels:7,updateTriggers:{getLineColor:[FILTER]},
+      parameters:{depthTest:false},onClick:info=>showUnit(info.object)}));
+  }
+  if(document.getElementById('tBound').checked && d.bound){
+    layers.push(new deck.GeoJsonLayer({id:'bound',data:d.bound,stroked:true,filled:false,
+      getLineColor:[255,90,90,200],lineWidthMinPixels:1.5,parameters:{depthTest:false}}));
+  }
+  // dropped-by-dedup panos (gray, drawn under the kept amber ones)
+  const PD=PANOS_DROP[CITY];
+  if(document.getElementById('tPanosDrop').checked && PD && PD.ids){
+    layers.push(new deck.ScatterplotLayer({id:'panosdrop',
+      data:{length:PD.ids.length,attributes:{getPosition:{value:PD.xy,size:2}}},
+      getFillColor:[130,140,158,140],radiusUnits:'pixels',getRadius:1.8,radiusMinPixels:1.1,radiusMaxPixels:6,
+      pickable:true,onClick:info=>showPanoExactP(PANOS_DROP[CITY],info.index,true)}));
+  }
+  // all street-view image coordinates (pano locations); click -> that pano's 4 views
+  const P=PANOS[CITY];
+  if(document.getElementById('tPanos').checked && P && P.ids){
+    layers.push(new deck.ScatterplotLayer({id:'panos',
+      data:{length:P.ids.length,attributes:{getPosition:{value:P.xy,size:2}}},
+      getFillColor:[255,196,60,210],radiusUnits:'pixels',getRadius:2.2,radiusMinPixels:1.4,radiusMaxPixels:8,
+      pickable:true,onClick:info=>showPanoExact(info.index),onHover:hoverPano}));
+    if(PHOVER>=0)
+      layers.push(new deck.ScatterplotLayer({id:'panohl',
+        data:[[P.xy[PHOVER*2],P.xy[PHOVER*2+1]]],getPosition:p=>p,
+        radiusUnits:'pixels',getRadius:8,radiusMinPixels:7,stroked:true,filled:false,
+        getLineColor:[255,255,255,245],lineWidthUnits:'pixels',getLineWidth:2,
+        pickable:false,updateTriggers:{getPosition:[PHOVER,CITY]}}));
+  }
+  return layers;
+}
+
+function refresh(){
+  cache[CITY]._colors = buildColors(CITY);
+  buildEdgeColors(CITY);
+  deckOverlay.setProps({layers:buildLayers()});
+}
+
+function showNode(i){
+  const d=cache[CITY],m=META.cities[CITY];
+  const dom=d.attr[i*4],act=d.attr[i*4+1],entq=d.attr[i*4+2],recq=d.attr[i*4+3];
+  const ent=m.entropy_range[0]+entq/255*(m.entropy_range[1]-m.entropy_range[0]);
+  const rec=m.recon_range[0]+recq/255*(m.recon_range[1]-m.recon_range[0]);
+  const lab=(META.formal_basis_labels_vienna||{})[dom];
+  document.getElementById('info').style.display='block';
+  document.getElementById('infobody').innerHTML=`
+    <h4>路网节点</h4><div class="sub">${CITY} · 街景特征采样点</div>
+    <div class="stat"><span>主导视觉基</span><b>#${dom}</b></div>
+    ${lab?`<div class="stat"><span>参考语义*</span><b style="font-size:11px">${lab}</b></div>`:''}
+    <div class="stat"><span>激活熵</span><b>${ent.toFixed(3)}</b></div>
+    <div class="stat"><span>活跃基数 /32</span><b>${act}</b></div>
+    <div class="stat"><span>重建误差</span><b>${rec.toFixed(3)}</b></div>
+    ${lab?'<div style="font-size:10px;color:var(--muted);margin-top:8px">*语义来自正式 N=500 训练,索引仅供参考</div>':''}
+    <div id="nodepanos"></div>`;
+  fillNodePanos(CITY,d.pos[i*2],d.pos[i*2+1]);
+}
+function showUnit(u){
+  if(!u)return;const p=u.properties;
+  document.getElementById('info').style.display='block';
+  document.getElementById('infobody').innerHTML=`
+    <h4>景观单元 ${p.unit_id||''}</h4><div class="sub">${CITY} · MRLU</div>
+    <div class="stat"><span>主导视觉基</span><b>#${p.dominant_basis_id}</b></div>
+    <div class="stat"><span>道路长度</span><b>${(p.road_length_m||0).toFixed(0)} m</b></div>
+    <div class="stat"><span>路网节点</span><b>${p.n_road_nodes||'–'}</b></div>
+    <div class="stat"><span>街景点</span><b>${p.n_panos||'–'}</b></div>
+    <div class="stat"><span>激活熵</span><b>${(p.activation_entropy||0).toFixed(3)}</b></div>
+    <div class="stat"><span>单元置信度</span><b>${p.unit_confidence!=null?p.unit_confidence.toFixed(2):'–'}</b></div>`;
+}
+
+function renderLegend(){
+  const el=document.getElementById('legend');const m=META.cities[CITY];
+  if(MODE==="basis"){
+    const usage=m.basis_usage;const order=usage.map((v,i)=>[i,v]).sort((a,b)=>b[1]-a[1]).filter(x=>x[1]>0);
+    const labs=META.formal_basis_labels_vienna||{};
+    el.innerHTML=order.map(([k,v])=>`<div class="legrow ${FILTER!==null&&FILTER!==k?'dim':''}" onclick="toggleFilter(${k})">
+      <span class="swatch" style="background:rgb(${PALETTE[k].join(',')})"></span>
+      <span style="flex:1">#${k}${labs[k]?' · '+labs[k]:''}</span><span style="color:#5f7596">${v}</span></div>`).join('');
+    el.innerHTML+=`<div style="margin-top:6px;font-size:10px;color:var(--muted)">点击图例项可单独高亮该基${FILTER!==null?' · <a style="color:var(--accent);cursor:pointer" onclick="toggleFilter('+FILTER+')">清除</a>':''}</div>`;
+  } else if(MODE==="pca"){
+    el.innerHTML=`<div style="font-size:12px;line-height:1.6">每个节点 32 维激活经<b>两城联合 PCA</b>→3 主成分映射为 RGB。<br><span style="color:var(--muted)">颜色相近 = 视觉风貌相近,两城可比。解释方差 ${(META.pca_explained_variance.reduce((a,b)=>a+b)*100).toFixed(0)}%</span></div>`;
+  } else {
+    const lab={entropy:'激活熵 低 → 高',active:'活跃基数 少 → 多',recon:'重建误差 低 → 高'}[MODE];
+    el.innerHTML=`<div class="legbar ${MODE==='active'?'':'ent'}"></div><div style="font-size:11.5px;color:var(--muted)">${lab}</div>`;
+  }
+}
+function toggleFilter(k){FILTER=(FILTER===k?null:k);refresh();renderLegend();}
+
+function renderKPI(){
+  const m=META.cities[CITY];
+  document.getElementById('stats').innerHTML=`
+    <div class="kpi"><div class="n">${m.n_edges?(m.n_edges/1000).toFixed(0)+'k':'–'}</div><div class="l">道路段</div></div>
+    <div class="kpi"><div class="n">${(m.n_nodes/1000).toFixed(0)}k</div><div class="l">路网节点</div></div>
+    <div class="kpi"><div class="n">${m.n_units}</div><div class="l">景观单元</div></div>
+    <div class="kpi"><div class="n">${m.n_boundaries}</div><div class="l">风貌边界</div></div>`;
+}
+
+async function switchCity(city){
+  CITY=city;FILTER=null;
+  document.getElementById('loading').style.display='flex';
+  await loadCity(city);
+  cache[city]._colors=buildColors(city);
+  buildEdgeColors(city);
+  if(document.getElementById('tUnits').checked) await ensureGeo(city,'units');
+  if(document.getElementById('tBound').checked) await ensureGeo(city,'bound');
+  if(document.getElementById('tPanos').checked) await ensurePanos(city);
+  if(document.getElementById('tPanosDrop').checked) await ensurePanosDrop(city);
+  if(document.getElementById('tNodes').checked && document.getElementById('tPanos').checked) await ensureBind(city);
+  const m=META.cities[city];
+  map.jumpTo({center:m.center,zoom:city==="HongKong"?11:11.5});
+  deckOverlay.setProps({layers:buildLayers()});
+  renderLegend();renderKPI();
+  document.getElementById('loading').style.display='none';
+}
+
+// click a node -> nearest pano's 4 views (FULL on-disk pano index, lazy-loaded)
+const PANOS={}, PANOS_DROP={};
+async function ensurePanos(city){if(PANOS[city]&&PANOS[city].ids)return PANOS[city];
+  const [buf,txt]=await Promise.all([
+    fetch(DATA+"panos_"+city+"_xy.bin?v=d2").then(r=>r.arrayBuffer()),
+    fetch(DATA+"panos_"+city+"_ids.txt?v=d2").then(r=>r.text())]);
+  PANOS[city]={xy:new Float32Array(buf),ids:txt.split("\n")};return PANOS[city];}
+async function ensurePanosDrop(city){if(PANOS_DROP[city]&&PANOS_DROP[city].ids)return PANOS_DROP[city];
+  const [buf,txt]=await Promise.all([
+    fetch(DATA+"panos_"+city+"_dropped_xy.bin?v=d2").then(r=>r.arrayBuffer()),
+    fetch(DATA+"panos_"+city+"_dropped_ids.txt?v=d2").then(r=>r.text())]);
+  PANOS_DROP[city]={xy:new Float32Array(buf),ids:txt.split("\n")};return PANOS_DROP[city];}
+function nearestPano(city,lon,lat){const P=PANOS[city];if(!P||!P.ids)return null;
+  const xy=P.xy,n=xy.length/2,cz=Math.cos(lat*Math.PI/180);let bi=-1,bd=1e30;
+  for(let i=0;i<n;i++){const dx=(xy[i*2]-lon)*cz,dy=xy[i*2+1]-lat,d=dx*dx+dy*dy;if(d<bd){bd=d;bi=i;}}
+  return bi<0?null:{id:P.ids[bi],dist:Math.sqrt(bd)*111320};}
+function panoURL(city,id,h){return city==="Vienna"
+  ?`${IMGB}/data/SVIs/GSV/images/Austria/Vienna/${id[0]}/${id[1]}/${id}/${id}_${h}.jpg`
+  :`${IMGB}/data/SVIs/GSV/images/China/HongKong/${id[0].toLowerCase()}/${id[1].toLowerCase()}/${id[2].toLowerCase()}/${id}_${h}.jpg`;}
+// node<->nearest-pano binding lines (only for nodes within 100m of a pano)
+async function ensureBind(city){const d=cache[city];if(!d||d.bindSrc)return;
+  const [bb,blkbuf]=await Promise.all([
+    fetch(DATA+city+"_bind.bin?v=d3").then(r=>r.arrayBuffer()),                 // [lon,lat,dist]*N
+    fetch(DATA+city+"_bindblock.bin?v=d3").then(r=>r.ok?r.arrayBuffer():null).catch(()=>null)]);
+  const b=new Float32Array(bb), blk=blkbuf?new Uint8Array(blkbuf):null;          // 1=line crosses a building
+  const src=[],tgt=[];let far=0,blocked=0;
+  for(let i=0;i<d.N;i++){const dist=b[i*3+2];
+    if(dist>100){far++;continue;}
+    if(blk&&blk[i]){blocked++;continue;}                                         // drop occluded sight-lines
+    src.push(d.pos[i*2],d.pos[i*2+1]);tgt.push(b[i*3],b[i*3+1]);}
+  d.bindSrc=new Float32Array(src);d.bindTgt=new Float32Array(tgt);d.bindN=src.length/2;d.bindFar=far;d.bindBlocked=blocked;}
+async function ensureBindIfBoth(){
+  if(document.getElementById('tNodes').checked&&document.getElementById('tPanos').checked){
+    await ensurePanos(CITY);await ensureBind(CITY);}
+  deckOverlay.setProps({layers:buildLayers()});}
+let HOVER=-1;
+function hoverNode(info){
+  const idx=(info&&info.index!=null)?info.index:-1;
+  if(idx!==HOVER){HOVER=idx;deckOverlay.setProps({layers:buildLayers()});}
+  const tip=document.getElementById('tip');
+  if(idx>=0){const d=cache[CITY],dom=d.attr[idx*4],entq=d.attr[idx*4+2];
+    tip.style.display='block';tip.style.left=(info.x+14)+'px';tip.style.top=info.y+'px';
+    tip.innerHTML=`${CITY} · 基#${dom} · 熵${(entq/255*4).toFixed(2)}`;
+    if(map)map.getCanvas().style.cursor='pointer';}
+  else{tip.style.display='none';if(map)map.getCanvas().style.cursor='';}
+}
+let PHOVER=-1;
+function hoverPano(info){
+  const idx=(info&&info.index!=null)?info.index:-1;
+  if(idx!==PHOVER){PHOVER=idx;deckOverlay.setProps({layers:buildLayers()});}
+  const tip=document.getElementById('tip');
+  if(idx>=0&&PANOS[CITY]&&PANOS[CITY].ids){
+    tip.style.display='block';tip.style.left=(info.x+14)+'px';tip.style.top=info.y+'px';
+    tip.innerHTML=`街景点 · ${PANOS[CITY].ids[idx]}`;if(map)map.getCanvas().style.cursor='pointer';}
+  else{tip.style.display='none';if(map)map.getCanvas().style.cursor='';}
+}
+function panoImagesHTML(city,id,sub){
+  return `<div style="font-size:11px;color:var(--muted);margin:10px 0 5px">四方向街景 · ${sub}</div>`+
+    `<div class="panogrid">`+[0,90,180,270].map(h=>{const u=panoURL(city,id,h);
+      return `<div class="pcell"><span class="pdeg">${h}°</span><img loading="lazy" src="${u}" onclick="openLB('${u}')" onerror="this.style.opacity=.15"></div>`;}).join('')+`</div>`;}
+function fillNodePanos(city,lon,lat){const el=document.getElementById('nodepanos');if(!el)return;
+  if(!PANOS[city]||!PANOS[city].ids){el.innerHTML='<div style="font-size:11px;color:var(--muted);margin-top:10px">加载街景索引…</div>';
+    ensurePanos(city).then(()=>{if(document.getElementById('nodepanos'))fillNodePanos(city,lon,lat);});return;}
+  const r=nearestPano(city,lon,lat);
+  if(!r){el.innerHTML='<div style="font-size:11px;color:var(--muted);margin-top:10px">该处无可用街景</div>';return;}
+  el.innerHTML=panoImagesHTML(city,r.id,`最近 pano ${Math.round(r.dist)}m`);}
+function showPanoExactP(P,i,excluded){if(!P||!P.ids||i==null||i<0)return;
+  const id=P.ids[i];
+  document.getElementById('info').style.display='block';
+  document.getElementById('infobody').innerHTML=`<h4>街景点 pano${excluded?'(已排除)':''}</h4>`+
+    `<div class="sub">${CITY} · ${id}${excluded?' · 去重时被合并':''}</div>`+panoImagesHTML(CITY,id,'精确位置');}
+function showPanoExact(i){showPanoExactP(PANOS[CITY],i,false);}
+function openLB(u){const lb=document.getElementById('lb');document.getElementById('lbimg').src=u;lb.style.display='flex';}
+
+async function init(){
+  META=await fetch(DATA+"meta.json").then(r=>r.json());
+  map=new maplibregl.Map({container:'map',
+    style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    center:META.cities.Vienna.center,zoom:11.5,attributionControl:{compact:true}});
+  deckOverlay=new deck.MapboxOverlay({interleaved:false,layers:[]});
+  map.addControl(deckOverlay);
+  map.on('load',async()=>{ await switchCity("Vienna"); });
+
+  // events
+  document.getElementById('cityseg').addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    document.querySelectorAll('#cityseg button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');switchCity(b.dataset.city);});
+  document.getElementById('modebtns').addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    document.querySelectorAll('#modebtns button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');MODE=b.dataset.mode;refresh();renderLegend();});
+  document.getElementById('tRoads').addEventListener('change',()=>deckOverlay.setProps({layers:buildLayers()}));
+  document.getElementById('tNodes').addEventListener('change',ensureBindIfBoth);
+  document.getElementById('tUnits').addEventListener('change',async e=>{
+    if(e.target.checked){e.target.disabled=true;await ensureGeo(CITY,'units');e.target.disabled=false;}
+    deckOverlay.setProps({layers:buildLayers()});});
+  document.getElementById('tBound').addEventListener('change',async e=>{
+    if(e.target.checked){e.target.disabled=true;await ensureGeo(CITY,'bound');e.target.disabled=false;}
+    deckOverlay.setProps({layers:buildLayers()});});
+  document.getElementById('tPanos').addEventListener('change',async e=>{
+    if(e.target.checked){e.target.disabled=true;await ensurePanos(CITY);await ensureBind(CITY);e.target.disabled=false;}
+    deckOverlay.setProps({layers:buildLayers()});});
+  document.getElementById('tPanosDrop').addEventListener('change',async e=>{
+    if(e.target.checked){e.target.disabled=true;await ensurePanosDrop(CITY);e.target.disabled=false;}
+    deckOverlay.setProps({layers:buildLayers()});});
+  document.getElementById('ptsize').addEventListener('input',e=>{PTSIZE=+e.target.value;
+    deckOverlay.setProps({layers:buildLayers()});});
+  document.getElementById('rdwidth').addEventListener('input',e=>{RDWIDTH=+e.target.value;
+    deckOverlay.setProps({layers:buildLayers()});});
+}
+init();
+</script>
+</body>
+</html>
