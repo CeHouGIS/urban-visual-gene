@@ -143,8 +143,8 @@ def extract_pano_features(
 
         feats = feats.cpu().float()
         B = len(batch_pids)
-        feats = feats.view(B, 4, D_single)           # (B, 4, D_single)
-        concat = feats.view(B, D_total)               # (B, 4*D_single)
+        feats = feats.reshape(B, 4, D_single)         # (B, 4, D_single)
+        concat = feats.reshape(B, D_total)            # (B, 4*D_single)
         normed = F.normalize(concat, dim=1)           # L2 norm
 
         for i, pid in enumerate(batch_pids):
