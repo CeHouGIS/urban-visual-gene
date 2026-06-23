@@ -14,6 +14,8 @@ models/
 # MRLU units & boundaries (regenerable from the pipeline)
 *.geojson
 *.log
+# SLURM job logs
+*.out
 
 # Kept under outputs/ (NOT ignored): EXPERIMENT_REPORT.md, figures/*.png,
 # unit_statistics.csv, stage_reports/*.json
