@@ -104,12 +104,13 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   <div class="tabs">
     <a class="tab active" href="index.html">街道景观地图</a>
     <a class="tab" href="feature.html">特征空间</a>
-    <a class="tab" href="analysis.html">分析</a>
   </div>
   <div class="spacer"></div>
   <div class="cityseg" id="cityseg">
-    <button data-city="Vienna" class="active">维也纳</button>
-    <button data-city="HongKong">香港</button>
+    <button data-city="HongKong" class="active">香港</button>
+    <button data-city="Singapore">新加坡</button>
+    <button data-city="Amsterdam">阿姆斯特丹</button>
+    <button data-city="CapeTown">开普敦</button>
   </div>
 </div>
 
@@ -133,7 +134,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <label class="switch"><input type="checkbox" id="tNodes"><span class="slider"></span></label></div>
     <div class="row"><label for="tPanos">街景点 (pano)</label>
       <label class="switch"><input type="checkbox" id="tPanos"><span class="slider"></span></label></div>
-    <div class="row" style="padding-left:12px"><label for="tPanosDrop" style="font-size:12px">└ 被排除点(灰)</label>
+    <div class="row" style="display:none"><label for="tPanosDrop">└ 被排除点(灰)</label>
       <label class="switch"><input type="checkbox" id="tPanosDrop"><span class="slider"></span></label></div>
     <div class="row"><label for="tUnits">单元轮廓</label>
       <label class="switch"><input type="checkbox" id="tUnits"><span class="slider"></span></label></div>
@@ -161,7 +162,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 <script>
 const IMGB=(new URLSearchParams(location.search).get('img')||window.IMG_BASE||'').replace(/\/$/,'');
 const DATA = "data/";
-let META=null, CITY="Vienna", MODE="pca", PTSIZE=1.5, RDWIDTH=2, FILTER=null;
+let META=null, CITY="HongKong", MODE="pca", PTSIZE=1.5, RDWIDTH=2, FILTER=null;
 const cache = {};         // city -> {N,pos,rgb,attr,units,bound}
 let deckOverlay=null, map=null;
 
@@ -352,7 +353,7 @@ function renderLegend(){
       <span style="flex:1">#${k}${labs[k]?' · '+labs[k]:''}</span><span style="color:#5f7596">${v}</span></div>`).join('');
     el.innerHTML+=`<div style="margin-top:6px;font-size:10px;color:var(--muted)">点击图例项可单独高亮该基${FILTER!==null?' · <a style="color:var(--accent);cursor:pointer" onclick="toggleFilter('+FILTER+')">清除</a>':''}</div>`;
   } else if(MODE==="pca"){
-    el.innerHTML=`<div style="font-size:12px;line-height:1.6">每个节点 32 维激活经<b>两城联合 PCA</b>→3 主成分映射为 RGB。<br><span style="color:var(--muted)">颜色相近 = 视觉风貌相近,两城可比。解释方差 ${(META.pca_explained_variance.reduce((a,b)=>a+b)*100).toFixed(0)}%</span></div>`;
+    el.innerHTML=`<div style="font-size:12px;line-height:1.6">每个节点 32 维激活经<b>四城联合 PCA</b>→3 主成分映射为 RGB。<br><span style="color:var(--muted)">颜色相近 = 视觉风貌相近,跨城可比。解释方差 ${(META.pca_explained_variance.reduce((a,b)=>a+b)*100).toFixed(0)}%</span></div>`;
   } else {
     const lab={entropy:'激活熵 低 → 高',active:'活跃基数 少 → 多',recon:'重建误差 低 → 高'}[MODE];
     el.innerHTML=`<div class="legbar ${MODE==='active'?'':'ent'}"></div><div style="font-size:11.5px;color:var(--muted)">${lab}</div>`;
@@ -403,9 +404,9 @@ function nearestPano(city,lon,lat){const P=PANOS[city];if(!P||!P.ids)return null
   const xy=P.xy,n=xy.length/2,cz=Math.cos(lat*Math.PI/180);let bi=-1,bd=1e30;
   for(let i=0;i<n;i++){const dx=(xy[i*2]-lon)*cz,dy=xy[i*2+1]-lat,d=dx*dx+dy*dy;if(d<bd){bd=d;bi=i;}}
   return bi<0?null:{id:P.ids[bi],dist:Math.sqrt(bd)*111320};}
-function panoURL(city,id,h){return city==="Vienna"
-  ?`${IMGB}/data/SVIs/GSV/images/Austria/Vienna/${id[0]}/${id[1]}/${id}/${id}_${h}.jpg`
-  :`${IMGB}/data/SVIs/GSV/images/China/HongKong/${id[0].toLowerCase()}/${id[1].toLowerCase()}/${id[2].toLowerCase()}/${id}_${h}.jpg`;}
+const CITY_IMGDIR={HongKong:"China/HongKong",Singapore:"Singapore/Singapore",Amsterdam:"Netherlands/Amsterdam",CapeTown:"SouthAfrica/CapeTown"};
+function panoURL(city,id,h){const dir=CITY_IMGDIR[city]||"China/HongKong";
+  return `${IMGB}/data/SVIs/GSV/images/${dir}/${id[0].toLowerCase()}/${id[1].toLowerCase()}/${id[2].toLowerCase()}/${id}_${h}.jpg`;}
 // node<->nearest-pano binding lines (only for nodes within 100m of a pano)
 async function ensureBind(city){const d=cache[city];if(!d||d.bindSrc)return;
   const [bb,blkbuf]=await Promise.all([
@@ -444,6 +445,7 @@ function hoverPano(info){
   else{tip.style.display='none';if(map)map.getCanvas().style.cursor='';}
 }
 function panoImagesHTML(city,id,sub){
+  if(!IMGB) return `<div style="font-size:11px;color:var(--muted);margin:10px 0 5px">街景点 ${id} · ${sub}<br>（图片后端未配置,暂不显示四方向图像）</div>`;
   return `<div style="font-size:11px;color:var(--muted);margin:10px 0 5px">四方向街景 · ${sub}</div>`+
     `<div class="panogrid">`+[0,90,180,270].map(h=>{const u=panoURL(city,id,h);
       return `<div class="pcell"><span class="pdeg">${h}°</span><img loading="lazy" src="${u}" onclick="openLB('${u}')" onerror="this.style.opacity=.15"></div>`;}).join('')+`</div>`;}
@@ -465,10 +467,10 @@ async function init(){
   META=await fetch(DATA+"meta.json").then(r=>r.json());
   map=new maplibregl.Map({container:'map',
     style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-    center:META.cities.Vienna.center,zoom:11.5,attributionControl:{compact:true}});
+    center:META.cities.HongKong.center,zoom:11.5,attributionControl:{compact:true}});
   deckOverlay=new deck.MapboxOverlay({interleaved:false,layers:[]});
   map.addControl(deckOverlay);
-  map.on('load',async()=>{ await switchCity("Vienna"); });
+  map.on('load',async()=>{ await switchCity("HongKong"); });
 
   // events
   document.getElementById('cityseg').addEventListener('click',e=>{
