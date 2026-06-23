@@ -80,25 +80,26 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
   <div class="tabs">
     <a class="tab" href="index.html">街道景观地图</a>
     <a class="tab active" href="feature.html">特征空间</a>
-    <a class="tab" href="analysis.html">分析</a>
   </div>
   <div class="spacer"></div>
   <div class="cityseg" id="cityseg">
-    <button data-city="Both" class="active">两城</button>
-    <button data-city="Vienna">维也纳</button>
+    <button data-city="All" class="active">四城</button>
     <button data-city="HongKong">香港</button>
+    <button data-city="Singapore">新加坡</button>
+    <button data-city="Amsterdam">阿姆斯特丹</button>
+    <button data-city="CapeTown">开普敦</button>
   </div>
 </div>
 
 <div id="wrap">
   <div id="left">
     <canvas id="scatter"></canvas>
-    <div class="panetag">视觉激活空间 <small>· 32维 → 两城联合 UMAP 2D(全部节点)</small></div>
+    <div class="panetag">视觉激活空间 <small>· 32维 → 四城联合 UMAP 2D(全部节点)</small></div>
     <div class="selbtn on" id="selScatter">▭ 框选(拖拽)</div>
     <div class="selbox" id="boxS"></div>
     <div id="tip"></div>
-    <div class="hint">每个点 = 一个路网节点的 <b>32 维联合基激活</b>,经两城联合 UMAP(PCA 初始化)投到 2D。<br>
-      「按城市」着色下可见<b>维也纳 / 香港分居两侧</b> = 两城用同一套词汇、组合方式不同的真实差异。框选一簇 → 右侧地图高亮其地理位置。</div>
+    <div class="hint">每个点 = 一个路网节点的 <b>32 维联合基激活</b>,经四城联合 UMAP(PCA 初始化)投到 2D。<br>
+      「按城市」着色下可见<b>各城分居不同区域</b> = 各城用同一套词汇、组合方式不同的真实差异。框选一簇 → 右侧地图高亮其地理位置。</div>
   </div>
   <div id="right">
     <div id="map"></div>
@@ -132,13 +133,15 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
 <script>
 const IMGB=(new URLSearchParams(location.search).get('img')||window.IMG_BASE||'').replace(/\/$/,'');
 const DATA="data/";
-let META=null,CITY="Both",MODE="city";
+let META=null,CITY="All",MODE="city";
 let deckS=null,map=null,deckOverlay=null;
 const cache={};
 let SEL=null;          // Uint8Array mask or null
 let selMode={scatter:true,map:false};
-const CITY_IDX={Vienna:0,HongKong:1};
-const CITYCOLORS=[[57,214,255],[255,126,182]];   // Vienna=cyan, HongKong=pink
+const CITY_ORDER=["HongKong","Singapore","Amsterdam","CapeTown"];   // concat order for "All"
+const CITY_IDX=Object.fromEntries(CITY_ORDER.map((c,i)=>[c,i]));
+const CITYNAMES={HongKong:"香港",Singapore:"新加坡",Amsterdam:"阿姆斯特丹",CapeTown:"开普敦"};
+const CITYCOLORS=[[57,214,255],[255,126,182],[255,196,60],[124,224,142]];  // HK cyan, SG pink, AMS amber, CT green
 
 const PALETTE=Array.from({length:32},(_,i)=>{const[r,g,b]=hsl2rgb(i*360/32/360,0.62,0.58);return[r,g,b];});
 function hsl2rgb(h,s,l){const f=n=>{const k=(n+h*12)%12;const a=s*Math.min(l,1-l);
@@ -158,17 +161,21 @@ async function loadCity(c){
   cache[c]={N,pos,rgb,attr,embed,cityId,meta:{active_range:META.cities[c].active_range,center:META.cities[c].center}};
   return cache[c];
 }
-async function loadBoth(){
-  if(cache.Both)return cache.Both;
-  const V=await loadCity("Vienna"),H=await loadCity("HongKong"),N=V.N+H.N;
-  const cat=(a,b,T)=>{const o=new T(a.length+b.length);o.set(a,0);o.set(b,a.length);return o;};
-  const cityId=new Uint8Array(N);cityId.fill(1,V.N);   // 0..V.N=Vienna(0), rest=HK(1)
-  const ar=[Math.min(V.meta.active_range[0],H.meta.active_range[0]),
-            Math.max(V.meta.active_range[1],H.meta.active_range[1])];
-  cache.Both={N,pos:cat(V.pos,H.pos,Float32Array),rgb:cat(V.rgb,H.rgb,Uint8Array),
-    attr:cat(V.attr,H.attr,Uint8Array),embed:cat(V.embed,H.embed,Float32Array),
+async function loadAll(){
+  if(cache.All)return cache.All;
+  const parts=[];
+  for(const c of CITY_ORDER) parts.push(await loadCity(c));
+  const N=parts.reduce((s,p)=>s+p.N,0);
+  const concat=(key,T)=>{const o=new T(parts.reduce((s,p)=>s+p[key].length,0));
+    let off=0;for(const p of parts){o.set(p[key],off);off+=p[key].length;}return o;};
+  const cityId=new Uint8Array(N);
+  {let off=0;parts.forEach((p,k)=>{cityId.fill(k,off,off+p.N);off+=p.N;});}
+  const ar=[Math.min(...parts.map(p=>p.meta.active_range[0])),
+            Math.max(...parts.map(p=>p.meta.active_range[1]))];
+  cache.All={N,pos:concat("pos",Float32Array),rgb:concat("rgb",Uint8Array),
+    attr:concat("attr",Uint8Array),embed:concat("embed",Float32Array),
     cityId,meta:{active_range:ar}};
-  return cache.Both;
+  return cache.All;
 }
 function colorOf(d,i,m){
   const dom=d.attr[i*4],act=d.attr[i*4+1],entq=d.attr[i*4+2];
@@ -199,11 +206,12 @@ function nearestPano(city,lon,lat){const P=PANOS[city];if(!P||!P.ids)return null
   const xy=P.xy,n=xy.length/2,cz=Math.cos(lat*Math.PI/180);let bi=-1,bd=1e30;
   for(let i=0;i<n;i++){const dx=(xy[i*2]-lon)*cz,dy=xy[i*2+1]-lat,d=dx*dx+dy*dy;if(d<bd){bd=d;bi=i;}}
   return bi<0?null:{id:P.ids[bi],dist:Math.sqrt(bd)*111320};}
-function panoURL(city,id,h){return city==="Vienna"
-  ?`${IMGB}/data/SVIs/GSV/images/Austria/Vienna/${id[0]}/${id[1]}/${id}/${id}_${h}.jpg`
-  :`${IMGB}/data/SVIs/GSV/images/China/HongKong/${id[0].toLowerCase()}/${id[1].toLowerCase()}/${id[2].toLowerCase()}/${id}_${h}.jpg`;}
+const CITY_IMGDIR={HongKong:"China/HongKong",Singapore:"Singapore/Singapore",Amsterdam:"Netherlands/Amsterdam",CapeTown:"SouthAfrica/CapeTown"};
+function panoURL(city,id,h){const dir=CITY_IMGDIR[city]||"China/HongKong";
+  return `${IMGB}/data/SVIs/GSV/images/${dir}/${id[0].toLowerCase()}/${id[1].toLowerCase()}/${id[2].toLowerCase()}/${id}_${h}.jpg`;}
 const closeX=`<span class="x" onclick="document.getElementById('panos').style.display='none'">✕</span>`;
 function renderPano(city,lon,lat){const el=document.getElementById('panos');el.style.display='block';
+  if(!IMGB){el.innerHTML=`<div class="hd"><span>${CITYNAMES[city]||city} · 图片后端未配置,暂不显示街景图像</span>${closeX}</div>`;return;}
   if(!PANOS[city]||!PANOS[city].ids){
     el.innerHTML=`<div class="hd"><span>加载 ${city} 街景索引…</span>${closeX}</div>`;
     ensurePanos(city).then(()=>renderPano(city,lon,lat));return;}
@@ -214,10 +222,13 @@ function renderPano(city,lon,lat){const el=document.getElementById('panos');el.s
       return `<div class="cell"><span class="deg">${h}°</span><img loading="lazy" src="${u}" onclick="openLB('${u}')" onerror="this.style.opacity=.15"></div>`;}).join('')+`</div>`;
 }
 function showPanoFor(i){const d=cache[CITY];if(i==null||i<0)return;
-  const city=(CITY==="Both")?(d.cityId[i]?"HongKong":"Vienna"):CITY;
+  const city=(CITY==="All")?CITY_ORDER[d.cityId[i]]:CITY;
   renderPano(city,d.pos[i*2],d.pos[i*2+1]);
 }
-function showPanoLL(lon,lat){renderPano(lon>80?"HongKong":"Vienna",lon,lat);}  // geo click: city by longitude
+function nearestCity(lon,lat){let best=CITY_ORDER[0],bd=1e30;
+  for(const c of CITY_ORDER){const ce=META.cities[c].center;
+    const dx=ce[0]-lon,dy=ce[1]-lat,d=dx*dx+dy*dy;if(d<bd){bd=d;best=c;}}return best;}
+function showPanoLL(lon,lat){renderPano((CITY==="All")?nearestCity(lon,lat):CITY,lon,lat);}  // geo click
 function openLB(u){const lb=document.getElementById('lb');document.getElementById('lbimg').src=u;lb.style.display='flex';}
 
 let HOVER=-1;
@@ -238,8 +249,8 @@ function hoverScatter(info){
   if(idx!==HOVER){HOVER=idx;deckS.setProps({layers:scatterLayers()});}
   const tip=document.getElementById('tip');
   if(idx>=0){const d=cache[CITY];
-    const ci=(CITY==="Both")?d.cityId[idx]:CITY_IDX[CITY];
-    const cn=ci?"香港":"维也纳",col=CITYCOLORS[ci];
+    const ci=(CITY==="All")?d.cityId[idx]:CITY_IDX[CITY];
+    const cn=CITYNAMES[CITY_ORDER[ci]],col=CITYCOLORS[ci];
     tip.style.display='block';tip.style.left=(info.x+14)+'px';tip.style.top=info.y+'px';
     tip.innerHTML=`<span class="sw" style="background:rgb(${col.join(',')})"></span>${cn} · 基#${d.attr[idx*4]} · 熵${(d.attr[idx*4+2]/255*4).toFixed(2)}`;
   }else tip.style.display='none';
@@ -258,10 +269,9 @@ window.addEventListener('error',e=>fail(e.message||e.error||'unknown error'));
 window.addEventListener('unhandledrejection',e=>fail('Promise: '+(e.reason&&e.reason.message||e.reason)));
 
 function renderLeg(){const el=document.getElementById('leg');
-  if(MODE==="city")el.innerHTML=`<div style="display:flex;gap:14px;margin:4px 0">`+
-    `<span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:rgb(57,214,255)"></span> 维也纳</span>`+
-    `<span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:rgb(255,126,182)"></span> 香港</span></div>`+
-    `两城分居 UMAP 两侧 = 同一套联合基、组合用法不同的<b style="color:var(--text)">真实风貌差异</b>。`;
+  if(MODE==="city")el.innerHTML=`<div style="display:flex;gap:14px;flex-wrap:wrap;margin:4px 0">`+
+    CITY_ORDER.map((c,k)=>`<span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:rgb(${CITYCOLORS[k].join(',')})"></span> ${CITYNAMES[c]}</span>`).join('')+`</div>`+
+    `各城分居 UMAP 不同区域 = 同一套联合基、组合用法不同的<b style="color:var(--text)">真实风貌差异</b>。`;
   else if(MODE==="pca")el.innerHTML=`32 维激活经<b style="color:var(--text)">联合 PCA→RGB</b>,颜色相近=风貌相近。`;
   else if(MODE==="basis")el.innerHTML=`按<b style="color:var(--text)">主导视觉基</b>(argmax)着色,同色=同一视觉原语主导;特征空间中应局部成簇。`;
   else if(MODE==="entropy")el.innerHTML=`<div style="height:10px;border-radius:3px;background:linear-gradient(90deg,#0d0887,#cc4778,#f0f921);margin:4px 0"></div>激活熵 低→高`;
@@ -302,12 +312,12 @@ function clearSel(){SEL=null;redraw();document.getElementById('selinfo').style.d
 async function switchCity(c){
   CITY=c;SEL=null;document.getElementById('selinfo').style.display='none';
   document.getElementById('loading').style.display='flex';
-  if(c==="Both"){await loadBoth();}else{await loadCity(c);}
+  if(c==="All"){await loadAll();}else{await loadCity(c);}
   buildColors(c);fitScatter();
   if(deckS)deckS.setProps({layers:scatterLayers()});
   if(deckOverlay)deckOverlay.setProps({layers:[mapLayer()]});
   if(map){
-    if(c==="Both") map.fitBounds([[8,20],[118,50]],{padding:24,duration:0});   // world view: both cities
+    if(c==="All") map.fitBounds([[0,-35],[120,55]],{padding:24,duration:0});   // world view: all 4 cities
     else map.jumpTo({center:cache[c].meta.center,zoom:c==="HongKong"?10.5:11});
   }
   renderLeg();document.getElementById('loading').style.display='none';
@@ -325,18 +335,18 @@ async function init(){
     initialViewState:{target:[500,500,0],zoom:-1},
     controller:{dragPan:!selMode.scatter,scrollZoom:true,dragRotate:false},
     getCursor:({isDragging,isHovering})=>isDragging?'grabbing':(isHovering?'pointer':'default'),layers:[]});
-  await loadBoth();buildColors("Both");fitScatter();
+  await loadAll();buildColors("All");fitScatter();
   deckS.setProps({layers:scatterLayers()});renderLeg();
   document.getElementById('loading').style.display='none';   // scatter is up
 
   // ---- map initialized separately; if it fails the scatter still works ----
   try{
     map=new maplibregl.Map({container:'map',style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-      center:META.cities.Vienna.center,zoom:2,attributionControl:{compact:true}});
+      center:META.cities.HongKong.center,zoom:2,attributionControl:{compact:true}});
     deckOverlay=new deck.MapboxOverlay({interleaved:false,layers:[]});
     map.addControl(deckOverlay);
     map.on('load',()=>{deckOverlay.setProps({layers:[mapLayer()]});
-      map.fitBounds([[8,20],[118,50]],{padding:24,duration:0});});
+      map.fitBounds([[0,-35],[120,55]],{padding:24,duration:0});});
   }catch(e){console.warn('map init failed',e);}
 
   // box-select bindings
