@@ -19,8 +19,9 @@ from scripts.pipeline.stage1_extract_pano_features import extract_pano_features
 
 
 def main():
+    from scripts.core.cities import CITY_CONFIG
     ap = argparse.ArgumentParser()
-    ap.add_argument("--city", required=True, choices=["Vienna", "HongKong"])
+    ap.add_argument("--city", required=True, choices=list(CITY_CONFIG))
     ap.add_argument("--max-panos", type=int, default=None)
     ap.add_argument("--model", default="dinov2_vitb14")
     ap.add_argument("--batch-size", type=int, default=32)

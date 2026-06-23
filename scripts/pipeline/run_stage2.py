@@ -17,8 +17,9 @@ from scripts.pipeline.stage2_map_match_road import map_match
 
 
 def main():
+    from scripts.core.cities import CITY_CONFIG
     ap = argparse.ArgumentParser()
-    ap.add_argument("--city", required=True, choices=["Vienna", "HongKong"])
+    ap.add_argument("--city", required=True, choices=list(CITY_CONFIG))
     ap.add_argument("--max-dist-m", type=float, default=30.0)
     ap.add_argument("--node-spacing-m", type=float, default=25.0)
     ap.add_argument("--out", default=None, help="override output dir")
