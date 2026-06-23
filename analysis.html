@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Visual Gene · 分析</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#070b14;--panel:#0f1828;--panel2:#121e33;--border:#1e2d47;
+  --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;--warn:#ffb454}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(800px 500px at 10% -5%,rgba(124,92,255,.14),transparent 60%),
+    radial-gradient(700px 500px at 95% 5%,rgba(57,214,255,.12),transparent 55%)}
+#top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:18px;padding:0 18px;height:52px;
+  background:rgba(7,11,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.brand{font-weight:700;display:flex;align-items:center;gap:9px;font-size:15px}
+.brand .dot{width:10px;height:10px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent3),var(--accent));box-shadow:0 0 12px var(--accent)}
+.tabs{display:flex;gap:6px;margin-left:8px}
+.tab{font-size:13px;color:var(--muted);padding:6px 13px;border-radius:8px;border:1px solid transparent;text-decoration:none}
+.tab.active{color:var(--accent);border-color:var(--border);background:var(--panel2)}
+.tab:hover{color:var(--text)}
+.wrap{max-width:1320px;margin:0 auto;padding:24px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:26px}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+.kpi .n{font-size:27px;font-weight:800;background:linear-gradient(180deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:5px}
+.sec{font-size:13px;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;margin:8px 2px 2px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px;min-width:0}
+.card.full{grid-column:1/-1}
+.card h3{margin:0 0 3px;font-size:16px;color:#eaf2ff}
+.card p{margin:0 0 10px;font-size:12.5px;color:var(--muted);line-height:1.5}
+.chart{width:100%;height:300px}
+.chart.tall{height:340px}
+.tag{display:inline-block;font-size:11px;color:var(--accent3);border:1px solid var(--border);
+  border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+.note{font-size:12px;color:var(--muted);background:var(--panel);border:1px dashed var(--border);
+  border-radius:12px;padding:12px 16px;margin-top:22px;line-height:1.6}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="top">
+  <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
+  <div class="tabs">
+    <a class="tab" href="index.html">街道景观地图</a>
+    <a class="tab" href="feature.html">特征空间</a>
+    <a class="tab active" href="analysis.html">分析</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="kpis" id="kpis"></div>
+  <div class="sec">视觉句法 · 转移矩阵</div>
+  <div class="grid" id="grid-trans"></div>
+  <div class="sec" style="margin-top:24px">视觉基词汇</div>
+  <div class="grid" id="grid-basis"></div>
+  <div class="sec" style="margin-top:24px">视觉基激活共现(层次聚类重排)</div>
+  <div class="grid" id="grid-cooccur"></div>
+  <div class="note" id="note"></div>
+</div>
+
+<script>
+const ZH={HongKong:'香港',Singapore:'新加坡',Amsterdam:'阿姆斯特丹',CapeTown:'开普敦'};
+const CCOL={HongKong:'#39d6ff',Singapore:'#ff7eb6',Amsterdam:'#ffc43c',CapeTown:'#7ce08e'};
+const C={a2:'#7c5cff',a3:'#22e0a1',warn:'#ffb454',muted:'#8a9bb5',grid:'#1e2d47'};
+const charts=[];
+function card(gridId,title,desc,cls=''){const g=document.getElementById(gridId);
+  const d=document.createElement('div');d.className='card '+(cls.includes('full')?'full':'');
+  const ch=document.createElement('div');ch.className='chart '+(cls.includes('tall')?'tall':'');
+  d.innerHTML=`<h3>${title}</h3><p>${desc}</p>`;d.appendChild(ch);g.appendChild(d);
+  const inst=echarts.init(ch,null,{renderer:'canvas'});charts.push(inst);return inst;}
+const base={backgroundColor:'transparent',textStyle:{color:'#dbe4f0',fontFamily:'inherit'},
+  grid:{left:48,right:18,top:34,bottom:34},legend:{textStyle:{color:C.muted}},
+  tooltip:{backgroundColor:'rgba(13,21,36,.95)',borderColor:C.grid,textStyle:{color:'#dbe4f0'}}};
+const axis=()=>({axisLine:{lineStyle:{color:C.grid}},axisLabel:{color:C.muted},
+  splitLine:{lineStyle:{color:'rgba(30,45,71,.5)'}}});
+
+async function main(){
+  const[A,META]=await Promise.all([fetch('data/analysis.json?v=3').then(r=>r.json()),
+    fetch('data/meta.json?v=3').then(r=>r.json())]);
+  const cities=A.cities;
+
+  // ---------- KPI ----------
+  const totNodes=cities.reduce((s,c)=>s+META.cities[c].n_nodes,0);
+  const totUnits=cities.reduce((s,c)=>s+META.cities[c].n_units,0);
+  const effB=cities.map(c=>A.basis_similarity[c].effective_n_bases);
+  const ents=cities.map(c=>A.visual_syntax[c].transition_entropy);
+  const kp=[
+    [cities.length,'城市'],
+    [(totNodes/1000).toFixed(0)+'k','路网节点(合计)'],
+    [totUnits.toLocaleString(),'景观单元(合计)'],
+    [A.K,'视觉基 K'],
+    [(effB.reduce((a,b)=>a+b,0)/effB.length).toFixed(1),'平均有效独立基 /32'],
+    [(ents.reduce((a,b)=>a+b,0)/ents.length).toFixed(2),'平均转移熵'],
+  ];
+  document.getElementById('kpis').innerHTML=kp.map(k=>`<div class="kpi"><div class="n">${k[0]}</div><div class="l">${k[1]}</div></div>`).join('');
+
+  // ---------- transition matrices (per city) ----------
+  cities.forEach(city=>{
+    const m=A.transition[city],data=[];let mx=0.01;
+    for(let i=0;i<A.K;i++)for(let j=0;j<A.K;j++){if(i===j)continue;if(m[i][j]>0){data.push([j,i,m[i][j]]);mx=Math.max(mx,m[i][j]);}}
+    const syn=A.visual_syntax[city];
+    const ch=card('grid-trans',`转移矩阵 · ${ZH[city]}`,
+      `沿路网主导基转移 P(j|i)(隐藏对角自转移)。自转移 ${syn.self_transition.toFixed(3)} · 转移熵 <b style="color:#22e0a1">${syn.transition_entropy.toFixed(3)}</b>`,'tall');
+    ch.setOption({...base,grid:{left:38,right:18,top:14,bottom:42},
+      tooltip:{...base.tooltip,formatter:p=>`基 ${p.value[1]} → ${p.value[0]}<br>P=${p.value[2].toFixed(4)}`},
+      xAxis:{type:'category',data:[...Array(A.K).keys()],name:'到 →',...axis(),axisLabel:{color:C.muted,interval:3}},
+      yAxis:{type:'category',data:[...Array(A.K).keys()],name:'从',...axis(),axisLabel:{color:C.muted,interval:3}},
+      visualMap:{min:0,max:mx,calculable:true,orient:'horizontal',left:'center',bottom:0,
+        inRange:{color:['#0b1d33','#39d6ff','#fde725']},textStyle:{color:C.muted}},
+      series:[{type:'heatmap',data,emphasis:{itemStyle:{borderColor:'#fff',borderWidth:1}}}]});});
+
+  // ---------- basis roles (grouped) ----------
+  (()=>{const ch=card('grid-basis','视觉基角色:主导 / 死基 / 有效词汇',
+    '每城 32 个基里实际被用作主导(argmax)的数量,以及覆盖 90% 主导质量所需的有效词汇量。');
+    const zh=cities.map(c=>ZH[c]);
+    ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
+      xAxis:{type:'category',data:zh,...axis()},yAxis:{type:'value',max:A.K,...axis()},
+      series:[
+        {name:'主导基',type:'bar',stack:'x',data:cities.map(c=>A.basis_roles[c].dominant),color:'#39d6ff'},
+        {name:'死基',type:'bar',stack:'x',data:cities.map(c=>A.basis_roles[c].dead),color:C.muted},
+        {name:'有效词汇(90%)',type:'line',data:cities.map(c=>A.basis_roles[c].eff_dominant_vocab_90),color:C.a3,symbolSize:9,lineStyle:{width:3}},
+      ]});})();
+
+  // ---------- basis similarity (effective bases + offdiag) ----------
+  (()=>{const ch=card('grid-basis','视觉基相似度 <span class="tag">近正交·零冗余</span>',
+    '各城所学 32 个基近正交:非对角 |余弦| 均值很小、有效独立基 ≈ 32(几乎无冗余)。');
+    const zh=cities.map(c=>ZH[c]);
+    ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
+      xAxis:{type:'category',data:zh,...axis()},
+      yAxis:[{type:'value',name:'有效基 /32',max:A.K,...axis()},{type:'value',name:'|cos|均值',...axis()}],
+      series:[
+        {name:'有效独立基',type:'bar',data:cities.map(c=>A.basis_similarity[c].effective_n_bases),color:C.a2},
+        {name:'非对角 |cos| 均值',type:'line',yAxisIndex:1,data:cities.map(c=>A.basis_similarity[c].mean_abs_offdiag),color:C.warn,symbolSize:9},
+      ]});})();
+
+  // ---------- SAE metrics ----------
+  (()=>{const ch=card('grid-basis','SAE 训练诊断',
+    '各城稀疏自编码器的重建误差、平均激活熵与稀疏度(每节点活跃基中位数)。');
+    const zh=cities.map(c=>ZH[c]);
+    ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
+      xAxis:{type:'category',data:zh,...axis()},
+      yAxis:[{type:'value',name:'误差/熵',...axis()},{type:'value',name:'median active',...axis()}],
+      series:[
+        {name:'重建误差',type:'bar',data:cities.map(c=>A.sae_metrics[c].mean_recon_error),color:C.warn},
+        {name:'平均激活熵',type:'bar',data:cities.map(c=>A.sae_metrics[c].mean_entropy),color:C.a2},
+        {name:'median active',type:'line',yAxisIndex:1,data:cities.map(c=>A.sae_metrics[c].median_active),color:C.a3,symbolSize:9},
+      ]});})();
+
+  // ---------- co-occurrence (per city, clustered order) ----------
+  cities.forEach(city=>{
+    const co=A.cooccur[city],M=co.matrix,ord=co.order,n=ord.length,data=[];
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++)data.push([j,i,M[ord[i]][ord[j]]]);
+    const ch=card('grid-cooccur',`激活共现 corr(A) · ${ZH[city]}`,
+      `节点上 32 个基激活的相关性,按层次聚类重排(红块=常一起激活的"基族")。死基 ${co.dead.length} 个 · 基族 <b style="color:#22e0a1">${co.n_families}</b>。`,'tall');
+    ch.setOption({...base,grid:{left:36,right:18,top:14,bottom:40},
+      tooltip:{...base.tooltip,formatter:p=>`基 ${ord[p.value[1]]} · ${ord[p.value[0]]}<br>corr=${p.value[2].toFixed(2)}`},
+      xAxis:{type:'category',data:ord,...axis(),axisLabel:{color:C.muted,interval:3,fontSize:9}},
+      yAxis:{type:'category',data:ord,...axis(),axisLabel:{color:C.muted,interval:3,fontSize:9}},
+      visualMap:{min:-0.5,max:0.5,calculable:true,orient:'horizontal',left:'center',bottom:0,
+        inRange:{color:['#2c7bb6','#0b1322','#d7191c']},textStyle:{color:C.muted}},
+      series:[{type:'heatmap',data,progressive:2000}]});});
+
+  document.getElementById('note').innerHTML=
+    '说明:本页为<b>内在分析</b>——只用各城单次流水线产物(转移矩阵、基角色/相似度/共现、SAE 诊断)即可计算。'+
+    '需要多次重跑的<b>对比类</b>分析(K 扫描、负对照基线、贪心 vs 随机采样、插值方案、采样灵敏度)暂未包含。';
+
+  window.addEventListener('resize',()=>charts.forEach(c=>c.resize()));
+}
+main();
+</script>
+</body>
+</html>
