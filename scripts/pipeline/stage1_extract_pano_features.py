@@ -25,13 +25,30 @@ from scripts.core.io_utils import assert_l2_normed, checkpoint, save_report
 
 HEADINGS = [0, 90, 180, 270]
 
-TRANSFORM = transforms.Compose([
+# Gated HF DINOv3 checkpoints (need an accepted-licence HF token in
+# ~/.cache/huggingface/token; loaded via transformers AutoModel).
+DINOV3_HF_IDS = {
+    "dinov3_vitl16": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+}
+
+_IMAGENET_MEAN = [0.485, 0.456, 0.406]
+_IMAGENET_STD = [0.229, 0.224, 0.225]
+
+# DINOv2 (torch.hub): shortest-edge resize 256 + center-crop 224.
+_TRANSFORM_DINOV2 = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
     transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                         std=[0.229, 0.224, 0.225]),
+    transforms.Normalize(_IMAGENET_MEAN, _IMAGENET_STD),
 ])
+# DINOv3 (matches its HF AutoImageProcessor): direct resize to 224x224, no crop.
+_TRANSFORM_DINOV3 = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(_IMAGENET_MEAN, _IMAGENET_STD),
+])
+# Back-compat default (DINOv2 recipe); per-model transform comes from the loader.
+TRANSFORM = _TRANSFORM_DINOV2
 
 
 def _img_path_vienna(img_root: Path, pid: str, heading: int) -> Path:
@@ -42,26 +59,46 @@ def _img_path_hk(img_root: Path, pid: str, heading: int) -> Path:
     return img_root / pid[0].lower() / pid[1].lower() / pid[2].lower() / f"{pid}_{heading}.jpg"
 
 
-def _load_image(path: Path) -> torch.Tensor | None:
+def _load_image(path: Path, transform=TRANSFORM) -> torch.Tensor | None:
     """Return (3,224,224) tensor or None if file missing/corrupt."""
     try:
         img = Image.open(path).convert("RGB")
-        return TRANSFORM(img)
+        return transform(img)
     except Exception:
         return None
 
 
-def _load_model(model_name: str, device: torch.device) -> torch.nn.Module:
-    if model_name == "dinov2_vitb14":
-        model = torch.hub.load("facebookresearch/dinov2", "dinov2_vitb14",
-                                pretrained=True, verbose=False)
-    elif model_name == "dinov2_vitl14":
-        model = torch.hub.load("facebookresearch/dinov2", "dinov2_vitl14",
-                                pretrained=True, verbose=False)
-    else:
-        raise ValueError(f"Unknown model: {model_name}")
-    model.eval().to(device)
-    return model
+class _Extractor:
+    """Uniform feature extractor over DINOv2 (torch.hub) and DINOv3 (HF).
+
+    Callable: x (N,3,224,224) -> (N, embed_dim) global/CLS feature. Carries the
+    matching preprocessing transform and embed_dim so callers stay model-agnostic.
+    """
+    def __init__(self, model, kind: str, embed_dim: int, transform):
+        self.model, self.kind, self.embed_dim, self.transform = model, kind, embed_dim, transform
+
+    def to(self, device):
+        self.model.to(device); return self
+
+    def half(self):
+        self.model.half(); return self
+
+    def __call__(self, x):
+        if self.kind == "dinov3":
+            return self.model(pixel_values=x).pooler_output   # (N, hidden_size)
+        return self.model(x)                                   # dinov2 CLS feature
+
+
+def _load_model(model_name: str, device: torch.device) -> "_Extractor":
+    if model_name in ("dinov2_vitb14", "dinov2_vitl14"):
+        model = torch.hub.load("facebookresearch/dinov2", model_name,
+                               pretrained=True, verbose=False).eval().to(device)
+        return _Extractor(model, "dinov2", model.embed_dim, _TRANSFORM_DINOV2)
+    if model_name in DINOV3_HF_IDS:
+        from transformers import AutoModel
+        model = AutoModel.from_pretrained(DINOV3_HF_IDS[model_name]).eval().to(device)
+        return _Extractor(model, "dinov3", model.config.hidden_size, _TRANSFORM_DINOV3)
+    raise ValueError(f"Unknown model: {model_name}")
 
 
 def extract_pano_features(
@@ -122,7 +159,7 @@ def extract_pano_features(
                 p = path_fn(img_root, pid, h)
                 if fb_root is not None and not p.exists():
                     p = path_fn(fb_root, pid, h)   # fall back to NAS for missing images
-                t = _load_image(p)
+                t = _load_image(p, model.transform)
                 if t is None:
                     t = torch.zeros(3, 224, 224)
                     missing_headings += 1

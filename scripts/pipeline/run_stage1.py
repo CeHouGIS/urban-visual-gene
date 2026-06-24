@@ -23,7 +23,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--city", required=True, choices=list(CITY_CONFIG))
     ap.add_argument("--max-panos", type=int, default=None)
-    ap.add_argument("--model", default="dinov2_vitb14")
+    ap.add_argument("--model", default="dinov3_vitl16")
     ap.add_argument("--batch-size", type=int, default=32)
     ap.add_argument("--out", default=None, help="override output dir")
     ap.add_argument("--exclude-bad", action="store_true",

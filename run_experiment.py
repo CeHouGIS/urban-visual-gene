@@ -97,7 +97,7 @@ if __name__ == "__main__":
                     choices=["Vienna", "HongKong", "Singapore", "Amsterdam",
                              "CapeTown", "both"])
     ap.add_argument("--max-panos", type=int, default=None)
-    ap.add_argument("--model", default="dinov2_vitb14")
+    ap.add_argument("--model", default="dinov3_vitl16")
     ap.add_argument("--K", type=int, default=32)
     ap.add_argument("--batch-size", type=int, default=32)
     ap.add_argument("--epochs", type=int, default=50)
