@@ -43,7 +43,9 @@ def main():
         feat_df, roads,
         max_dist_m=args.max_dist_m, node_spacing_m=args.node_spacing_m,
     )
-    matched.to_parquet(out / "road_matched_panos.parquet", index=False)
+    # row_group_size caps the pano_embedding list column at <2^31 elements per
+    # row group (full library x 4096-d overflows Arrow int32 offsets otherwise).
+    matched.to_parquet(out / "road_matched_panos.parquet", index=False, row_group_size=100000)
     nodes.to_parquet(out / "road_graph_nodes.parquet", index=False)
     edges.to_parquet(out / "road_graph_edges.parquet", index=False)
     save_report(out / "stage_reports/stage2_report.json", r2)
