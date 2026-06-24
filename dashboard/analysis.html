@@ -29,15 +29,18 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;
 .kpi .n{font-size:27px;font-weight:800;background:linear-gradient(180deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
 .kpi .l{font-size:12px;color:var(--muted);margin-top:5px}
+.sec{font-size:13px;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;margin:8px 2px 2px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px;min-width:0}
 .card.full{grid-column:1/-1}
 .card h3{margin:0 0 3px;font-size:16px;color:#eaf2ff}
 .card p{margin:0 0 10px;font-size:12.5px;color:var(--muted);line-height:1.5}
 .chart{width:100%;height:300px}
-.chart.tall{height:360px}
+.chart.tall{height:340px}
 .tag{display:inline-block;font-size:11px;color:var(--accent3);border:1px solid var(--border);
   border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+.note{font-size:12px;color:var(--muted);background:var(--panel);border:1px dashed var(--border);
+  border-radius:12px;padding:12px 16px;margin-top:22px;line-height:1.6}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -53,13 +56,21 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;
 
 <div class="wrap">
   <div class="kpis" id="kpis"></div>
-  <div class="grid" id="grid"></div>
+  <div class="sec">视觉句法 · 转移矩阵</div>
+  <div class="grid" id="grid-trans"></div>
+  <div class="sec" style="margin-top:24px">视觉基词汇</div>
+  <div class="grid" id="grid-basis"></div>
+  <div class="sec" style="margin-top:24px">视觉基激活共现(层次聚类重排)</div>
+  <div class="grid" id="grid-cooccur"></div>
+  <div class="note" id="note"></div>
 </div>
 
 <script>
-const C={V:'#39d6ff',H:'#ff7eb6',a2:'#7c5cff',a3:'#22e0a1',warn:'#ffb454',muted:'#8a9bb5',grid:'#1e2d47'};
+const ZH={HongKong:'香港',Singapore:'新加坡',Amsterdam:'阿姆斯特丹',CapeTown:'开普敦'};
+const CCOL={HongKong:'#39d6ff',Singapore:'#ff7eb6',Amsterdam:'#ffc43c',CapeTown:'#7ce08e'};
+const C={a2:'#7c5cff',a3:'#22e0a1',warn:'#ffb454',muted:'#8a9bb5',grid:'#1e2d47'};
 const charts=[];
-function card(title,desc,cls=''){const g=document.getElementById('grid');
+function card(gridId,title,desc,cls=''){const g=document.getElementById(gridId);
   const d=document.createElement('div');d.className='card '+(cls.includes('full')?'full':'');
   const ch=document.createElement('div');ch.className='chart '+(cls.includes('tall')?'tall':'');
   d.innerHTML=`<h3>${title}</h3><p>${desc}</p>`;d.appendChild(ch);g.appendChild(d);
@@ -70,186 +81,95 @@ const base={backgroundColor:'transparent',textStyle:{color:'#dbe4f0',fontFamily:
 const axis=()=>({axisLine:{lineStyle:{color:C.grid}},axisLabel:{color:C.muted},
   splitLine:{lineStyle:{color:'rgba(30,45,71,.5)'}}});
 
-function byCity(rows){const o={};rows.forEach(r=>{(o[r.city]=o[r.city]||[]).push(r);});return o;}
-
 async function main(){
-  const[A,META]=await Promise.all([fetch('data/analysis.json').then(r=>r.json()),
-    fetch('data/meta.json').then(r=>r.json())]);
+  const[A,META]=await Promise.all([fetch('data/analysis.json?v=3').then(r=>r.json()),
+    fetch('data/meta.json?v=3').then(r=>r.json())]);
+  const cities=A.cities;
 
-  // ---------- KPI tiles ----------
-  const sm=A.summary, vC=sm.filter(r=>r.city==='Vienna').pop(), hC=sm.filter(r=>r.city==='HongKong').pop();
-  const vs=byCity(A.visual_syntax);
+  // ---------- KPI ----------
+  const totNodes=cities.reduce((s,c)=>s+META.cities[c].n_nodes,0);
+  const totUnits=cities.reduce((s,c)=>s+META.cities[c].n_units,0);
+  const effB=cities.map(c=>A.basis_similarity[c].effective_n_bases);
+  const ents=cities.map(c=>A.visual_syntax[c].transition_entropy);
   const kp=[
-    ['2','城市 (Vienna · HK)'],
-    [(META.cities.Vienna.n_nodes/1000).toFixed(0)+'k','维也纳路网节点'],
-    [META.cities.Vienna.n_units+' / '+META.cities.HongKong.n_units,'景观单元 V / HK'],
-    ['32','视觉基 K'],
-    [A.basis_similarity[0].effective_n_bases.toFixed(1),'有效独立基 (零冗余)'],
-    [A.basis_alignment[0].z.toFixed(0),'独立基对齐 z(佐证可合并)'],
+    [cities.length,'城市'],
+    [(totNodes/1000).toFixed(0)+'k','路网节点(合计)'],
+    [totUnits.toLocaleString(),'景观单元(合计)'],
+    [A.K,'视觉基 K'],
+    [(effB.reduce((a,b)=>a+b,0)/effB.length).toFixed(1),'平均有效独立基 /32'],
+    [(ents.reduce((a,b)=>a+b,0)/ents.length).toFixed(2),'平均转移熵'],
   ];
   document.getElementById('kpis').innerHTML=kp.map(k=>`<div class="kpi"><div class="n">${k[0]}</div><div class="l">${k[1]}</div></div>`).join('');
 
-  // ---------- 1. sampling sensitivity ----------
-  (()=>{const ch=card('采样灵敏度 <span class="tag">尺度依赖 vs 不变量</span>',
-    '样本量 N 增大时覆盖率/真信号边/单元数单调上升(尺度依赖);而<b style="color:#22e0a1">覆盖单元密度</b>收敛为常数——首个不随采样漂移的城市级指标。');
-    const g=byCity(sm);const mk=(arr,k)=>arr.map(r=>[r.n_panos,r[k]]);
-    ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},
-      legend:{...base.legend,data:['V 覆盖率','HK 覆盖率','V 真信号边','HK 真信号边','V 覆盖单元密度','HK 覆盖单元密度']},
-      xAxis:{type:'log',name:'N (panos)',...axis()},yAxis:{type:'value',...axis()},
-      series:[
-        {name:'V 覆盖率',type:'line',data:mk(g.Vienna,'coverage_ratio'),color:C.V,symbolSize:7},
-        {name:'HK 覆盖率',type:'line',data:mk(g.HongKong,'coverage_ratio'),color:C.H,symbolSize:7},
-        {name:'V 真信号边',type:'line',data:mk(g.Vienna,'full_frac_pos_edges'),color:C.V,lineStyle:{type:'dashed'},symbolSize:6},
-        {name:'HK 真信号边',type:'line',data:mk(g.HongKong,'full_frac_pos_edges'),color:C.H,lineStyle:{type:'dashed'},symbolSize:6},
-        {name:'V 覆盖单元密度',type:'line',data:mk(g.Vienna,'covered_unit_density'),color:C.a3,lineStyle:{width:3},symbolSize:8},
-        {name:'HK 覆盖单元密度',type:'line',data:mk(g.HongKong,'covered_unit_density'),color:C.warn,lineStyle:{width:3},symbolSize:8},
-      ]});})();
-
-  // ---------- 2 & 3. transition matrices (the "grammar") ----------
-  ['Vienna','HongKong'].forEach(city=>{
-    const m=A.transition[city];const data=[];
-    for(let i=0;i<32;i++)for(let j=0;j<32;j++){if(i===j)continue;if(m[i][j]>0)data.push([j,i,m[i][j]]);}
-    const syn=vs[city][0];
-    const ch=card(`视觉句法转移矩阵 · ${city==='Vienna'?'维也纳':'香港'}`,
-      `沿路网主导基转移 P(j|i)(已隐藏对角自转移)。自转移 ${syn.self_transition.toFixed(3)} · 转移熵 <b style="color:#22e0a1">${syn.transition_entropy.toFixed(3)}</b>${syn.vocab_JSD_vs_other?' · JSD '+syn.vocab_JSD_vs_other.toFixed(2):''}`,'tall');
-    ch.setOption({...base,grid:{left:38,right:18,top:18,bottom:38},
+  // ---------- transition matrices (per city) ----------
+  cities.forEach(city=>{
+    const m=A.transition[city],data=[];let mx=0.01;
+    for(let i=0;i<A.K;i++)for(let j=0;j<A.K;j++){if(i===j)continue;if(m[i][j]>0){data.push([j,i,m[i][j]]);mx=Math.max(mx,m[i][j]);}}
+    const syn=A.visual_syntax[city];
+    const ch=card('grid-trans',`转移矩阵 · ${ZH[city]}`,
+      `沿路网主导基转移 P(j|i)(隐藏对角自转移)。自转移 ${syn.self_transition.toFixed(3)} · 转移熵 <b style="color:#22e0a1">${syn.transition_entropy.toFixed(3)}</b>`,'tall');
+    ch.setOption({...base,grid:{left:38,right:18,top:14,bottom:42},
       tooltip:{...base.tooltip,formatter:p=>`基 ${p.value[1]} → ${p.value[0]}<br>P=${p.value[2].toFixed(4)}`},
-      xAxis:{type:'category',data:[...Array(32).keys()],name:'到 →',...axis(),axisLabel:{color:C.muted,interval:3}},
-      yAxis:{type:'category',data:[...Array(32).keys()],name:'从',...axis(),axisLabel:{color:C.muted,interval:3}},
-      visualMap:{min:0,max:Math.max(0.01,...data.map(d=>d[2])),calculable:true,orient:'horizontal',left:'center',bottom:0,
+      xAxis:{type:'category',data:[...Array(A.K).keys()],name:'到 →',...axis(),axisLabel:{color:C.muted,interval:3}},
+      yAxis:{type:'category',data:[...Array(A.K).keys()],name:'从',...axis(),axisLabel:{color:C.muted,interval:3}},
+      visualMap:{min:0,max:mx,calculable:true,orient:'horizontal',left:'center',bottom:0,
         inRange:{color:['#0b1d33','#39d6ff','#fde725']},textStyle:{color:C.muted}},
       series:[{type:'heatmap',data,emphasis:{itemStyle:{borderColor:'#fff',borderWidth:1}}}]});});
 
-  // ---------- 4. basis roles ----------
-  (()=>{const ch=card('视觉基角色:主导 / 组合 / 死基','32 个基中实际被使用的有效词汇 < K:约 19–20 主导、12–13 近乎死基。');
-    const r=byCity(A.basis_roles);const cities=['Vienna','HongKong'];
+  // ---------- basis roles (grouped) ----------
+  (()=>{const ch=card('grid-basis','视觉基角色:主导 / 死基 / 有效词汇',
+    '每城 32 个基里实际被用作主导(argmax)的数量,以及覆盖 90% 主导质量所需的有效词汇量。');
+    const zh=cities.map(c=>ZH[c]);
     ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
-      xAxis:{type:'category',data:['维也纳','香港'],...axis()},yAxis:{type:'value',...axis()},
+      xAxis:{type:'category',data:zh,...axis()},yAxis:{type:'value',max:A.K,...axis()},
       series:[
-        {name:'主导基',type:'bar',stack:'x',data:cities.map(c=>r[c][0].dominant),color:C.V},
-        {name:'死基',type:'bar',stack:'x',data:cities.map(c=>r[c][0].dead),color:C.muted},
-        {name:'有效词汇(90%)',type:'line',data:cities.map(c=>r[c][0].eff_dominant_vocab_90),color:C.a3,symbolSize:9},
+        {name:'主导基',type:'bar',stack:'x',data:cities.map(c=>A.basis_roles[c].dominant),color:'#39d6ff'},
+        {name:'死基',type:'bar',stack:'x',data:cities.map(c=>A.basis_roles[c].dead),color:C.muted},
+        {name:'有效词汇(90%)',type:'line',data:cities.map(c=>A.basis_roles[c].eff_dominant_vocab_90),color:C.a3,symbolSize:9,lineStyle:{width:3}},
       ]});})();
 
-  // ---------- 5. K sweep ----------
-  (()=>{const ch=card('K 扫描:需要多少个视觉基?','对数 K 轴上重建误差近似线性下降、无尖锐 elbow;有效词汇亚线性增长。');
-    const k=A.k_sweep;
+  // ---------- basis similarity (effective bases + offdiag) ----------
+  (()=>{const ch=card('grid-basis','视觉基相似度 <span class="tag">近正交·零冗余</span>',
+    '各城所学 32 个基近正交:非对角 |余弦| 均值很小、有效独立基 ≈ 32(几乎无冗余)。');
+    const zh=cities.map(c=>ZH[c]);
     ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
-      xAxis:{type:'category',data:k.map(r=>r.K),name:'K',...axis()},
-      yAxis:[{type:'value',name:'重建误差',...axis()},{type:'value',name:'有效词汇',...axis()}],
+      xAxis:{type:'category',data:zh,...axis()},
+      yAxis:[{type:'value',name:'有效基 /32',max:A.K,...axis()},{type:'value',name:'|cos|均值',...axis()}],
       series:[
-        {name:'重建误差',type:'line',data:k.map(r=>r.recon_error),color:C.warn,symbolSize:8,lineStyle:{width:3}},
-        {name:'有效词汇(90%)',type:'bar',yAxisIndex:1,data:k.map(r=>r.eff_vocab_90),color:'rgba(57,214,255,.5)'},
-        {name:'死基',type:'bar',yAxisIndex:1,data:k.map(r=>r.dead),color:'rgba(124,92,255,.45)'},
+        {name:'有效独立基',type:'bar',data:cities.map(c=>A.basis_similarity[c].effective_n_bases),color:C.a2},
+        {name:'非对角 |cos| 均值',type:'line',yAxisIndex:1,data:cities.map(c=>A.basis_similarity[c].mean_abs_offdiag),color:C.warn,symbolSize:9},
       ]});})();
 
-  // ---------- 6. baseline: SAE vs negative controls (visual signal is real) ----------
-  (()=>{const ch=card('边界对比度:SAE vs 负对照',
-    'SAE 远超非视觉/负对照(spatial=纯地理、random=随机、shuffled=打乱)——三者≈0,说明分割由<b>真实视觉证据</b>驱动,而非地理邻近或伪结构。');
-    const keep=['sae','spatial','random','shuffled'];
-    const b=A.baseline.filter(r=>keep.includes(r.method));
-    const cols=Object.keys(A.baseline[0]).filter(k=>k!=='method');
-    ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend,data:b.map(r=>r.method)},
-      xAxis:{type:'category',data:cols,...axis(),axisLabel:{color:C.muted,rotate:20}},yAxis:{type:'value',...axis()},
-      series:b.map(r=>({name:r.method,type:'bar',data:cols.map(c=>r[c]),
-        emphasis:{focus:'series'},...(r.method==='sae'?{color:C.a3}:{})}))});})();
-
-  // ---------- 7. basis similarity matrix ----------
-  (()=>{const ch=card('视觉基相似度矩阵 |XₖXₗᵀ| <span class="tag">近正交·零冗余</span>',
-    `32 个基近正交(非对角余弦均值 ${A.basis_similarity[0].mean_abs_offdiag.toFixed(3)}),有效基数 ${A.basis_similarity[0].effective_n_bases.toFixed(1)}/32。`,'tall');
-    const S=A.basis_sim_matrix||[];const data=[];
-    for(let i=0;i<S.length;i++)for(let j=0;j<S.length;j++)data.push([j,i,S[i][j]]);
-    ch.setOption({...base,grid:{left:38,right:18,top:18,bottom:38},
-      tooltip:{...base.tooltip,formatter:p=>`基 ${p.value[1]} · ${p.value[0]}<br>|cos|=${p.value[2].toFixed(3)}`},
-      xAxis:{type:'category',data:[...Array(S.length).keys()],...axis(),axisLabel:{color:C.muted,interval:3}},
-      yAxis:{type:'category',data:[...Array(S.length).keys()],...axis(),axisLabel:{color:C.muted,interval:3}},
-      visualMap:{min:0,max:1,calculable:true,orient:'horizontal',left:'center',bottom:0,
-        inRange:{color:['#0b1d33','#7c5cff','#fde725']},textStyle:{color:C.muted}},
-      series:[{type:'heatmap',data}]});})();
-
-  // ---------- 7b. activation co-occurrence (hierarchically clustered) ----------
-  (()=>{const co=A.cooccur; if(!co)return;
-    const ch=card('视觉基激活共现 corr(A) <span class="tag">层次聚类</span>',
-      `32 个基<b style="color:#22e0a1">方向上近正交</b>(非对角 |cos| 最大仅 ${co.max_basis_cos}),`+
-      `<b style="color:#ffb454">但使用上成组共现</b>——按层次聚类重排后可见若干"基族"(红块=常一起激活)。灰=${co.dead.length} 个死基(几乎不激活)。`,'tall');
-    const ord=co.order, M=co.matrix, n=ord.length, data=[];
-    for(let i=0;i<n;i++)for(let j=0;j<n;j++)data.push([j,i,M[ord[i]][ord[j]]]);
-    ch.setOption({...base,grid:{left:40,right:18,top:18,bottom:40},
-      tooltip:{...base.tooltip,formatter:p=>`基 ${ord[p.value[1]]} · ${ord[p.value[0]]}<br>corr=${p.value[2].toFixed(2)}`},
-      xAxis:{type:'category',data:ord,...axis(),axisLabel:{color:C.muted,interval:1,fontSize:8,rotate:90}},
-      yAxis:{type:'category',data:ord,...axis(),axisLabel:{color:C.muted,interval:1,fontSize:8}},
-      visualMap:{min:-0.5,max:0.5,calculable:true,orient:'horizontal',left:'center',bottom:0,
-        inRange:{color:['#2c7bb6','#0b1322','#d7191c']},textStyle:{color:C.muted}},
-      series:[{type:'heatmap',data,progressive:2000}]});})();
-
-  // ---------- 7c. hierarchical clustering dendrogram (co-occurrence) ----------
-  (()=>{const co=A.cooccur; if(!co||!co.dendro)return;
-    const D=co.dendro;
-    const ch=card('视觉基层次聚类树 <span class="tag">dendrogram</span>',
-      `基于激活共现距离(1−corr)的层次聚类:叶=基编号,纵轴=合并距离(越低越早合并=越常一起激活)。`+
-      `共 <b style="color:#22e0a1">${co.n_families} 个基族</b>(同色),跨族连线为灰。`,'tall');
-    let maxX=0,maxY=0; D.icoord.forEach(a=>a.forEach(x=>maxX=Math.max(maxX,x)));
-    D.dcoord.forEach(a=>a.forEach(y=>maxY=Math.max(maxY,y)));
-    const LC=D.link_colors||[], LFC=D.leaf_colors||[];
-    const links=D.icoord.map((ic,k)=>ic.concat(D.dcoord[k]));   // [x1..x4,y1..y4]
-    const leaves=D.ivl.map((b,i)=>({value:[5+10*i,0],
-      label:{show:true,formatter:''+b,color:LFC[i]||C.muted,fontSize:9,position:'bottom'}}));
-    ch.setOption({...base,grid:{left:48,right:14,top:16,bottom:30},
-      xAxis:{type:'value',min:0,max:maxX,show:false},
-      yAxis:{type:'value',min:0,max:maxY*1.05,name:'合并距离 1−corr',...axis()},
-      tooltip:{show:false},
-      series:[
-        {type:'custom',data:links,renderItem:(p,api)=>{const pts=[];
-          for(let k=0;k<4;k++)pts.push(api.coord([api.value(k),api.value(k+4)]));
-          return {type:'polyline',shape:{points:pts},
-            style:{stroke:LC[p.dataIndex]||'#6f8bbd',fill:'none',lineWidth:1.6}};}},
-        {type:'scatter',data:leaves,symbolSize:1,encode:{x:0,y:1}}
-      ]});})();
-
-  // ---------- 8. sampling bench: random vs greedy ----------
-  (()=>{const ch=card('采样策略:贪心最大覆盖 vs 随机','同样的 pano 预算,贪心把直接覆盖率提升 1.5–2.1×、插值率显著下降。');
-    const sb=A.sampling_bench;const lab=sb.map(r=>r.city[0]+r.N);
+  // ---------- SAE metrics ----------
+  (()=>{const ch=card('grid-basis','SAE 训练诊断',
+    '各城稀疏自编码器的重建误差、平均激活熵与稀疏度(每节点活跃基中位数)。');
+    const zh=cities.map(c=>ZH[c]);
     ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
-      xAxis:{type:'category',data:lab,...axis()},yAxis:{type:'value',name:'覆盖率 %',...axis()},
-      series:[
-        {name:'随机覆盖',type:'bar',data:sb.map(r=>r.random_cov_pct),color:C.muted},
-        {name:'贪心覆盖',type:'bar',data:sb.map(r=>r.greedy_cov_pct),color:C.V},
-      ]});})();
-
-  // ---------- 9. spatial organization + coherence (z-scores) ----------
-  (()=>{const ch=card('结构显著性 <span class="tag">vs 置换零模型</span>',
-    '激活强烈沿路网平滑(S 远低于随机,z≪0);单元内同质 / 跨边界突变显著(gap z≫0)。');
-    const sp=byCity(A.spatial),co=byCity(A.coherence);const cs=['Vienna','HongKong'];
-    ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
-      xAxis:{type:'category',data:['维也纳','香港'],...axis()},
-      yAxis:{type:'value',name:'|z|',...axis()},
-      series:[
-        {name:'沿路平滑 |z|',type:'bar',data:cs.map(c=>Math.abs(sp[c][0].S_z)),color:C.a2},
-        {name:'单元突变 gap z',type:'bar',data:cs.map(c=>co[c][0].gap_z),color:C.a3},
-      ]});})();
-
-  // ---------- 10. interpolation comparison ----------
-  (()=>{const ch=card('插值方案对比','欧氏最近邻复制 → 图扩散把携带真实信号的边从 5.7% 提到 43%;扩散须与置信度门控同用以免过切。','full');
-    const it=A.interp;
-    ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
-      xAxis:{type:'category',data:it.map(r=>r.config),...axis(),axisLabel:{color:C.muted,rotate:8}},
-      yAxis:[{type:'value',name:'真信号边占比',...axis()},{type:'value',name:'单元数',...axis()}],
-      series:[
-        {name:'真信号边占比',type:'bar',data:it.map(r=>r.frac_pos_edges),color:C.V},
-        {name:'全图单元数',type:'line',yAxisIndex:1,data:it.map(r=>r.units),color:C.warn,symbolSize:9},
-      ]});})();
-
-  // ---------- 11. SAE training ----------
-  (()=>{const ch=card('SAE 训练诊断','两城最终重建误差与稀疏度;损失由重建项主导,正则项量级很小。','full');
-    const s=A.sae_metrics;
-    ch.setOption({...base,tooltip:{...base.tooltip,trigger:'axis'},legend:{...base.legend},
-      xAxis:{type:'category',data:s.map(r=>r.city),...axis()},
+      xAxis:{type:'category',data:zh,...axis()},
       yAxis:[{type:'value',name:'误差/熵',...axis()},{type:'value',name:'median active',...axis()}],
       series:[
-        {name:'重建误差',type:'bar',data:s.map(r=>r.mean_recon_error),color:C.warn},
-        {name:'平均激活熵',type:'bar',data:s.map(r=>r.mean_entropy),color:C.a2},
-        {name:'median active',type:'line',yAxisIndex:1,data:s.map(r=>r.median_active),color:C.a3,symbolSize:9},
+        {name:'重建误差',type:'bar',data:cities.map(c=>A.sae_metrics[c].mean_recon_error),color:C.warn},
+        {name:'平均激活熵',type:'bar',data:cities.map(c=>A.sae_metrics[c].mean_entropy),color:C.a2},
+        {name:'median active',type:'line',yAxisIndex:1,data:cities.map(c=>A.sae_metrics[c].median_active),color:C.a3,symbolSize:9},
       ]});})();
+
+  // ---------- co-occurrence (per city, clustered order) ----------
+  cities.forEach(city=>{
+    const co=A.cooccur[city],M=co.matrix,ord=co.order,n=ord.length,data=[];
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++)data.push([j,i,M[ord[i]][ord[j]]]);
+    const ch=card('grid-cooccur',`激活共现 corr(A) · ${ZH[city]}`,
+      `节点上 32 个基激活的相关性,按层次聚类重排(红块=常一起激活的"基族")。死基 ${co.dead.length} 个 · 基族 <b style="color:#22e0a1">${co.n_families}</b>。`,'tall');
+    ch.setOption({...base,grid:{left:36,right:18,top:14,bottom:40},
+      tooltip:{...base.tooltip,formatter:p=>`基 ${ord[p.value[1]]} · ${ord[p.value[0]]}<br>corr=${p.value[2].toFixed(2)}`},
+      xAxis:{type:'category',data:ord,...axis(),axisLabel:{color:C.muted,interval:3,fontSize:9}},
+      yAxis:{type:'category',data:ord,...axis(),axisLabel:{color:C.muted,interval:3,fontSize:9}},
+      visualMap:{min:-0.5,max:0.5,calculable:true,orient:'horizontal',left:'center',bottom:0,
+        inRange:{color:['#2c7bb6','#0b1322','#d7191c']},textStyle:{color:C.muted}},
+      series:[{type:'heatmap',data,progressive:2000}]});});
+
+  document.getElementById('note').innerHTML=
+    '说明:本页为<b>内在分析</b>——只用各城单次流水线产物(转移矩阵、基角色/相似度/共现、SAE 诊断)即可计算。'+
+    '需要多次重跑的<b>对比类</b>分析(K 扫描、负对照基线、贪心 vs 随机采样、插值方案、采样灵敏度)暂未包含。';
 
   window.addEventListener('resize',()=>charts.forEach(c=>c.resize()));
 }
