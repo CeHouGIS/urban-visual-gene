@@ -40,7 +40,7 @@ CITIES = {
 K = 32
 ACT_COLS = [f"a_{i:03d}" for i in range(K)]
 UMAP_FIT_CAP = 200_000   # fit UMAP on at most this many points, transform the rest
-PANO_DOT_CAP = 8_000     # cap pano dots per city on the map (subsample for rendering)
+PANO_DOT_CAP = None      # None = show ALL panos on the map (no subsampling)
 
 
 def clean_nan(obj):
