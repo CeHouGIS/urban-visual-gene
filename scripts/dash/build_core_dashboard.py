@@ -40,6 +40,7 @@ CITIES = {
 K = 32
 ACT_COLS = [f"a_{i:03d}" for i in range(K)]
 UMAP_FIT_CAP = 200_000   # fit UMAP on at most this many points, transform the rest
+PANO_DOT_CAP = 8_000     # cap pano dots per city on the map (subsample for rendering)
 
 
 def clean_nan(obj):
@@ -242,9 +243,13 @@ def main():
             meta["cities"][city]["n_boundaries"] = 0
 
         # ---- sampled pano dots (coords + ids) for the map's pano layer ----
+        # Full DINOv3 runs have 100k-600k panos/city; cap the on-map dots so the
+        # browser layer stays light (the user asked to subsample for rendering).
         pf = os.path.join(ROOT, CITIES[city], "pano_features.parquet")
         if os.path.exists(pf):
             pdf = pd.read_parquet(pf, columns=["pano_id", "lon", "lat"])
+            if len(pdf) > PANO_DOT_CAP:
+                pdf = pdf.sample(PANO_DOT_CAP, random_state=42).reset_index(drop=True)
             xy = np.empty(len(pdf) * 2, np.float32)
             xy[0::2] = pdf["lon"].to_numpy(np.float32)
             xy[1::2] = pdf["lat"].to_numpy(np.float32)
