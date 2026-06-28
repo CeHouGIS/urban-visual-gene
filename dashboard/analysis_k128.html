@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Visual Gene · 分析</title>
+<title>Urban Visual Gene · 分析 (128 基)</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <style>
 :root{--bg:#070b14;--panel:#0f1828;--panel2:#121e33;--border:#1e2d47;
@@ -50,8 +50,8 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;
   <div class="tabs">
     <a class="tab" href="index.html">街道景观地图</a>
     <a class="tab" href="feature.html">特征空间</a>
-    <a class="tab active" href="analysis.html">分析·32基</a>
-    <a class="tab" href="analysis_k128.html">分析·128基</a>
+    <a class="tab" href="analysis.html">分析·32基</a>
+    <a class="tab active" href="analysis_k128.html">分析·128基</a>
   </div>
 </div>
 
@@ -83,7 +83,7 @@ const axis=()=>({axisLine:{lineStyle:{color:C.grid}},axisLabel:{color:C.muted},
   splitLine:{lineStyle:{color:'rgba(30,45,71,.5)'}}});
 
 async function main(){
-  const[A,META]=await Promise.all([fetch('data/analysis.json?v=3').then(r=>r.json()),
+  const[A,META]=await Promise.all([fetch('data/analysis_k128.json?v=1').then(r=>r.json()),
     fetch('data/meta.json?v=3').then(r=>r.json())]);
   const cities=A.cities;
 
@@ -169,7 +169,7 @@ async function main(){
       series:[{type:'heatmap',data,progressive:2000}]});});
 
   document.getElementById('note').innerHTML=
-    '说明:本页为<b>内在分析</b>——只用各城单次流水线产物(转移矩阵、基角色/相似度/共现、SAE 诊断)即可计算。'+
+    '说明:本页是 <b>K=128 基</b>版的内在分析(对照「分析·32基」)——同一套指标(转移矩阵、基角色/相似度/共现、SAE 诊断),只是视觉词汇量从 32 增到 128。'+
     '需要多次重跑的<b>对比类</b>分析(K 扫描、负对照基线、贪心 vs 随机采样、插值方案、采样灵敏度)暂未包含。';
 
   window.addEventListener('resize',()=>charts.forEach(c=>c.resize()));

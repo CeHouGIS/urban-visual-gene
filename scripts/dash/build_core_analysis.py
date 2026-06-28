@@ -35,6 +35,9 @@ CITIES = {
 }
 K = 32
 ACT = [f"a_{i:03d}" for i in range(K)]
+ACT_FILE = "road_basis_activation.parquet"   # overridable for K=128 test (run_*_k128)
+BASIS_FILE = "road_landscape_basis.npy"
+OUT_FILE = "analysis.json"
 
 
 def clean(o):
@@ -45,7 +48,7 @@ def clean(o):
 
 
 def transition_and_syntax(run):
-    act = pd.read_parquet(os.path.join(ROOT, run, "road_basis_activation.parquet"),
+    act = pd.read_parquet(os.path.join(ROOT, run, ACT_FILE),
                           columns=["road_node_id"] + ACT)
     A = act[ACT].to_numpy(np.float32)
     dom = dict(zip(act["road_node_id"], A.argmax(1)))
@@ -110,7 +113,7 @@ def cooccur(A):
 
 
 def basis_similarity(run):
-    p = os.path.join(ROOT, run, "road_landscape_basis.npy")
+    p = os.path.join(ROOT, run, BASIS_FILE)
     if not os.path.exists(p):
         return {"effective_n_bases": float(K), "mean_abs_offdiag": 0.0}
     X = np.load(p).astype(np.float64)                 # (K, D)
@@ -131,7 +134,7 @@ def sae_metrics(run):
         fp = os.path.join(ROOT, run, "stage_reports", st)
         if os.path.exists(fp):
             rep.update(json.load(open(fp)))
-    act = pd.read_parquet(os.path.join(ROOT, run, "road_basis_activation.parquet"),
+    act = pd.read_parquet(os.path.join(ROOT, run, ACT_FILE),
                           columns=["activation_entropy"])
     return {
         "mean_recon_error": round(float(rep.get("mean_recon_error", rep.get("final_train_loss", 0))), 4),
@@ -141,6 +144,17 @@ def sae_metrics(run):
 
 
 def main():
+    global K, ACT, ACT_FILE, BASIS_FILE, OUT_FILE
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--K", type=int, default=K)
+    ap.add_argument("--act-file", default=ACT_FILE)
+    ap.add_argument("--basis-file", default=BASIS_FILE)
+    ap.add_argument("--out", default=OUT_FILE)
+    a = ap.parse_args()
+    K = a.K; ACT = [f"a_{i:03d}" for i in range(K)]
+    ACT_FILE = a.act_file; BASIS_FILE = a.basis_file; OUT_FILE = a.out
+
     out = {"cities": list(CITIES), "K": K, "transition": {}, "visual_syntax": {},
            "basis_roles": {}, "cooccur": {}, "basis_similarity": {}, "sae_metrics": {}}
     for city, run in CITIES.items():
@@ -154,10 +168,10 @@ def main():
         print(f"[analysis] {city}: self_t={syn['self_transition']} ent={syn['transition_entropy']} "
               f"roles={out['basis_roles'][city]} eff_bases={out['basis_similarity'][city]['effective_n_bases']} "
               f"families={out['cooccur'][city]['n_families']}", flush=True)
-    json.dump(clean(out), open(os.path.join(OUT, "analysis.json"), "w"),
+    json.dump(clean(out), open(os.path.join(OUT, OUT_FILE), "w"),
               separators=(",", ":"), allow_nan=False)
-    sz = os.path.getsize(os.path.join(OUT, "analysis.json"))
-    print(f"[done] analysis.json = {sz/1024:.0f} KB", flush=True)
+    sz = os.path.getsize(os.path.join(OUT, OUT_FILE))
+    print(f"[done] {OUT_FILE} = {sz/1024:.0f} KB", flush=True)
 
 
 if __name__ == "__main__":

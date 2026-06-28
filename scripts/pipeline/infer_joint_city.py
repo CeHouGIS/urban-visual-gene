@@ -31,6 +31,10 @@ def main():
     ap.add_argument("--city", required=True, choices=list(CITY_OUT))
     ap.add_argument("--joint-dir", default="outputs/transfer/joint")
     ap.add_argument("--hidden", type=int, default=512)
+    ap.add_argument("--act-out", default="road_basis_activation.parquet",
+                    help="per-city activation filename (use a _kNN name to NOT clobber production)")
+    ap.add_argument("--basis-out", default="road_landscape_basis.npy",
+                    help="per-city basis copy filename")
     args = ap.parse_args()
 
     jd = Path(args.joint_dir)
@@ -45,8 +49,8 @@ def main():
     (out / "stage_reports").mkdir(parents=True, exist_ok=True)
     ctx = pd.read_parquet(out / "road_context_features.parquet")
     act, r5 = infer_activation(ctx, model)
-    act.to_parquet(out / "road_basis_activation.parquet", index=False)
-    np.save(out / "road_landscape_basis.npy", basis)          # shared joint basis
+    act.to_parquet(out / args.act_out, index=False)
+    np.save(out / args.basis_out, basis)                      # shared joint basis
     save_report(out / "stage_reports/stage5_report.json", r5)
     print(f"[infer] {args.city}: wrote {len(act):,} nodes, "
           f"median_active={r5['median_active_basis']:.1f}, recon={r5['mean_recon_error']:.4f}",

@@ -80,7 +80,8 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
   <div class="tabs">
     <a class="tab" href="index.html">街道景观地图</a>
     <a class="tab active" href="feature.html">特征空间</a>
-    <a class="tab" href="analysis.html">分析</a>
+    <a class="tab" href="analysis.html">分析·32基</a>
+    <a class="tab" href="analysis_k128.html">分析·128基</a>
   </div>
   <div class="spacer"></div>
   <div class="cityseg" id="cityseg">
@@ -95,12 +96,12 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
 <div id="wrap">
   <div id="left">
     <canvas id="scatter"></canvas>
-    <div class="panetag">视觉激活空间 <small>· 32维 → 四城联合 UMAP 2D(全部节点)</small></div>
-    <div class="selbtn on" id="selScatter">▭ 框选(拖拽)</div>
+    <div class="panetag">视觉激活空间 <small>· 32维 → 四城联合 UMAP 3D(随机采样 8 万点)</small></div>
+    <div class="selbtn" id="selScatter">▭ 框选(拖拽)</div>
     <div class="selbox" id="boxS"></div>
     <div id="tip"></div>
-    <div class="hint">每个点 = 一个路网节点的 <b>32 维联合基激活</b>,经四城联合 UMAP(PCA 初始化)投到 2D。<br>
-      「按城市」着色下可见<b>各城分居不同区域</b> = 各城用同一套词汇、组合方式不同的真实差异。框选一簇 → 右侧地图高亮其地理位置。</div>
+    <div class="hint">每个点 = 一个路网节点的 <b>32 维联合基激活</b>,经四城联合 UMAP 投到 <b>3D</b>(随机采样 8 万点)。<br>
+      <b>拖拽旋转</b>、滚轮缩放;点任意点 → 右侧看其街景。点「框选」后可拖拽框选一簇 → 右侧地图高亮其地理位置。</div>
   </div>
   <div id="right">
     <div id="map"></div>
@@ -138,7 +139,7 @@ let META=null,CITY="All",MODE="city";
 let deckS=null,map=null,deckOverlay=null;
 const cache={};
 let SEL=null;          // Uint8Array mask or null
-let selMode={scatter:true,map:false};
+let selMode={scatter:false,map:false};   // default: orbit-rotate the 3D cloud; toggle for box-select
 const CITY_ORDER=["HongKong","Singapore","Amsterdam","CapeTown"];   // concat order for "All"
 const CITY_IDX=Object.fromEntries(CITY_ORDER.map((c,i)=>[c,i]));
 const CITYNAMES={HongKong:"香港",Singapore:"新加坡",Amsterdam:"阿姆斯特丹",CapeTown:"开普敦"};
@@ -156,8 +157,8 @@ async function loadBin(u,T){return new T(await (await fetch(u)).arrayBuffer());}
 async function loadCity(c){
   if(cache[c])return cache[c];
   const[pos,rgb,attr,embed]=await Promise.all([
-    loadBin(DATA+c+"_pos.bin",Float32Array),loadBin(DATA+c+"_rgb.bin",Uint8Array),
-    loadBin(DATA+c+"_attr.bin",Uint8Array),loadBin(DATA+c+"_embed.bin",Float32Array)]);
+    loadBin(DATA+c+"_fgeo.bin",Float32Array),loadBin(DATA+c+"_frgb.bin",Uint8Array),
+    loadBin(DATA+c+"_fattr.bin",Uint8Array),loadBin(DATA+c+"_fxyz.bin",Float32Array)]);  // 3D subsample
   const N=pos.length/2, cityId=new Uint8Array(N).fill(CITY_IDX[c]);
   cache[c]={N,pos,rgb,attr,embed,cityId,meta:{active_range:META.cities[c].active_range,center:META.cities[c].center}};
   return cache[c];
@@ -234,16 +235,15 @@ function openLB(u){const lb=document.getElementById('lb');document.getElementByI
 
 let HOVER=-1;
 function scatterLayer(){const d=cache[CITY];
-  return new deck.ScatterplotLayer({id:'pts',coordinateSystem:deck.COORDINATE_SYSTEM.CARTESIAN,
-    data:{length:d.N,attributes:{getPosition:{value:d.embed,size:2},getFillColor:{value:d._colors,size:4}}},
-    radiusUnits:'pixels',getRadius:1.6,radiusMinPixels:0.7,radiusMaxPixels:5,pickable:true,
-    onHover:hoverScatter,updateTriggers:{getFillColor:[MODE,SEL]}});}
+  return new deck.PointCloudLayer({id:'pts',coordinateSystem:deck.COORDINATE_SYSTEM.CARTESIAN,
+    data:{length:d.N,attributes:{getPosition:{value:d.embed,size:3},getColor:{value:d._colors,size:4}}},
+    pointSize:2.5,material:false,pickable:true,
+    onHover:hoverScatter,updateTriggers:{getColor:[MODE,SEL]}});}
 function highlightLayer(){if(HOVER<0)return null;const d=cache[CITY];
-  return new deck.ScatterplotLayer({id:'hl',coordinateSystem:deck.COORDINATE_SYSTEM.CARTESIAN,
-    data:[[d.embed[HOVER*2],d.embed[HOVER*2+1]]],getPosition:p=>p,
-    radiusUnits:'pixels',getRadius:7,radiusMinPixels:6,stroked:true,filled:true,
-    getFillColor:[255,255,255,60],getLineColor:[255,255,255,235],lineWidthUnits:'pixels',getLineWidth:2,
-    pickable:false,updateTriggers:{getPosition:[HOVER,CITY]}});}
+  return new deck.PointCloudLayer({id:'hl',coordinateSystem:deck.COORDINATE_SYSTEM.CARTESIAN,
+    data:{length:1,attributes:{getPosition:{value:new Float32Array([d.embed[HOVER*3],d.embed[HOVER*3+1],d.embed[HOVER*3+2]]),size:3}}},
+    getColor:[255,255,255,255],pointSize:7,material:false,pickable:false,
+    updateTriggers:{getPosition:[HOVER,CITY]}});}
 function scatterLayers(){return [scatterLayer(),highlightLayer()].filter(Boolean);}
 function hoverScatter(info){
   const idx=(info&&info.index!=null)?info.index:-1;
@@ -323,18 +323,18 @@ async function switchCity(c){
   }
   renderLeg();document.getElementById('loading').style.display='none';
 }
-function fitScatter(){const w=document.getElementById('left').clientWidth,h=document.getElementById('left').clientHeight;
-  const z=Math.log2(Math.min(w,h)/1100);
-  deckS.setProps({initialViewState:{target:[500,500,0],zoom:z,minZoom:z-1,maxZoom:z+6}});}
+function fitScatter(){
+  // 3D cloud is centred at origin, ~[-500,500] per axis; fit it in the OrbitView
+  deckS.setProps({initialViewState:{target:[0,0,0],rotationX:25,rotationOrbit:25,zoom:-0.4,minZoom:-3,maxZoom:6}});}
 
 async function init(){
  try{
   META=await fetch(DATA+"meta.json").then(r=>r.json());
   // ---- scatter first (independent of the map) so the main panel always shows ----
   // dragPan off while box-select is on (default), so drag = select; scroll always zooms
-  deckS=new deck.Deck({canvas:'scatter',views:[new deck.OrthographicView({id:'o'})],
-    initialViewState:{target:[500,500,0],zoom:-1},
-    controller:{dragPan:!selMode.scatter,scrollZoom:true,dragRotate:false},
+  deckS=new deck.Deck({canvas:'scatter',views:[new deck.OrbitView({id:'orbit',orbitAxis:'Y',fov:50})],
+    initialViewState:{target:[0,0,0],rotationX:25,rotationOrbit:25,zoom:-0.4},
+    controller:{scrollZoom:true,dragRotate:!selMode.scatter,dragPan:!selMode.scatter,inertia:false},
     getCursor:({isDragging,isHovering})=>isDragging?'grabbing':(isHovering?'pointer':'default'),layers:[]});
   await loadAll();buildColors("All");fitScatter();
   deckS.setProps({layers:scatterLayers()});renderLeg();
@@ -354,7 +354,7 @@ async function init(){
   attachBox(document.getElementById('scatter'),document.getElementById('boxS'),
     ()=>selMode.scatter,
     (d,i)=>{const vp=deckS.getViewports()[0];if(!vp)return null;
-      return vp.project([d.embed[i*2],d.embed[i*2+1]]);},
+      return vp.project([d.embed[i*3],d.embed[i*3+1],d.embed[i*3+2]]);},
     (x,y)=>{const info=deckS&&deckS.pickObject({x,y,radius:10,layerIds:['pts']});
       if(info&&info.index!=null)showPanoFor(info.index);});   // any click -> nearest node's pano
   attachBox(document.getElementById('map'),document.getElementById('boxM'),
@@ -365,7 +365,7 @@ async function init(){
 
   document.getElementById('selScatter').onclick=function(){selMode.scatter=!selMode.scatter;
     this.classList.toggle('on',selMode.scatter);
-    deckS.setProps({controller:{dragPan:!selMode.scatter,scrollZoom:true,dragRotate:false}});};
+    deckS.setProps({controller:{scrollZoom:true,dragRotate:!selMode.scatter,dragPan:!selMode.scatter,inertia:false}});};
   document.getElementById('selMap').onclick=function(){if(!map)return;selMode.map=!selMode.map;
     this.classList.toggle('on',selMode.map);
     if(selMode.map)map.dragPan.disable();else map.dragPan.enable();};
