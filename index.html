@@ -121,7 +121,8 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     <h4>着色模式</h4>
     <div class="modebtns" id="modebtns">
       <button data-mode="pca" class="active">PCA 风貌</button>
-      <button data-mode="basis">主导视觉基</button>
+      <button data-mode="basis">主导视觉基·32</button>
+      <button data-mode="basis128">主导视觉基·128</button>
       <button data-mode="entropy">激活熵</button>
       <button data-mode="active">活跃基数</button>
       <button data-mode="recon">重建误差</button>
@@ -172,6 +173,10 @@ let deckOverlay=null, map=null;
 const PALETTE = Array.from({length:32},(_,i)=>{
   const h=(i*360/32); const [r,g,b]=hsl2rgb(h/360, 0.62, 0.58); return [r,g,b];
 });
+// ---- 128-color categorical palette (HSL wheel, alternating lightness for contrast) ----
+const PALETTE128 = Array.from({length:128},(_,i)=>{
+  const h=(i*137.508)%360; const l=i%2?0.50:0.64; const [r,g,b]=hsl2rgb(h/360,0.66,l); return [r,g,b];
+});
 function hsl2rgb(h,s,l){
   const f=n=>{const k=(n+h*12)%12;const a=s*Math.min(l,1-l);
     return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1))));};
@@ -194,7 +199,8 @@ async function loadCity(city){
     loadBin(DATA+city+"_attr.bin",Uint8Array),   // [dom, active, ent_q, rec_q] uint8
     loadBin(DATA+city+"_edges.bin",Uint32Array), // [srcIdx, dstIdx] per road edge
   ]);
-  const d={N:pos.length/2, pos, rgb, attr, edges, nE:edges.length/2, units:null, bound:null};
+  let dom128=null; try{ dom128=await loadBin(DATA+city+"_dom128.bin",Uint8Array); }catch(e){}  // K=128 dominant basis
+  const d={N:pos.length/2, pos, rgb, attr, edges, dom128, nE:edges.length/2, units:null, bound:null};
   // materialize edge endpoint coords once (roads = lines between connected nodes)
   const sp=new Float32Array(d.nE*2), tp=new Float32Array(d.nE*2);
   for(let e=0;e<d.nE;e++){const a=edges[e*2],b=edges[e*2+1];
@@ -220,6 +226,7 @@ function buildColors(city){
     let c;
     if(MODE==="pca"){c=[d.rgb[i*3],d.rgb[i*3+1],d.rgb[i*3+2]];}
     else if(MODE==="basis"){c=PALETTE[dom];}
+    else if(MODE==="basis128"){c=d.dom128?PALETTE128[d.dom128[i]]:[120,130,150];}
     else if(MODE==="entropy"){c=ramp(PLASMA,entq/255);}
     else if(MODE==="active"){c=ramp(VIRIDIS,(act-ar[0])/(ar[1]-ar[0]||1));}
     else {c=ramp(PLASMA,recq/255);}
@@ -354,6 +361,9 @@ function renderLegend(){
       <span class="swatch" style="background:rgb(${PALETTE[k].join(',')})"></span>
       <span style="flex:1">#${k}${labs[k]?' · '+labs[k]:''}</span><span style="color:#5f7596">${v}</span></div>`).join('');
     el.innerHTML+=`<div style="margin-top:6px;font-size:10px;color:var(--muted)">点击图例项可单独高亮该基${FILTER!==null?' · <a style="color:var(--accent);cursor:pointer" onclick="toggleFilter('+FILTER+')">清除</a>':''}</div>`;
+  } else if(MODE==="basis128"){
+    const nb=cache[CITY]&&cache[CITY].dom128?new Set(cache[CITY].dom128).size:0;
+    el.innerHTML=`<div style="font-size:12px;line-height:1.6">按 <b>K=128 SAE 的主导视觉基</b>(argmax/128)着色。<br><span style="color:var(--muted)">该城共 ${nb} 个基曾作主导;颜色为 golden-angle 色相轮,相邻编号不同色。对照「主导视觉基·32」看更细的风貌划分。</span></div>`;
   } else if(MODE==="pca"){
     el.innerHTML=`<div style="font-size:12px;line-height:1.6">每个节点 32 维激活经<b>四城联合 PCA</b>→3 主成分映射为 RGB。<br><span style="color:var(--muted)">颜色相近 = 视觉风貌相近,跨城可比。解释方差 ${(META.pca_explained_variance.reduce((a,b)=>a+b)*100).toFixed(0)}%</span></div>`;
   } else {
