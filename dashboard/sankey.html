@@ -96,8 +96,9 @@ async function main(){
       axisLine:{lineStyle:{color:'#1e2d47'}},splitArea:{show:false}},
     yAxis:{type:'category',data:u32.map(k=>'#'+k),name:'32 基',nameTextStyle:{color:'#8a9bb5'},
       axisLabel:{color:'#8a9bb5',fontSize:9},axisLine:{lineStyle:{color:'#1e2d47'}}},
-    visualMap:{min:0,max:mx,calculable:true,orient:'horizontal',left:'center',bottom:2,
-      itemWidth:12,itemHeight:90,inRange:{color:['#0b1d33','#39d6ff','#fde725']},textStyle:{color:'#8a9bb5'}},
+    visualMap:{min:0,max:mx,dimension:2,calculable:true,orient:'horizontal',left:'center',bottom:2,
+      itemWidth:12,itemHeight:90,inRange:{color:['#0b1d33','#39d6ff','#fde725']},textStyle:{color:'#8a9bb5'},
+      formatter:v=>(v*100).toFixed(0)+'%'},
     series:[{type:'heatmap',data,progressive:4000,emphasis:{itemStyle:{borderColor:'#fff',borderWidth:1}}}]
   });
   window.addEventListener('resize',()=>{ch.resize();mch.resize();});
