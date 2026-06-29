@@ -80,7 +80,10 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
 <div id="note"></div>
 <div id="lb"><div class="cap"></div><div class="g"></div></div>
 <script>
-const IMGB=(new URLSearchParams(location.search).get('img')||window.IMG_BASE||'').replace(/\/$/,'');
+const IMGB=(()=>{const q=new URLSearchParams(location.search).get('img');
+  if(q){try{localStorage.setItem('uvg_img',q)}catch(e){} return q.replace(/\/$/,'');}
+  let s='';try{s=localStorage.getItem('uvg_img')||''}catch(e){}
+  return (s||window.IMG_BASE||'').replace(/\/$/,'');})();   // ?img once -> remembered across pages
 const CITY_IMGDIR={HongKong:"China/HongKong",Singapore:"Singapore/Singapore",Amsterdam:"Netherlands/Amsterdam",CapeTown:"SouthAfrica/CapeTown"};
 const CITYNAMES={HongKong:"香港",Singapore:"新加坡",Amsterdam:"阿姆斯特丹",CapeTown:"开普敦"};
 function hsl2rgb(h,s,l){const f=n=>{const k=(n+h*12)%12;const a=s*Math.min(l,1-l);
