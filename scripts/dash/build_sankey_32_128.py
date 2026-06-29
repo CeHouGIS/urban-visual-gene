@@ -76,9 +76,16 @@ def main():
                 links.append({"source": f"v32_{k}", "target": f"v128_{j}", "value": v})
                 kept += 1
 
+    used32 = [int(k) for k in range(K32) if rowsum[k] > 0]
+    used128 = [int(j) for j in range(K128) if M[:, j].sum() > 0]
     out = {"nodes": nodes, "links": links, "total": total, "n_links": kept,
            "n_left": sum(1 for n in nodes if n["name"].startswith("v32_")),
-           "n_right": sum(1 for n in nodes if n["name"].startswith("v128_"))}
+           "n_right": sum(1 for n in nodes if n["name"].startswith("v128_")),
+           # full cross-tab (rows=32 basis, cols=128 basis) for the matrix heatmap
+           "matrix": M.tolist(), "rowsum": rowsum.tolist(),
+           "used32": used32, "used128": used128,
+           "col32": [pal32(k) for k in range(K32)],
+           "col128": [pal128(j) for j in range(K128)]}
     json.dump(out, open(os.path.join(OUT, "sankey_32_128.json"), "w"), separators=(",", ":"))
     print(f"[sankey] total={total:,} links={kept} left={out['n_left']} right={out['n_right']} "
           f"-> sankey_32_128.json", flush=True)
