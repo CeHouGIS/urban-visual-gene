@@ -43,6 +43,12 @@ def pal128(j):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--min-abs", type=int, default=800, help="min nodes per link (1 = full)")
+    ap.add_argument("--min-frac", type=float, default=0.02, help="min fraction of source 32-basis (0 = full)")
+    ap.add_argument("--out", default="sankey_32_128.json")
+    args = ap.parse_args()
     M = np.zeros((K32, K128), np.int64)
     for c in CITIES:
         attr = np.fromfile(os.path.join(OUT, f"{c}_attr.bin"), np.uint8).reshape(-1, 4)
@@ -70,7 +76,7 @@ def main():
             continue
         for j in range(K128):
             v = int(M[k, j])
-            if v >= 800 and v >= 0.02 * rowsum[k]:
+            if v >= args.min_abs and v >= args.min_frac * rowsum[k]:
                 node(f"v32_{k}", f"32#{k}", pal32(k))
                 node(f"v128_{j}", f"128#{j}", pal128(j))
                 links.append({"source": f"v32_{k}", "target": f"v128_{j}", "value": v})
@@ -86,9 +92,9 @@ def main():
            "used32": used32, "used128": used128,
            "col32": [pal32(k) for k in range(K32)],
            "col128": [pal128(j) for j in range(K128)]}
-    json.dump(out, open(os.path.join(OUT, "sankey_32_128.json"), "w"), separators=(",", ":"))
+    json.dump(out, open(os.path.join(OUT, args.out), "w"), separators=(",", ":"))
     print(f"[sankey] total={total:,} links={kept} left={out['n_left']} right={out['n_right']} "
-          f"-> sankey_32_128.json", flush=True)
+          f"-> {args.out}", flush=True)
 
 
 if __name__ == "__main__":
