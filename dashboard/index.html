@@ -467,7 +467,7 @@ function fillNodePanos(city,lon,lat){const el=document.getElementById('nodepanos
     ensurePanos(city).then(()=>{if(document.getElementById('nodepanos'))fillNodePanos(city,lon,lat);});return;}
   const r=nearestPano(city,lon,lat);
   if(!r){el.innerHTML='<div style="font-size:11px;color:var(--muted);margin-top:10px">该处无可用街景</div>';return;}
-  el.innerHTML=panoImagesHTML(city,r.id,`最近 pano ${Math.round(r.dist)}m`);}
+  el.innerHTML=panoImagesHTML(city,r.id,`最近街景 ${r.id} · ${Math.round(r.dist)}m`);}
 function showPanoExactP(P,i,excluded){if(!P||!P.ids||i==null||i<0)return;
   const id=P.ids[i];
   document.getElementById('info').style.display='block';
