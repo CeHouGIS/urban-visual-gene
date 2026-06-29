@@ -164,7 +164,10 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 
 <script src="config.js"></script>
 <script>
-const IMGB=(new URLSearchParams(location.search).get('img')||window.IMG_BASE||'').replace(/\/$/,'');
+const IMGB=(()=>{const q=new URLSearchParams(location.search).get('img');
+  if(q){try{localStorage.setItem('uvg_img',q)}catch(e){} return q.replace(/\/$/,'');}
+  let s='';try{s=localStorage.getItem('uvg_img')||''}catch(e){}
+  return (s||window.IMG_BASE||'').replace(/\/$/,'');})();   // ?img once -> remembered across pages
 const DATA = "data/";
 let META=null, CITY="HongKong", MODE="pca", PTSIZE=1.5, RDWIDTH=2, FILTER=null;
 const cache = {};         // city -> {N,pos,rgb,attr,units,bound}
