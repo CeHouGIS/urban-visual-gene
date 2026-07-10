@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Visual Gene · 街道浏览器</title>
+<style>
+:root{--bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
+  --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;overflow:hidden}
+#top{position:sticky;top:0;z-index:10;height:52px;display:flex;align-items:center;gap:16px;
+  padding:0 18px;background:rgba(7,11,20,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.brand{font-weight:700;display:flex;align-items:center;gap:9px;font-size:15px;white-space:nowrap}
+.brand .dot{width:10px;height:10px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent3),var(--accent));box-shadow:0 0 12px var(--accent)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-size:13px;color:var(--muted);padding:6px 12px;border-radius:8px;border:1px solid transparent;text-decoration:none}
+.tab:hover{color:var(--text)}.tab.active{color:var(--accent);border-color:var(--border);background:var(--panel2)}
+#wrap{display:flex;height:calc(100% - 52px)}
+#mapwrap{width:46%;min-width:360px;padding:14px;display:flex;flex-direction:column;gap:8px}
+#maptitle{font-size:12px;color:var(--muted);letter-spacing:.5px}
+#map{flex:1;background:#0a1120;border:1px solid var(--border);border-radius:12px}
+#map polyline{cursor:pointer;transition:.12s}
+#map polyline:hover{stroke-width:5}
+#map .sel{stroke:#fff!important;stroke-width:5}
+#legend{display:flex;flex-wrap:wrap;gap:6px}
+.lg{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.lg i{width:11px;height:11px;border-radius:3px;display:inline-block}
+#panel{flex:1;overflow-y:auto;padding:16px 20px;border-left:1px solid var(--border)}
+#hint{color:var(--muted);font-size:14px;margin-top:40px;text-align:center;line-height:1.8}
+.h3{font-size:17px;color:#fff;margin:0 0 2px}
+.subh{font-size:12px;color:var(--muted);margin-bottom:14px}
+.compbar{display:flex;height:24px;border-radius:7px;overflow:hidden;border:1px solid var(--border)}
+.compbar div{height:100%}
+.complist{display:flex;flex-wrap:wrap;gap:8px;margin:9px 0 4px}
+.ci{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text)}
+.ci i{width:12px;height:12px;border-radius:3px}.ci b{color:var(--accent3);font-variant-numeric:tabular-nums}
+.toolbar{display:flex;align-items:center;gap:12px;margin:16px 0 10px}
+.tgl{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;
+  background:var(--panel2);border:1px solid var(--border);padding:7px 13px;border-radius:9px}
+.tgl.on{border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px rgba(57,214,255,.22)}
+.ptrow{margin:14px 0}
+.ptlabel{font-size:11.5px;color:var(--muted);margin-bottom:5px}
+.imgs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.cell{position:relative;border-radius:8px;overflow:hidden;background:#0b1322;border:1px solid var(--border)}
+.cell img{width:100%;display:block;aspect-ratio:1;object-fit:cover}
+.cell .deg{position:absolute;top:4px;left:5px;font-size:10px;color:#fff;background:rgba(0,0,0,.6);padding:0 6px;border-radius:4px}
+@media(max-width:820px){#wrap{flex-direction:column;overflow:auto}#mapwrap{width:100%;height:52vh}#panel{border-left:0;border-top:1px solid var(--border)}}
+</style>
+</head>
+<body>
+<div id="top">
+  <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
+  <div class="tabs">
+    <a class="tab" href="index.html">街道景观地图</a>
+    <a class="tab" href="feature.html">特征空间</a>
+    <a class="tab" href="analysis.html">分析·32基</a>
+    <a class="tab" href="sankey.html">32→128 映射</a>
+    <a class="tab" href="interpret.html">可解释性·SAE</a>
+    <a class="tab active" href="explorer.html">街道浏览器</a>
+  </div>
+</div>
+<div id="wrap">
+  <div id="mapwrap">
+    <div id="maptitle">点击地图上的一条街 · click a street</div>
+    <svg id="map" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet"></svg>
+    <div id="legend"></div>
+  </div>
+  <div id="panel"><div id="hint">← 点击左侧地图上的任意一条街<br>显示它的全部街景、类别组成，并可切换类别激活叠加</div></div>
+</div>
+<script>
+const BASE="explorer/";
+let M=null, CAT=null, showOv=false, curRoad=null;
+const P=(v,lo,hi,size,pad)=> pad + (v-lo)/((hi-lo)||1)*(size-2*pad);
+
+fetch(BASE+"manifest.json").then(r=>r.json()).then(m=>{
+  M=m; CAT=Object.fromEntries(m.categories.map(c=>[c.id,c]));
+  drawMap(); drawLegend();
+});
+
+function domCat(r){ return r.composition.length? r.composition[0].cat : 0; }
+
+function drawMap(){
+  const b=M.bounds, svg=document.getElementById("map"); const W=600,H=600,pad=26;
+  let html="";
+  for(const r of M.roads){
+    const pts=r.points.map(p=>`${P(p.lon,b.minlon,b.maxlon,W,pad).toFixed(1)},${(H-P(p.lat,b.minlat,b.maxlat,H,pad)).toFixed(1)}`).join(" ");
+    const col=CAT[domCat(r)].color;
+    if(r.points.length>1)
+      html+=`<polyline points="${pts}" fill="none" stroke="${col}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" data-id="${r.id}" opacity=".85"/>`;
+    for(const p of r.points){
+      const x=P(p.lon,b.minlon,b.maxlon,W,pad), y=H-P(p.lat,b.minlat,b.maxlat,H,pad);
+      html+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4" fill="${col}" data-id="${r.id}" style="cursor:pointer"/>`;
+    }
+  }
+  svg.innerHTML=html;
+  svg.querySelectorAll("[data-id]").forEach(el=>el.addEventListener("click",()=>select(el.getAttribute("data-id"))));
+}
+function drawLegend(){
+  document.getElementById("legend").innerHTML=M.categories.map(c=>
+    `<span class="lg"><i style="background:${c.color}"></i>${c.name}</span>`).join("");
+}
+function select(id){
+  curRoad=M.roads.find(r=>r.id===id);
+  document.querySelectorAll("#map polyline,#map circle").forEach(e=>e.classList.toggle("sel",e.getAttribute("data-id")===id));
+  render();
+}
+function render(){
+  const r=curRoad; if(!r)return;
+  const nImgs=r.points.reduce((s,p)=>s+p.imgs.length,0);
+  let h=`<div class="h3">${r.label}</div><div class="subh">${r.points.length} 个采样点 · ${nImgs} 张街景 · 主导类别 <b style="color:${CAT[domCat(r)].color}">${CAT[domCat(r)].name}</b></div>`;
+  // composition bar
+  h+=`<div class="compbar">`+r.composition.map(c=>`<div style="width:${(c.frac*100).toFixed(1)}%;background:${CAT[c.cat].color}" title="${CAT[c.cat].name} ${(c.frac*100).toFixed(0)}%"></div>`).join("")+`</div>`;
+  h+=`<div class="complist">`+r.composition.map(c=>`<span class="ci"><i style="background:${CAT[c.cat].color}"></i>${CAT[c.cat].name} <b>${(c.frac*100).toFixed(0)}%</b></span>`).join("")+`</div>`;
+  // toolbar
+  h+=`<div class="toolbar"><span class="tgl ${showOv?'on':''}" id="tgl">${showOv?'✦ 类别激活 ON':'○ 类别激活 OFF'}</span><span style="font-size:12px;color:var(--muted)">点击切换：原图 ⇄ 类别激活叠加</span></div>`;
+  // images
+  r.points.forEach((p,pi)=>{
+    h+=`<div class="ptrow"><div class="ptlabel">采样点 ${pi+1}</div><div class="imgs">`;
+    for(const im of p.imgs)
+      h+=`<div class="cell"><span class="deg">${im.h}°</span><img data-o="${BASE+im.o}" data-v="${BASE+im.v}" src="${BASE+(showOv?im.v:im.o)}" loading="lazy"></div>`;
+    h+=`</div></div>`;
+  });
+  const panel=document.getElementById("panel"); panel.innerHTML=h; panel.scrollTop=0;
+  document.getElementById("tgl").addEventListener("click",()=>{showOv=!showOv; swap();});
+}
+function swap(){
+  const t=document.getElementById("tgl"); if(t){t.className="tgl "+(showOv?'on':''); t.textContent=showOv?'✦ 类别激活 ON':'○ 类别激活 OFF';}
+  document.querySelectorAll("#panel .cell img").forEach(im=>im.src=showOv?im.dataset.v:im.dataset.o);
+}
+</script>
+</body>
+</html>
