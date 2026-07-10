@@ -1,0 +1,246 @@
+{
+  "n_features_clustered": 42,
+  "n_clusters": 6,
+  "clusters": [
+    {
+      "id": 6,
+      "members": [
+        {
+          "id": 86,
+          "gloss": "upper facade/windows",
+          "usage_pct": 3.12
+        },
+        {
+          "id": 147,
+          "gloss": "roadside greenery",
+          "usage_pct": 1.96
+        },
+        {
+          "id": 175,
+          "gloss": "street objects",
+          "usage_pct": 2.09
+        },
+        {
+          "id": 70,
+          "gloss": "",
+          "usage_pct": 4.15
+        },
+        {
+          "id": 40,
+          "gloss": "",
+          "usage_pct": 3.77
+        },
+        {
+          "id": 141,
+          "gloss": "",
+          "usage_pct": 4.04
+        },
+        {
+          "id": 99,
+          "gloss": "",
+          "usage_pct": 4.07
+        },
+        {
+          "id": 226,
+          "gloss": "",
+          "usage_pct": 3.95
+        },
+        {
+          "id": 15,
+          "gloss": "",
+          "usage_pct": 3.79
+        },
+        {
+          "id": 77,
+          "gloss": "",
+          "usage_pct": 2.86
+        },
+        {
+          "id": 54,
+          "gloss": "road surface",
+          "usage_pct": 4.38
+        },
+        {
+          "id": 159,
+          "gloss": "",
+          "usage_pct": 3.59
+        },
+        {
+          "id": 183,
+          "gloss": "",
+          "usage_pct": 1.71
+        },
+        {
+          "id": 79,
+          "gloss": "",
+          "usage_pct": 4.32
+        },
+        {
+          "id": 130,
+          "gloss": "",
+          "usage_pct": 2.62
+        },
+        {
+          "id": 35,
+          "gloss": "",
+          "usage_pct": 5.21
+        },
+        {
+          "id": 71,
+          "gloss": "",
+          "usage_pct": 4.02
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "members": [
+        {
+          "id": 16,
+          "gloss": "",
+          "usage_pct": 1.18
+        },
+        {
+          "id": 149,
+          "gloss": "",
+          "usage_pct": 0.95
+        },
+        {
+          "id": 51,
+          "gloss": "",
+          "usage_pct": 2.04
+        },
+        {
+          "id": 75,
+          "gloss": "",
+          "usage_pct": 0.93
+        },
+        {
+          "id": 2,
+          "gloss": "",
+          "usage_pct": 3.55
+        },
+        {
+          "id": 189,
+          "gloss": "skyline",
+          "usage_pct": 5.29
+        },
+        {
+          "id": 93,
+          "gloss": "",
+          "usage_pct": 2.34
+        },
+        {
+          "id": 6,
+          "gloss": "distant treeline",
+          "usage_pct": 2.37
+        },
+        {
+          "id": 23,
+          "gloss": "",
+          "usage_pct": 7.81
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "members": [
+        {
+          "id": 27,
+          "gloss": "",
+          "usage_pct": 2.7
+        },
+        {
+          "id": 128,
+          "gloss": "",
+          "usage_pct": 2.69
+        },
+        {
+          "id": 229,
+          "gloss": "",
+          "usage_pct": 2.08
+        },
+        {
+          "id": 17,
+          "gloss": "",
+          "usage_pct": 5.04
+        },
+        {
+          "id": 25,
+          "gloss": "",
+          "usage_pct": 4.4
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "members": [
+        {
+          "id": 253,
+          "gloss": "buses/trucks",
+          "usage_pct": 2.37
+        },
+        {
+          "id": 225,
+          "gloss": "street cars/shopfront",
+          "usage_pct": 1.64
+        },
+        {
+          "id": 204,
+          "gloss": "vans",
+          "usage_pct": 1.61
+        },
+        {
+          "id": 143,
+          "gloss": "",
+          "usage_pct": 1.0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "members": [
+        {
+          "id": 46,
+          "gloss": "",
+          "usage_pct": 4.35
+        },
+        {
+          "id": 209,
+          "gloss": "",
+          "usage_pct": 3.05
+        },
+        {
+          "id": 181,
+          "gloss": "",
+          "usage_pct": 4.37
+        },
+        {
+          "id": 45,
+          "gloss": "",
+          "usage_pct": 4.16
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "members": [
+        {
+          "id": 52,
+          "gloss": "kerb/road edge",
+          "usage_pct": 2.64
+        },
+        {
+          "id": 170,
+          "gloss": "",
+          "usage_pct": 2.67
+        },
+        {
+          "id": 142,
+          "gloss": "",
+          "usage_pct": 2.99
+        }
+      ]
+    }
+  ]
+}

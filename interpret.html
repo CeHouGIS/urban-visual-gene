@@ -54,8 +54,11 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
 .card .en{font-size:12px;color:var(--muted)}
 .card .meta{display:flex;gap:14px;margin-top:9px;font-size:11.5px;color:var(--muted)}
 .card .meta b{color:var(--accent3);font-variant-numeric:tabular-nums}
-.tri{margin-top:14px;border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.tri{margin-top:14px;border-radius:14px;border:1px solid var(--border);overflow:hidden;background:#0a1120}
 .tri img{width:100%;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 2px}
+.chip{font-size:13px;padding:7px 13px;border-radius:9px;color:var(--text);
+  background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent)}
 .note{margin-top:34px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);
   border-left:3px solid var(--accent2);border-radius:10px;font-size:13px;color:var(--muted);line-height:1.7}
 .note b{color:var(--text)}
@@ -118,6 +121,28 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
   <h2 class="sec">一图多基因</h2>
   <p class="sub">同一张街景上，不同特征各自锁定不同区域——证明这些维度在空间上是解耦的。</p>
   <div class="tri"><img src="sae/triptych.png" alt="同一张图上两个特征分别定位不同区域"></div>
+
+  <!-- HIERARCHY -->
+  <h2 class="sec">视觉基因谱系 · 层次聚类</h2>
+  <p class="sub">每个特征在 DINOv3 空间里是一个<b style="color:var(--text)">方向向量</b>（解码器原子）。
+     按余弦距离对这些方向做层次聚类，就得到一棵<b style="color:var(--text)">视觉基因谱系树</b>——
+     方向越接近的基因编码的视觉概念越相关。整棵树完全由数据驱动，没有任何人工分类。</p>
+  <div class="tri"><img src="sae/dendrogram.png" alt="SAE 特征的层次聚类谱系树"></div>
+
+  <p class="sub" style="margin-top:22px">在同一距离阈值切开得到 <b style="color:var(--text)">6 个大簇</b>，
+     每簇取代表特征的最强激活样本拼成图谱。语义结构清晰浮现：</p>
+  <div class="chips">
+    <span class="chip" style="--c:#ffb454">🚌 车辆簇 · 巴士/货车/面包车</span>
+    <span class="chip" style="--c:#7c5cff">🌳 植被·天际线簇 · 树冠/远景/楼顶轮廓</span>
+    <span class="chip" style="--c:#22e0a1">🛣️ 路面·车道簇</span>
+    <span class="chip" style="--c:#39d6ff">🏙️ 近景地面·建筑立面带</span>
+    <span class="chip" style="--c:#5ad1ff">🧱 路缘·道路边界簇</span>
+    <span class="chip" style="--c:#ff7ac6">🚚 车辆细分簇（特征分裂）</span>
+  </div>
+  <div class="tri" style="margin-top:14px"><img src="sae/clusters.png" alt="按簇排列的代表样本图谱"></div>
+  <p class="sub" style="margin-top:12px;font-size:12.5px">
+     注：车辆特征分裂到两个簇（如 #253 巴士/货车 与 #27 巴士、#229 货车分处不同支），
+     这是 SAE 典型的<b style="color:var(--text)">特征分裂（feature splitting）</b>——字典在细分不同车型，而非冗余。</p>
 
   <div class="note">
     <b>这是概念验证（PoC）。</b> 当前字典训练于 <b>160 张香港街景</b>、31,360 个 patch，K=256、L0=12、224² 分辨率。
