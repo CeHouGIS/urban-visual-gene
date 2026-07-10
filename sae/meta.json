@@ -1,0 +1,88 @@
+{
+  "recon_cos": 0.876,
+  "l0": 12.0,
+  "K": 256,
+  "topk": 12,
+  "n_images": 160,
+  "n_patches_total": 31360,
+  "n_good": 179,
+  "res": 224,
+  "grid": 14,
+  "features": [
+    {
+      "id": 147,
+      "file": "feat_147.png",
+      "usage_pct": 1.96,
+      "n_images": 17,
+      "peak": 0.53
+    },
+    {
+      "id": 86,
+      "file": "feat_86.png",
+      "usage_pct": 3.12,
+      "n_images": 28,
+      "peak": 0.58
+    },
+    {
+      "id": 253,
+      "file": "feat_253.png",
+      "usage_pct": 2.37,
+      "n_images": 13,
+      "peak": 0.58
+    },
+    {
+      "id": 225,
+      "file": "feat_225.png",
+      "usage_pct": 1.64,
+      "n_images": 15,
+      "peak": 0.55
+    },
+    {
+      "id": 52,
+      "file": "feat_52.png",
+      "usage_pct": 2.64,
+      "n_images": 46,
+      "peak": 0.44
+    },
+    {
+      "id": 189,
+      "file": "feat_189.png",
+      "usage_pct": 5.29,
+      "n_images": 72,
+      "peak": 0.43
+    },
+    {
+      "id": 175,
+      "file": "feat_175.png",
+      "usage_pct": 2.09,
+      "n_images": 25,
+      "peak": 0.5
+    },
+    {
+      "id": 204,
+      "file": "feat_204.png",
+      "usage_pct": 1.61,
+      "n_images": 19,
+      "peak": 0.52
+    },
+    {
+      "id": 6,
+      "file": "feat_6.png",
+      "usage_pct": 2.37,
+      "n_images": 45,
+      "peak": 0.41
+    },
+    {
+      "id": 54,
+      "file": "feat_54.png",
+      "usage_pct": 4.38,
+      "n_images": 49,
+      "peak": 0.4
+    }
+  ],
+  "triptych": {
+    "img": 0,
+    "fa": 204,
+    "fb": 54
+  }
+}

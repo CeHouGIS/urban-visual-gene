@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Visual Gene · 可解释性 SAE</title>
+<style>
+:root{
+  --bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
+  --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+a{color:inherit}
+/* top bar */
+#top{position:sticky;top:0;z-index:10;height:52px;display:flex;align-items:center;
+  gap:18px;padding:0 18px;background:rgba(7,11,20,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+.brand{font-weight:700;display:flex;align-items:center;gap:9px;font-size:15px;white-space:nowrap}
+.brand .dot{width:10px;height:10px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent3),var(--accent));
+  box-shadow:0 0 12px var(--accent)}
+.tabs{display:flex;gap:6px;margin-left:8px;flex-wrap:wrap}
+.tab{font-size:13px;color:var(--muted);padding:6px 13px;border-radius:8px;border:1px solid transparent;cursor:pointer;text-decoration:none}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-color:var(--border);background:var(--panel2)}
+/* layout */
+.wrap{max-width:1180px;margin:0 auto;padding:26px 20px 70px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:center;margin-bottom:10px}
+.hero h1{font-size:27px;margin:0 0 10px;line-height:1.25}
+.hero h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:14.5px;line-height:1.7;margin:0 0 16px}
+.hero img{width:100%;border-radius:14px;border:1px solid var(--border);display:block}
+.kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:10px 15px;min-width:96px}
+.kpi .n{font-size:20px;font-weight:800;color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:11px;color:var(--muted);margin-top:3px}
+/* method strip */
+.method{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 8px;align-items:stretch}
+.step{flex:1;min-width:150px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:13px 15px}
+.step b{color:var(--accent3);font-size:13px}
+.step p{margin:5px 0 0;font-size:12.5px;color:var(--muted);line-height:1.55}
+.arrow{display:flex;align-items:center;color:var(--accent);font-size:20px;opacity:.6}
+h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;text-transform:uppercase}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 18px;line-height:1.6}
+/* gallery */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.card img{width:100%;display:block;background:#0b1322}
+.card .body{padding:12px 15px 14px}
+.card .fid{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.5px}
+.card .gloss{font-size:15px;margin:3px 0 2px;color:#fff}
+.card .en{font-size:12px;color:var(--muted)}
+.card .meta{display:flex;gap:14px;margin-top:9px;font-size:11.5px;color:var(--muted)}
+.card .meta b{color:var(--accent3);font-variant-numeric:tabular-nums}
+.tri{margin-top:14px;border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.tri img{width:100%;display:block}
+.note{margin-top:34px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);
+  border-left:3px solid var(--accent2);border-radius:10px;font-size:13px;color:var(--muted);line-height:1.7}
+.note b{color:var(--text)}
+.legend{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-top:10px}
+.legbar{width:120px;height:11px;border-radius:3px;background:linear-gradient(90deg,#000083,#0000ff,#00ffff,#ffff00,#ff0000,#800000)}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="top">
+  <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
+  <div class="tabs">
+    <a class="tab" href="index.html">街道景观地图</a>
+    <a class="tab" href="feature.html">特征空间</a>
+    <a class="tab" href="analysis.html">分析·32基</a>
+    <a class="tab" href="analysis_k128.html">分析·128基</a>
+    <a class="tab" href="sankey.html">32→128 映射</a>
+    <a class="tab active" href="interpret.html">可解释性·SAE</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h1>把街景分解成<span>视觉基因</span><br>并定位回图像</h1>
+      <p>在 DINOv3 的 <b style="color:var(--text)">patch 级</b>特征上训练一个 <b style="color:var(--text)">Top-K 稀疏自编码器</b>，
+      把纠缠的视觉表征拆成一批单义维度（"视觉基因"）。每个维度的激活天然带位置——
+      上采样后叠回原图，就能看到它究竟对应街景里的<b style="color:var(--text)">哪一块</b>：
+      车辆、路缘、绿化带、建筑立面、天际线……全程无需任何语义分割标注。</p>
+      <div class="kpis">
+        <div class="kpi"><div class="n" id="k-cos">0.876</div><div class="l">重建 cos 相似度</div></div>
+        <div class="kpi"><div class="n" id="k-l0">12</div><div class="l">L0 稀疏度 / patch</div></div>
+        <div class="kpi"><div class="n" id="k-K">256</div><div class="l">字典维度 K</div></div>
+        <div class="kpi"><div class="n" id="k-good">179</div><div class="l">选择性特征数</div></div>
+      </div>
+      <div class="legend"><span>激活强度</span><span class="legbar"></span><span>低 → 高</span></div>
+    </div>
+    <img src="sae/hero.png" alt="四个视觉基因各自的激活区域">
+  </div>
+
+  <!-- METHOD -->
+  <div class="method">
+    <div class="step"><b>① DINOv3</b><p>街景 224² → ViT-L/16，剥掉 CLS/register 前缀，保留 14×14=196 个 patch 特征（各 1024 维）</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>② Top-K SAE</b><p>每个 patch 只保留最强的 12 个激活，L0 精确钉在 12，字典 K=256，零死原子</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>③ 激活图</b><p>取某个特征在 196 个 patch 上的激活，reshape 回 14×14 网格</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>④ 叠回原图</b><p>双线性上采样到 224²，jet 配色叠加——特征的物理意义一目了然</p></div>
+  </div>
+
+  <!-- GALLERY -->
+  <h2 class="sec">视觉基因图谱</h2>
+  <p class="sub">每张卡片是一个 SAE 特征在 4 张最强激活街景上的定位（热区 = 该特征点亮的区域）。
+     标签是人工事后解读，不参与训练。</p>
+  <div class="grid" id="gallery"></div>
+
+  <!-- TRIPTYCH -->
+  <h2 class="sec">一图多基因</h2>
+  <p class="sub">同一张街景上，不同特征各自锁定不同区域——证明这些维度在空间上是解耦的。</p>
+  <div class="tri"><img src="sae/triptych.png" alt="同一张图上两个特征分别定位不同区域"></div>
+
+  <div class="note">
+    <b>这是概念验证（PoC）。</b> 当前字典训练于 <b>160 张香港街景</b>、31,360 个 patch，K=256、L0=12、224² 分辨率。
+    下一步：提高到 448² 分辨率（28×28 patch，定位精度 4×）、四城联合训练一个跨城共享字典、K 扩到 1024–4096，
+    并加入忠实性验证（重建消融 / 空间涌现 Moran's I / 跨城迁移）。方法论要点：稀疏必须用 Top-K 硬约束（软 L1 会退化成稠密激活）；
+    训练损失里<b>不</b>放空间平滑项，好让"空间连贯性"能作为独立的验证证据。
+  </div>
+</div>
+
+<script>
+const FEATURES = [
+  {id:253, file:"feat_253.png", gloss:"大型车辆", en:"buses & trucks", usage:2.37, n:13},
+  {id:204, file:"feat_204.png", gloss:"车辆·面包车/货车", en:"vans & light trucks", usage:1.61, n:19},
+  {id:147, file:"feat_147.png", gloss:"路侧绿化带", en:"roadside vegetation verge", usage:1.96, n:17},
+  {id:54,  file:"feat_54.png",  gloss:"路面·车行道肩", en:"road surface / shoulder", usage:4.38, n:49},
+  {id:52,  file:"feat_52.png",  gloss:"路缘·道路边界", en:"kerb / road edge", usage:2.64, n:46},
+  {id:86,  file:"feat_86.png",  gloss:"建筑上部立面·窗带", en:"upper façade / window band", usage:3.12, n:28},
+  {id:189, file:"feat_189.png", gloss:"楼顶天际线", en:"building skyline vs sky", usage:5.29, n:72},
+  {id:6,   file:"feat_6.png",   gloss:"远景树线", en:"distant treeline horizon", usage:2.37, n:45},
+  {id:175, file:"feat_175.png", gloss:"近景街面物件", en:"near-ground street objects", usage:2.09, n:25},
+  {id:225, file:"feat_225.png", gloss:"街面车辆·店面前景", en:"street-level cars / shopfront", usage:1.64, n:15},
+];
+const g = document.getElementById("gallery");
+for(const f of FEATURES){
+  const c = document.createElement("div"); c.className="card";
+  c.innerHTML = `<img src="sae/${f.file}" alt="feature ${f.id}: ${f.en}">
+    <div class="body">
+      <div class="fid">特征 #${f.id}</div>
+      <div class="gloss">${f.gloss}</div>
+      <div class="en">${f.en}</div>
+      <div class="meta"><span>激活 patch 占比 <b>${f.usage}%</b></span><span>出现于 <b>${f.n}</b> 张图</span></div>
+    </div>`;
+  g.appendChild(c);
+}
+</script>
+</body>
+</html>
