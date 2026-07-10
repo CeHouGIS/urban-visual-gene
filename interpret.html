@@ -144,6 +144,30 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
      注：车辆特征分裂到两个簇（如 #253 巴士/货车 与 #27 巴士、#229 货车分处不同支），
      这是 SAE 典型的<b style="color:var(--text)">特征分裂（feature splitting）</b>——字典在细分不同车型，而非冗余。</p>
 
+  <!-- STREET MORPHOTYPES -->
+  <h2 class="sec">从基因到城市 · 街道形态型</h2>
+  <p class="sub">把可解释的基因逐级往上聚合，就能回答"城市由哪几类街道组成"。
+     每个 patch 取<b style="color:var(--text)">主导基因</b> → 一个点的 4 个朝向 (0/90/180/270) 拼成 56×14 全景基因图 →
+     按<b style="color:var(--text)">高度带</b>（天空/上部/中部/地面）数基因直方图得到组成 →
+     沿路网把同一街段的点池化 → CLR → PCA → KMeans 聚成街道形态型。全程无空间项、无人工标注。</p>
+  <div class="method" style="margin:6px 0 14px">
+    <div class="step"><b>patch 主导基因</b><p>14×14 每格取激活最强的基因 → 主导基因图</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>4 朝向 → 高度带组成</b><p>拼 56×14，按天空/上部/中部/地面数基因直方图</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>沿路网池化</b><p>同一街段的点求均值 → 街道组成向量</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>聚类</b><p>CLR → PCA → KMeans → 街道形态型</p></div>
+  </div>
+  <div class="tri"><img src="sae/street_morphotypes.png" alt="香港街道形态型：地图 + 每型代表街景"></div>
+  <p class="sub" style="margin-top:12px">
+     31 条真实香港街道聚成 <b style="color:var(--text)">5 个形态型</b>：黄光隧道 / 户外植被山坡路 / 高架桥(带护栏) / 覆盖路 / 亮光隧道。
+     地图上同型的点<b style="color:var(--text)">在地理上自发成片</b>——而流水线里没有放任何空间/地理项，
+     这正是"空间连贯性"作为可解释性忠实性证据的体现。</p>
+  <p class="sub" style="margin-top:8px;font-size:12.5px">
+     注：本样本按"四朝向覆盖最全"选路，偏向车载拍摄的主干道/隧道/高架，所以 5 型里 3 型是隧道变体（按灯光被特征分裂）。
+     均衡采样 + 全城规模后，住宅街 / 商业街等类型才会出现。</p>
+
   <div class="note">
     <b>这是概念验证（PoC）。</b> 当前字典训练于 <b>160 张香港街景</b>、31,360 个 patch，K=256、L0=12、224² 分辨率。
     下一步：提高到 448² 分辨率（28×28 patch，定位精度 4×）、四城联合训练一个跨城共享字典、K 扩到 1024–4096，
