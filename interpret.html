@@ -77,7 +77,6 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
     <a class="tab" href="analysis_k128.html">分析·128基</a>
     <a class="tab" href="sankey.html">32→128 映射</a>
     <a class="tab active" href="interpret.html">可解释性·SAE</a>
-    <a class="tab" href="explorer.html">街道浏览器</a>
   </div>
 </div>
 
@@ -152,28 +151,47 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
      按<b style="color:var(--text)">高度带</b>（天空/上部/中部/地面）数基因直方图得到组成 →
      沿路网把同一街段的点池化 → CLR → PCA → KMeans 聚成街道形态型。全程无空间项、无人工标注。</p>
   <div class="method" style="margin:6px 0 14px">
-    <div class="step"><b>patch 主导基因</b><p>14×14 每格取激活最强的基因 → 主导基因图</p></div>
+    <div class="step"><b>patch 主导基因</b><p>28×28 每格取激活最强的基因 → 主导基因图（@448）</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>4 朝向 → 高度带组成</b><p>拼 56×14，按天空/上部/中部/地面数基因直方图</p></div>
+    <div class="step"><b>4 朝向 → 高度带组成</b><p>拼 112×28，按天空/上部/中部/地面数基因直方图</p></div>
     <div class="arrow">→</div>
     <div class="step"><b>沿路网池化</b><p>同一街段的点求均值 → 街道组成向量</p></div>
     <div class="arrow">→</div>
     <div class="step"><b>聚类</b><p>CLR → PCA → KMeans → 街道形态型</p></div>
   </div>
-  <div class="tri"><img src="sae/street_morphotypes.png" alt="香港街道形态型：地图 + 每型代表街景"></div>
+  <div class="tri"><img src="sae/morphotypes_4city.png" alt="四城街道形态型：地图 + 跨城组成 + 每型代表街景"></div>
   <p class="sub" style="margin-top:12px">
-     31 条真实香港街道聚成 <b style="color:var(--text)">5 个形态型</b>：黄光隧道 / 户外植被山坡路 / 高架桥(带护栏) / 覆盖路 / 亮光隧道。
-     地图上同型的点<b style="color:var(--text)">在地理上自发成片</b>——而流水线里没有放任何空间/地理项，
-     这正是"空间连贯性"作为可解释性忠实性证据的体现。</p>
+     <b style="color:var(--text)">正式版：四城 240 条街道，K=512 共享字典 @448，联合聚类成 6 个形态型。</b>
+     用<b style="color:var(--text)">同一本</b>字典把香港/新加坡/阿姆斯特丹/开普敦放到同一个基因空间里，
+     形态型立刻分出<b style="color:var(--text)">城市特异型</b>与<b style="color:var(--text)">跨城共享型</b>：</p>
+  <div class="chips">
+    <span class="chip" style="--c:#ffb454">🌍 type 1 · 开普敦独有（郊区干道）</span>
+    <span class="chip" style="--c:#ff7ac6">🌴 type 3 · 新加坡独有（绿荫路）</span>
+    <span class="chip" style="--c:#7c5cff">🚲 type 4 · 阿姆斯特丹独有（乡野/自行车道）</span>
+    <span class="chip" style="--c:#39d6ff">🚇 type 0 · 跨城共享（隧道）</span>
+    <span class="chip" style="--c:#22e0a1">🛣️ type 2 · 跨城共享（高速/高架）</span>
+  </div>
+  <p class="sub" style="margin-top:12px">
+     地图上同型的点<b style="color:var(--text)">在地理上自发成片</b>、且城市间组成差异显著——而流水线里没有放任何空间/地理/城市标签，
+     这正是"空间连贯性 + 跨城可迁移"作为可解释性忠实性证据的体现：结构不是喂进去的，是从共享视觉基因里长出来的。</p>
   <p class="sub" style="margin-top:8px;font-size:12.5px">
-     注：本样本按"四朝向覆盖最全"选路，偏向车载拍摄的主干道/隧道/高架，所以 5 型里 3 型是隧道变体（按灯光被特征分裂）。
-     均衡采样 + 全城规模后，住宅街 / 商业街等类型才会出现。</p>
+     注：每城按"四朝向覆盖最全"选 60 条街，偏向车载主干道，故隧道/高速型占比偏高；均衡采样后住宅街/商业街等会更丰富。</p>
+
+  <!-- K SWEEP -->
+  <h2 class="sec">字典粒度 · K 扫描</h2>
+  <p class="sub">正式跑用四城 320 万个 patch @448 扫了 <b style="color:var(--text)">K=256 / 512 / 1024</b> 三组字典（topk=32）。
+     三组<b style="color:var(--text)">全部零死原子</b>——数据量支持到 1024 都不浪费。重建随 K 微升（0.912→0.926→0.936），
+     但更大的 K 主要是把概念<b style="color:var(--text)">语义细分</b>、不是空间分辨率更细（下图每图基因数在三组间相近）。
+     权衡可解释性与保真度，正式版选 <b style="color:var(--text)">K=512</b>。</p>
+  <div class="tri"><img src="sae/compare_k_metrics.png" alt="K 扫描指标：重建/死原子/使用熵"></div>
+  <div class="tri" style="margin-top:14px"><img src="sae/compare_k_granularity.png" alt="同一条街在 K=256/512/1024 下的分割对比"></div>
 
   <div class="note">
-    <b>这是概念验证（PoC）。</b> 当前字典训练于 <b>160 张香港街景</b>、31,360 个 patch，K=256、L0=12、224² 分辨率。
-    下一步：提高到 448² 分辨率（28×28 patch，定位精度 4×）、四城联合训练一个跨城共享字典、K 扩到 1024–4096，
-    并加入忠实性验证（重建消融 / 空间涌现 Moran's I / 跨城迁移）。方法论要点：稀疏必须用 Top-K 硬约束（软 L1 会退化成稠密激活）；
-    训练损失里<b>不</b>放空间平滑项，好让"空间连贯性"能作为独立的验证证据。
+    <b>正式版已跑通（4 城 / 448² / K=512）。</b> 上方"视觉基因图谱 / 谱系"两节仍用早期 224² 单城 K=256 demo 字典做<b>方法演示</b>；
+    "街道形态型 / K 扫描 / 街道浏览器"三节是<b>正式版</b>：DINOv3 ViT-L/16 @448（28×28=784 patch）、香港+新加坡+阿姆斯特丹+开普敦
+    共享 Top-K SAE（K=512, L0=32, 320 万 patch 训练, 零死原子）。方法论要点：稀疏必须用 Top-K 硬约束（软 L1 会退化成稠密激活）；
+    训练损失里<b>不</b>放空间平滑项，好让"空间连贯性 + 跨城可迁移"能作为独立的忠实性证据。
+    下一步：更多基因接地命名、均衡采样扩大街道类型多样性、街段图 → 城市片区 + 组成语法元图。
   </div>
 </div>
 
