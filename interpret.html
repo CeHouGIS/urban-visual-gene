@@ -117,16 +117,16 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
   <p class="sub">正式版把 512 个基因按解码器方向 KMeans 聚成 <b style="color:var(--text)">10 个类别</b>；每行是一个类别的代表基因在真实街景上的定位（红区 = 该基因点亮的 patch）。
      类别名是人工事后粗解读，不参与训练——粒度所限，类别间有一定语义重叠。</p>
   <div class="chips">
-    <span class="chip" style="--c:#39d6ff">cat0 · 砖墙·立面</span>
-    <span class="chip" style="--c:#ffb454">cat1 · 行道树·低层建筑</span>
-    <span class="chip" style="--c:#22e0a1">cat2 · 地面·墙基</span>
-    <span class="chip" style="--c:#ff7ac6">cat3 · 密集植被</span>
-    <span class="chip" style="--c:#7c5cff">cat4 · 树冠</span>
-    <span class="chip" style="--c:#5ad1ff">cat5 · 大型车辆·高架</span>
-    <span class="chip" style="--c:#f6c945">cat6 · 隧道·挡墙</span>
-    <span class="chip" style="--c:#9b8cff">cat7 · 建筑立面</span>
-    <span class="chip" style="--c:#ff9e64">cat8 · 架空结构·杆件</span>
-    <span class="chip" style="--c:#73daca">cat9 · 路面·车辆</span>
+    <span class="chip" style="--c:#39d6ff">cat0 · 路面·隧道</span>
+    <span class="chip" style="--c:#ffb454">cat1 · 树冠·植被</span>
+    <span class="chip" style="--c:#22e0a1">cat2 · 植被·护栏</span>
+    <span class="chip" style="--c:#ff7ac6">cat3 · 建筑立面·车身</span>
+    <span class="chip" style="--c:#7c5cff">cat4 · 植被·墙面</span>
+    <span class="chip" style="--c:#5ad1ff">cat5 · 玻璃幕墙·立面</span>
+    <span class="chip" style="--c:#f6c945">cat6 · 地面·草地</span>
+    <span class="chip" style="--c:#9b8cff">cat7 · 建筑·路面</span>
+    <span class="chip" style="--c:#ff9e64">cat8 · 近景地面</span>
+    <span class="chip" style="--c:#73daca">cat9 · 路面</span>
   </div>
   <div class="tri" style="margin-top:14px"><img src="sae/category_montage.png" alt="K=512 十个类别的代表基因样本"></div>
 
@@ -183,7 +183,10 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
     <b>全站正式版（4 城 / 448² / K=512）。</b> DINOv3 ViT-L/16 @448（28×28=784 patch）、
     香港+新加坡+阿姆斯特丹+开普敦共享 Top-K SAE（K=512, L0=32, 320 万 patch 训练, 零死原子）。
     方法论要点：稀疏必须用 Top-K 硬约束（软 L1 会退化成稠密激活）；训练损失里<b>不</b>放空间平滑项，
-    好让"空间连贯性 + 跨城可迁移"能作为独立的忠实性证据。类别名为人工事后粗解读，粒度所限类别间有语义重叠。
+    好让"空间连贯性 + 跨城可迁移"能作为独立的忠实性证据。
+    <b>边界 artifact 已从根上处理</b>：DINOv3 在 448 下最外圈 patch 有位置编码边缘效应（非高范数寄存器，Gram anchoring 已消掉那类），
+    表现为固定方向。将实测的 artifact 方向（边界列均值）在归一化前从特征中<b>投影剔除</b>再训练，字典从头不含 artifact 原子（边界一致性 90%→10%）。
+    类别名为人工事后粗解读，粒度所限类别间有语义重叠。
     下一步：更细的基因级命名、均衡采样扩大街道类型多样性、街段图 → 城市片区 + 组成语法元图。
   </div>
 </div>
