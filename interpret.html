@@ -77,6 +77,7 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
     <a class="tab" href="analysis_k128.html">分析·128基</a>
     <a class="tab" href="sankey.html">32→128 映射</a>
     <a class="tab active" href="interpret.html">可解释性·SAE</a>
+    <a class="tab" href="explorer.html">街道浏览器</a>
   </div>
 </div>
 
@@ -90,10 +91,10 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
       上采样后叠回原图，就能看到它究竟对应街景里的<b style="color:var(--text)">哪一块</b>：
       车辆、路缘、绿化带、建筑立面、天际线……全程无需任何语义分割标注。</p>
       <div class="kpis">
-        <div class="kpi"><div class="n" id="k-cos">0.876</div><div class="l">重建 cos 相似度</div></div>
-        <div class="kpi"><div class="n" id="k-l0">12</div><div class="l">L0 稀疏度 / patch</div></div>
-        <div class="kpi"><div class="n" id="k-K">256</div><div class="l">字典维度 K</div></div>
-        <div class="kpi"><div class="n" id="k-good">179</div><div class="l">选择性特征数</div></div>
+        <div class="kpi"><div class="n">0.926</div><div class="l">重建 cos（K=512）</div></div>
+        <div class="kpi"><div class="n">32</div><div class="l">L0 稀疏度 / patch</div></div>
+        <div class="kpi"><div class="n">512</div><div class="l">字典维度 K</div></div>
+        <div class="kpi"><div class="n">4</div><div class="l">共享字典城市数</div></div>
       </div>
       <div class="legend"><span>激活强度</span><span class="legbar"></span><span>低 → 高</span></div>
     </div>
@@ -106,43 +107,35 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
     <div class="arrow">→</div>
     <div class="step"><b>② Top-K SAE</b><p>每个 patch 只保留最强的 12 个激活，L0 精确钉在 12，字典 K=256，零死原子</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>③ 激活图</b><p>取某个特征在 196 个 patch 上的激活，reshape 回 14×14 网格</p></div>
+    <div class="step"><b>③ 激活图</b><p>取某个特征在 784 个 patch 上的激活，reshape 回 28×28 网格</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>④ 叠回原图</b><p>双线性上采样到 224²，jet 配色叠加——特征的物理意义一目了然</p></div>
+    <div class="step"><b>④ 叠回原图</b><p>上采样到 448²，叠加——特征的物理意义一目了然</p></div>
   </div>
 
-  <!-- GALLERY -->
-  <h2 class="sec">视觉基因图谱</h2>
-  <p class="sub">每张卡片是一个 SAE 特征在 4 张最强激活街景上的定位（热区 = 该特征点亮的区域）。
-     标签是人工事后解读，不参与训练。</p>
-  <div class="grid" id="gallery"></div>
-
-  <!-- TRIPTYCH -->
-  <h2 class="sec">一图多基因</h2>
-  <p class="sub">同一张街景上，不同特征各自锁定不同区域——证明这些维度在空间上是解耦的。</p>
-  <div class="tri"><img src="sae/triptych.png" alt="同一张图上两个特征分别定位不同区域"></div>
-
-  <!-- HIERARCHY -->
-  <h2 class="sec">视觉基因谱系 · 层次聚类</h2>
-  <p class="sub">每个特征在 DINOv3 空间里是一个<b style="color:var(--text)">方向向量</b>（解码器原子）。
-     按余弦距离对这些方向做层次聚类，就得到一棵<b style="color:var(--text)">视觉基因谱系树</b>——
-     方向越接近的基因编码的视觉概念越相关。整棵树完全由数据驱动，没有任何人工分类。</p>
-  <div class="tri"><img src="sae/dendrogram.png" alt="SAE 特征的层次聚类谱系树"></div>
-
-  <p class="sub" style="margin-top:22px">在同一距离阈值切开得到 <b style="color:var(--text)">6 个大簇</b>，
-     每簇取代表特征的最强激活样本拼成图谱。语义结构清晰浮现：</p>
+  <!-- GALLERY (formal K=512) -->
+  <h2 class="sec">视觉基因图谱 · K=512 四城字典</h2>
+  <p class="sub">正式版把 512 个基因按解码器方向 KMeans 聚成 <b style="color:var(--text)">10 个类别</b>；每行是一个类别的代表基因在真实街景上的定位（红区 = 该基因点亮的 patch）。
+     类别名是人工事后粗解读，不参与训练——粒度所限，类别间有一定语义重叠。</p>
   <div class="chips">
-    <span class="chip" style="--c:#ffb454">🚌 车辆簇 · 巴士/货车/面包车</span>
-    <span class="chip" style="--c:#7c5cff">🌳 植被·天际线簇 · 树冠/远景/楼顶轮廓</span>
-    <span class="chip" style="--c:#22e0a1">🛣️ 路面·车道簇</span>
-    <span class="chip" style="--c:#39d6ff">🏙️ 近景地面·建筑立面带</span>
-    <span class="chip" style="--c:#5ad1ff">🧱 路缘·道路边界簇</span>
-    <span class="chip" style="--c:#ff7ac6">🚚 车辆细分簇（特征分裂）</span>
+    <span class="chip" style="--c:#39d6ff">cat0 · 砖墙·立面</span>
+    <span class="chip" style="--c:#ffb454">cat1 · 行道树·低层建筑</span>
+    <span class="chip" style="--c:#22e0a1">cat2 · 地面·墙基</span>
+    <span class="chip" style="--c:#ff7ac6">cat3 · 密集植被</span>
+    <span class="chip" style="--c:#7c5cff">cat4 · 树冠</span>
+    <span class="chip" style="--c:#5ad1ff">cat5 · 大型车辆·高架</span>
+    <span class="chip" style="--c:#f6c945">cat6 · 隧道·挡墙</span>
+    <span class="chip" style="--c:#9b8cff">cat7 · 建筑立面</span>
+    <span class="chip" style="--c:#ff9e64">cat8 · 架空结构·杆件</span>
+    <span class="chip" style="--c:#73daca">cat9 · 路面·车辆</span>
   </div>
-  <div class="tri" style="margin-top:14px"><img src="sae/clusters.png" alt="按簇排列的代表样本图谱"></div>
-  <p class="sub" style="margin-top:12px;font-size:12.5px">
-     注：车辆特征分裂到两个簇（如 #253 巴士/货车 与 #27 巴士、#229 货车分处不同支），
-     这是 SAE 典型的<b style="color:var(--text)">特征分裂（feature splitting）</b>——字典在细分不同车型，而非冗余。</p>
+  <div class="tri" style="margin-top:14px"><img src="sae/category_montage.png" alt="K=512 十个类别的代表基因样本"></div>
+
+  <!-- HIERARCHY (formal K=512) -->
+  <h2 class="sec">视觉基因谱系 · K=512</h2>
+  <p class="sub">每个基因在 DINOv3 空间里是一个<b style="color:var(--text)">方向向量</b>（解码器原子）。
+     按余弦距离对这些方向做层次聚类，得到<b style="color:var(--text)">视觉基因谱系树</b>——方向越近编码的概念越相关。
+     下图为 512 个基因里最常出现的 44 个的谱系（完全数据驱动，无人工分类）。</p>
+  <div class="tri"><img src="sae/dendrogram_512.png" alt="K=512 视觉基因谱系树"></div>
 
   <!-- STREET MORPHOTYPES -->
   <h2 class="sec">从基因到城市 · 街道形态型</h2>
@@ -187,39 +180,13 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
   <div class="tri" style="margin-top:14px"><img src="sae/compare_k_granularity.png" alt="同一条街在 K=256/512/1024 下的分割对比"></div>
 
   <div class="note">
-    <b>正式版已跑通（4 城 / 448² / K=512）。</b> 上方"视觉基因图谱 / 谱系"两节仍用早期 224² 单城 K=256 demo 字典做<b>方法演示</b>；
-    "街道形态型 / K 扫描 / 街道浏览器"三节是<b>正式版</b>：DINOv3 ViT-L/16 @448（28×28=784 patch）、香港+新加坡+阿姆斯特丹+开普敦
-    共享 Top-K SAE（K=512, L0=32, 320 万 patch 训练, 零死原子）。方法论要点：稀疏必须用 Top-K 硬约束（软 L1 会退化成稠密激活）；
-    训练损失里<b>不</b>放空间平滑项，好让"空间连贯性 + 跨城可迁移"能作为独立的忠实性证据。
-    下一步：更多基因接地命名、均衡采样扩大街道类型多样性、街段图 → 城市片区 + 组成语法元图。
+    <b>全站正式版（4 城 / 448² / K=512）。</b> DINOv3 ViT-L/16 @448（28×28=784 patch）、
+    香港+新加坡+阿姆斯特丹+开普敦共享 Top-K SAE（K=512, L0=32, 320 万 patch 训练, 零死原子）。
+    方法论要点：稀疏必须用 Top-K 硬约束（软 L1 会退化成稠密激活）；训练损失里<b>不</b>放空间平滑项，
+    好让"空间连贯性 + 跨城可迁移"能作为独立的忠实性证据。类别名为人工事后粗解读，粒度所限类别间有语义重叠。
+    下一步：更细的基因级命名、均衡采样扩大街道类型多样性、街段图 → 城市片区 + 组成语法元图。
   </div>
 </div>
 
-<script>
-const FEATURES = [
-  {id:253, file:"feat_253.png", gloss:"大型车辆", en:"buses & trucks", usage:2.37, n:13},
-  {id:204, file:"feat_204.png", gloss:"车辆·面包车/货车", en:"vans & light trucks", usage:1.61, n:19},
-  {id:147, file:"feat_147.png", gloss:"路侧绿化带", en:"roadside vegetation verge", usage:1.96, n:17},
-  {id:54,  file:"feat_54.png",  gloss:"路面·车行道肩", en:"road surface / shoulder", usage:4.38, n:49},
-  {id:52,  file:"feat_52.png",  gloss:"路缘·道路边界", en:"kerb / road edge", usage:2.64, n:46},
-  {id:86,  file:"feat_86.png",  gloss:"建筑上部立面·窗带", en:"upper façade / window band", usage:3.12, n:28},
-  {id:189, file:"feat_189.png", gloss:"楼顶天际线", en:"building skyline vs sky", usage:5.29, n:72},
-  {id:6,   file:"feat_6.png",   gloss:"远景树线", en:"distant treeline horizon", usage:2.37, n:45},
-  {id:175, file:"feat_175.png", gloss:"近景街面物件", en:"near-ground street objects", usage:2.09, n:25},
-  {id:225, file:"feat_225.png", gloss:"街面车辆·店面前景", en:"street-level cars / shopfront", usage:1.64, n:15},
-];
-const g = document.getElementById("gallery");
-for(const f of FEATURES){
-  const c = document.createElement("div"); c.className="card";
-  c.innerHTML = `<img src="sae/${f.file}" alt="feature ${f.id}: ${f.en}">
-    <div class="body">
-      <div class="fid">特征 #${f.id}</div>
-      <div class="gloss">${f.gloss}</div>
-      <div class="en">${f.en}</div>
-      <div class="meta"><span>激活 patch 占比 <b>${f.usage}%</b></span><span>出现于 <b>${f.n}</b> 张图</span></div>
-    </div>`;
-  g.appendChild(c);
-}
-</script>
 </body>
 </html>
