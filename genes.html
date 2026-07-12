@@ -31,6 +31,8 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
 .seg button.active{background:var(--accent);color:#04121a;font-weight:700}
 .seg button:not(.active):hover{color:var(--text)}
 .vhint{font-size:12px;color:var(--muted)}
+.vhint b{color:#ff8f8f}
+.pbadge{font-size:9.5px;padding:1px 7px;border-radius:10px;background:rgba(255,107,107,.13);color:#ff8f8f;border:1px solid rgba(255,107,107,.35);white-space:nowrap}
 /* explorer: left tree + right detail */
 #explorer{display:flex;gap:16px;align-items:flex-start}
 #treecol{width:360px;flex:none;position:sticky;top:64px;max-height:calc(100vh - 80px);overflow:auto;
@@ -98,7 +100,11 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
       <button id="mOv" class="active" onclick="setMode('ov')">🔥 激活图 (jet)</button>
       <button id="mO" onclick="setMode('o')">🖼 原图</button>
     </div>
-    <span class="vhint">开关切换全部图 · 或把鼠标悬停到任意一张,临时对比另一种</span>
+    <div class="seg">
+      <button id="pHide" class="active" onclick="setHidePos(true)">🚫 隐藏位置基因</button>
+      <button id="pShow" onclick="setHidePos(false)">显示全部</button>
+    </div>
+    <span class="vhint">位置基因＝只认"图上位置"(横带/竖条/角/边)的低质基因,共 <b id="nPos">–</b> 个 · 悬停任意图可临时对比原图</span>
   </div>
   <div id="explorer">
     <div id="treecol"><h3>基因谱系树</h3><div id="tree"></div></div>
@@ -106,7 +112,12 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
   </div>
 </div>
 <script>
-let M=null,CATN={},CATC={},selEl=null,MODE="ov";
+let M=null,CATN={},CATC={},selEl=null,MODE="ov",POS=new Set(),HIDEPOS=true;
+const PTNAME={"h-line":"水平带","v-line":"竖条","corner":"四角","edge":"边缘","pos-other":"位置"};
+const isPos=g=>POS.has(+g);
+const vis=gids=>gids.filter(g=>!(HIDEPOS&&isPos(g)));
+const allGenes=nd=>nd.genes?nd.genes:nd.children.flatMap(c=>c.genes);
+const visCount=nd=>vis(allGenes(nd)).length;
 const orig=u=>u.replace(/\.jpg$/,"_o.jpg");
 function setMode(m){MODE=m;
   document.getElementById("mOv").classList.toggle("active",m==="ov");
@@ -117,30 +128,42 @@ function peek(img,on){img.src=(on ? (MODE==="ov"?img.dataset.o:img.dataset.ov)
 const flip=u=>`<img class="flip" loading="lazy" src="${MODE==='ov'?u:orig(u)}" data-ov="${u}" data-o="${orig(u)}" onmouseover="peek(this,1)" onmouseout="peek(this,0)">`;
 fetch("genes/manifest.json").then(r=>r.json()).then(m=>{
   M=m; m.categories.forEach(c=>{CATN[c.id]=c.name;CATC[c.id]=c.color;});
-  document.getElementById("kpis").innerHTML=
-    `<div class="kpi"><div class="n">${m.n_active}</div><div class="l">激活基因 / ${m.n_genes}</div></div>`+
-    `<div class="kpi"><div class="n">${m.tree.length}</div><div class="l">主枝系</div></div>`+
-    `<div class="kpi"><div class="n">${m.tree.reduce((a,t)=>a+t.children.length,0)}</div><div class="l">子枝系</div></div>`+
-    `<div class="kpi"><div class="n">${m.n_imgs}</div><div class="l">编码街景</div></div>`;
-  buildTree();
+  POS=new Set((m.positional||[]).map(Number));
+  document.getElementById("nPos").textContent=POS.size;
+  paintKpis(); buildTree();
 });
+function paintKpis(){
+  const shown=M.n_active-(HIDEPOS?POS.size:0);
+  const subs=M.tree.reduce((a,t)=>a+t.children.filter(c=>visCount(c)>0).length,0);
+  document.getElementById("kpis").innerHTML=
+    `<div class="kpi"><div class="n">${shown}</div><div class="l">${HIDEPOS?"语义基因(已隐位置)":"基因(含位置)"} / ${M.n_genes}</div></div>`+
+    `<div class="kpi"><div class="n">${M.tree.filter(t=>visCount(t)>0).length}</div><div class="l">主枝系</div></div>`+
+    `<div class="kpi"><div class="n">${subs}</div><div class="l">子枝系</div></div>`+
+    `<div class="kpi"><div class="n">${M.n_imgs}</div><div class="l">编码街景</div></div>`;
+}
+function setHidePos(v){HIDEPOS=v;
+  document.getElementById("pHide").classList.toggle("active",v);
+  document.getElementById("pShow").classList.toggle("active",!v);
+  selEl=null; paintKpis(); buildTree();
+  document.getElementById("detail").innerHTML='<div class="hint">← 从左侧谱系树里点开一个枝系或基因。</div>';
+}
 function select(el){if(selEl)selEl.classList.remove("sel");selEl=el;if(el)el.classList.add("sel");}
 function buildTree(){
   const host=document.getElementById("tree"); host.innerHTML="";
-  M.tree.forEach(t=>host.appendChild(branchNode(t,[t.name])));
+  M.tree.filter(t=>visCount(t)>0).forEach(t=>host.appendChild(branchNode(t,[t.name])));
 }
 function branchNode(nd,path){
   const wrap=document.createElement("div");wrap.className="node";
   const row=document.createElement("div");row.className="row";
   const tw=document.createElement("span");tw.className="tw";tw.textContent="▶";
-  row.append(tw,dot(nd.color),nm(nd.name),cnt(nd.n+" 基因"));
+  row.append(tw,dot(nd.color),nm(nd.name),cnt(visCount(nd)+" 基因"));
   const kids=document.createElement("div");kids.className="kids";
   let built=false;
   row.onclick=()=>{
     const open=kids.classList.toggle("open");tw.classList.toggle("open",open);
     if(open&&!built){built=true;
-      (nd.children? nd.children.map(c=>branchNode(c,path.concat(c.name)))
-                  : nd.genes.map(g=>geneLeaf(g,path))).forEach(e=>kids.appendChild(e));}
+      (nd.children? nd.children.filter(c=>visCount(c)>0).map(c=>branchNode(c,path.concat(c.name)))
+                  : vis(nd.genes).map(g=>geneLeaf(g,path))).forEach(e=>kids.appendChild(e));}
     select(row);showCluster(nd,path);
   };
   wrap.append(row,kids);return wrap;
@@ -151,6 +174,7 @@ function geneLeaf(gid,path){
   const row=document.createElement("div");row.className="row gleaf";
   const tw=document.createElement("span");tw.className="tw leaf";
   row.append(tw,dot(CATC[g.cat]),nm("基因 #"+gid),cnt("峰"+g.peak));
+  if(isPos(gid)){const b=document.createElement("span");b.className="pbadge";b.textContent=PTNAME[g.pt]||"位置";row.appendChild(b);}
   row.onclick=()=>{select(row);showGene(gid,path);};
   wrap.appendChild(row);return wrap;
 }
@@ -163,19 +187,21 @@ function showGene(gid,path){
   d.innerHTML=crumb(path.concat("基因 #"+gid))+
     `<div class="dh"><span class="t">基因 #${gid}</span>
       <span class="chip" style="background:${CATC[g.cat]}22;color:${CATC[g.cat]}"><i style="background:${CATC[g.cat]}"></i>${CATN[g.cat]}</span>
+      ${isPos(gid)?`<span class="pbadge">位置伪影 · ${PTNAME[g.pt]||"位置"} · posR2=${g.pr2}</span>`:""}
       <span class="meta">峰值 ${g.peak} · 主导于 ${g.nimg} 张街景 · 下方 ${g.ex.length} 张为激活最强</span></div>`+
-    `<p class="desc">jet 高亮＝该基因在每张图上的激活强度(红最强、蓝最弱)。看红色落在哪,就是这个基因"认"的视觉模式。</p>`+
+    (isPos(gid)?`<p class="desc" style="color:#ff9f9f">⚠ 这是一个<b>位置基因</b>:它主要按 patch 在图上的位置(${PTNAME[g.pt]||"固定位置"})激活,而非按内容——属于低质基因,默认已在浏览器中隐藏。成因见"可解释性"说明。</p>`:
+    `<p class="desc">jet 高亮＝该基因在每张图上的激活强度(红最强、蓝最弱)。看红色落在哪,就是这个基因"认"的视觉模式。</p>`)+
     `<div class="imgs">${g.ex.map(flip).join("")}</div>`;
   d.scrollTop=0;
 }
 function showCluster(nd,path){
   const d=document.getElementById("detail");
   // collect member gene ids (leaf-ordered)
-  const gids=nd.genes? nd.genes : nd.children.flatMap(c=>c.genes);
+  const gids=vis(nd.genes? nd.genes : nd.children.flatMap(c=>c.genes));
   const cards=gids.map(gid=>{const g=M.genes[String(gid)];
     return `<div class="gcard" onclick="showGene(${gid},${JSON.stringify(path.concat('基因 #'+gid)).replace(/"/g,'&quot;')})">
       ${flip(g.ex[0])}
-      <div class="cap"><i style="background:${CATC[g.cat]}"></i><b>#${gid}</b><span class="pk">峰${g.peak}</span></div></div>`;}).join("");
+      <div class="cap"><i style="background:${CATC[g.cat]}"></i><b>#${gid}</b>${isPos(gid)?`<span class="pbadge">${PTNAME[g.pt]||"位置"}</span>`:""}<span class="pk">峰${g.peak}</span></div></div>`;}).join("");
   d.innerHTML=crumb(path)+
     `<div class="dh"><span class="t">${nd.name}</span>
       <span class="chip" style="background:${nd.color}22;color:${nd.color}"><i style="background:${nd.color}"></i>${CATN[nd.cat]}</span>
