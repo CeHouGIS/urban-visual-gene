@@ -23,6 +23,14 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
 .kpi{background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:6px 13px}
 .kpi .n{font-size:16px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
 .kpi .l{font-size:10px;color:var(--muted)}
+/* view toggle */
+.viewbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+.viewbar .vlabel{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:9px;overflow:hidden;background:var(--panel)}
+.seg button{background:transparent;color:var(--muted);border:0;padding:7px 15px;cursor:pointer;font-size:13px}
+.seg button.active{background:var(--accent);color:#04121a;font-weight:700}
+.seg button:not(.active):hover{color:var(--text)}
+.vhint{font-size:12px;color:var(--muted)}
 /* explorer: left tree + right detail */
 #explorer{display:flex;gap:16px;align-items:flex-start}
 #treecol{width:360px;flex:none;position:sticky;top:64px;max-height:calc(100vh - 80px);overflow:auto;
@@ -84,13 +92,29 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
   <b>基因叶子</b>,右侧就显示该基因<b>激活最强的 20 张街景</b>,并用 <b>jet 配色</b>把该基因在图上的激活区域高亮出来(红=强,蓝=弱)。
   点<b>枝系</b>则看这一簇里所有基因的代表图,一眼看清它们的关系。</p>
   <div class="kpis" id="kpis"></div>
+  <div class="viewbar">
+    <span class="vlabel">视图</span>
+    <div class="seg">
+      <button id="mOv" class="active" onclick="setMode('ov')">🔥 激活图 (jet)</button>
+      <button id="mO" onclick="setMode('o')">🖼 原图</button>
+    </div>
+    <span class="vhint">开关切换全部图 · 或把鼠标悬停到任意一张,临时对比另一种</span>
+  </div>
   <div id="explorer">
     <div id="treecol"><h3>基因谱系树</h3><div id="tree"></div></div>
     <div id="detail"><div class="hint">← 从左侧谱系树里点开一个枝系或基因。<br>点<b>枝系</b>看整簇代表图,点<b>基因</b>看它的 20 张 jet 高亮图。</div></div>
   </div>
 </div>
 <script>
-let M=null,CATN={},CATC={},selEl=null;
+let M=null,CATN={},CATC={},selEl=null,MODE="ov";
+const orig=u=>u.replace(/\.jpg$/,"_o.jpg");
+function setMode(m){MODE=m;
+  document.getElementById("mOv").classList.toggle("active",m==="ov");
+  document.getElementById("mO").classList.toggle("active",m==="o");
+  document.querySelectorAll("#detail img.flip").forEach(i=>i.src=m==="ov"?i.dataset.ov:i.dataset.o);}
+function peek(img,on){img.src=(on ? (MODE==="ov"?img.dataset.o:img.dataset.ov)
+                                   : (MODE==="ov"?img.dataset.ov:img.dataset.o));}
+const flip=u=>`<img class="flip" loading="lazy" src="${MODE==='ov'?u:orig(u)}" data-ov="${u}" data-o="${orig(u)}" onmouseover="peek(this,1)" onmouseout="peek(this,0)">`;
 fetch("genes/manifest.json").then(r=>r.json()).then(m=>{
   M=m; m.categories.forEach(c=>{CATN[c.id]=c.name;CATC[c.id]=c.color;});
   document.getElementById("kpis").innerHTML=
@@ -141,7 +165,7 @@ function showGene(gid,path){
       <span class="chip" style="background:${CATC[g.cat]}22;color:${CATC[g.cat]}"><i style="background:${CATC[g.cat]}"></i>${CATN[g.cat]}</span>
       <span class="meta">峰值 ${g.peak} · 主导于 ${g.nimg} 张街景 · 下方 ${g.ex.length} 张为激活最强</span></div>`+
     `<p class="desc">jet 高亮＝该基因在每张图上的激活强度(红最强、蓝最弱)。看红色落在哪,就是这个基因"认"的视觉模式。</p>`+
-    `<div class="imgs">${g.ex.map(u=>`<img loading="lazy" src="${u}">`).join("")}</div>`;
+    `<div class="imgs">${g.ex.map(flip).join("")}</div>`;
   d.scrollTop=0;
 }
 function showCluster(nd,path){
@@ -150,7 +174,7 @@ function showCluster(nd,path){
   const gids=nd.genes? nd.genes : nd.children.flatMap(c=>c.genes);
   const cards=gids.map(gid=>{const g=M.genes[String(gid)];
     return `<div class="gcard" onclick="showGene(${gid},${JSON.stringify(path.concat('基因 #'+gid)).replace(/"/g,'&quot;')})">
-      <img loading="lazy" src="${g.ex[0]}">
+      ${flip(g.ex[0])}
       <div class="cap"><i style="background:${CATC[g.cat]}"></i><b>#${gid}</b><span class="pk">峰${g.peak}</span></div></div>`;}).join("");
   d.innerHTML=crumb(path)+
     `<div class="dh"><span class="t">${nd.name}</span>
