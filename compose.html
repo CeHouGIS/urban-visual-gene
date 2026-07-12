@@ -55,7 +55,9 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:34px 0 6px;t
 <div id="top">
   <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
   <div class="tabs">
-    <a class="tab" href="index.html">总览</a>
+    <a class="tab" href="index.html">街道景观地图</a>
+    <a class="tab" href="feature.html">特征空间</a>
+    <a class="tab" href="analysis_k128.html">分析·128基</a>
     <a class="tab" href="interpret.html">可解释性·SAE</a>
     <a class="tab" href="explorer.html">街道浏览器</a>
     <a class="tab active" href="compose.html">组成与分类</a>
@@ -94,7 +96,9 @@ let M=null,CAT=null,TYP=null,cur=0;
 const P=(v,lo,hi,s,pad)=>pad+(v-lo)/((hi-lo)||1)*(s-2*pad);
 fetch("compose/manifest.json").then(r=>r.json()).then(m=>{
   M=m; CAT=m.categories; TYP=Object.fromEntries(m.types.map(t=>[t.id,t]));
-  document.getElementById("cityseg").innerHTML=m.cities.map((c,i)=>`<button data-i="${i}" class="${i==0?'active':''}">${c.zh}</button>`).join("");
+  const wc=new URLSearchParams(location.search).get("city");
+  if(wc){const ix=m.cities.findIndex(c=>c.name===wc); if(ix>=0)cur=ix;}
+  document.getElementById("cityseg").innerHTML=m.cities.map((c,i)=>`<button data-i="${i}" class="${i==cur?'active':''}">${c.zh}</button>`).join("");
   document.getElementById("cityseg").querySelectorAll("button").forEach(b=>b.onclick=()=>{
     cur=+b.dataset.i; document.querySelectorAll("#cityseg button").forEach(x=>x.classList.toggle("active",x===b)); draw();});
   document.getElementById("typelg").innerHTML="场景类型: "+m.types.map(t=>`<span><i style="background:${t.color}"></i>${t.name}</span>`).join("");
