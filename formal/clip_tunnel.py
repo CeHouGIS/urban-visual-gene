@@ -27,7 +27,8 @@ def load():
     proc=CLIPProcessor.from_pretrained(MID,token=tok,use_fast=True)
     with torch.no_grad():
         t=proc(text=TUNNEL+STREET,return_tensors="pt",padding=True).to(dev)
-        te=m.get_text_features(**t); te=te/te.norm(dim=1,keepdim=True)
+        to=m.text_model(input_ids=t["input_ids"],attention_mask=t.get("attention_mask"))
+        te=m.text_projection(to.pooler_output); te=te/te.norm(dim=-1,keepdim=True)
     log(f"CLIP loaded dev={dev}, {len(TUNNEL)} tunnel + {len(STREET)} street prompts")
     return m,proc,te,dev
 
@@ -40,7 +41,8 @@ def score(paths,m,proc,te,dev,batch=256):
             except: ims.append(Image.new("RGB",(224,224)))
         px=proc(images=ims,return_tensors="pt").to(dev)
         with torch.no_grad():
-            ie=m.get_image_features(**px); ie=ie/ie.norm(dim=1,keepdim=True)
+            vo=m.vision_model(pixel_values=px["pixel_values"])
+            ie=m.visual_projection(vo.pooler_output); ie=ie/ie.norm(dim=-1,keepdim=True)
             sm=(m.logit_scale.exp()*ie@te.T).softmax(1)
             out[i:i+len(ims)]=sm[:,:ntun].sum(1).float().cpu().numpy()
         if i%2560==0 and i: log(f"  scored {i:,}/{len(paths):,}")
