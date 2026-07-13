@@ -33,6 +33,13 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
 .vhint{font-size:12px;color:var(--muted)}
 .vhint b{color:#ff8f8f}
 .pbadge{font-size:9.5px;padding:1px 7px;border-radius:10px;background:rgba(255,107,107,.13);color:#ff8f8f;border:1px solid rgba(255,107,107,.35);white-space:nowrap}
+.taxo{border:1px solid var(--border);border-radius:12px;background:var(--panel);padding:11px 14px;margin-bottom:14px}
+.taxo h4{margin:0 0 8px;font-size:11px;letter-spacing:1px;color:var(--accent);text-transform:uppercase}
+.tprow{display:flex;align-items:center;gap:10px;margin:5px 0;flex-wrap:wrap}
+.tpar{font-size:13px;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:6px;min-width:104px}
+.tpar i{width:11px;height:11px;border-radius:3px}.tpar b{color:var(--muted);font-weight:400;font-size:11px}
+.tkids{display:flex;flex-wrap:wrap;gap:5px}
+.tkid{font-size:11px;color:var(--muted);padding:2px 9px;border-radius:20px;border:1px solid var(--border);background:var(--panel2)}
 /* explorer: left tree + right detail */
 #explorer{display:flex;gap:16px;align-items:flex-start}
 #treecol{width:360px;flex:none;position:sticky;top:64px;max-height:calc(100vh - 80px);overflow:auto;
@@ -84,7 +91,6 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
     <a class="tab" href="index.html">总览</a>
     <a class="tab" href="compose.html">组成与分类</a>
     <a class="tab active" href="genes.html">512 视觉基因</a>
-    <a class="tab" href="coexpr.html">基因组合</a>
     <a class="tab" href="interpret.html">可解释性·SAE</a>
     <a class="tab" href="explorer.html">街道浏览器</a>
   </div>
@@ -95,6 +101,7 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
   <b>基因叶子</b>,右侧就显示该基因<b>激活最强的 20 张街景</b>,并用 <b>jet 配色</b>把该基因在图上的激活区域高亮出来(红=强,蓝=弱)。
   点<b>枝系</b>则看这一簇里所有基因的代表图,一眼看清它们的关系。</p>
   <div class="kpis" id="kpis"></div>
+  <div class="taxo" id="taxo"></div>
   <div class="viewbar">
     <span class="vlabel">视图</span>
     <div class="seg">
@@ -131,6 +138,8 @@ fetch("genes/manifest.json").then(r=>r.json()).then(m=>{
   M=m; m.categories.forEach(c=>{CATN[c.id]=c.name;CATC[c.id]=c.color;});
   POS=new Set((m.positional||[]).map(Number));
   document.getElementById("nPos").textContent=POS.size;
+  if(m.taxonomy)document.getElementById("taxo").innerHTML="<h4>分类体系 · 6 大类 › 子类</h4>"+
+    m.taxonomy.map(p=>`<div class="tprow"><span class="tpar"><i style="background:${p.color}"></i>${p.name} <b>${p.n}</b></span><span class="tkids">${p.children.map(c=>`<span class="tkid">${c.name} · ${c.n}</span>`).join("")}</span></div>`).join("");
   paintKpis(); buildTree();
 });
 function paintKpis(){
@@ -187,7 +196,7 @@ function showGene(gid,path){
   const g=M.genes[String(gid)],d=document.getElementById("detail");
   d.innerHTML=crumb(path.concat("基因 #"+gid))+
     `<div class="dh"><span class="t">基因 #${gid}</span>
-      <span class="chip" style="background:${CATC[g.cat]}22;color:${CATC[g.cat]}"><i style="background:${CATC[g.cat]}"></i>${CATN[g.cat]}</span>
+      <span class="chip" style="background:${CATC[g.cat]}22;color:${CATC[g.cat]}"><i style="background:${CATC[g.cat]}"></i>${CATN[g.cat]}${g.child?` <span style="opacity:.6">›</span> ${g.child}`:""}</span>
       ${isPos(gid)?`<span class="pbadge">位置伪影 · ${PTNAME[g.pt]||"位置"} · posR2=${g.pr2}</span>`:""}
       <span class="meta">峰值 ${g.peak} · 主导于 ${g.nimg} 张街景 · 下方 ${g.ex.length} 张为激活最强</span></div>`+
     (isPos(gid)?`<p class="desc" style="color:#ff9f9f">⚠ 这是一个<b>位置基因</b>:它主要按 patch 在图上的位置(${PTNAME[g.pt]||"固定位置"})激活,而非按内容——属于低质基因,默认已在浏览器中隐藏。成因见"可解释性"说明。</p>`:
