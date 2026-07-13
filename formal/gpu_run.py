@@ -144,7 +144,8 @@ def bad_panos(city):
     Empty set if no QC has been run for the city (so sampling is unaffected until then)."""
     if not hasattr(bad_panos,"_c"): bad_panos._c={}
     if city not in bad_panos._c:
-        f=REPO/"formal"/"qc"/f"{city}.parquet"; s=set()
+        ff=REPO/"formal"/"qc_full"/f"{city}.parquet"          # full-sample CNN blocklist (preferred)
+        f=ff if ff.exists() else REPO/"formal"/"qc"/f"{city}.parquet"; s=set()
         if f.exists():
             try:
                 import pandas as pd; d=pd.read_parquet(f); s=set(d.loc[d["is_bad"],"pano_id"].astype(str))

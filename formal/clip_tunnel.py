@@ -71,6 +71,8 @@ def main():
         sc=score(paths,m,proc,te,dev)
         print(f"tunnel_prob p50/75/90/95/99: "+" ".join(f"{v:.2f}" for v in np.percentile(sc,[50,75,90,95,99])))
         print(f"  >0.5: {(sc>0.5).sum()}  >0.6: {(sc>0.6).sum()}  >0.7: {(sc>0.7).sum()}")
+        pd.DataFrame({"path":paths,"tunnel_prob":sc}).to_parquet(Path(a.diag)/"qc_clip_scores.parquet")
+        log(f"saved scores -> {a.diag}/qc_clip_scores.parquet")
         if a.calibrate: montage(paths,sc,"most tunnel-like by CLIP",Path(a.diag)/"qc_clip_tunnel.png")
     if a.update_qc:
         from formal.gpu_run import imgpath, CITY_DIR

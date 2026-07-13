@@ -34,3 +34,4 @@ formal/formal_out*/
 formal/qc/
 formal/ondisk/
 formal/slurm-*.out
+formal/qc_full/
