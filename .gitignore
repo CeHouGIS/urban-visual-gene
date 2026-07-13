@@ -28,3 +28,9 @@ __pycache__/
 *.egg-info/
 .venv/
 venv/
+
+# ── formal/ pipeline outputs (large, regenerable: dicts, thumbs, overlays, web assets) ──
+formal/formal_out*/
+formal/qc/
+formal/ondisk/
+formal/slurm-*.out
