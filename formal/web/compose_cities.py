@@ -1,12 +1,15 @@
 """All-12-city composition & classification data for the redesigned site.
-Per city: road-weighted spatial sample of panos, encode heading-0 with the global
-K=512 dict -> per-pano 10-CATEGORY composition (配比) + lat/lon + thumbnail. GPU.
-Output: web2/panos.parquet (city,pano_id,lat,lon,cat0..cat9) + web2/thumbs/<city>/.
+Per city: road-weighted spatial sample of panos, encode ALL 4 headings
+[0,90,180,270] of each pano with the global K=512 dict and pool their patches ->
+per-pano 360° CATEGORY composition (配比) + lat/lon + a 2x2 montage thumbnail of
+the four views. So a point's composition reflects the full surroundings, not just
+the forward image. GPU.
+Output: web2/panos.parquet (city,pano_id,lat,lon,cat0..catN) + web2/thumbs/<city>/.
 """
 import os, json, sqlite3, collections, numpy as np, torch, torch.nn.functional as F
 from pathlib import Path
 from PIL import Image
-from formal.gpu_run import Extractor, SAE, imgpath, CITY_DIR, meta_db
+from formal.gpu_run import Extractor, SAE, imgpath, CITY_DIR, meta_db, HEADINGS
 
 OUT=Path(os.environ.get("DICTDIR","/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global"))
 PROJ=os.environ.get("GENE_PROJ",str(OUT.parent/"formal_out"/"artifact_dirs_mean.npy"))
@@ -56,22 +59,37 @@ def sample_latlon(city, quota, seed=1):
         if len(out)>=quota: break
     return out
 
+# 2x2 montage layout: heading -> quadrant (front=TL, right=TR, back=BR, left=BL)
+POS={0:(0,0),90:(128,0),180:(128,128),270:(0,128)}
 recs=[]
 for ci,city in enumerate(CITIES):
     samp=sample_latlon(city, PER)
     tdir=TH/city; tdir.mkdir(parents=True,exist_ok=True)
     got=0
     for pid,la,lo in samp:
-        try: im=Image.open(imgpath(city,pid,0)).convert("RGB").resize((448,448),Image.BILINEAR)
-        except: continue
-        feats,_=ext.batch([im]); zt=feats[0].to(dev)
-        with torch.no_grad(): gm=sae.encode(zt).argmax(1).cpu().numpy()   # (G*G,) gene per patch
-        cat=g2c[gm]; comp=np.bincount(cat,minlength=NCAT).astype(np.float32); comp/=comp.sum()
-        im.resize((256,256)).save(tdir/f"{got}.jpg",quality=72)
+        pils=[]; hs=[]                                          # all available headings of this pano
+        for h in HEADINGS:
+            p=imgpath(city,pid,h)
+            if not os.path.exists(p): continue
+            try: pils.append(Image.open(p).convert("RGB").resize((448,448),Image.BILINEAR)); hs.append(h)
+            except: pass
+        if not pils: continue
+        feats,_=ext.batch(pils)                                 # (n,784,1024), order matches pils
+        comp=np.zeros(NCAT,np.float32)                          # pool patches over all 4 views
+        for j in range(len(pils)):
+            zt=feats[j].to(dev)
+            with torch.no_grad(): gm=sae.encode(zt).argmax(1).cpu().numpy()   # (G*G,) gene per patch
+            comp+=np.bincount(g2c[gm],minlength=NCAT).astype(np.float32)
+        s=comp.sum()
+        if s<=0: continue
+        comp/=s
+        mont=Image.new("RGB",(256,256),(11,19,34))             # 2x2 montage of the four views
+        for pj,h in zip(pils,hs): mont.paste(pj.resize((128,128)),POS[h])
+        mont.save(tdir/f"{got}.jpg",quality=72)
         recs.append({"city":city,"pano_id":pid,"lat":la,"lon":lo,"ti":got,
                      **{f"cat{c}":float(comp[c]) for c in range(NCAT)}})
         got+=1
-    log(f"{city}: {got} panos composed")
+    log(f"{city}: {got} panos composed (4-heading pooled)")
 import pandas as pd
 pd.DataFrame(recs).to_parquet(W2/"panos.parquet")
 log(f"[done] {len(recs)} panos -> web2/panos.parquet")
