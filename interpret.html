@@ -90,23 +90,23 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
       上采样后叠回原图，就能看到它究竟对应街景里的<b style="color:var(--text)">哪一块</b>：
       车辆、路缘、绿化带、建筑立面、天际线……全程无需任何语义分割标注。</p>
       <div class="kpis">
-        <div class="kpi"><div class="n">0.906</div><div class="l">重建 cos（K=512）</div></div>
+        <div class="kpi"><div class="n">0.892</div><div class="l">重建 cos（K=512）</div></div>
         <div class="kpi"><div class="n">32</div><div class="l">L0 稀疏度 / patch</div></div>
         <div class="kpi"><div class="n">512</div><div class="l">字典维度 K</div></div>
         <div class="kpi"><div class="n">12</div><div class="l">共享字典城市数</div></div>
       </div>
       <div class="legend"><span>激活强度</span><span class="legbar"></span><span>低 → 高</span></div>
     </div>
-    <img src="sae/hero.png" alt="四个视觉基因各自的激活区域">
+    <img src="sae/global_category_montage.png" alt="global3 五大类的代表基因激活">
   </div>
 
   <!-- METHOD -->
   <div class="method">
-    <div class="step"><b>① DINOv3</b><p>街景 224² → ViT-L/16，剥掉 CLS/register 前缀，保留 14×14=196 个 patch 特征（各 1024 维）</p></div>
+    <div class="step"><b>① DINOv3</b><p>街景 448² → ViT-L/16，剥掉 CLS/register 前缀，保留 28×28=784 个 patch 特征（各 1024 维）</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>② Top-K SAE</b><p>每个 patch 只保留最强的 12 个激活，L0 精确钉在 12，字典 K=256，零死原子</p></div>
+    <div class="step"><b>② Top-K SAE</b><p>每个 patch 只保留最强的 32 个激活，L0 精确钉在 32，字典 K=512，零死原子</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>③ 激活图</b><p>取某个特征在 784 个 patch 上的激活，reshape 回 28×28 网格</p></div>
+    <div class="step"><b>③ 激活图</b><p>取某个基因在 784 个 patch 上的激活，reshape 回 28×28 网格</p></div>
     <div class="arrow">→</div>
     <div class="step"><b>④ 叠回原图</b><p>上采样到 448²，叠加——特征的物理意义一目了然</p></div>
   </div>
@@ -114,8 +114,8 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
   <!-- GALLERY (formal K=512) -->
   <h2 class="sec">视觉基因图谱 · K=512 全球12城字典</h2>
   <p class="sub">全球字典训练于<b style="color:var(--text)">香港·新加坡·阿姆斯特丹·开普敦·巴黎·圣保罗·墨西哥城·悉尼·雅加达·达卡·新德里·马尼拉</b>
-     （6 大洲 12 城，1152 万 patch @448）。把 512 个基因按解码器方向 KMeans 聚成 <b style="color:var(--text)">10 个类别</b>；
-     每行是一个类别的代表基因在真实街景上的定位（红区 = 该基因点亮的 patch）。类别名是人工事后粗解读，不参与训练——粒度所限类别间有语义重叠。</p>
+     （6 大洲 12 城，1152 万 patch @448；已用图像质量过滤剔除黑/糊/隧道图后重训）。把 512 个基因按其在 global3 里的<b style="color:var(--text)">谱系结构 + 语义</b>归成 <b style="color:var(--text)">5 大类</b>；
+     每行是一个类别的代表基因在真实街景上的定位（红区 = 该基因点亮的 patch）。类别为事后人工归纳,不参与训练——街景以立面/路面为主,故这两类偏大。</p>
   <div class="note" style="margin:6px 0 16px;border-left-color:var(--accent3)">
     <b>去偏训练。</b> 为让这本"共享字典"公平、无城市偏向：① <b>每城等量</b>采样（不按城市大小成比例，否则大城主导）；
     ② 城内<b>按路网/采样点密度分层</b>（压掉 GSV 在主干道的过采）；③ 每个 pano 的<b>全部 4 个朝向</b>都进训练（朝向无偏）；
@@ -123,18 +123,13 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
     结果：<b>0 死原子</b>、12 城严格等量。仅存的数据源偏差（GSV 本身偏发达城市/主干道）无法从采样端消除，须在结论中声明。
   </div>
   <div class="chips">
-    <span class="chip" style="--c:#39d6ff">cat0 · 住宅立面·地面</span>
-    <span class="chip" style="--c:#ffb454">cat1 · 立面·车辆</span>
-    <span class="chip" style="--c:#22e0a1">cat2 · 植被·开阔地</span>
-    <span class="chip" style="--c:#ff7ac6">cat3 · 路面·商业立面</span>
-    <span class="chip" style="--c:#7c5cff">cat4 · 密集植被·田野</span>
-    <span class="chip" style="--c:#5ad1ff">cat5 · 路面·商铺</span>
-    <span class="chip" style="--c:#f6c945">cat6 · 道路走廊·绿化</span>
-    <span class="chip" style="--c:#9b8cff">cat7 · 树冠</span>
-    <span class="chip" style="--c:#ff9e64">cat8 · 密集城市立面</span>
-    <span class="chip" style="--c:#73daca">cat9 · 墙面·植被</span>
+    <span class="chip" style="--c:#22e0a1">植被 · 78</span>
+    <span class="chip" style="--c:#f6c945">建筑立面 · 241</span>
+    <span class="chip" style="--c:#8a9bb5">路面·道路 · 164</span>
+    <span class="chip" style="--c:#ff9e64">车辆 · 19</span>
+    <span class="chip" style="--c:#39d6ff">天空·远景 · 10</span>
   </div>
-  <div class="tri" style="margin-top:14px"><img src="sae/global_category_montage.png" alt="全球12城 K=512 十个类别的代表基因样本"></div>
+  <div class="tri" style="margin-top:14px"><img src="sae/global_category_montage.png" alt="global3 五大类的代表基因样本"></div>
 
   <!-- HIERARCHY (formal K=512) -->
   <h2 class="sec">视觉基因谱系 · K=512</h2>
@@ -143,55 +138,14 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
      下图为 512 个基因里最常出现的 44 个的谱系（完全数据驱动，无人工分类）。</p>
   <div class="tri"><img src="sae/dendrogram_512.png" alt="K=512 视觉基因谱系树"></div>
 
-  <!-- STREET MORPHOTYPES -->
-  <h2 class="sec">从基因到城市 · 街道形态型</h2>
-  <p class="sub">把可解释的基因逐级往上聚合，就能回答"城市由哪几类街道组成"。
-     每个 patch 取<b style="color:var(--text)">主导基因</b> → 一个点的 4 个朝向 (0/90/180/270) 拼成 56×14 全景基因图 →
-     按<b style="color:var(--text)">高度带</b>（天空/上部/中部/地面）数基因直方图得到组成 →
-     沿路网把同一街段的点池化 → CLR → PCA → KMeans 聚成街道形态型。全程无空间项、无人工标注。</p>
-  <div class="method" style="margin:6px 0 14px">
-    <div class="step"><b>patch 主导基因</b><p>28×28 每格取激活最强的基因 → 主导基因图（@448）</p></div>
-    <div class="arrow">→</div>
-    <div class="step"><b>4 朝向 → 高度带组成</b><p>拼 112×28，按天空/上部/中部/地面数基因直方图</p></div>
-    <div class="arrow">→</div>
-    <div class="step"><b>沿路网池化</b><p>同一街段的点求均值 → 街道组成向量</p></div>
-    <div class="arrow">→</div>
-    <div class="step"><b>聚类</b><p>CLR → PCA → KMeans → 街道形态型</p></div>
-  </div>
-  <div class="tri"><img src="sae/morphotypes_4city.png" alt="四城街道形态型：地图 + 跨城组成 + 每型代表街景"></div>
-  <p class="sub" style="margin-top:12px">
-     <b style="color:var(--text)">正式版：四城 240 条街道，K=512 共享字典 @448，联合聚类成 6 个形态型。</b>
-     用<b style="color:var(--text)">同一本</b>字典把香港/新加坡/阿姆斯特丹/开普敦放到同一个基因空间里，
-     形态型立刻分出<b style="color:var(--text)">城市特异型</b>与<b style="color:var(--text)">跨城共享型</b>：</p>
-  <div class="chips">
-    <span class="chip" style="--c:#ffb454">🌍 type 1 · 开普敦独有（郊区干道）</span>
-    <span class="chip" style="--c:#ff7ac6">🌴 type 3 · 新加坡独有（绿荫路）</span>
-    <span class="chip" style="--c:#7c5cff">🚲 type 4 · 阿姆斯特丹独有（乡野/自行车道）</span>
-    <span class="chip" style="--c:#39d6ff">🚇 type 0 · 跨城共享（隧道）</span>
-    <span class="chip" style="--c:#22e0a1">🛣️ type 2 · 跨城共享（高速/高架）</span>
-  </div>
-  <p class="sub" style="margin-top:12px">
-     地图上同型的点<b style="color:var(--text)">在地理上自发成片</b>、且城市间组成差异显著——而流水线里没有放任何空间/地理/城市标签，
-     这正是"空间连贯性 + 跨城可迁移"作为可解释性忠实性证据的体现：结构不是喂进去的，是从共享视觉基因里长出来的。</p>
-  <p class="sub" style="margin-top:8px;font-size:12.5px">
-     注：每城按"四朝向覆盖最全"选 60 条街，偏向车载主干道，故隧道/高速型占比偏高；均衡采样后住宅街/商业街等会更丰富。</p>
-
-  <!-- K SWEEP -->
-  <h2 class="sec">字典粒度 · K 扫描</h2>
-  <p class="sub">正式跑用四城 320 万个 patch @448 扫了 <b style="color:var(--text)">K=256 / 512 / 1024</b> 三组字典（topk=32）。
-     三组<b style="color:var(--text)">全部零死原子</b>——数据量支持到 1024 都不浪费。重建随 K 微升（0.912→0.926→0.936），
-     但更大的 K 主要是把概念<b style="color:var(--text)">语义细分</b>、不是空间分辨率更细（下图每图基因数在三组间相近）。
-     权衡可解释性与保真度，正式版选 <b style="color:var(--text)">K=512</b>。</p>
-  <div class="tri"><img src="sae/compare_k_metrics.png" alt="K 扫描指标：重建/死原子/使用熵"></div>
-  <div class="tri" style="margin-top:14px"><img src="sae/compare_k_granularity.png" alt="同一条街在 K=256/512/1024 下的分割对比"></div>
 
   <div class="note">
-    <b>字典：12 城全球版（6 大洲 / 448² / K=512, L0=32, 1152 万 patch, 零死原子）。</b>
+    <b>字典 global3：12 城全球版（6 大洲 / 448² / K=512, L0=32, 1152 万 patch, 零死原子, 重建 cos 0.892）。</b>
     DINOv3 ViT-L/16 @448（28×28=784 patch），去偏共享 Top-K SAE。
     方法论要点：稀疏用 Top-K 硬约束（软 L1 会退化成稠密激活）；训练损失里<b>不</b>放空间平滑项，
-    好让"空间连贯性 + 跨城可迁移"作为独立忠实性证据；边界 artifact 用方向投影从根上剔除（边界一致性 90%→10%）。
-    下方"街道形态型 / 街道浏览器"两节为<b>城市级应用</b>（目前用有路网数据的 4 城做街段分析；9 个新城已入字典，做街道级需另跑路网匹配）。
-    下一步：Vienna 下载完成后补入字典（现已 32% 且在下）、更细的基因级命名、更多城市的街道级分析。
+    好让"空间连贯性 + 跨城可迁移"作为独立忠实性证据；边界 artifact 用方向投影从根上剔除。
+    <b>图像质量过滤</b>：用一个 4 类小 CNN（good/dark/blur/tunnel，隧道靠人工标注 + CLIP 蒸馏）在全量 1394 万 pano 上剔除黑/糊/隧道图，再用干净样本重训字典。
+    分类为 global3 原生 5 大类（谱系聚类 + 语义,天空为数据驱动）。「街道浏览器」为城市级应用（4 个有路网数据的城市做街段分析；其余城市已入字典）。
   </div>
 </div>
 
