@@ -5,7 +5,7 @@ import os, json, numpy as np
 from pathlib import Path
 REPO=Path("/global/scratch/users/cehou/urban-visual-gene/formal")
 DICT=Path(os.environ.get("DICTDIR",str(REPO/"formal_out_global3")))
-cj=json.load(open(REPO/"categories_new.json"))                 # 6 parents (names/colors)
+cj=json.load(open(os.environ.get("CATJSON",str(REPO/"categories_new.json"))))   # parents (names/colors)
 tax=json.load(open(DICT/"taxonomy.json"))
 childname={c["id"]:c["name"] for c in tax["children"]}
 g2c=np.load(DICT/"gene2cat.npy"); g2ch=np.load(DICT/"gene2child.npy")

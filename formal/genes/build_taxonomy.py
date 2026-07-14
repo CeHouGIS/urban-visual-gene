@@ -1,10 +1,10 @@
 """Fix the 2-level SEMANTIC taxonomy: 22 fine ward-clusters -> 6 parents / 16
 children (manual semantic grouping). Writes gene2cat.npy(=parent), gene2child.npy,
 taxonomy.json, and categories_new.json(=6 parents)."""
-import json, numpy as np, torch
+import os, json, numpy as np, torch
 from pathlib import Path
 from scipy.cluster.hierarchy import linkage, to_tree, dendrogram
-G2=Path("/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global2")
+G2=Path(os.environ.get("DICTDIR","/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global2"))
 REPO=Path("/global/scratch/users/cehou/urban-visual-gene")
 d=torch.load(G2/"sae_448_k512.pt",map_location="cpu"); A=d["state"]["dec.weight"].T.numpy()
 An=A/(np.linalg.norm(A,axis=1,keepdims=True)+1e-9)

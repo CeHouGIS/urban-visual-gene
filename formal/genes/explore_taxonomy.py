@@ -5,7 +5,7 @@ import os, sys, json, numpy as np, torch
 from pathlib import Path
 from PIL import Image, ImageDraw
 from scipy.cluster.hierarchy import linkage, to_tree
-G2=Path("/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global2")
+G2=Path(os.environ.get("DICTDIR","/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global2"))
 GEN=G2/"genes"; man=json.load(open(GEN/"web"/"manifest.json"))
 genes=man["genes"]; oldCN=[c["name"] for c in man["categories"]]; g2c_old=np.load(G2/"gene2cat.npy")
 d=torch.load(G2/"sae_448_k512.pt",map_location="cpu"); A=d["state"]["dec.weight"].T.numpy()
