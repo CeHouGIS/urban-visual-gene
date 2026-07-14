@@ -55,22 +55,23 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:34px 0 6px;t
 <div id="top">
   <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
   <div class="tabs">
-    <a class="tab" href="index.html">总览</a>
-    <a class="tab active" href="compose.html">组成与分类</a>
-    <a class="tab" href="genes.html">512 视觉基因</a>
-    <a class="tab" href="coexpr.html">基因组合</a>
+    <a class="tab" href="index.html">街道景观地图</a>
+    <a class="tab" href="feature.html">特征空间</a>
+    <a class="tab" href="analysis_k128.html">分析·128基</a>
     <a class="tab" href="interpret.html">可解释性·SAE</a>
     <a class="tab" href="explorer.html">街道浏览器</a>
+    <a class="tab active" href="compose.html">组成与分类</a>
   </div>
 </div>
 <div class="wrap">
   <h1>12 城街道的<span>视觉基因组成与分类</span></h1>
-  <p class="lead">用一本<b style="color:var(--text)">跨 12 城 6 大洲的全球视觉基因字典</b>（去偏训练，K=512）把每张街景分解成 10 类视觉基因，
+  <p class="lead">用一本<b style="color:var(--text)">跨 12 城 6 大洲的全球视觉基因字典</b>（去偏训练，K=512）把每处街景点分解成 5 类视觉基因，
   统计每座城市街道的<b style="color:var(--text)">基因配比</b>，并按配比把街景聚成若干<b style="color:var(--text)">场景类型</b>。
-  下方地图可逐城浏览、逐街景查看其组成。</p>
+  每处点都<b style="color:var(--text)">看 4 个朝向</b>（0/90/180/270°）——把四张图的 patch 合起来统计，配比反映该点的 360° 环境而非单张正向图；
+  地图缩略图为四视图 2×2 拼接。下方地图可逐城浏览、逐点查看其组成。</p>
 
   <h2 class="sec">跨城基因配比</h2>
-  <p class="sub">每座城市街景视野里 10 类视觉基因的平均占比（每行一座城，点击城市名下方地图会同步）。</p>
+  <p class="sub">每座城市街景点 360°（4 朝向合并）里 5 类视觉基因的平均占比（每行一座城，点击城市名下方地图会同步）。</p>
   <div class="lg" id="catlg2" style="margin-bottom:10px"></div>
   <div id="compchart"></div>
 
@@ -80,7 +81,7 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:34px 0 6px;t
   <div id="typechart" style="margin-top:14px"></div>
 
   <h2 class="sec">逐城 · 逐街景浏览</h2>
-  <p class="sub">选城市；地图上每点是一处街景，颜色 = 场景类型；点击看它的基因配比与图像。</p>
+  <p class="sub">选城市；地图上每点是一处街景，颜色 = 场景类型；点击看它的基因配比与四视图图像（2×2 = 0/90/180/270°）。</p>
   <div class="cityseg" id="cityseg"></div>
   <div id="explore">
     <div id="mapcol"><svg id="map" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet"></svg>
