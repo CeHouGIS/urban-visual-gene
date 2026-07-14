@@ -16,7 +16,7 @@ ENV=/global/scratch/users/cehou/conda_envs/svi
 export LD_LIBRARY_PATH=$ENV/lib:${LD_LIBRARY_PATH:-}
 export HF_TOKEN="$(cat ~/.cache/huggingface/token)" HF_HUB_DISABLE_XET=1
 export PYTHONPATH=$REPO OMP_NUM_THREADS=8 KMP_DUPLICATE_LIB_OK=TRUE
-export FORMAL_OUT=$REPO/formal/formal_out_global2       # fresh dir -> re-extract with new projection
+export FORMAL_OUT=$REPO/formal/formal_out_global3
 cd "$REPO"
 nvidia-smi -L
 "$ENV/bin/python" -u -m formal.dict.retrain_debias
