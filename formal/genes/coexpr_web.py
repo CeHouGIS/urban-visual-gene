@@ -7,7 +7,7 @@ from scipy import sparse
 import networkx as nx
 from PIL import Image
 import matplotlib.cm as cm
-G2=Path("/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global2")
+G2=Path(os.environ.get("DICTDIR","/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global2"))
 GEN=G2/"genes"; OUT=GEN/"web"/"coexpr"; OUT.mkdir(parents=True,exist_ok=True)
 def log(*a): import time;print(f"[{time.strftime('%H:%M:%S')}]",*a,flush=True)
 K=512

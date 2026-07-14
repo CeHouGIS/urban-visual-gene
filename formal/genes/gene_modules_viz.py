@@ -5,7 +5,7 @@ import os, json, numpy as np
 from pathlib import Path
 from PIL import Image, ImageDraw
 import matplotlib.cm as cm
-G2=Path("/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global2")
+G2=Path(os.environ.get("DICTDIR","/global/scratch/users/cehou/urban-visual-gene/formal/formal_out_global2"))
 GEN=G2/"genes"; DG=GEN/"diag"
 man=json.load(open(GEN/"web"/"manifest.json")); CATN={c["id"]:c["name"] for c in man["categories"]}
 g2c=np.load(G2/"gene2cat.npy")
