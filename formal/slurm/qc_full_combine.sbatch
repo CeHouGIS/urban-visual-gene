@@ -12,5 +12,5 @@ set -u
 REPO=/global/scratch/users/cehou/urban-visual-gene; ENV=/global/scratch/users/cehou/conda_envs/svi
 export LD_LIBRARY_PATH=$ENV/lib:${LD_LIBRARY_PATH:-} PYTHONPATH=$REPO OMP_NUM_THREADS=4
 cd "$REPO"
-"$ENV/bin/python" -u -m formal.qc_net_cities --combine --thr 0.6
+"$ENV/bin/python" -u -m formal.quality.qc_net_cities --combine --thr 0.6
 echo "=== QCCOMB DONE $(date '+%F %T') ==="

@@ -23,9 +23,9 @@ export GENE_PROJ=$REPO/formal/formal_out_global/artifact_dirs_pos.npy
 export GENESDIR=$DICTDIR/genes
 cd "$REPO"
 nvidia-smi -L
-echo "=== 1/5 encode (GPU) ==="; "$PY" -u -m formal.gene_encode
-echo "=== 2/5 render (CPU) ==="; "$PY" -u formal/gene_render.py
-echo "=== 3/5 originals (CPU) ==="; "$PY" -u formal/gene_orig.py
-echo "=== 4/5 balanced tree (CPU) ==="; "$PY" -u formal/gene_tree.py --super 110 --sub 28
-echo "=== 5/5 positional diag (CPU) ==="; "$PY" -u formal/gene_posdiag.py
+echo "=== 1/5 encode (GPU) ==="; "$PY" -u -m formal.genes.gene_encode
+echo "=== 2/5 render (CPU) ==="; "$PY" -u formal/genes/gene_render.py
+echo "=== 3/5 originals (CPU) ==="; "$PY" -u formal/genes/gene_orig.py
+echo "=== 4/5 balanced tree (CPU) ==="; "$PY" -u formal/genes/gene_tree.py --super 110 --sub 28
+echo "=== 5/5 positional diag (CPU) ==="; "$PY" -u formal/genes/gene_posdiag.py
 echo "=== PANEL2 DONE $(date '+%F %T') ==="

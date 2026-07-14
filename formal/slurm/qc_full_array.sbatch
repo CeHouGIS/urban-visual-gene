@@ -14,4 +14,4 @@ set -u
 REPO=/global/scratch/users/cehou/urban-visual-gene; ENV=/global/scratch/users/cehou/conda_envs/svi
 export LD_LIBRARY_PATH=$ENV/lib:${LD_LIBRARY_PATH:-} PYTHONPATH=$REPO OMP_NUM_THREADS=8 KMP_DUPLICATE_LIB_OK=TRUE
 cd "$REPO"
-"$ENV/bin/python" -u -m formal.qc_net_cities --shard $SLURM_ARRAY_TASK_ID --nshards 40 --chunk 100000 --workers 4
+"$ENV/bin/python" -u -m formal.quality.qc_net_cities --shard $SLURM_ARRAY_TASK_ID --nshards 40 --chunk 100000 --workers 4

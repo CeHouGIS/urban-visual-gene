@@ -12,7 +12,7 @@ from pathlib import Path
 from torch.utils.data import Dataset, DataLoader
 from PIL import Image
 from formal.gpu_run import meta_db, imgpath, CITY_DIR
-from formal.qc_net import Net, RES, CLASSES, MODEL
+from formal.quality.qc_net import Net, RES, CLASSES, MODEL
 REPO=Path("/global/scratch/users/cehou/urban-visual-gene")
 QCF=REPO/"formal"/"qc_full"; QCF.mkdir(exist_ok=True)
 CITIES=["HongKong","Singapore","Amsterdam","CapeTown","Paris","SaoPaulo",

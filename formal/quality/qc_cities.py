@@ -5,7 +5,7 @@ import os, numpy as np, pandas as pd, time
 from multiprocessing import Pool
 from pathlib import Path
 from formal.gpu_run import stratified_panos, imgpath
-from formal.quality_filter import analyze, flag_row
+from formal.quality.quality_filter import analyze, flag_row
 REPO=Path("/global/scratch/users/cehou/urban-visual-gene")
 QC=REPO/"formal"/"qc"; QC.mkdir(exist_ok=True)
 CITIES=["HongKong","Singapore","Amsterdam","CapeTown","Paris","SaoPaulo",

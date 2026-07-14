@@ -20,9 +20,9 @@ export GENE_PROJ=$REPO/formal/formal_out_global/artifact_dirs_pos.npy
 export CATJSON=$REPO/formal/categories_new.json
 cd "$REPO"; nvidia-smi -L
 rm -f $DICTDIR/web2/panos.parquet
-echo "=== 1/5 compose_cities 6-parent (GPU) ==="; "$PY" -u -m formal.compose_cities
-echo "=== 2/5 compose_analyze (CPU) ==="; "$PY" -u -m formal.compose_analyze
-echo "=== 3/5 build_explorer (CPU) ==="; EXPDIR=formal_out_expglobal2 DICTDIR_NAME=formal_out_global2 "$PY" -u formal/build_explorer.py
-echo "=== 4/5 interp_montage (CPU) ==="; "$PY" -u formal/interp_montage.py
-echo "=== 5/5 coexpr_web (CPU) ==="; "$PY" -u formal/coexpr_web.py
+echo "=== 1/5 compose_cities 6-parent (GPU) ==="; "$PY" -u -m formal.web.compose_cities
+echo "=== 2/5 compose_analyze (CPU) ==="; "$PY" -u -m formal.web.compose_analyze
+echo "=== 3/5 build_explorer (CPU) ==="; EXPDIR=formal_out_expglobal2 DICTDIR_NAME=formal_out_global2 "$PY" -u formal/web/build_explorer.py
+echo "=== 4/5 interp_montage (CPU) ==="; "$PY" -u formal/web/interp_montage.py
+echo "=== 5/5 coexpr_web (CPU) ==="; "$PY" -u formal/genes/coexpr_web.py
 echo "=== MIG6 DONE $(date '+%F %T') ==="

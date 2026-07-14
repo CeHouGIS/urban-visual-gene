@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=uvg-compose
+#SBATCH --job-name=uvg-rglob
 #SBATCH --account=fc_globalsvf
 #SBATCH --partition=savio4_gpu
 #SBATCH --qos=savio_lowprio
@@ -9,7 +9,7 @@
 #SBATCH --gres=gpu:L40:1
 #SBATCH --time=01:00:00
 #SBATCH --requeue
-#SBATCH --output=/global/scratch/users/cehou/urban-visual-gene/formal/slurm-compose-%j.out
+#SBATCH --output=/global/scratch/users/cehou/urban-visual-gene/formal/slurm-rglob-%j.out
 set -u
 REPO=/global/scratch/users/cehou/urban-visual-gene
 ENV=/global/scratch/users/cehou/conda_envs/svi
@@ -18,5 +18,5 @@ export HF_TOKEN="$(cat ~/.cache/huggingface/token)" HF_HUB_DISABLE_XET=1
 export PYTHONPATH=$REPO OMP_NUM_THREADS=8 KMP_DUPLICATE_LIB_OK=TRUE
 cd "$REPO"
 nvidia-smi -L
-"$ENV/bin/python" -u -m formal.compose_cities
+"$ENV/bin/python" -u -m formal.web.render_global
 echo "=== RGLOB DONE $(date '+%F %T') ==="
