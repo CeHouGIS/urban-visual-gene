@@ -78,15 +78,34 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 .btn.active{color:var(--accent);border-color:var(--accent);background:rgba(57,214,255,.08)}
 .select{border:1px solid var(--border);background:var(--panel2);color:var(--text);border-radius:8px;
   padding:6px 9px;font-size:12px;font-family:inherit}
-.gtable{width:100%;border-collapse:collapse;font-size:12px}
-.gtable th,.gtable td{padding:8px 9px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
-.gtable th{color:var(--accent);font-weight:600;background:rgba(18,30,51,.55);position:sticky;top:52px}
-.gtable td{color:var(--text)}
-.gtable .mut{color:var(--muted)}
-.gtable .num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .dl{display:inline-flex;align-items:center;text-decoration:none;color:var(--accent);border:1px solid var(--border);
   border-radius:8px;padding:6px 10px;font-size:12px;background:var(--panel2)}
 .dl:hover{border-color:var(--accent)}
+.specbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:4px 0 14px}
+.specstat{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.specstat .n{font-size:20px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+.specstat .l{font-size:11px;color:var(--muted);margin-top:2px}
+.citydots{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;margin:8px 0 14px}
+.cdot{height:19px;border:1px solid var(--border);border-radius:6px;background:var(--panel2);color:var(--muted);
+  display:flex;align-items:center;justify-content:center;font-size:9.5px;font-variant-numeric:tabular-nums}
+.cdot.on{background:rgba(57,214,255,.16);border-color:rgba(57,214,255,.58);color:var(--text)}
+.geneviz{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:12px}
+.vcard{position:relative;overflow:hidden;background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:12px}
+.vcard::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--accent)}
+.vtop{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.vid{font-size:13px;color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
+.vclass{font-size:10px;color:var(--muted);text-align:right;line-height:1.25}
+.vname{font-size:13px;color:var(--text);margin-top:8px;line-height:1.25;min-height:32px}
+.vcat{font-size:11px;color:var(--muted);margin-top:3px}
+.vstats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.vstat{background:rgba(7,11,20,.38);border:1px solid rgba(30,45,71,.7);border-radius:8px;padding:7px 8px}
+.vstat b{display:block;color:var(--accent3);font-size:15px;font-variant-numeric:tabular-nums}
+.vstat span{display:block;color:var(--muted);font-size:10px;margin-top:1px}
+.presence{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-top:10px}
+.pbit{height:12px;border-radius:4px;background:#18243a;border:1px solid #263958}
+.pbit.on{background:var(--accent);border-color:var(--accent)}
+.vcity{font-size:11px;color:var(--muted);margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.emptyviz{grid-column:1/-1;color:var(--muted);font-size:13px;padding:22px;text-align:center;border:1px dashed var(--border);border-radius:12px}
 @media(max-width:820px){.two{grid-template-columns:1fr}}
 </style>
 </head>
@@ -148,7 +167,7 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
   <p class="sub">按同一个阈值（某 gene 占某城 patch ≥0.05%）给 512 个基因贴标签：
     12 城都有的是 <b>core universal</b>，只在 1 城出现的是 <b>city-unique</b>，
     只在 2 城出现的是 <b>pair-specific</b>，3–5 城出现的是 <b>regional</b>。
-    下面表格可直接查看基因编号、类别、主要城市、占比、富集倍数和出现城市。</p>
+    下方用基因卡片和 12 城点阵展示出现范围：横向点越满越通用，只有一两个亮点则越特异。</p>
   <div class="card">
     <div class="tools">
       <button class="btn active" data-mode="core">通用 core</button>
@@ -158,12 +177,9 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
       <select class="select" id="cityFilter"><option value="">按城市 marker</option></select>
       <a class="dl" href="citygenome/gene_city_specificity.csv" download>下载完整 CSV</a>
     </div>
-    <div style="overflow:auto;max-height:520px">
-      <table class="gtable">
-        <thead><tr><th>Gene</th><th>类型</th><th>语义</th><th>主要城市</th><th>占比 / lift</th><th>出现城市</th></tr></thead>
-        <tbody id="geneTable"></tbody>
-      </table>
-    </div>
+    <div class="specbar" id="specificityStats"></div>
+    <div class="citydots" id="cityDots"></div>
+    <div class="geneviz" id="geneViz"></div>
   </div>
 
   <h2 class="sec">⑤ 视觉多样性 · 街景有多丰富</h2>
@@ -192,47 +208,71 @@ function geneChip(g,badge){
   c.appendChild(m);c.title=`基因 #${g.gene} · ${g.cat}`;
   return c;
 }
-function rowHtml(g){
-  const cities=(g.present_cities_by_share||"").split("|").filter(Boolean).join(", ");
-  const share=g.top_share!=null ? (g.top_share*100).toFixed(2)+"%" : (g.share!=null ? (g.share*100).toFixed(2)+"%" : "");
-  const lift=g.top_lift_vs_global_mean!=null ? g.top_lift_vs_global_mean : g.lift;
-  const main=g.top_city_zh||g.top_city||"";
-  return `<tr>
-    <td class="num">#${g.gene}</td>
-    <td><span class="mut">${g.class||("marker · "+(g.prevalence_n_cities||"")+"城")}</span></td>
-    <td>${g.label||g.name||""}<div class="mut">${g.category||g.cat||""}</div></td>
-    <td>${main}</td>
-    <td class="num">${share}<div class="mut">lift ×${Number(lift||0).toFixed(2)}</div></td>
-    <td class="mut">${cities}</td>
-  </tr>`;
-}
-function setupSpecificity(){
+function setupSpecificity(D){
   fetch("citygenome/gene_city_specificity_summary.json").then(r=>r.json()).then(S=>{
-    const tbody=document.getElementById("geneTable");
+    const viz=document.getElementById("geneViz");
     const citySel=document.getElementById("cityFilter");
+    const statBox=document.getElementById("specificityStats");
+    const dotBox=document.getElementById("cityDots");
     const cityNames={HongKong:"香港",Singapore:"新加坡",Amsterdam:"阿姆斯特丹",CapeTown:"开普敦",Paris:"巴黎",
       SaoPaulo:"圣保罗",MexicoCity:"墨西哥城",Sydney:"悉尼",Jakarta:"雅加达",Dhaka:"达卡",NewDelhi:"新德里",Manila:"马尼拉"};
-    (S.cities||Object.keys(S.city_markers_top8||{})).forEach(c=>{
+    const cities=S.cities||Object.keys(S.city_markers_top8||{});
+    cities.forEach(c=>{
       const o=document.createElement("option");o.value=c;o.textContent=cityNames[c]||c;citySel.appendChild(o);
     });
+    dotBox.innerHTML=cities.map((c,i)=>`<div class="cdot" title="${cityNames[c]||c}">${i+1}</div>`).join("");
     const sets={
       core:S.core_universal_top_by_min_share||[],
       unique:S.city_unique_all||[],
       pair:S.pair_specific_top_by_share||[],
       regional:S.regional_3to5_top_by_share||[]
     };
-    function render(rows){tbody.innerHTML=rows.map(rowHtml).join("")||`<tr><td colspan="6" class="mut">没有可显示的基因</td></tr>`;}
-    render(sets.core);
+    function catColor(g){return (D.categories||[]).find(c=>c.name===(g.category||g.cat))?.color||"var(--accent)";}
+    function pct(x){return x==null?"":(Number(x)*100).toFixed(2)+"%";}
+    function present(g){return (g.present_cities_by_share||"").split("|").filter(Boolean);}
+    function vcard(g){
+      const pc=present(g), pset=new Set(pc), share=g.top_share!=null?g.top_share:g.share, lift=g.top_lift_vs_global_mean!=null?g.top_lift_vs_global_mean:g.lift;
+      const main=g.top_city_zh||cityNames[g.top_city]||g.top_city||"";
+      const color=catColor(g);
+      return `<div class="vcard" style="--accent:${color}">
+        <div class="vtop"><div class="vid">#${g.gene}</div><div class="vclass">${g.class||("marker · "+(g.prevalence_n_cities||"")+"城")}</div></div>
+        <div class="vname">${g.label||g.name||""}</div>
+        <div class="vcat"><span class="cat" style="background:${color}"></span>${g.category||g.cat||""}</div>
+        <div class="vstats">
+          <div class="vstat"><b>${pct(share)}</b><span>top share</span></div>
+          <div class="vstat"><b>×${Number(lift||0).toFixed(1)}</b><span>lift</span></div>
+        </div>
+        <div class="presence">${cities.map(c=>`<div class="pbit ${pset.has(c)?"on":""}" title="${cityNames[c]||c}"></div>`).join("")}</div>
+        <div class="vcity">${main}${pc.length?` · ${pc.map(c=>cityNames[c]||c).join(" / ")}`:""}</div>
+      </div>`;
+    }
+    function renderStats(mode, rows){
+      const counts=S.class_counts||{};
+      const cards=[
+        ["core", counts.core_universal_12cities||0, "12 城通用"],
+        ["unique", counts.city_unique_1city||0, "单城独有"],
+        ["pair", counts.pair_specific_2cities||0, "双城特异"],
+        ["regional", counts.regional_3to5cities||0, "3-5 城区域型"]
+      ];
+      statBox.innerHTML=cards.map(([key,n,l])=>`<div class="specstat" style="${key===mode?'border-color:var(--accent)':''}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+      const active=new Set(rows.flatMap(present));
+      [...dotBox.children].forEach((d,i)=>d.classList.toggle("on", active.has(cities[i])));
+    }
+    function render(mode, rows){
+      renderStats(mode, rows);
+      viz.innerHTML=rows.map(vcard).join("")||`<div class="emptyviz">没有可显示的基因</div>`;
+    }
+    render("core", sets.core);
     document.querySelectorAll(".btn[data-mode]").forEach(b=>{
       b.onclick=()=>{
         document.querySelectorAll(".btn[data-mode]").forEach(x=>x.classList.remove("active"));
-        b.classList.add("active");citySel.value="";render(sets[b.dataset.mode]||[]);
+        b.classList.add("active");citySel.value="";render(b.dataset.mode, sets[b.dataset.mode]||[]);
       };
     });
     citySel.onchange=()=>{
       document.querySelectorAll(".btn[data-mode]").forEach(x=>x.classList.remove("active"));
       const rows=(S.city_markers_top8||{})[citySel.value]||[];
-      render(rows);
+      render("marker", rows);
     };
   });
 }
@@ -323,7 +363,7 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
     `泛基因组阈值：基因占某城 patch ≥ ${(D.pangenome.threshold*100).toFixed(2)}% 记为"出现"。`+
     `标志基因 lift = 该城占比 ÷ 全球均值。多样性 = 香农熵（bit），等效基因数 = 2^熵。`+
     `全部基于 global3 干净字典（K=512，图像质量过滤后重训）。分析用每点 4 朝向。`;
-  setupSpecificity();
+  setupSpecificity(D);
 });
 </script>
 </body>
