@@ -90,17 +90,26 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
   display:flex;align-items:center;justify-content:center;font-size:9.5px;font-variant-numeric:tabular-nums}
 .cdot.on{background:rgba(57,214,255,.16);border-color:rgba(57,214,255,.58);color:var(--text)}
 .geneviz{display:block}
-.genelist{display:flex;flex-direction:column;gap:8px}
-.geneitem{background:var(--panel2);border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.geneitem[open]{border-color:rgba(57,214,255,.45)}
-.geneitem summary{list-style:none;cursor:pointer;padding:10px 12px;display:grid;grid-template-columns:minmax(82px,.5fr) minmax(160px,1.4fr) minmax(120px,.8fr) minmax(148px,.9fr);gap:10px;align-items:center}
-.geneitem summary::-webkit-details-marker{display:none}
-.gid{font-size:13px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
-.glabel{font-size:13px;color:var(--text);line-height:1.25;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gmeta{font-size:11px;color:var(--muted);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gmetric{display:flex;gap:6px;justify-content:flex-end;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
-.gmetric b{color:var(--accent3);font-size:12px}
-.detailbody{border-top:1px solid var(--border);padding:12px;background:rgba(7,11,20,.18)}
+.axishead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:0 0 8px}
+.axishead .title{font-size:13px;color:var(--text);font-weight:700}
+.axishead .count{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.axiswrap{position:relative;overflow-x:auto;overflow-y:hidden;border:1px solid var(--border);border-radius:10px;background:rgba(7,11,20,.28);padding:12px 10px 10px;cursor:grab;scrollbar-color:#2a3f61 #101a2b}
+.axiswrap:active{cursor:grabbing}
+.geneaxis{display:flex;align-items:stretch;gap:7px;min-width:max-content}
+.gtick{width:76px;border:1px solid rgba(30,45,71,.85);border-radius:8px;background:rgba(15,25,42,.9);color:var(--muted);padding:7px 6px 6px;cursor:pointer;text-align:left;font-family:inherit}
+.gtick:hover{border-color:rgba(57,214,255,.55);color:var(--text)}
+.gtick.active{border-color:var(--accent);box-shadow:0 0 0 1px rgba(57,214,255,.22) inset;background:rgba(57,214,255,.1);color:var(--text)}
+.gtick .id{display:block;color:#fff;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
+.gtick .nm{display:block;font-size:10px;line-height:1.2;margin-top:3px;height:24px;overflow:hidden}
+.gtick .bar{display:block;height:3px;border-radius:3px;background:var(--accent);margin-top:6px;opacity:.85}
+.genePanel{margin-top:12px;border:1px solid var(--border);border-radius:10px;background:rgba(7,11,20,.18);overflow:hidden}
+.panelTop{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;padding:12px;border-bottom:1px solid var(--border)}
+.panelTop .gid{font-size:15px;color:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.panelTop .glabel{font-size:14px;color:var(--text);margin-top:3px}
+.panelTop .gmeta{font-size:11px;color:var(--muted);margin-top:4px}
+.gmetric{display:flex;gap:8px;justify-content:flex-end;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.gmetric b{color:var(--accent3);font-size:13px}
+.detailbody{padding:12px}
 .detailhint{font-size:11px;color:var(--muted);margin-bottom:10px}
 .listnote{font-size:12px;color:var(--muted);margin:2px 0 10px}
 .presence{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-top:10px}
@@ -117,7 +126,7 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 .imgswap:hover .act,.imgswap:focus-within .act{opacity:0}
 .cap{font-size:10px;color:var(--muted);padding:5px 7px 6px;text-align:center}
 .emptyviz{grid-column:1/-1;color:var(--muted);font-size:13px;padding:22px;text-align:center;border:1px dashed var(--border);border-radius:12px}
-@media(max-width:820px){.two{grid-template-columns:1fr}.geneitem summary{grid-template-columns:1fr}.gmetric{justify-content:flex-start}}
+@media(max-width:820px){.two{grid-template-columns:1fr}.panelTop{grid-template-columns:1fr}.gmetric{justify-content:flex-start}.gtick{width:68px}}
 </style>
 </head>
 <body>
@@ -178,7 +187,7 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
   <p class="sub">按同一个阈值（某 gene 占某城 patch ≥0.05%）给 512 个基因贴标签：
     12 城都有的是 <b>core universal</b>，只在 1 城出现的是 <b>city-unique</b>，
     只在 2 城出现的是 <b>pair-specific</b>，3–5 城出现的是 <b>regional</b>。
-    下方用下拉列表切换集合；每个基因可展开查看城市示例，图像同位叠放展示激活与原图。</p>
+    下方用下拉列表切换集合；基因收在横向轴中，选中一个基因后查看 12 城示例，图像同位叠放展示激活与原图。</p>
   <div class="card">
     <div class="tools">
       <select class="select" id="modeSelect">
@@ -191,8 +200,6 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
         <option value="all">全部 512 个</option>
       </select>
       <select class="select" id="cityFilter"><option value="">按城市 marker</option></select>
-      <button class="btn" id="expandAll">展开当前列表</button>
-      <button class="btn" id="collapseAll">收起</button>
       <a class="dl" href="citygenome/gene_city_specificity.csv" download>下载完整 CSV</a>
     </div>
     <div class="specbar" id="specificityStats"></div>
@@ -293,24 +300,68 @@ function setupSpecificity(D){
         <div class="cap">激活 / 原图</div>
       </div>`).join("")}</div>`;
     }
-    function geneItem(g, i){
+    function geneDetail(g){
       const pc=present(g), pset=new Set(pc), share=g.top_share!=null?g.top_share:g.share, lift=g.top_lift_vs_global_mean!=null?g.top_lift_vs_global_mean:g.lift;
       const main=g.top_city_zh||cityNames[g.top_city]||g.top_city||"";
       const color=catColor(g);
       const cls=g.class||("marker · "+(g.prevalence_n_cities||"")+"城");
-      return `<details class="geneitem" style="--accent:${color}" ${i===0?"open":""}>
-        <summary>
-          <div class="gid">#${g.gene}</div>
-          <div class="glabel">${esc(g.label||g.name||"")}</div>
-          <div class="gmeta"><span class="cat" style="background:${color}"></span>${esc(g.category||g.cat||"")} · ${esc(cls)}</div>
+      return `<div class="genePanel" style="--accent:${color}">
+        <div class="panelTop">
+          <div>
+            <div class="gid">#${g.gene}</div>
+            <div class="glabel">${esc(g.label||g.name||"")}</div>
+            <div class="gmeta"><span class="cat" style="background:${color}"></span>${esc(g.category||g.cat||"")} · ${esc(cls)}</div>
+          </div>
           <div class="gmetric"><span><b>${pct(share)}</b> top</span><span><b>×${Number(lift||0).toFixed(1)}</b> lift</span></div>
-        </summary>
+        </div>
         <div class="detailbody">
           <div class="detailhint">${main?`最高城市：${esc(main)} · `:""}出现城市：${pc.length?esc(pc.map(c=>cityNames[c]||c).join(" / ")):"无"}</div>
           <div class="presence">${cities.map(c=>`<div class="pbit ${pset.has(c)?"on":""}" title="${esc(cityNames[c]||c)}"></div>`).join("")}</div>
           ${examplesHtml(g)}
         </div>
-      </details>`;
+      </div>`;
+    }
+    function axisHtml(rows, selected){
+      const maxShare=Math.max(...rows.map(r=>Number(r.top_share||0)), 1e-9);
+      return `<div class="geneaxis">${rows.map((g,i)=>{
+        const color=catColor(g);
+        const w=Math.max(8, Math.round((Number(g.top_share||0)/maxShare)*100));
+        return `<button class="gtick ${i===selected?"active":""}" data-i="${i}" style="--accent:${color}" title="#${g.gene} · ${esc(g.label||g.name||"")}">
+          <span class="id">#${g.gene}</span>
+          <span class="nm">${esc(g.label||g.name||"")}</span>
+          <span class="bar" style="width:${w}%"></span>
+        </button>`;
+      }).join("")}</div>`;
+    }
+    function attachAxis(rows, selected){
+      const axisWrap=viz.querySelector(".axiswrap");
+      const panel=viz.querySelector(".selectedGene");
+      axisWrap.querySelectorAll(".gtick").forEach(btn=>{
+        btn.onclick=()=>{
+          const i=Number(btn.dataset.i);
+          axisWrap.querySelectorAll(".gtick").forEach(x=>x.classList.toggle("active", x===btn));
+          const count=viz.querySelector(".selectedCount");
+          if(count)count.textContent=`${rows.length} genes · selected #${rows[i].gene}`;
+          panel.innerHTML=geneDetail(rows[i]);
+          btn.scrollIntoView({block:"nearest", inline:"center", behavior:"smooth"});
+        };
+      });
+      let down=false, startX=0, startLeft=0, dragged=false;
+      axisWrap.addEventListener("pointerdown", e=>{
+        down=true; dragged=false; startX=e.clientX; startLeft=axisWrap.scrollLeft; axisWrap.setPointerCapture(e.pointerId);
+      });
+      axisWrap.addEventListener("pointermove", e=>{
+        if(!down)return;
+        const dx=e.clientX-startX;
+        if(Math.abs(dx)>3)dragged=true;
+        axisWrap.scrollLeft=startLeft-dx;
+      });
+      axisWrap.addEventListener("pointerup", e=>{
+        down=false;
+        if(dragged)e.preventDefault();
+      });
+      const active=axisWrap.querySelector(`.gtick[data-i="${selected}"]`);
+      if(active)active.scrollIntoView({block:"nearest", inline:"center"});
     }
     function renderStats(mode, rows){
       const counts=Object.fromEntries(Object.entries(sets).map(([k,v])=>[k,v.length]));
@@ -327,7 +378,12 @@ function setupSpecificity(D){
     function render(mode, rows){
       renderStats(mode, rows);
       const title=mode==="marker" ? (cityNames[citySel.value]||citySel.value)+" marker" : modeSel.options[modeSel.selectedIndex].textContent;
-      viz.innerHTML=`<div class="listnote">${esc(title)}：当前显示 ${rows.length} 个基因。点击任意一行展开城市示例。</div><div class="genelist">${rows.map(geneItem).join("")||`<div class="emptyviz">没有可显示的基因</div>`}</div>`;
+      if(!rows.length){viz.innerHTML=`<div class="emptyviz">没有可显示的基因</div>`;return;}
+      const selected=0;
+      viz.innerHTML=`<div class="axishead"><div><div class="title">${esc(title)}</div><div class="count selectedCount">${rows.length} genes · selected #${rows[selected].gene}</div></div></div>
+        <div class="axiswrap">${axisHtml(rows, selected)}</div>
+        <div class="selectedGene">${geneDetail(rows[selected])}</div>`;
+      attachAxis(rows, selected);
     }
     render("core", sets.core);
     modeSel.onchange=()=>{citySel.value="";render(modeSel.value, sets[modeSel.value]||[]);};
@@ -336,8 +392,6 @@ function setupSpecificity(D){
       const rows=(S.city_markers_top8||{})[citySel.value]||[];
       render("marker", rows);
     };
-    document.getElementById("expandAll").onclick=()=>viz.querySelectorAll("details").forEach(d=>d.open=true);
-    document.getElementById("collapseAll").onclick=()=>viz.querySelectorAll("details").forEach(d=>d.open=false);
   });
 }
 fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
