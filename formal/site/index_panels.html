@@ -46,7 +46,6 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
   <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
   <div class="tabs">
     <a class="tab active" href="index.html">总览</a>
-    <a class="tab" href="compose.html">组成与分类</a>
     <a class="tab" href="genes.html">512 视觉基因</a>
     <a class="tab" href="coexpr.html">基因组合</a>
     <a class="tab" href="citygenome.html">城市基因组</a>
@@ -56,7 +55,7 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
 <div class="wrap">
   <h1>12 城街道的<span>视觉基因组成</span> · 总览</h1>
   <p class="lead">每座城市一个面板：小地图上每个点是一处街景，<b style="color:var(--text)">颜色 = 该街景点的主导视觉基因类别</b>，
-  可看出城内不同街道的组成差异；下方条形是全城平均配比。点面板进入「组成与分类」逐街景查看。</p>
+  可看出城内不同街道的组成差异；下方条形是全城平均配比。</p>
   <div class="kpis">
     <div class="kpi"><div class="n">12</div><div class="l">城市</div></div>
     <div class="kpi"><div class="n">3000</div><div class="l">采样街景</div></div>
@@ -67,7 +66,7 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
   <div class="grid" id="grid"></div>
   <div class="foot">
     数据：全球去偏 K=512 字典编码，每城 250 处街景（路网密度分层采样）。
-    深入查看 → <a href="compose.html">组成与分类</a> · <a href="interpret.html">视觉基因字典</a>
+    深入查看 → <a href="citygenome.html">城市基因组</a> · <a href="interpret.html">视觉基因字典</a>
   </div>
 </div>
 <script>
@@ -83,7 +82,7 @@ fetch("compose/manifest.json").then(r=>r.json()).then(m=>{
       const y=H-(pad+(p.lat-b.minlat)/((b.maxlat-b.minlat)||1)*(H-2*pad));
       return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.1" fill="${col(dom(p.c))}"/>`;}).join("");
     const top=c.comp.map((v,k)=>[k,v]).sort((a,b)=>b[1]-a[1]).slice(0,3);
-    return `<a class="panel" href="compose.html?city=${c.name}">
+    return `<a class="panel" href="citygenome.html">
       <div class="phead"><b>${c.zh}</b><span class="n">${c.n} 街景</span></div>
       <svg class="pmap" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${pts}</svg>
       <div class="pbar">${stack(c.comp)}</div>
