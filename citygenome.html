@@ -146,7 +146,7 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
   <h1>12 座城市的<span>视觉基因组</span>对比</h1>
   <p class="lead">把每座城市看成一条 <b>512 维的视觉基因频谱</b>（该城每个 patch 的主导基因分布，12 城严格等量、去偏）。
      像比较物种基因组一样比较城市：谁和谁最像（<b>亲缘树</b>）、哪些基因人人都有 / 哪些是某城独有（<b>泛基因组</b>）、
-     每座城市的<b>标志基因</b>是什么、以及各城的<b>视觉多样性</b>。</p>
+     以及各城的<b>视觉多样性</b>。</p>
   <div class="kpis" id="kpis"></div>
 
   <h2 class="sec">① 城市亲缘树 · 谁和谁最像</h2>
@@ -160,30 +160,7 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
     </div>
   </div>
 
-  <h2 class="sec">② 泛基因组 · 核心 vs 特有</h2>
-  <p class="sub">借用微生物<b>泛基因组</b>概念：统计每个基因在多少座城市里"出现"（占该城 patch ≥0.05%）。
-     <b>核心基因</b>（12 城都有）= 普适的城市元素；<b>特有基因</b>（只在 1–2 城）= 某城独特的视觉签名。</p>
-  <div class="two">
-    <div class="card">
-      <div style="font-size:12.5px;color:var(--muted);margin-bottom:8px">基因出现在 <b style="color:var(--text)">k</b> 座城市的数量分布（横轴 k=1…12）</div>
-      <div id="spec"></div>
-      <div id="pgstat" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"></div>
-    </div>
-    <div class="card">
-      <div style="font-size:12.5px;color:var(--accent3);margin-bottom:8px">核心基因示例（12 城都有，最普适）</div>
-      <div class="genes" id="core"></div>
-    </div>
-  </div>
-  <div class="card" style="margin-top:14px">
-    <div style="font-size:12.5px;color:var(--warn);margin-bottom:8px">城市特有 / 稀有基因示例（只在 1–2 城显著）</div>
-    <div class="genes" id="unique"></div>
-  </div>
-
-  <h2 class="sec">③ 城市标志基因 · signature</h2>
-  <p class="sub">每座城市相对全球均值<b>最富集</b>的基因（lift = 该城占比 ÷ 全球均值）。这些是最能把这座城市"认出来"的视觉特征。</p>
-  <div class="mcards" id="markers"></div>
-
-  <h2 class="sec">④ 基因通用性检索 · core / unique / regional</h2>
+  <h2 class="sec">② 基因通用性检索 · core / unique / regional</h2>
   <p class="sub">按同一个阈值（某 gene 占某城 patch ≥0.05%）给 512 个基因贴标签：
     12 城都有的是 <b>core universal</b>，只在 1 城出现的是 <b>city-unique</b>，
     只在 2 城出现的是 <b>pair-specific</b>，3–5 城出现的是 <b>regional</b>。
@@ -199,7 +176,7 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
         <option value="accessory">辅助型 6-8 城</option>
         <option value="all">全部 512 个</option>
       </select>
-      <select class="select" id="cityFilter"><option value="">按城市 marker</option></select>
+      <select class="select" id="cityFilter"><option value="">按城市筛选</option></select>
       <a class="dl" href="citygenome/gene_city_specificity.csv" download>下载完整 CSV</a>
     </div>
     <div class="specbar" id="specificityStats"></div>
@@ -207,7 +184,7 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
     <div class="geneviz" id="geneViz"></div>
   </div>
 
-  <h2 class="sec">⑤ 视觉多样性 · 街景有多丰富</h2>
+  <h2 class="sec">③ 视觉多样性 · 街景有多丰富</h2>
   <p class="sub">各城基因频谱的<b>香农熵</b>（等效基因数 = 2^熵）——越高＝街景视觉构成越丰富多变，越低＝越单一、模式化。</p>
   <div class="card"><div id="div"></div></div>
 
@@ -222,16 +199,6 @@ function lerp(a,b,t){return Math.round(a+(b-a)*t);}
 function simColor(v){ // 0..1 -> panel..accent
   const lo=[22,35,58], hi=[57,214,255];
   return `rgb(${lerp(lo[0],hi[0],v)},${lerp(lo[1],hi[1],v)},${lerp(lo[2],hi[2],v)})`;
-}
-function geneChip(g,badge){
-  const c=el("div","g");
-  const im=el("img");im.src=g.thumb||"";im.loading="lazy";im.onerror=()=>{im.style.opacity=.15;};
-  c.appendChild(im);
-  const m=el("div","m");
-  m.appendChild(el("div","nm",`<span class="cat" style="background:${g.color}"></span>${g.name}`));
-  m.appendChild(el("div","badge",badge));
-  c.appendChild(m);c.title=`基因 #${g.gene} · ${g.cat}`;
-  return c;
 }
 function setupSpecificity(D){
   Promise.all([
@@ -429,39 +396,6 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
   }
   hw.appendChild(grid);
 
-  // ---- pangenome spectrum ----
-  const spec=D.pangenome.spectrum, sp=document.getElementById("spec"), smax=Math.max(...spec);
-  spec.forEach((c,i)=>{
-    const col=el("div","scol");
-    col.appendChild(el("div","c",c));
-    const b=el("div","b");b.style.height=Math.max(3,c/smax*118)+"px";
-    if(i==spec.length-1)b.style.background="var(--accent3)";
-    col.appendChild(b);col.appendChild(el("div","k",(i+1)));
-    sp.appendChild(col);
-  });
-  const pg=D.pangenome, ps=document.getElementById("pgstat");
-  [["核心 (12城)",pg.n_core,"var(--accent3)"],["附属 (3–11城)",pg.n_accessory,"var(--accent)"],
-   ["特有 (1–2城)",pg.n_unique,"var(--warn)"]].forEach(([l,n,c])=>{
-    const b=el("div");b.style.cssText="background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:8px 13px";
-    b.innerHTML=`<div style="font-size:19px;font-weight:800;color:${c};font-variant-numeric:tabular-nums">${n}</div><div style="font-size:11px;color:var(--muted)">${l}</div>`;
-    ps.appendChild(b);
-  });
-  D.pangenome.core.forEach(g=>document.getElementById("core").appendChild(geneChip(g,`遍及 12 城`)));
-  D.pangenome.unique.forEach(g=>document.getElementById("unique").appendChild(geneChip(g,`${g.zh} · ×${g.lift}`)));
-
-  // ---- markers ----
-  const mk=document.getElementById("markers");
-  // order marker cards by phylogeny leaf order
-  const order={};L.forEach((c,i)=>order[c]=i);
-  const ms=[...D.markers].sort((a,b)=>order[a.city]-order[b.city]);
-  ms.forEach(mm=>{
-    const c=el("div","mc");
-    c.appendChild(el("h3",null,`${mm.zh} <span class="rank">${mm.city}</span>`));
-    const row=el("div","mrow");
-    mm.genes.forEach(g=>row.appendChild(geneChip(g,`×${g.lift} 富集`)));
-    c.appendChild(row);mk.appendChild(c);
-  });
-
   // ---- diversity ----
   const dv=document.getElementById("div"), effs=D.diversity.map(d=>d.eff), emax=Math.max(...effs), emin=Math.min(...effs);
   D.diversity.forEach(d=>{
@@ -479,7 +413,7 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
     `<b>方法.</b> 城市频谱 = 每城 1200 张图 × 784 patch 的主导基因（argmax）分布，12 城等量去偏。`+
     `亲缘距离用 <b>Jensen–Shannon 散度</b>（对称、有界），average-linkage 层次聚类。`+
     `泛基因组阈值：基因占某城 patch ≥ ${(D.pangenome.threshold*100).toFixed(2)}% 记为"出现"。`+
-    `标志基因 lift = 该城占比 ÷ 全球均值。多样性 = 香农熵（bit），等效基因数 = 2^熵。`+
+    `多样性 = 香农熵（bit），等效基因数 = 2^熵。`+
     `全部基于 global3 干净字典（K=512，图像质量过滤后重训）。分析用每点 4 朝向。`;
   setupSpecificity(D);
 });
