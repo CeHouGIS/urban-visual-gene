@@ -53,16 +53,26 @@ for m in comms:
     mods.append({"genes":sorted(m,key=lambda g:-f[g]),"coh":round(coh,2),
                  "cats":sorted(cats.items(),key=lambda x:-x[1])})
 mods.sort(key=lambda x:-(x["coh"]*np.sqrt(len(x["genes"]))))
-NAMES=["车辆·建成","树冠·密林","立面·门窗","绿化·树丛","街道走廊","店面·招牌","架空线·电杆",
-       "墙面·立面","路面·立面","绿篱·沿墙","立面·结构","道路·沿街","路口·路面","路面·地物"]
+# data-driven module names: dominant child taxonomy label(s) among the module's
+# genes (NOT a fixed by-rank list, which drifts out of sync when composition changes)
 MPAL=["#ff5d5d","#22e0a1","#f6c945","#7ee787","#4dd0e1","#ff9e64","#b388ff","#73daca",
       "#ff7ac6","#5ad1ff","#9b8cff","#8a9bb5","#ffd24d","#c2b280"]
-gene2mod={}
+def child_label(g):
+    gg=genesM.get(str(g)); c=gg.get("child") if gg else None
+    return c if c else CATN[int(g2c[g])]                      # fall back to parent category
+def module_name(genes):
+    cc=Counter(child_label(g) for g in genes); tot=sum(cc.values())
+    top=cc.most_common(2)
+    if len(top)==1 or top[0][1]>=0.55*tot: return top[0][0]   # one label dominates
+    return f"{top[0][0]} + {top[1][0]}"                       # else the two leading labels combine
+seen={}; gene2mod={}
 for mi,md in enumerate(mods):
-    md["id"]=mi; md["name"]=NAMES[mi] if mi<len(NAMES) else CATN[md["cats"][0][0]]
+    nm=module_name(md["genes"]); seen[nm]=seen.get(nm,0)+1     # disambiguate repeats: 名 / 名 B / 名 C
+    md["id"]=mi; md["name"]=nm if seen[nm]==1 else f"{nm} {chr(64+seen[nm])}"
     md["color"]=MPAL[mi%len(MPAL)]
     for g in md["genes"]: gene2mod[g]=mi
 log(f"{len(mods)} modules")
+log("module names: "+", ".join(f"{md['id']}:{md['name']}" for md in mods))
 
 # ---- module on-scene combination exemplars ----
 def coact(members):
