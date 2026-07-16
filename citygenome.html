@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Visual Gene · 城市基因组对比</title>
+<style>
+:root{--bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
+  --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;--warn:#ff9e64}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+a{color:inherit}
+#top{position:sticky;top:0;z-index:10;height:52px;display:flex;align-items:center;gap:18px;padding:0 18px;
+  background:rgba(7,11,20,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.brand{font-weight:700;display:flex;align-items:center;gap:9px;font-size:15px;white-space:nowrap}
+.brand .dot{width:10px;height:10px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent3),var(--accent));box-shadow:0 0 12px var(--accent)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font-size:13px;color:var(--muted);padding:6px 12px;border-radius:8px;border:1px solid transparent;text-decoration:none}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-color:var(--border);background:var(--panel2)}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 20px 70px}
+h1{font-size:26px;margin:0 0 10px;line-height:1.28}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:14.5px;line-height:1.7;margin:0 0 16px;max-width:880px}
+.lead b{color:var(--text)}
+.kpis{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 4px}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:10px 15px;min-width:96px}
+.kpi .n{font-size:20px;font-weight:800;color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:11px;color:var(--muted);margin-top:3px}
+h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;text-transform:uppercase}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 16px;line-height:1.65;max-width:880px}
+.sub b{color:var(--text)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px}
+.two{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:start}
+.tri img{width:100%;display:block;border-radius:10px;border:1px solid var(--border)}
+/* heatmap */
+#heat{display:grid;gap:2px}
+.hcell{aspect-ratio:1;border-radius:3px;position:relative;cursor:default}
+.hlab{font-size:10.5px;color:var(--muted);display:flex;align-items:center;white-space:nowrap;overflow:hidden}
+.hlab.col{writing-mode:vertical-rl;transform:rotate(180deg);justify-content:flex-end;height:64px}
+#tip{position:fixed;pointer-events:none;background:#0a1120;border:1px solid var(--border);border-radius:8px;
+  padding:7px 10px;font-size:12px;color:var(--text);z-index:30;display:none;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+/* bars */
+.bar{display:flex;align-items:center;gap:9px;margin:5px 0;font-size:12.5px}
+.bar .nm{width:78px;color:var(--text);text-align:right;flex:none}
+.bar .track{flex:1;height:16px;background:var(--panel2);border-radius:5px;overflow:hidden}
+.bar .fill{height:100%;border-radius:5px}
+.bar .v{width:64px;color:var(--muted);flex:none;font-variant-numeric:tabular-nums}
+/* pangenome spectrum */
+#spec{display:flex;align-items:flex-end;gap:6px;height:150px;margin:6px 0 2px}
+.scol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.scol .b{width:100%;border-radius:4px 4px 0 0;background:var(--accent2)}
+.scol .k{font-size:10px;color:var(--muted);margin-top:4px}
+.scol .c{font-size:10px;color:var(--muted);margin-bottom:3px;font-variant-numeric:tabular-nums}
+/* gene chips */
+.genes{display:flex;flex-wrap:wrap;gap:10px}
+.g{width:104px;background:var(--panel2);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.g img{width:104px;height:104px;object-fit:cover;display:block;background:#0b1322}
+.g .m{padding:6px 7px}
+.g .nm{font-size:11.5px;color:#fff;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g .badge{font-size:10.5px;color:var(--accent3);font-variant-numeric:tabular-nums;margin-top:2px}
+.g .cat{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:middle}
+/* marker city cards */
+.mcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.mc{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:13px 14px}
+.mc h3{margin:0 0 9px;font-size:14px;color:#fff;display:flex;align-items:center;gap:8px}
+.mc h3 .rank{font-size:11px;color:var(--muted);font-weight:400}
+.mrow{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.note{margin-top:34px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);
+  border-left:3px solid var(--accent2);border-radius:10px;font-size:12.8px;color:var(--muted);line-height:1.7}
+.note b{color:var(--text)}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="top">
+  <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
+  <div class="tabs">
+    <a class="tab" href="index.html">总览</a>
+    <a class="tab" href="compose.html">组成与分类</a>
+    <a class="tab" href="genes.html">512 视觉基因</a>
+    <a class="tab" href="coexpr.html">基因组合</a>
+    <a class="tab active" href="citygenome.html">城市基因组</a>
+    <a class="tab" href="interpret.html">可解释性·SAE</a>
+    <a class="tab" href="explorer.html">街道浏览器</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <h1>12 座城市的<span>视觉基因组</span>对比</h1>
+  <p class="lead">把每座城市看成一条 <b>512 维的视觉基因频谱</b>（该城每个 patch 的主导基因分布，12 城严格等量、去偏）。
+     像比较物种基因组一样比较城市：谁和谁最像（<b>亲缘树</b>）、哪些基因人人都有 / 哪些是某城独有（<b>泛基因组</b>）、
+     每座城市的<b>标志基因</b>是什么、以及各城的<b>视觉多样性</b>。</p>
+  <div class="kpis" id="kpis"></div>
+
+  <h2 class="sec">① 城市亲缘树 · 谁和谁最像</h2>
+  <p class="sub">城市间距离 = 两城基因频谱的 <b>Jensen–Shannon 散度</b>（分布差异的信息量），层次聚类成树。
+     <b>纯视觉、无任何地理输入</b>——若树能还原地理/文化分组，说明视觉基因确实抓住了城市的"型"。右侧热图：越亮＝越相似（对角线=自身）。</p>
+  <div class="two">
+    <div class="card tri"><img src="citygenome/city_dendro.png" alt="城市视觉亲缘树"></div>
+    <div class="card">
+      <div id="heatwrap"></div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:8px">相似度为组内相对值（100=最相似的一对，0=最远的一对）。悬停看数值。</div>
+    </div>
+  </div>
+
+  <h2 class="sec">② 泛基因组 · 核心 vs 特有</h2>
+  <p class="sub">借用微生物<b>泛基因组</b>概念：统计每个基因在多少座城市里"出现"（占该城 patch ≥0.05%）。
+     <b>核心基因</b>（12 城都有）= 普适的城市元素；<b>特有基因</b>（只在 1–2 城）= 某城独特的视觉签名。</p>
+  <div class="two">
+    <div class="card">
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:8px">基因出现在 <b style="color:var(--text)">k</b> 座城市的数量分布（横轴 k=1…12）</div>
+      <div id="spec"></div>
+      <div id="pgstat" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px"></div>
+    </div>
+    <div class="card">
+      <div style="font-size:12.5px;color:var(--accent3);margin-bottom:8px">核心基因示例（12 城都有，最普适）</div>
+      <div class="genes" id="core"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div style="font-size:12.5px;color:var(--warn);margin-bottom:8px">城市特有 / 稀有基因示例（只在 1–2 城显著）</div>
+    <div class="genes" id="unique"></div>
+  </div>
+
+  <h2 class="sec">③ 城市标志基因 · signature</h2>
+  <p class="sub">每座城市相对全球均值<b>最富集</b>的基因（lift = 该城占比 ÷ 全球均值）。这些是最能把这座城市"认出来"的视觉特征。</p>
+  <div class="mcards" id="markers"></div>
+
+  <h2 class="sec">④ 视觉多样性 · 街景有多丰富</h2>
+  <p class="sub">各城基因频谱的<b>香农熵</b>（等效基因数 = 2^熵）——越高＝街景视觉构成越丰富多变，越低＝越单一、模式化。</p>
+  <div class="card"><div id="div"></div></div>
+
+  <div class="note" id="foot"></div>
+</div>
+<div id="tip"></div>
+
+<script>
+const CATCOL={};
+function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+function lerp(a,b,t){return Math.round(a+(b-a)*t);}
+function simColor(v){ // 0..1 -> panel..accent
+  const lo=[22,35,58], hi=[57,214,255];
+  return `rgb(${lerp(lo[0],hi[0],v)},${lerp(lo[1],hi[1],v)},${lerp(lo[2],hi[2],v)})`;
+}
+function geneChip(g,badge){
+  const c=el("div","g");
+  const im=el("img");im.src=g.thumb||"";im.loading="lazy";im.onerror=()=>{im.style.opacity=.15;};
+  c.appendChild(im);
+  const m=el("div","m");
+  m.appendChild(el("div","nm",`<span class="cat" style="background:${g.color}"></span>${g.name}`));
+  m.appendChild(el("div","badge",badge));
+  c.appendChild(m);c.title=`基因 #${g.gene} · ${g.cat}`;
+  return c;
+}
+fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
+  (D.categories||[]).forEach(c=>CATCOL[c.id]=c.color);
+  // KPIs
+  const s=D.stats, kp=document.getElementById("kpis");
+  [[s.n_cities,"城市"],[512,"字典基因 K"],[D.pangenome.n_core,"核心基因(12城)"],
+   [D.pangenome.n_used,"被用到的基因"],[(s.n_patches/1e6).toFixed(1)+"M","分析 patch 数"]].forEach(([n,l])=>{
+    const k=el("div","kpi");k.appendChild(el("div","n",n));k.appendChild(el("div","l",l));kp.appendChild(k);
+  });
+
+  // ---- heatmap ----
+  const L=D.leaf_order, ZH=D.sim_zh, sim=D.sim, m=L.length;
+  const hw=document.getElementById("heatwrap");
+  const grid=el("div");grid.id="heat";
+  grid.style.gridTemplateColumns=`64px repeat(${m},1fr)`;
+  // top-left blank + column labels
+  grid.appendChild(el("div"));
+  ZH.forEach(z=>{const c=el("div","hlab col",z);grid.appendChild(c);});
+  // off-diagonal min/max for contrast
+  let mn=1,mx=0;for(let i=0;i<m;i++)for(let j=0;j<m;j++)if(i!=j){mn=Math.min(mn,sim[i][j]);mx=Math.max(mx,sim[i][j]);}
+  const tip=document.getElementById("tip");
+  for(let i=0;i<m;i++){
+    grid.appendChild(el("div","hlab",ZH[i]));
+    for(let j=0;j<m;j++){
+      const v=sim[i][j], nv=i==j?1:(v-mn)/(mx-mn+1e-9);
+      const cell=el("div","hcell");cell.style.background=i==j?"#1b2b46":simColor(nv);
+      if(i!=j){
+        cell.onmousemove=(e)=>{tip.style.display="block";tip.style.left=(e.clientX+12)+"px";tip.style.top=(e.clientY+12)+"px";
+          tip.innerHTML=`${ZH[i]} ↔ ${ZH[j]}<br>相似度 <b style="color:var(--accent)">${Math.round(nv*100)}</b>/100`;};
+        cell.onmouseleave=()=>tip.style.display="none";
+      }
+      grid.appendChild(cell);
+    }
+  }
+  hw.appendChild(grid);
+
+  // ---- pangenome spectrum ----
+  const spec=D.pangenome.spectrum, sp=document.getElementById("spec"), smax=Math.max(...spec);
+  spec.forEach((c,i)=>{
+    const col=el("div","scol");
+    col.appendChild(el("div","c",c));
+    const b=el("div","b");b.style.height=Math.max(3,c/smax*118)+"px";
+    if(i==spec.length-1)b.style.background="var(--accent3)";
+    col.appendChild(b);col.appendChild(el("div","k",(i+1)));
+    sp.appendChild(col);
+  });
+  const pg=D.pangenome, ps=document.getElementById("pgstat");
+  [["核心 (12城)",pg.n_core,"var(--accent3)"],["附属 (3–11城)",pg.n_accessory,"var(--accent)"],
+   ["特有 (1–2城)",pg.n_unique,"var(--warn)"]].forEach(([l,n,c])=>{
+    const b=el("div");b.style.cssText="background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:8px 13px";
+    b.innerHTML=`<div style="font-size:19px;font-weight:800;color:${c};font-variant-numeric:tabular-nums">${n}</div><div style="font-size:11px;color:var(--muted)">${l}</div>`;
+    ps.appendChild(b);
+  });
+  D.pangenome.core.forEach(g=>document.getElementById("core").appendChild(geneChip(g,`遍及 12 城`)));
+  D.pangenome.unique.forEach(g=>document.getElementById("unique").appendChild(geneChip(g,`${g.zh} · ×${g.lift}`)));
+
+  // ---- markers ----
+  const mk=document.getElementById("markers");
+  // order marker cards by phylogeny leaf order
+  const order={};L.forEach((c,i)=>order[c]=i);
+  const ms=[...D.markers].sort((a,b)=>order[a.city]-order[b.city]);
+  ms.forEach(mm=>{
+    const c=el("div","mc");
+    c.appendChild(el("h3",null,`${mm.zh} <span class="rank">${mm.city}</span>`));
+    const row=el("div","mrow");
+    mm.genes.forEach(g=>row.appendChild(geneChip(g,`×${g.lift} 富集`)));
+    c.appendChild(row);mk.appendChild(c);
+  });
+
+  // ---- diversity ----
+  const dv=document.getElementById("div"), effs=D.diversity.map(d=>d.eff), emax=Math.max(...effs), emin=Math.min(...effs);
+  D.diversity.forEach(d=>{
+    const t=(d.eff-emin)/(emax-emin+1e-9);
+    const row=el("div","bar");
+    row.appendChild(el("div","nm",d.zh));
+    const tr=el("div","track");const f=el("div","fill");
+    f.style.width=(20+t*80)+"%";f.style.background=`linear-gradient(90deg,var(--accent2),var(--accent))`;
+    tr.appendChild(f);row.appendChild(tr);
+    row.appendChild(el("div","v",`${d.eff} 基因`));
+    dv.appendChild(row);
+  });
+
+  document.getElementById("foot").innerHTML=
+    `<b>方法.</b> 城市频谱 = 每城 1200 张图 × 784 patch 的主导基因（argmax）分布，12 城等量去偏。`+
+    `亲缘距离用 <b>Jensen–Shannon 散度</b>（对称、有界），average-linkage 层次聚类。`+
+    `泛基因组阈值：基因占某城 patch ≥ ${(D.pangenome.threshold*100).toFixed(2)}% 记为"出现"。`+
+    `标志基因 lift = 该城占比 ÷ 全球均值。多样性 = 香农熵（bit），等效基因数 = 2^熵。`+
+    `全部基于 global3 干净字典（K=512，图像质量过滤后重训）。分析用每点 4 朝向。`;
+});
+</script>
+</body>
+</html>
