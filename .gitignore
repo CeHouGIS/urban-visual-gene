@@ -16,9 +16,16 @@ models/
 *.log
 # SLURM job logs
 *.out
+# Long-running extraction / training progress markers
+*.progress
 
 # Kept under outputs/ (NOT ignored): EXPERIMENT_REPORT.md, figures/*.png,
 # unit_statistics.csv, stage_reports/*.json
+
+# Experiment scratch dirs that contain regenerable checkpoints plus tiny reports.
+# Keep committed summary reports under outputs/ unless a whole scratch run is
+# explicitly listed here.
+outputs/transfer/joint_k128/
 
 # ── Python ──────────────────────────────────────────────────────────────────
 __pycache__/
