@@ -71,6 +71,22 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 .note{margin-top:34px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);
   border-left:3px solid var(--accent2);border-radius:10px;font-size:12.8px;color:var(--muted);line-height:1.7}
 .note b{color:var(--text)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+.btn{border:1px solid var(--border);background:var(--panel2);color:var(--muted);border-radius:8px;
+  padding:6px 10px;font-size:12px;cursor:pointer;font-family:inherit}
+.btn:hover{color:var(--text);border-color:#2e456b}
+.btn.active{color:var(--accent);border-color:var(--accent);background:rgba(57,214,255,.08)}
+.select{border:1px solid var(--border);background:var(--panel2);color:var(--text);border-radius:8px;
+  padding:6px 9px;font-size:12px;font-family:inherit}
+.gtable{width:100%;border-collapse:collapse;font-size:12px}
+.gtable th,.gtable td{padding:8px 9px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.gtable th{color:var(--accent);font-weight:600;background:rgba(18,30,51,.55);position:sticky;top:52px}
+.gtable td{color:var(--text)}
+.gtable .mut{color:var(--muted)}
+.gtable .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.dl{display:inline-flex;align-items:center;text-decoration:none;color:var(--accent);border:1px solid var(--border);
+  border-radius:8px;padding:6px 10px;font-size:12px;background:var(--panel2)}
+.dl:hover{border-color:var(--accent)}
 @media(max-width:820px){.two{grid-template-columns:1fr}}
 </style>
 </head>
@@ -128,7 +144,29 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
   <p class="sub">每座城市相对全球均值<b>最富集</b>的基因（lift = 该城占比 ÷ 全球均值）。这些是最能把这座城市"认出来"的视觉特征。</p>
   <div class="mcards" id="markers"></div>
 
-  <h2 class="sec">④ 视觉多样性 · 街景有多丰富</h2>
+  <h2 class="sec">④ 基因通用性检索 · core / unique / regional</h2>
+  <p class="sub">按同一个阈值（某 gene 占某城 patch ≥0.05%）给 512 个基因贴标签：
+    12 城都有的是 <b>core universal</b>，只在 1 城出现的是 <b>city-unique</b>，
+    只在 2 城出现的是 <b>pair-specific</b>，3–5 城出现的是 <b>regional</b>。
+    下面表格可直接查看基因编号、类别、主要城市、占比、富集倍数和出现城市。</p>
+  <div class="card">
+    <div class="tools">
+      <button class="btn active" data-mode="core">通用 core</button>
+      <button class="btn" data-mode="unique">单城独有</button>
+      <button class="btn" data-mode="pair">双城特异</button>
+      <button class="btn" data-mode="regional">区域型</button>
+      <select class="select" id="cityFilter"><option value="">按城市 marker</option></select>
+      <a class="dl" href="citygenome/gene_city_specificity.csv" download>下载完整 CSV</a>
+    </div>
+    <div style="overflow:auto;max-height:520px">
+      <table class="gtable">
+        <thead><tr><th>Gene</th><th>类型</th><th>语义</th><th>主要城市</th><th>占比 / lift</th><th>出现城市</th></tr></thead>
+        <tbody id="geneTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="sec">⑤ 视觉多样性 · 街景有多丰富</h2>
   <p class="sub">各城基因频谱的<b>香农熵</b>（等效基因数 = 2^熵）——越高＝街景视觉构成越丰富多变，越低＝越单一、模式化。</p>
   <div class="card"><div id="div"></div></div>
 
@@ -153,6 +191,50 @@ function geneChip(g,badge){
   m.appendChild(el("div","badge",badge));
   c.appendChild(m);c.title=`基因 #${g.gene} · ${g.cat}`;
   return c;
+}
+function rowHtml(g){
+  const cities=(g.present_cities_by_share||"").split("|").filter(Boolean).join(", ");
+  const share=g.top_share!=null ? (g.top_share*100).toFixed(2)+"%" : (g.share!=null ? (g.share*100).toFixed(2)+"%" : "");
+  const lift=g.top_lift_vs_global_mean!=null ? g.top_lift_vs_global_mean : g.lift;
+  const main=g.top_city_zh||g.top_city||"";
+  return `<tr>
+    <td class="num">#${g.gene}</td>
+    <td><span class="mut">${g.class||("marker · "+(g.prevalence_n_cities||"")+"城")}</span></td>
+    <td>${g.label||g.name||""}<div class="mut">${g.category||g.cat||""}</div></td>
+    <td>${main}</td>
+    <td class="num">${share}<div class="mut">lift ×${Number(lift||0).toFixed(2)}</div></td>
+    <td class="mut">${cities}</td>
+  </tr>`;
+}
+function setupSpecificity(){
+  fetch("citygenome/gene_city_specificity_summary.json").then(r=>r.json()).then(S=>{
+    const tbody=document.getElementById("geneTable");
+    const citySel=document.getElementById("cityFilter");
+    const cityNames={HongKong:"香港",Singapore:"新加坡",Amsterdam:"阿姆斯特丹",CapeTown:"开普敦",Paris:"巴黎",
+      SaoPaulo:"圣保罗",MexicoCity:"墨西哥城",Sydney:"悉尼",Jakarta:"雅加达",Dhaka:"达卡",NewDelhi:"新德里",Manila:"马尼拉"};
+    (S.cities||Object.keys(S.city_markers_top8||{})).forEach(c=>{
+      const o=document.createElement("option");o.value=c;o.textContent=cityNames[c]||c;citySel.appendChild(o);
+    });
+    const sets={
+      core:S.core_universal_top_by_min_share||[],
+      unique:S.city_unique_all||[],
+      pair:S.pair_specific_top_by_share||[],
+      regional:S.regional_3to5_top_by_share||[]
+    };
+    function render(rows){tbody.innerHTML=rows.map(rowHtml).join("")||`<tr><td colspan="6" class="mut">没有可显示的基因</td></tr>`;}
+    render(sets.core);
+    document.querySelectorAll(".btn[data-mode]").forEach(b=>{
+      b.onclick=()=>{
+        document.querySelectorAll(".btn[data-mode]").forEach(x=>x.classList.remove("active"));
+        b.classList.add("active");citySel.value="";render(sets[b.dataset.mode]||[]);
+      };
+    });
+    citySel.onchange=()=>{
+      document.querySelectorAll(".btn[data-mode]").forEach(x=>x.classList.remove("active"));
+      const rows=(S.city_markers_top8||{})[citySel.value]||[];
+      render(rows);
+    };
+  });
 }
 fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
   (D.categories||[]).forEach(c=>CATCOL[c.id]=c.color);
@@ -241,6 +323,7 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
     `泛基因组阈值：基因占某城 patch ≥ ${(D.pangenome.threshold*100).toFixed(2)}% 记为"出现"。`+
     `标志基因 lift = 该城占比 ÷ 全球均值。多样性 = 香农熵（bit），等效基因数 = 2^熵。`+
     `全部基于 global3 干净字典（K=512，图像质量过滤后重训）。分析用每点 4 朝向。`;
+  setupSpecificity();
 });
 </script>
 </body>
