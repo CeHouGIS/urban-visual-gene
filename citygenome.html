@@ -93,10 +93,10 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 .axishead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:0 0 8px}
 .axishead .title{font-size:13px;color:var(--text);font-weight:700}
 .axishead .count{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.axiswrap{position:relative;overflow-x:auto;overflow-y:hidden;border:1px solid var(--border);border-radius:10px;background:rgba(7,11,20,.28);padding:12px 10px 10px;cursor:grab;scrollbar-color:#2a3f61 #101a2b}
+.axiswrap{position:relative;overflow-x:auto;overflow-y:hidden;border:1px solid var(--border);border-radius:10px;background:rgba(7,11,20,.28);padding:12px 10px 10px;cursor:grab;scrollbar-color:#2a3f61 #101a2b;touch-action:pan-x}
 .axiswrap:active{cursor:grabbing}
 .geneaxis{display:flex;align-items:stretch;gap:7px;min-width:max-content}
-.gtick{width:76px;border:1px solid rgba(30,45,71,.85);border-radius:8px;background:rgba(15,25,42,.9);color:var(--muted);padding:7px 6px 6px;cursor:pointer;text-align:left;font-family:inherit}
+.gtick{width:76px;border:1px solid rgba(30,45,71,.85);border-radius:8px;background:rgba(15,25,42,.9);color:var(--muted);padding:7px 6px 6px;cursor:pointer;text-align:left;font-family:inherit;touch-action:manipulation}
 .gtick:hover{border-color:rgba(57,214,255,.55);color:var(--text)}
 .gtick.active{border-color:var(--accent);box-shadow:0 0 0 1px rgba(57,214,255,.22) inset;background:rgba(57,214,255,.1);color:var(--text)}
 .gtick .id{display:block;color:#fff;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
@@ -134,7 +134,6 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
   <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
   <div class="tabs">
     <a class="tab" href="index.html">总览</a>
-    <a class="tab" href="compose.html">组成与分类</a>
     <a class="tab" href="genes.html">512 视觉基因</a>
     <a class="tab" href="coexpr.html">基因组合</a>
     <a class="tab active" href="citygenome.html">城市基因组</a>
@@ -303,29 +302,40 @@ function setupSpecificity(D){
     function attachAxis(rows, selected){
       const axisWrap=viz.querySelector(".axiswrap");
       const panel=viz.querySelector(".selectedGene");
-      axisWrap.querySelectorAll(".gtick").forEach(btn=>{
-        btn.onclick=()=>{
-          const i=Number(btn.dataset.i);
-          axisWrap.querySelectorAll(".gtick").forEach(x=>x.classList.toggle("active", x===btn));
-          const count=viz.querySelector(".selectedCount");
-          if(count)count.textContent=`${rows.length} genes · selected #${rows[i].gene}`;
-          panel.innerHTML=geneDetail(rows[i]);
-          btn.scrollIntoView({block:"nearest", inline:"center", behavior:"smooth"});
-        };
+      axisWrap.addEventListener("click", e=>{
+        const btn=e.target.closest(".gtick");
+        if(!btn || !axisWrap.contains(btn))return;
+        const i=Number(btn.dataset.i);
+        axisWrap.querySelectorAll(".gtick").forEach(x=>x.classList.toggle("active", x===btn));
+        const count=viz.querySelector(".selectedCount");
+        if(count)count.textContent=`${rows.length} genes · selected #${rows[i].gene}`;
+        panel.innerHTML=geneDetail(rows[i]);
+        btn.scrollIntoView({block:"nearest", inline:"center", behavior:"smooth"});
       });
-      let down=false, startX=0, startLeft=0, dragged=false;
+      let down=false, startX=0, startLeft=0;
+      function release(e){
+        if(axisWrap.releasePointerCapture){
+          try{axisWrap.releasePointerCapture(e.pointerId);}catch(_){}
+        }
+      }
       axisWrap.addEventListener("pointerdown", e=>{
-        down=true; dragged=false; startX=e.clientX; startLeft=axisWrap.scrollLeft; axisWrap.setPointerCapture(e.pointerId);
+        if(e.target.closest(".gtick"))return;
+        down=true; startX=e.clientX; startLeft=axisWrap.scrollLeft;
+        if(axisWrap.setPointerCapture)axisWrap.setPointerCapture(e.pointerId);
       });
       axisWrap.addEventListener("pointermove", e=>{
         if(!down)return;
-        const dx=e.clientX-startX;
-        if(Math.abs(dx)>3)dragged=true;
-        axisWrap.scrollLeft=startLeft-dx;
+        axisWrap.scrollLeft=startLeft-(e.clientX-startX);
       });
       axisWrap.addEventListener("pointerup", e=>{
+        if(!down)return;
         down=false;
-        if(dragged)e.preventDefault();
+        release(e);
+      });
+      axisWrap.addEventListener("pointercancel", e=>{
+        if(!down)return;
+        down=false;
+        release(e);
       });
       const active=axisWrap.querySelector(`.gtick[data-i="${selected}"]`);
       if(active)active.scrollIntoView({block:"nearest", inline:"center"});
@@ -353,12 +363,19 @@ function setupSpecificity(D){
       attachAxis(rows, selected);
     }
     render("core", sets.core);
-    modeSel.onchange=()=>{citySel.value="";render(modeSel.value, sets[modeSel.value]||[]);};
-    citySel.onchange=()=>{
+    function chooseMode(){
+      citySel.value="";
+      render(modeSel.value, sets[modeSel.value]||[]);
+    }
+    function chooseCity(){
       if(!citySel.value){render(modeSel.value, sets[modeSel.value]||[]);return;}
       const rows=(S.city_markers_top8||{})[citySel.value]||[];
       render("marker", rows);
-    };
+    }
+    modeSel.addEventListener("change", chooseMode);
+    modeSel.addEventListener("input", chooseMode);
+    citySel.addEventListener("change", chooseCity);
+    citySel.addEventListener("input", chooseCity);
   });
 }
 fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
