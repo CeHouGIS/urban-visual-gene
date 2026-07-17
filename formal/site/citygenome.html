@@ -203,9 +203,19 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 const CATCOL={};
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
 function lerp(a,b,t){return Math.round(a+(b-a)*t);}
-function simColor(v){ // 0..1 -> panel..accent
-  const lo=[22,35,58], hi=[57,214,255];
-  return `rgb(${lerp(lo[0],hi[0],v)},${lerp(lo[1],hi[1],v)},${lerp(lo[2],hi[2],v)})`;
+function simColor(v){ // 0..1 -> inferno-like low..high similarity
+  const stops=[
+    [18,22,45],
+    [60,28,94],
+    [137,34,103],
+    [219,82,72],
+    [255,190,87],
+    [255,246,176]
+  ];
+  const t=Math.max(0,Math.min(1,v))*(stops.length-1);
+  const i=Math.min(stops.length-2,Math.floor(t)), f=t-i;
+  const a=stops[i], b=stops[i+1];
+  return `rgb(${lerp(a[0],b[0],f)},${lerp(a[1],b[1],f)},${lerp(a[2],b[2],f)})`;
 }
 function clusterSim(sim){
   const dist=(a,b)=>1-Number(sim[a][b]||0);
