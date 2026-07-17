@@ -36,10 +36,18 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 .two{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:start}
 .tri img{width:100%;display:block;border-radius:10px;border:1px solid var(--border)}
 /* heatmap */
+.heatTitle{font-size:13px;color:var(--text);font-weight:700;margin-bottom:9px}
 #heat{display:grid;gap:2px}
 .hcell{aspect-ratio:1;border-radius:3px;position:relative;cursor:default}
+.hcell.rb{box-shadow:inset 0 2px 0 rgba(255,255,255,.34)}
+.hcell.cb{box-shadow:inset 2px 0 0 rgba(255,255,255,.34)}
+.hcell.rb.cb{box-shadow:inset 0 2px 0 rgba(255,255,255,.34),inset 2px 0 0 rgba(255,255,255,.34)}
 .hlab{font-size:10.5px;color:var(--muted);display:flex;align-items:center;white-space:nowrap;overflow:hidden}
+.hlab.rb{border-top:2px solid rgba(255,255,255,.28);padding-top:2px}
 .hlab.col{writing-mode:vertical-rl;transform:rotate(180deg);justify-content:flex-end;height:64px}
+.hlab.col.cb{border-right:2px solid rgba(255,255,255,.28);padding-right:2px}
+.clusterOrder{margin-top:9px;color:var(--muted);font-size:11px;line-height:1.55}
+.clusterOrder b{color:var(--text);font-weight:600}
 #tip{position:fixed;pointer-events:none;background:#0a1120;border:1px solid var(--border);border-radius:8px;
   padding:7px 10px;font-size:12px;color:var(--text);z-index:30;display:none;box-shadow:0 6px 18px rgba(0,0,0,.5)}
 /* bars */
@@ -198,6 +206,46 @@ function lerp(a,b,t){return Math.round(a+(b-a)*t);}
 function simColor(v){ // 0..1 -> panel..accent
   const lo=[22,35,58], hi=[57,214,255];
   return `rgb(${lerp(lo[0],hi[0],v)},${lerp(lo[1],hi[1],v)},${lerp(lo[2],hi[2],v)})`;
+}
+function clusterSim(sim){
+  const dist=(a,b)=>1-Number(sim[a][b]||0);
+  let nextId=sim.length;
+  let clusters=sim.map((_,i)=>({id:i,leaves:[i],left:null,right:null,height:0}));
+  function avgDist(a,b){
+    let sum=0,n=0;
+    a.leaves.forEach(i=>b.leaves.forEach(j=>{sum+=dist(i,j);n++;}));
+    return sum/Math.max(n,1);
+  }
+  function orient(a,b){
+    const ab=Number(sim[a.leaves[a.leaves.length-1]][b.leaves[0]]||0);
+    const ba=Number(sim[b.leaves[b.leaves.length-1]][a.leaves[0]]||0);
+    return ba>ab?[b,a]:[a,b];
+  }
+  while(clusters.length>1){
+    let best=[0,1,Infinity];
+    for(let i=0;i<clusters.length;i++){
+      for(let j=i+1;j<clusters.length;j++){
+        const d=avgDist(clusters[i],clusters[j]);
+        if(d<best[2]-1e-12 || (Math.abs(d-best[2])<1e-12 && `${clusters[i].id}-${clusters[j].id}`<`${clusters[best[0]].id}-${clusters[best[1]].id}`)){
+          best=[i,j,d];
+        }
+      }
+    }
+    const a=clusters[best[0]], b=clusters[best[1]], [left,right]=orient(a,b);
+    const merged={id:nextId++,leaves:left.leaves.concat(right.leaves),left,right,height:best[2]};
+    clusters=clusters.filter((_,idx)=>idx!==best[0]&&idx!==best[1]);
+    clusters.push(merged);
+  }
+  const breaks=new Set();
+  function mark(node,offset,depth){
+    if(!node.left||!node.right)return;
+    const leftCount=node.left.leaves.length;
+    if(depth<2 && offset+leftCount>0 && offset+leftCount<sim.length)breaks.add(offset+leftCount);
+    mark(node.left,offset,depth+1);
+    mark(node.right,offset+leftCount,depth+1);
+  }
+  mark(clusters[0],0,0);
+  return {order:clusters[0].leaves,breaks};
 }
 function setupSpecificity(D){
   Promise.all([
@@ -387,22 +435,30 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
     const k=el("div","kpi");k.appendChild(el("div","n",n));k.appendChild(el("div","l",l));kp.appendChild(k);
   });
 
-  // ---- heatmap ----
-  const L=D.leaf_order, ZH=D.sim_zh, sim=D.sim, m=L.length;
+  // ---- hierarchical heatmap ----
+  const ZH=D.sim_zh, sim=D.sim, m=ZH.length;
+  const clustered=clusterSim(sim), order=clustered.order, breaks=clustered.breaks;
   const hw=document.getElementById("heatwrap");
+  hw.appendChild(el("div","heatTitle","Hierarchical clustered heatmap"));
   const grid=el("div");grid.id="heat";
   grid.style.gridTemplateColumns=`64px repeat(${m},1fr)`;
   // top-left blank + column labels
   grid.appendChild(el("div"));
-  ZH.forEach(z=>{const c=el("div","hlab col",z);grid.appendChild(c);});
+  order.forEach((idx,pos)=>{
+    const c=el("div","hlab col"+(breaks.has(pos)?" cb":""),ZH[idx]);
+    grid.appendChild(c);
+  });
   // off-diagonal min/max for contrast
   let mn=1,mx=0;for(let i=0;i<m;i++)for(let j=0;j<m;j++)if(i!=j){mn=Math.min(mn,sim[i][j]);mx=Math.max(mx,sim[i][j]);}
   const tip=document.getElementById("tip");
-  for(let i=0;i<m;i++){
-    grid.appendChild(el("div","hlab",ZH[i]));
-    for(let j=0;j<m;j++){
+  for(let row=0;row<m;row++){
+    const i=order[row], rowBreak=breaks.has(row);
+    grid.appendChild(el("div","hlab"+(rowBreak?" rb":""),ZH[i]));
+    for(let col=0;col<m;col++){
+      const j=order[col], colBreak=breaks.has(col);
       const v=sim[i][j], nv=i==j?1:(v-mn)/(mx-mn+1e-9);
-      const cell=el("div","hcell");cell.style.background=i==j?"#1b2b46":simColor(nv);
+      const cell=el("div","hcell"+(rowBreak?" rb":"")+(colBreak?" cb":""));
+      cell.style.background=i==j?"#1b2b46":simColor(nv);
       if(i!=j){
         cell.onmousemove=(e)=>{tip.style.display="block";tip.style.left=(e.clientX+12)+"px";tip.style.top=(e.clientY+12)+"px";
           tip.innerHTML=`${ZH[i]} ↔ ${ZH[j]}<br>相似度 <b style="color:var(--accent)">${Math.round(nv*100)}</b>/100`;};
@@ -412,6 +468,7 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
     }
   }
   hw.appendChild(grid);
+  hw.appendChild(el("div","clusterOrder",`<b>聚类顺序</b> ${order.map(i=>ZH[i]).join(" → ")}`));
 
   // ---- diversity ----
   const dv=document.getElementById("div"), effs=D.diversity.map(d=>d.eff), emax=Math.max(...effs), emin=Math.min(...effs);
