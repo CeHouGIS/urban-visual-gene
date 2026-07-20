@@ -62,14 +62,15 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 .ablegend{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:10.5px;white-space:nowrap}
 .ablegend i{display:block;width:110px;height:8px;border-radius:99px;background:linear-gradient(90deg,#17213a,#224264,#2e7d7e,#62b36e,#f2c96d)}
 .abscroll{overflow-x:auto;scrollbar-color:#2a3f61 #101a2b}
-.abmatrix{display:grid;grid-template-columns:104px repeat(12,54px) 84px;gap:3px;min-width:850px}
-.abcell,.abcity,.abcfg,.abmean{height:29px;border-radius:5px;display:flex;align-items:center;justify-content:center}
+.abmatrix{display:grid;grid-template-columns:104px repeat(12,54px) 84px 76px;gap:3px;min-width:930px}
+.abcell,.abcity,.abcfg,.abmean,.abcore{height:29px;border-radius:5px;display:flex;align-items:center;justify-content:center}
 .abcity{height:44px;color:var(--muted);font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg);justify-content:flex-end;padding-bottom:2px}
 .abcfg{justify-content:flex-end;padding-right:8px;color:var(--text);font-size:11px;font-weight:700;background:rgba(18,30,51,.48);border:1px solid rgba(30,45,71,.75);white-space:nowrap}
 .abcell{font-size:10.5px;color:#07101c;font-weight:800;font-variant-numeric:tabular-nums;border:1px solid rgba(255,255,255,.08)}
 .abmean{justify-content:flex-start;background:rgba(18,30,51,.55);border:1px solid rgba(30,45,71,.75);padding:0 7px}
 .abmean .mini{height:8px;border-radius:99px;background:linear-gradient(90deg,var(--accent2),var(--accent3));min-width:8px}
 .abmean .mval{margin-left:6px;color:var(--muted);font-size:10px;font-variant-numeric:tabular-nums}
+.abcore{background:rgba(34,224,161,.1);border:1px solid rgba(34,224,161,.35);color:var(--accent3);font-size:11px;font-weight:800;font-variant-numeric:tabular-nums}
 .abmeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;color:var(--muted);font-size:11px}
 .abpill{border:1px solid var(--border);background:var(--panel2);border-radius:99px;padding:4px 8px}
 /* pangenome spectrum */
@@ -150,7 +151,7 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 .imgswap:hover .act,.imgswap:focus-within .act{opacity:0}
 .cap{font-size:10px;color:var(--muted);padding:5px 7px 6px;text-align:center}
 .emptyviz{grid-column:1/-1;color:var(--muted);font-size:13px;padding:22px;text-align:center;border:1px dashed var(--border);border-radius:12px}
-@media(max-width:820px){.two{grid-template-columns:1fr}.panelTop{grid-template-columns:1fr}.gmetric{justify-content:flex-start}.gtick{width:68px}.abmatrix{grid-template-columns:92px repeat(12,46px) 74px;min-width:760px}}
+@media(max-width:820px){.two{grid-template-columns:1fr}.panelTop{grid-template-columns:1fr}.gmetric{justify-content:flex-start}.gtick{width:68px}.abmatrix{grid-template-columns:92px repeat(12,46px) 74px 70px;min-width:830px}}
 </style>
 </head>
 <body>
@@ -310,19 +311,21 @@ function renderDiversityAblation(A){
       return `<div class="abcell" style="background:${divColor(t)};color:${fg}" title="${cfg.label} · ${c.zh||c.city} · ${d.eff} effective genes · H=${d.H}">${Math.round(d.eff)}</div>`;
     }).join("");
     const m=cfg.summary?.mean_eff||0;
+    const core=cfg.core_12 ?? "";
     return `<div class="abcfg" title="${cfg.note||""}">${cfg.label}</div>${cells}
       <div class="abmean" title="mean effective genes ${m}">
         <span class="mini" style="width:${Math.max(8,Math.round(m/meanMax*50))}px"></span><span class="mval">${Math.round(m)}</span>
-      </div>`;
+      </div><div class="abcore" title="${cfg.label} · 12 城共有基因/类别数量">${core}</div>`;
   }).join("");
   const meta=[
     `${A.configs.length} 组参数`,
     `${cities.length} 城`,
     `颜色范围 ${min}-${max} 等效基因`,
-    `每格为该城 dominant-gene 频谱的 2^H`
+    `每格为该城 dominant-gene 频谱的 2^H`,
+    `最右列为 12 城都出现的基因/类别数`
   ];
   box.innerHTML=`<div class="abscroll"><div class="abmatrix">
-      <div></div>${cityHead}<div class="abcity">均值</div>${rows}
+      <div></div>${cityHead}<div class="abcity">均值</div><div class="abcity">12城共有</div>${rows}
     </div></div><div class="abmeta">${meta.map(x=>`<span class="abpill">${x}</span>`).join("")}</div>`;
 }
 function setupSpecificity(D){

@@ -63,6 +63,7 @@
       "width": 512,
       "topk": 32,
       "note": "当前网页主结果",
+      "core_12": 112,
       "diversity": [
         {
           "city": "HongKong",
@@ -163,6 +164,7 @@
       "width": 128,
       "topk": 32,
       "note": "较小字典宽度",
+      "core_12": 90,
       "diversity": [
         {
           "city": "HongKong",
@@ -263,6 +265,7 @@
       "width": 256,
       "topk": 32,
       "note": "较小字典宽度",
+      "core_12": 112,
       "diversity": [
         {
           "city": "HongKong",
@@ -363,6 +366,7 @@
       "width": 1024,
       "topk": 4,
       "note": "新消融",
+      "core_12": 75,
       "diversity": [
         {
           "city": "HongKong",
@@ -463,6 +467,7 @@
       "width": 1024,
       "topk": 8,
       "note": "新消融",
+      "core_12": 76,
       "diversity": [
         {
           "city": "HongKong",
@@ -563,6 +568,7 @@
       "width": 1024,
       "topk": 16,
       "note": "新消融",
+      "core_12": 84,
       "diversity": [
         {
           "city": "HongKong",
@@ -663,6 +669,7 @@
       "width": 2048,
       "topk": 4,
       "note": "新消融",
+      "core_12": 65,
       "diversity": [
         {
           "city": "HongKong",
@@ -763,6 +770,7 @@
       "width": 2048,
       "topk": 8,
       "note": "新消融",
+      "core_12": 61,
       "diversity": [
         {
           "city": "HongKong",
@@ -863,6 +871,7 @@
       "width": 2048,
       "topk": 16,
       "note": "新消融",
+      "core_12": 55,
       "diversity": [
         {
           "city": "HongKong",

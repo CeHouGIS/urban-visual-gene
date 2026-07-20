@@ -18,6 +18,7 @@ SITE = ROOT / "formal" / "site" / "citygenome"
 BASELINE = ROOT / "formal" / "site" / "citygenome" / "data.json"
 K_SWEEP = ROOT / "formal" / "k_sweep_shared" / "comparison.json"
 TOPK_WIDTH = ROOT / "formal" / "ablation_topk_width"
+TOPK_WIDTH_COMPARISON = TOPK_WIDTH / "comparison.json"
 OUT = SITE / "diversity_ablation.json"
 
 CITIES = [
@@ -94,6 +95,10 @@ def add_summary(row: dict) -> dict:
     return row
 
 
+def core_count(summary: dict) -> int:
+    return int(summary["class_counts"]["core_universal_12cities"])
+
+
 def main() -> None:
     configs = []
 
@@ -105,6 +110,7 @@ def main() -> None:
         "width": 512,
         "topk": 32,
         "note": "当前网页主结果",
+        "core_12": int(base["pangenome"]["n_core"]),
         "diversity": diversity_from_existing(base["diversity"]),
     }))
 
@@ -119,21 +125,26 @@ def main() -> None:
                 "width": int(k),
                 "topk": 32,
                 "note": "较小字典宽度",
+                "core_12": core_count(r),
                 "diversity": diversity_from_existing(r["diversity"]),
             }))
 
+    tw_summary = json.loads(TOPK_WIDTH_COMPARISON.read_text()) if TOPK_WIDTH_COMPARISON.exists() else {"results": {}}
     for width in [1024, 2048]:
         for topk in [4, 8, 16]:
             sp = TOPK_WIDTH / f"width{width}_topk{topk}" / "sparse_acts.npz"
             if not sp.exists():
                 continue
+            cfg_id = f"width{width}_topk{topk}"
+            summary = tw_summary["results"].get(cfg_id, {})
             configs.append(add_summary({
-                "id": f"width{width}_topk{topk}",
+                "id": cfg_id,
                 "label": f"W{width} · topk{topk}",
                 "group": "topk/width",
                 "width": width,
                 "topk": topk,
                 "note": "新消融",
+                "core_12": core_count(summary) if summary else None,
                 "diversity": diversity_from_sparse(sp, width),
             }))
 
