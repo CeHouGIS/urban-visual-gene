@@ -148,6 +148,7 @@ def main() -> None:
                 "diversity": diversity_from_sparse(sp, width),
             }))
 
+    configs.sort(key=lambda c: (int(c["width"]), int(c["topk"])))
     values = [d["eff"] for cfg in configs for d in cfg["diversity"]]
     out = {
         "metric": "effective_genes",

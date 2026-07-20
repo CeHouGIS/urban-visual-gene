@@ -57,107 +57,6 @@
   },
   "configs": [
     {
-      "id": "k512_topk32",
-      "label": "W512 · topk32",
-      "group": "current",
-      "width": 512,
-      "topk": 32,
-      "note": "当前网页主结果",
-      "core_12": 112,
-      "diversity": [
-        {
-          "city": "HongKong",
-          "zh": "香港",
-          "H": 7.71,
-          "eff": 209.0,
-          "richness": 433
-        },
-        {
-          "city": "Singapore",
-          "zh": "新加坡",
-          "H": 7.81,
-          "eff": 224.0,
-          "richness": 431
-        },
-        {
-          "city": "Amsterdam",
-          "zh": "阿姆斯特丹",
-          "H": 7.44,
-          "eff": 174.0,
-          "richness": 403
-        },
-        {
-          "city": "CapeTown",
-          "zh": "开普敦",
-          "H": 7.58,
-          "eff": 192.0,
-          "richness": 429
-        },
-        {
-          "city": "Paris",
-          "zh": "巴黎",
-          "H": 7.89,
-          "eff": 237.0,
-          "richness": 437
-        },
-        {
-          "city": "SaoPaulo",
-          "zh": "圣保罗",
-          "H": 8.03,
-          "eff": 260.0,
-          "richness": 458
-        },
-        {
-          "city": "MexicoCity",
-          "zh": "墨西哥城",
-          "H": 7.91,
-          "eff": 241.0,
-          "richness": 442
-        },
-        {
-          "city": "Sydney",
-          "zh": "悉尼",
-          "H": 7.55,
-          "eff": 187.0,
-          "richness": 405
-        },
-        {
-          "city": "Jakarta",
-          "zh": "雅加达",
-          "H": 7.87,
-          "eff": 234.0,
-          "richness": 439
-        },
-        {
-          "city": "Dhaka",
-          "zh": "达卡",
-          "H": 7.68,
-          "eff": 204.0,
-          "richness": 418
-        },
-        {
-          "city": "NewDelhi",
-          "zh": "新德里",
-          "H": 7.72,
-          "eff": 211.0,
-          "richness": 429
-        },
-        {
-          "city": "Manila",
-          "zh": "马尼拉",
-          "H": 8.03,
-          "eff": 261.0,
-          "richness": 455
-        }
-      ],
-      "summary": {
-        "mean_eff": 219.5,
-        "min_eff": 174.0,
-        "max_eff": 261.0,
-        "spread_eff": 87.0
-      }
-    },
-    {
       "id": "k128_topk32",
       "label": "W128 · topk32",
       "group": "width sweep",
@@ -357,6 +256,107 @@
         "min_eff": 105.4,
         "max_eff": 149.2,
         "spread_eff": 43.8
+      }
+    },
+    {
+      "id": "k512_topk32",
+      "label": "W512 · topk32",
+      "group": "current",
+      "width": 512,
+      "topk": 32,
+      "note": "当前网页主结果",
+      "core_12": 112,
+      "diversity": [
+        {
+          "city": "HongKong",
+          "zh": "香港",
+          "H": 7.71,
+          "eff": 209.0,
+          "richness": 433
+        },
+        {
+          "city": "Singapore",
+          "zh": "新加坡",
+          "H": 7.81,
+          "eff": 224.0,
+          "richness": 431
+        },
+        {
+          "city": "Amsterdam",
+          "zh": "阿姆斯特丹",
+          "H": 7.44,
+          "eff": 174.0,
+          "richness": 403
+        },
+        {
+          "city": "CapeTown",
+          "zh": "开普敦",
+          "H": 7.58,
+          "eff": 192.0,
+          "richness": 429
+        },
+        {
+          "city": "Paris",
+          "zh": "巴黎",
+          "H": 7.89,
+          "eff": 237.0,
+          "richness": 437
+        },
+        {
+          "city": "SaoPaulo",
+          "zh": "圣保罗",
+          "H": 8.03,
+          "eff": 260.0,
+          "richness": 458
+        },
+        {
+          "city": "MexicoCity",
+          "zh": "墨西哥城",
+          "H": 7.91,
+          "eff": 241.0,
+          "richness": 442
+        },
+        {
+          "city": "Sydney",
+          "zh": "悉尼",
+          "H": 7.55,
+          "eff": 187.0,
+          "richness": 405
+        },
+        {
+          "city": "Jakarta",
+          "zh": "雅加达",
+          "H": 7.87,
+          "eff": 234.0,
+          "richness": 439
+        },
+        {
+          "city": "Dhaka",
+          "zh": "达卡",
+          "H": 7.68,
+          "eff": 204.0,
+          "richness": 418
+        },
+        {
+          "city": "NewDelhi",
+          "zh": "新德里",
+          "H": 7.72,
+          "eff": 211.0,
+          "richness": 429
+        },
+        {
+          "city": "Manila",
+          "zh": "马尼拉",
+          "H": 8.03,
+          "eff": 261.0,
+          "richness": 455
+        }
+      ],
+      "summary": {
+        "mean_eff": 219.5,
+        "min_eff": 174.0,
+        "max_eff": 261.0,
+        "spread_eff": 87.0
       }
     },
     {
