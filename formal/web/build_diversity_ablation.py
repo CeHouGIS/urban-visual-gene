@@ -105,7 +105,7 @@ def main() -> None:
     base = json.loads(BASELINE.read_text())
     configs.append(add_summary({
         "id": "k512_topk32",
-        "label": "K512 · topk32",
+        "label": "W512 · topk32",
         "group": "current",
         "width": 512,
         "topk": 32,
@@ -120,7 +120,7 @@ def main() -> None:
             r = sweep["results"][k]
             configs.append(add_summary({
                 "id": f"k{k}_topk32",
-                "label": f"K{k} · topk32",
+                "label": f"W{k} · topk32",
                 "group": "width sweep",
                 "width": int(k),
                 "topk": 32,
