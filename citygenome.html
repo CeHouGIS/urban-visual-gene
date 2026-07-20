@@ -315,17 +315,17 @@ function renderDiversityAblation(A){
     return `<div class="abcfg" title="${cfg.note||""}">${cfg.label}</div>${cells}
       <div class="abmean" title="mean effective genes ${m}">
         <span class="mini" style="width:${Math.max(8,Math.round(m/meanMax*50))}px"></span><span class="mval">${Math.round(m)}</span>
-      </div><div class="abcore" title="${cfg.label} · 12 城共有基因/类别数量">${core}</div>`;
+      </div><div class="abcore" title="${cfg.label} · 12 城共有基因数量">${core}</div>`;
   }).join("");
   const meta=[
     `${A.configs.length} 组参数`,
     `${cities.length} 城`,
     `颜色范围 ${min}-${max} 等效基因`,
     `每格为该城 dominant-gene 频谱的 2^H`,
-    `最右列为 12 城都出现的基因/类别数`
+    `最右列为 12 城都出现的基因数`
   ];
   box.innerHTML=`<div class="abscroll"><div class="abmatrix">
-      <div></div>${cityHead}<div class="abcity">均值</div><div class="abcity">12城共有</div>${rows}
+      <div></div>${cityHead}<div class="abcity">均值</div><div class="abcity">12城共有基因</div>${rows}
     </div></div><div class="abmeta">${meta.map(x=>`<span class="abpill">${x}</span>`).join("")}</div>`;
 }
 function setupSpecificity(D){
