@@ -58,7 +58,7 @@
   "configs": [
     {
       "id": "k512_topk32",
-      "label": "K512 · topk32",
+      "label": "W512 · topk32",
       "group": "current",
       "width": 512,
       "topk": 32,
@@ -159,7 +159,7 @@
     },
     {
       "id": "k128_topk32",
-      "label": "K128 · topk32",
+      "label": "W128 · topk32",
       "group": "width sweep",
       "width": 128,
       "topk": 32,
@@ -260,7 +260,7 @@
     },
     {
       "id": "k256_topk32",
-      "label": "K256 · topk32",
+      "label": "W256 · topk32",
       "group": "width sweep",
       "width": 256,
       "topk": 32,
