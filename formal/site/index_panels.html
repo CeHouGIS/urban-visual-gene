@@ -1,94 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Visual Gene · 总览</title>
-<style>
-:root{--bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
-  --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
-#top{position:sticky;top:0;z-index:10;height:52px;display:flex;align-items:center;gap:16px;padding:0 18px;
-  background:rgba(7,11,20,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.brand{font-weight:700;display:flex;align-items:center;gap:9px;font-size:15px;white-space:nowrap}
-.brand .dot{width:10px;height:10px;border-radius:50%;background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent3),var(--accent));box-shadow:0 0 12px var(--accent)}
-.tabs{display:flex;gap:6px;flex-wrap:wrap}
-.tab{font-size:13px;color:var(--muted);padding:6px 12px;border-radius:8px;border:1px solid transparent;text-decoration:none}
-.tab:hover{color:var(--text)}.tab.active{color:var(--accent);border-color:var(--border);background:var(--panel2)}
-.wrap{max-width:1280px;margin:0 auto;padding:24px 18px 70px}
-h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{color:var(--muted);font-size:14px;line-height:1.7;margin:0 0 16px;max-width:900px}
-.kpis{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
-.kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:8px 14px}
-.kpi .n{font-size:18px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
-.kpi .l{font-size:10.5px;color:var(--muted)}
-#catlg{display:flex;flex-wrap:wrap;gap:6px 12px;margin:6px 0 20px;padding:12px 14px;background:var(--panel);border:1px solid var(--border);border-radius:10px}
-#catlg b{font-size:12px;color:var(--text);margin-right:6px}
-#catlg span{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--muted)}
-#catlg i{width:11px;height:11px;border-radius:3px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px;text-decoration:none;color:inherit;transition:.15s}
-.panel:hover{border-color:var(--accent);box-shadow:0 0 16px rgba(57,214,255,.15);transform:translateY(-2px)}
-.phead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px}
-.phead b{font-size:16px;color:#fff}.phead .n{font-size:11.5px;color:var(--muted)}
-.pmap{width:100%;aspect-ratio:1.35;background:#0a1120;border:1px solid var(--border);border-radius:9px;display:block}
-.pbar{display:flex;height:16px;border-radius:5px;overflow:hidden;border:1px solid var(--border);margin-top:9px}
-.pbar div{height:100%}
-.ptop{display:flex;flex-wrap:wrap;gap:4px 9px;margin-top:6px}
-.ptop span{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;color:var(--muted)}
-.ptop i{width:9px;height:9px;border-radius:2px}.ptop b{color:var(--accent3);font-variant-numeric:tabular-nums}
-.foot{margin-top:24px;color:var(--muted);font-size:12.5px;line-height:1.7}
-.foot a{color:var(--accent)}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="0; url=genes.html">
+<title>Urban Visual Gene</title>
+<script>location.replace("genes.html");</script>
 </head>
 <body>
-<div id="top">
-  <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
-  <div class="tabs">
-    <a class="tab active" href="index.html">总览</a>
-    <a class="tab" href="genes.html">512 视觉基因</a>
-    <a class="tab" href="coexpr.html">基因组合</a>
-    <a class="tab" href="citygenome.html">城市基因组</a>
-    <a class="tab" href="interpret.html">可解释性·SAE</a>
-  </div>
-</div>
-<div class="wrap">
-  <h1>12 城街道的<span>视觉基因组成</span> · 总览</h1>
-  <p class="lead">每座城市一个面板：小地图上每个点是一处街景，<b style="color:var(--text)">颜色 = 该街景点的主导视觉基因类别</b>，
-  可看出城内不同街道的组成差异；下方条形是全城平均配比。</p>
-  <div class="kpis">
-    <div class="kpi"><div class="n">12</div><div class="l">城市</div></div>
-    <div class="kpi"><div class="n">3000</div><div class="l">采样街景</div></div>
-    <div class="kpi"><div class="n">512</div><div class="l">视觉基因</div></div>
-    <div class="kpi"><div class="n">5</div><div class="l">类别</div></div>
-  </div>
-  <div id="catlg"></div>
-  <div class="grid" id="grid"></div>
-  <div class="foot">
-    数据：全球去偏 K=512 字典编码，每城 250 处街景（路网密度分层采样）。
-    深入查看 → <a href="citygenome.html">城市基因组</a> · <a href="interpret.html">视觉基因字典</a>
-  </div>
-</div>
-<script>
-fetch("compose/manifest.json").then(r=>r.json()).then(m=>{
-  const CAT=m.categories, col=k=>CAT[k].color;
-  document.getElementById("catlg").innerHTML="<b>视觉基因类别:</b>"+CAT.map(c=>`<span><i style="background:${c.color}"></i>${c.name}</span>`).join("");
-  const dom=c=>{let bi=0;for(let k=1;k<c.length;k++)if(c[k]>c[bi])bi=k;return bi;};
-  const stack=comp=>comp.map((v,k)=>v>0.005?`<div style="width:${(v*100).toFixed(1)}%;background:${col(k)}" title="${CAT[k].name} ${(v*100).toFixed(0)}%"></div>`:"").join("");
-  document.getElementById("grid").innerHTML=m.cities.map(c=>{
-    const b=c.bounds,W=100,H=74,pad=4;
-    const pts=c.panos.map(p=>{
-      const x=pad+(p.lon-b.minlon)/((b.maxlon-b.minlon)||1)*(W-2*pad);
-      const y=H-(pad+(p.lat-b.minlat)/((b.maxlat-b.minlat)||1)*(H-2*pad));
-      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.1" fill="${col(dom(p.c))}"/>`;}).join("");
-    const top=c.comp.map((v,k)=>[k,v]).sort((a,b)=>b[1]-a[1]).slice(0,3);
-    return `<a class="panel" href="citygenome.html">
-      <div class="phead"><b>${c.zh}</b><span class="n">${c.n} 街景</span></div>
-      <svg class="pmap" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${pts}</svg>
-      <div class="pbar">${stack(c.comp)}</div>
-      <div class="ptop">${top.map(([k,v])=>`<span><i style="background:${col(k)}"></i>${CAT[k].name} <b>${(v*100).toFixed(0)}%</b></span>`).join("")}</div>
-    </a>`;}).join("");
-});
-</script>
+<a href="genes.html">进入 512 视觉基因</a>
 </body>
 </html>
