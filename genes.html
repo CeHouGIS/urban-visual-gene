@@ -98,7 +98,7 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
 </div>
 <div class="wrap">
   <h1><span id="datasetTitle">W512 · topk32</span> 视觉基因 · 谱系浏览器</h1>
-  <p class="lead">左侧是当前 SAE 字典的<b>基因树 / 分组树</b>。W512 使用解码方向余弦距离的层次聚类；W2048·topk4 按 12 城出现范围分组。展开枝系、点开任一
+  <p class="lead">左侧是当前 SAE 字典的<b>基因树 / 分组树</b>。W512 使用解码方向余弦距离的层次聚类；消融实验字典按 12 城出现范围分组。展开枝系、点开任一
   <b>基因叶子</b>,右侧就显示该基因<b>激活最强的街景示例</b>(取样覆盖每个点的 4 个朝向 0/90/180/270°,故代表图可来自任一视角),
   并用 <b>jet 配色</b>把该基因在图上的激活区域高亮出来(红=强,蓝=弱)。
   点<b>枝系</b>则看这一簇里所有基因的代表图,一眼看清它们的关系。</p>
@@ -127,7 +127,11 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
 let M=null,CATN={},CATC={},selEl=null,MODE="ov",POS=new Set(),HIDEPOS=true,CURRENT=null;
 const DATASETS=[
   {id:"w512",label:"W512 · topk32",path:"genes/manifest.json",hint:"解码方向层次聚类"},
-  {id:"w2048_topk4",label:"W2048 · topk4",path:"genes_w2048_topk4/manifest.json",hint:"按 12 城出现范围分组"}
+  {id:"w1024_topk8",label:"W1024 · topk8",path:"genes_w1024_topk8/manifest.json",hint:"按 12 城出现范围分组"},
+  {id:"w1024_topk16",label:"W1024 · topk16",path:"genes_w1024_topk16/manifest.json",hint:"按 12 城出现范围分组"},
+  {id:"w2048_topk4",label:"W2048 · topk4",path:"genes_w2048_topk4/manifest.json",hint:"按 12 城出现范围分组"},
+  {id:"w2048_topk8",label:"W2048 · topk8",path:"genes_w2048_topk8/manifest.json",hint:"按 12 城出现范围分组"},
+  {id:"w2048_topk16",label:"W2048 · topk16",path:"genes_w2048_topk16/manifest.json",hint:"按 12 城出现范围分组"}
 ];
 const PTNAME={"h-line":"水平带","v-line":"竖条","corner":"四角","edge":"边缘","pos-other":"位置"};
 const isPos=g=>POS.has(+g);
