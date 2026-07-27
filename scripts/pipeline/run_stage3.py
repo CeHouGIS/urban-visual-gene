@@ -38,7 +38,11 @@ def main():
         kernel_sigma_m=args.kernel_sigma_m,
         context_radius_m=args.context_radius_m,
     )
-    ctx_df.to_parquet(out / "road_context_features.parquet", index=False)
+    # row_group_size caps each row group's list-column at <2^31 elements so the
+    # 3072-float road_context_embedding stays readable for very large road
+    # networks (e.g. CapeTown ~774k nodes x 3072 > int32 list-offset limit).
+    ctx_df.to_parquet(out / "road_context_features.parquet", index=False,
+                      row_group_size=200000)
     save_report(out / "stage_reports/stage3_report.json", r3)
     print(f"Stage 3 ✓ {r3['n_road_nodes']} nodes, "
           f"coverage={r3['coverage_ratio']*100:.1f}%, D={r3['embedding_dim']}")

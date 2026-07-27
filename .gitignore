@@ -14,9 +14,18 @@ models/
 # MRLU units & boundaries (regenerable from the pipeline)
 *.geojson
 *.log
+# SLURM job logs
+*.out
+# Long-running extraction / training progress markers
+*.progress
 
 # Kept under outputs/ (NOT ignored): EXPERIMENT_REPORT.md, figures/*.png,
 # unit_statistics.csv, stage_reports/*.json
+
+# Experiment scratch dirs that contain regenerable checkpoints plus tiny reports.
+# Keep committed summary reports under outputs/ unless a whole scratch run is
+# explicitly listed here.
+outputs/transfer/joint_k128/
 
 # ── Python ──────────────────────────────────────────────────────────────────
 __pycache__/
@@ -26,3 +35,10 @@ __pycache__/
 *.egg-info/
 .venv/
 venv/
+
+# ── formal/ pipeline outputs (large, regenerable: dicts, thumbs, overlays, web assets) ──
+formal/formal_out*/
+formal/qc/
+formal/ondisk/
+formal/slurm-*.out
+formal/qc_full/

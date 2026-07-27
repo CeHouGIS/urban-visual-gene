@@ -171,7 +171,7 @@ if __name__ == "__main__":
         node_spacing_m=args.node_spacing_m,
     )
 
-    matched.to_parquet(out / "road_matched_panos.parquet", index=False)
+    matched.to_parquet(out / "road_matched_panos.parquet", index=False, row_group_size=100000)
     nodes.to_parquet(out / "road_graph_nodes.parquet", index=False)
     edges.to_parquet(out / "road_graph_edges.parquet", index=False)
     save_report(out / "stage_reports" / "stage2_report.json", report)

@@ -263,6 +263,6 @@ if __name__ == "__main__":
 
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)
-    ctx.to_parquet(out, index=False)
+    ctx.to_parquet(out, index=False, row_group_size=200000)
     save_report(out.parent / "stage_reports" / "stage3_report.json", report)
     print(json.dumps(report, indent=2))

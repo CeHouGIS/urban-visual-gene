@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Visual Gene · 可解释性 SAE</title>
+<style>
+:root{
+  --bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
+  --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+a{color:inherit}
+/* top bar */
+#top{position:sticky;top:0;z-index:10;height:52px;display:flex;align-items:center;
+  gap:18px;padding:0 18px;background:rgba(7,11,20,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+.brand{font-weight:700;display:flex;align-items:center;gap:9px;font-size:15px;white-space:nowrap}
+.brand .dot{width:10px;height:10px;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--accent),var(--accent2),var(--accent3),var(--accent));
+  box-shadow:0 0 12px var(--accent)}
+.tabs{display:flex;gap:6px;margin-left:8px;flex-wrap:wrap}
+.tab{font-size:13px;color:var(--muted);padding:6px 13px;border-radius:8px;border:1px solid transparent;cursor:pointer;text-decoration:none}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-color:var(--border);background:var(--panel2)}
+/* layout */
+.wrap{max-width:1180px;margin:0 auto;padding:26px 20px 70px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:center;margin-bottom:10px}
+.hero h1{font-size:27px;margin:0 0 10px;line-height:1.25}
+.hero h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:14.5px;line-height:1.7;margin:0 0 16px}
+.hero img{width:100%;border-radius:14px;border:1px solid var(--border);display:block}
+.kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:10px 15px;min-width:96px}
+.kpi .n{font-size:20px;font-weight:800;color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:11px;color:var(--muted);margin-top:3px}
+/* method strip */
+.method{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 8px;align-items:stretch}
+.step{flex:1;min-width:150px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:13px 15px}
+.step b{color:var(--accent3);font-size:13px}
+.step p{margin:5px 0 0;font-size:12.5px;color:var(--muted);line-height:1.55}
+.arrow{display:flex;align-items:center;color:var(--accent);font-size:20px;opacity:.6}
+h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;text-transform:uppercase}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 18px;line-height:1.6}
+/* gallery */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.card img{width:100%;display:block;background:#0b1322}
+.card .body{padding:12px 15px 14px}
+.card .fid{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.5px}
+.card .gloss{font-size:15px;margin:3px 0 2px;color:#fff}
+.card .en{font-size:12px;color:var(--muted)}
+.card .meta{display:flex;gap:14px;margin-top:9px;font-size:11.5px;color:var(--muted)}
+.card .meta b{color:var(--accent3);font-variant-numeric:tabular-nums}
+.tri{margin-top:14px;border-radius:14px;border:1px solid var(--border);overflow:hidden;background:#0a1120}
+.tri img{width:100%;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 2px}
+.chip{font-size:13px;padding:7px 13px;border-radius:9px;color:var(--text);
+  background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent)}
+.note{margin-top:34px;padding:16px 18px;background:var(--panel);border:1px solid var(--border);
+  border-left:3px solid var(--accent2);border-radius:10px;font-size:13px;color:var(--muted);line-height:1.7}
+.note b{color:var(--text)}
+.legend{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-top:10px}
+.legbar{width:120px;height:11px;border-radius:3px;background:linear-gradient(90deg,#000083,#0000ff,#00ffff,#ffff00,#ff0000,#800000)}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="top">
+  <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
+  <div class="tabs">
+    <a class="tab" href="genes.html">512 视觉基因</a>
+    <a class="tab" href="coexpr.html">基因组合</a>
+    <a class="tab" href="citygenome.html">城市基因组</a>
+    <a class="tab active" href="interpret.html">可解释性·SAE</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h1>把街景分解成<span>视觉基因</span><br>并定位回图像</h1>
+      <p>在 DINOv3 的 <b style="color:var(--text)">patch 级</b>特征上训练一个 <b style="color:var(--text)">Top-K 稀疏自编码器</b>，
+      把纠缠的视觉表征拆成一批单义维度（"视觉基因"）。每个维度的激活天然带位置——
+      上采样后叠回原图，就能看到它究竟对应街景里的<b style="color:var(--text)">哪一块</b>：
+      车辆、路缘、绿化带、建筑立面、天际线……全程无需任何语义分割标注。</p>
+      <div class="kpis">
+        <div class="kpi"><div class="n">0.892</div><div class="l">重建 cos（K=512）</div></div>
+        <div class="kpi"><div class="n">32</div><div class="l">L0 稀疏度 / patch</div></div>
+        <div class="kpi"><div class="n">512</div><div class="l">字典维度 K</div></div>
+        <div class="kpi"><div class="n">12</div><div class="l">共享字典城市数</div></div>
+      </div>
+      <div class="legend"><span>激活强度</span><span class="legbar"></span><span>低 → 高</span></div>
+    </div>
+    <img src="sae/global_category_montage.png" alt="global3 五大类的代表基因激活">
+  </div>
+
+  <!-- METHOD -->
+  <div class="method">
+    <div class="step"><b>① DINOv3</b><p>街景 448² → ViT-L/16，剥掉 CLS/register 前缀，保留 28×28=784 个 patch 特征（各 1024 维）</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>② Top-K SAE</b><p>每个 patch 只保留最强的 32 个激活，L0 精确钉在 32，字典 K=512，零死原子</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>③ 激活图</b><p>取某个基因在 784 个 patch 上的激活，reshape 回 28×28 网格</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b>④ 叠回原图</b><p>上采样到 448²，叠加——特征的物理意义一目了然</p></div>
+  </div>
+
+  <!-- GALLERY (formal K=512) -->
+  <h2 class="sec">视觉基因图谱 · K=512 全球12城字典</h2>
+  <p class="sub">全球字典训练于<b style="color:var(--text)">香港·新加坡·阿姆斯特丹·开普敦·巴黎·圣保罗·墨西哥城·悉尼·雅加达·达卡·新德里·马尼拉</b>
+     （6 大洲 12 城，1152 万 patch @448；已用图像质量过滤剔除黑/糊/隧道图后重训）。把 512 个基因按其在 global3 里的<b style="color:var(--text)">谱系结构 + 语义</b>归成 <b style="color:var(--text)">5 大类</b>；
+     每行是一个类别的代表基因在真实街景上的定位（红区 = 该基因点亮的 patch）。类别为事后人工归纳,不参与训练——街景以立面/路面为主,故这两类偏大。</p>
+  <div class="note" style="margin:6px 0 16px;border-left-color:var(--accent3)">
+    <b>去偏训练。</b> 为让这本"共享字典"公平、无城市偏向：① <b>每城等量</b>采样（不按城市大小成比例，否则大城主导）；
+    ② 城内<b>按路网/采样点密度分层</b>（压掉 GSV 在主干道的过采）；③ 每个 pano 的<b>全部 4 个朝向</b>都进训练（朝向无偏）；
+    ④ 修复了 DINOv3 的<b>边界 artifact</b>（方向投影剔除）和一处目录大小写 bug（曾静默漏掉约 79% 的 pano）。
+    结果：<b>0 死原子</b>、12 城严格等量。仅存的数据源偏差（GSV 本身偏发达城市/主干道）无法从采样端消除，须在结论中声明。
+  </div>
+  <div class="chips">
+    <span class="chip" style="--c:#22e0a1">植被 · 78</span>
+    <span class="chip" style="--c:#f6c945">建筑立面 · 241</span>
+    <span class="chip" style="--c:#8a9bb5">路面·道路 · 164</span>
+    <span class="chip" style="--c:#ff9e64">车辆 · 19</span>
+    <span class="chip" style="--c:#39d6ff">天空·远景 · 10</span>
+  </div>
+  <div class="tri" style="margin-top:14px"><img src="sae/global_category_montage.png" alt="global3 五大类的代表基因样本"></div>
+
+  <!-- HIERARCHY (formal K=512) -->
+  <h2 class="sec">视觉基因谱系 · K=512</h2>
+  <p class="sub">每个基因在 DINOv3 空间里是一个<b style="color:var(--text)">方向向量</b>（解码器原子）。
+     按余弦距离对这些方向做层次聚类，得到<b style="color:var(--text)">视觉基因谱系树</b>——方向越近编码的概念越相关。
+     下图为 512 个基因里最常出现的 44 个的谱系（完全数据驱动，无人工分类）。</p>
+  <div class="tri"><img src="sae/dendrogram_512.png" alt="K=512 视觉基因谱系树"></div>
+
+
+  <div class="note">
+    <b>字典 global3：12 城全球版（6 大洲 / 448² / K=512, L0=32, 1152 万 patch, 零死原子, 重建 cos 0.892）。</b>
+    DINOv3 ViT-L/16 @448（28×28=784 patch），去偏共享 Top-K SAE。
+    方法论要点：稀疏用 Top-K 硬约束（软 L1 会退化成稠密激活）；训练损失里<b>不</b>放空间平滑项，
+    好让"空间连贯性 + 跨城可迁移"作为独立忠实性证据；边界 artifact 用方向投影从根上剔除。
+    <b>图像质量过滤</b>：用一个 4 类小 CNN（good/dark/blur/tunnel，隧道靠人工标注 + CLIP 蒸馏）在全量 1394 万 pano 上剔除黑/糊/隧道图，再用干净样本重训字典。
+    分类为 global3 原生 5 大类（谱系聚类 + 语义,天空为数据驱动）。「街道浏览器」为城市级应用（4 个有路网数据的城市做街段分析；其余城市已入字典）。
+  </div>
+</div>
+
+</body>
+</html>

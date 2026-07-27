@@ -9,9 +9,12 @@ import os, sys, json
 from pathlib import Path
 
 ROOT = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-TILES = {  # city -> (repo subfolder/file)
-    "Vienna":   "europe/e015_n50_e020_n45.geojson",
-    "HongKong": "asiaeast/e110_n25_e115_n20.geojson",
+TILES = {  # city -> GBA 5x5deg tile (repo subfolder/file)
+    "Vienna":    "europe/e015_n50_e020_n45.geojson",
+    "HongKong":  "asiaeast/e110_n25_e115_n20.geojson",
+    "Singapore": "oceania/e100_n05_e105_n00.geojson",
+    "Amsterdam": "europe/e000_n55_e005_n50.geojson",
+    "CapeTown":  "africa/e015_s30_e020_s35.geojson",
 }
 REPO = "zhu-xlab/GBA.ODbLPolygon"
 
@@ -33,18 +36,14 @@ def main():
 
     import pyogrio
     from pyproj import Transformer
-    # GBA tiles are EPSG:3857 (metres) — convert the lon/lat bbox before filtering
-    info = pyogrio.read_info(path)
-    crs = str(info.get("crs") or "EPSG:4326")
-    if "3857" in crs:
-        tr = Transformer.from_crs(4326, 3857, always_xy=True)
-        x0, y0 = tr.transform(bbox[0], bbox[1]); x1, y1 = tr.transform(bbox[2], bbox[3])
-        qbbox = (x0, y0, x1, y1)
-    else:
-        qbbox = bbox
-    gdf = pyogrio.read_dataframe(path, bbox=qbbox)
-    if gdf.crs and gdf.crs.to_epsg() != 4326:
-        gdf = gdf.to_crs(4326)                     # store as lon/lat for the dashboard
+    # ALL GBA tiles are actually EPSG:3857 (metres) — but some tiles mislabel their
+    # CRS as 4326 in the file metadata (observed: Singapore, Amsterdam), which made
+    # the old "3857" string check use a lon/lat bbox on metre coords -> 0 features.
+    # So: always query + reproject as 3857, ignoring the (unreliable) metadata.
+    tr = Transformer.from_crs(4326, 3857, always_xy=True)
+    x0, y0 = tr.transform(bbox[0], bbox[1]); x1, y1 = tr.transform(bbox[2], bbox[3])
+    gdf = pyogrio.read_dataframe(path, bbox=(x0, y0, x1, y1))
+    gdf = gdf.set_crs(3857, allow_override=True).to_crs(4326)   # -> lon/lat for the dashboard
     gdf.to_parquet(outdir / "buildings.parquet")
     print(f"[bld] {city}: {len(gdf):,} buildings -> {outdir/'buildings.parquet'} | cols={list(gdf.columns)}", flush=True)
 

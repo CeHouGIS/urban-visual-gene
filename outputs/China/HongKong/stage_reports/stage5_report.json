@@ -1,8 +1,8 @@
 {
-  "n_nodes": 241774,
+  "n_nodes": 97985,
   "K": 32,
   "activation_threshold": 0.01,
-  "median_active_basis": 18.0,
-  "mean_recon_error": 0.2577,
-  "mean_entropy": 2.7729
+  "median_active_basis": 19.0,
+  "mean_recon_error": 0.2296,
+  "mean_entropy": 2.7628
 }

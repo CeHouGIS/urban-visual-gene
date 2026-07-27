@@ -27,8 +27,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 OUT_DIR = {
-    "Vienna":   "outputs/Austria/Vienna",
-    "HongKong": "outputs/China/HongKong",
+    "Vienna":    "outputs/Austria/Vienna",
+    "HongKong":  "outputs/China/HongKong",
+    "Singapore": "outputs/Singapore/Singapore",
+    "Amsterdam": "outputs/Netherlands/Amsterdam",
+    "CapeTown":  "outputs/SouthAfrica/CapeTown",
 }
 THREAD_ENV = {
     "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "MKL_NUM_THREADS": "1",
@@ -90,9 +93,11 @@ def run_city(city: str, max_panos, model, K, batch_size, epochs,
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--city", required=True, choices=["Vienna", "HongKong", "both"])
+    ap.add_argument("--city", required=True,
+                    choices=["Vienna", "HongKong", "Singapore", "Amsterdam",
+                             "CapeTown", "both"])
     ap.add_argument("--max-panos", type=int, default=None)
-    ap.add_argument("--model", default="dinov2_vitb14")
+    ap.add_argument("--model", default="dinov3_vitl16")
     ap.add_argument("--K", type=int, default=32)
     ap.add_argument("--batch-size", type=int, default=32)
     ap.add_argument("--epochs", type=int, default=50)

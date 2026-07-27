@@ -29,10 +29,31 @@ CITY_CONFIG = {
     },
     "HongKong": {
         "db":       "metadata/China/HongKong/meta/China_HongKong.db",
-        "roads":    "metadata/China/HongKong/road/China_Hong_Kong.geojson",
+        "roads":    "metadata/China/HongKong/road/HongKong_China_roads.geojson",
         "images":   "images/China/HongKong",
         "path_style": "hongkong",
         "out_dir":  "outputs/China/HongKong",
+    },
+    "Singapore": {
+        "db":       "metadata/Singapore/Singapore/meta/Singapore_Singapore.db",
+        "roads":    "metadata/Singapore/Singapore/road/Singapore_Singapore_roads.geojson",
+        "images":   "images/Singapore/Singapore",
+        "path_style": "hongkong",
+        "out_dir":  "outputs/Singapore/Singapore",
+    },
+    "Amsterdam": {
+        "db":       "metadata/Netherlands/Amsterdam/meta/Netherlands_Amsterdam.db",
+        "roads":    "metadata/Netherlands/Amsterdam/road/Amsterdam_Netherlands_roads.geojson",
+        "images":   "images/Netherlands/Amsterdam",
+        "path_style": "hongkong",
+        "out_dir":  "outputs/Netherlands/Amsterdam",
+    },
+    "CapeTown": {
+        "db":       "metadata/SouthAfrica/CapeTown/meta/SouthAfrica_CapeTown.db",
+        "roads":    "metadata/SouthAfrica/CapeTown/road/CapeTown_SouthAfrica_roads.geojson",
+        "images":   "images/SouthAfrica/CapeTown",
+        "path_style": "hongkong",
+        "out_dir":  "outputs/SouthAfrica/CapeTown",
     },
 }
 
