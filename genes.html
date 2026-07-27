@@ -30,6 +30,8 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
 .seg button{background:transparent;color:var(--muted);border:0;padding:7px 15px;cursor:pointer;font-size:13px}
 .seg button.active{background:var(--accent);color:#04121a;font-weight:700}
 .seg button:not(.active):hover{color:var(--text)}
+.select{border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:9px;
+  padding:7px 12px;font-size:13px;font-family:inherit}
 .vhint{font-size:12px;color:var(--muted)}
 .vhint b{color:#ff8f8f}
 .pbadge{font-size:9.5px;padding:1px 7px;border-radius:10px;background:rgba(255,107,107,.13);color:#ff8f8f;border:1px solid rgba(255,107,107,.35);white-space:nowrap}
@@ -95,14 +97,16 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
   </div>
 </div>
 <div class="wrap">
-  <h1>512 个<span>视觉基因</span> · 谱系浏览器</h1>
-  <p class="lead">左侧是 512 个基因按解码方向余弦距离做的<b>层次聚类树</b>——相邻＝语义相近。展开枝系、点开任一
-  <b>基因叶子</b>,右侧就显示该基因<b>激活最强的 20 张街景</b>(取样覆盖每个点的 4 个朝向 0/90/180/270°,故代表图可来自任一视角),
+  <h1><span id="datasetTitle">W512 · topk32</span> 视觉基因 · 谱系浏览器</h1>
+  <p class="lead">左侧是当前 SAE 字典的<b>基因树 / 分组树</b>。W512 使用解码方向余弦距离的层次聚类；W2048·topk4 按 12 城出现范围分组。展开枝系、点开任一
+  <b>基因叶子</b>,右侧就显示该基因<b>激活最强的街景示例</b>(取样覆盖每个点的 4 个朝向 0/90/180/270°,故代表图可来自任一视角),
   并用 <b>jet 配色</b>把该基因在图上的激活区域高亮出来(红=强,蓝=弱)。
   点<b>枝系</b>则看这一簇里所有基因的代表图,一眼看清它们的关系。</p>
   <div class="kpis" id="kpis"></div>
   <div class="taxo" id="taxo"></div>
   <div class="viewbar">
+    <span class="vlabel">数据集</span>
+    <select class="select" id="datasetSelect" onchange="chooseDataset()"></select>
     <span class="vlabel">视图</span>
     <div class="seg">
       <button id="mOv" class="active" onclick="setMode('ov')">🔥 激活图 (jet)</button>
@@ -120,7 +124,11 @@ h1{font-size:24px;margin:0 0 8px}h1 span{background:linear-gradient(90deg,var(--
   </div>
 </div>
 <script>
-let M=null,CATN={},CATC={},selEl=null,MODE="ov",POS=new Set(),HIDEPOS=true;
+let M=null,CATN={},CATC={},selEl=null,MODE="ov",POS=new Set(),HIDEPOS=true,CURRENT=null;
+const DATASETS=[
+  {id:"w512",label:"W512 · topk32",path:"genes/manifest.json",hint:"解码方向层次聚类"},
+  {id:"w2048_topk4",label:"W2048 · topk4",path:"genes_w2048_topk4/manifest.json",hint:"按 12 城出现范围分组"}
+];
 const PTNAME={"h-line":"水平带","v-line":"竖条","corner":"四角","edge":"边缘","pos-other":"位置"};
 const isPos=g=>POS.has(+g);
 const vis=gids=>gids.filter(g=>!(HIDEPOS&&isPos(g)));
@@ -134,19 +142,33 @@ function setMode(m){MODE=m;
 function peek(img,on){img.src=(on ? (MODE==="ov"?img.dataset.o:img.dataset.ov)
                                    : (MODE==="ov"?img.dataset.ov:img.dataset.o));}
 const flip=u=>`<img class="flip" loading="lazy" src="${MODE==='ov'?u:orig(u)}" data-ov="${u}" data-o="${orig(u)}" onmouseover="peek(this,1)" onmouseout="peek(this,0)">`;
-fetch("genes/manifest.json").then(r=>r.json()).then(m=>{
-  M=m; m.categories.forEach(c=>{CATN[c.id]=c.name;CATC[c.id]=c.color;});
+const dsSel=document.getElementById("datasetSelect");
+dsSel.innerHTML=DATASETS.map(d=>`<option value="${d.id}">${d.label}</option>`).join("");
+function chooseDataset(){loadDataset(dsSel.value);}
+function loadDataset(id){
+  const ds=DATASETS.find(d=>d.id===id)||DATASETS[0]; CURRENT=ds;
+  document.getElementById("datasetTitle").textContent=ds.label;
+  document.getElementById("tree").innerHTML="";
+  document.getElementById("taxo").innerHTML="";
+  document.getElementById("detail").innerHTML='<div class="hint">正在加载当前数据集...</div>';
+  fetch(ds.path).then(r=>r.json()).then(m=>{
+  M=m; CATN={}; CATC={}; m.categories.forEach(c=>{CATN[c.id]=c.name;CATC[c.id]=c.color;});
   POS=new Set((m.positional||[]).map(Number));
   document.getElementById("nPos").textContent=POS.size;
   if(m.taxonomy)document.getElementById("taxo").innerHTML="<h4>分类体系 · 6 大类 › 子类</h4>"+
     m.taxonomy.map(p=>`<div class="tprow"><span class="tpar"><i style="background:${p.color}"></i>${p.name} <b>${p.n}</b></span><span class="tkids">${p.children.map(c=>`<span class="tkid">${c.name} · ${c.n}</span>`).join("")}</span></div>`).join("");
+  selEl=null;
   paintKpis(); buildTree();
-});
+  document.getElementById("detail").innerHTML='<div class="hint">← 从左侧谱系树里点开一个枝系或基因。</div>';
+  });
+}
+loadDataset(DATASETS[0].id);
 function paintKpis(){
   const shown=M.n_active-(HIDEPOS?POS.size:0);
   const subs=M.tree.reduce((a,t)=>a+t.children.filter(c=>visCount(c)>0).length,0);
+  const label=POS.size ? (HIDEPOS?"语义基因(已隐位置)":"基因(含位置)") : "使用中基因";
   document.getElementById("kpis").innerHTML=
-    `<div class="kpi"><div class="n">${shown}</div><div class="l">${HIDEPOS?"语义基因(已隐位置)":"基因(含位置)"} / ${M.n_genes}</div></div>`+
+    `<div class="kpi"><div class="n">${shown}</div><div class="l">${label} / ${M.n_genes}</div></div>`+
     `<div class="kpi"><div class="n">${M.tree.filter(t=>visCount(t)>0).length}</div><div class="l">主枝系</div></div>`+
     `<div class="kpi"><div class="n">${subs}</div><div class="l">子枝系</div></div>`+
     `<div class="kpi"><div class="n">${M.n_imgs}</div><div class="l">编码街景</div></div>`;
@@ -196,7 +218,7 @@ function showGene(gid,path){
   const g=M.genes[String(gid)],d=document.getElementById("detail");
   d.innerHTML=crumb(path.concat("基因 #"+gid))+
     `<div class="dh"><span class="t">基因 #${gid}</span>
-      <span class="chip" style="background:${CATC[g.cat]}22;color:${CATC[g.cat]}"><i style="background:${CATC[g.cat]}"></i>${CATN[g.cat]}${g.child?` <span style="opacity:.6">›</span> ${g.child}`:""}</span>
+      <span class="chip" style="background:${CATC[g.cat]}22;color:${CATC[g.cat]}"><i style="background:${CATC[g.cat]}"></i>${CATN[g.cat]}${g.child&&g.child!==CATN[g.cat]?` <span style="opacity:.6">›</span> ${g.child}`:""}</span>
       ${isPos(gid)?`<span class="pbadge">位置伪影 · ${PTNAME[g.pt]||"位置"} · posR2=${g.pr2}</span>`:""}
       <span class="meta">峰值 ${g.peak} · 主导于 ${g.nimg} 张街景 · 下方 ${g.ex.length} 张为激活最强</span></div>`+
     (isPos(gid)?`<p class="desc" style="color:#ff9f9f">⚠ 这是一个<b>位置基因</b>:它主要按 patch 在图上的位置(${PTNAME[g.pt]||"固定位置"})激活,而非按内容——属于低质基因,默认已在浏览器中隐藏。成因见"可解释性"说明。</p>`:
