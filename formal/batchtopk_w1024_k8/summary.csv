@@ -1,0 +1,2 @@
+model_type,width,k,n_used,core_12,city_unique_1,pair_specific_2,regional_3to5,accessory_6to8,near_core_9to11,unused,core_fraction,city_unique_fraction,unique_or_pair_fraction,final_train_loss,approx_train_recon_cos,active_dims_patch_mean,unique_genes_per_image_mean
+batch_topk,1024,8,896,79,125,121,257,184,130,128,0.0771,0.1221,0.2402,0.154989,0.845011,6.723,98.39

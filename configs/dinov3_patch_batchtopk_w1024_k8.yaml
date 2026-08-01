@@ -1,0 +1,41 @@
+experiment:
+  name: dinov3_patch_batchtopk_w1024_k8
+  seed: 42
+  output_dir: formal/batchtopk_w1024_k8
+
+backbone:
+  name: dinov3
+  model_name: facebook/dinov3-vitl16-pretrain-lvd1689m
+  checkpoint_path: ""
+  freeze: true
+  input_size: 448
+  patch_size: 16
+  feature_layer: -2
+  token_type: patch
+  remove_prefix_tokens: true
+  use_register_tokens: false
+
+feature_cache:
+  enabled: true
+  source: formal/formal_out_global3/dict_sample.f16.npy
+
+data:
+  center: false
+  l2_normalize: true
+
+model:
+  type: batch_topk
+  input_dim: auto
+  latent_dim: 1024
+  k: 8
+  tied_weights: false
+  decoder_unit_norm: true
+
+training:
+  batch_size: 16384
+  epochs: 60
+  learning_rate: 0.0003
+  weight_decay: 0.00001
+  optimizer: adamw
+  gradient_clip_norm: 1.0
+

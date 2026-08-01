@@ -47,22 +47,38 @@ GROUPS = [
 class Dataset:
     width: int
     topk: int
+    key_override: str | None = None
+    label_override: str | None = None
+    sparse_override: Path | None = None
+    out_dir_override: str | None = None
 
     @property
     def key(self) -> str:
+        if self.key_override:
+            return self.key_override
         return f"w{self.width}_topk{self.topk}"
 
     @property
     def label(self) -> str:
+        if self.label_override:
+            return self.label_override
         return f"W{self.width} · topk{self.topk}"
 
     @property
     def sparse(self) -> Path:
+        if self.sparse_override:
+            return self.sparse_override
         return BASE / f"width{self.width}_topk{self.topk}" / "sparse_acts.npz"
 
     @property
     def out(self) -> Path:
+        if self.out_dir_override:
+            return SITE / self.out_dir_override
         return SITE / f"genes_w{self.width}_topk{self.topk}"
+
+    @property
+    def web_dir(self) -> str:
+        return self.out.name
 
 
 DATASETS = {
@@ -71,6 +87,14 @@ DATASETS = {
         Dataset(1024, 16),
         Dataset(2048, 8),
         Dataset(2048, 16),
+        Dataset(
+            1024,
+            8,
+            key_override="batchtopk_w1024_k8",
+            label_override="BatchTopK W1024 · K8",
+            sparse_override=ROOT / "formal" / "batchtopk_w1024_k8" / "sparse_acts.npz",
+            out_dir_override="genes_batchtopk_w1024_k8",
+        ),
     ]
 }
 
@@ -157,7 +181,7 @@ def build_dataset(ds: Dataset, force: bool = False) -> None:
                 gene_map = np.where(idx[i] == g, val[i], 0).max(1).reshape(GRID, GRID)
                 Image.fromarray(overlay(p, gene_map)).resize((128, 128)).save(gd / f"{r}.jpg", quality=74)
                 Image.open(p).convert("RGB").resize((128, 128)).save(gd / f"{r}_o.jpg", quality=74)
-                ex.append(f"genes_w{ds.width}_topk{ds.topk}/exem/g{g}/{r}.jpg")
+                ex.append(f"{ds.web_dir}/exem/g{g}/{r}.jpg")
             except Exception:
                 missing += 1
         if not ex:
