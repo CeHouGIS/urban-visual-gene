@@ -1,0 +1,53 @@
+version: "0.1-pilot"
+description: >
+  A semantic label, an empirical gene relation, and an image/model quality
+  state are deliberately separate.
+
+status:
+  - urban_semantic
+  - visual_primitive
+  - scene_context
+  - acquisition_artifact
+  - dataset_proxy
+  - polysemantic
+  - insufficient_evidence
+  - inactive
+
+urban_relevance: [direct, conditional, diagnostic_only, unknown]
+
+concept_type:
+  - physical_entity
+  - built_environment
+  - natural_environment
+  - transport_space
+  - transport_object
+  - street_furniture
+  - person_activity
+  - scene_morphology
+  - visual_attribute
+  - acquisition_process
+
+scope: [texture, part, object, region, scene_configuration]
+
+semantic_relations:
+  is_a: "subtype relation; e.g. sedan is_a vehicle"
+  part_of: "component relation; e.g. window part_of facade"
+  has_attribute: "material, colour, geometry, condition, or style"
+  co_occurs_with: "scene composition; never a parent-child edge"
+
+empirical_gene_relations:
+  - equivalent_to
+  - specializes
+  - part_of
+  - sibling_of
+  - coactivates_with
+  - overlaps_with
+  - artifact_of
+
+top_level_entities:
+  natural_environment: [vegetation, sky_weather, terrain, water]
+  built_environment: [building, facade, wall_fence, entrance_opening]
+  transport_space: [road, sidewalk, curb, intersection, rail]
+  transport_object: [car, bus, two_wheeler]
+  street_furniture: [sign, pole, light, overhead_wire, street_furniture]
+  scene_morphology: [street_canyon, open_space, vanishing_point, density, frontage_configuration]
