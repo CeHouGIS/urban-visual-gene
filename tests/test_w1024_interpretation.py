@@ -3,6 +3,7 @@ from formal.interpretation.build_w1024_audit import (
     prevalence_group,
     select_stratified_pilot,
 )
+from formal.web.build_ablation_genes import DATASETS, group_id
 
 
 def test_prevalence_groups_cover_all_ranges():
@@ -19,6 +20,11 @@ def test_old_match_group_thresholds():
     assert old_match_group(0.649) == "weak"
     assert old_match_group(0.65) == "medium"
     assert old_match_group(0.75) == "strong"
+
+
+def test_batchtopk_exemplar_backfill_includes_below_threshold_genes():
+    assert group_id(0) == 6
+    assert DATASETS["batchtopk_w1024_k8"].include_below_threshold
 
 
 def test_pilot_selection_is_unique_deterministic_and_sized():

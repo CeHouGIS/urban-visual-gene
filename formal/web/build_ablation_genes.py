@@ -40,6 +40,7 @@ GROUPS = [
     (3, "区域型 3-5城", "#f6c945", lambda n: 3 <= n <= 5),
     (4, "双城特异", "#ff9e64", lambda n: n == 2),
     (5, "单城独有", "#ff6b8a", lambda n: n == 1),
+    (6, "低于跨城阈值", "#8a9bb5", lambda n: n == 0),
 ]
 
 
@@ -51,6 +52,7 @@ class Dataset:
     label_override: str | None = None
     sparse_override: Path | None = None
     out_dir_override: str | None = None
+    include_below_threshold: bool = False
 
     @property
     def key(self) -> str:
@@ -94,6 +96,7 @@ DATASETS = {
             label_override="BatchTopK W1024 · K8",
             sparse_override=ROOT / "formal" / "batchtopk_w1024_k8" / "sparse_acts.npz",
             out_dir_override="genes_batchtopk_w1024_k8",
+            include_below_threshold=True,
         ),
     ]
 }
@@ -127,10 +130,13 @@ def chunked(seq: list[int], size: int) -> list[list[int]]:
     return [seq[i:i + size] for i in range(0, len(seq), size)]
 
 
-def build_dataset(ds: Dataset, force: bool = False) -> None:
+def build_dataset(ds: Dataset, force: bool = False, backfill_missing: bool = False) -> None:
     out = ds.out
     manifest_file = out / "manifest.json"
-    if manifest_file.exists() and not force:
+    existing_manifest = None
+    if manifest_file.exists() and backfill_missing:
+        existing_manifest = json.loads(manifest_file.read_text())
+    elif manifest_file.exists() and not force:
         log(f"skip {ds.label}: {manifest_file} exists")
         return
     if not ds.sparse.exists():
@@ -165,10 +171,12 @@ def build_dataset(ds: Dataset, force: bool = False) -> None:
             log(f"  maxmat {i:,}/{n_img:,}")
     peak = maxmat.max(0)
     nimg = (maxmat > 0.05 * (peak + 1e-9)).sum(0)
-    used = [int(g) for g in np.where(prevalence >= 1)[0]]
-    log(f"used genes: {len(used):,}")
+    eligible = peak > 0 if ds.include_below_threshold else prevalence >= 1
+    all_used = [int(g) for g in np.where(eligible)[0]]
+    genes = dict(existing_manifest.get("genes", {})) if existing_manifest else {}
+    used = [g for g in all_used if str(g) not in genes]
+    log(f"eligible genes: {len(all_used):,}; render now: {len(used):,}")
 
-    genes = {}
     missing = 0
     for rank, g in enumerate(sorted(used, key=lambda x: (-prevalence[x], -peak[x], x))):
         gd = ex_root / f"g{g}"
@@ -244,6 +252,8 @@ def build_dataset(ds: Dataset, force: bool = False) -> None:
         "positional": [],
         "n_genes": ds.width,
         "n_active": len(genes),
+        "n_prevalence_active": int((prevalence >= 1).sum()),
+        "n_below_threshold_with_examples": sum(g["prevalence"] == 0 for g in genes.values()),
         "n_imgs": int(n_img),
         "n_examples_per_gene": NEX,
         "genes": genes,
@@ -257,14 +267,20 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("datasets", nargs="*", choices=sorted(DATASETS), help="dataset keys to build")
     p.add_argument("--force", action="store_true", help="overwrite an existing manifest")
+    p.add_argument(
+        "--backfill-missing", action="store_true",
+        help="keep existing exemplars and render only eligible genes absent from the manifest",
+    )
     return p.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    if args.force and args.backfill_missing:
+        raise SystemExit("--force and --backfill-missing are mutually exclusive")
     keys = args.datasets or sorted(DATASETS)
     for key in keys:
-        build_dataset(DATASETS[key], force=args.force)
+        build_dataset(DATASETS[key], force=args.force, backfill_missing=args.backfill_missing)
 
 
 if __name__ == "__main__":
