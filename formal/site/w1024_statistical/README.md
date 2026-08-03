@@ -6,6 +6,8 @@ Generated with no human labels and no VLM descriptions:
 cd /global/scratch/users/cehou/urban-visual-gene
 /global/scratch/users/cehou/conda_envs/svi/bin/python \
   -m formal.interpretation.build_statistical_taxonomy
+/global/scratch/users/cehou/conda_envs/svi/bin/python \
+  -m formal.interpretation.compare_hierarchy_cuts
 ```
 
 Open `formal/site/w1024_statistics.html` through an HTTP server rooted at
@@ -26,6 +28,8 @@ Outputs:
 - `statistical_arrays.npz`: fused similarity, spectral embedding, labels, and
   split-sample stability.
 - `summary.json`: method and result summary.
+- `hierarchy_comparison.csv/json`: K=8–256 separation, size balance,
+  fragmentation, and independently rebuilt half-sample stability comparison.
 
 Reruns reuse the expensive hierarchy/stability arrays. Pass
 `--force-hierarchy` to recompute them.

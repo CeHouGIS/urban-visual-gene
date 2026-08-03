@@ -62,6 +62,8 @@ python -m formal.dict.pos_subspace ; python -m formal.dict.retrain_debias
 python -m formal.interpretation.build_w1024_audit
 # Fully statistical W1024 taxonomy (no annotations or language model)
 python -m formal.interpretation.build_statistical_taxonomy
+# Compare hierarchy cuts with separation, balance, and half-sample stability
+python -m formal.interpretation.compare_hierarchy_cuts
 # Add exemplars for statistically active genes omitted by the old city threshold
 python -m formal.web.build_ablation_genes batchtopk_w1024_k8 --backfill-missing
 ```
