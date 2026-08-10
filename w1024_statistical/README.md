@@ -8,6 +8,8 @@ cd /global/scratch/users/cehou/urban-visual-gene
   -m formal.interpretation.build_statistical_taxonomy
 /global/scratch/users/cehou/conda_envs/svi/bin/python \
   -m formal.interpretation.compare_hierarchy_cuts
+/global/scratch/users/cehou/conda_envs/svi/bin/python \
+  -m formal.interpretation.analyze_statistical_structure
 ```
 
 Open `formal/site/w1024_statistics.html` through an HTTP server rooted at
@@ -30,6 +32,16 @@ Outputs:
 - `summary.json`: method and result summary.
 - `hierarchy_comparison.csv/json`: K=8–256 separation, size balance,
   fragmentation, and independently rebuilt half-sample stability comparison.
+- `structure_analysis.json`: branch evidence audit, strict equivalence groups,
+  and the transitively reduced specialization DAG used by
+  `w1024_structure.html`.
+- `gene_evidence.csv`: independent reliability, structure, nuisance,
+  specificity, and redundancy evidence for every gene.
+- `branch_audit.csv`: coarse/fine branch composition and empirical status.
+- `equivalence_groups.csv`: canonical representatives and conservative
+  collapse-candidate flags.
+- `specialization_direct_edges.csv`: direct child-to-parent edges after
+  removing relations already implied transitively.
 
 Reruns reuse the expensive hierarchy/stability arrays. Pass
 `--force-hierarchy` to recompute them.
