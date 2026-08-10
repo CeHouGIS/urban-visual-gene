@@ -64,6 +64,8 @@ python -m formal.interpretation.build_w1024_audit
 python -m formal.interpretation.build_statistical_taxonomy
 # Compare hierarchy cuts with separation, balance, and half-sample stability
 python -m formal.interpretation.compare_hierarchy_cuts
+# Audit branch quality, strict redundancy groups, and specialization DAG
+python -m formal.interpretation.analyze_statistical_structure
 # Add exemplars for statistically active genes omitted by the old city threshold
 python -m formal.web.build_ablation_genes batchtopk_w1024_k8 --backfill-missing
 ```
