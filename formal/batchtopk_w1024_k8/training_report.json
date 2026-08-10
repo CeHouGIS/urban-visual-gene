@@ -1,0 +1,305 @@
+{
+  "checkpoint": "/global/scratch/users/cehou/urban-visual-gene/formal/batchtopk_w1024_k8/batch_topk_w1024_k8.pt",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.24894,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.175872,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.169107,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.165978,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.163848,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.162447,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.161437,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.160529,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.159758,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.159186,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.158621,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.158067,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.157631,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.157368,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.157067,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.156858,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.15664,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.156455,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.156353,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.156263,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 21,
+      "train_loss": 0.156188,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 22,
+      "train_loss": 0.15612,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 23,
+      "train_loss": 0.15607,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 24,
+      "train_loss": 0.156046,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 25,
+      "train_loss": 0.156041,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 26,
+      "train_loss": 0.156033,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 27,
+      "train_loss": 0.156011,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 28,
+      "train_loss": 0.155984,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 29,
+      "train_loss": 0.155943,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 30,
+      "train_loss": 0.155897,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 31,
+      "train_loss": 0.155845,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 32,
+      "train_loss": 0.155793,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 33,
+      "train_loss": 0.155749,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 34,
+      "train_loss": 0.155728,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 35,
+      "train_loss": 0.155702,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 36,
+      "train_loss": 0.155676,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 37,
+      "train_loss": 0.155641,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 38,
+      "train_loss": 0.155595,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 39,
+      "train_loss": 0.155529,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 40,
+      "train_loss": 0.155492,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 41,
+      "train_loss": 0.155467,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 42,
+      "train_loss": 0.155446,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 43,
+      "train_loss": 0.155427,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 44,
+      "train_loss": 0.155397,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 45,
+      "train_loss": 0.155368,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 46,
+      "train_loss": 0.155349,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 47,
+      "train_loss": 0.155332,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 48,
+      "train_loss": 0.155321,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 49,
+      "train_loss": 0.155299,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 50,
+      "train_loss": 0.155277,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 51,
+      "train_loss": 0.155245,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 52,
+      "train_loss": 0.155165,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 53,
+      "train_loss": 0.155141,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 54,
+      "train_loss": 0.155118,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 55,
+      "train_loss": 0.155076,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 56,
+      "train_loss": 0.155046,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 57,
+      "train_loss": 0.155019,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 58,
+      "train_loss": 0.155007,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 59,
+      "train_loss": 0.154997,
+      "active_dims_patch_mean": 8.0
+    },
+    {
+      "epoch": 60,
+      "train_loss": 0.154989,
+      "active_dims_patch_mean": 8.0
+    }
+  ]
+}

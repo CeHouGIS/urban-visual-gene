@@ -184,23 +184,27 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
   </div>
 
   <h2 class="sec">② 基因通用性检索 · core / unique / regional</h2>
-  <p class="sub">按同一个阈值（某 gene 占某城 patch ≥0.05%）给 512 个基因贴标签：
+  <p class="sub">按同一个阈值（某 gene 占某城 patch ≥0.05%）给当前 SAE 字典中的基因贴标签：
     12 城都有的是 <b>core universal</b>，只在 1 城出现的是 <b>city-unique</b>，
     只在 2 城出现的是 <b>pair-specific</b>，3–5 城出现的是 <b>regional</b>。
-    下方用下拉列表切换集合；基因收在横向轴中，选中一个基因后查看 12 城示例，图像同位叠放展示激活与原图。</p>
+    下方可切换 SAE 参数和基因集合；基因收在横向轴中，选中一个基因后查看 12 城示例，图像同位叠放展示激活与原图。</p>
   <div class="card">
     <div class="tools">
+      <select class="select" id="geneDatasetSelect">
+        <option value="batchtopk_w1024_k8" selected>BatchTopK W1024 · K8</option>
+        <option value="w512">W512 · topk32 原始字典</option>
+      </select>
       <select class="select" id="modeSelect">
-        <option value="core">通用 core · 112 个</option>
+        <option value="core">12城共有基因</option>
         <option value="unique">单城独有</option>
         <option value="pair">双城特异</option>
         <option value="regional">区域型</option>
         <option value="near">近核心 9-11 城</option>
         <option value="accessory">辅助型 6-8 城</option>
-        <option value="all">全部 512 个</option>
+        <option value="all">全部已激活基因</option>
       </select>
       <select class="select" id="cityFilter"><option value="">按城市筛选</option></select>
-      <a class="dl" href="citygenome/gene_city_specificity.csv" download>下载完整 CSV</a>
+      <a class="dl" id="specCsvDownload" href="citygenome/gene_city_specificity_batchtopk_w1024_k8.csv" download>下载完整 CSV</a>
     </div>
     <div class="specbar" id="specificityStats"></div>
     <div class="citydots" id="cityDots"></div>
@@ -506,6 +510,236 @@ function setupSpecificity(D){
     citySel.addEventListener("input", chooseCity);
   });
 }
+function setupSpecificityV2(D){
+  const datasets={
+    batchtopk_w1024_k8:{
+      label:"BatchTopK W1024 · K8",
+      short:"W1024 · K8",
+      width:1024,
+      summary:"citygenome/gene_city_specificity_summary_batchtopk_w1024_k8.json",
+      examples:"citygenome/city_gene_examples_batchtopk_w1024_k8.json",
+      csv:"citygenome/gene_city_specificity_batchtopk_w1024_k8.csv"
+    },
+    w512:{
+      label:"W512 · topk32 原始字典",
+      short:"W512 · topk32",
+      width:512,
+      summary:"citygenome/gene_city_specificity_summary.json",
+      examples:"citygenome/city_gene_examples.json",
+      csv:"citygenome/gene_city_specificity.csv"
+    }
+  };
+  const viz=document.getElementById("geneViz");
+  const datasetSel=document.getElementById("geneDatasetSelect");
+  const modeSel=document.getElementById("modeSelect");
+  const citySel=document.getElementById("cityFilter");
+  const statBox=document.getElementById("specificityStats");
+  const dotBox=document.getElementById("cityDots");
+  const dl=document.getElementById("specCsvDownload");
+  const cityNames={HongKong:"香港",Singapore:"新加坡",Amsterdam:"阿姆斯特丹",CapeTown:"开普敦",Paris:"巴黎",
+    SaoPaulo:"圣保罗",MexicoCity:"墨西哥城",Sydney:"悉尼",Jakarta:"雅加达",Dhaka:"达卡",NewDelhi:"新德里",Manila:"马尼拉"};
+  const classColors={
+    core_universal_12cities:"#22e0a1",
+    near_core_9to11cities:"#39d6ff",
+    accessory_6to8cities:"#7c5cff",
+    regional_3to5cities:"#f6c945",
+    pair_specific_2cities:"#ff9e64",
+    city_unique_1city:"#ff6b8a",
+    unused:"#8a9bb5"
+  };
+  let state=null;
+  function parseCSV(text){
+    const lines=text.trim().split(/\r?\n/), head=lines.shift().split(",");
+    return lines.map(line=>{
+      const vals=line.split(",");
+      return Object.fromEntries(head.map((h,i)=>[h, vals[i]??""]));
+    });
+  }
+  function num(x){const v=Number(x);return Number.isFinite(v)?v:0;}
+  function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
+  function pct(x){return x==null?"":(Number(x)*100).toFixed(2)+"%";}
+  function present(g){return (g.present_cities_by_share||"").split("|").filter(Boolean);}
+  function rowize(r){
+    return {
+      ...r,
+      gene:num(r.gene),
+      prevalence_n_cities:num(r.prevalence_n_cities),
+      top_share:num(r.top_share),
+      top_lift_vs_global_mean:num(r.top_lift_vs_global_mean),
+      min_share_across_12:num(r.min_share_across_12),
+      max_share:num(r.max_share)
+    };
+  }
+  function byUniversal(a,b){return b.min_share_across_12-a.min_share_across_12 || a.gene-b.gene;}
+  function byTop(a,b){return b.top_share-a.top_share || a.gene-b.gene;}
+  function catColor(g){
+    return (D.categories||[]).find(c=>c.name===(g.category||g.cat))?.color || classColors[g.class] || "var(--accent)";
+  }
+  function buildSets(allRows){
+    const used=allRows.filter(r=>r.class!=="unused");
+    return {
+      core:allRows.filter(r=>r.class==="core_universal_12cities").sort(byUniversal),
+      unique:allRows.filter(r=>r.class==="city_unique_1city").sort(byTop),
+      pair:allRows.filter(r=>r.class==="pair_specific_2cities").sort(byTop),
+      regional:allRows.filter(r=>r.class==="regional_3to5cities").sort(byTop),
+      near:allRows.filter(r=>r.class==="near_core_9to11cities").sort(byTop),
+      accessory:allRows.filter(r=>r.class==="accessory_6to8cities").sort(byTop),
+      all:used.sort((a,b)=>a.gene-b.gene)
+    };
+  }
+  function refreshModeCounts(sets){
+    [...modeSel.options].forEach(o=>{
+      if(!o.dataset.base)o.dataset.base=o.textContent.replace(/ · \d+ 个$/,"");
+      o.textContent=`${o.dataset.base} · ${(sets[o.value]||[]).length} 个`;
+    });
+  }
+  function examplesHtml(g){
+    const arr=(state.E.examples||{})[String(g.gene)]||[];
+    if(!arr.length)return `<div class="emptyviz">这个基因还没有生成城市示例图</div>`;
+    const order=new Map(state.cities.map((c,i)=>[c,i]));
+    return `<div class="exgrid">${arr.slice().sort((a,b)=>(order.get(a.city)??99)-(order.get(b.city)??99)).map(e=>`<div class="expair" title="${esc(e.zh||e.city)} · activation ${esc(e.score)}">
+      <div class="cz">${esc(e.zh||e.city)} · ${esc(e.score)}</div>
+      <div class="imgswap" tabindex="0" aria-label="${esc(e.zh||e.city)}：默认激活，悬停原图">
+        <img class="act" loading="lazy" src="${esc(e.act)}" alt="${esc(e.zh||e.city)} activation">
+        <img class="orig" loading="lazy" src="${esc(e.orig)}" alt="${esc(e.zh||e.city)} original">
+      </div>
+      <div class="cap">激活 / 原图</div>
+    </div>`).join("")}</div>`;
+  }
+  function geneDetail(g){
+    const pc=present(g), pset=new Set(pc), share=g.top_share!=null?g.top_share:g.share, lift=g.top_lift_vs_global_mean!=null?g.top_lift_vs_global_mean:g.lift;
+    const main=g.top_city_zh||cityNames[g.top_city]||g.top_city||"";
+    const color=catColor(g);
+    const cls=g.class||("marker · "+(g.prevalence_n_cities||"")+"城");
+    return `<div class="genePanel" style="--accent:${color}">
+      <div class="panelTop">
+        <div>
+          <div class="gid">#${g.gene}</div>
+          <div class="glabel">${esc(g.label||g.name||"")}</div>
+          <div class="gmeta"><span class="cat" style="background:${color}"></span>${esc(g.category||g.cat||"")} · ${esc(cls)}</div>
+        </div>
+        <div class="gmetric"><span><b>${pct(share)}</b> top</span><span><b>×${Number(lift||0).toFixed(1)}</b> lift</span></div>
+      </div>
+      <div class="detailbody">
+        <div class="detailhint">${main?`最高城市：${esc(main)} · `:""}出现城市：${pc.length?esc(pc.map(c=>cityNames[c]||c).join(" / ")):"无"}</div>
+        <div class="presence">${state.cities.map(c=>`<div class="pbit ${pset.has(c)?"on":""}" title="${esc(cityNames[c]||c)}"></div>`).join("")}</div>
+        ${examplesHtml(g)}
+      </div>
+    </div>`;
+  }
+  function axisHtml(rows, selected){
+    const maxShare=Math.max(...rows.map(r=>Number(r.top_share||0)), 1e-9);
+    return `<div class="geneaxis">${rows.map((g,i)=>{
+      const color=catColor(g);
+      const w=Math.max(8, Math.round((Number(g.top_share||0)/maxShare)*100));
+      return `<button class="gtick ${i===selected?"active":""}" data-i="${i}" style="--accent:${color}" title="#${g.gene} · ${esc(g.label||g.name||"")}">
+        <span class="id">#${g.gene}</span>
+        <span class="nm">${esc(g.label||g.name||"")}</span>
+        <span class="bar" style="width:${w}%"></span>
+      </button>`;
+    }).join("")}</div>`;
+  }
+  function attachAxis(rows, selected){
+    const axisWrap=viz.querySelector(".axiswrap");
+    const panel=viz.querySelector(".selectedGene");
+    axisWrap.addEventListener("click", e=>{
+      const btn=e.target.closest(".gtick");
+      if(!btn || !axisWrap.contains(btn))return;
+      const i=Number(btn.dataset.i);
+      axisWrap.querySelectorAll(".gtick").forEach(x=>x.classList.toggle("active", x===btn));
+      const count=viz.querySelector(".selectedCount");
+      if(count)count.textContent=`${rows.length} genes · selected #${rows[i].gene}`;
+      panel.innerHTML=geneDetail(rows[i]);
+      btn.scrollIntoView({block:"nearest", inline:"center", behavior:"smooth"});
+    });
+    let down=false, startX=0, startLeft=0;
+    function release(e){
+      if(axisWrap.releasePointerCapture){
+        try{axisWrap.releasePointerCapture(e.pointerId);}catch(_){}
+      }
+    }
+    axisWrap.addEventListener("pointerdown", e=>{
+      if(e.target.closest(".gtick"))return;
+      down=true; startX=e.clientX; startLeft=axisWrap.scrollLeft;
+      if(axisWrap.setPointerCapture)axisWrap.setPointerCapture(e.pointerId);
+    });
+    axisWrap.addEventListener("pointermove", e=>{
+      if(!down)return;
+      axisWrap.scrollLeft=startLeft-(e.clientX-startX);
+    });
+    axisWrap.addEventListener("pointerup", e=>{if(!down)return;down=false;release(e);});
+    axisWrap.addEventListener("pointercancel", e=>{if(!down)return;down=false;release(e);});
+    const active=axisWrap.querySelector(`.gtick[data-i="${selected}"]`);
+    if(active)active.scrollIntoView({block:"nearest", inline:"center"});
+  }
+  function renderStats(mode, rows){
+    const counts=Object.fromEntries(Object.entries(state.sets).map(([k,v])=>[k,v.length]));
+    const cards=[
+      ["core", counts.core||0, "12 城共有"],
+      ["unique", counts.unique||0, "单城独有"],
+      ["pair", counts.pair||0, "双城特异"],
+      ["regional", counts.regional||0, "3-5 城区域型"],
+      ["all", counts.all||0, state.cfg.short]
+    ];
+    statBox.innerHTML=cards.map(([key,n,l])=>`<div class="specstat" style="${key===mode?'border-color:var(--accent)':''}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+    const active=new Set(rows.flatMap(present));
+    [...dotBox.children].forEach((d,i)=>d.classList.toggle("on", active.has(state.cities[i])));
+  }
+  function render(mode, rows){
+    renderStats(mode, rows);
+    const title=mode==="marker" ? (cityNames[citySel.value]||citySel.value)+" marker" : modeSel.options[modeSel.selectedIndex].textContent;
+    if(!rows.length){viz.innerHTML=`<div class="emptyviz">没有可显示的基因</div>`;return;}
+    const selected=0;
+    viz.innerHTML=`<div class="axishead"><div><div class="title">${esc(state.cfg.label)} · ${esc(title)}</div><div class="count selectedCount">${rows.length} genes · selected #${rows[selected].gene}</div></div></div>
+      <div class="axiswrap">${axisHtml(rows, selected)}</div>
+      <div class="selectedGene">${geneDetail(rows[selected])}</div>`;
+    attachAxis(rows, selected);
+  }
+  function chooseMode(){
+    if(!state)return;
+    citySel.value="";
+    render(modeSel.value, state.sets[modeSel.value]||[]);
+  }
+  function chooseCity(){
+    if(!state)return;
+    if(!citySel.value){render(modeSel.value, state.sets[modeSel.value]||[]);return;}
+    const rows=(state.S.city_markers_top8||{})[citySel.value]||[];
+    render("marker", rows);
+  }
+  function loadDataset(){
+    const cfg=datasets[datasetSel.value]||datasets.batchtopk_w1024_k8;
+    viz.innerHTML=`<div class="emptyviz">正在加载 ${esc(cfg.label)} ...</div>`;
+    dl.href=cfg.csv;
+    dl.textContent=`下载 ${cfg.short} CSV`;
+    Promise.all([
+      fetch(cfg.summary).then(r=>r.json()),
+      fetch(cfg.examples).then(r=>r.json()),
+      fetch(cfg.csv).then(r=>r.text())
+    ]).then(([S,E,csvText])=>{
+      const cities=S.cities||Object.keys(S.city_markers_top8||{});
+      citySel.innerHTML=`<option value="">按城市筛选</option>`;
+      cities.forEach(c=>{
+        const o=document.createElement("option");o.value=c;o.textContent=cityNames[c]||c;citySel.appendChild(o);
+      });
+      dotBox.innerHTML=cities.map((c,i)=>`<div class="cdot" title="${cityNames[c]||c}">${i+1}</div>`).join("");
+      const allRows=parseCSV(csvText).map(rowize);
+      const sets=buildSets(allRows);
+      state={cfg,S,E,cities,allRows,sets};
+      refreshModeCounts(sets);
+      modeSel.value="core";
+      citySel.value="";
+      render("core", sets.core);
+    }).catch(err=>{
+      viz.innerHTML=`<div class="emptyviz">加载失败：${esc(err.message||err)}</div>`;
+    });
+  }
+  datasetSel.addEventListener("change", loadDataset);
+  modeSel.addEventListener("change", chooseMode);
+  modeSel.addEventListener("input", chooseMode);
+  citySel.addEventListener("change", chooseCity);
+  citySel.addEventListener("input", chooseCity);
+  loadDataset();
+}
 fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
   (D.categories||[]).forEach(c=>CATCOL[c.id]=c.color);
   // KPIs
@@ -573,7 +807,7 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
     `泛基因组阈值：基因占某城 patch ≥ ${(D.pangenome.threshold*100).toFixed(2)}% 记为"出现"。`+
     `多样性 = 香农熵（bit），等效基因数 = 2^熵。`+
     `全部基于 global3 干净字典（K=512，图像质量过滤后重训）。分析用每点 4 朝向。`;
-  setupSpecificity(D);
+  setupSpecificityV2(D);
 });
 </script>
 </body>

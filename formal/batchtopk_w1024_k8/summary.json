@@ -1,0 +1,53 @@
+{
+  "model_type": "batch_topk",
+  "width": 1024,
+  "k": 8,
+  "threshold": 0.0005,
+  "n_images": 14400,
+  "n_patches": 11289600,
+  "images_per_city": {
+    "HongKong": 1200,
+    "Singapore": 1200,
+    "Amsterdam": 1200,
+    "CapeTown": 1200,
+    "Paris": 1200,
+    "SaoPaulo": 1200,
+    "MexicoCity": 1200,
+    "Sydney": 1200,
+    "Jakarta": 1200,
+    "Dhaka": 1200,
+    "NewDelhi": 1200,
+    "Manila": 1200
+  },
+  "n_used": 896,
+  "class_counts": {
+    "unused": 128,
+    "city_unique_1city": 125,
+    "pair_specific_2cities": 121,
+    "regional_3to5cities": 257,
+    "accessory_6to8cities": 184,
+    "near_core_9to11cities": 130,
+    "core_universal_12cities": 79
+  },
+  "prevalence_spectrum_1to12": [
+    125,
+    121,
+    106,
+    86,
+    65,
+    71,
+    62,
+    51,
+    51,
+    46,
+    33,
+    79
+  ],
+  "core_fraction": 0.0771,
+  "city_unique_fraction": 0.1221,
+  "unique_or_pair_fraction": 0.2402,
+  "unique_genes_per_image_mean": 98.39,
+  "active_dims_patch_mean": 6.723,
+  "final_train_loss": 0.154989,
+  "approx_train_recon_cos": 0.845011
+}

@@ -1,0 +1,56 @@
+{
+  "dataset": "BatchTopK W1024/K8",
+  "method": "language-free multiview rank fusion + spectral/Ward hierarchy",
+  "n_genes": 1024,
+  "n_images": 14400,
+  "n_patches": 11289600,
+  "views": [
+    "decoder",
+    "encoder",
+    "position",
+    "city",
+    "activation_context"
+  ],
+  "fused_graph_components": 1,
+  "coarse_clusters": 32,
+  "fine_clusters": 64,
+  "granularity_levels": 5,
+  "role_counts": {
+    "city_specific_component": 107,
+    "position_component": 2,
+    "quality_component": 5,
+    "rare_stable_component": 85,
+    "stable_structured": 251,
+    "unstable_component": 340,
+    "weakly_structured": 234
+  },
+  "relation_counts": {
+    "coactivates_with": 2000,
+    "equivalent_to": 150,
+    "sibling_of": 1486,
+    "specializes": 339
+  },
+  "mixture_components": {
+    "position": 3,
+    "quality": 3,
+    "support": 2,
+    "stability": 3,
+    "city_specificity": 3
+  },
+  "cut_scores": {
+    "coarse": {
+      "8": 0.0959801971912384,
+      "12": 0.11447717249393463,
+      "16": 0.14055567979812622,
+      "20": 0.1723140925168991,
+      "24": 0.18765789270401,
+      "32": 0.21955876052379608
+    },
+    "fine": {
+      "64": 0.2112499475479126,
+      "96": 0.20204056799411774,
+      "128": 0.20051038265228271,
+      "160": 0.20036865770816803
+    }
+  }
+}

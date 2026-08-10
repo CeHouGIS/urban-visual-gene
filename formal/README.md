@@ -23,6 +23,10 @@ formal/
 │   ├── gene_modules_viz.py, coexpr_web.py   # module exemplars + coexpr web data
 │   ├── build_taxonomy.py, branch_cats.py    # 6-parent/16-child semantic taxonomy
 │   └── cat_distinguish.py, explore_taxonomy.py   # category-redundancy diagnostics
+├── interpretation/       # semantic audit + typed ontology
+│   ├── build_w1024_audit.py  # all-gene diagnostics + stratified W1024 pilot
+│   ├── build_statistical_taxonomy.py  # language-free multiview hierarchy + relations
+│   └── ontology_v0_1.yaml    # semantic/status/relation vocabulary
 ├── web/                  # site data builders
 │   ├── compose_cities.py / compose_analyze.py  # per-pano composition + scene types
 │   ├── build_explorer.py # per-street category overlays (4 road cities)
@@ -54,5 +58,15 @@ formal/
 python -m formal.dict.pos_subspace ; python -m formal.dict.retrain_debias
 # gene dashboard (GPU encode + CPU render): sbatch slurm/gene_panel2.sbatch
 # quality filter full-sample (CPU array): sbatch slurm/qc_full_array.sbatch  (then qc_full_combine)
+# BatchTopK W1024/K8 audit (CPU; then open site/w1024_audit.html via HTTP)
+python -m formal.interpretation.build_w1024_audit
+# Fully statistical W1024 taxonomy (no annotations or language model)
+python -m formal.interpretation.build_statistical_taxonomy
+# Compare hierarchy cuts with separation, balance, and half-sample stability
+python -m formal.interpretation.compare_hierarchy_cuts
+# Audit branch quality, strict redundancy groups, and specialization DAG
+python -m formal.interpretation.analyze_statistical_structure
+# Add exemplars for statistically active genes omitted by the old city threshold
+python -m formal.web.build_ablation_genes batchtopk_w1024_k8 --backfill-missing
 ```
 Env: `/global/scratch/users/cehou/conda_envs/svi/bin/python`. Deploy: gh-pages worktree + SSH push.

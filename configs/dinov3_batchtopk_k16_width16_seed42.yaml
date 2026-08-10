@@ -1,0 +1,69 @@
+experiment:
+  name: dinov3_batchtopk_k16_width16_seed42
+  seed: 42
+  output_dir: outputs/dinov3_batchtopk_k16_width16_seed42
+
+backbone:
+  name: dinov3
+  model_name: DINOV3_MODEL_NAME
+  checkpoint_path: PATH_TO_DINOV3_CHECKPOINT
+  freeze: true
+  input_size: 224
+  patch_size: 16
+  feature_layer: -2
+  token_type: concat_views
+  view_directions: [0, 90, 180, 270]
+  missing_view_strategy: skip
+  remove_prefix_tokens: true
+  use_register_tokens: false
+
+feature_cache:
+  enabled: true
+  root: features/dinov3
+  overwrite: false
+  shard_size: 100000
+
+data:
+  image_root: PATH_TO_STREET_VIEW_IMAGES
+  metadata_path: PATH_TO_METADATA
+  split_path: PATH_TO_SPLITS
+  center: true
+  l2_normalize: false
+
+model:
+  type: batch_topk
+  input_dim: auto
+  expansion_factor: 16
+  latent_dim: auto
+  k: 16
+  tied_weights: false
+  decoder_unit_norm: true
+
+loss:
+  reconstruction_weight: 1.0
+  graph:
+    enabled: true
+    weight: CURRENT_GRAPH_WEIGHT
+  duplicate:
+    enabled: false
+    weight: 0.001
+    margin: 0.90
+    sampled_pairs: 100000
+
+training:
+  batch_size: 256
+  epochs: 100
+  learning_rate: 0.0003
+  weight_decay: 0.00001
+  optimizer: adamw
+  scheduler: cosine
+  warmup_epochs: 5
+  gradient_clip_norm: 1.0
+  mixed_precision: true
+  early_stopping_patience: 15
+
+evaluation:
+  top_samples_per_feature: 50
+  semantic_sample_features: 100
+  dead_frequency_threshold: 0.00001
+  duplicate_thresholds: [0.90, 0.95]
