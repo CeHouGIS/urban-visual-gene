@@ -323,8 +323,8 @@ function renderDiversityAblation(A){
     `${A.configs.length} group parameters`,
     `${cities.length} city`,
     `Color range ${min} - ${max} equivalent genes`,
-    `Each grid is 2^H` of the dominant-gene spectrum of the city,
-    `The rightmost column is the number of genes appearing in 12 Johto`
+    `Each cell is 2^H for the city's dominant-gene spectrum`,
+    `The rightmost column is the number of genes shared across all 12 cities`
   ];
   box.innerHTML=`<div class="abscroll"><div class="abmatrix">
       <div></div>${cityHead}<div class="abcity">mean</div><div class="abcity">12 cities share genes</div>${rows}
