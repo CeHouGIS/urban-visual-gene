@@ -4,6 +4,7 @@
 import csv
 import json
 import sqlite3
+import argparse
 from pathlib import Path
 
 import geopandas as gpd
@@ -40,14 +41,22 @@ def aggregate_cities():
         if lon is None:
             stats.append({**row, "lon": "", "lat": "", "success": 0, "failed": 0, "status": "unverified"})
             continue
-        # The project manifest records all 110 cities as completing acquisition
-        # (Step 4 = 100%). It contains no confirmed city-level failure status.
-        success, failed = 1, 0
-        status = "research" if row["cityname"] in RESEARCH else "collected_other"
+        meta_dir = city_root / "meta"
+        db = next(meta_dir.glob("*.db"), None) if meta_dir.exists() else None
+        has_metadata = False
+        if db is not None:
+            try:
+                con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+                has_metadata = con.execute("SELECT 1 FROM gsv LIMIT 1").fetchone() is not None
+                con.close()
+            except sqlite3.Error:
+                has_metadata = False
+        success, failed = int(has_metadata), int(not has_metadata)
+        status = "failed" if failed else ("research" if row["cityname"] in RESEARCH else "collected_other")
         stats.append({**row, "lon": lon, "lat": lat, "success": int(success or 0),
-                      "failed": int(failed or 0), "status": status})
+                      "failed": int(failed or 0), "metadata_status": ">0" if has_metadata else "0", "status": status})
     with (OUT / "global_sampling_status.csv").open("w", newline="") as f:
-        cols = ["cityname", "countryname", "lon", "lat", "success", "failed", "status"]
+        cols = ["cityname", "countryname", "lon", "lat", "metadata_status", "success", "failed", "status"]
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore", lineterminator="\n")
         w.writeheader(); w.writerows(stats)
     return stats
@@ -69,11 +78,9 @@ def global_map(stats):
     ax.scatter([r["lon"] for r in study], [r["lat"] for r in study], s=105,
                marker="*", c="#22e0a1", edgecolors="#eafff8", linewidths=.6, zorder=6)
 
-    failed = [r for r in valid if r["failed"] > 0]
-    shares = np.array([r["failed"] / max(1, r["success"] + r["failed"]) for r in failed])
-    sizes = 18 + 145 * np.sqrt(shares)
-    ax.scatter([r["lon"] for r in failed], [r["lat"] for r in failed], s=sizes,
-               facecolors="none", edgecolors="#ff667d", linewidths=.75, alpha=.75, zorder=5)
+    failed = [r for r in valid if r["status"] == "failed"]
+    ax.scatter([r["lon"] for r in failed], [r["lat"] for r in failed], s=48,
+               marker="x", c="#ff667d", linewidths=1.35, alpha=.95, zorder=7)
 
     offsets = {"Singapore": (3, -7), "Jakarta": (3, -8), "Dhaka": (3, 6),
                "NewDelhi": (-20, 7), "HongKong": (3, 7), "Manila": (3, 7),
@@ -87,12 +94,12 @@ def global_map(stats):
 
     ax.set_title("Global Street-View Sampling Footprint", loc="left", color="#eef5ff",
                  fontsize=23, weight="bold", pad=16)
-    ax.text(-179, 88, f"12 study cities · {len(valid)} acquired cities · 0 confirmed city-level failures in the current manifest",
+    ax.text(-179, 88, f"12 study cities · {sum(r['status']!='failed' for r in valid)} cities with metadata · {len(failed)} failed / zero-metadata cities",
             color="#9badc5", fontsize=10, va="bottom")
     legend = [
         Line2D([0],[0], marker="*", color="none", markerfacecolor="#22e0a1", markeredgecolor="#eafff8", markersize=12, label="Current 12-city research sample"),
         Line2D([0],[0], marker="o", color="none", markerfacecolor="#5b8ff9", markeredgecolor="#b9d0ff", markersize=7, label="Retrieved, outside current study"),
-        Line2D([0],[0], marker="x", color="#ff667d", markersize=8, label="Confirmed failed city (none recorded)"),
+        Line2D([0],[0], marker="x", color="#ff667d", markersize=8, label="Failed city (metadata count = 0)"),
         Line2D([0],[0], marker="s", color="none", markerfacecolor="#283240", markeredgecolor="#4b596b", markersize=9, label="No planned city sample / unverified"),
     ]
     ax.legend(handles=legend, loc="lower left", ncol=2, facecolor="#0d1626", edgecolor="#31425d",
@@ -154,8 +161,12 @@ def hong_kong_map():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--global-only", action="store_true", help="Skip the Hong Kong detail figure")
+    args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     city_stats = aggregate_cities()
     global_map(city_stats)
-    hong_kong_map()
+    if not args.global_only:
+        hong_kong_map()
     print(f"Saved figures to {OUT}")
