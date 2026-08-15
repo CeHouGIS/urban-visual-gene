@@ -17,6 +17,7 @@ header h1{font-size:17px;margin:0}.grow{flex:1}.nav{display:flex;gap:6px;flex-wr
 .seed-grid{display:grid;grid-template-columns:88px repeat(5,1fr);gap:5px;font-size:11px;align-items:center}.seed-grid div{padding:8px;border-radius:6px;background:var(--panel2);text-align:center}.seed-grid .head{color:var(--cyan);font-weight:800}.seed-grid .label{text-align:left;color:var(--muted)}
 .thresholds{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.threshold{padding:10px;background:var(--panel2);border-radius:8px}.threshold b{display:block;color:var(--yellow);font-size:18px}.threshold span{font-size:10px;color:var(--muted)}
 .callout{border-left:3px solid var(--yellow);background:#171a20;padding:12px 14px;margin-top:14px;font-size:12px;line-height:1.65;color:var(--muted)}.callout b{color:var(--text)}
+.umap-figure{margin:14px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:17px}.umap-figure h3{margin:0 0 5px;font-size:17px}.umap-figure .sub{color:var(--muted);font-size:11px}.umap-figure img{display:block;width:100%;height:auto;margin-top:12px;border-radius:8px;background:var(--bg)}.umap-caption{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;color:var(--muted);font-size:11px;line-height:1.6;margin-top:10px}.umap-caption strong{color:var(--text)}.download{white-space:nowrap;color:var(--cyan)}
 .footer-note{margin-top:18px;padding:15px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:11px;line-height:1.65}
 @media(max-width:900px){.hero,.grid2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.thresholds{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.hero h2{font-size:25px}.ring-row{align-items:flex-start;flex-direction:column}.seed-grid{grid-template-columns:76px repeat(5,minmax(48px,1fr));overflow:auto}}
@@ -33,6 +34,13 @@ header h1{font-size:17px;margin:0}.grow{flex:1}.nav{display:flex;gap:6px;flex-wr
   <section class="kpis">
     <div class="kpi"><b>5</b><span>independent seeds</span></div><div class="kpi"><b>60</b><span>epochs per run</span></div><div class="kpi"><b>250K</b><span>shared anchor patches</span></div><div class="kpi"><b>8,175</b><span>accepted pairwise matches</span></div><div class="kpi"><b>0</b><span>watchdog problems</span></div>
   </section>
+
+  <figure class="umap-figure">
+    <h3>Joint feature-space UMAP</h3>
+    <div class="sub">All five decoder dictionaries are projected together, so spatial overlap is directly comparable across random seeds.</div>
+    <img src="seed_stability_feature_umap.png" alt="Three-panel joint UMAP of SAE decoder features, colored by random seed">
+    <figcaption class="umap-caption"><span><strong>How to read it:</strong> mixing of the five colors indicates that initialization does not partition the learned feature space. The middle panel isolates strict-stable family members; the right panel shows everything outside those families. It contains 881 active unmatched instances plus one inactive seed-53 dimension.</span><a class="download" href="seed_stability_feature_umap.csv" download>Download point data ↓</a></figcaption>
+  </figure>
 
   <section class="grid2">
     <article class="box"><h3>Training convergence</h3><div class="sub">Final training loss is tightly concentrated across all five runs.</div>
