@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Visual Gene · 可解释性 SAE</title>
+<title>Urban Visual Gene · Interpretability SAE</title>
 <style>
 :root{
   --bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
@@ -71,10 +71,10 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
 <div id="top">
   <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
   <div class="tabs">
-    <a class="tab" href="genes.html">512 视觉基因</a>
-    <a class="tab" href="coexpr.html">基因组合</a>
-    <a class="tab" href="citygenome.html">城市基因组</a>
-    <a class="tab active" href="interpret.html">可解释性·SAE</a>
+    <a class="tab" href="genes.html">512 Vision Gene</a>
+    <a class="tab" href="coexpr.html">gene combination</a>
+    <a class="tab" href="citygenome.html">City Genome</a>
+    <a class="tab active" href="interpret.html">Interpretability·SAE</a>
   </div>
 </div>
 
@@ -82,69 +82,64 @@ h2.sec{font-size:16px;letter-spacing:1px;color:var(--accent);margin:38px 0 4px;t
   <!-- HERO -->
   <div class="hero">
     <div>
-      <h1>把街景分解成<span>视觉基因</span><br>并定位回图像</h1>
-      <p>在 DINOv3 的 <b style="color:var(--text)">patch 级</b>特征上训练一个 <b style="color:var(--text)">Top-K 稀疏自编码器</b>，
-      把纠缠的视觉表征拆成一批单义维度（"视觉基因"）。每个维度的激活天然带位置——
-      上采样后叠回原图，就能看到它究竟对应街景里的<b style="color:var(--text)">哪一块</b>：
-      车辆、路缘、绿化带、建筑立面、天际线……全程无需任何语义分割标注。</p>
+      <h1>Break down the street view into<span>Visual Genes</span><br>and locate back the image</h1>
+      <p>in DINOv3<b style="color:var(--text)">patch level</b>Train one on the features<b style="color:var(--text)">Top-K sparse autoencoder</b>,
+      Unpacking entangled visual representations into a set of univocal dimensions ("visual genes"). Activation natural zone position in each dimension——
+      After upsampling and stacking it back to the original image, you can see exactly what it corresponds to in the street view.<b style="color:var(--text)">Which piece</b>:
+      Vehicles, curbs, green belts, building facades, skylines...the entire process does not require any semantic segmentation annotation.</p>
       <div class="kpis">
-        <div class="kpi"><div class="n">0.892</div><div class="l">重建 cos（K=512）</div></div>
-        <div class="kpi"><div class="n">32</div><div class="l">L0 稀疏度 / patch</div></div>
-        <div class="kpi"><div class="n">512</div><div class="l">字典维度 K</div></div>
-        <div class="kpi"><div class="n">12</div><div class="l">共享字典城市数</div></div>
+        <div class="kpi"><div class="n">0.892</div><div class="l">Reconstruct cos (K=512)</div></div>
+        <div class="kpi"><div class="n">32</div><div class="l">L0 sparsity / patch</div></div>
+        <div class="kpi"><div class="n">512</div><div class="l">Dictionary dimension K</div></div>
+        <div class="kpi"><div class="n">12</div><div class="l">Shared dictionary city number</div></div>
       </div>
-      <div class="legend"><span>激活强度</span><span class="legbar"></span><span>低 → 高</span></div>
+      <div class="legend"><span>activation strength</span><span class="legbar"></span><span>low → high</span></div>
     </div>
-    <img src="sae/global_category_montage.png" alt="global3 五大类的代表基因激活">
+    <img src="sae/global_category_montage.png" alt="global3 representative gene activation of five major categories">
   </div>
 
   <!-- METHOD -->
   <div class="method">
-    <div class="step"><b>① DINOv3</b><p>街景 448² → ViT-L/16，剥掉 CLS/register 前缀，保留 28×28=784 个 patch 特征（各 1024 维）</p></div>
+    <div class="step"><b>① DINOv3</b><p>Street View 448² → ViT-L/16, strip off the CLS/register prefix, retain 28×28=784 patch features (1024 dimensions each)</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>② Top-K SAE</b><p>每个 patch 只保留最强的 32 个激活，L0 精确钉在 32，字典 K=512，零死原子</p></div>
+    <div class="step"><b>② Top-K SAE</b><p>Each patch retains only the strongest 32 activations, L0 pinned to exactly 32, dictionary K=512, zero dead atoms</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>③ 激活图</b><p>取某个基因在 784 个 patch 上的激活，reshape 回 28×28 网格</p></div>
+    <div class="step"><b>③ Activation map</b><p>Take the activation of a certain gene on 784 patches and reshape it back to a 28×28 grid.</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>④ 叠回原图</b><p>上采样到 448²，叠加——特征的物理意义一目了然</p></div>
+    <div class="step"><b>④ Stack back to the original image</b><p>Upsampled to 448², superimposed - the physical meaning of the features is clear at a glance</p></div>
   </div>
 
   <!-- GALLERY (formal K=512) -->
-  <h2 class="sec">视觉基因图谱 · K=512 全球12城字典</h2>
-  <p class="sub">全球字典训练于<b style="color:var(--text)">香港·新加坡·阿姆斯特丹·开普敦·巴黎·圣保罗·墨西哥城·悉尼·雅加达·达卡·新德里·马尼拉</b>
-     （6 大洲 12 城，1152 万 patch @448；已用图像质量过滤剔除黑/糊/隧道图后重训）。把 512 个基因按其在 global3 里的<b style="color:var(--text)">谱系结构 + 语义</b>归成 <b style="color:var(--text)">5 大类</b>；
-     每行是一个类别的代表基因在真实街景上的定位（红区 = 该基因点亮的 patch）。类别为事后人工归纳,不参与训练——街景以立面/路面为主,故这两类偏大。</p>
+  <h2 class="sec">Visual Gene Map · K=512 Global 12-City Dictionary</h2>
+  <p class="sub">Global dictionary trained on<b style="color:var(--text)">Hong Kong · Singapore · Amsterdam · Cape Town · Paris · Sao Paulo · Mexico City · Sydney · Jakarta · Dhaka · New Delhi · Manila</b>(6 continents, 12 cities, 11.52 million patches @448; image quality filtering has been used to remove black/mushy/tunnel images and then retrained). Put the 512 genes according to their location in global3<b style="color:var(--text)">Genealogical structure + semantics</b>attributed to<b style="color:var(--text)">5 categories</b>;
+     Each row is the location of a representative gene of a category on the real street scene (red area = patch lit by this gene). The categories are manually summarized afterwards and do not participate in training - the street scenes are mainly facades/pavements, so these two categories are relatively large.</p>
   <div class="note" style="margin:6px 0 16px;border-left-color:var(--accent3)">
-    <b>去偏训练。</b> 为让这本"共享字典"公平、无城市偏向：① <b>每城等量</b>采样（不按城市大小成比例，否则大城主导）；
-    ② 城内<b>按路网/采样点密度分层</b>（压掉 GSV 在主干道的过采）；③ 每个 pano 的<b>全部 4 个朝向</b>都进训练（朝向无偏）；
-    ④ 修复了 DINOv3 的<b>边界 artifact</b>（方向投影剔除）和一处目录大小写 bug（曾静默漏掉约 79% 的 pano）。
-    结果：<b>0 死原子</b>、12 城严格等量。仅存的数据源偏差（GSV 本身偏发达城市/主干道）无法从采样端消除，须在结论中声明。
-  </div>
+    <b>Debiasing training.</b>To make this "shared dictionary" fair and non-urban biased: ①<b>Equivalent per city</b>Sampling (not proportional to city size, otherwise large cities dominate);
+    ② Inside the city<b>Stratified by road network/sampling point density</b>(Suppress the over-mining of GSV on the main road); ③ Each pano’s<b>All 4 orientations</b>All enter training (direction is unbiased);
+    ④ Fixed DINOv3<b>boundary artifact</b>(directional projection culling) and a directory casing bug (which silently missed about 79% of panos).
+    result:<b>0 dead atoms</b>, 12 cities are strictly equal. The only remaining data source bias (GSV itself is biased towards developed cities/main roads) cannot be eliminated from the sampling side and must be stated in the conclusion.</div>
   <div class="chips">
-    <span class="chip" style="--c:#22e0a1">植被 · 78</span>
-    <span class="chip" style="--c:#f6c945">建筑立面 · 241</span>
-    <span class="chip" style="--c:#8a9bb5">路面·道路 · 164</span>
-    <span class="chip" style="--c:#ff9e64">车辆 · 19</span>
-    <span class="chip" style="--c:#39d6ff">天空·远景 · 10</span>
+    <span class="chip" style="--c:#22e0a1">Vegetation · 78</span>
+    <span class="chip" style="--c:#f6c945">Building facade · 241</span>
+    <span class="chip" style="--c:#8a9bb5">Pavement · Road · 164</span>
+    <span class="chip" style="--c:#ff9e64">Vehicles · 19</span>
+    <span class="chip" style="--c:#39d6ff">Sky·Vision · 10</span>
   </div>
-  <div class="tri" style="margin-top:14px"><img src="sae/global_category_montage.png" alt="global3 五大类的代表基因样本"></div>
+  <div class="tri" style="margin-top:14px"><img src="sae/global_category_montage.png" alt="global3 representative gene samples of five major categories"></div>
 
   <!-- HIERARCHY (formal K=512) -->
-  <h2 class="sec">视觉基因谱系 · K=512</h2>
-  <p class="sub">每个基因在 DINOv3 空间里是一个<b style="color:var(--text)">方向向量</b>（解码器原子）。
-     按余弦距离对这些方向做层次聚类，得到<b style="color:var(--text)">视觉基因谱系树</b>——方向越近编码的概念越相关。
-     下图为 512 个基因里最常出现的 44 个的谱系（完全数据驱动，无人工分类）。</p>
-  <div class="tri"><img src="sae/dendrogram_512.png" alt="K=512 视觉基因谱系树"></div>
+  <h2 class="sec">Visual gene genealogy · K=512</h2>
+  <p class="sub">Each gene in DINOv3 space is a<b style="color:var(--text)">direction vector</b>(decoder atom).
+     Perform hierarchical clustering on these directions according to cosine distance to get<b style="color:var(--text)">Visual gene genealogy tree</b>——The closer the direction, the more relevant the encoded concept is.
+     The figure below shows the pedigree of the 44 most frequently occurring genes among the 512 genes (completely data-driven, no manual classification).</p>
+  <div class="tri"><img src="sae/dendrogram_512.png" alt="K=512 visual gene genealogy tree"></div>
 
 
   <div class="note">
-    <b>字典 global3：12 城全球版（6 大洲 / 448² / K=512, L0=32, 1152 万 patch, 零死原子, 重建 cos 0.892）。</b>
-    DINOv3 ViT-L/16 @448（28×28=784 patch），去偏共享 Top-K SAE。
-    方法论要点：稀疏用 Top-K 硬约束（软 L1 会退化成稠密激活）；训练损失里<b>不</b>放空间平滑项，
-    好让"空间连贯性 + 跨城可迁移"作为独立忠实性证据；边界 artifact 用方向投影从根上剔除。
-    <b>图像质量过滤</b>：用一个 4 类小 CNN（good/dark/blur/tunnel，隧道靠人工标注 + CLIP 蒸馏）在全量 1394 万 pano 上剔除黑/糊/隧道图，再用干净样本重训字典。
-    分类为 global3 原生 5 大类（谱系聚类 + 语义,天空为数据驱动）。「街道浏览器」为城市级应用（4 个有路网数据的城市做街段分析；其余城市已入字典）。
-  </div>
+    <b>Dictionary global3: 12-city global version (6 continents / 448² / K=512, L0=32, 11.52 million patches, zero dead atoms, rebuild cos 0.892).</b>DINOv3 ViT-L/16 @448 (28×28=784 patches), debiased and shared Top-K SAE.
+    Methodological points: Use Top-K hard constraints for sparseness (soft L1 will degenerate into dense activation); in training loss<b>No</b>Put the spatial smoothing term,
+    So that "spatial coherence + cross-city transferability" can be used as independent evidence of fidelity; boundary artifacts are removed from the root with directional projection.<b>Image quality filter</b>: Use a 4-category small CNN (good/dark/blur/tunnel, tunnels are manually annotated + CLIP distillation) to eliminate black/blur/tunnel images on the full 13.94 million pano, and then use clean samples to retrain the dictionary.
+    Classified into global3 native 5 categories (lineage clustering + semantics, Sky is data-driven). "Street Browser" is a city-level application (street segment analysis is done in 4 cities with road network data; the remaining cities have been included in the dictionary).</div>
 </div>
 
 </body>

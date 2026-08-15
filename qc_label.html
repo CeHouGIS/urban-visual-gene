@@ -1,5 +1,5 @@
 <!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>隧道标注</title><style>
+<title>Tunnel labeling</title><style>
 body{margin:0;background:#0b0f18;color:#dbe4f0;font-family:"PingFang SC","Microsoft YaHei",Arial}
 #bar{position:sticky;top:0;background:#0b0f18ee;backdrop-filter:blur(8px);padding:10px 14px;border-bottom:1px solid #1e2d47;z-index:5}
 #bar b{color:#39d6ff} .hint{color:#8a9bb5;font-size:12.5px;margin:4px 0 0}
@@ -14,10 +14,10 @@ textarea{width:100%;height:60px;background:#0a1120;color:#cfe;border:1px solid #
 button{background:#39d6ff;color:#04121a;border:0;border-radius:7px;padding:7px 14px;font-weight:700;cursor:pointer;margin-right:8px}
 </style></head><body>
 <div id=bar>
- <b>隧道标注</b> —— 点图片切换:绿框=隧道✓，红框=非隧道✗。默认按 CLIP 概率预设(>0.5 绿)，你只需<b>改错的</b>。
- <div class=hint>标完点「生成」，把下面文本框内容<b>复制回贴给我</b>。 <span id=stat></span></div>
- <div style="margin-top:8px"><button onclick=gen()>生成标签</button><button onclick=allY()>全设隧道</button><button onclick=allN()>全设非隧道</button><button onclick=inv()>反选</button></div>
- <textarea id=out placeholder="点「生成标签」后这里出现,复制它贴回给我"></textarea>
+ <b>Tunnel labeling</b> — Click an image to toggle its label: green border = tunnel ✓; red border = not a tunnel ✗. Labels are initialized from the CLIP probability (&gt;0.5 is green), so only correct the mistakes.
+ <div class=hint>After marking, click "Generate" and enter the content of the text box below<b>Copy and paste it back to me</b>。 <span id=stat></span></div>
+ <div style="margin-top:8px"><button onclick=gen()>Generate tags</button><button onclick=allY()>Full tunnel</button><button onclick=allN()>All non-tunnels</button><button onclick=inv()>Counter-election</button></div>
+ <textarea id=out placeholder="This will appear after clicking \"Generate Tags\", copy it and paste it back to me"></textarea>
 </div>
 <div class=grid id=g></div>
 <script>
@@ -27,7 +27,7 @@ D.forEach(o=>{st[o.i]=o.d; const c=document.createElement('div'); c.className='c
  c.innerHTML=`<img src="${o.src}"><span class=tag>${o.d?'✓':'✗'}</span><span class=p>${o.p}</span>`;
  c.onclick=()=>{st[o.i]=st[o.i]?0:1; c.className='c '+(st[o.i]?'y':'n'); c.querySelector('.tag').textContent=st[o.i]?'✓':'✗'; upd();};
  g.appendChild(c);});
-function upd(){let y=0,n=0;for(const k in st){st[k]?y++:n++;}document.getElementById('stat').textContent=`当前 隧道 ${y} · 非隧道 ${n}`;}
+function upd(){let y=0,n=0;for(const k in st){st[k]?y++:n++;}document.getElementById('stat').textContent=`Current tunnel ${y} · non-tunnel ${n}`;}
 function setall(v){D.forEach(o=>{st[o.i]=v;const c=document.getElementById('c'+o.i);c.className='c '+(v?'y':'n');c.querySelector('.tag').textContent=v?'✓':'✗';});upd();}
 function allY(){setall(1);} function allN(){setall(0);}
 function inv(){D.forEach(o=>{st[o.i]=st[o.i]?0:1;const c=document.getElementById('c'+o.i);c.className='c '+(st[o.i]?'y':'n');c.querySelector('.tag').textContent=st[o.i]?'✓':'✗';});upd();}

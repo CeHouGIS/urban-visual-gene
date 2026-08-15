@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Visual Gene · 基因组合·共表达</title>
+<title>Urban Visual Gene · Gene Combination · Co-expression</title>
 <style>
 :root{--bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
   --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;}
@@ -73,36 +73,36 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:30px 0 6px;t
 <div id="top">
   <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
   <div class="tabs">
-    <a class="tab" href="genes.html">512 视觉基因</a>
-    <a class="tab active" href="coexpr.html">基因组合</a>
-    <a class="tab" href="citygenome.html">城市基因组</a>
-    <a class="tab" href="interpret.html">可解释性·SAE</a>
+    <a class="tab" href="genes.html">512 Vision Gene</a>
+    <a class="tab active" href="coexpr.html">gene combination</a>
+    <a class="tab" href="citygenome.html">City Genome</a>
+    <a class="tab" href="interpret.html">Interpretability·SAE</a>
   </div>
 </div>
 <div class="wrap">
-  <h1>视觉基因的<span>组合表达</span> · 共表达网络与模块</h1>
-  <p class="lead">视觉基因像真基因一样<b>成组共同表达</b>:统计每个基因在同一 patch 里的<b>共激活</b>,用 lift(实际/随机期望)剔除高频假象,
-  就能发现哪些基因<b>总是一起出现、互补组合</b>。这与「相似聚类」是两层不同的东西——<b>层次树看谁像谁,共表达看谁和谁组合</b>。
-  下方是共表达网络、14 个共表达<b>模块</b>(每个模块是一组基因组合出的可命名部件),以及最强的<b>跨类组合对</b>。</p>
+  <h1>visual gene<span>Combination expression</span>· Co-expression networks and modules</h1>
+  <p class="lead">Visual genes are like real genes<b>express together in groups</b>: Count the number of each gene in the same patch<b>co-activation</b>, use lift (actual/random expectation) to remove high-frequency artifacts,
+  which genes can be discovered<b>Always appear together and complement each other</b>. This is two different things from "similarity clustering" -<b>Hierarchical tree to see who resembles whom, total expression to see who combines with whom</b>.
+  Below is the co-expression network, 14 co-expression<b>module</b>(Each module is a named set of components composed of a set of genes), and the strongest<b>Cross-category combination pairs</b>。</p>
   <div class="kpis" id="kpis"></div>
 
-  <h2 class="sec">共表达网络 · Co-expression network</h2>
-  <p class="sub">每个点是一个基因(按<b>模块</b>着色),连线=显著共激活(lift≥8)。悬停一个基因看它的组合伙伴;点下方模块块高亮该模块。</p>
+  <h2 class="sec">Co-expression network · Co-expression network</h2>
+  <p class="sub">Each point is a gene (press<b>module</b>Colored), connecting line = significant coactivation (lift≥8). Hover over a gene to see its combination partners; click on the module block below to highlight the module.</p>
   <div id="netwrap">
     <div id="netbox"><svg id="net" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet"></svg></div>
     <div id="netside">
-      <div class="card" style="margin-bottom:10px"><h3>模块</h3><div class="mlg" id="mlg"></div></div>
-      <div class="card" id="ginfo"><div class="hint">悬停网络里的基因,看它的类别、所属模块和最强共表达伙伴。</div></div>
+      <div class="card" style="margin-bottom:10px"><h3>module</h3><div class="mlg" id="mlg"></div></div>
+      <div class="card" id="ginfo"><div class="hint">Hover a gene in the network to see its category, module and strongest co-expression partner.</div></div>
     </div>
   </div>
 
-  <h2 class="sec">共表达模块 · Modules</h2>
-  <p class="sub">点一个模块 → 看它的成员基因,以及它在真实街景上的<b>组合表达</b>(jet=成员基因合并激活)。紧致度 coh=模块内平均 lift。</p>
+  <h2 class="sec">Co-expression modules · Modules</h2>
+  <p class="sub">Click a module → see its member genes and its appearance on the real street view<b>Combination expression</b>(jet=member gene merger activation). Compactness coh = average lift within the module.</p>
   <div class="mgrid" id="mgrid"></div>
   <div id="mdetail"></div>
 
-  <h2 class="sec">最强跨类组合对 · Cross-category combinations</h2>
-  <p class="sub">两个属于<b>不同类别</b>却总一起出现的基因——真正的"部件组合"(如车身+车窗)。lift 越高越绑定。</p>
+  <h2 class="sec">The strongest cross-category combinations · Cross-category combinations</h2>
+  <p class="sub">Two belong to<b>different categories</b>But genes always appear together - a real "component combination" (such as body + windows). The higher the lift, the more binding it is.</p>
   <div class="pairs" id="pairs"></div>
 </div>
 <script>
@@ -111,10 +111,10 @@ fetch("coexpr/data.json").then(r=>r.json()).then(d=>{
   D=d; d.categories.forEach(c=>{CATN[c.id]=c.name;CATC[c.id]=c.color;});
   d.modules.forEach(m=>MOD[m.id]=m);
   document.getElementById("kpis").innerHTML=
-    `<div class="kpi"><div class="n">${d.stats.max_lift}×</div><div class="l">最强共表达 lift</div></div>`+
-    `<div class="kpi"><div class="n">${d.stats.n_modules}</div><div class="l">共表达模块</div></div>`+
-    `<div class="kpi"><div class="n">${d.stats.n_pairs.toLocaleString()}</div><div class="l">显著共表达对</div></div>`+
-    `<div class="kpi"><div class="n">${d.stats.avg_active}</div><div class="l">平均共表达基因/patch</div></div>`;
+    `<div class="kpi"><div class="n">${d.stats.max_lift}×</div><div class="l">The strongest co-expression lift</div></div>`+
+    `<div class="kpi"><div class="n">${d.stats.n_modules}</div><div class="l">co-expression module</div></div>`+
+    `<div class="kpi"><div class="n">${d.stats.n_pairs.toLocaleString()}</div><div class="l">significant co-expression pairs</div></div>`+
+    `<div class="kpi"><div class="n">${d.stats.avg_active}</div><div class="l">Average co-expressed genes/patch</div></div>`;
   buildNet(); buildModLegend(); buildModCards(); buildPairs();
 });
 function buildNet(){
@@ -142,10 +142,10 @@ function focusNode(id){
   const g=D.genes[id],parts=(ADJ[id]||[]).slice().sort((a,b)=>b[1]-a[1]).slice(0,5);
   document.getElementById("ginfo").innerHTML=
     `<div class="ginfo"><img loading="lazy" src="${g.th}"></div>`+
-    `<h3>基因 #${id}</h3>`+
+    `<h3>Gene #${id}</h3>`+
     `<span class="chip" style="background:${CATC[g.cat]}22;color:${CATC[g.cat]}"><i style="background:${CATC[g.cat]}"></i>${CATN[g.cat]}</span>`+
     (MOD[D.nodes.find(n=>n.id===id)?.m]?` <span class="chip" style="background:${MOD[nm(id)].color}22;color:${MOD[nm(id)].color}"><i style="background:${MOD[nm(id)].color}"></i>${MOD[nm(id)].name}</span>`:"")+
-    `<div style="margin-top:9px;font-size:12px;color:var(--muted)">最强共表达伙伴:</div>`+
+    `<div style="margin-top:9px;font-size:12px;color:var(--muted)">The strongest co-expression partner:</div>`+
     parts.map(([j,w])=>`<div class="prow"><img loading="lazy" src="${D.genes[j].th}"><span>#${j} <span style="color:var(--muted)">${CATN[D.genes[j].cat]}</span></span><span style="margin-left:auto;color:var(--accent3)">×${Math.exp(w).toFixed(0)}</span></div>`).join("");
 }
 function nm(id){return NA[id]?NA[id].m:-1;}
@@ -165,7 +165,7 @@ function buildModCards(){
   document.getElementById("mgrid").innerHTML=D.modules.map(m=>
     `<div class="mcard" onclick="showModule(${m.id})"><div class="top" style="background:${m.color}"></div>
       <img loading="lazy" src="${m.ex[0]}">
-      <div class="cap"><b>${m.name}</b><div class="s">${m.genes.length} 基因 · coh ${m.coh}</div></div></div>`).join("");
+      <div class="cap"><b>${m.name}</b><div class="s">${m.genes.length} gene · coh ${m.coh}</div></div></div>`).join("");
 }
 function showModule(mi){
   const m=MOD[mi];
@@ -174,11 +174,11 @@ function showModule(mi){
   document.getElementById("mdetail").innerHTML=`<div class="card">
     <div class="mdh"><span style="width:14px;height:14px;border-radius:4px;background:${m.color}"></span>
       <span class="t">${m.name}</span>
-      <span style="font-size:12px;color:var(--muted)">${m.genes.length} 基因 · 紧致度(平均lift) ${m.coh}</span></div>
+      <span style="font-size:12px;color:var(--muted)">${m.genes.length} Gene · Firmness (average lift) ${m.coh}</span></div>
     <div style="display:flex;flex-wrap:wrap;gap:5px;margin:6px 0">${cats}</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-top:6px">▸ 这组基因在真实街景上的<b style="color:var(--text)">组合表达</b>(jet=成员合并激活):</div>
+    <div style="font-size:12.5px;color:var(--muted);margin-top:6px">▸ The appearance of this group of genes on the real street scene<b style="color:var(--text)">Combination expression</b>(jet=member merge activation):</div>
     <div class="exs">${m.ex.map(u=>`<img loading="lazy" src="${u}">`).join("")}</div>
-    <div style="font-size:12.5px;color:var(--muted)">▸ 成员基因(各自的代表激活):</div>
+    <div style="font-size:12.5px;color:var(--muted)">▸ Member genes (respective representatives activated):</div>
     <div class="mem">${mem}</div></div>`;
   document.getElementById("mdetail").scrollIntoView({behavior:"smooth",block:"nearest"});
 }
@@ -187,7 +187,7 @@ function buildPairs(){
     `<div class="pair"><img loading="lazy" src="${D.genes[p.i].th}"><img loading="lazy" src="${D.genes[p.j].th}">
       <div class="mid"><span class="lift">${p.lift}×</span>
       <div class="cats"><span><i style="background:${CATC[p.ci]}"></i>${CATN[p.ci]}</span><span>+</span><span><i style="background:${CATC[p.cj]}"></i>${CATN[p.cj]}</span></div>
-      <div style="font-size:10.5px;color:var(--muted);margin-top:2px">#${p.i} + #${p.j} · 共现 ${p.n.toLocaleString()}</div></div></div>`).join("");
+      <div style="font-size:10.5px;color:var(--muted);margin-top:2px">#${p.i} + #${p.j} · Co-occurrence ${p.n.toLocaleString()}</div></div></div>`).join("");
 }
 </script>
 </body>

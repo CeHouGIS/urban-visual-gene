@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Visual Gene · 城市基因组对比</title>
+<title>Urban Visual Gene · Comparison of urban genomes</title>
 <style>
 :root{--bg:#070b14;--panel:rgba(13,21,36,.92);--panel2:#121e33;--border:#1e2d47;
   --text:#dbe4f0;--muted:#8a9bb5;--accent:#39d6ff;--accent2:#7c5cff;--accent3:#22e0a1;--warn:#ff9e64}
@@ -158,66 +158,65 @@ h2.sec{font-size:15px;letter-spacing:1px;color:var(--accent);margin:40px 0 4px;t
 <div id="top">
   <div class="brand"><span class="dot"></span>Urban Visual Gene</div>
   <div class="tabs">
-    <a class="tab" href="genes.html">512 视觉基因</a>
-    <a class="tab" href="coexpr.html">基因组合</a>
-    <a class="tab active" href="citygenome.html">城市基因组</a>
-    <a class="tab" href="interpret.html">可解释性·SAE</a>
+    <a class="tab" href="genes.html">512 Vision Gene</a>
+    <a class="tab" href="coexpr.html">gene combination</a>
+    <a class="tab active" href="citygenome.html">City Genome</a>
+    <a class="tab" href="interpret.html">Interpretability·SAE</a>
   </div>
 </div>
 
 <div class="wrap">
-  <h1>12 座城市的<span>视觉基因组</span>对比</h1>
-  <p class="lead">把每座城市看成一条 <b>512 维的视觉基因频谱</b>（该城每个 patch 的主导基因分布，12 城严格等量、去偏）。
-     像比较物种基因组一样比较城市：谁和谁最像（<b>亲缘树</b>）、哪些基因人人都有 / 哪些是某城独有（<b>泛基因组</b>）、
-     以及各城的<b>视觉多样性</b>。</p>
+  <h1>12 cities<span>visual genome</span>contrast</h1>
+  <p class="lead">Think of each city as a strip<b>512-dimensional visual gene spectrum</b>(The distribution of dominant genes in each patch in the city is strictly equal and debiased in 12 cities).
+     Compare cities like genomes of species: who is most similar to whom (<b>Kinship tree</b>), which genes everyone has/which genes are unique to a certain city (<b>pan-genome</b>),
+     and in various cities<b>visual diversity</b>。</p>
   <div class="kpis" id="kpis"></div>
 
-  <h2 class="sec">① 城市亲缘树 · 谁和谁最像</h2>
-  <p class="sub">城市间距离 = 两城基因频谱的 <b>Jensen–Shannon 散度</b>（分布差异的信息量），层次聚类成树。
-     <b>纯视觉、无任何地理输入</b>——若树能还原地理/文化分组，说明视觉基因确实抓住了城市的"型"。右侧热图：越亮＝越相似（对角线=自身）。</p>
+  <h2 class="sec">① Urban Affinity Tree · Who is most similar to whom?</h2>
+  <p class="sub">Distance between cities = genetic spectrum of two cities<b>Jensen–Shannon divergence</b>(information content of distribution differences), hierarchical clustering into trees.<b>Purely visual, without any geographical input</b>——If the tree can restore the geographical/cultural grouping, it means that the visual gene has indeed captured the "type" of the city. Heatmap on the right: brighter = more similar (diagonal = self).</p>
   <div class="two">
-    <div class="card tri"><img src="citygenome/city_dendro.png" alt="城市视觉亲缘树"></div>
+    <div class="card tri"><img src="citygenome/city_dendro.png" alt="Urban visual affinity tree"></div>
     <div class="card">
       <div id="heatwrap"></div>
-      <div style="font-size:11.5px;color:var(--muted);margin-top:8px">相似度为组内相对值（100=最相似的一对，0=最远的一对）。悬停看数值。</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:8px">Similarity is the relative value within the group (100 = the most similar pair, 0 = the farthest pair). Hover to see the value.</div>
     </div>
   </div>
 
-  <h2 class="sec">② 基因通用性检索 · core / unique / regional</h2>
-  <p class="sub">按同一个阈值（某 gene 占某城 patch ≥0.05%）给当前 SAE 字典中的基因贴标签：
-    12 城都有的是 <b>core universal</b>，只在 1 城出现的是 <b>city-unique</b>，
-    只在 2 城出现的是 <b>pair-specific</b>，3–5 城出现的是 <b>regional</b>。
-    下方可切换 SAE 参数和基因集合；基因收在横向轴中，选中一个基因后查看 12 城示例，图像同位叠放展示激活与原图。</p>
+  <h2 class="sec">② Gene universal search · core / unique / regional</h2>
+  <p class="sub">Label genes in the current SAE dictionary according to the same threshold (a certain gene accounts for ≥0.05% of a certain city's patch):
+    12 The city is full of<b>core universal</b>, which only appears in city 1 is<b>city-unique</b>,
+    What only appears in 2 cities is<b>pair-specific</b>, what appears in cities 3–5 is<b>regional</b>.
+    SAE parameters and gene sets can be switched below; genes are collected in the horizontal axis. After selecting a gene, you can view the 12-city example. The images are overlaid to show the activation and the original image.</p>
   <div class="card">
     <div class="tools">
       <select class="select" id="geneDatasetSelect">
         <option value="batchtopk_w1024_k8" selected>BatchTopK W1024 · K8</option>
-        <option value="w512">W512 · topk32 原始字典</option>
+        <option value="w512">W512 · topk32 original dictionary</option>
       </select>
       <select class="select" id="modeSelect">
-        <option value="core">12城共有基因</option>
-        <option value="unique">单城独有</option>
-        <option value="pair">双城特异</option>
-        <option value="regional">区域型</option>
-        <option value="near">近核心 9-11 城</option>
-        <option value="accessory">辅助型 6-8 城</option>
-        <option value="all">全部已激活基因</option>
+        <option value="core">12 cities share genes</option>
+        <option value="unique">Unique to a single city</option>
+        <option value="pair">Twin Cities Special</option>
+        <option value="regional">Regional</option>
+        <option value="near">Near core 9-11 city</option>
+        <option value="accessory">Auxiliary 6-8 cities</option>
+        <option value="all">All activated genes</option>
       </select>
-      <select class="select" id="cityFilter"><option value="">按城市筛选</option></select>
-      <a class="dl" id="specCsvDownload" href="citygenome/gene_city_specificity_batchtopk_w1024_k8.csv" download>下载完整 CSV</a>
+      <select class="select" id="cityFilter"><option value="">Filter by city</option></select>
+      <a class="dl" id="specCsvDownload" href="citygenome/gene_city_specificity_batchtopk_w1024_k8.csv" download>Download full CSV</a>
     </div>
     <div class="specbar" id="specificityStats"></div>
     <div class="citydots" id="cityDots"></div>
     <div class="geneviz" id="geneViz"></div>
   </div>
 
-  <h2 class="sec">③ 视觉多样性 · 街景有多丰富</h2>
-  <p class="sub">各城基因频谱的<b>香农熵</b>（等效基因数 = 2^熵）——越高＝街景视觉构成越丰富多变，越低＝越单一、模式化。</p>
+  <h2 class="sec">③ Visual diversity · How rich is the street scene?</h2>
+  <p class="sub">Gene spectrum of each city<b>Shannon entropy</b>(Equivalent number of genes = 2^entropy) - Higher = the richer and more varied the visual composition of the street scene, lower = more uniform and patterned.</p>
   <div class="card"><div id="div"></div></div>
   <div class="card abcard">
     <div class="abhead">
-      <div class="abtitle">SAE 参数消融 · 等效基因数 2^H</div>
-      <div class="ablegend"><span>少</span><i></i><span>多</span></div>
+      <div class="abtitle">SAE parameter ablation · Equivalent number of genes 2^H</div>
+      <div class="ablegend"><span>few</span><i></i><span>many</span></div>
     </div>
     <div id="divAblation"></div>
   </div>
@@ -318,17 +317,17 @@ function renderDiversityAblation(A){
     return `<div class="abcfg" title="${cfg.note||""}">${cfg.label}</div>${cells}
       <div class="abmean" title="mean effective genes ${m}">
         <span class="mini" style="width:${Math.max(8,Math.round(m/meanMax*50))}px"></span><span class="mval">${Math.round(m)}</span>
-      </div><div class="abcore" title="${cfg.label} · 12 城共有基因数量">${core}</div>`;
+      </div><div class="abcore" title="${cfg.label} · 12 City total number of genes">${core}</div>`;
   }).join("");
   const meta=[
-    `${A.configs.length} 组参数`,
-    `${cities.length} 城`,
-    `颜色范围 ${min}-${max} 等效基因`,
-    `每格为该城 dominant-gene 频谱的 2^H`,
-    `最右列为 12 城都出现的基因数`
+    `${A.configs.length} group parameters`,
+    `${cities.length} city`,
+    `Color range ${min} - ${max} equivalent genes`,
+    `Each grid is 2^H` of the dominant-gene spectrum of the city,
+    `The rightmost column is the number of genes appearing in 12 Johto`
   ];
   box.innerHTML=`<div class="abscroll"><div class="abmatrix">
-      <div></div>${cityHead}<div class="abcity">均值</div><div class="abcity">12城共有基因</div>${rows}
+      <div></div>${cityHead}<div class="abcity">mean</div><div class="abcity">12 cities share genes</div>${rows}
     </div></div><div class="abmeta">${meta.map(x=>`<span class="abpill">${x}</span>`).join("")}</div>`;
 }
 function setupSpecificity(D){
@@ -342,8 +341,8 @@ function setupSpecificity(D){
     const citySel=document.getElementById("cityFilter");
     const statBox=document.getElementById("specificityStats");
     const dotBox=document.getElementById("cityDots");
-    const cityNames={HongKong:"香港",Singapore:"新加坡",Amsterdam:"阿姆斯特丹",CapeTown:"开普敦",Paris:"巴黎",
-      SaoPaulo:"圣保罗",MexicoCity:"墨西哥城",Sydney:"悉尼",Jakarta:"雅加达",Dhaka:"达卡",NewDelhi:"新德里",Manila:"马尼拉"};
+    const cityNames={HongKong:"Hong Kong",Singapore:"Singapore",Amsterdam:"Amsterdam",CapeTown:"Cape Town",Paris:"Paris",
+      SaoPaulo:"São Paulo",MexicoCity:"Mexico City",Sydney:"Sydney",Jakarta:"Jakarta",Dhaka:"Dhaka",NewDelhi:"New Delhi",Manila:"Manila"};
     const cities=S.cities||Object.keys(S.city_markers_top8||{});
     cities.forEach(c=>{
       const o=document.createElement("option");o.value=c;o.textContent=cityNames[c]||c;citySel.appendChild(o);
@@ -379,7 +378,7 @@ function setupSpecificity(D){
     };
     [...modeSel.options].forEach(o=>{
       const n=(sets[o.value]||[]).length;
-      if(n)o.textContent=o.textContent.replace(/ · \d+ 个$/,"")+` · ${n} 个`;
+      if(n)o.textContent=o.textContent.replace(/ · \d+ genes$/,"")+` · ${n} genes`;
     });
     function catColor(g){return (D.categories||[]).find(c=>c.name===(g.category||g.cat))?.color||"var(--accent)";}
     function pct(x){return x==null?"":(Number(x)*100).toFixed(2)+"%";}
@@ -387,22 +386,22 @@ function setupSpecificity(D){
     function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
     function examplesHtml(g){
       const arr=(E.examples||{})[String(g.gene)]||[];
-      if(!arr.length)return `<div class="emptyviz">这个基因还没有生成城市示例图</div>`;
+      if(!arr.length)return `<div class="emptyviz">This gene has not generated city example maps yet</div>`;
       const order=new Map(cities.map((c,i)=>[c,i]));
       return `<div class="exgrid">${arr.slice().sort((a,b)=>(order.get(a.city)??99)-(order.get(b.city)??99)).map(e=>`<div class="expair" title="${esc(e.zh||e.city)} · activation ${esc(e.score)}">
         <div class="cz">${esc(e.zh||e.city)} · ${esc(e.score)}</div>
-        <div class="imgswap" tabindex="0" aria-label="${esc(e.zh||e.city)}：默认激活，悬停原图">
+        <div class="imgswap" tabindex="0" aria-label="${esc(e.zh||e.city)}: activated by default, hover the original image">
           <img class="act" loading="lazy" src="${esc(e.act)}" alt="${esc(e.zh||e.city)} activation">
           <img class="orig" loading="lazy" src="${esc(e.orig)}" alt="${esc(e.zh||e.city)} original">
         </div>
-        <div class="cap">激活 / 原图</div>
+        <div class="cap">Activate/original image</div>
       </div>`).join("")}</div>`;
     }
     function geneDetail(g){
       const pc=present(g), pset=new Set(pc), share=g.top_share!=null?g.top_share:g.share, lift=g.top_lift_vs_global_mean!=null?g.top_lift_vs_global_mean:g.lift;
       const main=g.top_city_zh||cityNames[g.top_city]||g.top_city||"";
       const color=catColor(g);
-      const cls=g.class||("marker · "+(g.prevalence_n_cities||"")+"城");
+      const cls=g.class||("marker · "+(g.prevalence_n_cities||"")+"city");
       return `<div class="genePanel" style="--accent:${color}">
         <div class="panelTop">
           <div>
@@ -413,7 +412,7 @@ function setupSpecificity(D){
           <div class="gmetric"><span><b>${pct(share)}</b> top</span><span><b>×${Number(lift||0).toFixed(1)}</b> lift</span></div>
         </div>
         <div class="detailbody">
-          <div class="detailhint">${main?`最高城市：${esc(main)} · `:""}出现城市：${pc.length?esc(pc.map(c=>cityNames[c]||c).join(" / ")):"无"}</div>
+          <div class="detailhint">${main?`Highest city: ${esc(main)} · `:""}City appears: ${pc.length?esc(pc.map(c=>cityNames[c]||c).join(" / ")):"None"}</div>
           <div class="presence">${cities.map(c=>`<div class="pbit ${pset.has(c)?"on":""}" title="${esc(cityNames[c]||c)}"></div>`).join("")}</div>
           ${examplesHtml(g)}
         </div>
@@ -475,10 +474,10 @@ function setupSpecificity(D){
     function renderStats(mode, rows){
       const counts=Object.fromEntries(Object.entries(sets).map(([k,v])=>[k,v.length]));
       const cards=[
-        ["core", counts.core||0, "12 城通用"],
-        ["unique", counts.unique||0, "单城独有"],
-        ["pair", counts.pair||0, "双城特异"],
-        ["regional", counts.regional||0, "3-5 城区域型"]
+        ["core", counts.core||0, "12 cities universal"],
+        ["unique", counts.unique||0, "Unique to a single city"],
+        ["pair", counts.pair||0, "Twin Cities Special"],
+        ["regional", counts.regional||0, "3-5 urban area type"]
       ];
       statBox.innerHTML=cards.map(([key,n,l])=>`<div class="specstat" style="${key===mode?'border-color:var(--accent)':''}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
       const active=new Set(rows.flatMap(present));
@@ -487,7 +486,7 @@ function setupSpecificity(D){
     function render(mode, rows){
       renderStats(mode, rows);
       const title=mode==="marker" ? (cityNames[citySel.value]||citySel.value)+" marker" : modeSel.options[modeSel.selectedIndex].textContent;
-      if(!rows.length){viz.innerHTML=`<div class="emptyviz">没有可显示的基因</div>`;return;}
+      if(!rows.length){viz.innerHTML=`<div class="emptyviz">No genes to display</div>`;return;}
       const selected=0;
       viz.innerHTML=`<div class="axishead"><div><div class="title">${esc(title)}</div><div class="count selectedCount">${rows.length} genes · selected #${rows[selected].gene}</div></div></div>
         <div class="axiswrap">${axisHtml(rows, selected)}</div>
@@ -521,7 +520,7 @@ function setupSpecificityV2(D){
       csv:"citygenome/gene_city_specificity_batchtopk_w1024_k8.csv"
     },
     w512:{
-      label:"W512 · topk32 原始字典",
+      label:"W512 · topk32 original dictionary",
       short:"W512 · topk32",
       width:512,
       summary:"citygenome/gene_city_specificity_summary.json",
@@ -536,8 +535,8 @@ function setupSpecificityV2(D){
   const statBox=document.getElementById("specificityStats");
   const dotBox=document.getElementById("cityDots");
   const dl=document.getElementById("specCsvDownload");
-  const cityNames={HongKong:"香港",Singapore:"新加坡",Amsterdam:"阿姆斯特丹",CapeTown:"开普敦",Paris:"巴黎",
-    SaoPaulo:"圣保罗",MexicoCity:"墨西哥城",Sydney:"悉尼",Jakarta:"雅加达",Dhaka:"达卡",NewDelhi:"新德里",Manila:"马尼拉"};
+  const cityNames={HongKong:"Hong Kong",Singapore:"Singapore",Amsterdam:"Amsterdam",CapeTown:"Cape Town",Paris:"Paris",
+    SaoPaulo:"São Paulo",MexicoCity:"Mexico City",Sydney:"Sydney",Jakarta:"Jakarta",Dhaka:"Dhaka",NewDelhi:"New Delhi",Manila:"Manila"};
   const classColors={
     core_universal_12cities:"#22e0a1",
     near_core_9to11cities:"#39d6ff",
@@ -589,28 +588,28 @@ function setupSpecificityV2(D){
   }
   function refreshModeCounts(sets){
     [...modeSel.options].forEach(o=>{
-      if(!o.dataset.base)o.dataset.base=o.textContent.replace(/ · \d+ 个$/,"");
-      o.textContent=`${o.dataset.base} · ${(sets[o.value]||[]).length} 个`;
+      if(!o.dataset.base)o.dataset.base=o.textContent.replace(/ · \d+ $/,"");
+      o.textContent=`${o.dataset.base} · ${(sets[o.value]||[]).length}`;
     });
   }
   function examplesHtml(g){
     const arr=(state.E.examples||{})[String(g.gene)]||[];
-    if(!arr.length)return `<div class="emptyviz">这个基因还没有生成城市示例图</div>`;
+    if(!arr.length)return `<div class="emptyviz">This gene has not generated city example maps yet</div>`;
     const order=new Map(state.cities.map((c,i)=>[c,i]));
     return `<div class="exgrid">${arr.slice().sort((a,b)=>(order.get(a.city)??99)-(order.get(b.city)??99)).map(e=>`<div class="expair" title="${esc(e.zh||e.city)} · activation ${esc(e.score)}">
       <div class="cz">${esc(e.zh||e.city)} · ${esc(e.score)}</div>
-      <div class="imgswap" tabindex="0" aria-label="${esc(e.zh||e.city)}：默认激活，悬停原图">
+      <div class="imgswap" tabindex="0" aria-label="${esc(e.zh||e.city)}: activated by default, hover the original image">
         <img class="act" loading="lazy" src="${esc(e.act)}" alt="${esc(e.zh||e.city)} activation">
         <img class="orig" loading="lazy" src="${esc(e.orig)}" alt="${esc(e.zh||e.city)} original">
       </div>
-      <div class="cap">激活 / 原图</div>
+      <div class="cap">Activate/original image</div>
     </div>`).join("")}</div>`;
   }
   function geneDetail(g){
     const pc=present(g), pset=new Set(pc), share=g.top_share!=null?g.top_share:g.share, lift=g.top_lift_vs_global_mean!=null?g.top_lift_vs_global_mean:g.lift;
     const main=g.top_city_zh||cityNames[g.top_city]||g.top_city||"";
     const color=catColor(g);
-    const cls=g.class||("marker · "+(g.prevalence_n_cities||"")+"城");
+    const cls=g.class||("marker · "+(g.prevalence_n_cities||"")+"city");
     return `<div class="genePanel" style="--accent:${color}">
       <div class="panelTop">
         <div>
@@ -621,7 +620,7 @@ function setupSpecificityV2(D){
         <div class="gmetric"><span><b>${pct(share)}</b> top</span><span><b>×${Number(lift||0).toFixed(1)}</b> lift</span></div>
       </div>
       <div class="detailbody">
-        <div class="detailhint">${main?`最高城市：${esc(main)} · `:""}出现城市：${pc.length?esc(pc.map(c=>cityNames[c]||c).join(" / ")):"无"}</div>
+        <div class="detailhint">${main?`Highest city: ${esc(main)} · `:""}City appears: ${pc.length?esc(pc.map(c=>cityNames[c]||c).join(" / ")):"None"}</div>
         <div class="presence">${state.cities.map(c=>`<div class="pbit ${pset.has(c)?"on":""}" title="${esc(cityNames[c]||c)}"></div>`).join("")}</div>
         ${examplesHtml(g)}
       </div>
@@ -675,10 +674,10 @@ function setupSpecificityV2(D){
   function renderStats(mode, rows){
     const counts=Object.fromEntries(Object.entries(state.sets).map(([k,v])=>[k,v.length]));
     const cards=[
-      ["core", counts.core||0, "12 城共有"],
-      ["unique", counts.unique||0, "单城独有"],
-      ["pair", counts.pair||0, "双城特异"],
-      ["regional", counts.regional||0, "3-5 城区域型"],
+      ["core", counts.core||0, "12 cities in total"],
+      ["unique", counts.unique||0, "Unique to a single city"],
+      ["pair", counts.pair||0, "Twin Cities Special"],
+      ["regional", counts.regional||0, "3-5 urban area type"],
       ["all", counts.all||0, state.cfg.short]
     ];
     statBox.innerHTML=cards.map(([key,n,l])=>`<div class="specstat" style="${key===mode?'border-color:var(--accent)':''}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
@@ -688,7 +687,7 @@ function setupSpecificityV2(D){
   function render(mode, rows){
     renderStats(mode, rows);
     const title=mode==="marker" ? (cityNames[citySel.value]||citySel.value)+" marker" : modeSel.options[modeSel.selectedIndex].textContent;
-    if(!rows.length){viz.innerHTML=`<div class="emptyviz">没有可显示的基因</div>`;return;}
+    if(!rows.length){viz.innerHTML=`<div class="emptyviz">No genes to display</div>`;return;}
     const selected=0;
     viz.innerHTML=`<div class="axishead"><div><div class="title">${esc(state.cfg.label)} · ${esc(title)}</div><div class="count selectedCount">${rows.length} genes · selected #${rows[selected].gene}</div></div></div>
       <div class="axiswrap">${axisHtml(rows, selected)}</div>
@@ -708,16 +707,16 @@ function setupSpecificityV2(D){
   }
   function loadDataset(){
     const cfg=datasets[datasetSel.value]||datasets.batchtopk_w1024_k8;
-    viz.innerHTML=`<div class="emptyviz">正在加载 ${esc(cfg.label)} ...</div>`;
+    viz.innerHTML=`<div class="emptyviz">Loading ${esc(cfg.label)}...</div>`;
     dl.href=cfg.csv;
-    dl.textContent=`下载 ${cfg.short} CSV`;
+    dl.textContent=`Download ${cfg.short} CSV`;
     Promise.all([
       fetch(cfg.summary).then(r=>r.json()),
       fetch(cfg.examples).then(r=>r.json()),
       fetch(cfg.csv).then(r=>r.text())
     ]).then(([S,E,csvText])=>{
       const cities=S.cities||Object.keys(S.city_markers_top8||{});
-      citySel.innerHTML=`<option value="">按城市筛选</option>`;
+      citySel.innerHTML=`<option value="">Filter by city</option>`;
       cities.forEach(c=>{
         const o=document.createElement("option");o.value=c;o.textContent=cityNames[c]||c;citySel.appendChild(o);
       });
@@ -730,7 +729,7 @@ function setupSpecificityV2(D){
       citySel.value="";
       render("core", sets.core);
     }).catch(err=>{
-      viz.innerHTML=`<div class="emptyviz">加载失败：${esc(err.message||err)}</div>`;
+      viz.innerHTML=`<div class="emptyviz">Loading failed: ${esc(err.message||err)}</div>`;
     });
   }
   datasetSel.addEventListener("change", loadDataset);
@@ -744,8 +743,8 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
   (D.categories||[]).forEach(c=>CATCOL[c.id]=c.color);
   // KPIs
   const s=D.stats, kp=document.getElementById("kpis");
-  [[s.n_cities,"城市"],[512,"字典基因 K"],[D.pangenome.n_core,"核心基因(12城)"],
-   [D.pangenome.n_used,"被用到的基因"],[(s.n_patches/1e6).toFixed(1)+"M","分析 patch 数"]].forEach(([n,l])=>{
+  [[s.n_cities,"City"],[512,"dictionary gene K"],[D.pangenome.n_core,"Core genes (12 cities)"],
+   [D.pangenome.n_used,"genes used"],[(s.n_patches/1e6).toFixed(1)+"M","Analyze patch number"]].forEach(([n,l])=>{
     const k=el("div","kpi");k.appendChild(el("div","n",n));k.appendChild(el("div","l",l));kp.appendChild(k);
   });
 
@@ -775,14 +774,14 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
       cell.style.background=i==j?"#1b2b46":simColor(nv);
       if(i!=j){
         cell.onmousemove=(e)=>{tip.style.display="block";tip.style.left=(e.clientX+12)+"px";tip.style.top=(e.clientY+12)+"px";
-          tip.innerHTML=`${ZH[i]} ↔ ${ZH[j]}<br>相似度 <b style="color:var(--accent)">${Math.round(nv*100)}</b>/100`;};
+          tip.innerHTML=`${ZH[i]} ↔ ${ZH[j]}<br>Similarity<b style="color:var(--accent)">${Math.round(nv*100)}</b>/100`;};
         cell.onmouseleave=()=>tip.style.display="none";
       }
       grid.appendChild(cell);
     }
   }
   hw.appendChild(grid);
-  hw.appendChild(el("div","clusterOrder",`<b>聚类顺序</b> ${order.map(i=>ZH[i]).join(" → ")}`));
+  hw.appendChild(el("div","clusterOrder",`<b>Clustering order</b> ${order.map(i=>ZH[i]).join(" → ")}`));
 
   // ---- diversity ----
   const dv=document.getElementById("div"), effs=D.diversity.map(d=>d.eff), emax=Math.max(...effs), emin=Math.min(...effs);
@@ -793,7 +792,7 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
     const tr=el("div","track");const f=el("div","fill");
     f.style.width=(20+t*80)+"%";f.style.background=`linear-gradient(90deg,var(--accent2),var(--accent))`;
     tr.appendChild(f);row.appendChild(tr);
-    row.appendChild(el("div","v",`${d.eff} 基因`));
+    row.appendChild(el("div","v",`${d.eff} gene`));
     dv.appendChild(row);
   });
   fetch("citygenome/diversity_ablation.json")
@@ -802,13 +801,12 @@ fetch("citygenome/data.json").then(r=>r.json()).then(D=>{
     .catch(()=>{});
 
   document.getElementById("foot").innerHTML=
-    `<b>方法.</b> 城市频谱 = 每城 1200 张图 × 784 patch 的主导基因（argmax）分布，12 城等量去偏。`+
-    `亲缘距离用 <b>Jensen–Shannon 散度</b>（对称、有界），average-linkage 层次聚类。`+
-    `泛基因组阈值：基因占某城 patch ≥ ${(D.pangenome.threshold*100).toFixed(2)}% 记为"出现"。`+
-    `多样性 = 香农熵（bit），等效基因数 = 2^熵。`+
-    `全部基于 global3 干净字典（K=512，图像质量过滤后重训）。分析用每点 4 朝向。`;
+    `<b>method.</b>City spectrum = 1200 images per city × dominant gene (argmax) distribution of 784 patches, 12 cities debiased equally. `+
+    `Used for kinship distance<b>Jensen–Shannon divergence</b>(symmetric, bounded), average-linkage hierarchical clustering. `+
+    `Pan-genome threshold: Genes occupying a certain city patch ≥ ${(D.pangenome.threshold*100).toFixed(2)} % are recorded as "occurrence". `+
+    `Diversity = Shannon entropy (bit), equivalent number of genes = 2^entropy. `+
+    `All based on global3 clean dictionary (K=512, retrained after image quality filtering). The analysis uses 4 orientations per point. `;
   setupSpecificityV2(D);
-});
-</script>
+});</script>
 </body>
 </html>
