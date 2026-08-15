@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Urban Visual Gene · Seed Stability</title>
+<style>
+:root{--bg:#070b14;--panel:#0d1626;--panel2:#121f34;--line:#20314d;--text:#dbe4f0;--muted:#8a9bb5;--cyan:#39d6ff;--green:#22e0a1;--yellow:#f6c945;--red:#ff7488;--purple:#a58bff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif}a{color:inherit;text-decoration:none}
+header{min-height:55px;display:flex;align-items:center;gap:10px;padding:8px 17px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;background:#070b14ee;backdrop-filter:blur(10px)}
+header h1{font-size:17px;margin:0}.grow{flex:1}.nav{display:flex;gap:6px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--muted);border-radius:8px;padding:7px 10px;font-size:12px}.btn:hover,.btn.active{color:var(--cyan);border-color:var(--cyan)}
+.wrap{max-width:1280px;margin:auto;padding:25px 18px 45px}.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:18px;align-items:center;margin-bottom:18px}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800}.hero h2{font-size:32px;line-height:1.15;margin:8px 0}.lead,.note{color:var(--muted);line-height:1.65}.lead{font-size:15px;max-width:780px}.verdict{border:1px solid #235343;background:linear-gradient(135deg,#0d2525,#101a2b);border-radius:14px;padding:18px}.verdict b{display:block;color:var(--green);font-size:37px}.verdict strong,.verdict span{display:block}.verdict strong{margin-bottom:5px}.verdict span{font-size:12px;color:var(--muted);line-height:1.45}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:17px 0}.kpi,.box{background:var(--panel);border:1px solid var(--line);border-radius:12px}.kpi{padding:12px}.kpi b{display:block;font-size:23px;color:var(--cyan)}.kpi span{font-size:10px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.box{padding:17px;min-width:0}.box h3{font-size:15px;margin:0 0 5px}.box .sub{font-size:11px;color:var(--muted);margin-bottom:15px;line-height:1.5}
+.loss-row{display:grid;grid-template-columns:64px 1fr 60px;gap:9px;align-items:center;margin:10px 0;font-size:12px}.track{height:11px;background:#17263e;border-radius:7px;overflow:hidden}.track i{height:100%;display:block;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:7px}.loss-row strong{text-align:right;color:var(--cyan);font-variant-numeric:tabular-nums}
+.familybar{height:38px;display:flex;border-radius:9px;overflow:hidden;margin:17px 0 10px}.familybar div{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}.all5{width:84.34%;background:var(--green);color:#052019}.four5{width:15.66%;background:var(--yellow);color:#231c02}.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:var(--muted)}.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+.ring-row{display:flex;align-items:center;gap:24px}.ring{width:154px;height:154px;border-radius:50%;background:conic-gradient(var(--green) 0 82.79%,var(--red) 82.79% 100%);display:grid;place-items:center;flex:none}.ring:after{content:"82.8%\A strict-stable";white-space:pre;text-align:center;display:grid;place-items:center;width:105px;height:105px;border-radius:50%;background:var(--panel);font-size:15px;font-weight:800}.split{display:grid;gap:11px;flex:1}.split b{font-size:22px}.green{color:var(--green)}.red{color:var(--red)}
+.seed-grid{display:grid;grid-template-columns:88px repeat(5,1fr);gap:5px;font-size:11px;align-items:center}.seed-grid div{padding:8px;border-radius:6px;background:var(--panel2);text-align:center}.seed-grid .head{color:var(--cyan);font-weight:800}.seed-grid .label{text-align:left;color:var(--muted)}
+.thresholds{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.threshold{padding:10px;background:var(--panel2);border-radius:8px}.threshold b{display:block;color:var(--yellow);font-size:18px}.threshold span{font-size:10px;color:var(--muted)}
+.callout{border-left:3px solid var(--yellow);background:#171a20;padding:12px 14px;margin-top:14px;font-size:12px;line-height:1.65;color:var(--muted)}.callout b{color:var(--text)}
+.footer-note{margin-top:18px;padding:15px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:11px;line-height:1.65}
+@media(max-width:900px){.hero,.grid2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.thresholds{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.hero h2{font-size:25px}.ring-row{align-items:flex-start;flex-direction:column}.seed-grid{grid-template-columns:76px repeat(5,minmax(48px,1fr));overflow:auto}}
+</style>
+</head>
+<body>
+<header><h1>Urban Visual Gene</h1><span class="grow"></span><nav class="nav"><a class="btn" href="genes.html">Gene Browser</a><a class="btn" href="citygenome.html">City Genome</a><a class="btn" href="w1024_statistics.html">W1024 Taxonomy</a><a class="btn active" href="seed_stability.html">Seed Stability</a></nav></header>
+<main class="wrap">
+  <section class="hero">
+    <div><div class="eyebrow">BatchTopK SAE · W1024/K8</div><h2>Visual genes contain a reproducible core across random seeds</h2><p class="lead">Five independently initialized sparse autoencoders were trained for 60 epochs and aligned on the same 250,000 anchor patches. Strict matching combines activation behavior, decoder direction, seed coverage, and support.</p></div>
+    <div class="verdict"><b>875</b><strong>stable gene families</strong><span>738 recur in all five runs; 137 recur in four.</span></div>
+  </section>
+
+  <section class="kpis">
+    <div class="kpi"><b>5</b><span>independent seeds</span></div><div class="kpi"><b>60</b><span>epochs per run</span></div><div class="kpi"><b>250K</b><span>shared anchor patches</span></div><div class="kpi"><b>8,175</b><span>accepted pairwise matches</span></div><div class="kpi"><b>0</b><span>watchdog problems</span></div>
+  </section>
+
+  <section class="grid2">
+    <article class="box"><h3>Training convergence</h3><div class="sub">Final training loss is tightly concentrated across all five runs.</div>
+      <div class="loss-row"><span>Seed 11</span><div class="track"><i style="width:95.4%"></i></div><strong>0.154119</strong></div>
+      <div class="loss-row"><span>Seed 23</span><div class="track"><i style="width:98.6%"></i></div><strong>0.155030</strong></div>
+      <div class="loss-row"><span>Seed 37</span><div class="track"><i style="width:96.8%"></i></div><strong>0.154521</strong></div>
+      <div class="loss-row"><span>Seed 53</span><div class="track"><i style="width:99.5%"></i></div><strong>0.155301</strong></div>
+      <div class="loss-row"><span>Seed 71</span><div class="track"><i style="width:99.0%"></i></div><strong>0.155167</strong></div>
+      <p class="note">Range: 0.001182. Similar final losses show optimization consistency, while gene matching tests whether the learned latent concepts also agree.</p>
+    </article>
+
+    <article class="box"><h3>Stable-family seed coverage</h3><div class="sub">Every accepted family must appear in at least four of the five runs.</div>
+      <div class="familybar"><div class="all5">738 · 5/5</div><div class="four5">137 · 4/5</div></div>
+      <div class="legend"><span><i style="background:var(--green)"></i>84.3% recovered in every seed</span><span><i style="background:var(--yellow)"></i>15.7% recovered in four seeds</span></div>
+      <div class="callout"><b>Interpretation:</b> the majority of accepted families are not tied to a particular initialization. The 4/5 families form a less robust boundary around this shared core.</div>
+    </article>
+  </section>
+
+  <section class="grid2">
+    <article class="box"><h3>Strictly matched vs. unmatched gene instances</h3><div class="sub">This counts seed-specific latent instances, not unique semantic concepts.</div>
+      <div class="ring-row"><div class="ring"></div><div class="split"><div><b class="green">4,238</b><div class="note">instances assigned to stable 4/5 or 5/5 families</div></div><div><b class="red">881</b><div class="note">active instances outside the strict stable-family criteria</div></div></div></div>
+      <div class="callout"><b>Important:</b> “unmatched” does not automatically mean meaningless. A concept may split, merge, become too rare, or shift granularity between runs.</div>
+    </article>
+
+    <article class="box"><h3>Dictionary activity by seed</h3><div class="sub">Each model has width 1,024 and exactly eight non-zero activations per anchor patch.</div>
+      <div class="seed-grid"><div></div><div class="head">11</div><div class="head">23</div><div class="head">37</div><div class="head">53</div><div class="head">71</div><div class="label">Active genes</div><div>1,024</div><div>1,024</div><div>1,024</div><div>1,023</div><div>1,024</div><div class="label">Non-zero acts</div><div>2.0M</div><div>2.0M</div><div>2.0M</div><div>2.0M</div><div>2.0M</div><div class="label">Run complete</div><div class="green">Yes</div><div class="green">Yes</div><div class="green">Yes</div><div class="green">Yes</div><div class="green">Yes</div></div>
+    </article>
+  </section>
+
+  <section class="box" style="margin-top:14px"><h3>Strict family-matching criteria</h3><div class="sub">Families are retained only when all four requirements are met.</div><div class="thresholds"><div class="threshold"><b>≥ 4/5</b><span>seed coverage</span></div><div class="threshold"><b>≥ 0.70</b><span>activation similarity</span></div><div class="threshold"><b>≥ 0.70</b><span>decoder similarity</span></div><div class="threshold"><b>≥ 25</b><span>anchor support</span></div></div></section>
+
+  <div class="footer-note"><b>Scope.</b> These results establish reproducibility across initialization for the 12-city W1024/K8 experiment. They do not by themselves establish semantic validity. External-label and nuisance-control validation remain the next scientific step. The separate statistical taxonomy's “unstable component” label uses a different evidence definition and should not be equated directly with unmatched cross-seed instances.</div>
+</main>
+</body></html>
