@@ -42,6 +42,13 @@ header h1{font-size:17px;margin:0}.grow{flex:1}.nav{display:flex;gap:6px;flex-wr
     <figcaption class="umap-caption"><span><strong>How to read it:</strong> mixing of the five colors indicates that initialization does not partition the learned feature space. The middle panel isolates strict-stable family members; the right panel shows everything outside those families. It contains 881 active unmatched instances plus one inactive seed-53 dimension.</span><a class="download" href="seed_stability_feature_umap.csv" download>Download point data ↓</a></figcaption>
   </figure>
 
+  <figure class="umap-figure">
+    <h3>A concrete 5/5-seed semantic match</h3>
+    <div class="sub">Stable family 0122 contains a different latent ID in every run, yet all five directions independently map to the same visual reference prototype.</div>
+    <img src="seed_stability_family_example.png" alt="Five-seed stable visual-gene family with semantic prototype and pairwise similarity matrices">
+    <figcaption class="umap-caption"><span><strong>Interpretation:</strong> Genes 169, 589, 567, 362, and 141 all align with reference Gene 96 (vegetated roadside / street-edge greenery) at cosine 0.980–0.984. Their pairwise activation-profile cosine is 0.970–0.994 and decoder-direction cosine is 0.993–0.998. The semantic phrase is a descriptive reading of the reference exemplar, not a supervised label.</span><a class="download" href="seed_stability_family_example.json" download>Download family data ↓</a></figcaption>
+  </figure>
+
   <section class="grid2">
     <article class="box"><h3>Training convergence</h3><div class="sub">Final training loss is tightly concentrated across all five runs.</div>
       <div class="loss-row"><span>Seed 11</span><div class="track"><i style="width:95.4%"></i></div><strong>0.154119</strong></div>
