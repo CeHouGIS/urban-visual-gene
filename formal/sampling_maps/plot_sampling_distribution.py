@@ -64,23 +64,23 @@ def aggregate_cities():
 
 def global_map(stats):
     world = gpd.read_file(WORLD)
-    fig, ax = plt.subplots(figsize=(16, 8.7), facecolor="#070b14")
-    ax.set_facecolor("#08111f")
-    world.plot(ax=ax, color="#283240", edgecolor="#4b596b", linewidth=.35)
-    ax.text(-168, -47, "LAND WITHOUT A PLANNED CITY SAMPLE", color="#68778b", fontsize=8,
+    fig, ax = plt.subplots(figsize=(16, 8.7), facecolor="white")
+    ax.set_facecolor("white")
+    world.plot(ax=ax, color="#e7ebf0", edgecolor="#b8c1cc", linewidth=.35)
+    ax.text(-168, -47, "LAND WITHOUT A PLANNED CITY SAMPLE", color="#7b8794", fontsize=8,
             weight="bold", alpha=.8)
 
     valid = [r for r in stats if r["lon"] != ""]
     other = [r for r in valid if r["status"] == "collected_other"]
     study = [r for r in valid if r["status"] == "research"]
     ax.scatter([r["lon"] for r in other], [r["lat"] for r in other], s=25,
-               c="#5b8ff9", alpha=.78, edgecolors="#b9d0ff", linewidths=.25, zorder=4)
+               c="#3976d3", alpha=.82, edgecolors="white", linewidths=.35, zorder=4)
     ax.scatter([r["lon"] for r in study], [r["lat"] for r in study], s=105,
-               marker="*", c="#22e0a1", edgecolors="#eafff8", linewidths=.6, zorder=6)
+               marker="*", c="#00a878", edgecolors="white", linewidths=.7, zorder=6)
 
     failed = [r for r in valid if r["status"] == "failed"]
     ax.scatter([r["lon"] for r in failed], [r["lat"] for r in failed], s=48,
-               marker="x", c="#ff667d", linewidths=1.35, alpha=.95, zorder=7)
+               marker="x", c="#d93654", linewidths=1.35, alpha=.95, zorder=7)
 
     offsets = {"Singapore": (3, -7), "Jakarta": (3, -8), "Dhaka": (3, 6),
                "NewDelhi": (-20, 7), "HongKong": (3, 7), "Manila": (3, 7),
@@ -90,20 +90,20 @@ def global_map(stats):
         label = {"CapeTown":"Cape Town", "SaoPaulo":"São Paulo", "MexicoCity":"Mexico City",
                  "NewDelhi":"New Delhi", "HongKong":"Hong Kong"}.get(r["cityname"], r["cityname"])
         ax.annotate(label, (r["lon"], r["lat"]), xytext=(dx, dy), textcoords="offset points",
-                    fontsize=7.5, color="#dbe4f0", zorder=7)
+                    fontsize=7.5, color="#334155", zorder=7)
 
-    ax.set_title("Global Street-View Sampling Footprint", loc="left", color="#eef5ff",
+    ax.set_title("Global Street-View Sampling Footprint", loc="left", color="#172033",
                  fontsize=23, weight="bold", pad=16)
     ax.text(-179, 88, f"12 study cities · {sum(r['status']!='failed' for r in valid)} cities with metadata · {len(failed)} failed / zero-metadata cities",
-            color="#9badc5", fontsize=10, va="bottom")
+            color="#64748b", fontsize=10, va="bottom")
     legend = [
-        Line2D([0],[0], marker="*", color="none", markerfacecolor="#22e0a1", markeredgecolor="#eafff8", markersize=12, label="Current 12-city research sample"),
-        Line2D([0],[0], marker="o", color="none", markerfacecolor="#5b8ff9", markeredgecolor="#b9d0ff", markersize=7, label="Retrieved, outside current study"),
-        Line2D([0],[0], marker="x", color="#ff667d", markersize=8, label="Failed city (metadata count = 0)"),
-        Line2D([0],[0], marker="s", color="none", markerfacecolor="#283240", markeredgecolor="#4b596b", markersize=9, label="No planned city sample / unverified"),
+        Line2D([0],[0], marker="*", color="none", markerfacecolor="#00a878", markeredgecolor="white", markersize=12, label="Current 12-city research sample"),
+        Line2D([0],[0], marker="o", color="none", markerfacecolor="#3976d3", markeredgecolor="white", markersize=7, label="Retrieved, outside current study"),
+        Line2D([0],[0], marker="x", color="#d93654", markersize=8, label="Failed city (metadata count = 0)"),
+        Line2D([0],[0], marker="s", color="none", markerfacecolor="#e7ebf0", markeredgecolor="#b8c1cc", markersize=9, label="No planned city sample / unverified"),
     ]
-    ax.legend(handles=legend, loc="lower left", ncol=2, facecolor="#0d1626", edgecolor="#31425d",
-              labelcolor="#dbe4f0", fontsize=9, framealpha=.95)
+    ax.legend(handles=legend, loc="lower left", ncol=2, facecolor="white", edgecolor="#cbd5e1",
+              labelcolor="#334155", fontsize=9, framealpha=.97)
     ax.set_xlim(-180, 180); ax.set_ylim(-58, 90); ax.set_axis_off()
     fig.tight_layout()
     fig.savefig(OUT / "global_streetview_sampling.png", dpi=240, bbox_inches="tight", facecolor=fig.get_facecolor())
