@@ -242,6 +242,22 @@ decoder and held-out activation similarity rather than numeric gene IDs.}
 \label{fig:stability}
 \end{figure}
 
+\begin{figure}[t]
+\centering
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/sae_seed_activation_range_bars.png}
+  \caption{Activation ranges across five seeds.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/site/seed_stability_feature_umap.png}
+  \caption{Embedding of matched seed-specific features.}
+\end{subfigure}
+\caption{Complementary views of cross-seed stability. Numeric latent indices are
+not aligned across runs; correspondence is established from decoder and anchor-set
+activation similarity.}
+\label{fig:seed_diagnostics}
+\end{figure}
+
 \subsection{Statistical taxonomy}
 The fused graph is connected and supports 32 coarse and 64 fine branches. Evidence
 roles include 251 stable structured genes, 107 city-specific components, 85 rare
@@ -261,6 +277,71 @@ unstable, redundant, and acquisition-related directions.
 \caption{Visual-gene organization. The displayed semantic categories are an
 interpretive view; quantitative hierarchy selection itself uses no language labels.}
 \label{fig:taxonomy}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[t]{0.48\linewidth}
+  \includegraphics[width=\linewidth,height=0.55\textheight,keepaspectratio]{../formal/figures/branch_montage.png}
+  \caption{Representative hierarchy branches.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\linewidth}
+  \includegraphics[width=\linewidth,height=0.55\textheight,keepaspectratio]{../formal/figures/cat_montage.png}
+  \caption{Category-level exemplar montage.}
+\end{subfigure}
+\caption{Visual audit of the learned hierarchy. Activation overlays localize the
+image regions associated with each gene; semantic names remain hypotheses rather
+than ground-truth labels.}
+\label{fig:branch_examples}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{../formal/figures/cat_dendro.png}
+\caption{Dendrogram of the interpretive gene categories. This semantic summary is
+shown for navigation; the quantitative 32/64-branch selection uses the language-free
+multiview hierarchy described in the text.}
+\label{fig:category_dendrogram}
+\end{figure}
+
+\subsection{Gene co-expression and city visual genomes}
+Individual genes form recurring combinations. The co-expression analysis summarizes
+pairwise lift among gene activations and groups strongly connected genes into
+modules (\cref{fig:coexpression}). At the city level, aggregating gene prevalence
+produces a visual-genome profile. Hierarchical clustering of those profiles provides
+an exploratory view of cross-city similarity (\cref{fig:city_clustering}). These
+clusters are descriptive: formal geographical generalization requires the planned
+110-city encoding.
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[t]{0.48\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/coexpr_network.png}
+  \caption{Gene co-expression network.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/coexpr_modules.png}
+  \caption{Representative co-expression modules.}
+\end{subfigure}
+\caption{Beyond marginal prevalence, visual genes exhibit structured co-activation
+that can be summarized as recurring visual modules.}
+\label{fig:coexpression}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\linewidth]{../formal/figures/city_similarity_hierarchical_clustering.png}
+\caption{Hierarchical clustering of cities from aggregated visual-gene profiles.
+The analysis is exploratory and currently restricted to the main experimental
+cities.}
+\label{fig:city_clustering}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{../formal/site/citygenome/city_dendro.png}
+\caption{Compact dashboard dendrogram of city visual-genome similarity.}
+\label{fig:city_dendro}
 \end{figure}
 
 \subsection{External validity and nuisance controls}
@@ -347,9 +428,6 @@ release, model checkpoint license, street-view redistribution statement, and DOI
 \todo{Add collaborators, funding, Savio/BRC acknowledgement, and data-provider
 acknowledgments.}
 
-\bibliographystyle{plain}
-\bibliography{references}
-
 \appendix
 \section{Current project status}
 As of September 2026, the main W1024/K8 model, width/sparsity ablations, five-seed
@@ -357,5 +435,116 @@ matching, statistical taxonomy, external-validity analysis, nuisance controls, a
 128-gene Qwen labeling run are complete. The controlled observation-unit ablation
 and independent VLM fidelity evaluation remain incomplete. This appendix is a draft
 status record and should be removed or updated before submission.
+
+\clearpage
+\section{Additional gene-structure diagnostics}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.92\linewidth]{../formal/site/seed_stability_family_example.png}
+\caption{Detailed example of a gene family matched across independent random-seed
+runs. This view supplements the compact montage in \cref{fig:stability}.}
+\label{fig:family_example_appendix}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.86\linewidth,height=0.82\textheight,keepaspectratio]{../formal/figures/cat_distinctive.png}
+\caption{Distinctive exemplars used to inspect separation among interpretive
+categories.}
+\label{fig:category_distinctive}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\linewidth]{../formal/figures/posmaps.png}
+\caption{Spatial activation maps used to diagnose genes that respond primarily to
+fixed image position rather than transferable visual content.}
+\label{fig:position_maps}
+\end{figure}
+
+\clearpage
+\section{Image-quality control audit}
+The following figures document the quality-control pipeline. They are retained in
+the draft because dark, blurred, tunnel, and framing artifacts can otherwise become
+highly reproducible SAE features. The panels show accepted images, diagnostic
+extremes, dropped samples, CLIP-assisted tunnel screening, and learned QC-network
+outputs.
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/qc_good.png}
+  \caption{Examples passing quality control.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/qc_darkest.png}
+  \caption{Darkest sampled images.}
+\end{subfigure}
+\caption{Basic visual audit of accepted and low-brightness imagery.}
+\label{fig:qc_good_dark}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/qc_blurriest.png}
+  \caption{Blurriest sampled images.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/qc_bigblur.png}
+  \caption{Large-region blur cases.}
+\end{subfigure}
+\caption{Blur diagnostics used to prevent acquisition artifacts from dominating
+the learned dictionary.}
+\label{fig:qc_blur}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/qc_tunnel.png}
+  \caption{Heuristic tunnel examples.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/newdelhi_tunnel.png}
+  \caption{New Delhi tunnel/underpass cases.}
+\end{subfigure}
+\caption{Tunnel and underpass imagery presents a recurring domain-specific quality
+challenge.}
+\label{fig:qc_tunnels}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/qc_clip_tunnel.png}
+  \caption{CLIP-assisted tunnel screening.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\linewidth}
+  \includegraphics[width=\linewidth]{../formal/figures/qcnet_tunnel.png}
+  \caption{QC-network tunnel predictions.}
+\end{subfigure}
+\caption{Comparison of auxiliary tunnel-detection mechanisms.}
+\label{fig:qc_tunnel_models}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.72\linewidth]{../formal/figures/qcnet_blur.png}
+\caption{Examples from the learned QC network's blur predictions.}
+\label{fig:qcnet_blur}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.58\linewidth,height=0.84\textheight,keepaspectratio]{../formal/figures/qc_dropped.png}
+\caption{Montage of images removed by the combined quality-control pipeline.}
+\label{fig:qc_dropped}
+\end{figure}
+
+\clearpage
+\bibliographystyle{plain}
+\bibliography{references}
 
 \end{document}
