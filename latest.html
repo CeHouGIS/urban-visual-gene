@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="30个城市、38.4万张街景的DINOv3 Patch-SAE视觉基因与热力图结果">
+<title>Urban Visual Gene · 30城市 Patch-SAE</title>
+<style>
+:root{--bg:#070b14;--panel:#0d1524;--panel2:#121e33;--border:#20304a;--text:#dce7f5;--muted:#8fa1bb;--cyan:#39d6ff;--violet:#8a72ff;--green:#26dfa5;--amber:#ffc857;--red:#ff7b8a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% -10%,#172a4a 0,transparent 32rem),var(--bg);color:var(--text);font-family:Inter,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+a{color:inherit}.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:18px;min-height:54px;padding:8px 18px;background:rgba(7,11,20,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:9px;font-weight:750;white-space:nowrap}.brand i{width:10px;height:10px;border-radius:50%;background:conic-gradient(var(--cyan),var(--violet),var(--green),var(--cyan));box-shadow:0 0 14px var(--cyan)}
+.tabs{display:flex;gap:5px;flex-wrap:wrap}.tab{padding:6px 11px;color:var(--muted);font-size:12px;text-decoration:none;border:1px solid transparent;border-radius:8px}.tab:hover{color:var(--text)}.tab.active{color:var(--cyan);border-color:var(--border);background:var(--panel2)}
+.wrap{width:min(1480px,100%);margin:auto;padding:34px 20px 70px}.eyebrow{color:var(--green);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:750}.hero{padding:24px 0 28px}.hero h1{font-size:clamp(30px,5vw,58px);line-height:1.06;letter-spacing:-.04em;margin:10px 0 16px;max-width:1000px}.hero h1 span{background:linear-gradient(95deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.lead{max-width:900px;margin:0;color:var(--muted);font-size:15px;line-height:1.8}.lead b{color:var(--text)}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:9px;margin-top:24px}.kpi{padding:13px 15px;background:linear-gradient(150deg,rgba(18,30,51,.96),rgba(10,17,30,.96));border:1px solid var(--border);border-radius:12px}.kpi .n{color:var(--cyan);font-size:20px;font-weight:850;font-variant-numeric:tabular-nums}.kpi .l{margin-top:4px;color:var(--muted);font-size:11px}
+.method{display:flex;align-items:stretch;gap:8px;margin:0 0 24px}.step{flex:1;padding:12px 14px;border:1px solid var(--border);border-radius:11px;background:rgba(13,21,36,.82)}.step b{color:var(--green);font-size:12px}.step span{display:block;margin-top:5px;color:var(--muted);font-size:11.5px;line-height:1.55}.arrow{display:grid;place-items:center;color:var(--cyan);opacity:.55}
+.panel{background:rgba(13,21,36,.92);border:1px solid var(--border);border-radius:14px}.toolbar{position:sticky;top:70px;z-index:20;padding:13px;margin-bottom:12px;box-shadow:0 12px 35px rgba(0,0,0,.22)}.filters{display:grid;grid-template-columns:minmax(240px,2fr) repeat(2,minmax(140px,1fr));gap:8px}.input,.select{width:100%;border:1px solid var(--border);background:#09111f;color:var(--text);border-radius:9px;padding:10px 12px;font:inherit;font-size:13px;outline:0}.input:focus,.select:focus{border-color:var(--cyan)}
+.types{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.typebtn{border:1px solid var(--border);background:var(--panel2);color:var(--muted);padding:5px 10px;border-radius:20px;font-size:11px;cursor:pointer}.typebtn:hover,.typebtn.active{color:#07101d;background:var(--cyan);border-color:var(--cyan)}.resultline{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px;margin:13px 2px}.resultline b{color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:12px}.card{overflow:hidden;cursor:pointer;transition:.16s;background:var(--panel);border:1px solid var(--border);border-radius:13px}.card:hover{transform:translateY(-2px);border-color:#3e668e;box-shadow:0 12px 32px rgba(0,0,0,.24)}.thumb{position:relative;aspect-ratio:12/11;background:#05080d;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.fid{position:absolute;left:8px;top:8px;padding:4px 8px;border-radius:7px;background:rgba(5,9,16,.84);backdrop-filter:blur(8px);font-size:11px;font-weight:800;color:var(--cyan)}.artifact{position:absolute;right:8px;top:8px;padding:4px 8px;border-radius:7px;background:rgba(115,20,33,.9);font-size:10px;color:#ffd8dd}.body{padding:12px 13px 13px}.title{display:flex;align-items:baseline;gap:8px}.title b{font-size:15px;color:#fff}.title span{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.summary{height:38px;margin:7px 0;color:var(--muted);font-size:12px;line-height:1.55;overflow:hidden}.meta{display:flex;gap:8px;align-items:center;font-size:10.5px;color:var(--muted)}.pill{padding:3px 7px;border:1px solid var(--border);border-radius:14px;color:var(--green)}.meta .score{margin-left:auto;font-variant-numeric:tabular-nums}.more{display:block;margin:20px auto 0;padding:10px 22px;background:var(--panel2);border:1px solid var(--border);border-radius:9px;color:var(--text);cursor:pointer}.more:hover{border-color:var(--cyan)}.empty{text-align:center;padding:60px;color:var(--muted)}
+.overlay{position:fixed;inset:0;z-index:60;display:none;background:rgba(1,4,10,.78);backdrop-filter:blur(8px);padding:24px;overflow:auto}.overlay.open{display:block}.modal{width:min(1280px,100%);margin:0 auto;background:#0b1321;border:1px solid #2b4162;border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55)}.modaltop{display:flex;align-items:center;gap:9px;padding:12px 15px;border-bottom:1px solid var(--border)}.modaltop b{font-size:16px;color:#fff}.modaltop .en{color:var(--muted);font-size:12px}.close{margin-left:auto;width:34px;height:34px;border:1px solid var(--border);border-radius:9px;background:var(--panel2);color:var(--text);cursor:pointer;font-size:18px}.detail{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.75fr)}.evidence{background:#03060a;padding:10px;display:grid;place-items:center}.evidence img{display:block;width:100%;height:auto;max-height:calc(100vh - 125px);object-fit:contain}.copy{padding:20px;overflow:auto;max-height:calc(100vh - 83px)}.copy h3{color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:.12em;margin:20px 0 6px}.copy h3:first-child{margin-top:0}.copy p{margin:0;color:var(--text);font-size:13px;line-height:1.7}.copy ul{padding-left:18px;margin:4px 0;color:var(--muted);font-size:12px;line-height:1.65}.citychips{display:flex;flex-wrap:wrap;gap:5px}.citychip{padding:4px 7px;border-radius:6px;background:var(--panel2);border:1px solid var(--border);font-size:10px;color:var(--muted)}.scores{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.scorebox{padding:9px;border-radius:8px;background:var(--panel2);border:1px solid var(--border)}.scorebox b{display:block;color:var(--green);font-size:15px}.scorebox span{color:var(--muted);font-size:10px}.note{margin-top:24px;padding:13px 15px;border:1px solid var(--border);border-left:3px solid var(--violet);border-radius:9px;color:var(--muted);font-size:11.5px;line-height:1.65}.note b{color:var(--text)}
+@media(max-width:1050px){.kpis{grid-template-columns:repeat(3,1fr)}.detail{grid-template-columns:1fr}.copy{max-height:none}.method{display:grid;grid-template-columns:1fr 1fr}.arrow{display:none}}
+@media(max-width:650px){.top{align-items:flex-start;gap:9px;flex-direction:column}.wrap{padding:24px 12px 50px}.kpis{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:1fr}.toolbar{top:91px}.method{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.overlay{padding:6px}.modaltop{align-items:flex-start}.detail{display:block}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><i></i>Urban Visual Gene</div>
+  <nav class="tabs">
+    <a class="tab active" href="latest.html">最新 · 30城市 Patch-SAE</a>
+    <a class="tab" href="genes.html">视觉基因谱系</a>
+    <a class="tab" href="coexpr.html">基因组合</a>
+    <a class="tab" href="citygenome.html">城市基因组</a>
+    <a class="tab" href="interpret.html">方法与可解释性</a>
+  </nav>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Latest experiment · 2026-09-20</div>
+    <h1>从 30 个城市中学习<br><span>512 维街景视觉基因</span></h1>
+    <p class="lead">每城均衡抽取 <b>12,800</b> 张街景，经 <b>DINOv3 ViT-B/16</b> 提取 14×14 patch token，再以 <b>TopK=32、W=512</b> 的稀疏自编码器学习视觉维度。每个维度选取激活最强的 10 张图，将热力图映射回原图，并由轻量视觉语言模型给出后验语义解释。</p>
+    <div class="kpis" id="kpis"></div>
+  </section>
+  <section class="method" aria-label="实验流程">
+    <div class="step"><b>01 · 均衡采样</b><span>30 城市 × 12,800 图，优先覆盖不同全景点与四个朝向</span></div><div class="arrow">→</div>
+    <div class="step"><b>02 · Patch 特征</b><span>DINOv3 ViT-B/16，单图 196 个 768 维局部 token</span></div><div class="arrow">→</div>
+    <div class="step"><b>03 · 稀疏映射</b><span>Top-K SAE，字典宽度 512，每个 patch 激活 32 个维度</span></div><div class="arrow">→</div>
+    <div class="step"><b>04 · 解释与回投</b><span>逐维度 Top-10 证据、原图热力图、Qwen3-VL-2B 语义概括</span></div>
+  </section>
+  <section class="panel toolbar">
+    <div class="filters">
+      <input class="input" id="search" placeholder="搜索维度编号、名称、描述或城市…" aria-label="搜索">
+      <select class="select" id="sort" aria-label="排序">
+        <option value="id">按维度编号</option><option value="confidence">按解释置信度</option><option value="consistency">按跨图一致性</option><option value="activation">按最高激活值</option>
+      </select>
+      <select class="select" id="quality" aria-label="结果范围">
+        <option value="all">全部维度</option><option value="semantic">仅语义维度</option><option value="artifact">仅疑似伪影</option>
+      </select>
+    </div>
+    <div class="types" id="types"></div>
+  </section>
+  <div class="resultline"><span>共匹配 <b id="count">0</b> 个维度</span><span>点击卡片查看 10 张证据图与完整解释</span></div>
+  <section class="grid" id="grid"><div class="empty">正在载入结果…</div></section>
+  <button class="more" id="more" hidden>显示更多</button>
+  <div class="note"><b>解释边界：</b>维度名称来自对 Top-10 激活样本的后验归纳，不是训练标签，也不代表严格的因果概念。热力图是判断语义是否可靠的主要证据；疑似固定位置或边界响应的维度已标为“伪影”。</div>
+</main>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="维度详情">
+  <article class="modal"><div class="modaltop"><b id="modalTitle"></b><span class="en" id="modalEn"></span><button class="close" id="close" aria-label="关闭">×</button></div><div class="detail"><div class="evidence"><img id="modalImage" alt="维度Top-10原图、热力图和热点区域"></div><div class="copy" id="copy"></div></div></article>
+</div>
+<script>
+const TYPE_LABEL={object:"物体",geometry:"几何结构",material:"材质",color_light:"颜色/光照",environment:"环境",spatial_layout:"空间布局",texture:"纹理",artifact:"伪影"};
+const TYPE_ORDER=["object","geometry","material","color_light","environment","spatial_layout","texture","artifact"];
+const PAGE_SIZE=72;let DATA=null,activeType="all",visible=PAGE_SIZE,filtered=[];
+const $=id=>document.getElementById(id);const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function pct(x){return `${Math.round(Number(x)*100)}%`}function number(x){return Number(x).toLocaleString("zh-CN")}
+fetch("latest30/data.json").then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{DATA=d;paintHeader();paintTypes();apply();openHash()}).catch(()=>{$("grid").innerHTML='<div class="empty">结果载入失败，请稍后刷新。</div>'});
+function paintHeader(){const e=DATA.experiment,s=DATA.summary;$("kpis").innerHTML=[
+  [e.cities,"城市"],[number(e.total_images),"街景图像"],[`${(e.total_patch_tokens/1e6).toFixed(2)}M`,"Patch tokens"],[e.width,"视觉维度"],[e.topk,"每 patch Top-K"],[s.artifact_count,"疑似伪影"]
+].map(([n,l])=>`<div class="kpi"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("")}
+function paintTypes(){const c=DATA.summary.semantic_type_counts;$("types").innerHTML=`<button class="typebtn active" data-type="all">全部 · 512</button>`+TYPE_ORDER.map(t=>`<button class="typebtn" data-type="${t}">${TYPE_LABEL[t]} · ${c[t]||0}</button>`).join("");$("types").onclick=e=>{const b=e.target.closest("button");if(!b)return;activeType=b.dataset.type;document.querySelectorAll(".typebtn").forEach(x=>x.classList.toggle("active",x===b));visible=PAGE_SIZE;apply()}}
+function apply(){const q=$("search").value.trim().toLowerCase(),quality=$("quality").value,sort=$("sort").value;filtered=DATA.features.filter(f=>{const artifact=f.artifact_probability>=.5;if(activeType!=="all"&&f.type!==activeType)return false;if(quality==="semantic"&&artifact)return false;if(quality==="artifact"&&!artifact)return false;if(!q)return true;return [f.id,f.name_zh,f.name_en,f.summary,f.urban_meaning,Object.keys(f.city_counts).join(" ")].join(" ").toLowerCase().includes(q)});filtered.sort((a,b)=>sort==="id"?a.id-b.id:(b[sort==="activation"?"top_score":sort]||0)-(a[sort==="activation"?"top_score":sort]||0));render()}
+function render(){const list=filtered.slice(0,visible);$("count").textContent=filtered.length;$("grid").innerHTML=list.length?list.map(card).join(""):'<div class="empty">没有符合条件的维度。</div>';$("more").hidden=visible>=filtered.length;document.querySelectorAll(".card").forEach(el=>el.onclick=()=>openFeature(Number(el.dataset.id)))}
+function card(f){const artifact=f.artifact_probability>=.5;return `<article class="card" data-id="${f.id}" tabindex="0"><div class="thumb"><img loading="lazy" src="${f.image}" alt="维度 ${f.id} 的Top-10热力图证据"><span class="fid">DIM ${String(f.id).padStart(3,"0")}</span>${artifact?'<span class="artifact">疑似伪影</span>':""}</div><div class="body"><div class="title"><b>${esc(f.name_zh)}</b><span>${esc(f.name_en)}</span></div><p class="summary">${esc(f.summary)}</p><div class="meta"><span class="pill">${TYPE_LABEL[f.type]||esc(f.type)}</span><span>${f.cities} 城市</span><span class="score">置信度 ${pct(f.confidence)}</span></div></div></article>`}
+function openFeature(id){const f=DATA.features.find(x=>x.id===id);if(!f)return;$("modalTitle").textContent=`DIM ${String(f.id).padStart(3,"0")} · ${f.name_zh}`;$("modalEn").textContent=f.name_en;$("modalImage").src=f.image;$("copy").innerHTML=`<h3>维度概括</h3><p>${esc(f.summary)}</p><h3>视觉证据</h3><ul>${f.cues.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><h3>响应位置与空间模式</h3><p>${esc(f.hot_regions)}；${esc(f.spatial_pattern)}</p><h3>城市景观含义</h3><p>${esc(f.urban_meaning)}</p><h3>可靠性</h3><div class="scores"><div class="scorebox"><b>${pct(f.confidence)}</b><span>解释置信度</span></div><div class="scorebox"><b>${pct(f.consistency)}</b><span>跨图一致性</span></div><div class="scorebox"><b>${f.top_score.toFixed(3)}</b><span>最高激活</span></div><div class="scorebox"><b>${pct(f.artifact_probability)}</b><span>伪影概率</span></div></div><h3>样本覆盖</h3><div class="citychips">${Object.entries(f.city_counts).sort((a,b)=>b[1]-a[1]).map(([c,n])=>`<span class="citychip">${esc(c.split("/").pop())} · ${n}</span>`).join("")}</div><h3>伪影判断</h3><p>${esc(f.artifact_reason)}</p>`;$("overlay").classList.add("open");document.body.style.overflow="hidden";history.replaceState(null,"",`#feature-${String(id).padStart(3,"0")}`)}
+function closeModal(){$("overlay").classList.remove("open");document.body.style.overflow="";history.replaceState(null,"",location.pathname+location.search)}
+function openHash(){const m=location.hash.match(/feature-(\d+)/);if(m)openFeature(Number(m[1]))}
+$("search").oninput=()=>{visible=PAGE_SIZE;apply()};$("sort").onchange=()=>{visible=PAGE_SIZE;apply()};$("quality").onchange=()=>{visible=PAGE_SIZE;apply()};$("more").onclick=()=>{visible+=PAGE_SIZE;render()};$("close").onclick=closeModal;$("overlay").onclick=e=>{if(e.target===$("overlay"))closeModal()};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});document.addEventListener("keydown",e=>{const c=e.target.closest?.(".card");if(c&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openFeature(Number(c.dataset.id))}});
+</script>
+</body>
+</html>
