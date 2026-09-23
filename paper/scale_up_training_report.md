@@ -2,7 +2,7 @@
 
 **版本日期：** 2026-09-23
 
-**报告状态：** 启动前报告；实验尚未正式运行
+**报告状态：** 正式训练已启动
 
 **关联计划：** `paper/scale_up_experiment_plan.md`
 
@@ -46,6 +46,27 @@ feature_mae_n30x12800_qc/mae/model_best.pt
 | CPU约束 | 使用0--7、10--15 | 必须避开CPU 8和9 |
 
 主要风险不是磁盘，而是W1024的GPU显存峰值、30城memmap随机读取造成的host page cache增长，以及长任务中断后丢失当前epoch进度。
+
+### 2.1 启动记录
+
+```text
+started_utc: 2026-09-23T15:15:06Z
+runner status: running
+formal tasks: 21
+current task: scale_n10000_w0512_s42
+execution mode: sequential, one GPU task at a time
+```
+
+按 `panoid` 隔离的数据划分已经生成并通过审计：30个城市均包含500、1,000、2,000、4,000、8,000和10,000张嵌套训练子集；训练、验证和公共评价集之间的全景重叠为0。W128、W256、W512和W1024均已完成前向、反向、验证、checkpoint写入和断点恢复smoke test。
+
+smoke test记录的峰值显存分别约为：
+
+```text
+W128:  2.31 GiB
+W256:  2.60 GiB
+W512:  3.27 GiB
+W1024: 2.08 GiB (micro-batch = 60)
+```
 
 ## 3. 正式训练任务清单
 
