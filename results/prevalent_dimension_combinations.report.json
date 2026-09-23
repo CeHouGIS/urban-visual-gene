@@ -1,0 +1,10 @@
+{
+  "images": 378818,
+  "presence_definition": "dimension wins at least 4 of 196 patches",
+  "pairs_reported": 10,
+  "triples_reported": 10,
+  "candidate_dimensions_loaded": 128,
+  "candidate_dimensions_searched": 64,
+  "top_triple_search_complete": true,
+  "triple_completeness_rule": "the next excluded dimension occurs less often than the tenth triple"
+}

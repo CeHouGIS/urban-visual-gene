@@ -1,0 +1,445 @@
+% Methodology chapter for the final 30-city Feature-MAE experiment.
+% Required packages in the parent manuscript:
+% \usepackage{amsmath,amssymb}
+% This file is a chapter fragment and can be included with:
+% \input{paper/methodology}
+
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Overview}
+\label{sec:method_overview}
+
+We developed a fully unsupervised framework for discovering multiscale urban
+visual patterns from geotagged street-view imagery. The framework contains six
+stages: (i) geographically broad and city-balanced image sampling; (ii) image
+quality control; (iii) extraction of dense patch representations using a frozen
+DINOv3 vision transformer; (iv) contextual representation learning using a
+feature-level masked autoencoder (Feature-MAE); (v) spatial visualization and
+hierarchical organization of the learned latent dimensions; and (vi) post-hoc
+semantic interpretation using a compact vision--language model. Statistical
+learning and clustering were completed before semantic labels were generated,
+so language-model outputs could not affect the learned representation or the
+cluster assignments.
+
+The final analysis used Feature-MAE rather than the Top-$K$ sparse autoencoder
+examined during model development. Both models used a latent width of 512, but
+the preliminary sparse autoencoder retained the 32 largest activations for each
+input, whereas the final Feature-MAE learned signed, contextual patch codes by
+reconstructing masked DINOv3 features. Unless explicitly described as a pilot
+or ablation, all analyses and figures reported in this study refer to the final
+Feature-MAE model.
+
+\subsection{Street-view image sample}
+\label{sec:streetview_sample}
+
+The study sample comprised street-view imagery from 30 cities spanning Africa,
+Asia, Europe, North America, South America and Oceania: Amsterdam, Bangkok,
+Bogot\'a, Buenos Aires, Cape Town, Dhaka, Hong Kong, Istanbul, Jakarta,
+Johannesburg, Kuala Lumpur, Lagos, Lima, London, Los Angeles, Manila, Mexico
+City, Moscow, Mumbai, New Delhi, New York City, Osaka, Paris, S\~ao Paulo,
+Seoul, Singapore, Sydney, Taipei, Toronto and Vienna. Four nominal viewing
+directions ($0^{\circ}$, $90^{\circ}$, $180^{\circ}$ and $270^{\circ}$) were
+available for each panorama.
+
+We first sampled 10,000 panoramas per city. From their directional views, we
+then selected 12,800 images per city, yielding 384,000 images before quality
+control. Selection used a deterministic, city-specific random seed derived from
+the global seed of 42. Within each city, panorama order and heading order were
+randomized and images were selected in a round-robin procedure: one randomly
+ordered heading was selected from every panorama before a second heading was
+selected from any panorama. This design retained all 10,000 unique panoramas in
+each city while avoiding disproportionate sampling of multiple headings from a
+small number of locations. It also maintained approximately balanced heading
+counts within each city.
+
+\subsection{Image quality control}
+\label{sec:image_qc}
+
+Image quality was assessed before representation learning to reduce the risk
+that latent dimensions would encode acquisition defects rather than urban
+content. Each image was resized to $256\times256$ pixels and described using 11
+low-cost photometric and structural measurements: mean and standard deviation
+of luminance, saturated-pixel fraction, dark-pixel fraction, Laplacian variance,
+edge density, luminance entropy, dominant-intensity fraction, colourfulness,
+mean red--green contrast and mean yellow--blue contrast. A histogram-based
+gradient-boosting classifier, trained from conservative weak labels for clear
+good- and bad-quality images, converted these measurements into an artefact
+probability $p_{\mathrm{bad}}$. Images with $p_{\mathrm{bad}}>0.5$ were excluded.
+
+We supplemented this classifier with explicit rules for unreadable, black,
+blurred and tunnel-like frames. Let $\mu_Y$, $\sigma_Y$, $f_{Y<20}$ and
+$V_{\nabla^2Y}$ denote mean luminance, luminance standard deviation, the
+fraction of pixels with luminance below 20, and Laplacian variance, respectively.
+An image was classified as black or uninformative if
+$\mu_Y<14$, $f_{Y<20}>0.97$ or $\sigma_Y<6$. To detect spatially localized blur,
+each image was divided into a $4\times4$ grid; an image was excluded when more
+than 40\% of informative tiles had a tile-level Laplacian variance below 12, or
+when the whole-image Laplacian variance was below 48. Tunnel-like views were
+identified among non-black images using the conjunction
+\begin{equation}
+  \mu_Y < 100, \qquad
+  \mu_{Y,\mathrm{top}} < 95, \qquad
+  V_{\nabla^2Y} < 280,
+  \label{eq:tunnel_gate}
+\end{equation}
+and either a red--blue mean difference greater than 4 or a highlight-glow
+contrast greater than 42. The final rejection indicator was the union of the
+learned artefact decision, the deterministic rules and image-read failure.
+
+This procedure removed 5,182 of the 384,000 sampled images (1.35\%), leaving
+378,818 images for model training and downstream analysis. Because rejection
+reasons were not mutually exclusive, their counts were allowed to overlap. The
+complete retained and excluded manifests were preserved to make the filtering
+decision auditable.
+
+\subsection{Dense DINOv3 feature extraction}
+\label{sec:dinov3_features}
+
+We used a frozen DINOv3 ViT-B/16 model pretrained on LVD-1689M as the visual
+backbone \cite{simeoni2025dinov3}. Images were converted to RGB, resized to
+$224\times224$ pixels with bicubic interpolation and normalized using the
+ImageNet channel means $(0.485,0.456,0.406)$ and standard deviations
+$(0.229,0.224,0.225)$. Given the patch size of 16 pixels, the image was
+represented by a $14\times14$ grid of 196 patch tokens. We removed the class
+token and all register tokens from the final hidden sequence and retained the
+768-dimensional token associated with each spatial patch. Each token was
+independently $\ell_2$-normalized:
+\begin{equation}
+  \mathbf{t}_{ip}
+  = \frac{f_{\theta}(I_i)_p}
+  {\lVert f_{\theta}(I_i)_p\rVert_2},
+  \qquad
+  \mathbf{T}_i\in\mathbb{R}^{196\times768},
+  \label{eq:dino_tokens}
+\end{equation}
+where $i$ indexes images, $p$ indexes spatial patches, and $f_{\theta}$ denotes
+the frozen DINOv3 encoder. Patch tensors were stored in half precision using
+memory-mapped arrays; 75,264,000 tokens were extracted before quality filtering,
+of which 74,248,328 belonged to retained images.
+
+Feature extraction used batches of 128 images and bfloat16 automatic mixed
+precision. Inference batches were recursively bisected following a CUDA
+out-of-memory exception, providing a deterministic fallback for limited GPU
+memory. Extraction was resumable at image level and required approximately
+0.95~GiB of peak allocated GPU memory in the recorded run.
+
+\subsection{Feature-level masked autoencoder}
+\label{sec:feature_mae}
+
+\subsubsection{Architecture}
+
+We trained a feature-level masked autoencoder on the frozen DINOv3 patch tokens.
+The design follows the asymmetric visible-token encoder and lightweight decoder
+principle of masked autoencoding \cite{he2022maskedautoencoders}, but reconstructs
+DINOv3 features rather than RGB pixels. For image $i$, an affine projection maps
+each input token to a 512-dimensional latent space:
+\begin{equation}
+  \mathbf{z}^{(0)}_{ip}
+  = \mathbf{W}_{\mathrm{in}}\mathbf{t}_{ip}
+    + \mathbf{b}_{\mathrm{in}} + \boldsymbol{\pi}^{(e)}_p,
+  \label{eq:mae_projection}
+\end{equation}
+where $\boldsymbol{\pi}^{(e)}_p$ is a fixed two-dimensional sine--cosine
+positional embedding. For every training image, 75\% of the 196 positions were
+randomly masked, leaving 49 visible tokens. Only visible tokens were processed
+by the encoder:
+\begin{equation}
+  \mathbf{H}_{i,V}
+  = \operatorname{LN}\!\left(
+      E_{\phi}(\mathbf{Z}^{(0)}_{i,V})
+    \right),
+  \label{eq:mae_encoder}
+\end{equation}
+where $V$ is the visible-position set. The encoder consisted of four pre-norm
+transformer blocks with a hidden width of 512, eight attention heads, a
+feed-forward expansion ratio of four, GELU activations and no dropout.
+
+Encoded visible tokens were projected from 512 to 256 dimensions. A learned
+mask token was inserted at each missing position, the original spatial order was
+restored, and a fixed 256-dimensional sine--cosine positional embedding was
+added. A two-layer, eight-head transformer decoder with width 256 and a
+fourfold feed-forward expansion produced reconstructed 768-dimensional patch
+features:
+\begin{equation}
+  \widehat{\mathbf{T}}_i
+  = \mathbf{W}_{\mathrm{out}}
+    \operatorname{LN}\!\left[
+      D_{\psi}\!\left(
+        \operatorname{Restore}(
+          \mathbf{W}_{ed}\mathbf{H}_{i,V},
+          \mathbf{m})
+        + \boldsymbol{\Pi}^{(d)}
+      \right)
+    \right]
+    + \mathbf{b}_{\mathrm{out}},
+  \label{eq:mae_decoder}
+\end{equation}
+where $\mathbf{m}$ is the learned mask token and
+$\mathbf{W}_{ed}$ is the encoder-to-decoder projection. Linear layers were
+initialized with Xavier-uniform weights, LayerNorm scales were initialized to
+one, and the mask token was sampled from
+$\mathcal{N}(0,0.02^2)$. The complete model contained 14,913,280 trainable
+parameters.
+
+\subsubsection{Training objective}
+
+Because input patch tokens were normalized, reconstruction was optimized using
+cosine distance only at masked positions. If $M_i$ is the masked-position set,
+the loss for a batch $\mathcal{B}$ was
+\begin{equation}
+  \mathcal{L}_{\mathrm{mask}}
+  = \frac{1}{\sum_{i\in\mathcal{B}}|M_i|}
+    \sum_{i\in\mathcal{B}}
+    \sum_{p\in M_i}
+    \left[
+      1-
+      \frac{\mathbf{t}_{ip}^{\top}\widehat{\mathbf{t}}_{ip}}
+      {\lVert\mathbf{t}_{ip}\rVert_2
+       \lVert\widehat{\mathbf{t}}_{ip}\rVert_2}
+    \right].
+  \label{eq:masked_cosine_loss}
+\end{equation}
+No semantic supervision, city label, Top-$K$ operator, non-negativity penalty or
+clustering loss was used to train the final Feature-MAE.
+
+\subsubsection{City-balanced optimization}
+
+We reserved 128 clean images per city for validation, producing a validation
+set of 3,840 images and a distinct-image training pool of 374,978 images. Each
+training batch contained the same number of images from every city. Cities with
+fewer retained images were reshuffled and resampled within an epoch until they
+matched the largest city-specific training set, preventing cities with more
+retained images from dominating optimization.
+
+The model was trained for ten epochs using AdamW with
+$\beta_1=0.9$, $\beta_2=0.95$, an initial learning rate of
+$1.5\times10^{-4}$ and weight decay 0.05. A linear warm-up covered the first
+5\% of optimizer steps, followed by cosine decay to zero. Gradients were clipped
+to a global norm of one. Training used bfloat16 automatic mixed precision and
+TensorFloat-32 matrix multiplication. The city-balanced batch contained eight
+images per city (240 images) during epochs 1--4 and 16 images per city (480
+images) during epochs 5--10; the latter was processed as two microbatches of 240
+images. The checkpoint with the lowest validation loss was retained. The selected
+checkpoint was obtained at epoch 10, with masked cosine losses of 0.10356 and
+0.10334 on the training and validation sets, respectively. Peak allocated GPU
+memory was 3.27~GiB.
+
+\subsection{Latent activation maps and representative images}
+\label{sec:latent_heatmaps}
+
+At inference, masking and the decoder were removed. All 196 DINOv3 patch tokens
+were projected and processed by the trained encoder:
+\begin{equation}
+  \mathbf{A}_i
+  = \operatorname{LN}\!\left[
+      E_{\phi}(\mathbf{W}_{\mathrm{in}}\mathbf{T}_i
+      +\mathbf{b}_{\mathrm{in}}+\boldsymbol{\Pi}^{(e)})
+    \right]
+  \in \mathbb{R}^{196\times512}.
+  \label{eq:full_encoding}
+\end{equation}
+Reshaping $\mathbf{A}_i$ yielded a
+$14\times14\times512$ spatial activation tensor. The activations were signed;
+therefore, dimension $d$ was visualized using its positive evidence
+$\max(A_{ipd},0)$ rather than the absolute activation. For each dimension, we
+defined the image-level response
+\begin{equation}
+  s_{id}=\max_{p\in\{1,\ldots,196\}} A_{ipd}.
+  \label{eq:image_response}
+\end{equation}
+All 378,818 retained images were scanned. The 128 highest-scoring candidates
+were retained provisionally, after which duplicate panoramas were removed and
+the ten highest-scoring unique panoramas were selected. This ensured that a
+dimension was not interpreted from multiple headings of the same location.
+
+For visualization, positive activations were divided by the maximum response of
+the selected examples, clipped to $[0,1]$, mapped to a perceptually ordered
+blue--cyan--yellow--red colour scale, and resized to the original image size
+using bicubic interpolation. Transparency increased monotonically with
+activation so that near-zero patches remained visually unchanged. The resulting
+heatmap therefore indicates where a dimension responds, whereas the original
+image remains the source for interpreting scene content.
+
+\subsection{Multiview similarity between latent dimensions}
+\label{sec:multiview_similarity}
+
+A single parameter-space similarity is insufficient to characterize a contextual
+latent dimension. We therefore represented each of the 512 dimensions through
+five complementary views: encoder direction, linearized decoder direction,
+patch-position profile, city profile and activation-context profile.
+
+First, the encoder direction of dimension $d$ was the $d$th row of the input
+projection matrix,
+\begin{equation}
+  \mathbf{e}_d = (\mathbf{W}_{\mathrm{in}})_{d,:}
+  \in\mathbb{R}^{768}.
+  \label{eq:encoder_direction}
+\end{equation}
+Second, we linearized the path from encoder latents to reconstructed DINOv3
+features, obtaining
+\begin{equation}
+  \mathbf{g}_d
+  = \left[
+      (\mathbf{W}_{\mathrm{out}}\mathbf{W}_{ed})^{\top}
+    \right]_{d,:}
+  \in\mathbb{R}^{768}.
+  \label{eq:decoder_direction}
+\end{equation}
+
+For the remaining views, each patch was assigned to its largest latent
+activation,
+\begin{equation}
+  w_{ip}=\underset{d\in\{1,\ldots,512\}}{\arg\max}\; A_{ipd}.
+  \label{eq:winning_dimension}
+\end{equation}
+The patch-position profile
+$\mathbf{p}_d\in\mathbb{R}^{196}$ counted how often dimension $d$ won at each
+grid position, while the city profile
+$\mathbf{c}_d\in\mathbb{R}^{30}$ counted winning patches by city:
+\begin{align}
+  p_{dq} &= \sum_i \mathbb{I}(w_{iq}=d), \\
+  c_{du} &= \sum_{i:\,\operatorname{city}(i)=u}\sum_p
+            \mathbb{I}(w_{ip}=d).
+  \label{eq:position_city_profiles}
+\end{align}
+
+Finally, we constructed an image-level activation-context view. Let
+$B_{id}=1$ if dimension $d$ won at least one patch in image $i$, and zero
+otherwise. For $N$ images, define the co-occurrence count
+$n_{de}=\sum_iB_{id}B_{ie}$ and support $n_d=\sum_iB_{id}$. We used a smoothed
+positive pointwise mutual information matrix
+\begin{equation}
+  Q_{de}=\max\left\{
+    0,
+    \log\frac{n_{de}+0.5}{n_dn_e/N+0.5}
+  \right\}, \qquad Q_{dd}=0,
+  \label{eq:ppmi}
+\end{equation}
+and treated row $\mathbf{q}_d$ as the contextual profile of dimension $d$.
+
+For each view $v\in\{\mathbf{e},\mathbf{g},\mathbf{p},\mathbf{c},\mathbf{q}\}$,
+we computed a $512\times512$ cosine-similarity matrix:
+\begin{equation}
+  S^{(v)}_{de}
+  =\frac{\mathbf{v}_d^{\top}\mathbf{v}_e}
+  {\lVert\mathbf{v}_d\rVert_2\lVert\mathbf{v}_e\rVert_2}.
+  \label{eq:view_cosine}
+\end{equation}
+
+\subsection{Rank fusion and hierarchical clustering}
+\label{sec:hierarchical_clustering}
+
+The five similarity views have different numerical distributions, so we fused
+neighbour ranks rather than raw similarity values. For every dimension $d$ and
+view $v$, the 30 nearest non-self neighbours were ordered by decreasing
+similarity. A neighbour at zero-indexed rank $r\in\{0,\ldots,29\}$ received
+weight $1-r/30$. The directed fused affinity was
+\begin{equation}
+  \widetilde{F}_{de}
+  =\frac{1}{5}\sum_v
+  \mathbb{I}\!\left[e\in\mathcal{N}^{(v)}_{30}(d)\right]
+  \left(1-\frac{r^{(v)}_{de}}{30}\right).
+  \label{eq:rank_fusion}
+\end{equation}
+We then symmetrized and rescaled the matrix:
+\begin{equation}
+  F=\frac{\widetilde{F}+\widetilde{F}^{\top}}{2},
+  \qquad F_{dd}=0, \qquad
+  F\leftarrow\frac{F}{\max_{d,e}F_{de}}.
+  \label{eq:fused_affinity}
+\end{equation}
+
+To preserve nonlinear neighbourhood structure, the fused affinity was projected
+into 32 dimensions using the eigenvectors of the symmetric normalized graph
+Laplacian \cite{ng2001spectral}. The first eigenvector was retained, consistent
+with the spectral-clustering embedding used in the implementation. Ward's
+minimum-variance agglomerative method was then applied to Euclidean distances in
+the spectral embedding \cite{ward1963hierarchical}. One dendrogram was
+constructed and cut at two resolutions: 32 coarse clusters and 64 fine clusters.
+Because both partitions were cuts of the same tree, each fine cluster had
+exactly one coarse parent by construction.
+
+For cluster $C$, the representative or medoid dimension was defined using the
+fused affinity rather than the spectral coordinates:
+\begin{equation}
+  d_C^{*}=\underset{d\in C}{\arg\max}
+  \sum_{e\in C}F_{de}.
+  \label{eq:cluster_medoid}
+\end{equation}
+Cluster identities were assigned only after the tree had been fixed. Canonical
+identifiers C000--C031 and F000--F063 were ordered by the first latent dimension
+appearing in each cluster and carry no semantic meaning.
+
+\subsection{Cluster validity and split-sample stability}
+\label{sec:cluster_validation}
+
+We characterized both hierarchy levels using silhouette score,
+Calinski--Harabasz index, Davies--Bouldin index and normalized cluster-size
+entropy. If $n_k$ denotes the size of cluster $k$, $p_k=n_k/512$ and $K$ is the
+number of clusters, normalized size entropy was
+\begin{equation}
+  H_{\mathrm{size}}
+  =-\frac{\sum_{k=1}^{K}p_k\log p_k}{\log K}.
+  \label{eq:size_entropy}
+\end{equation}
+
+Stability was evaluated using two deterministic, interleaved halves of the image
+sample. Parameter-space views (encoder and decoder directions) were held fixed,
+whereas position, city and PPMI-context profiles were independently recomputed
+for each half. The complete rank-fusion, spectral-embedding and Ward-clustering
+pipeline was repeated for each half using seeds 43 and 44. For each dimension,
+we calculated the Jaccard overlap between its full-data cluster and its
+corresponding half-sample cluster. Global agreement was additionally summarized
+with the adjusted Rand index and normalized mutual information at both the
+32- and 64-cluster resolutions. These stability measures quantify sensitivity to
+the image sample and were not used to choose or modify semantic labels.
+
+\subsection{Post-hoc semantic interpretation}
+\label{sec:semantic_interpretation}
+
+We used the locally deployed Qwen3-VL-2B-Instruct model
+\cite{bai2025qwen3vl} to attach human-readable descriptions to the statistical
+clusters. Evidence sheets were resized to a maximum side length of 1,200 pixels,
+and generation was limited to 240 new tokens. Interpretation was performed after
+Feature-MAE training and after the
+32/64 hierarchy had been frozen. The language model therefore had no access to
+the optimization objective and could not influence dimension similarity or
+cluster membership.
+
+For each of the 64 fine and 32 coarse clusters, we selected the cluster medoid
+from Eq.~\ref{eq:cluster_medoid}. We then retrieved that dimension's ten
+highest-scoring images from unique panoramas. Each item in the evidence sheet
+contained (i) the original street-view image, (ii) the activation overlay and
+(iii) a crop centred on the maximally activated patch. The model was instructed
+to identify visual evidence that recurred across the ten examples and to return
+a strict JSON object containing a concise Chinese name, a short English label,
+a semantic type, a summary, three visual cues, a tentative urban interpretation,
+cross-image consistency, artefact probability and confidence. Semantic type was
+restricted to object, material, colour/light, texture, geometry, spatial layout,
+environment, artefact, mixed or unclear.
+
+Fine clusters were interpreted first. When a coarse cluster was interpreted,
+the already generated descriptions of its fine children were supplied together
+with the coarse medoid evidence, allowing the model to formulate a broader
+parent concept without changing the statistical hierarchy. Outputs were parsed
+as JSON and automatically retried when parsing failed. A second generation was
+requested when a name contained prohibited generic terms, confidence was
+mechanically set near zero, or the reported visual cues were duplicated. Exactly
+ten images were used for each of the 96 categories; interpreting every training
+image was neither necessary nor performed.
+
+\subsection{Implementation and reproducibility}
+\label{sec:implementation}
+
+All stochastic components used a global seed of 42 unless a split-sample seed
+was explicitly specified. DINOv3 and Qwen3-VL weights were loaded locally, and
+the DINOv3 backbone remained frozen throughout. Large arrays were stored as
+half-precision memory maps, and image selection, feature extraction, training,
+ranking and clustering wrote resumable intermediate states. GPU-intensive
+PyTorch stages and CPU-intensive SciPy/scikit-learn stages were executed in
+separate processes to avoid conflicts between OpenMP runtimes. The statistical
+hierarchy, category membership table, linkage matrix, fused similarity matrix,
+spectral embedding, heatmap metadata, semantic prompts and raw language-model
+responses were retained to support independent auditing and figure
+reconstruction.

@@ -1,0 +1,5 @@
+model,latent_dim,reconstruction_score,reconstruction_protocol,cluster_ari,cluster_nmi,semantic_coherence,spatial_interpretability,notes
+Raw DINOv3 ViT-B/16,768,1.0,identity reference; not a learned reconstruction,,,,native 14x14 patch features,Frozen backbone reference
+DINOv3 + PCA,512,,pending city-balanced PCA fit,,,,linear patch scores,Baseline pipeline prepared; fit required
+Top-K sparse autoencoder,512,0.865052148938179,unmasked patch-token cosine reconstruction,,,,non-negative Top-K patch activations,K=32; dead features=0
+Feature-MAE,512,0.8966571213677526,75% masked patch-token cosine reconstruction,0.6897682325048451,0.8946077387767639,,signed contextual 14x14 latent maps,Primary model; E+D+P hierarchy

@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-09-21T10:39:11.485941+00:00",
+  "random_seed": 42,
+  "data_root": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc",
+  "source_hierarchy": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_32_64",
+  "main_hierarchy": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_edp_32_64",
+  "results_dir": "/workplace/urban_visual_gene/results",
+  "figures_dir": "/workplace/urban_visual_gene/figures",
+  "model_checkpoint": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/model_best.pt",
+  "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.29",
+  "numpy": "1.24.4",
+  "pandas": "2.0.3",
+  "main_clustering_views": [
+    "E",
+    "D",
+    "P"
+  ],
+  "cooccurrence_primary_definition": "top-8 fine clusters by patch-winner prevalence per image",
+  "cooccurrence_min_support": "max(100 images, 0.05% of images)",
+  "primary_spatial_grid_m": 1000,
+  "primary_min_panoramas": 5,
+  "moran_permutations": 999
+}

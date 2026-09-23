@@ -1,0 +1,1477 @@
+{
+  "level": "fine",
+  "categories": [
+    {
+      "category_id": "F000",
+      "name_en": "red brick corner",
+      "semantic_type": "geometry",
+      "summary_zh": "红砖建筑的街角，有轨电车轨道，多为欧式建筑",
+      "visual_cues_zh": [
+        "红砖建筑的街角",
+        "有轨电车轨道",
+        "欧式建筑"
+      ],
+      "urban_meaning_zh": "欧洲城市街角的红砖建筑",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F000",
+      "short_label": "red brick corner",
+      "summary": "红砖建筑的街角，有轨电车轨道，多为欧式建筑",
+      "visual_cues": [
+        "红砖建筑的街角",
+        "有轨电车轨道",
+        "欧式建筑"
+      ],
+      "urban_interpretation": "欧洲城市街角的红砖建筑"
+    },
+    {
+      "category_id": "F001",
+      "name_en": "shaded_corner",
+      "semantic_type": "geometry",
+      "summary_zh": "树冠遮蔽形成局部阴影，常见于街角与建筑交汇处",
+      "visual_cues_zh": [
+        "树冠在建筑前形成明显阴影",
+        "树荫覆盖街道与人行道",
+        "树影在地面与墙面形成清晰投影"
+      ],
+      "urban_meaning_zh": "树荫下的街角空间，常用于休憩或遮阳",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F001",
+      "short_label": "shaded_corner",
+      "summary": "树冠遮蔽形成局部阴影，常见于街角与建筑交汇处",
+      "visual_cues": [
+        "树冠在建筑前形成明显阴影",
+        "树荫覆盖街道与人行道",
+        "树影在地面与墙面形成清晰投影"
+      ],
+      "urban_interpretation": "树荫下的街角空间，常用于休憩或遮阳"
+    },
+    {
+      "category_id": "F002",
+      "name_en": "shaded patches",
+      "semantic_type": "geometry",
+      "summary_zh": "树冠遮蔽形成斑驳光影",
+      "visual_cues_zh": [
+        "树冠遮挡形成光影",
+        "树荫覆盖地面",
+        "光影在地面形成斑驳"
+      ],
+      "urban_meaning_zh": "树影在街道和建筑上形成斑驳的光影",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F002",
+      "short_label": "shaded patches",
+      "summary": "树冠遮蔽形成斑驳光影",
+      "visual_cues": [
+        "树冠遮挡形成光影",
+        "树荫覆盖地面",
+        "光影在地面形成斑驳"
+      ],
+      "urban_interpretation": "树影在街道和建筑上形成斑驳的光影"
+    },
+    {
+      "category_id": "F003",
+      "name_en": "building facade",
+      "semantic_type": "geometry",
+      "summary_zh": "多层建筑的立面，有窗、檐口和装饰线条",
+      "visual_cues_zh": [
+        "多层建筑的立面，有窗、檐口和装饰线条",
+        "建筑立面有规律的窗格和装饰线条",
+        "建筑立面有明显的几何结构和对称性"
+      ],
+      "urban_meaning_zh": "城市建筑的立面特征",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F003",
+      "short_label": "building facade",
+      "summary": "多层建筑的立面，有窗、檐口和装饰线条",
+      "visual_cues": [
+        "多层建筑的立面，有窗、檐口和装饰线条",
+        "建筑立面有规律的窗格和装饰线条",
+        "建筑立面有明显的几何结构和对称性"
+      ],
+      "urban_interpretation": "城市建筑的立面特征"
+    },
+    {
+      "category_id": "F004",
+      "name_en": "highlighted_buildings",
+      "semantic_type": "object",
+      "summary_zh": "高层建筑的热区高亮显示",
+      "visual_cues_zh": [
+        "建筑表面有彩色热力图",
+        "热区集中在建筑外墙",
+        "热区与建筑结构相关"
+      ],
+      "urban_meaning_zh": "建筑热区的视觉呈现",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F004",
+      "short_label": "highlighted_buildings",
+      "summary": "高层建筑的热区高亮显示",
+      "visual_cues": [
+        "建筑表面有彩色热力图",
+        "热区集中在建筑外墙",
+        "热区与建筑结构相关"
+      ],
+      "urban_interpretation": "建筑热区的视觉呈现"
+    },
+    {
+      "category_id": "F005",
+      "name_en": "palm_trees_and_buildings",
+      "semantic_type": "geometry",
+      "summary_zh": "棕榈树与建筑的组合，常见于城市街景",
+      "visual_cues_zh": [
+        "多张图中棕榈树与建筑并置",
+        "建筑与树的形态相似，树干直立",
+        "树与建筑的边界清晰，空间布局稳定"
+      ],
+      "urban_meaning_zh": "城市中棕榈树与建筑的典型组合",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F005",
+      "short_label": "palm_trees_and_buildings",
+      "summary": "棕榈树与建筑的组合，常见于城市街景",
+      "visual_cues": [
+        "多张图中棕榈树与建筑并置",
+        "建筑与树的形态相似，树干直立",
+        "树与建筑的边界清晰，空间布局稳定"
+      ],
+      "urban_interpretation": "城市中棕榈树与建筑的典型组合"
+    },
+    {
+      "category_id": "F006",
+      "name_en": "small alley entrance",
+      "semantic_type": "geometry",
+      "summary_zh": "狭窄巷口，有门、栅栏和车辆",
+      "visual_cues_zh": [
+        "巷口有铁门和栅栏",
+        "巷口有车辆停放",
+        "巷口有行人"
+      ],
+      "urban_meaning_zh": "居民区入口",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F006",
+      "short_label": "small alley entrance",
+      "summary": "狭窄巷口，有门、栅栏和车辆",
+      "visual_cues": [
+        "巷口有铁门和栅栏",
+        "巷口有车辆停放",
+        "巷口有行人"
+      ],
+      "urban_interpretation": "居民区入口"
+    },
+    {
+      "category_id": "F007",
+      "name_en": "roof_and_eaves",
+      "semantic_type": "geometry",
+      "summary_zh": "多为坡屋顶，常见于住宅区",
+      "visual_cues_zh": [
+        "多为坡屋顶，常见于住宅区",
+        "屋顶多为瓦片，有明显坡度",
+        "屋檐下有遮阳结构"
+      ],
+      "urban_meaning_zh": "住宅区的典型建筑特征",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F007",
+      "short_label": "roof_and_eaves",
+      "summary": "多为坡屋顶，常见于住宅区",
+      "visual_cues": [
+        "多为坡屋顶，常见于住宅区",
+        "屋顶多为瓦片，有明显坡度",
+        "屋檐下有遮阳结构"
+      ],
+      "urban_interpretation": "住宅区的典型建筑特征"
+    },
+    {
+      "category_id": "F008",
+      "name_en": "stone_wall_and_retaining_wall",
+      "semantic_type": "geometry",
+      "summary_zh": "由石砌结构构成的护坡与墙体，常见于道路两侧",
+      "visual_cues_zh": [
+        "多为石砌结构，表面有纹理和裂缝",
+        "墙体与道路边缘有明显接缝",
+        "部分墙体有涂鸦或标识"
+      ],
+      "urban_meaning_zh": "城市道路的防护结构",
+      "confidence": 0.9,
+      "artifact_probability": 0.05,
+      "cluster_id": "F008",
+      "short_label": "stone_wall_and_retaining_wall",
+      "summary": "由石砌结构构成的护坡与墙体，常见于道路两侧",
+      "visual_cues": [
+        "多为石砌结构，表面有纹理和裂缝",
+        "墙体与道路边缘有明显接缝",
+        "部分墙体有涂鸦或标识"
+      ],
+      "urban_interpretation": "城市道路的防护结构"
+    },
+    {
+      "category_id": "F009",
+      "name_en": "highlighted road",
+      "semantic_type": "geometry",
+      "summary_zh": "道路表面因热激活而呈现高亮区域",
+      "visual_cues_zh": [
+        "道路表面有明显热激活区域",
+        "热激活区域集中在道路边缘",
+        "热激活区域与道路边缘形成对比"
+      ],
+      "urban_meaning_zh": "道路热激活的视觉特征",
+      "confidence": 0.85,
+      "artifact_probability": 0.05,
+      "cluster_id": "F009",
+      "short_label": "highlighted road",
+      "summary": "道路表面因热激活而呈现高亮区域",
+      "visual_cues": [
+        "道路表面有明显热激活区域",
+        "热激活区域集中在道路边缘",
+        "热激活区域与道路边缘形成对比"
+      ],
+      "urban_interpretation": "道路热激活的视觉特征"
+    },
+    {
+      "category_id": "F010",
+      "name_en": "green_wall",
+      "semantic_type": "geometry",
+      "summary_zh": "垂直绿植墙，常为住宅区常见景观",
+      "visual_cues_zh": [
+        "多张图中，绿植墙呈垂直排列，覆盖墙体",
+        "绿植墙多为植物生长在墙边，形成自然纹理",
+        "绿植墙与建筑结合，形成统一视觉"
+      ],
+      "urban_meaning_zh": "住宅区绿化景观",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F010",
+      "short_label": "green_wall",
+      "summary": "垂直绿植墙，常为住宅区常见景观",
+      "visual_cues": [
+        "多张图中，绿植墙呈垂直排列，覆盖墙体",
+        "绿植墙多为植物生长在墙边，形成自然纹理",
+        "绿植墙与建筑结合，形成统一视觉"
+      ],
+      "urban_interpretation": "住宅区绿化景观"
+    },
+    {
+      "category_id": "F011",
+      "name_en": "road_edge",
+      "semantic_type": "geometry",
+      "summary_zh": "道路与植被交界处的几何形态",
+      "visual_cues_zh": [
+        "道路边缘有明显热区",
+        "热区与道路边缘重合",
+        "热区呈圆形或椭圆形"
+      ],
+      "urban_meaning_zh": "道路与植被交界处的几何形态",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F011",
+      "short_label": "road_edge",
+      "summary": "道路与植被交界处的几何形态",
+      "visual_cues": [
+        "道路边缘有明显热区",
+        "热区与道路边缘重合",
+        "热区呈圆形或椭圆形"
+      ],
+      "urban_interpretation": "道路与植被交界处的几何形态"
+    },
+    {
+      "category_id": "F012",
+      "name_en": "bamboo",
+      "semantic_type": "geometry",
+      "summary_zh": "密集竹丛的垂直形态与空间布局",
+      "visual_cues_zh": [
+        "竹叶密集，呈垂直生长",
+        "竹林边缘有道路与墙体",
+        "竹林中存在道路与建筑"
+      ],
+      "urban_meaning_zh": "城市绿化中的竹林景观",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F012",
+      "short_label": "bamboo",
+      "summary": "密集竹丛的垂直形态与空间布局",
+      "visual_cues": [
+        "竹叶密集，呈垂直生长",
+        "竹林边缘有道路与墙体",
+        "竹林中存在道路与建筑"
+      ],
+      "urban_interpretation": "城市绿化中的竹林景观"
+    },
+    {
+      "category_id": "F013",
+      "name_en": "tree-lined_driveway",
+      "semantic_type": "spatial_layout",
+      "summary_zh": "道路两旁排列整齐的行道树，形成连续的绿色带。",
+      "visual_cues_zh": [
+        "多张图中，道路两侧均有整齐排列的行道树，树冠呈弧形，形成连续的绿色带。",
+        "树冠在热图中呈现为红黄渐变，表示高激活区域，但树本身为绿色。",
+        "树的排列方式在不同场景中保持一致，形成规律的线性布局。"
+      ],
+      "urban_meaning_zh": "城市中常见的绿化带，用于美化街道和提供遮荫。",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F013",
+      "short_label": "tree-lined_driveway",
+      "summary": "道路两旁排列整齐的行道树，形成连续的绿色带。",
+      "visual_cues": [
+        "多张图中，道路两侧均有整齐排列的行道树，树冠呈弧形，形成连续的绿色带。",
+        "树冠在热图中呈现为红黄渐变，表示高激活区域，但树本身为绿色。",
+        "树的排列方式在不同场景中保持一致，形成规律的线性布局。"
+      ],
+      "urban_interpretation": "城市中常见的绿化带，用于美化街道和提供遮荫。"
+    },
+    {
+      "category_id": "F014",
+      "name_en": "road_edge",
+      "semantic_type": "geometry",
+      "summary_zh": "道路与人行道交界处的几何形态",
+      "visual_cues_zh": [
+        "道路与人行道交界处的几何形态",
+        "道路边缘的拼接缝",
+        "道路与人行道交界处的几何形态"
+      ],
+      "urban_meaning_zh": "道路与人行道的边界",
+      "confidence": 0.95,
+      "artifact_probability": 0.05,
+      "cluster_id": "F014",
+      "short_label": "road_edge",
+      "summary": "道路与人行道交界处的几何形态",
+      "visual_cues": [
+        "道路与人行道交界处的几何形态",
+        "道路边缘的拼接缝",
+        "道路与人行道交界处的几何形态"
+      ],
+      "urban_interpretation": "道路与人行道的边界"
+    },
+    {
+      "category_id": "F015",
+      "name_en": "tree_shade_street",
+      "semantic_type": "geometry",
+      "summary_zh": "道路两旁排列的树木形成连续的树荫带",
+      "visual_cues_zh": [
+        "道路两侧排列的树木形成连续的树荫带",
+        "树冠覆盖路面，形成均匀的阴影",
+        "树影在路面上清晰可见"
+      ],
+      "urban_meaning_zh": "城市中提供遮蔽的林荫道",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F015",
+      "short_label": "tree_shade_street",
+      "summary": "道路两旁排列的树木形成连续的树荫带",
+      "visual_cues": [
+        "道路两侧排列的树木形成连续的树荫带",
+        "树冠覆盖路面，形成均匀的阴影",
+        "树影在路面上清晰可见"
+      ],
+      "urban_interpretation": "城市中提供遮蔽的林荫道"
+    },
+    {
+      "category_id": "F016",
+      "name_en": "construction scaffolding",
+      "semantic_type": "object",
+      "summary_zh": "建筑施工用的脚手架",
+      "visual_cues_zh": [
+        "多为金属支架结构",
+        "覆盖绿色防护网",
+        "常见于建筑工地"
+      ],
+      "urban_meaning_zh": "建筑施工中的临时支撑结构",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F016",
+      "short_label": "construction scaffolding",
+      "summary": "建筑施工用的脚手架",
+      "visual_cues": [
+        "多为金属支架结构",
+        "覆盖绿色防护网",
+        "常见于建筑工地"
+      ],
+      "urban_interpretation": "建筑施工中的临时支撑结构"
+    },
+    {
+      "category_id": "F017",
+      "name_en": "building facade",
+      "semantic_type": "geometry",
+      "summary_zh": "建筑立面的垂直结构与光影变化",
+      "visual_cues_zh": [
+        "建筑立面的垂直结构与光影变化",
+        "建筑立面的垂直结构与光影变化",
+        "建筑立面的垂直结构与光影变化"
+      ],
+      "urban_meaning_zh": "建筑立面的垂直结构与光影变化",
+      "confidence": 0.95,
+      "artifact_probability": 0.0,
+      "cluster_id": "F017",
+      "short_label": "building facade",
+      "summary": "建筑立面的垂直结构与光影变化",
+      "visual_cues": [
+        "建筑立面的垂直结构与光影变化",
+        "建筑立面的垂直结构与光影变化",
+        "建筑立面的垂直结构与光影变化"
+      ],
+      "urban_interpretation": "建筑立面的垂直结构与光影变化"
+    },
+    {
+      "category_id": "F018",
+      "name_en": "small alley flowerbed",
+      "semantic_type": "geometry",
+      "summary_zh": "狭窄巷道中植物密集的花坛",
+      "visual_cues_zh": [
+        "巷道内有多个盆栽植物",
+        "植物集中于地面和墙角",
+        "花丛与建筑形成紧凑空间"
+      ],
+      "urban_meaning_zh": "居民区的私密花园",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F018",
+      "short_label": "small alley flowerbed",
+      "summary": "狭窄巷道中植物密集的花坛",
+      "visual_cues": [
+        "巷道内有多个盆栽植物",
+        "植物集中于地面和墙角",
+        "花丛与建筑形成紧凑空间"
+      ],
+      "urban_interpretation": "居民区的私密花园"
+    },
+    {
+      "category_id": "F019",
+      "name_en": "road_and_building",
+      "semantic_type": "object",
+      "summary_zh": "道路与建筑的组合，常见于城市街景",
+      "visual_cues_zh": [
+        "道路与建筑的组合，常见于城市街景",
+        "道路与建筑的组合，常见于城市街景",
+        "道路与建筑的组合，常见于城市街景"
+      ],
+      "urban_meaning_zh": "城市道路与建筑的结合",
+      "confidence": 0.85,
+      "artifact_probability": 0.0,
+      "cluster_id": "F019",
+      "short_label": "road_and_building",
+      "summary": "道路与建筑的组合，常见于城市街景",
+      "visual_cues": [
+        "道路与建筑的组合，常见于城市街景",
+        "道路与建筑的组合，常见于城市街景",
+        "道路与建筑的组合，常见于城市街景"
+      ],
+      "urban_interpretation": "城市道路与建筑的结合"
+    },
+    {
+      "category_id": "F020",
+      "name_en": "advertising_wall",
+      "semantic_type": "object",
+      "summary_zh": "城市街道上的广告墙，多为商业或宣传用途",
+      "visual_cues_zh": [
+        "多为广告牌，有文字和图像",
+        "常见于道路两侧",
+        "有彩色热力图显示高激活区域"
+      ],
+      "urban_meaning_zh": "商业宣传与城市景观",
+      "confidence": 0.95,
+      "artifact_probability": 0.05,
+      "cluster_id": "F020",
+      "short_label": "advertising_wall",
+      "summary": "城市街道上的广告墙，多为商业或宣传用途",
+      "visual_cues": [
+        "多为广告牌，有文字和图像",
+        "常见于道路两侧",
+        "有彩色热力图显示高激活区域"
+      ],
+      "urban_interpretation": "商业宣传与城市景观"
+    },
+    {
+      "category_id": "F021",
+      "name_en": "road_and_building",
+      "semantic_type": "spatial_layout",
+      "summary_zh": "道路与建筑的组合，包含道路、建筑、车辆和热区",
+      "visual_cues_zh": [
+        "道路与建筑的组合，包含道路、建筑、车辆和热区",
+        "道路与建筑的组合，包含道路、建筑、车辆和热区",
+        "道路与建筑的组合，包含道路、建筑、车辆和热区"
+      ],
+      "urban_meaning_zh": "城市道路与建筑的视觉特征",
+      "confidence": 0.85,
+      "artifact_probability": 0.05,
+      "cluster_id": "F021",
+      "short_label": "road_and_building",
+      "summary": "道路与建筑的组合，包含道路、建筑、车辆和热区",
+      "visual_cues": [
+        "道路与建筑的组合，包含道路、建筑、车辆和热区",
+        "道路与建筑的组合，包含道路、建筑、车辆和热区",
+        "道路与建筑的组合，包含道路、建筑、车辆和热区"
+      ],
+      "urban_interpretation": "城市道路与建筑的视觉特征"
+    },
+    {
+      "category_id": "F022",
+      "name_en": "tree_canopy_and_road",
+      "semantic_type": "geometry",
+      "summary_zh": "树冠与道路的几何构型",
+      "visual_cues_zh": [
+        "树冠在道路两侧形成对称的几何结构",
+        "道路与树冠的边界清晰，呈现规则的几何布局",
+        "树冠与道路的交叠处有明确的几何关系"
+      ],
+      "urban_meaning_zh": "树冠与道路的几何构型",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F022",
+      "short_label": "tree_canopy_and_road",
+      "summary": "树冠与道路的几何构型",
+      "visual_cues": [
+        "树冠在道路两侧形成对称的几何结构",
+        "道路与树冠的边界清晰，呈现规则的几何布局",
+        "树冠与道路的交叠处有明确的几何关系"
+      ],
+      "urban_interpretation": "树冠与道路的几何构型"
+    },
+    {
+      "category_id": "F023",
+      "name_en": "street_corner_cafe",
+      "semantic_type": "object",
+      "summary_zh": "城市街角的户外咖啡座",
+      "visual_cues_zh": [
+        "户外白色桌椅",
+        "遮阳篷",
+        "人行道"
+      ],
+      "urban_meaning_zh": "城市休闲的户外咖啡座",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F023",
+      "short_label": "street_corner_cafe",
+      "summary": "城市街角的户外咖啡座",
+      "visual_cues": [
+        "户外白色桌椅",
+        "遮阳篷",
+        "人行道"
+      ],
+      "urban_interpretation": "城市休闲的户外咖啡座"
+    },
+    {
+      "category_id": "F024",
+      "name_en": "road_edge",
+      "semantic_type": "geometry",
+      "summary_zh": "道路与人行道的边界线",
+      "visual_cues_zh": [
+        "道路边缘有清晰的白色标线",
+        "道路与人行道的边界线",
+        "道路边缘有清晰的白色标线"
+      ],
+      "urban_meaning_zh": "道路与人行道的边界线",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F024",
+      "short_label": "road_edge",
+      "summary": "道路与人行道的边界线",
+      "visual_cues": [
+        "道路边缘有清晰的白色标线",
+        "道路与人行道的边界线",
+        "道路边缘有清晰的白色标线"
+      ],
+      "urban_interpretation": "道路与人行道的边界线"
+    },
+    {
+      "category_id": "F025",
+      "name_en": "shaded alley",
+      "semantic_type": "geometry",
+      "summary_zh": "林荫道，树影斑驳，道路狭窄",
+      "visual_cues_zh": [
+        "道路两旁树木成荫，形成斑驳光影",
+        "道路边缘有树干和树冠，形成遮蔽",
+        "道路呈曲折走向，有明显树影"
+      ],
+      "urban_meaning_zh": "林荫小道，行人休憩",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F025",
+      "short_label": "shaded alley",
+      "summary": "林荫道，树影斑驳，道路狭窄",
+      "visual_cues": [
+        "道路两旁树木成荫，形成斑驳光影",
+        "道路边缘有树干和树冠，形成遮蔽",
+        "道路呈曲折走向，有明显树影"
+      ],
+      "urban_interpretation": "林荫小道，行人休憩"
+    },
+    {
+      "category_id": "F026",
+      "name_en": "tree_shadows",
+      "semantic_type": "geometry",
+      "summary_zh": "树冠投下的不规则光影",
+      "visual_cues_zh": [
+        "树影在路面和建筑上形成斑驳",
+        "树影边缘有彩色光晕",
+        "树影与道路、建筑的交界处有明显遮挡"
+      ],
+      "urban_meaning_zh": "树影与城市空间的互动",
+      "confidence": 0.9,
+      "artifact_probability": 0.05,
+      "cluster_id": "F026",
+      "short_label": "tree_shadows",
+      "summary": "树冠投下的不规则光影",
+      "visual_cues": [
+        "树影在路面和建筑上形成斑驳",
+        "树影边缘有彩色光晕",
+        "树影与道路、建筑的交界处有明显遮挡"
+      ],
+      "urban_interpretation": "树影与城市空间的互动"
+    },
+    {
+      "category_id": "F027",
+      "name_en": "car_top_heat",
+      "semantic_type": "material",
+      "summary_zh": "车辆顶部的热区响应",
+      "visual_cues_zh": [
+        "车辆顶部有明显的热区激活",
+        "热区集中在车顶表面",
+        "热区与车顶材质相关"
+      ],
+      "urban_meaning_zh": "车辆顶部的热区响应",
+      "confidence": 0.85,
+      "artifact_probability": 0.05,
+      "cluster_id": "F027",
+      "short_label": "car_top_heat",
+      "summary": "车辆顶部的热区响应",
+      "visual_cues": [
+        "车辆顶部有明显的热区激活",
+        "热区集中在车顶表面",
+        "热区与车顶材质相关"
+      ],
+      "urban_interpretation": "车辆顶部的热区响应"
+    },
+    {
+      "category_id": "F028",
+      "name_en": "red_car_street",
+      "semantic_type": "object",
+      "summary_zh": "红色汽车在街道上，常见于城市街景",
+      "visual_cues_zh": [
+        "红色汽车在街道上，常见于城市街景",
+        "红色汽车在街道上，常见于城市街景",
+        "红色汽车在街道上，常见于城市街景"
+      ],
+      "urban_meaning_zh": "城市街道上的红色汽车",
+      "confidence": 0.95,
+      "artifact_probability": 0.0,
+      "cluster_id": "F028",
+      "short_label": "red_car_street",
+      "summary": "红色汽车在街道上，常见于城市街景",
+      "visual_cues": [
+        "红色汽车在街道上，常见于城市街景",
+        "红色汽车在街道上，常见于城市街景",
+        "红色汽车在街道上，常见于城市街景"
+      ],
+      "urban_interpretation": "城市街道上的红色汽车"
+    },
+    {
+      "category_id": "F029",
+      "name_en": "electric_bike_parking",
+      "semantic_type": "geometry",
+      "summary_zh": "多辆电动车沿路边整齐停放",
+      "visual_cues_zh": [
+        "多辆电动车沿路边整齐停放",
+        "路边停放的电动车",
+        "电动车沿路排成行"
+      ],
+      "urban_meaning_zh": "城市中电动车的有序停放",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F029",
+      "short_label": "electric_bike_parking",
+      "summary": "多辆电动车沿路边整齐停放",
+      "visual_cues": [
+        "多辆电动车沿路边整齐停放",
+        "路边停放的电动车",
+        "电动车沿路排成行"
+      ],
+      "urban_interpretation": "城市中电动车的有序停放"
+    },
+    {
+      "category_id": "F030",
+      "name_en": "stone_wall_and_shadows",
+      "semantic_type": "geometry",
+      "summary_zh": "石墙、树影、建筑的几何构型",
+      "visual_cues_zh": [
+        "石墙、混凝土、纹理、几何形态",
+        "树影、遮挡、空间布局",
+        "建筑、墙体、结构"
+      ],
+      "urban_meaning_zh": "城市街景中的几何与光影",
+      "confidence": 0.85,
+      "artifact_probability": 0.05,
+      "cluster_id": "F030",
+      "short_label": "stone_wall_and_shadows",
+      "summary": "石墙、树影、建筑的几何构型",
+      "visual_cues": [
+        "石墙、混凝土、纹理、几何形态",
+        "树影、遮挡、空间布局",
+        "建筑、墙体、结构"
+      ],
+      "urban_interpretation": "城市街景中的几何与光影"
+    },
+    {
+      "category_id": "F031",
+      "name_en": "road_edge",
+      "semantic_type": "geometry",
+      "summary_zh": "道路与护栏的边界结构",
+      "visual_cues_zh": [
+        "道路边缘有清晰的护栏",
+        "护栏与路面形成明确的边界",
+        "护栏与道路的交界处有热区"
+      ],
+      "urban_meaning_zh": "道路与护栏的边界",
+      "confidence": 0.95,
+      "artifact_probability": 0.05,
+      "cluster_id": "F031",
+      "short_label": "road_edge",
+      "summary": "道路与护栏的边界结构",
+      "visual_cues": [
+        "道路边缘有清晰的护栏",
+        "护栏与路面形成明确的边界",
+        "护栏与道路的交界处有热区"
+      ],
+      "urban_interpretation": "道路与护栏的边界"
+    },
+    {
+      "category_id": "F032",
+      "name_en": "tree-lined walk",
+      "semantic_type": "geometry",
+      "summary_zh": "道路两旁排列整齐的树木",
+      "visual_cues_zh": [
+        "道路两侧排列整齐的树木",
+        "树冠茂密，形成连续的绿色带",
+        "树与道路形成明确的边界"
+      ],
+      "urban_meaning_zh": "城市绿化带与人行道的结合",
+      "confidence": 0.92,
+      "artifact_probability": 0.0,
+      "cluster_id": "F032",
+      "short_label": "tree-lined walk",
+      "summary": "道路两旁排列整齐的树木",
+      "visual_cues": [
+        "道路两侧排列整齐的树木",
+        "树冠茂密，形成连续的绿色带",
+        "树与道路形成明确的边界"
+      ],
+      "urban_interpretation": "城市绿化带与人行道的结合"
+    },
+    {
+      "category_id": "F033",
+      "name_en": "zebra_crossing",
+      "semantic_type": "geometry",
+      "summary_zh": "道路标线与人行横道的视觉模式",
+      "visual_cues_zh": [
+        "道路标线与人行横道",
+        "斑马线与交通信号灯",
+        "道路标线与人行横道"
+      ],
+      "urban_meaning_zh": "行人过街的交通标识",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F033",
+      "short_label": "zebra_crossing",
+      "summary": "道路标线与人行横道的视觉模式",
+      "visual_cues": [
+        "道路标线与人行横道",
+        "斑马线与交通信号灯",
+        "道路标线与人行横道"
+      ],
+      "urban_interpretation": "行人过街的交通标识"
+    },
+    {
+      "category_id": "F034",
+      "name_en": "red_door_street",
+      "semantic_type": "geometry",
+      "summary_zh": "红门建筑的街景，门框为红色，常见于住宅区",
+      "visual_cues_zh": [
+        "多张图中可见红色门框，材质为金属",
+        "门框呈矩形，有竖向条纹，边缘有轻微磨损",
+        "门框与墙体连接处有明显接缝"
+      ],
+      "urban_meaning_zh": "红门住宅区的典型街景",
+      "confidence": 0.85,
+      "artifact_probability": 0.05,
+      "cluster_id": "F034",
+      "short_label": "red_door_street",
+      "summary": "红门建筑的街景，门框为红色，常见于住宅区",
+      "visual_cues": [
+        "多张图中可见红色门框，材质为金属",
+        "门框呈矩形，有竖向条纹，边缘有轻微磨损",
+        "门框与墙体连接处有明显接缝"
+      ],
+      "urban_interpretation": "红门住宅区的典型街景"
+    },
+    {
+      "category_id": "F035",
+      "name_en": "small alley entrance",
+      "semantic_type": "geometry",
+      "summary_zh": "狭窄巷道入口，两侧建筑密集",
+      "visual_cues_zh": [
+        "巷口处有建筑遮挡",
+        "巷道入口有明显拐角",
+        "巷道两侧有建筑"
+      ],
+      "urban_meaning_zh": "居民区入口，可能为生活区",
+      "confidence": 0.95,
+      "artifact_probability": 0.05,
+      "cluster_id": "F035",
+      "short_label": "small alley entrance",
+      "summary": "狭窄巷道入口，两侧建筑密集",
+      "visual_cues": [
+        "巷口处有建筑遮挡",
+        "巷道入口有明显拐角",
+        "巷道两侧有建筑"
+      ],
+      "urban_interpretation": "居民区入口，可能为生活区"
+    },
+    {
+      "category_id": "F036",
+      "name_en": "pedestrian walk",
+      "semantic_type": "geometry",
+      "summary_zh": "铺砖人行道，有行人和热区",
+      "visual_cues_zh": [
+        "铺砖人行道",
+        "行人",
+        "热区"
+      ],
+      "urban_meaning_zh": "城市中常见的行人通道",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F036",
+      "short_label": "pedestrian walk",
+      "summary": "铺砖人行道，有行人和热区",
+      "visual_cues": [
+        "铺砖人行道",
+        "行人",
+        "热区"
+      ],
+      "urban_interpretation": "城市中常见的行人通道"
+    },
+    {
+      "category_id": "F037",
+      "name_en": "street_corner_shops",
+      "semantic_type": "object",
+      "summary_zh": "街角商铺与车辆",
+      "visual_cues_zh": [
+        "街角商铺与车辆",
+        "商铺招牌与车辆",
+        "商铺与道路交汇"
+      ],
+      "urban_meaning_zh": "商业街角的店铺与车辆",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F037",
+      "short_label": "street_corner_shops",
+      "summary": "街角商铺与车辆",
+      "visual_cues": [
+        "街角商铺与车辆",
+        "商铺招牌与车辆",
+        "商铺与道路交汇"
+      ],
+      "urban_interpretation": "商业街角的店铺与车辆"
+    },
+    {
+      "category_id": "F038",
+      "name_en": "red-yellow hotspot",
+      "semantic_type": "color_light",
+      "summary_zh": "道路与建筑的热区显示红黄光晕",
+      "visual_cues_zh": [
+        "道路与建筑的热区显示红黄光晕",
+        "热区主要集中在道路与建筑的边缘",
+        "热区与建筑的边界清晰"
+      ],
+      "urban_meaning_zh": "道路与建筑的热区显示红黄光晕",
+      "confidence": 0.85,
+      "artifact_probability": 0.05,
+      "cluster_id": "F038",
+      "short_label": "red-yellow hotspot",
+      "summary": "道路与建筑的热区显示红黄光晕",
+      "visual_cues": [
+        "道路与建筑的热区显示红黄光晕",
+        "热区主要集中在道路与建筑的边缘",
+        "热区与建筑的边界清晰"
+      ],
+      "urban_interpretation": "道路与建筑的热区显示红黄光晕"
+    },
+    {
+      "category_id": "F039",
+      "name_en": "red car corner",
+      "semantic_type": "geometry",
+      "summary_zh": "红车停靠在高架桥下，形成典型街角构图",
+      "visual_cues_zh": [
+        "红车停在高架桥下",
+        "红车在街角",
+        "高架桥下红车"
+      ],
+      "urban_meaning_zh": "红车街角的典型街景",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F039",
+      "short_label": "red car corner",
+      "summary": "红车停靠在高架桥下，形成典型街角构图",
+      "visual_cues": [
+        "红车停在高架桥下",
+        "红车在街角",
+        "高架桥下红车"
+      ],
+      "urban_interpretation": "红车街角的典型街景"
+    },
+    {
+      "category_id": "F040",
+      "name_en": "cobblestone",
+      "semantic_type": "geometry",
+      "summary_zh": "铺满石板的街道，常见于欧洲城市",
+      "visual_cues_zh": [
+        "多张图中可见铺路石，呈不规则矩形",
+        "路面纹理清晰，有明显石块拼接",
+        "石板路与建筑、车辆形成空间关系"
+      ],
+      "urban_meaning_zh": "欧洲城市典型街道",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F040",
+      "short_label": "cobblestone",
+      "summary": "铺满石板的街道，常见于欧洲城市",
+      "visual_cues": [
+        "多张图中可见铺路石，呈不规则矩形",
+        "路面纹理清晰，有明显石块拼接",
+        "石板路与建筑、车辆形成空间关系"
+      ],
+      "urban_interpretation": "欧洲城市典型街道"
+    },
+    {
+      "category_id": "F041",
+      "name_en": "concrete_wall",
+      "semantic_type": "geometry",
+      "summary_zh": "混凝土墙的几何形态与空间布局",
+      "visual_cues_zh": [
+        "混凝土墙的几何形态与空间布局",
+        "混凝土墙的几何形态与空间布局",
+        "混凝土墙的几何形态与空间布局"
+      ],
+      "urban_meaning_zh": "混凝土墙的几何形态与空间布局",
+      "confidence": 0.95,
+      "artifact_probability": 0.0,
+      "cluster_id": "F041",
+      "short_label": "concrete_wall",
+      "summary": "混凝土墙的几何形态与空间布局",
+      "visual_cues": [
+        "混凝土墙的几何形态与空间布局",
+        "混凝土墙的几何形态与空间布局",
+        "混凝土墙的几何形态与空间布局"
+      ],
+      "urban_interpretation": "混凝土墙的几何形态与空间布局"
+    },
+    {
+      "category_id": "F042",
+      "name_en": "Red-yellow glow street",
+      "semantic_type": "geometry",
+      "summary_zh": "道路中央有红黄光晕，形成视觉焦点",
+      "visual_cues_zh": [
+        "道路中央有红黄光晕",
+        "光晕呈弧形，覆盖道路",
+        "光晕边缘清晰，与道路线相接"
+      ],
+      "urban_meaning_zh": "道路中心有光晕，可能为特殊照明或视觉效果",
+      "confidence": 0.9,
+      "artifact_probability": 0.05,
+      "cluster_id": "F042",
+      "short_label": "Red-yellow glow street",
+      "summary": "道路中央有红黄光晕，形成视觉焦点",
+      "visual_cues": [
+        "道路中央有红黄光晕",
+        "光晕呈弧形，覆盖道路",
+        "光晕边缘清晰，与道路线相接"
+      ],
+      "urban_interpretation": "道路中心有光晕，可能为特殊照明或视觉效果"
+    },
+    {
+      "category_id": "F043",
+      "name_en": "tree_shadows",
+      "semantic_type": "geometry",
+      "summary_zh": "树干与树影的几何形态",
+      "visual_cues_zh": [
+        "树干与树影的几何形态",
+        "树影在地面的投影",
+        "树影与建筑的交错"
+      ],
+      "urban_meaning_zh": "树影与建筑的几何关系",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F043",
+      "short_label": "tree_shadows",
+      "summary": "树干与树影的几何形态",
+      "visual_cues": [
+        "树干与树影的几何形态",
+        "树影在地面的投影",
+        "树影与建筑的交错"
+      ],
+      "urban_interpretation": "树影与建筑的几何关系"
+    },
+    {
+      "category_id": "F044",
+      "name_en": "road_and_buildings",
+      "semantic_type": "object",
+      "summary_zh": "道路与建筑的组合，常见于城市街景",
+      "visual_cues_zh": [
+        "道路与建筑的组合，常见于城市街景",
+        "道路与建筑的组合，常见于城市街景",
+        "道路与建筑的组合，常见于城市街景"
+      ],
+      "urban_meaning_zh": "城市街道与建筑的结合",
+      "confidence": 0.85,
+      "artifact_probability": 0.0,
+      "cluster_id": "F044",
+      "short_label": "road_and_buildings",
+      "summary": "道路与建筑的组合，常见于城市街景",
+      "visual_cues": [
+        "道路与建筑的组合，常见于城市街景",
+        "道路与建筑的组合，常见于城市街景",
+        "道路与建筑的组合，常见于城市街景"
+      ],
+      "urban_interpretation": "城市街道与建筑的结合"
+    },
+    {
+      "category_id": "F045",
+      "name_en": "underpass glow",
+      "semantic_type": "geometry",
+      "summary_zh": "高架桥下形成彩色光带的几何结构",
+      "visual_cues_zh": [
+        "高架桥下有彩色光带",
+        "光带呈红黄渐变",
+        "光带沿桥墩延伸"
+      ],
+      "urban_meaning_zh": "高架桥下光带的视觉特征",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F045",
+      "short_label": "underpass glow",
+      "summary": "高架桥下形成彩色光带的几何结构",
+      "visual_cues": [
+        "高架桥下有彩色光带",
+        "光带呈红黄渐变",
+        "光带沿桥墩延伸"
+      ],
+      "urban_interpretation": "高架桥下光带的视觉特征"
+    },
+    {
+      "category_id": "F046",
+      "name_en": "window_heat_zone",
+      "semantic_type": "geometry",
+      "summary_zh": "建筑窗体的热响应区域",
+      "visual_cues_zh": [
+        "窗框与墙体的热激活区域",
+        "窗体在建筑表面的热集中",
+        "窗体与墙体的几何边界"
+      ],
+      "urban_meaning_zh": "建筑窗体的热响应区域",
+      "confidence": 0.85,
+      "artifact_probability": 0.05,
+      "cluster_id": "F046",
+      "short_label": "window_heat_zone",
+      "summary": "建筑窗体的热响应区域",
+      "visual_cues": [
+        "窗框与墙体的热激活区域",
+        "窗体在建筑表面的热集中",
+        "窗体与墙体的几何边界"
+      ],
+      "urban_interpretation": "建筑窗体的热响应区域"
+    },
+    {
+      "category_id": "F047",
+      "name_en": "underpass",
+      "semantic_type": "geometry",
+      "summary_zh": "高架桥下道路与车辆",
+      "visual_cues_zh": [
+        "高架桥下有车辆",
+        "高架桥下有道路",
+        "高架桥下有建筑"
+      ],
+      "urban_meaning_zh": "城市高架桥下的交通场景",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F047",
+      "short_label": "underpass",
+      "summary": "高架桥下道路与车辆",
+      "visual_cues": [
+        "高架桥下有车辆",
+        "高架桥下有道路",
+        "高架桥下有建筑"
+      ],
+      "urban_interpretation": "城市高架桥下的交通场景"
+    },
+    {
+      "category_id": "F048",
+      "name_en": "shaded path",
+      "semantic_type": "geometry",
+      "summary_zh": "树影斑驳的步行道",
+      "visual_cues_zh": [
+        "树影在路面上形成斑驳的光影",
+        "人行道上有人行走",
+        "道路两旁有茂密的树木"
+      ],
+      "urban_meaning_zh": "行人漫步的林荫道",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F048",
+      "short_label": "shaded path",
+      "summary": "树影斑驳的步行道",
+      "visual_cues": [
+        "树影在路面上形成斑驳的光影",
+        "人行道上有人行走",
+        "道路两旁有茂密的树木"
+      ],
+      "urban_interpretation": "行人漫步的林荫道"
+    },
+    {
+      "category_id": "F049",
+      "name_en": "red_wall_yellow_wall",
+      "semantic_type": "material",
+      "summary_zh": "红黄墙体的建筑立面",
+      "visual_cues_zh": [
+        "红黄墙体的建筑立面",
+        "红黄墙体的建筑立面",
+        "红黄墙体的建筑立面"
+      ],
+      "urban_meaning_zh": "红黄墙体的建筑立面",
+      "confidence": 0.95,
+      "artifact_probability": 0.0,
+      "cluster_id": "F049",
+      "short_label": "red_wall_yellow_wall",
+      "summary": "红黄墙体的建筑立面",
+      "visual_cues": [
+        "红黄墙体的建筑立面",
+        "红黄墙体的建筑立面",
+        "红黄墙体的建筑立面"
+      ],
+      "urban_interpretation": "红黄墙体的建筑立面"
+    },
+    {
+      "category_id": "F050",
+      "name_en": "greenery_and_water",
+      "semantic_type": "material",
+      "summary_zh": "植被与水体的局部视觉模式",
+      "visual_cues_zh": [
+        "植被覆盖的河岸与水体",
+        "绿色植物与水体的交互",
+        "水体与植被的纹理特征"
+      ],
+      "urban_meaning_zh": "城市绿化带与水体的局部景观",
+      "confidence": 0.85,
+      "artifact_probability": 0.05,
+      "cluster_id": "F050",
+      "short_label": "greenery_and_water",
+      "summary": "植被与水体的局部视觉模式",
+      "visual_cues": [
+        "植被覆盖的河岸与水体",
+        "绿色植物与水体的交互",
+        "水体与植被的纹理特征"
+      ],
+      "urban_interpretation": "城市绿化带与水体的局部景观"
+    },
+    {
+      "category_id": "F051",
+      "name_en": "zebra_crossing",
+      "semantic_type": "geometry",
+      "summary_zh": "道路标线的斑马线，常见于人行横道",
+      "visual_cues_zh": [
+        "多张图中均出现白色条纹的斑马线",
+        "斑马线为标准的平行条纹，与道路标线一致",
+        "斑马线在不同场景下均以白色呈现，无其他颜色或图案"
+      ],
+      "urban_meaning_zh": "行人过街的标志",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F051",
+      "short_label": "zebra_crossing",
+      "summary": "道路标线的斑马线，常见于人行横道",
+      "visual_cues": [
+        "多张图中均出现白色条纹的斑马线",
+        "斑马线为标准的平行条纹，与道路标线一致",
+        "斑马线在不同场景下均以白色呈现，无其他颜色或图案"
+      ],
+      "urban_interpretation": "行人过街的标志"
+    },
+    {
+      "category_id": "F052",
+      "name_en": "palm_tree_street",
+      "semantic_type": "geometry",
+      "summary_zh": "棕榈树与道路的几何布局",
+      "visual_cues_zh": [
+        "多棵棕榈树在街道旁",
+        "树干垂直，树冠呈伞状",
+        "树与建筑形成空间层次"
+      ],
+      "urban_meaning_zh": "热带城市街道的典型景观",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F052",
+      "short_label": "palm_tree_street",
+      "summary": "棕榈树与道路的几何布局",
+      "visual_cues": [
+        "多棵棕榈树在街道旁",
+        "树干垂直，树冠呈伞状",
+        "树与建筑形成空间层次"
+      ],
+      "urban_interpretation": "热带城市街道的典型景观"
+    },
+    {
+      "category_id": "F053",
+      "name_en": "road_marking",
+      "semantic_type": "geometry",
+      "summary_zh": "道路标线的几何形态与空间布局",
+      "visual_cues_zh": [
+        "道路标线在原图中清晰可见，多为双黄线",
+        "标线在热图中呈现高激活，表明其为视觉焦点",
+        "标线在 HOTSPOT 区域周围有明显裁剪，强调其重要性"
+      ],
+      "urban_meaning_zh": "道路标线的视觉特征在城市景观中具有明确的识别意义",
+      "confidence": 0.95,
+      "artifact_probability": 0.05,
+      "cluster_id": "F053",
+      "short_label": "road_marking",
+      "summary": "道路标线的几何形态与空间布局",
+      "visual_cues": [
+        "道路标线在原图中清晰可见，多为双黄线",
+        "标线在热图中呈现高激活，表明其为视觉焦点",
+        "标线在 HOTSPOT 区域周围有明显裁剪，强调其重要性"
+      ],
+      "urban_interpretation": "道路标线的视觉特征在城市景观中具有明确的识别意义"
+    },
+    {
+      "category_id": "F054",
+      "name_en": "highlighted_lane",
+      "semantic_type": "geometry",
+      "summary_zh": "道路标线与车辆高亮的几何结构",
+      "visual_cues_zh": [
+        "道路标线清晰，车辆在车道内",
+        "车道边缘有高亮区域",
+        "高亮区域与道路标线一致"
+      ],
+      "urban_meaning_zh": "车辆行驶的高亮车道",
+      "confidence": 0.92,
+      "artifact_probability": 0.0,
+      "cluster_id": "F054",
+      "short_label": "highlighted_lane",
+      "summary": "道路标线与车辆高亮的几何结构",
+      "visual_cues": [
+        "道路标线清晰，车辆在车道内",
+        "车道边缘有高亮区域",
+        "高亮区域与道路标线一致"
+      ],
+      "urban_interpretation": "车辆行驶的高亮车道"
+    },
+    {
+      "category_id": "F055",
+      "name_en": "small alley entrance",
+      "semantic_type": "geometry",
+      "summary_zh": "狭窄巷口，车辆进出，建筑与道路交汇",
+      "visual_cues_zh": [
+        "巷口处车辆进出",
+        "建筑与道路交汇",
+        "狭窄空间"
+      ],
+      "urban_meaning_zh": "城市中常见的小型入口或通道",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F055",
+      "short_label": "small alley entrance",
+      "summary": "狭窄巷口，车辆进出，建筑与道路交汇",
+      "visual_cues": [
+        "巷口处车辆进出",
+        "建筑与道路交汇",
+        "狭窄空间"
+      ],
+      "urban_interpretation": "城市中常见的小型入口或通道"
+    },
+    {
+      "category_id": "F056",
+      "name_en": "stone_wall_street",
+      "semantic_type": "geometry",
+      "summary_zh": "由石砌墙体构成的街道景观",
+      "visual_cues_zh": [
+        "石墙由不规则石块堆砌",
+        "墙体表面有风化痕迹",
+        "墙体与道路形成明确边界"
+      ],
+      "urban_meaning_zh": "传统住宅区的石墙街道",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F056",
+      "short_label": "stone_wall_street",
+      "summary": "由石砌墙体构成的街道景观",
+      "visual_cues": [
+        "石墙由不规则石块堆砌",
+        "墙体表面有风化痕迹",
+        "墙体与道路形成明确边界"
+      ],
+      "urban_interpretation": "传统住宅区的石墙街道"
+    },
+    {
+      "category_id": "F057",
+      "name_en": "streetlight illumination",
+      "semantic_type": "geometry",
+      "summary_zh": "路灯在道路和建筑上投射的光斑",
+      "visual_cues_zh": [
+        "路灯在道路和建筑上投射的光斑",
+        "路灯在道路和建筑上投射的光斑",
+        "路灯在道路和建筑上投射的光斑"
+      ],
+      "urban_meaning_zh": "路灯照明的视觉模式",
+      "confidence": 0.95,
+      "artifact_probability": 0.0,
+      "cluster_id": "F057",
+      "short_label": "streetlight illumination",
+      "summary": "路灯在道路和建筑上投射的光斑",
+      "visual_cues": [
+        "路灯在道路和建筑上投射的光斑",
+        "路灯在道路和建筑上投射的光斑",
+        "路灯在道路和建筑上投射的光斑"
+      ],
+      "urban_interpretation": "路灯照明的视觉模式"
+    },
+    {
+      "category_id": "F058",
+      "name_en": "shaded alley",
+      "semantic_type": "geometry",
+      "summary_zh": "林荫道，树影斑驳，道路狭窄",
+      "visual_cues_zh": [
+        "道路两侧树木密集，形成斑驳树影",
+        "道路呈曲折走向，有明显拐角",
+        "路面为沥青，边缘有混凝土路缘"
+      ],
+      "urban_meaning_zh": "林荫小道，适合行人休憩",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F058",
+      "short_label": "shaded alley",
+      "summary": "林荫道，树影斑驳，道路狭窄",
+      "visual_cues": [
+        "道路两侧树木密集，形成斑驳树影",
+        "道路呈曲折走向，有明显拐角",
+        "路面为沥青，边缘有混凝土路缘"
+      ],
+      "urban_interpretation": "林荫小道，适合行人休憩"
+    },
+    {
+      "category_id": "F059",
+      "name_en": "road_edge",
+      "semantic_type": "geometry",
+      "summary_zh": "道路与植被交界处的几何形态",
+      "visual_cues_zh": [
+        "道路边缘有清晰的白色标线",
+        "道路与绿化带交界处有明显边界",
+        "道路边缘有植被遮挡"
+      ],
+      "urban_meaning_zh": "道路与绿化带的交界区域",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F059",
+      "short_label": "road_edge",
+      "summary": "道路与植被交界处的几何形态",
+      "visual_cues": [
+        "道路边缘有清晰的白色标线",
+        "道路与绿化带交界处有明显边界",
+        "道路边缘有植被遮挡"
+      ],
+      "urban_interpretation": "道路与绿化带的交界区域"
+    },
+    {
+      "category_id": "F060",
+      "name_en": "street_corner_shop",
+      "semantic_type": "object",
+      "summary_zh": "沿街店铺的入口与招牌",
+      "visual_cues_zh": [
+        "店铺招牌与门面",
+        "人行道与车辆",
+        "建筑与街道"
+      ],
+      "urban_meaning_zh": "商业街的店铺入口",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F060",
+      "short_label": "street_corner_shop",
+      "summary": "沿街店铺的入口与招牌",
+      "visual_cues": [
+        "店铺招牌与门面",
+        "人行道与车辆",
+        "建筑与街道"
+      ],
+      "urban_interpretation": "商业街的店铺入口"
+    },
+    {
+      "category_id": "F061",
+      "name_en": "sunlit street",
+      "semantic_type": "color_light",
+      "summary_zh": "阳光直射导致道路和树影的强烈明暗对比",
+      "visual_cues_zh": [
+        "太阳光在道路和树影上形成强烈高光",
+        "道路和树影的明暗对比强烈",
+        "阳光直射导致道路和树影的明暗对比"
+      ],
+      "urban_meaning_zh": "阳光照射下的城市街道",
+      "confidence": 0.9,
+      "artifact_probability": 0.05,
+      "cluster_id": "F061",
+      "short_label": "sunlit street",
+      "summary": "阳光直射导致道路和树影的强烈明暗对比",
+      "visual_cues": [
+        "太阳光在道路和树影上形成强烈高光",
+        "道路和树影的明暗对比强烈",
+        "阳光直射导致道路和树影的明暗对比"
+      ],
+      "urban_interpretation": "阳光照射下的城市街道"
+    },
+    {
+      "category_id": "F062",
+      "name_en": "shaded alley",
+      "semantic_type": "geometry",
+      "summary_zh": "林荫道，树影斑驳，道路狭窄",
+      "visual_cues_zh": [
+        "道路两旁树木密集，形成斑驳树影",
+        "道路呈曲折走向，有明显树影遮挡",
+        "路面为沥青，有白色标线"
+      ],
+      "urban_meaning_zh": "林荫小道，适合行人休憩",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F062",
+      "short_label": "shaded alley",
+      "summary": "林荫道，树影斑驳，道路狭窄",
+      "visual_cues": [
+        "道路两旁树木密集，形成斑驳树影",
+        "道路呈曲折走向，有明显树影遮挡",
+        "路面为沥青，有白色标线"
+      ],
+      "urban_interpretation": "林荫小道，适合行人休憩"
+    },
+    {
+      "category_id": "F063",
+      "name_en": "blue_wall_graffiti",
+      "semantic_type": "object",
+      "summary_zh": "墙面涂鸦，蓝底黑鸟",
+      "visual_cues_zh": [
+        "墙面有蓝色涂鸦",
+        "涂鸦有黑鸟图案",
+        "涂鸦有蓝色圆形"
+      ],
+      "urban_meaning_zh": "街头艺术装饰",
+      "confidence": 0.98,
+      "artifact_probability": 0.0,
+      "cluster_id": "F063",
+      "short_label": "blue_wall_graffiti",
+      "summary": "墙面涂鸦，蓝底黑鸟",
+      "visual_cues": [
+        "墙面有蓝色涂鸦",
+        "涂鸦有黑鸟图案",
+        "涂鸦有蓝色圆形"
+      ],
+      "urban_interpretation": "街头艺术装饰"
+    }
+  ]
+}

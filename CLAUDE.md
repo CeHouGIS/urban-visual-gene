@@ -13,7 +13,7 @@
 
 ## 必须先读的文件
 
-1. `REQUIREMENTS.md` — 数据契约、功能需求、测试规范（含 conftest.py 设计）
+1. `REQUIREMENT.md` — 数据契约、功能需求、测试规范（含 conftest.py 设计）
 2. `PRE.md` — 算法原理与公式推导
 
 读完再动手。不要从记忆中猜测接口，以 REQUIREMENTS.md §1 的 schema 为准。
@@ -67,6 +67,13 @@ urban_visual_gene/
 ---
 
 ## 核心约束
+
+### CPU 亲和性（必须避开 CPU 8 和 CPU 9）
+
+- 本项目运行任何计算任务时，**禁止使用逻辑 CPU 8 和 CPU 9**，包括训练、推理、特征处理、绘图、测试和数据分析。
+- 启动命令必须显式设置 CPU affinity，例如在当前 16 核机器上使用：`taskset -c 0-7,10-15 <command>`。
+- 若机器 CPU 数量发生变化，应动态选择所有可用核心并排除 8、9；不得因并行库或子进程而重新把任务调度到 CPU 8、9。
+- 后台任务同样遵守此限制；启动后应检查其 CPU affinity。
 
 ### 脚本必须可以被 import
 
@@ -149,7 +156,8 @@ pytest tests/test_pipeline_e2e.py -v
 ## 关键约束：进程隔离（防 OpenMP 崩溃）
 
 PyTorch（Intel OpenMP/MKL，`libiomp5`）与 numpy/scipy/geopandas（GNU OpenMP，`libgomp`）
-在**同一进程**会冲突，导致随机 native segfault（详见 `crash_report_20260613.md`）。
+在**同一进程**会冲突，导致随机 native segfault（详见
+`docs/operations/OPENMP_CRASH_REPORT_20260613.md`）。
 
 - **切勿在同一进程同时 `import torch` 与做 scipy/geopandas 重运算。**
 - 真实数据流水线统一经 `run_experiment.py`（纯子进程编排器）运行，每个 stage 独立进程。

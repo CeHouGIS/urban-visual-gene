@@ -1,0 +1,9 @@
+{
+  "median_r2": 0.0009529434292981365,
+  "p90_r2": 0.0028229838679682986,
+  "maximum_r2": 0.007771866885550427,
+  "strong_r2_threshold": 0.2,
+  "n_strongly_nuisance_sensitive": 0,
+  "n_images": 378818,
+  "validation_images": 75754
+}
