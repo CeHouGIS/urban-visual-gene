@@ -1,5 +1,5 @@
 # ── Local data (copied from NAS — never upload) ─────────────────────────────
-data/
+/data/
 /workplace/nas_data/
 
 # ── Trained models & large / regenerable artefacts ──────────────────────────
@@ -34,7 +34,21 @@ __pycache__/
 .ipynb_checkpoints/
 *.egg-info/
 .venv/
+.venv_*/
 venv/
+
+# ── Large local Urban Visual Gene analysis products ─────────────────────────
+outputs/analysis/
+outputs/experiments/
+results/image_dimension_pixel_proportions.parquet
+results/image_dimension_summary.parquet
+results/image_umap_coordinates.csv
+results/grid_visual_composition.csv
+paper/data/spatial/grid_visual_composition.csv
+paper/data/umap/image_umap_coordinates.parquet
+paper/figures/interactive/
+paper/figures/main/*.svg
+paper/archive/
 
 # ── formal/ pipeline outputs (large, regenerable: dicts, thumbs, overlays, web assets) ──
 formal/formal_out*/

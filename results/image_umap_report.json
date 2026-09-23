@@ -1,0 +1,19 @@
+{
+  "images": 378818,
+  "cities": 30,
+  "fit_images": 60000,
+  "fit_images_per_city": 2000,
+  "high_response_target_per_dimension": 100,
+  "high_response_candidate_pool_per_dimension": 2000,
+  "all_dimension_quotas_satisfied": true,
+  "input": "standardized per-image 512-D Feature-MAE activation profiles",
+  "activation_score": "mean of the 20 strongest of 196 spatial patches per dimension",
+  "pca_components": 50,
+  "umap": {
+    "n_neighbors": 30,
+    "min_dist": 0.1,
+    "metric": "cosine",
+    "seed": 42
+  },
+  "city_labels_used_for_fit": false
+}

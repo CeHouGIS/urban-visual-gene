@@ -1,0 +1,328 @@
+% Experiment plan for the Results section.
+% Required packages: amsmath,amssymb,booktabs,tabularx
+% This is a protocol/design document. Replace protocol language with observed
+% results after the corresponding analyses have been completed.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Feature-MAE learns stable urban visual representations}
+\label{sec:results_representation}
+
+\paragraph{Claim and evaluation principle.}
+This section will test whether Feature-MAE learns a reproducible representation
+of urban scenes rather than merely memorizing the training sample. Evaluation
+will be performed on a fixed, panorama-disjoint test set containing 256 clean
+images per city ($n=7{,}680$). These images, and all other headings belonging to
+the same panoramas, must be excluded before retraining the final models. The
+existing 128-image-per-city validation split will remain dedicated to checkpoint
+selection. All inferential summaries will treat panoramas, rather than patches,
+as the independent sampling unit.
+
+\paragraph{Experiment R1: masked-feature reconstruction.}
+For each test image, 75\% of DINOv3 patches will be masked using ten independent
+mask realizations. Reconstruction quality will be quantified by masked-patch
+cosine similarity,
+\begin{equation}
+  R_i = \frac{1}{|M_i|}\sum_{p\in M_i}
+  \frac{\mathbf{t}_{ip}^{\top}\widehat{\mathbf{t}}_{ip}}
+  {\lVert\mathbf{t}_{ip}\rVert_2
+   \lVert\widehat{\mathbf{t}}_{ip}\rVert_2},
+\end{equation}
+and reported as a city-stratified mean with a 95\% confidence interval obtained
+by bootstrapping panoramas within cities. We will additionally report the 10th,
+50th and 90th percentiles, preventing a small number of easy scenes from
+dominating the mean. A spatially permuted control, in which visible patch
+positions are shuffled within images, will test whether reconstruction depends
+on spatial context rather than only on the marginal distribution of DINOv3
+features.
+
+\paragraph{Experiment R2: matched baselines.}
+Two classes of baseline will be kept separate because they answer different
+questions. Reconstruction baselines will include (i) a global mean-token
+predictor, (ii) a position-specific mean-token predictor, and (iii) a dense
+autoencoder with the same 512-dimensional width and comparable parameter count
+but no masking. Representation baselines will include (iv) a 512-component PCA
+projection and (v) the existing Top-$K$ sparse autoencoder with width 512 and
+$K=32$. Feature-MAE and the reconstruction baselines will be compared using the
+same masked-cosine test. PCA, Top-$K$ SAE and Feature-MAE will be compared on
+representation properties that do not privilege a particular training loss:
+dead-dimension rate, effective rank, mean absolute inter-dimension correlation,
+spatial coherence of activation maps, cross-seed reproducibility and external
+morphology localization (Experiment R12). The Top-$K$ model should not be
+compared directly with Feature-MAE using masked reconstruction because it was
+not trained to infer missing contextual features.
+
+\paragraph{Experiment R3: hyperparameter sensitivity.}
+We will vary one design choice at a time around the final configuration:
+mask ratio $\rho\in\{0.50,0.75,0.90\}$, latent width
+$W\in\{256,512,1024\}$, and training-city count
+$C\in\{10,20,30\}$. The 10- and 20-city subsets will be geographically
+stratified and fixed before analysis. Screening runs will use a common
+city-balanced subset of 3,200 images per city and five epochs; the selected
+configuration and its nearest competitors will then be rerun on the full
+training set. Outcomes will include held-out reconstruction, effective rank,
+dimension redundancy, mean heatmap total variation and matched-dimension
+stability. Sensitivity conclusions will be based on effect sizes and bootstrap
+confidence intervals, not on the best single run.
+
+\paragraph{Experiment R4: optimization and seed stability.}
+The final configuration will be trained from seeds 42, 43 and 44. We will show
+training and validation losses for every epoch, the generalization gap, gradient
+norm and peak GPU memory. Because latent dimensions can permute across runs,
+dimensions will be aligned with the Hungarian algorithm using a similarity
+score that averages encoder-direction cosine similarity and activation-profile
+correlation on the fixed test set. Stability will be summarized by matched
+encoder and decoder cosine similarity, Jaccard overlap of the top-100 responding
+panoramas, patch-level heatmap correlation and adjusted Rand index (ARI) of the
+resulting 32/64 partitions. A seed-stable representation should show smooth
+convergence, a small train--validation gap and substantially stronger matched
+agreement than randomly permuted dimensions.
+
+\paragraph{Planned presentation.}
+The main figure should contain (a) training and validation curves, (b) held-out
+reconstruction by city, (c) the baseline comparison across reconstruction,
+compactness and stability metrics, and (d) the cross-seed matched-dimension
+distribution. Mask-ratio, width and city-count sweeps should be reported in an
+Extended Data figure, with complete numeric results in a supplementary table.
+
+\subsection{Latent visual dimensions form a multiscale hierarchy}
+\label{sec:results_hierarchy}
+
+\paragraph{Claim and unit of analysis.}
+This section will test whether the 512 learned dimensions form reproducible,
+nested families when similarity is defined jointly in parameter, spatial,
+geographic and activation-context spaces. The primary hierarchy will remain the
+single Ward tree obtained from the 32-dimensional spectral embedding of the
+five-view rank-fused affinity matrix. The prespecified tree cuts are 32 coarse
+and 64 fine clusters.
+
+\paragraph{Experiment R5: contribution of the five similarity views.}
+We will first visualize the encoder, linearized-decoder, patch-position,
+city-profile and PPMI activation-context similarity matrices in the common
+dendrogram order. Pairwise agreement between views will be measured with a
+Mantel correlation using 9,999 permutations and by overlap of each dimension's
+30-nearest-neighbour set. We will then perform leave-one-view-out ablations and
+five single-view clusterings. Each alternative will be compared with the full
+hierarchy using ARI, normalized mutual information (NMI), variation of
+information and dimension-wise cluster Jaccard overlap. This analysis will show
+whether the hierarchy is supported by multiple sources of evidence or driven by
+one dominant view.
+
+\paragraph{Experiment R6: hierarchy and cluster resolution.}
+The complete dendrogram will be displayed together with the 32- and 64-cluster
+annotation strips. For transparency, we will report cluster-size distributions,
+normalized size entropy, silhouette score, Calinski--Harabasz index and
+Davies--Bouldin index for cuts from $K=16$ to $K=96$. The purpose of this scan is
+diagnostic rather than post-hoc optimization: $K=32$ and $K=64$ remain the
+prespecified reporting resolutions because they provide a two-level hierarchy
+and because both are obtained from the same tree. The 64-to-32 parent mapping
+will be reported in full as a supplementary table.
+
+\paragraph{Experiment R7: cluster stability.}
+Three complementary perturbations will be used. First, the existing interleaved
+half-sample analysis will be retained. Second, 200 city-stratified panorama
+bootstraps will recompute the three activation-derived views, rank fusion,
+spectral embedding and Ward tree while keeping learned model parameters fixed.
+Third, leave-one-city-out analyses will repeat the hierarchy 30 times to identify
+clusters that depend disproportionately on one city. For each perturbation, we
+will report per-cluster Jaccard stability, global ARI/NMI and the fraction of
+fine clusters retaining the same coarse parent. Null distributions will be
+created by independently permuting dimension labels in each similarity view.
+Cluster stability will be considered convincing only when observed agreement
+exceeds the 95th percentile of the corresponding null distribution.
+
+\paragraph{Experiment R8: seed-to-hierarchy reproducibility.}
+For each of the three Feature-MAE seeds in Experiment R4, the full five-view
+hierarchy will be rebuilt after Hungarian dimension alignment. We will compare
+cophenetic distance matrices and the 32/64 partitions across seeds. This test is
+stricter than resampling images with a fixed model because it includes
+uncertainty from representation learning itself.
+
+\paragraph{Planned presentation.}
+The current publication dendrogram should form the central panel. Supporting
+panels should show (a) the five reordered similarity matrices, (b) the
+leave-one-view-out ARI/NMI values, and (c) cluster-specific bootstrap and
+leave-one-city-out stability. The full resolution scan and seed-level
+cophenetic comparisons should be placed in Extended Data.
+
+\subsection{Urban visual patterns vary systematically across cities}
+\label{sec:results_cities}
+
+\paragraph{Cluster prevalence.}
+Let $w_{ip}$ denote the winning latent dimension for patch $p$ in image $i$,
+and let $\mathcal{D}_k$ be the set of dimensions in cluster $k$. We will define
+the panorama-level prevalence of cluster $k$ as
+\begin{equation}
+  z_{ik}=\frac{1}{196}\sum_{p=1}^{196}
+  \mathbb{I}\!\left(w_{ip}\in\mathcal{D}_k\right),
+  \qquad \sum_k z_{ik}=1.
+  \label{eq:cluster_prevalence}
+\end{equation}
+When two sampled headings belong to the same panorama, their vectors will be
+averaged before city-level aggregation. City prevalence will therefore be the
+mean of panorama-level compositions, with 95\% intervals obtained from 1,000
+within-city panorama bootstraps.
+
+\paragraph{Experiment R9: cross-city differentiation.}
+The $30\times64$ city-by-fine-cluster matrix will be displayed after row-wise
+centering and variance scaling for visualization. Statistical comparisons will
+use a centered log-ratio transform with a small prespecified pseudocount,
+reflecting the compositional nature of the data. City distances will be measured
+with Aitchison distance and displayed by principal-coordinate analysis and
+hierarchical clustering. Jensen--Shannon distance will be reported as a
+robustness analysis. For each cluster, city specificity will be summarized by
+normalized entropy; low entropy indicates geographic concentration, whereas
+high entropy indicates widespread prevalence. Regional separation will be
+tested by PERMANOVA with cities as the permutation units. Because the number of
+cities is modest, exact effect sizes and permutation confidence intervals will
+be emphasized over asymptotic $P$ values.
+
+\paragraph{Experiment R10: within-city geographic organization.}
+Panorama-level prevalence will be aggregated to a fixed spatial grid within
+each city; grid size will be chosen before examining cluster-specific maps and
+kept constant in metric units. For clusters with adequate support, global
+Moran's $I$ will quantify spatial autocorrelation using a distance-based
+neighbour graph. Significance will be evaluated with 999 coordinate-preserving
+permutations within cities and false-discovery-rate correction across clusters.
+Maps will be presented for a small, prespecified set of clusters spanning built
+form, road space and vegetation, using identical colour limits across cities.
+This avoids selecting only visually striking examples after inspecting the
+results.
+
+\paragraph{Experiment R11: nuisance robustness.}
+We will test whether cross-city differences persist after controlling for
+heading, acquisition year and month, image brightness, quality-model score and
+the availability of multiple headings per panorama. Four analyses are planned:
+(i) recomputation on a heading-balanced subset; (ii) exclusion of the 10\% of
+retained images with the highest artefact probability; (iii) adjustment using a
+mixed-effects model with city as a random intercept; and (iv) within-panorama
+comparison of different headings. Robustness will be summarized by correlations
+between original and adjusted city profiles, preservation of city ordination
+under Procrustes analysis, and consistency of cluster-specific city ranks. A
+negative control will repeat the analysis after shuffling city labels within
+acquisition-year strata.
+
+\paragraph{Planned presentation.}
+The main figure should combine (a) a city-by-cluster prevalence heatmap, (b) a
+composition-aware city ordination, (c) maps for representative clusters in
+four to six cities and (d) a coefficient or sensitivity plot showing nuisance
+robustness. Complete city profiles, bootstrap intervals and Moran statistics
+should be released as source data.
+
+\subsection{Visual patterns correspond to interpretable urban morphology}
+\label{sec:results_morphology}
+
+\paragraph{Independent validation strategy.}
+Interpretability will be evaluated using information that was not used to train
+Feature-MAE or construct the hierarchy. We will combine image-based semantic
+masks with geographic road and building attributes. Validation images must be
+drawn from the panorama-disjoint test set established for Experiment R1.
+
+\paragraph{Experiment R12: image-level road and building validation.}
+An independent pretrained semantic-segmentation model will generate masks for
+road, sidewalk, building, vegetation, sky, vehicle and street-furniture classes
+on 300 test images per city. For latent dimension $d$ and semantic class $g$, we
+will calculate heatmap-weighted enrichment
+\begin{equation}
+  E_{dg}=
+  \frac{\sum_{i,p}A^{+}_{ipd}\,\mathbb{I}(Y_{ip}=g)
+        /\sum_{i,p}A^{+}_{ipd}}
+       {\sum_{i,p}\mathbb{I}(Y_{ip}=g)/(196N)},
+  \qquad A^{+}_{ipd}=\max(A_{ipd},0).
+  \label{eq:semantic_enrichment}
+\end{equation}
+We will report enrichment, patch-level average precision and city-block-bootstrap
+confidence intervals. Cluster-level values will be obtained by aggregating
+member dimensions without using Qwen labels. A label-free positive result would
+be selective enrichment of distinct clusters for road, building and vegetation
+rather than uniform responses across all semantic classes.
+
+\paragraph{Experiment R13: external geographic morphology.}
+Panoramas will be spatially joined to independently obtained road and building
+data. Prespecified variables will include road class, intersection density,
+building-footprint coverage, distance to the nearest building edge, local block
+size and, where available, building height. Associations with coarse- and
+fine-cluster prevalence will be estimated using city-standardized predictors and
+mixed-effects models with city-level random intercepts and slopes. Predictive
+validity will be assessed by leave-one-city-out cross-validation: models fitted
+on 29 cities must predict morphology in the held-out city above permutation
+baselines. If complete building data cannot be obtained for all cities, the
+confirmatory analysis will use a geographically stratified subset selected
+before inspecting cluster associations, and the remaining cities will be
+treated as out-of-sample replication sites where data become available.
+
+\paragraph{Experiment R14: VLM-label validation.}
+Qwen3-VL-2B will continue to receive exactly ten unique-panorama examples for
+each cluster medoid, with original image, heatmap and hotspot crop shown
+together. The 64 fine categories will be named before their 32 parents. To
+measure reliability, prompts will be repeated three times with independently
+ordered evidence sheets. Label consistency will be evaluated using semantic
+embedding similarity and agreement in the constrained semantic-type field.
+Generic-name rate, parse-failure rate, artefact probability and confidence will
+be reported. The VLM outputs will remain strictly post hoc and will not be used
+to select the number of clusters or revise membership.
+
+\paragraph{Experiment R15: blinded human audit.}
+Three independent raters will review a stratified sample containing all 32
+coarse clusters and 32 randomly selected fine clusters. For each category,
+raters will see the same ten-image evidence sheet but not the model-generated
+name. They will select a semantic type, write a short description, and score
+within-category visual coherence on a five-point scale. Agreement will be
+summarized with Fleiss' $\kappa$ for semantic type and an intraclass correlation
+coefficient for coherence. Qwen labels will be compared with consensus human
+descriptions only after consensus has been frozen.
+
+\paragraph{Experiment R16: coarse-to-fine case studies.}
+Representative branches will be selected using prespecified criteria: above-
+median split-sample stability, at least two fine children and evidence from at
+least three cities. For each selected branch, the figure will show the coarse
+medoid, its fine-child medoids, positive-activation heatmaps and city prevalence.
+Examples should include at least one built-form branch, one road-space branch
+and one vegetation or environmental branch. This presentation will demonstrate
+how a broad visual family separates into more specific spatial or morphological
+patterns without relying on isolated, hand-picked dimensions.
+
+\paragraph{Planned presentation.}
+The main figure should contain (a) a cluster-by-external-class enrichment matrix,
+(b) cross-validated associations with road and building morphology, (c) VLM and
+human agreement, and (d) two or three coarse-to-fine visual branches. Full
+evidence sheets, prompts, raw VLM responses and human-rating instructions should
+be placed in the Supplementary Information.
+
+\subsubsection*{Statistical safeguards and reporting order}
+\label{sec:results_safeguards}
+
+Primary outcomes are panorama-level masked reconstruction, matched-dimension
+seed stability, 32/64 cluster stability, city-level compositional prevalence,
+and external road/building enrichment. Patch-level observations will never be
+treated as independent replicates. Confidence intervals will use panorama
+bootstrap within cities or city-block bootstrap, depending on the estimand.
+Permutation tests will preserve city and acquisition strata wherever relevant.
+False-discovery-rate correction will be applied within each family of
+cluster-level tests. Hyperparameters, representative clusters and map colour
+limits will be fixed before inspecting the corresponding test results.
+
+The recommended execution order is R1--R4 (representation), R5--R8 (hierarchy),
+R9--R11 (cities), and R12--R16 (morphology). This order prevents semantic
+interpretation from feeding back into statistical model selection.
+
+\begin{table*}[t]
+\centering
+\caption{Priority and computational scope of the proposed experiments.}
+\label{tab:experiment_priority}
+\small
+\begin{tabularx}{\textwidth}{@{}lllX@{}}
+\toprule
+Priority & Experiments & New model training & Purpose \\
+\midrule
+P0 & R1, R2, R4 & Three full Feature-MAE seeds; matched baselines & Establish reconstruction, baseline performance and reproducibility. \\
+P0 & R5--R7 & None & Validate the five-view hierarchy using ablations and resampling. \\
+P0 & R9--R11 & None & Quantify city prevalence, spatial structure and nuisance robustness. \\
+P0 & R12, R14, R16 & Independent segmentation and repeated VLM inference & Establish interpretable morphology and coarse-to-fine evidence. \\
+P1 & R3 & Reduced-data sensitivity grid plus selected full runs & Demonstrate robustness to mask ratio, width and city coverage. \\
+P1 & R8 & Uses the three P0 seeds & Propagate training uncertainty into the hierarchy. \\
+P1 & R13, R15 & GIS preparation and human annotation & Provide strong external and human validation. \\
+\bottomrule
+\end{tabularx}
+\end{table*}

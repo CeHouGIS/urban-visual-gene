@@ -1,0 +1,13 @@
+{
+  "images": 378818,
+  "dimensions": 512,
+  "patches_per_image": 196,
+  "primary_presence": "dimension wins at least 4 patches (2.04% spatial coverage)",
+  "activation_validation": "mean-top-20 image score robust z >= 2",
+  "robust_reference_images": 60000,
+  "minimum_pair_support": 190,
+  "seed": 42,
+  "input_top1": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_32_64/top1_dimensions.npy",
+  "input_activations": "/workplace/urban_visual_gene/outputs/analysis/all_city_umap_activation/image_activations.npy",
+  "input_hierarchy": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_edp_32_64/hierarchy_arrays.npz"
+}

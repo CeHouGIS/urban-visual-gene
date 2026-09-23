@@ -1,0 +1,12 @@
+{
+  "rows": 378818,
+  "metadata_columns": 15,
+  "dimension_columns": 512,
+  "total_columns": 527,
+  "value_scale": "0 to 1",
+  "row_sum": 1.0,
+  "patches_per_image": 196,
+  "maximum_sampled_row_sum_error": 3.5762786865234375e-07,
+  "output": "/workplace/urban_visual_gene/results/image_dimension_pixel_proportions.parquet",
+  "input": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_32_64/top1_dimensions.npy"
+}
