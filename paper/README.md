@@ -15,3 +15,10 @@ and release information that cannot be inferred safely from the current artifact
 The draft deliberately distinguishes completed evidence from pending work. In
 particular, Qwen labels are reported as preliminary annotations, not validated
 semantic fidelity scores.
+
+## Atypical visual co-occurrence
+
+The paper package also includes the new E+D+P-distance-weighted co-occurrence
+analysis. Its frozen data are under `data/atypical_cooccurrence/`, Tables 6--7
+summarize the leading global and city-specific combinations, and the two
+associated figures are stored in `figures/main/`.

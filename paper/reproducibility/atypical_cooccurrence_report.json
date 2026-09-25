@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-09-25T01:10:20.629810+00:00",
+  "images": 378818,
+  "cities": 30,
+  "elements": 64,
+  "pairs": 2016,
+  "occurrence_definition": "top-8 fine elements by patch-winner count per directional image",
+  "visual_distance": "percentile-ranked Euclidean distance between fine-element centroids in the frozen E+D+P spectral embedding",
+  "minimum_global_support": 190,
+  "minimum_city_support": 50,
+  "global_significant_positive_pairs": 361,
+  "city_significant_records": 4462,
+  "cities_with_significant_pairs": 30,
+  "distance_sensitivity_spearman": {
+    "unexpected_score_cophenetic": 0.5893140090703641,
+    "unexpected_score_fused": 0.7211579763599169
+  },
+  "requested_score": "max(Pearson residual, 0) * visual distance",
+  "recommended_global_effect_score": "max(log observed/expected, 0) * visual distance",
+  "recommended_city_score": "max(log OR city - log OR rest, 0) * visual distance",
+  "multiple_testing": "BH FDR; global pairs separately and all city-pair interaction tests jointly",
+  "source_hierarchy": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_edp_32_64"
+}

@@ -16,6 +16,10 @@ claims:
 - `Fig_Global_Cooccurrence_Heatmap` and `Fig_Global_Visual_Element_Network`:
   global element combinations.
 - `Fig_Composition_vs_Cooccurrence`: comparison of two city-similarity views.
+- `Fig_Unexpected_Visual_Cooccurrence_Global`: global observed-versus-expected
+  association against frozen E+D+P visual distance.
+- `Fig_City_Specific_Atypical_Combinations`: city-versus-rest atypical
+  combination scores for the strongest element pairs.
 - `Fig_Image_Dimension_Coexistence`: within-image prevalence, spatial share,
   and supported co-occurrence of the 512 latent dimensions.
 - `Fig_Homogeneity_vs_Local_Continuity` and
