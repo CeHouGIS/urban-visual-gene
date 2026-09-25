@@ -16,8 +16,11 @@ import json
 import math
 import mmap
 import os
+import queue
+import threading
 import time
 from pathlib import Path
+from typing import Iterable, Iterator, Optional, TypeVar
 
 import numpy as np
 import torch
@@ -33,6 +36,39 @@ from scripts.multicity.patch_config import (
 )
 
 DEFAULT_DATA_ROOT = TOKEN_ROOT.parent / "feature_mae_n30x12800_qc"
+T = TypeVar("T")
+
+
+def prefetch_one(iterable: Iterable[T]) -> Iterator[T]:
+    """Overlap one CPU batch with GPU work while bounding extra host memory."""
+    source = iter(iterable)
+    items: queue.Queue[tuple[str, object]] = queue.Queue(maxsize=1)
+    permission = threading.Semaphore(1)
+
+    def produce() -> None:
+        while True:
+            # Acquire before advancing the generator so no second prefetched
+            # ndarray can be materialized behind the queued one.
+            permission.acquire()
+            try:
+                value = next(source)
+            except StopIteration:
+                items.put(("done", None))
+                return
+            except BaseException as error:
+                items.put(("error", error))
+                return
+            items.put(("item", value))
+
+    threading.Thread(target=produce, name="feature-mae-prefetch", daemon=True).start()
+    while True:
+        kind, value = items.get()
+        permission.release()
+        if kind == "done":
+            return
+        if kind == "error":
+            raise value  # type: ignore[misc]
+        yield value  # type: ignore[misc]
 
 
 def _sincos_1d(dim: int, positions: np.ndarray) -> np.ndarray:
@@ -165,6 +201,9 @@ class FilteredTokenStore:
     def __init__(
         self, cities: list[str], token_root: Path, data_root: Path,
         validation_images: int, seed: int,
+        train_manifest_root: Optional[Path] = None,
+        validation_manifest_root: Optional[Path] = None,
+        epoch_images_per_city: int = 0,
     ) -> None:
         import pandas as pd
 
@@ -173,24 +212,47 @@ class FilteredTokenStore:
         self.train_indices: list[np.ndarray] = []
         self.validation_indices: list[np.ndarray] = []
         self.counts: dict[str, int] = {}
+        self.training_counts: dict[str, int] = {}
+        self.validation_counts: dict[str, int] = {}
         for city in cities:
-            manifest_path = data_root / "filtered_manifests" / f"{city_slug(city)}.parquet"
+            manifest_root = train_manifest_root or (data_root / "filtered_manifests")
+            manifest_path = manifest_root / f"{city_slug(city)}.parquet"
             frame = pd.read_parquet(manifest_path, columns=["source_image_index"])
             indices = frame["source_image_index"].to_numpy(np.int64)
-            if len(indices) <= validation_images:
-                raise ValueError(f"{city}: only {len(indices)} clean images")
-            city_seed = seed + sum((i + 1) * ord(ch) for i, ch in enumerate(city))
-            order = np.random.default_rng(city_seed).permutation(indices)
-            self.validation_indices.append(order[:validation_images])
-            self.train_indices.append(order[validation_images:])
+            if validation_manifest_root is None:
+                if len(indices) <= validation_images:
+                    raise ValueError(f"{city}: only {len(indices)} clean images")
+                city_seed = seed + sum((i + 1) * ord(ch) for i, ch in enumerate(city))
+                order = np.random.default_rng(city_seed).permutation(indices)
+                validation = order[:validation_images]
+                training = order[validation_images:]
+            else:
+                validation_path = validation_manifest_root / f"{city_slug(city)}.parquet"
+                validation_frame = pd.read_parquet(
+                    validation_path, columns=["source_image_index"]
+                )
+                validation = validation_frame["source_image_index"].to_numpy(np.int64)
+                training = indices
+                overlap = np.intersect1d(training, validation, assume_unique=False)
+                if len(overlap):
+                    raise ValueError(
+                        f"{city}: {len(overlap)} images overlap between train and validation"
+                    )
+            self.validation_indices.append(validation)
+            self.train_indices.append(training)
             array = np.load(token_path(city, token_root), mmap_mode="r")
             if array.shape[1:] != (PATCHES_PER_IMAGE, INPUT_DIM):
                 raise ValueError(f"{city}: unexpected token shape {array.shape}")
             self.arrays.append(array)
             if hasattr(array._mmap, "madvise"):
                 array._mmap.madvise(mmap.MADV_RANDOM)
-            self.counts[city] = len(indices)
-        self.train_images_per_city = max(map(len, self.train_indices))
+            self.training_counts[city] = len(training)
+            self.validation_counts[city] = len(validation)
+            self.counts[city] = len(training) + len(validation)
+        natural_epoch_size = max(map(len, self.train_indices))
+        self.train_images_per_city = epoch_images_per_city or natural_epoch_size
+        if self.train_images_per_city <= 0:
+            raise ValueError("epoch_images_per_city must be positive")
 
     @staticmethod
     def _balanced_order(indices: np.ndarray, target: int, rng: np.random.Generator) -> np.ndarray:
@@ -261,11 +323,15 @@ def _config(args: argparse.Namespace) -> dict:
 @torch.inference_mode()
 def validate(
     model: FeatureMAE, store: FilteredTokenStore, per_city: int, microbatch: int,
+    prefetch_batches: bool = True,
 ) -> float:
     model.eval()
     total_loss = 0.0
     total_images = 0
-    for array in store.validation_batches(per_city):
+    batches = store.validation_batches(per_city)
+    if prefetch_batches:
+        batches = prefetch_one(batches)
+    for array in batches:
         for start in range(0, len(array), microbatch):
             batch = torch.from_numpy(array[start : start + microbatch]).to(
                 "cuda", non_blocking=True
@@ -296,8 +362,24 @@ def main() -> None:
     )
     parser.add_argument("--patience", type=int, default=3)
     parser.add_argument("--validation-images", type=int, default=128)
+    parser.add_argument(
+        "--train-manifest-root", type=Path,
+        help="directory containing per-city training parquet manifests",
+    )
+    parser.add_argument(
+        "--validation-manifest-root", type=Path,
+        help="directory containing fixed per-city validation parquet manifests",
+    )
+    parser.add_argument(
+        "--epoch-images-per-city", type=int, default=0,
+        help="balanced images drawn per city per epoch; zero uses the largest training split",
+    )
     parser.add_argument("--images-per-city", type=int, default=2)
     parser.add_argument("--microbatch", type=int, default=15)
+    parser.add_argument(
+        "--prefetch-batches", type=int, choices=(0, 1), default=1,
+        help="prefetch one CPU batch while the GPU processes the current batch",
+    )
     parser.add_argument("--gradient-accumulation", type=int, default=4)
     parser.add_argument(
         "--max-batches-per-epoch", type=int, default=0,
@@ -320,6 +402,9 @@ def main() -> None:
     store = FilteredTokenStore(
         args.cities, args.token_root, args.data_root,
         args.validation_images, args.seed,
+        train_manifest_root=args.train_manifest_root,
+        validation_manifest_root=args.validation_manifest_root,
+        epoch_images_per_city=args.epoch_images_per_city,
     )
     model = FeatureMAE(
         width=args.width,
@@ -350,6 +435,20 @@ def main() -> None:
     start_epoch, best_loss, stale, history, optimizer_step = 0, float("inf"), 0, [], 0
     if last_path.exists():
         checkpoint = torch.load(last_path, map_location="cuda", weights_only=False)
+        saved_config = checkpoint.get("config", {})
+        current_config = _config(args)
+        identity_keys = (
+            "width", "encoder_layers", "decoder_width", "decoder_layers",
+            "mask_ratio", "seed", "train_manifest_root",
+            "validation_manifest_root", "epoch_images_per_city",
+        )
+        mismatches = {
+            key: (saved_config.get(key), current_config.get(key))
+            for key in identity_keys
+            if key in saved_config and saved_config.get(key) != current_config.get(key)
+        }
+        if mismatches:
+            raise ValueError(f"checkpoint configuration mismatch: {mismatches}")
         model.load_state_dict(checkpoint["model"])
         optimizer.load_state_dict(checkpoint["optimizer"])
         scheduler.load_state_dict(checkpoint["scheduler"])
@@ -376,9 +475,10 @@ def main() -> None:
         optimizer.zero_grad(set_to_none=True)
         loss_sum = 0.0
         image_sum = 0
-        for batch_index, array in enumerate(
-            store.train_batches(args.images_per_city, rng), 1
-        ):
+        batches = store.train_batches(args.images_per_city, rng)
+        if args.prefetch_batches:
+            batches = prefetch_one(batches)
+        for batch_index, array in enumerate(batches, 1):
             if batch_index > batches_per_epoch:
                 break
             micro_count = math.ceil(len(array) / args.microbatch)
@@ -406,7 +506,8 @@ def main() -> None:
                     flush=True,
                 )
         validation_loss = validate(
-            model, store, max(1, args.images_per_city), args.microbatch
+            model, store, max(1, args.images_per_city), args.microbatch,
+            bool(args.prefetch_batches),
         )
         row = {
             "epoch": epoch + 1,
@@ -454,6 +555,9 @@ def main() -> None:
         "cities": args.cities,
         "clean_images_by_city": store.counts,
         "clean_images_total": sum(store.counts.values()),
+        "train_images_by_city": store.training_counts,
+        "validation_images_by_city": store.validation_counts,
+        "epoch_images_per_city": store.train_images_per_city,
         "input_dim": INPUT_DIM,
         "latent_width": args.width,
         "patch_grid": [14, 14],
@@ -463,7 +567,10 @@ def main() -> None:
         "best_epoch": best["epoch"] + 1,
         "best_metrics": best["metrics"],
         "peak_gpu_gib": torch.cuda.max_memory_allocated() / 2**30,
-        "heatmap_contract": "encode_full(images) -> [B,196,512], reshape to [B,14,14,512]",
+        "heatmap_contract": (
+            f"encode_full(images) -> [B,196,{args.width}], "
+            f"reshape to [B,14,14,{args.width}]"
+        ),
     }
     (output / "training_report.json").write_text(json.dumps(report, indent=2) + "\n")
 
