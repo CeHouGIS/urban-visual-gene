@@ -278,3 +278,6 @@ E+D+P层级已生成
 ```
 
 在上述条件满足前，报告不得将计划值或部分运行结果表述为最终科学结论。
+
+最新的中断恢复状态见
+[`scale_up_training_status_2026-09-25.md`](scale_up_training_status_2026-09-25.md)。

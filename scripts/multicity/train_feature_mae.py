@@ -16,9 +16,11 @@ import json
 import math
 import mmap
 import os
+import queue
+import threading
 import time
 from pathlib import Path
-from typing import Optional
+from typing import Iterable, Iterator, Optional, TypeVar
 
 import numpy as np
 import torch
@@ -34,6 +36,39 @@ from scripts.multicity.patch_config import (
 )
 
 DEFAULT_DATA_ROOT = TOKEN_ROOT.parent / "feature_mae_n30x12800_qc"
+T = TypeVar("T")
+
+
+def prefetch_one(iterable: Iterable[T]) -> Iterator[T]:
+    """Overlap one CPU batch with GPU work while bounding extra host memory."""
+    source = iter(iterable)
+    items: queue.Queue[tuple[str, object]] = queue.Queue(maxsize=1)
+    permission = threading.Semaphore(1)
+
+    def produce() -> None:
+        while True:
+            # Acquire before advancing the generator so no second prefetched
+            # ndarray can be materialized behind the queued one.
+            permission.acquire()
+            try:
+                value = next(source)
+            except StopIteration:
+                items.put(("done", None))
+                return
+            except BaseException as error:
+                items.put(("error", error))
+                return
+            items.put(("item", value))
+
+    threading.Thread(target=produce, name="feature-mae-prefetch", daemon=True).start()
+    while True:
+        kind, value = items.get()
+        permission.release()
+        if kind == "done":
+            return
+        if kind == "error":
+            raise value  # type: ignore[misc]
+        yield value  # type: ignore[misc]
 
 
 def _sincos_1d(dim: int, positions: np.ndarray) -> np.ndarray:
@@ -288,11 +323,15 @@ def _config(args: argparse.Namespace) -> dict:
 @torch.inference_mode()
 def validate(
     model: FeatureMAE, store: FilteredTokenStore, per_city: int, microbatch: int,
+    prefetch_batches: bool = True,
 ) -> float:
     model.eval()
     total_loss = 0.0
     total_images = 0
-    for array in store.validation_batches(per_city):
+    batches = store.validation_batches(per_city)
+    if prefetch_batches:
+        batches = prefetch_one(batches)
+    for array in batches:
         for start in range(0, len(array), microbatch):
             batch = torch.from_numpy(array[start : start + microbatch]).to(
                 "cuda", non_blocking=True
@@ -337,6 +376,10 @@ def main() -> None:
     )
     parser.add_argument("--images-per-city", type=int, default=2)
     parser.add_argument("--microbatch", type=int, default=15)
+    parser.add_argument(
+        "--prefetch-batches", type=int, choices=(0, 1), default=1,
+        help="prefetch one CPU batch while the GPU processes the current batch",
+    )
     parser.add_argument("--gradient-accumulation", type=int, default=4)
     parser.add_argument(
         "--max-batches-per-epoch", type=int, default=0,
@@ -432,9 +475,10 @@ def main() -> None:
         optimizer.zero_grad(set_to_none=True)
         loss_sum = 0.0
         image_sum = 0
-        for batch_index, array in enumerate(
-            store.train_batches(args.images_per_city, rng), 1
-        ):
+        batches = store.train_batches(args.images_per_city, rng)
+        if args.prefetch_batches:
+            batches = prefetch_one(batches)
+        for batch_index, array in enumerate(batches, 1):
             if batch_index > batches_per_epoch:
                 break
             micro_count = math.ceil(len(array) / args.microbatch)
@@ -462,7 +506,8 @@ def main() -> None:
                     flush=True,
                 )
         validation_loss = validate(
-            model, store, max(1, args.images_per_city), args.microbatch
+            model, store, max(1, args.images_per_city), args.microbatch,
+            bool(args.prefetch_batches),
         )
         row = {
             "epoch": epoch + 1,

@@ -18,7 +18,6 @@ from pathlib import Path
 DEFAULT_ROOT = Path(
     "outputs/experiments/dinov3_multicity/feature_mae_scaleup"
 )
-CPU_SET = "0-7,10-15"
 SAMPLE_SIZES = (500, 1000, 2000, 4000, 8000, 10000)
 WIDTHS = (128, 256, 512, 1024)
 MICROBATCH = {128: 240, 256: 240, 512: 240, 1024: 60}
@@ -184,7 +183,6 @@ def main() -> None:
             row["resume_count"] = str(int(row["resume_count"] or 0) + int((output / "checkpoint_last.pt").exists()))
             _write_registry(registry_path, rows)
             command = [
-                "taskset", "-c", CPU_SET,
                 sys.executable, "-m", "scripts.multicity.train_feature_mae",
                 "--output-dir", str(output),
                 "--train-manifest-root", str(args.root / "splits" / f"train_n{config['sample_size']:05d}"),
@@ -198,6 +196,7 @@ def main() -> None:
                 "--epochs", str(args.epochs),
                 "--images-per-city", str(args.images_per_city),
                 "--microbatch", str(MICROBATCH[config["width"]]),
+                "--prefetch-batches", "1",
                 "--gradient-accumulation", "1",
                 "--seed", str(config["seed"]),
             ]
@@ -206,9 +205,9 @@ def main() -> None:
             env.update(
                 {
                     "CUDA_VISIBLE_DEVICES": "0",
-                    "OMP_NUM_THREADS": "14",
-                    "MKL_NUM_THREADS": "14",
-                    "OPENBLAS_NUM_THREADS": "14",
+                    "OMP_NUM_THREADS": str(os.cpu_count() or 1),
+                    "MKL_NUM_THREADS": str(os.cpu_count() or 1),
+                    "OPENBLAS_NUM_THREADS": str(os.cpu_count() or 1),
                 }
             )
             safety_stop = ""
