@@ -1,0 +1,13 @@
+{
+  "source": "image_graph_features.npy",
+  "shape": [
+    378818,
+    2081
+  ],
+  "transform": "sqrt of Dirichlet-smoothed node composition and per-image edge composition, plus standardized log edge density",
+  "alpha": 0.01,
+  "node_dimensions": 64,
+  "edge_dimensions": 2016,
+  "density_dimension": 1,
+  "density_median_raw": 0.5054945349693298
+}

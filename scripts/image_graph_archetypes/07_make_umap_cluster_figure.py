@@ -16,7 +16,7 @@ from scripts.image_graph_archetypes.utils import OUTPUT_ROOT, assert_safe_affini
 def run(args: argparse.Namespace) -> None:
     assert_safe_affinity()
     output = args.output
-    features = np.load(output / "image_graph_features.npy", mmap_mode="r")
+    features = np.load(output / args.features, mmap_mode="r")
     metadata = pd.read_parquet(output / "image_graph_metadata.parquet")
     if len(features) != len(metadata):
         raise ValueError("feature and metadata lengths do not match")
@@ -46,15 +46,16 @@ def run(args: argparse.Namespace) -> None:
     ax.set_ylabel("UMAP 2")
     ax.set_title("Graph descriptors in UMAP space")
     ax.spines[["top", "right"]].set_visible(False)
+    descriptor_label = "smoothed composition descriptors" if "smoothed" in args.features else "raw Graph descriptors"
     fig.suptitle(
         f"Image Graph Descriptors: UMAP (n={len(features):,}; "
         f"plot sample={len(coords):,})\n"
-        f"raw {features.shape[1]}D descriptors; n_neighbors={args.n_neighbors}, "
+        f"{descriptor_label}, {features.shape[1]}D; n_neighbors={args.n_neighbors}, "
         f"min_dist={args.min_dist}, metric={args.metric}", fontsize=13,
     )
     args.figure_root.mkdir(parents=True, exist_ok=True)
-    fig.savefig(args.figure_root / "Fig_Graph_Archetype_UMAP.png", dpi=220, bbox_inches="tight")
-    fig.savefig(args.figure_root / "Fig_Graph_Archetype_UMAP.pdf", bbox_inches="tight")
+    fig.savefig(args.figure_root / args.figure_name, dpi=220, bbox_inches="tight")
+    fig.savefig(args.figure_root / args.figure_name.replace(".png", ".pdf"), bbox_inches="tight")
     plt.close(fig)
 
 
@@ -62,6 +63,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=OUTPUT_ROOT)
     parser.add_argument("--figure-root", type=Path, default=Path("paper/figures/main"))
+    parser.add_argument("--features", default="image_graph_features.npy")
+    parser.add_argument("--figure-name", default="Fig_Graph_Archetype_UMAP.png")
     parser.add_argument("--sample-size", type=int, default=24000)
     parser.add_argument("--n-neighbors", type=int, default=30)
     parser.add_argument("--min-dist", type=float, default=0.15)
