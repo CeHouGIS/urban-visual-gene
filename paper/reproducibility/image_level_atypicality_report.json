@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-09-25T01:54:51.850323+00:00",
+  "images": 378818,
+  "elements": 64,
+  "pairs": 2016,
+  "presence_rule": "fine element wins at least 4 of 196 patches in the same directional image",
+  "minimum_patch_share": 0.02040816326530612,
+  "mean_active_elements_per_image": 17.226282805991268,
+  "median_active_elements_per_image": 17.0,
+  "minimum_pair_support": 190,
+  "supported_positive_lift_pairs": 919,
+  "significant_positive_pairs_bh_005": 788,
+  "sample_pair_score": "pair unexpected_score * min(element_a patch share, element_b patch share)",
+  "image_score_max": "maximum significant sample-pair score in the image",
+  "image_score_top3_mean": "mean of the three strongest significant sample-pair scores in the image",
+  "images_with_positive_score": 378818,
+  "representative_pairs": 20,
+  "samples_per_pair": 5,
+  "semantic_labels_used_for_scoring": false
+}

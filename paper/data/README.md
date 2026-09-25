@@ -7,3 +7,5 @@
 `umap/image_umap_coordinates.parquet` 包含 378,818 张质控后图像的二维坐标和标签。体积更大的 CSV 版本只保留在根目录 `results/`，避免论文包内重复两种等价格式。
 
 `atypical_cooccurrence/` 保存新指标的完整冻结结果。其中 `unexpected_score` 是原始 Pearson residual × E+D+P distance，`visual_bridge_index` 是 log-lift × distance，`city_atypicality_index` 是 city-versus-rest log-odds difference × distance。
+
+`image_level_atypicality/` 是严格的同图版本：一个元素只有在同一张方向图中主导至少4/196个 patch 才算出现。它同时保存元素对分数、每张图的最大及 top-3 异常度，以及用于激活叠加图的代表样本。

@@ -22,3 +22,8 @@ The paper package also includes the new E+D+P-distance-weighted co-occurrence
 analysis. Its frozen data are under `data/atypical_cooccurrence/`, Tables 6--7
 summarize the leading global and city-specific combinations, and the two
 associated figures are stored in `figures/main/`.
+
+The strict same-image extension is stored under `data/image_level_atypicality/`.
+It requires both elements to win at least four of 196 patches in the same
+directional image; Table 8 and `Fig_Image_Level_Atypical_Coactivation` report
+the resulting pairs and representative activation overlays.

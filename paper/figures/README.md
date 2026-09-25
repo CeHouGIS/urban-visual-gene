@@ -20,6 +20,9 @@ claims:
   association against frozen E+D+P visual distance.
 - `Fig_City_Specific_Atypical_Combinations`: city-versus-rest atypical
   combination scores for the strongest element pairs.
+- `Fig_Image_Level_Atypical_Coactivation`: representative directional images
+  in which both elements pass the four-patch threshold; red and cyan overlays
+  show the two winning-patch regions in the same image.
 - `Fig_Image_Dimension_Coexistence`: within-image prevalence, spatial share,
   and supported co-occurrence of the 512 latent dimensions.
 - `Fig_Homogeneity_vs_Local_Continuity` and
