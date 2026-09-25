@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-09-25T03:06:59.528745+00:00",
+  "training_images": 60000,
+  "cities": 30,
+  "requested_sample_per_city": 2000,
+  "panorama_deduplicated_within_city": true,
+  "random_seed": 42,
+  "input_dimensions": 2080,
+  "standard_scaler": false,
+  "hellinger_transform": false,
+  "pca_components": 44,
+  "pca_explained_variance": 0.9001179933547974,
+  "pca_variance_target": 0.9,
+  "algorithm": "MiniBatchKMeans",
+  "k": 8,
+  "batch_size": 4096,
+  "n_init": 20,
+  "max_iter": 300,
+  "training_cluster_counts_raw": [
+    8864,
+    8306,
+    4862,
+    7368,
+    5915,
+    7090,
+    8825,
+    8770
+  ],
+  "inertia": 1501.9542236328125
+}

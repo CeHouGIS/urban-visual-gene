@@ -1,0 +1,15 @@
+{
+  "created_utc": "2026-09-25T03:09:24.923842+00:00",
+  "atlas_png": "paper/figures/main/Fig_Graph_Composition_Archetype_Atlas.png",
+  "atlas_pdf": "paper/figures/main/Fig_Graph_Composition_Archetype_Atlas.pdf",
+  "qa_png": "paper/figures/main/Fig_Graph_QA.png",
+  "city_heatmap_png": "paper/figures/main/Fig_City_Archetype_Heatmap.png",
+  "city_heatmap_pdf": "paper/figures/main/Fig_City_Archetype_Heatmap.pdf",
+  "archetypes": 8,
+  "prototype_graph_top_nodes": 15,
+  "prototype_graph_top_edges": 25,
+  "additional_edge_endpoint_nodes_drawn_when_needed": true,
+  "bar_chart_top_nodes": 10,
+  "displayed_representatives_per_archetype": 6,
+  "fixed_node_coordinates": true
+}

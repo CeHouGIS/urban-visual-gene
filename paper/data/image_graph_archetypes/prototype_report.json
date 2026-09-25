@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-09-25T03:07:03.428162+00:00",
+  "images": 378818,
+  "archetypes": 8,
+  "prototype_definition": "mean original 2080D graph descriptor over assigned images",
+  "prototype_node_rows": 512,
+  "prototype_edge_rows": 16128,
+  "fixed_layout_training_images": 60000,
+  "fixed_layout_nodes": 64,
+  "global_mean_positive_edges": 2011,
+  "fixed_layout_edges": 270,
+  "fixed_layout_sparsification": "maximum-weight spanning tree plus top 256 global mean-adjacency edges",
+  "representatives_per_archetype": 12,
+  "representative_panoramas_unique_within_archetype": true,
+  "cities": 30
+}
