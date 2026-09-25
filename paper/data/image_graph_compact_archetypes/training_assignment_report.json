@@ -1,0 +1,63 @@
+{
+  "created_utc": "2026-09-25T15:58:41.809880+00:00",
+  "images": 378818,
+  "training_images": 60000,
+  "cities": 30,
+  "input_dimensions": 201,
+  "standard_scaler": false,
+  "pca_components": 112,
+  "pca_explained_variance": 0.90037602186203,
+  "pca_variance_target": 0.9,
+  "algorithm": "MiniBatchKMeans",
+  "k": 8,
+  "batch_size": 4096,
+  "n_init": 20,
+  "max_iter": 300,
+  "random_seed": 42,
+  "training_cluster_counts_raw": [
+    5573,
+    8613,
+    6854,
+    7412,
+    7686,
+    7391,
+    9988,
+    6483
+  ],
+  "raw_cluster_counts": [
+    35067,
+    54961,
+    42898,
+    46644,
+    49794,
+    46445,
+    63130,
+    39879
+  ],
+  "archetype_counts": [
+    63130,
+    54961,
+    49794,
+    46644,
+    46445,
+    42898,
+    39879,
+    35067
+  ],
+  "archetype_shares": [
+    0.16664994799613533,
+    0.14508550280081728,
+    0.13144570743734457,
+    0.12313036867308312,
+    0.1226050504463885,
+    0.1132417150188217,
+    0.10527218875555015,
+    0.09256951887185931
+  ],
+  "inertia": 47666.390625,
+  "distance_median": 0.8828920722007751,
+  "distance_margin_median": 0.025918245315551758,
+  "node_pca_loading_energy_share": 0.38741445541381836,
+  "boundary_density_pca_loading_energy_share": 0.001365192766700472,
+  "spectral_topology_pca_loading_energy_share": 0.6112203598022461
+}

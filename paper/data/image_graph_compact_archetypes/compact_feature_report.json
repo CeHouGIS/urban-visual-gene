@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-09-25T15:58:38.389439+00:00",
+  "source_feature_file": "paper/data/image_graph_archetypes/image_graph_features.npy",
+  "images": 378818,
+  "cities": 30,
+  "training_images": 60000,
+  "training_panorama_deduplicated_within_city": true,
+  "shape": [
+    378818,
+    201
+  ],
+  "dtype": "float32",
+  "finite": true,
+  "maximum_squared_node_sum_error": 1.1920928955078125e-07,
+  "maximum_boundary_density_reconstruction_error": 1.1920928955078125e-07,
+  "maximum_q0_sum_error": 2.384185791015625e-07,
+  "maximum_smoothed_edge_sum_error": 1.1920928955078125e-07,
+  "random_20_exact_rebuild_max_abs_error": 0.0,
+  "global_laplacian_zero_modes": 1,
+  "spectral_basis_orthonormal_max_abs_error": 1.1920928955078125e-07,
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "node_variance_sum": 0.36846958909598315,
+  "boundary_density_variance": 0.0019583392764370893,
+  "spectral_topology_variance_sum": 0.6035499753362761,
+  "total_variance_sum": 0.9739779037086964
+}

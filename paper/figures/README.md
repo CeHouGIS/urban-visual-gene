@@ -27,6 +27,12 @@ claims:
   and supported co-occurrence of the 512 latent dimensions.
 - `Fig_Homogeneity_vs_Local_Continuity` and
   `Fig_Within_City_Visual_Structure`: within-city spatial organization.
+- `Fig_Compact_Graph_Archetype_Atlas`: eight recurring image-level graph
+  compositions obtained from the 201D compact spectral encoding.
+- `Fig_Compact_Graph_City_Heatmap`: descriptive city prevalence of the compact
+  image-level graph archetypes.
+- `Fig_Compact_Graph_QA`: spectrum and block-level diagnostics for the compact
+  encoding.
 
 ## Supplementary figures
 

@@ -27,3 +27,12 @@ The strict same-image extension is stored under `data/image_level_atypicality/`.
 It requires both elements to win at least four of 196 patches in the same
 directional image; Table 8 and `Fig_Image_Level_Atypical_Coactivation` report
 the resulting pairs and representative activation overlays.
+
+## Compact image-graph archetypes
+
+The compact graph experiment represents each directional image with 64
+square-root node-area coordinates, one boundary-density coordinate, and 136
+composition-corrected spectral topology coordinates.  The implementation and
+full-data results are documented in
+`image_graph_compact_archetypes_experiment_report.md`; frozen summary outputs
+are under `data/image_graph_compact_archetypes/`.

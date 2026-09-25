@@ -1,0 +1,17 @@
+{
+  "encoding": "sqrt(node_area) + boundary_density + vech(U.T @ residual_adjacency @ U)",
+  "dimensions": {
+    "node_composition": 64,
+    "boundary_density": 1,
+    "spectral_topology": 136,
+    "total": 201
+  },
+  "spectral_rank": 16,
+  "edge_null": "independent mixing conditional on unlike-category contact",
+  "edge_smoothing": "(C_ij + alpha*q0_ij) / (C_cross + alpha)",
+  "alpha": 20.0,
+  "epsilon": 1e-06,
+  "basis": "non-constant eigenvectors of training-mean normalized Laplacian",
+  "basis_city_labels_used": false,
+  "semantic_labels_used": false
+}

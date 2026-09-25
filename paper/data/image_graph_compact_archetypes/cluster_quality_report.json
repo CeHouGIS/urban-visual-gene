@@ -1,0 +1,51 @@
+{
+  "sample_size": 5000,
+  "random_seed": 42,
+  "space": "retained PCA coordinates",
+  "mean_silhouette": 0.016656458377838135,
+  "median_silhouette": 0.014618593268096447,
+  "negative_silhouette_share": 0.2218,
+  "by_archetype": {
+    "A01": {
+      "n": 850,
+      "mean": 0.008505848236382008,
+      "negative_share": 0.32
+    },
+    "A02": {
+      "n": 725,
+      "mean": 0.03465208783745766,
+      "negative_share": 0.004137931034482759
+    },
+    "A03": {
+      "n": 660,
+      "mean": 0.024673907086253166,
+      "negative_share": 0.051515151515151514
+    },
+    "A04": {
+      "n": 607,
+      "mean": 3.2597945391898975e-05,
+      "negative_share": 0.5667215815485996
+    },
+    "A05": {
+      "n": 612,
+      "mean": 0.02683655172586441,
+      "negative_share": 0.08823529411764706
+    },
+    "A06": {
+      "n": 568,
+      "mean": 0.006339636165648699,
+      "negative_share": 0.3785211267605634
+    },
+    "A07": {
+      "n": 523,
+      "mean": 0.02088516764342785,
+      "negative_share": 0.05736137667304015
+    },
+    "A08": {
+      "n": 455,
+      "mean": 0.008081662468612194,
+      "negative_share": 0.34505494505494505
+    }
+  },
+  "interpretation": "descriptive diagnostic only; not used for K selection"
+}

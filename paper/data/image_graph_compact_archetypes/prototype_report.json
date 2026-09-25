@@ -1,0 +1,11 @@
+{
+  "created_utc": "2026-09-25T15:58:43.038204+00:00",
+  "images": 378818,
+  "archetypes": 8,
+  "prototype_definition": "mean original 2080D graph descriptor for compact-encoding assignments",
+  "representatives_per_archetype": 12,
+  "representative_panoramas_unique_within_archetype": true,
+  "cities": 30,
+  "fixed_layout_nodes": 64,
+  "fixed_layout_edges": 270
+}
