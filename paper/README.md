@@ -36,3 +36,7 @@ composition-corrected spectral topology coordinates.  The implementation and
 full-data results are documented in
 `image_graph_compact_archetypes_experiment_report.md`; frozen summary outputs
 are under `data/image_graph_compact_archetypes/`.
+
+The linked ten-image diagnostic atlas, individual image graphs, complete 512D
+activation profiles, and winner-patch counts are described in
+`compact_graph_10_examples_guide.md`.

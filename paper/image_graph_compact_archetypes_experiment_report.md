@@ -77,3 +77,11 @@ The new descriptor is better aligned with the graph question, but the clusters s
 - Reproducible entry point: `run_image_graph_compact_archetypes.py`
 
 The original V1 files under `paper/data/image_graph_archetypes/` were not overwritten.
+
+## Ten image-level examples
+
+An additional diagnostic atlas shows ten centroid-near images, their 14×14 F
+maps, image-specific node/edge graphs, complete 512D standardized activation
+profiles, and 512D top-1 winner-patch counts. See
+`compact_graph_10_examples_guide.md` and
+`paper/figures/supplementary/compact_graph_examples/`.

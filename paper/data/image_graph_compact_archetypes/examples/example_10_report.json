@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-09-25T16:20:41.967020+00:00",
+  "images": 10,
+  "selection": "rank-1 centroid representative from A01-A08 plus rank-2 from A01-A02",
+  "panorama_unique": true,
+  "graph": "image-specific F graph; node area and 4-neighbour boundary contacts",
+  "displayed_graph_nodes": "top 12 area nodes plus endpoints of displayed edges",
+  "displayed_graph_edges": "top 18 nonzero edges",
+  "graph_layout": "shared global coordinates cropped and rescaled to each visible subgraph",
+  "activation_score": "mean of strongest 20 of 196 patch responses per dimension",
+  "activation_display": "global standardized activation from cached all-image z-score array",
+  "spatial_support": "number of 196 patches for which each D dimension is the top-1 winner",
+  "atlas_png": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10_Image_Examples.png",
+  "atlas_pdf": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10_Image_Examples.pdf",
+  "activation_heatmap_png": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10x512_Activations.png",
+  "activation_heatmap_pdf": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10x512_Activations.pdf",
+  "individual_figure_directory": "paper/figures/supplementary/compact_graph_examples/individual",
+  "selected_image_ids": [
+    368570,
+    147311,
+    255578,
+    162285,
+    233498,
+    375393,
+    187878,
+    101654,
+    340658,
+    313815
+  ]
+}

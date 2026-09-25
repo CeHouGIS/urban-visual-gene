@@ -49,6 +49,9 @@ metrics, sensitivity results, and detailed variants:
 - `Fig_Prevalent_Dimension_Combinations`: the most frequent within-image
   dimension pairs and triples, with their conditional spatial proportions.
 - `Fig_Global_Visual_Element_Network_Detailed`.
+- `compact_graph_examples/`: a ten-image atlas, a 10×512 activation heatmap,
+  and individual high-resolution graph/activation panels for the compact graph
+  experiment.
 
 Interactive HTML figures are stored in `interactive/`. Superseded figures are
 stored under `paper/archive/` rather than mixed with current results.

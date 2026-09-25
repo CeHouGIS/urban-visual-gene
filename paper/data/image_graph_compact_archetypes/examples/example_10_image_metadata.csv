@@ -1,0 +1,11 @@
+sample_id,selection_reason,archetype_id,rank,image_id,panorama_id,city,image_path,jpg_offset,jpg_size,distance_to_centroid
+S01,A01 centroid representative rank 1,A01,1,368570,BFlilbUSNYggO3YcnRY3kg,UnitedStates/NewYorkCity,/nas_data_24T/GSV/packages_main/cities/UnitedStates/NewYorkCity/shard-000199.tar,510162432,91160,0.6075841188430786
+S02,A02 centroid representative rank 1,A02,1,147311,Ow2PN8qSvoYmbOVF2BS6Yg,Indonesia/Jakarta,/nas_data_24T/GSV/packages_main/cities/Indonesia/Jakarta/shard-000496.tar,37248000,60550,0.6035736203193665
+S03,A03 centroid representative rank 1,A03,1,255578,yyoWUgFTg_X_I71bkwbjXQ,Singapore/Singapore,/nas_data_24T/GSV/packages_main/cities/Singapore/Singapore/shard-000090.tar,686771712,100656,0.5752986669540405
+S04,A04 centroid representative rank 1,A04,1,162285,1FuSNLk-chbGRLtqokanmg,Japan/Osaka,/nas_data_24T/GSV/packages_main/cities/Japan/Osaka/shard-000040.tar,391941632,94883,0.6264272332191467
+S05,A05 centroid representative rank 1,A05,1,233498,yR4HaQ5uu8VvUqcHLm4yFA,Philippines/Manila,/nas_data_24T/GSV/packages_main/cities/Philippines/Manila/shard-000401.tar,390896128,94461,0.6280258893966675
+S06,A06 centroid representative rank 1,A06,1,375393,GdkSU38FyCSUDyaROqGmVQ,UnitedStates/NewYorkCity,/nas_data_24T/GSV/packages_main/cities/UnitedStates/NewYorkCity/shard-000287.tar,243494912,123203,0.6516963243484497
+S07,A07 centroid representative rank 1,A07,1,187878,CyGzAR_d_Mi7OujGYCmDmQ,Mexico/MexicoCity,/nas_data_24T/GSV/packages_main/cities/Mexico/MexicoCity/shard-000256.tar,472771072,88155,0.6412482857704163
+S08,A08 centroid representative rank 1,A08,1,101654,fooe9wu9hS1VqmJGXcpbcw,Colombia/Bogota,/nas_data_24T/GSV/packages_main/cities/Colombia/Bogota/shard-000075.tar,454499328,97425,0.634343147277832
+S09,A01 centroid representative rank 2,A01,2,340658,B5LhM2iZOdu-wn8oNo_rGg,Turkey/Istanbul,/nas_data_24T/GSV/packages_main/cities/Turkey/Istanbul/shard-000094.tar,433880064,51661,0.6206450462341309
+S10,A02 centroid representative rank 2,A02,2,313815,0TQdXmdtxp37hyi65WLv6w,Taiwan/Taipei,/nas_data_24T/GSV/packages_main/cities/Taiwan/Taipei/shard-000006.tar,8385024,68719,0.605124294757843

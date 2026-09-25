@@ -11,3 +11,6 @@
 `image_level_atypicality/` 是严格的同图版本：一个元素只有在同一张方向图中主导至少4/196个 patch 才算出现。它同时保存元素对分数、每张图的最大及 top-3 异常度，以及用于激活叠加图的代表样本。
 
 `image_graph_compact_archetypes/` 保存 201 维紧凑图编码实验的冻结摘要：64 维面积组成、1 维边界密度与 136 维组成校正谱拓扑。大型逐图特征、模型和 parquet 文件仍仅保留在本地。
+
+其中 `image_graph_compact_archetypes/examples/` 保存十张代表图的 512D
+连续激活、winner-patch 计数和 top graph features，便于复核示例图。
