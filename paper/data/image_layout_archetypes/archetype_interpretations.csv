@@ -1,0 +1,9 @@
+archetype_id,provisional_name_en,provisional_name_zh,visual_audit_summary,interpretation_status
+A01,Dense enclosed mixed street,高围合混合街巷,"Close building edges, narrow carriageways, service access, parked vehicles, and visually enclosed lower canvas",post-hoc visual audit; not used by clustering
+A02,Tree-canopy and landscaped edge,树冠覆盖与绿化边缘,"Tree-dominated upper and side canvas, landscaped verges, shaded paths, and relatively weak built enclosure",post-hoc visual audit; not used by clustering
+A03,Open streetlit roadway,开敞路灯道路,"Open sky and roadway, repeated streetlight or pole structure, and a comparatively clear forward corridor",post-hoc visual audit; not used by clustering
+A04,Built residential street,建成区住宅街道,"Continuous or semi-continuous buildings, sidewalks or parking, and a legible neighborhood street section",post-hoc visual audit; not used by clustering
+A05,Infrastructure and utility corridor,基础设施与市政廊道,"Elevated structures, utility lines, fences, or linear service infrastructure organize the street canvas",post-hoc visual audit; not used by clustering
+A06,Tree-framed traffic corridor,树木框景交通廊道,"Motor-traffic corridor framed by vegetation or open verges, ranging from urban arterials to shaded roads",post-hoc visual audit; not used by clustering
+A07,Walled roadside edge,围墙式道路边缘,"Long walls, fences, embankments, or hard parcel boundaries dominate one or both street edges",post-hoc visual audit; not used by clustering
+A08,Open peripheral arterial,开放型外围干道,"Broad open carriageway, extensive sky, sparse frontage, and peripheral or industrial roadside character",post-hoc visual audit; not used by clustering

@@ -1,0 +1,96 @@
+{
+  "created_utc": "2026-09-25T02:21:26.587192+00:00",
+  "unit_of_analysis": "directional street-view image",
+  "images": 378818,
+  "cities": 30,
+  "sample_images": 60000,
+  "sample_per_city": 2000,
+  "sample_panorama_deduplicated": true,
+  "sample_city_balance_min_max": [
+    2000,
+    2000
+  ],
+  "main_representation": "64 frozen fine elements x 3 x 3 equal-weight canvas regions",
+  "composition_baseline": "64 frozen fine-element whole-image shares",
+  "patch_grid": [
+    14,
+    14
+  ],
+  "region_edges": [
+    0,
+    5,
+    9,
+    14
+  ],
+  "transform": "square-root (Hellinger) followed by PCA",
+  "pca_variance_target": 0.9,
+  "spatial_pca_components": 152,
+  "spatial_pca_variance_retained": 0.90082186460495,
+  "composition_pca_components": 43,
+  "composition_pca_variance_retained": 0.9051358103752136,
+  "coarse_spatial_sensitivity": "32 frozen coarse elements x 3 x 3 equal-weight canvas regions",
+  "coarse_spatial_pca_components": 101,
+  "coarse_spatial_pca_variance_retained": 0.9009799957275391,
+  "dimension_composition_sensitivity": "512 original dimension whole-image shares",
+  "dimension_composition_pca_components": 135,
+  "dimension_composition_pca_variance_retained": 0.9001967906951904,
+  "algorithm": "MiniBatchKMeans",
+  "k_candidates": [
+    6,
+    8,
+    10,
+    12,
+    15,
+    20
+  ],
+  "selected_k": 8,
+  "selection_rule": "highest mean percentile rank of silhouette, inverse Davies-Bouldin, initialization ARI, minimum cluster fraction, and normalized size entropy; clusters below 1% excluded when possible",
+  "selected_model_metrics": {
+    "silhouette": 0.02135307714343071,
+    "calinski_harabasz": 87.74909439420914,
+    "davies_bouldin": 4.441298678778885,
+    "initialization_stability_ari": 0.2975151603881995,
+    "minimum_cluster_fraction": 0.10978333333333333,
+    "maximum_cluster_fraction": 0.14986666666666668,
+    "normalized_size_entropy": 0.9974729228791328,
+    "selection_score": 0.8
+  },
+  "best_silhouette_by_representation": {
+    "coarse_spatial": {
+      "k": 6,
+      "silhouette": 0.027241231873631477,
+      "initialization_stability_ari": 0.27949611496377796
+    },
+    "composition": {
+      "k": 8,
+      "silhouette": 0.03222624212503433,
+      "initialization_stability_ari": 0.3370069743075301
+    },
+    "dimension_composition": {
+      "k": 6,
+      "silhouette": 0.03202195465564728,
+      "initialization_stability_ari": 0.470156793910114
+    },
+    "spatial": {
+      "k": 6,
+      "silhouette": 0.022017646580934525,
+      "initialization_stability_ari": 0.37955424691162354
+    }
+  },
+  "random_seed": 42,
+  "archetype_order": "descending full-dataset prevalence",
+  "smallest_archetype_images": 42138,
+  "smallest_archetype_fraction": 0.11123547455506338,
+  "median_assignment_confidence": 0.03826698660850525,
+  "assignment_confidence_quantiles": {
+    "0.25": 0.016755759716033936,
+    "0.5": 0.03826698660850525,
+    "0.75": 0.06977172195911407,
+    "0.9": 0.10346294641494751,
+    "0.95": 0.12437264025211316
+  },
+  "semantic_labels_used_for_clustering": false,
+  "city_used_for_clustering": false,
+  "city_used_for_balanced_sampling": true,
+  "interpretation_caveat": "These are directional-image visual scene archetypes, not plan-view urban morphology classes."
+}
