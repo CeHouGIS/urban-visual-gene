@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-25T16:20:41.967020+00:00",
+  "created_utc": "2026-09-25T23:59:41.551502+00:00",
   "images": 10,
   "selection": "rank-1 centroid representative from A01-A08 plus rank-2 from A01-A02",
   "panorama_unique": true,
@@ -12,6 +12,8 @@
   "spatial_support": "number of 196 patches for which each D dimension is the top-1 winner",
   "atlas_png": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10_Image_Examples.png",
   "atlas_pdf": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10_Image_Examples.pdf",
+  "overlay_atlas_png": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10_Image_Activation_Overlays.png",
+  "overlay_atlas_pdf": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10_Image_Activation_Overlays.pdf",
   "activation_heatmap_png": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10x512_Activations.png",
   "activation_heatmap_pdf": "paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10x512_Activations.pdf",
   "individual_figure_directory": "paper/figures/supplementary/compact_graph_examples/individual",

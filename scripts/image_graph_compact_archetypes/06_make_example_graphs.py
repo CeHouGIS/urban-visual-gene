@@ -15,6 +15,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from PIL import Image
 
 from scripts.image_graph_archetypes.utils import (
     ADJACENCIES,
@@ -190,6 +191,20 @@ def winner_panel(ax, winner_counts: np.ndarray) -> None:
     ax.spines[["top", "right"]].set_visible(False)
 
 
+def activation_overlay(
+    original: Image.Image, f_map: np.ndarray, alpha: float = 0.42
+) -> np.ndarray:
+    """Blend the categorical 14×14 F-winner activation map over the photo."""
+    rgb = np.asarray(original.convert("RGB"), dtype=np.float32) / 255.0
+    colours = plt.get_cmap("turbo")(f_map / (NODES - 1))[..., :3]
+    colour_image = Image.fromarray(
+        np.uint8(np.clip(colours, 0, 1) * 255), mode="RGB"
+    ).resize(original.size, resample=Image.Resampling.NEAREST)
+    overlay = np.asarray(colour_image, dtype=np.float32) / 255.0
+    blended = (1.0 - alpha) * rgb + alpha * overlay
+    return np.uint8(np.clip(blended, 0, 1) * 255)
+
+
 def make_atlas(
     selected: pd.DataFrame,
     graph_vectors: np.ndarray,
@@ -201,15 +216,16 @@ def make_atlas(
 ) -> None:
     node_scale = float(graph_vectors[:, :NODES].max())
     contact_scale = float((graph_vectors[:, NODES:] * ADJACENCIES).max())
-    fig = plt.figure(figsize=(24, 27), constrained_layout=True)
+    fig = plt.figure(figsize=(19, 27), constrained_layout=True)
     grid = fig.add_gridspec(
-        10, 5, width_ratios=[2.4, 1.35, 2.15, 4.0, 4.0],
+        10, 4, width_ratios=[2.65, 1.45, 2.35, 4.7],
         hspace=0.12, wspace=0.06,
     )
     cmap = plt.get_cmap("turbo", NODES)
     for row_index, row in selected.iterrows():
         ax_original = fig.add_subplot(grid[row_index, 0])
-        ax_original.imshow(read_original(row))
+        original = read_original(row)
+        ax_original.imshow(activation_overlay(original, f_maps[row_index]))
         city = str(row["city"]).split("/")[-1]
         ax_original.set_title(
             f"{row['sample_id']} · {row['archetype_id']} · {city}\n"
@@ -232,22 +248,47 @@ def make_atlas(
         )
         ax_graph.set_title("Image graph", fontsize=7)
 
-        ax_activation = fig.add_subplot(grid[row_index, 3])
-        activation_panel(ax_activation, z_scores[row_index])
-        ax_activation.set_title(
-            "512D activation strength (mean-top-20; global z-score)", fontsize=7
-        )
-
-        ax_winner = fig.add_subplot(grid[row_index, 4])
+        ax_winner = fig.add_subplot(grid[row_index, 3])
         winner_panel(ax_winner, winner_counts[row_index])
         ax_winner.set_title("512D spatial support (winner patches / 196)", fontsize=7)
     fig.suptitle(
-        "Ten image-level graph examples and their complete 512D Feature-MAE activation profiles\n"
-        "Node size = F area; edge width = 4-neighbour contacts; dashed red line = activation z=2",
+        "Ten image-level graph examples with activation overlaid on the photographs\n"
+        "Overlay colour = patch-winning F category; node size = F area; edge width = 4-neighbour contacts",
         fontsize=15,
     )
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=220, facecolor="white")
+    fig.savefig(output.with_suffix(".pdf"), facecolor="white")
+    plt.close(fig)
+
+
+def make_overlay_atlas(
+    selected: pd.DataFrame,
+    f_maps: np.ndarray,
+    graph_vectors: np.ndarray,
+    output: Path,
+) -> None:
+    """Render a photo-focused 2×5 atlas of categorical activation overlays."""
+    fig, axes = plt.subplots(2, 5, figsize=(18, 7.4), constrained_layout=True)
+    for index, (ax, (_, row)) in enumerate(zip(axes.flat, selected.iterrows())):
+        original = read_original(row)
+        ax.imshow(activation_overlay(original, f_maps[index], alpha=0.45))
+        areas = graph_vectors[index, :NODES]
+        top = np.argsort(-areas)[:4]
+        top_text = " · ".join(f"F{x:03d} {areas[x]:.0%}" for x in top)
+        city = str(row["city"]).split("/")[-1]
+        ax.set_title(
+            f"{row['sample_id']} · {row['archetype_id']} · {city}\n{top_text}",
+            fontsize=8,
+        )
+        ax.axis("off")
+    fig.suptitle(
+        "Feature-MAE activation overlays for ten graph-archetype representatives\n"
+        "Each translucent colour is the frozen F category winning that 14×14 patch",
+        fontsize=14,
+    )
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output, dpi=240, facecolor="white")
     fig.savefig(output.with_suffix(".pdf"), facecolor="white")
     plt.close(fig)
 
@@ -414,9 +455,11 @@ def run(args: argparse.Namespace) -> dict:
 
     atlas_path = args.figure_root / "Fig_Compact_Graph_10_Image_Examples.png"
     heatmap_path = args.figure_root / "Fig_Compact_Graph_10x512_Activations.png"
+    overlay_path = args.figure_root / "Fig_Compact_Graph_10_Image_Activation_Overlays.png"
     make_atlas(
         selected, graph_vectors, f_maps, z_scores, winner_counts, positions, atlas_path
     )
+    make_overlay_atlas(selected, f_maps, graph_vectors, overlay_path)
     make_activation_heatmap(selected, z_scores, heatmap_path)
     make_individual_figures(
         selected, graph_vectors, f_maps, z_scores, winner_counts, positions,
@@ -437,6 +480,8 @@ def run(args: argparse.Namespace) -> dict:
         "spatial_support": "number of 196 patches for which each D dimension is the top-1 winner",
         "atlas_png": str(atlas_path),
         "atlas_pdf": str(atlas_path.with_suffix(".pdf")),
+        "overlay_atlas_png": str(overlay_path),
+        "overlay_atlas_pdf": str(overlay_path.with_suffix(".pdf")),
         "activation_heatmap_png": str(heatmap_path),
         "activation_heatmap_pdf": str(heatmap_path.with_suffix(".pdf")),
         "individual_figure_directory": str(args.figure_root / "individual"),
