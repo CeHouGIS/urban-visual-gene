@@ -15,4 +15,8 @@ Graph 总图：`paper/figures/supplementary/multi_area_four_directions/Fig_Multi
 
 方向 archetype 矩阵：`paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Archetype_Matrix.png`
 
+地点级四方向拼接、14×56 heatmap 与四向均值 graph：`paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Stitched_Heatmap_Graph.png`
+
+交互网页：`dashboard/four-directions.html`
+
 详细结果见 `multi_area_summary.csv` 和 `multi_area_direction_assignments.csv`。
