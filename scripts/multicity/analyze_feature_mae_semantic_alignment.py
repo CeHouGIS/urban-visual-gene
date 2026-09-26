@@ -28,8 +28,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from PIL import Image
-from scipy.cluster.hierarchy import dendrogram, fcluster, linkage, optimal_leaf_ordering
-from scipy.spatial.distance import pdist
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
@@ -653,15 +651,8 @@ def plot_all_dimension_heatmap(
     class_names = (
         distribution.drop_duplicates("class_id").sort_values("class_id").class_name.to_numpy()
     )
-    # Hellinger geometry is appropriate for probability compositions and does
-    # not let a few large semantic fractions dominate Euclidean distances.
-    row_distance = pdist(np.sqrt(np.clip(profiles, 0, 1)), metric="euclidean") / math.sqrt(2)
-    row_linkage = linkage(row_distance, method="average")
-    row_linkage = optimal_leaf_ordering(row_linkage, row_distance)
-    cluster_labels = fcluster(row_linkage, t=16, criterion="maxclust").astype(np.int64)
-
-    # Put related Mapillary concepts next to one another instead of relying on
-    # raw class IDs.  Group names and boundaries are shown above the heatmap.
+    # Use a fixed, interpretable display order rather than re-clustering rows or
+    # columns. Related Mapillary concepts are grouped into broad scene roles.
     semantic_groups = [
         ("Nature", [27, 30, 29, 25, 26, 28, 31, 0, 1]),
         ("Ground / road", [13, 15, 7, 8, 9, 10, 11, 12, 14, 23, 24]),
@@ -681,19 +672,7 @@ def plot_all_dimension_heatmap(
         for class_id in class_ids
     }
 
-    # Cluster semantic classes by the dimensions in which they co-occur. Each
-    # class column is normalized over dimensions before applying Hellinger
-    # distance, so rare classes can still form meaningful branches.
-    column_profiles = profiles.T
-    column_profiles = column_profiles / np.maximum(
-        column_profiles.sum(axis=1, keepdims=True), 1e-12
-    )
-    column_distance = pdist(
-        np.sqrt(np.clip(column_profiles, 0, 1)), metric="euclidean"
-    ) / math.sqrt(2)
-    column_linkage = linkage(column_distance, method="average")
-    column_linkage = optimal_leaf_ordering(column_linkage, column_distance)
-    column_clusters = fcluster(column_linkage, t=10, criterion="maxclust").astype(np.int64)
+    column_order = grouped_class_ids
     assessment_names = [
         "clear_single_semantic",
         "coherent_semantic_mixture",
@@ -709,63 +688,36 @@ def plot_all_dimension_heatmap(
         dtype=np.uint8,
     )
 
-    fine_ids_by_dimension = metrics.set_index("dimension_id").loc[
+    metric_index = metrics.set_index("dimension_id")
+    fine_ids_by_dimension = metric_index.loc[
         np.arange(DIMENSIONS), "fine_id"
     ].to_numpy(np.int64)
     fine_colours = palette(64)
+    # Rows are grouped by the previously frozen 64-element hierarchy. Within
+    # each F group, D IDs are ascending so the order is deterministic.
+    ordered = metrics.sort_values(["fine_id", "dimension_id"])[
+        "dimension_id"
+    ].to_numpy(np.int64)
 
-    figure = plt.figure(figsize=(22, 22), constrained_layout=True)
+    figure = plt.figure(figsize=(21, 22), constrained_layout=True)
     grid = figure.add_gridspec(
-        3, 4,
-        width_ratios=[2.8, 0.18, 0.18, 14],
-        height_ratios=[2.7, 0.22, 15],
+        2, 3,
+        width_ratios=[0.18, 0.18, 14],
+        height_ratios=[0.22, 15],
         wspace=0.02,
         hspace=0.02,
     )
-    column_axis = figure.add_subplot(grid[0, 3])
-    column_tree = dendrogram(
-        column_linkage,
-        ax=column_axis,
-        orientation="top",
-        no_labels=True,
-        color_threshold=0,
-        above_threshold_color="#52606d",
-        link_color_func=lambda _: "#52606d",
-    )
-    column_order = np.asarray(column_tree["leaves"], dtype=np.int64)
-    column_axis.set_xticks([])
-    column_axis.set_yticks([])
-    column_axis.spines[:].set_visible(False)
-    column_axis.set_title("Semantic-class hierarchy", fontsize=9)
-
-    row_axis = figure.add_subplot(grid[2, 0])
-    row_tree = dendrogram(
-        row_linkage,
-        ax=row_axis,
-        orientation="left",
-        no_labels=True,
-        color_threshold=0,
-        above_threshold_color="#52606d",
-        link_color_func=lambda _: "#52606d",
-    )
-    ordered = np.asarray(row_tree["leaves"], dtype=np.int64)
-    row_axis.invert_yaxis()
-    row_axis.set_xticks([])
-    row_axis.set_yticks([])
-    row_axis.spines[:].set_visible(False)
-    row_axis.set_ylabel("Dimension hierarchy", fontsize=9)
-
-    assessments = metrics.set_index("dimension_id").loc[ordered, "assessment"].to_numpy()
+    assessments = metric_index.loc[ordered, "assessment"].to_numpy()
     assessment_ids = np.asarray(
         [assessment_names.index(value) for value in assessments], dtype=np.int64
     )
     strip = assessment_colours[assessment_ids][:, None, :]
-    strip_axis = figure.add_subplot(grid[2, 1])
+    strip_axis = figure.add_subplot(grid[1, 0])
     strip_axis.imshow(strip, aspect="auto")
     strip_axis.set_xticks([])
     strip_axis.set_yticks([])
     strip_axis.set_title("type", fontsize=8)
-    fine_strip_axis = figure.add_subplot(grid[2, 2])
+    fine_strip_axis = figure.add_subplot(grid[1, 1])
     fine_strip_axis.imshow(
         fine_colours[fine_ids_by_dimension[ordered]][:, None, :], aspect="auto"
     )
@@ -773,7 +725,7 @@ def plot_all_dimension_heatmap(
     fine_strip_axis.set_yticks([])
     fine_strip_axis.set_title("F64", fontsize=8)
 
-    semantic_strip_axis = figure.add_subplot(grid[1, 3])
+    semantic_strip_axis = figure.add_subplot(grid[0, 2])
     semantic_group_ids = np.asarray(
         [class_to_group[int(class_id)] for class_id in column_order], dtype=np.int64
     )
@@ -784,7 +736,7 @@ def plot_all_dimension_heatmap(
     semantic_strip_axis.set_yticks([])
     semantic_strip_axis.set_ylabel("role", fontsize=7, rotation=0, labelpad=16)
 
-    axis = figure.add_subplot(grid[2, 3])
+    axis = figure.add_subplot(grid[1, 2])
     image = axis.imshow(
         profiles[np.ix_(ordered, column_order)], aspect="auto", interpolation="nearest",
         cmap="magma", vmin=0, vmax=1,
@@ -792,19 +744,29 @@ def plot_all_dimension_heatmap(
     axis.set_xticks(
         np.arange(CLASSES), class_names[column_order], rotation=90, fontsize=6
     )
-    tick_positions = np.arange(0, DIMENSIONS, 8)
-    axis.set_yticks(
-        tick_positions,
-        [
-            f"D{ordered[x]:03d} · F{fine_ids_by_dimension[ordered[x]]:03d}"
-            for x in tick_positions
-        ],
-        fontsize=4.7,
-    )
-    axis.set_xlabel("Mapillary Vistas semantic classes, hierarchically clustered")
-    axis.set_ylabel("Feature-MAE dimensions, clustered by complete 65D semantic profile")
+    ordered_fine_ids = fine_ids_by_dimension[ordered]
+    group_starts = np.r_[0, np.flatnonzero(np.diff(ordered_fine_ids)) + 1]
+    group_ends = np.r_[group_starts[1:], DIMENSIONS]
+    group_midpoints = (group_starts + group_ends - 1) / 2
+    group_labels = []
+    for start, end in zip(group_starts, group_ends):
+        dimension_id = ordered[start]
+        fine_id = ordered_fine_ids[start]
+        label = str(metric_index.loc[dimension_id, "fine_label_en"])
+        group_labels.append(f"F{fine_id:03d} · {label} (n={end - start})")
+    axis.set_yticks(group_midpoints, group_labels, fontsize=5.2)
+    for boundary in group_starts[1:]:
+        axis.axhline(boundary - 0.5, color="white", linewidth=0.35, alpha=0.7)
+
+    column_start = 0
+    for _, class_ids in semantic_groups:
+        if column_start:
+            axis.axvline(column_start - 0.5, color="white", linewidth=0.7, alpha=0.8)
+        column_start += len(class_ids)
+    axis.set_xlabel("Mapillary Vistas semantic classes grouped by scene role")
+    axis.set_ylabel("Feature-MAE dimensions grouped by frozen F64 visual element")
     axis.set_title(
-        "512D × 65-class hierarchical clustered heatmap",
+        "512 Feature-MAE dimensions × 65 Mapillary semantic classes",
         fontsize=13,
     )
     colourbar = figure.colorbar(image, ax=axis, fraction=0.015, pad=0.01)
@@ -836,16 +798,14 @@ def plot_all_dimension_heatmap(
             "heatmap_row": np.arange(DIMENSIONS),
             "dimension_id": ordered,
             "dimension": [f"D{x:03d}" for x in ordered],
-            "semantic_cluster_16": cluster_labels[ordered],
             "fine_id": fine_ids_by_dimension[ordered],
             "fine_category": [f"F{x:03d}" for x in fine_ids_by_dimension[ordered]],
-            "fine_label_en": metrics.set_index("dimension_id").loc[
-                ordered, "fine_label_en"
-            ].to_numpy(),
-            "fine_label_zh": metrics.set_index("dimension_id").loc[
-                ordered, "fine_label_zh"
-            ].to_numpy(),
-            "top1_class": metrics.set_index("dimension_id").loc[ordered, "top1_class"].to_numpy(),
+            "fine_label_en": metric_index.loc[ordered, "fine_label_en"].to_numpy(),
+            "fine_label_zh": metric_index.loc[ordered, "fine_label_zh"].to_numpy(),
+            "within_fine_rank": np.concatenate(
+                [np.arange(end - start) for start, end in zip(group_starts, group_ends)]
+            ),
+            "top1_class": metric_index.loc[ordered, "top1_class"].to_numpy(),
             "assessment": assessments,
         }
     )
@@ -854,7 +814,6 @@ def plot_all_dimension_heatmap(
             "heatmap_column": np.arange(CLASSES),
             "class_id": column_order,
             "class_name": class_names[column_order],
-            "semantic_cluster_10": column_clusters[column_order],
             "scene_role": [semantic_groups[class_to_group[int(x)]][0] for x in column_order],
         }
     )

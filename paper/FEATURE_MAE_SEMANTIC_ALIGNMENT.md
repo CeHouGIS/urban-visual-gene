@@ -146,20 +146,21 @@ paper/figures/supplementary/feature_mae_semantic_alignment_20/
   P20_semantic_feature_alignment.jpg
 ```
 
-The 512-row heatmap shows every dimension's complete 65-class semantic profile
-as a two-way hierarchical clustered heatmap. Row labels use `Dxxx · Fyyy`, and
-the additional `F64` side strip marks the frozen visual-element family of every
-dimension. The left dendrogram clusters
-dimensions using Hellinger distance between their 65D semantic compositions;
-the top dendrogram clusters semantic classes by the dimensions in which they
-co-occur. The coloured side strip identifies clear, mixed, low-specificity, and
-artifact-candidate dimensions. The top strip retains the human-readable nature,
-ground/road, built structure, people/riders, street-object, and vehicle roles
-after the semantic columns have been clustered. Exact leaf orders and cluster
-assignments are recorded in `heatmap_dimension_order.csv` and
-`heatmap_semantic_order.csv`. The CSV tables should be used when exact dimension
-IDs and percentages are required. The full D-to-F mapping, including the prior
-English and Chinese F labels, is stored in `dimension_f64_mapping.csv`.
+The 512-row figure is an ordinary heatmap of every dimension's complete
+65-class semantic profile; it does not apply hierarchical clustering. Rows are
+grouped by the frozen visual-element mapping `F000`-`F063`, and dimensions
+within each F group are ordered by ascending D ID. Each displayed row label
+therefore describes one F group and reports its number of constituent
+dimensions. The adjacent `F64` strip makes these fixed groups explicit. Columns
+use a stable, human-readable order by nature, ground/road, built structure,
+people/riders, street-object, and vehicle roles. The coloured `type` side strip
+identifies clear, mixed, low-specificity, and artifact-candidate dimensions.
+The exact fixed row and column orders are recorded in
+`heatmap_dimension_order.csv` and `heatmap_semantic_order.csv`; the former also
+contains each D dimension's rank within its F group. These CSV tables should be
+used when exact dimension IDs and percentages are required. The full D-to-F
+mapping, including the prior English and Chinese F labels, is stored in
+`dimension_f64_mapping.csv`.
 
 ## Conclusion
 
