@@ -176,6 +176,21 @@ taskset -c 0-7,10-15 python3 -m \
   scripts.multicity.build_semantic_alignment_dashboard
 ```
 
+The same page also includes spatial inspection for the 20 representative
+panoramas. Selecting a D dimension and Mapillary class updates two linked
+street-view canvases: the left overlays the selected 14-by-56 activation map,
+while the right overlays the pixel-level segmentation and highlights the
+intersection between the selected class and high activation in yellow. Users
+can switch representative locations, show one or all semantic classes, adjust
+both overlay opacities, change the activation cutoff, inspect patch values on
+hover, and select a semantic class directly from the street view. The spatial
+assets are generated without rerunning either model:
+
+```bash
+taskset -c 0-7,10-15 python3 -m \
+  scripts.multicity.build_semantic_alignment_spatial_assets
+```
+
 ## Conclusion
 
 The experiment supports the feasibility of semantic interpretation: most
