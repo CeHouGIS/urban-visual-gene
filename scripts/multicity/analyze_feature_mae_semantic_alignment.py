@@ -28,6 +28,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from PIL import Image
+from scipy.cluster.hierarchy import fcluster, leaves_list, linkage, optimal_leaf_ordering
+from scipy.spatial.distance import pdist
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
@@ -610,17 +612,37 @@ def plot_summary(metrics: pd.DataFrame, output: Path) -> None:
 
 def plot_all_dimension_heatmap(
     metrics: pd.DataFrame, distribution: pd.DataFrame, output: Path
-) -> None:
+) -> pd.DataFrame:
     profiles = distribution.pivot(
         index="dimension_id", columns="class_id", values="semantic_fraction"
     ).to_numpy()
     class_names = (
         distribution.drop_duplicates("class_id").sort_values("class_id").class_name.to_numpy()
     )
-    ordered = metrics.sort_values(
-        ["top1_class_id", "top1_share", "dimension_id"],
-        ascending=[True, False, True],
-    ).dimension_id.to_numpy(np.int64)
+    # Hellinger geometry is appropriate for probability compositions and does
+    # not let a few large semantic fractions dominate Euclidean distances.
+    row_distance = pdist(np.sqrt(np.clip(profiles, 0, 1)), metric="euclidean") / math.sqrt(2)
+    row_linkage = linkage(row_distance, method="average")
+    row_linkage = optimal_leaf_ordering(row_linkage, row_distance)
+    ordered = leaves_list(row_linkage).astype(np.int64)
+    cluster_labels = fcluster(row_linkage, t=16, criterion="maxclust").astype(np.int64)
+
+    # Put related Mapillary concepts next to one another instead of relying on
+    # raw class IDs.  Group names and boundaries are shown above the heatmap.
+    semantic_groups = [
+        ("Nature", [27, 30, 29, 25, 26, 28, 31, 0, 1]),
+        ("Ground / road", [13, 15, 7, 8, 9, 10, 11, 12, 14, 23, 24]),
+        ("Built structure", [17, 2, 3, 4, 5, 6, 16, 18]),
+        ("People / riders", [19, 20, 21, 22]),
+        ("Street objects", list(range(32, 52))),
+        ("Vehicles", list(range(52, 65))),
+    ]
+    column_order = np.asarray(
+        [class_id for _, class_ids in semantic_groups for class_id in class_ids],
+        dtype=np.int64,
+    )
+    if sorted(column_order.tolist()) != list(range(CLASSES)):
+        raise ValueError("semantic display groups must cover class IDs 0..64 exactly once")
     assessments = metrics.set_index("dimension_id").loc[ordered, "assessment"].to_numpy()
     assessment_names = [
         "clear_single_semantic",
@@ -646,18 +668,36 @@ def plot_all_dimension_heatmap(
     strip_axis.set_title("type", fontsize=8)
     axis = figure.add_subplot(grid[0, 1])
     image = axis.imshow(
-        profiles[ordered], aspect="auto", interpolation="nearest",
+        profiles[np.ix_(ordered, column_order)], aspect="auto", interpolation="nearest",
         cmap="magma", vmin=0, vmax=1,
     )
-    axis.set_xticks(np.arange(CLASSES), class_names, rotation=90, fontsize=6)
+    axis.set_xticks(
+        np.arange(CLASSES), class_names[column_order], rotation=90, fontsize=6
+    )
     tick_positions = np.arange(0, DIMENSIONS, 16)
     axis.set_yticks(tick_positions, [f"D{ordered[x]:03d}" for x in tick_positions], fontsize=6)
-    axis.set_xlabel("Mapillary Vistas semantic class")
-    axis.set_ylabel("Feature-MAE dimensions, grouped by dominant semantic class")
+    axis.set_xlabel("Mapillary Vistas semantic class, grouped by scene role")
+    axis.set_ylabel("Feature-MAE dimensions, clustered by complete 65D semantic profile")
     axis.set_title(
-        "Semantic composition of each dimension's 1,000 highest-activation patches",
+        "512 dimensions ordered by Hellinger hierarchical clustering",
         fontsize=13,
     )
+    start = 0
+    for group_name, class_ids in semantic_groups:
+        end = start + len(class_ids)
+        if start:
+            axis.axvline(start - 0.5, color="white", linewidth=0.7, alpha=0.75)
+        axis.text(
+            (start + end - 1) / 2,
+            -13,
+            group_name,
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            fontweight="bold",
+            clip_on=False,
+        )
+        start = end
     colourbar = figure.colorbar(image, ax=axis, fraction=0.015, pad=0.01)
     colourbar.set_label("Semantic fraction")
     handles = [
@@ -668,6 +708,16 @@ def plot_all_dimension_heatmap(
     output.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(output, dpi=180)
     plt.close(figure)
+    return pd.DataFrame(
+        {
+            "heatmap_row": np.arange(DIMENSIONS),
+            "dimension_id": ordered,
+            "dimension": [f"D{x:03d}" for x in ordered],
+            "semantic_cluster_16": cluster_labels[ordered],
+            "top1_class": metrics.set_index("dimension_id").loc[ordered, "top1_class"].to_numpy(),
+            "assessment": assessments,
+        }
+    )
 
 
 def parse_args() -> argparse.Namespace:
@@ -743,11 +793,12 @@ def main() -> None:
     )
     details.to_csv(args.output_data / "selected_point_top_dimensions.csv", index=False)
     plot_summary(metrics, args.output_figures / "Fig_Dimension_Semantic_Clarity.png")
-    plot_all_dimension_heatmap(
+    dimension_order = plot_all_dimension_heatmap(
         metrics,
         distribution,
         args.output_figures / "Fig_512D_Semantic_Profile_Heatmap.png",
     )
+    dimension_order.to_csv(args.output_data / "heatmap_dimension_order.csv", index=False)
     counts = metrics.assessment.value_counts().to_dict()
     report = {
         "created_utc": datetime.now(timezone.utc).isoformat(),

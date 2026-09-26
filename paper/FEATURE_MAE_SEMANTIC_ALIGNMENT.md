@@ -120,6 +120,7 @@ paper/data/semantic_alignment/feature_mae_mapillary_alignment_n60000/
   dimension_semantic_profiles.csv
   dimension_semantic_distribution_65.csv
   dimension_top_patch_exemplars.csv
+  heatmap_dimension_order.csv
   selected_20_points.csv
   selected_point_top_dimensions.csv
 ```
@@ -137,9 +138,14 @@ paper/figures/supplementary/feature_mae_semantic_alignment_20/
 ```
 
 The 512-row heatmap shows every dimension's complete 65-class semantic profile.
-The coloured strip identifies clear, mixed, low-specificity, and artifact-
-candidate dimensions. The CSV tables should be used when exact dimension IDs
-and percentages are required.
+Rows are ordered by average-linkage hierarchical clustering under Hellinger
+distance, so dimensions with similar full semantic compositions appear next to
+one another. Columns are arranged into nature, ground/road, built structure,
+people/riders, street objects, and vehicle groups. The coloured strip identifies
+clear, mixed, low-specificity, and artifact-candidate dimensions. The exact row
+order and 16-cluster assignment are recorded in `heatmap_dimension_order.csv`.
+The CSV tables should be used when exact dimension IDs and percentages are
+required.
 
 ## Conclusion
 
