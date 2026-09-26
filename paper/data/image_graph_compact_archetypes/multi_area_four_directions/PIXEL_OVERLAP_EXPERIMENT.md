@@ -15,4 +15,6 @@
 
 对照图：`paper/figures/supplementary/multi_area_four_directions/Fig_Pixel_Overlap_Panorama_Comparison.png`
 
+原图与三种 F 类别叠加对照图：`paper/figures/supplementary/multi_area_four_directions/Fig_Panorama_F_Category_Overlay_Comparison.png`
+
 逐地点指标：`pixel_overlap_method_comparison.csv`

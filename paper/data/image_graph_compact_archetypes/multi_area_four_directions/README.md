@@ -35,6 +35,8 @@ Graph QA：`overlap_panorama_graph_report.json`
 
 三种方法对照图：`paper/figures/supplementary/multi_area_four_directions/Fig_Pixel_Overlap_Panorama_Comparison.png`
 
+原图与三种 F 类别叠加对照图：`paper/figures/supplementary/multi_area_four_directions/Fig_Panorama_F_Category_Overlay_Comparison.png`
+
 交互网页：`dashboard/four-directions.html`
 
 详细结果见 `multi_area_summary.csv` 和 `multi_area_direction_assignments.csv`。
