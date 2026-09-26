@@ -55,6 +55,10 @@ OUTPUT_FIGURES = Path(
     "/workplace/urban_visual_gene/paper/figures/supplementary/"
     "feature_mae_semantic_alignment_20"
 )
+HIERARCHY_ROOT = Path(
+    "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/"
+    "feature_mae_n30x12800_qc/mae/hierarchy_edp_32_64"
+)
 ROWS = 14
 COLS = 56
 DIMENSIONS = 512
@@ -118,6 +122,31 @@ def palette(count: int) -> np.ndarray:
         value = 0.82 + 0.16 * (index % 2)
         values[index] = np.asarray(colorsys.hsv_to_rgb(hue, saturation, value)) * 255
     return values
+
+
+def load_f64_mapping(hierarchy_root: Path) -> pd.DataFrame:
+    with np.load(hierarchy_root / "hierarchy_arrays.npz") as arrays:
+        fine_ids = arrays["fine_labels"].astype(np.int64)
+    if fine_ids.shape != (DIMENSIONS,) or sorted(np.unique(fine_ids).tolist()) != list(range(64)):
+        raise ValueError("frozen hierarchy must map 512 dimensions onto F000--F063")
+    labels = pd.read_csv(hierarchy_root / "semantic_labels_qwen" / "category_labels.csv")
+    labels = labels[labels["level"].eq("fine")].copy()
+    labels["fine_id"] = labels["category_id"].str.replace("^F", "", regex=True).astype(int)
+    labels = labels.set_index("fine_id").reindex(range(64))
+    if labels["name_en"].isna().any():
+        raise ValueError("semantic labels are missing one or more F000--F063 categories")
+    return pd.DataFrame(
+        {
+            "dimension_id": np.arange(DIMENSIONS),
+            "dimension": [f"D{x:03d}" for x in range(DIMENSIONS)],
+            "fine_id": fine_ids,
+            "fine_category": [f"F{x:03d}" for x in fine_ids],
+            "fine_label_en": labels.loc[fine_ids, "name_en"].to_numpy(),
+            "fine_label_zh": labels.loc[fine_ids, "name_zh"].to_numpy(),
+            "fine_semantic_type": labels.loc[fine_ids, "semantic_type"].to_numpy(),
+            "fine_label_confidence": labels.loc[fine_ids, "confidence"].to_numpy(),
+        }
+    )
 
 
 def entropy(probabilities: np.ndarray) -> np.ndarray:
@@ -502,16 +531,21 @@ def render_cases(
                 semantic_text = " · ".join(
                     f"{class_names[x]} {profile[x]:.0%}" for x in order
                 )
+                metric = metrics.iloc[int(dimension)]
                 axis.set_title(
-                    f"D{dimension:03d} activation\n{semantic_text}", fontsize=8
+                    f"D{dimension:03d} · {metric.fine_category} {metric.fine_label_en}"
+                    f"\n{semantic_text}",
+                    fontsize=8,
                 )
                 axis.axis("off")
-                metric = metrics.iloc[int(dimension)]
                 detail_rows.append(
                     {
                         "sample_id": sample.sample_id,
                         "rank": index + 1,
                         "dimension_id": int(dimension),
+                        "fine_category": metric.fine_category,
+                        "fine_label_en": metric.fine_label_en,
+                        "fine_label_zh": metric.fine_label_zh,
                         "image_activation_top20": float(activations[descriptor_row, dimension]),
                         "global_top_semantic": metric.top1_class,
                         "global_top_semantic_share": float(metric.top1_share),
@@ -675,15 +709,20 @@ def plot_all_dimension_heatmap(
         dtype=np.uint8,
     )
 
+    fine_ids_by_dimension = metrics.set_index("dimension_id").loc[
+        np.arange(DIMENSIONS), "fine_id"
+    ].to_numpy(np.int64)
+    fine_colours = palette(64)
+
     figure = plt.figure(figsize=(22, 22), constrained_layout=True)
     grid = figure.add_gridspec(
-        3, 3,
-        width_ratios=[2.8, 0.22, 14],
+        3, 4,
+        width_ratios=[2.8, 0.18, 0.18, 14],
         height_ratios=[2.7, 0.22, 15],
         wspace=0.02,
         hspace=0.02,
     )
-    column_axis = figure.add_subplot(grid[0, 2])
+    column_axis = figure.add_subplot(grid[0, 3])
     column_tree = dendrogram(
         column_linkage,
         ax=column_axis,
@@ -726,7 +765,15 @@ def plot_all_dimension_heatmap(
     strip_axis.set_xticks([])
     strip_axis.set_yticks([])
     strip_axis.set_title("type", fontsize=8)
-    semantic_strip_axis = figure.add_subplot(grid[1, 2])
+    fine_strip_axis = figure.add_subplot(grid[2, 2])
+    fine_strip_axis.imshow(
+        fine_colours[fine_ids_by_dimension[ordered]][:, None, :], aspect="auto"
+    )
+    fine_strip_axis.set_xticks([])
+    fine_strip_axis.set_yticks([])
+    fine_strip_axis.set_title("F64", fontsize=8)
+
+    semantic_strip_axis = figure.add_subplot(grid[1, 3])
     semantic_group_ids = np.asarray(
         [class_to_group[int(class_id)] for class_id in column_order], dtype=np.int64
     )
@@ -737,7 +784,7 @@ def plot_all_dimension_heatmap(
     semantic_strip_axis.set_yticks([])
     semantic_strip_axis.set_ylabel("role", fontsize=7, rotation=0, labelpad=16)
 
-    axis = figure.add_subplot(grid[2, 2])
+    axis = figure.add_subplot(grid[2, 3])
     image = axis.imshow(
         profiles[np.ix_(ordered, column_order)], aspect="auto", interpolation="nearest",
         cmap="magma", vmin=0, vmax=1,
@@ -745,8 +792,15 @@ def plot_all_dimension_heatmap(
     axis.set_xticks(
         np.arange(CLASSES), class_names[column_order], rotation=90, fontsize=6
     )
-    tick_positions = np.arange(0, DIMENSIONS, 16)
-    axis.set_yticks(tick_positions, [f"D{ordered[x]:03d}" for x in tick_positions], fontsize=6)
+    tick_positions = np.arange(0, DIMENSIONS, 8)
+    axis.set_yticks(
+        tick_positions,
+        [
+            f"D{ordered[x]:03d} · F{fine_ids_by_dimension[ordered[x]]:03d}"
+            for x in tick_positions
+        ],
+        fontsize=4.7,
+    )
     axis.set_xlabel("Mapillary Vistas semantic classes, hierarchically clustered")
     axis.set_ylabel("Feature-MAE dimensions, clustered by complete 65D semantic profile")
     axis.set_title(
@@ -783,6 +837,14 @@ def plot_all_dimension_heatmap(
             "dimension_id": ordered,
             "dimension": [f"D{x:03d}" for x in ordered],
             "semantic_cluster_16": cluster_labels[ordered],
+            "fine_id": fine_ids_by_dimension[ordered],
+            "fine_category": [f"F{x:03d}" for x in fine_ids_by_dimension[ordered]],
+            "fine_label_en": metrics.set_index("dimension_id").loc[
+                ordered, "fine_label_en"
+            ].to_numpy(),
+            "fine_label_zh": metrics.set_index("dimension_id").loc[
+                ordered, "fine_label_zh"
+            ].to_numpy(),
             "top1_class": metrics.set_index("dimension_id").loc[ordered, "top1_class"].to_numpy(),
             "assessment": assessments,
         }
@@ -804,6 +866,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--semantic-root", type=Path, default=SEMANTIC_ROOT)
     parser.add_argument("--semantic-paper", type=Path, default=SEMANTIC_PAPER)
     parser.add_argument("--feature-root", type=Path, default=FEATURE_ROOT)
+    parser.add_argument("--hierarchy-root", type=Path, default=HIERARCHY_ROOT)
     parser.add_argument("--output-data", type=Path, default=OUTPUT_DATA)
     parser.add_argument("--output-figures", type=Path, default=OUTPUT_FIGURES)
     parser.add_argument("--points", type=int, default=20)
@@ -853,7 +916,14 @@ def main() -> None:
         class_names,
         baseline,
     )
+    f64_mapping = load_f64_mapping(args.hierarchy_root)
+    metrics = metrics.merge(
+        f64_mapping.drop(columns="dimension"), on="dimension_id", how="left", validate="one_to_one"
+    ).sort_values("dimension_id").reset_index(drop=True)
+    if metrics["fine_id"].isna().any():
+        raise ValueError("one or more dimensions are missing the frozen F64 mapping")
     metrics.to_csv(args.output_data / "dimension_semantic_profiles.csv", index=False)
+    f64_mapping.to_csv(args.output_data / "dimension_f64_mapping.csv", index=False)
     distribution.to_csv(args.output_data / "dimension_semantic_distribution_65.csv", index=False)
     exemplars.to_csv(args.output_data / "dimension_top_patch_exemplars.csv", index=False)
     selected = select_diverse_points(
@@ -885,6 +955,10 @@ def main() -> None:
         "method": "per-dimension high-activation patches; no winner/argmax assignment",
         "semantic_model": "facebook/mask2former-swin-large-mapillary-vistas-semantic",
         "feature_representation": "frozen dense Feature-MAE 512D bottleneck",
+        "f64_mapping": str(args.hierarchy_root / "hierarchy_arrays.npz"),
+        "f64_semantic_labels": str(
+            args.hierarchy_root / "semantic_labels_qwen" / "category_labels.csv"
+        ),
         "sampled_panoramas": int(len(panos)),
         "valid_aligned_panoramas": int(len(valid)),
         "excluded_feature_mae_errors": int(len(panos) - len(valid)),

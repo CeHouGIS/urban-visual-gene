@@ -23,6 +23,13 @@ to its single highest-response dimension.
 
 Both tensors refer to the same panorama locations and spatial cells.
 
+Each of the 512 dimensions is additionally annotated with the previously
+frozen `D000–D511 → F000–F063` E+D+P hierarchy. This mapping is descriptive and
+is not recomputed from the Mask2Former results. The F category and its existing
+English and Chinese labels therefore provide an internal visual-element name,
+while the 65 Mask2Former columns remain an independent supervised semantic
+check.
+
 ## Per-dimension method
 
 No winner map or cross-dimension argmax is used in the semantic calculation.
@@ -119,6 +126,7 @@ paper/data/semantic_alignment/feature_mae_mapillary_alignment_n60000/
   alignment_summary.json
   dimension_semantic_profiles.csv
   dimension_semantic_distribution_65.csv
+  dimension_f64_mapping.csv
   dimension_top_patch_exemplars.csv
   heatmap_dimension_order.csv
   heatmap_semantic_order.csv
@@ -139,7 +147,9 @@ paper/figures/supplementary/feature_mae_semantic_alignment_20/
 ```
 
 The 512-row heatmap shows every dimension's complete 65-class semantic profile
-as a two-way hierarchical clustered heatmap. The left dendrogram clusters
+as a two-way hierarchical clustered heatmap. Row labels use `Dxxx · Fyyy`, and
+the additional `F64` side strip marks the frozen visual-element family of every
+dimension. The left dendrogram clusters
 dimensions using Hellinger distance between their 65D semantic compositions;
 the top dendrogram clusters semantic classes by the dimensions in which they
 co-occur. The coloured side strip identifies clear, mixed, low-specificity, and
@@ -148,7 +158,8 @@ ground/road, built structure, people/riders, street-object, and vehicle roles
 after the semantic columns have been clustered. Exact leaf orders and cluster
 assignments are recorded in `heatmap_dimension_order.csv` and
 `heatmap_semantic_order.csv`. The CSV tables should be used when exact dimension
-IDs and percentages are required.
+IDs and percentages are required. The full D-to-F mapping, including the prior
+English and Chinese F labels, is stored in `dimension_f64_mapping.csv`.
 
 ## Conclusion
 

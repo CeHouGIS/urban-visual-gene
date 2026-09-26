@@ -1,8 +1,10 @@
 {
-  "created_utc": "2026-09-26T16:04:31.789020+00:00",
+  "created_utc": "2026-09-26T16:14:14.102738+00:00",
   "method": "per-dimension high-activation patches; no winner/argmax assignment",
   "semantic_model": "facebook/mask2former-swin-large-mapillary-vistas-semantic",
   "feature_representation": "frozen dense Feature-MAE 512D bottleneck",
+  "f64_mapping": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_edp_32_64/hierarchy_arrays.npz",
+  "f64_semantic_labels": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_edp_32_64/semantic_labels_qwen/category_labels.csv",
   "sampled_panoramas": 60000,
   "valid_aligned_panoramas": 59992,
   "excluded_feature_mae_errors": 8,

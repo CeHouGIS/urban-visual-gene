@@ -1,0 +1,513 @@
+dimension_id,dimension,fine_id,fine_category,fine_label_en,fine_label_zh,fine_semantic_type,fine_label_confidence
+0,D000,0,F000,red brick corner,红砖街角,geometry,0.98
+1,D001,1,F001,shaded_corner,树荫街角,geometry,0.98
+2,D002,2,F002,shaded patches,树荫斑驳,geometry,0.98
+3,D003,3,F003,building facade,建筑立面,geometry,0.98
+4,D004,3,F003,building facade,建筑立面,geometry,0.98
+5,D005,4,F004,highlighted_buildings,高亮建筑,object,0.98
+6,D006,5,F005,palm_trees_and_buildings,棕榈树与建筑,geometry,0.98
+7,D007,6,F006,small alley entrance,小巷口,geometry,0.98
+8,D008,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+9,D009,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+10,D010,9,F009,highlighted road,高亮道路,geometry,0.85
+11,D011,10,F010,green_wall,绿植墙,geometry,0.98
+12,D012,3,F003,building facade,建筑立面,geometry,0.98
+13,D013,11,F011,road_edge,道路边缘,geometry,0.98
+14,D014,12,F012,bamboo,竹林,geometry,0.98
+15,D015,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+16,D016,14,F014,road_edge,道路边缘,geometry,0.95
+17,D017,15,F015,tree_shade_street,树荫道,geometry,0.98
+18,D018,0,F000,red brick corner,红砖街角,geometry,0.98
+19,D019,16,F016,construction scaffolding,建筑脚手架,object,0.98
+20,D020,17,F017,building facade,建筑立面,geometry,0.95
+21,D021,1,F001,shaded_corner,树荫街角,geometry,0.98
+22,D022,18,F018,small alley flowerbed,小巷花丛,geometry,0.98
+23,D023,19,F019,road_and_building,道路与建筑,object,0.85
+24,D024,20,F020,advertising_wall,广告墙,object,0.95
+25,D025,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+26,D026,18,F018,small alley flowerbed,小巷花丛,geometry,0.98
+27,D027,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+28,D028,6,F006,small alley entrance,小巷口,geometry,0.98
+29,D029,23,F023,street_corner_cafe,街角咖啡座,object,0.98
+30,D030,24,F024,road_edge,道路边缘,geometry,0.98
+31,D031,11,F011,road_edge,道路边缘,geometry,0.98
+32,D032,25,F025,shaded alley,树荫小路,geometry,0.98
+33,D033,0,F000,red brick corner,红砖街角,geometry,0.98
+34,D034,26,F026,tree_shadows,树影斑驳,geometry,0.9
+35,D035,27,F027,car_top_heat,车顶热区,material,0.85
+36,D036,28,F028,red_car_street,红车街景,object,0.95
+37,D037,24,F024,road_edge,道路边缘,geometry,0.98
+38,D038,29,F029,electric_bike_parking,电动车停放,geometry,0.98
+39,D039,30,F030,stone_wall_and_shadows,石墙与树影,geometry,0.85
+40,D040,31,F031,road_edge,道路边缘,geometry,0.95
+41,D041,32,F032,tree-lined walk,绿树行道,geometry,0.92
+42,D042,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+43,D043,18,F018,small alley flowerbed,小巷花丛,geometry,0.98
+44,D044,33,F033,zebra_crossing,斑马线,geometry,0.98
+45,D045,34,F034,red_door_street,红门街景,geometry,0.85
+46,D046,24,F024,road_edge,道路边缘,geometry,0.98
+47,D047,35,F035,small alley entrance,小巷口,geometry,0.95
+48,D048,36,F036,pedestrian walk,人行道,geometry,0.98
+49,D049,2,F002,shaded patches,树荫斑驳,geometry,0.98
+50,D050,37,F037,street_corner_shops,街角商铺,object,0.98
+51,D051,9,F009,highlighted road,高亮道路,geometry,0.85
+52,D052,25,F025,shaded alley,树荫小路,geometry,0.98
+53,D053,25,F025,shaded alley,树荫小路,geometry,0.98
+54,D054,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+55,D055,2,F002,shaded patches,树荫斑驳,geometry,0.98
+56,D056,38,F038,red-yellow hotspot,红黄热区,color_light,0.85
+57,D057,19,F019,road_and_building,道路与建筑,object,0.85
+58,D058,23,F023,street_corner_cafe,街角咖啡座,object,0.98
+59,D059,28,F028,red_car_street,红车街景,object,0.95
+60,D060,17,F017,building facade,建筑立面,geometry,0.95
+61,D061,39,F039,red car corner,红车街角,geometry,0.98
+62,D062,14,F014,road_edge,道路边缘,geometry,0.95
+63,D063,40,F040,cobblestone,石板路,geometry,0.98
+64,D064,3,F003,building facade,建筑立面,geometry,0.98
+65,D065,41,F041,concrete_wall,混凝土墙,geometry,0.95
+66,D066,20,F020,advertising_wall,广告墙,object,0.95
+67,D067,36,F036,pedestrian walk,人行道,geometry,0.98
+68,D068,0,F000,red brick corner,红砖街角,geometry,0.98
+69,D069,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+70,D070,43,F043,tree_shadows,树影斑驳,geometry,0.98
+71,D071,44,F044,road_and_buildings,道路与建筑,object,0.85
+72,D072,18,F018,small alley flowerbed,小巷花丛,geometry,0.98
+73,D073,45,F045,underpass glow,高架桥下光带,geometry,0.98
+74,D074,37,F037,street_corner_shops,街角商铺,object,0.98
+75,D075,46,F046,window_heat_zone,窗体热区,geometry,0.85
+76,D076,43,F043,tree_shadows,树影斑驳,geometry,0.98
+77,D077,1,F001,shaded_corner,树荫街角,geometry,0.98
+78,D078,36,F036,pedestrian walk,人行道,geometry,0.98
+79,D079,47,F047,underpass,高架桥下,geometry,0.98
+80,D080,34,F034,red_door_street,红门街景,geometry,0.85
+81,D081,2,F002,shaded patches,树荫斑驳,geometry,0.98
+82,D082,30,F030,stone_wall_and_shadows,石墙与树影,geometry,0.85
+83,D083,36,F036,pedestrian walk,人行道,geometry,0.98
+84,D084,48,F048,shaded path,树荫小径,geometry,0.98
+85,D085,28,F028,red_car_street,红车街景,object,0.95
+86,D086,41,F041,concrete_wall,混凝土墙,geometry,0.95
+87,D087,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+88,D088,50,F050,greenery_and_water,绿植与水体,material,0.85
+89,D089,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+90,D090,51,F051,zebra_crossing,斑马线,geometry,0.98
+91,D091,27,F027,car_top_heat,车顶热区,material,0.85
+92,D092,50,F050,greenery_and_water,绿植与水体,material,0.85
+93,D093,0,F000,red brick corner,红砖街角,geometry,0.98
+94,D094,32,F032,tree-lined walk,绿树行道,geometry,0.92
+95,D095,38,F038,red-yellow hotspot,红黄热区,color_light,0.85
+96,D096,29,F029,electric_bike_parking,电动车停放,geometry,0.98
+97,D097,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+98,D098,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+99,D099,53,F053,road_marking,道路标线,geometry,0.95
+100,D100,5,F005,palm_trees_and_buildings,棕榈树与建筑,geometry,0.98
+101,D101,24,F024,road_edge,道路边缘,geometry,0.98
+102,D102,51,F051,zebra_crossing,斑马线,geometry,0.98
+103,D103,27,F027,car_top_heat,车顶热区,material,0.85
+104,D104,46,F046,window_heat_zone,窗体热区,geometry,0.85
+105,D105,54,F054,highlighted_lane,高亮车道,geometry,0.92
+106,D106,27,F027,car_top_heat,车顶热区,material,0.85
+107,D107,46,F046,window_heat_zone,窗体热区,geometry,0.85
+108,D108,46,F046,window_heat_zone,窗体热区,geometry,0.85
+109,D109,23,F023,street_corner_cafe,街角咖啡座,object,0.98
+110,D110,34,F034,red_door_street,红门街景,geometry,0.85
+111,D111,50,F050,greenery_and_water,绿植与水体,material,0.85
+112,D112,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+113,D113,43,F043,tree_shadows,树影斑驳,geometry,0.98
+114,D114,12,F012,bamboo,竹林,geometry,0.98
+115,D115,6,F006,small alley entrance,小巷口,geometry,0.98
+116,D116,23,F023,street_corner_cafe,街角咖啡座,object,0.98
+117,D117,40,F040,cobblestone,石板路,geometry,0.98
+118,D118,41,F041,concrete_wall,混凝土墙,geometry,0.95
+119,D119,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+120,D120,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+121,D121,10,F010,green_wall,绿植墙,geometry,0.98
+122,D122,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+123,D123,24,F024,road_edge,道路边缘,geometry,0.98
+124,D124,53,F053,road_marking,道路标线,geometry,0.95
+125,D125,55,F055,small alley entrance,小巷口,geometry,0.98
+126,D126,15,F015,tree_shade_street,树荫道,geometry,0.98
+127,D127,3,F003,building facade,建筑立面,geometry,0.98
+128,D128,0,F000,red brick corner,红砖街角,geometry,0.98
+129,D129,38,F038,red-yellow hotspot,红黄热区,color_light,0.85
+130,D130,36,F036,pedestrian walk,人行道,geometry,0.98
+131,D131,28,F028,red_car_street,红车街景,object,0.95
+132,D132,30,F030,stone_wall_and_shadows,石墙与树影,geometry,0.85
+133,D133,43,F043,tree_shadows,树影斑驳,geometry,0.98
+134,D134,39,F039,red car corner,红车街角,geometry,0.98
+135,D135,2,F002,shaded patches,树荫斑驳,geometry,0.98
+136,D136,47,F047,underpass,高架桥下,geometry,0.98
+137,D137,6,F006,small alley entrance,小巷口,geometry,0.98
+138,D138,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+139,D139,51,F051,zebra_crossing,斑马线,geometry,0.98
+140,D140,16,F016,construction scaffolding,建筑脚手架,object,0.98
+141,D141,4,F004,highlighted_buildings,高亮建筑,object,0.98
+142,D142,19,F019,road_and_building,道路与建筑,object,0.85
+143,D143,51,F051,zebra_crossing,斑马线,geometry,0.98
+144,D144,46,F046,window_heat_zone,窗体热区,geometry,0.85
+145,D145,5,F005,palm_trees_and_buildings,棕榈树与建筑,geometry,0.98
+146,D146,56,F056,stone_wall_street,石墙街景,geometry,0.98
+147,D147,11,F011,road_edge,道路边缘,geometry,0.98
+148,D148,35,F035,small alley entrance,小巷口,geometry,0.95
+149,D149,2,F002,shaded patches,树荫斑驳,geometry,0.98
+150,D150,44,F044,road_and_buildings,道路与建筑,object,0.85
+151,D151,12,F012,bamboo,竹林,geometry,0.98
+152,D152,57,F057,streetlight illumination,路灯照明,geometry,0.95
+153,D153,58,F058,shaded alley,树荫小径,geometry,0.98
+154,D154,0,F000,red brick corner,红砖街角,geometry,0.98
+155,D155,37,F037,street_corner_shops,街角商铺,object,0.98
+156,D156,57,F057,streetlight illumination,路灯照明,geometry,0.95
+157,D157,44,F044,road_and_buildings,道路与建筑,object,0.85
+158,D158,20,F020,advertising_wall,广告墙,object,0.95
+159,D159,59,F059,road_edge,道路边缘,geometry,0.98
+160,D160,17,F017,building facade,建筑立面,geometry,0.95
+161,D161,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+162,D162,51,F051,zebra_crossing,斑马线,geometry,0.98
+163,D163,35,F035,small alley entrance,小巷口,geometry,0.95
+164,D164,1,F001,shaded_corner,树荫街角,geometry,0.98
+165,D165,25,F025,shaded alley,树荫小路,geometry,0.98
+166,D166,40,F040,cobblestone,石板路,geometry,0.98
+167,D167,17,F017,building facade,建筑立面,geometry,0.95
+168,D168,28,F028,red_car_street,红车街景,object,0.95
+169,D169,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+170,D170,31,F031,road_edge,道路边缘,geometry,0.95
+171,D171,33,F033,zebra_crossing,斑马线,geometry,0.98
+172,D172,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+173,D173,59,F059,road_edge,道路边缘,geometry,0.98
+174,D174,10,F010,green_wall,绿植墙,geometry,0.98
+175,D175,25,F025,shaded alley,树荫小路,geometry,0.98
+176,D176,15,F015,tree_shade_street,树荫道,geometry,0.98
+177,D177,23,F023,street_corner_cafe,街角咖啡座,object,0.98
+178,D178,25,F025,shaded alley,树荫小路,geometry,0.98
+179,D179,60,F060,street_corner_shop,街角店铺,object,0.98
+180,D180,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+181,D181,45,F045,underpass glow,高架桥下光带,geometry,0.98
+182,D182,9,F009,highlighted road,高亮道路,geometry,0.85
+183,D183,23,F023,street_corner_cafe,街角咖啡座,object,0.98
+184,D184,5,F005,palm_trees_and_buildings,棕榈树与建筑,geometry,0.98
+185,D185,58,F058,shaded alley,树荫小径,geometry,0.98
+186,D186,53,F053,road_marking,道路标线,geometry,0.95
+187,D187,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+188,D188,10,F010,green_wall,绿植墙,geometry,0.98
+189,D189,28,F028,red_car_street,红车街景,object,0.95
+190,D190,15,F015,tree_shade_street,树荫道,geometry,0.98
+191,D191,43,F043,tree_shadows,树影斑驳,geometry,0.98
+192,D192,58,F058,shaded alley,树荫小径,geometry,0.98
+193,D193,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+194,D194,55,F055,small alley entrance,小巷口,geometry,0.98
+195,D195,30,F030,stone_wall_and_shadows,石墙与树影,geometry,0.85
+196,D196,2,F002,shaded patches,树荫斑驳,geometry,0.98
+197,D197,9,F009,highlighted road,高亮道路,geometry,0.85
+198,D198,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+199,D199,37,F037,street_corner_shops,街角商铺,object,0.98
+200,D200,18,F018,small alley flowerbed,小巷花丛,geometry,0.98
+201,D201,37,F037,street_corner_shops,街角商铺,object,0.98
+202,D202,3,F003,building facade,建筑立面,geometry,0.98
+203,D203,50,F050,greenery_and_water,绿植与水体,material,0.85
+204,D204,11,F011,road_edge,道路边缘,geometry,0.98
+205,D205,11,F011,road_edge,道路边缘,geometry,0.98
+206,D206,53,F053,road_marking,道路标线,geometry,0.95
+207,D207,11,F011,road_edge,道路边缘,geometry,0.98
+208,D208,46,F046,window_heat_zone,窗体热区,geometry,0.85
+209,D209,40,F040,cobblestone,石板路,geometry,0.98
+210,D210,45,F045,underpass glow,高架桥下光带,geometry,0.98
+211,D211,51,F051,zebra_crossing,斑马线,geometry,0.98
+212,D212,19,F019,road_and_building,道路与建筑,object,0.85
+213,D213,11,F011,road_edge,道路边缘,geometry,0.98
+214,D214,11,F011,road_edge,道路边缘,geometry,0.98
+215,D215,47,F047,underpass,高架桥下,geometry,0.98
+216,D216,34,F034,red_door_street,红门街景,geometry,0.85
+217,D217,31,F031,road_edge,道路边缘,geometry,0.95
+218,D218,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+219,D219,46,F046,window_heat_zone,窗体热区,geometry,0.85
+220,D220,11,F011,road_edge,道路边缘,geometry,0.98
+221,D221,20,F020,advertising_wall,广告墙,object,0.95
+222,D222,54,F054,highlighted_lane,高亮车道,geometry,0.92
+223,D223,30,F030,stone_wall_and_shadows,石墙与树影,geometry,0.85
+224,D224,27,F027,car_top_heat,车顶热区,material,0.85
+225,D225,48,F048,shaded path,树荫小径,geometry,0.98
+226,D226,14,F014,road_edge,道路边缘,geometry,0.95
+227,D227,60,F060,street_corner_shop,街角店铺,object,0.98
+228,D228,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+229,D229,25,F025,shaded alley,树荫小路,geometry,0.98
+230,D230,6,F006,small alley entrance,小巷口,geometry,0.98
+231,D231,1,F001,shaded_corner,树荫街角,geometry,0.98
+232,D232,54,F054,highlighted_lane,高亮车道,geometry,0.92
+233,D233,46,F046,window_heat_zone,窗体热区,geometry,0.85
+234,D234,46,F046,window_heat_zone,窗体热区,geometry,0.85
+235,D235,14,F014,road_edge,道路边缘,geometry,0.95
+236,D236,29,F029,electric_bike_parking,电动车停放,geometry,0.98
+237,D237,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+238,D238,31,F031,road_edge,道路边缘,geometry,0.95
+239,D239,36,F036,pedestrian walk,人行道,geometry,0.98
+240,D240,9,F009,highlighted road,高亮道路,geometry,0.85
+241,D241,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+242,D242,11,F011,road_edge,道路边缘,geometry,0.98
+243,D243,59,F059,road_edge,道路边缘,geometry,0.98
+244,D244,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+245,D245,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+246,D246,29,F029,electric_bike_parking,电动车停放,geometry,0.98
+247,D247,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+248,D248,51,F051,zebra_crossing,斑马线,geometry,0.98
+249,D249,0,F000,red brick corner,红砖街角,geometry,0.98
+250,D250,44,F044,road_and_buildings,道路与建筑,object,0.85
+251,D251,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+252,D252,40,F040,cobblestone,石板路,geometry,0.98
+253,D253,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+254,D254,2,F002,shaded patches,树荫斑驳,geometry,0.98
+255,D255,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+256,D256,15,F015,tree_shade_street,树荫道,geometry,0.98
+257,D257,14,F014,road_edge,道路边缘,geometry,0.95
+258,D258,28,F028,red_car_street,红车街景,object,0.95
+259,D259,57,F057,streetlight illumination,路灯照明,geometry,0.95
+260,D260,56,F056,stone_wall_street,石墙街景,geometry,0.98
+261,D261,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+262,D262,10,F010,green_wall,绿植墙,geometry,0.98
+263,D263,37,F037,street_corner_shops,街角商铺,object,0.98
+264,D264,3,F003,building facade,建筑立面,geometry,0.98
+265,D265,9,F009,highlighted road,高亮道路,geometry,0.85
+266,D266,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+267,D267,27,F027,car_top_heat,车顶热区,material,0.85
+268,D268,29,F029,electric_bike_parking,电动车停放,geometry,0.98
+269,D269,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+270,D270,12,F012,bamboo,竹林,geometry,0.98
+271,D271,36,F036,pedestrian walk,人行道,geometry,0.98
+272,D272,36,F036,pedestrian walk,人行道,geometry,0.98
+273,D273,61,F061,sunlit street,阳光照射的街道,color_light,0.9
+274,D274,9,F009,highlighted road,高亮道路,geometry,0.85
+275,D275,41,F041,concrete_wall,混凝土墙,geometry,0.95
+276,D276,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+277,D277,17,F017,building facade,建筑立面,geometry,0.95
+278,D278,45,F045,underpass glow,高架桥下光带,geometry,0.98
+279,D279,31,F031,road_edge,道路边缘,geometry,0.95
+280,D280,40,F040,cobblestone,石板路,geometry,0.98
+281,D281,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+282,D282,12,F012,bamboo,竹林,geometry,0.98
+283,D283,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+284,D284,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+285,D285,1,F001,shaded_corner,树荫街角,geometry,0.98
+286,D286,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+287,D287,51,F051,zebra_crossing,斑马线,geometry,0.98
+288,D288,14,F014,road_edge,道路边缘,geometry,0.95
+289,D289,41,F041,concrete_wall,混凝土墙,geometry,0.95
+290,D290,17,F017,building facade,建筑立面,geometry,0.95
+291,D291,1,F001,shaded_corner,树荫街角,geometry,0.98
+292,D292,62,F062,shaded alley,树荫小径,geometry,0.98
+293,D293,56,F056,stone_wall_street,石墙街景,geometry,0.98
+294,D294,19,F019,road_and_building,道路与建筑,object,0.85
+295,D295,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+296,D296,16,F016,construction scaffolding,建筑脚手架,object,0.98
+297,D297,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+298,D298,45,F045,underpass glow,高架桥下光带,geometry,0.98
+299,D299,39,F039,red car corner,红车街角,geometry,0.98
+300,D300,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+301,D301,46,F046,window_heat_zone,窗体热区,geometry,0.85
+302,D302,35,F035,small alley entrance,小巷口,geometry,0.95
+303,D303,59,F059,road_edge,道路边缘,geometry,0.98
+304,D304,1,F001,shaded_corner,树荫街角,geometry,0.98
+305,D305,34,F034,red_door_street,红门街景,geometry,0.85
+306,D306,51,F051,zebra_crossing,斑马线,geometry,0.98
+307,D307,10,F010,green_wall,绿植墙,geometry,0.98
+308,D308,25,F025,shaded alley,树荫小路,geometry,0.98
+309,D309,44,F044,road_and_buildings,道路与建筑,object,0.85
+310,D310,12,F012,bamboo,竹林,geometry,0.98
+311,D311,3,F003,building facade,建筑立面,geometry,0.98
+312,D312,44,F044,road_and_buildings,道路与建筑,object,0.85
+313,D313,1,F001,shaded_corner,树荫街角,geometry,0.98
+314,D314,40,F040,cobblestone,石板路,geometry,0.98
+315,D315,10,F010,green_wall,绿植墙,geometry,0.98
+316,D316,53,F053,road_marking,道路标线,geometry,0.95
+317,D317,16,F016,construction scaffolding,建筑脚手架,object,0.98
+318,D318,44,F044,road_and_buildings,道路与建筑,object,0.85
+319,D319,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+320,D320,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+321,D321,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+322,D322,36,F036,pedestrian walk,人行道,geometry,0.98
+323,D323,14,F014,road_edge,道路边缘,geometry,0.95
+324,D324,15,F015,tree_shade_street,树荫道,geometry,0.98
+325,D325,60,F060,street_corner_shop,街角店铺,object,0.98
+326,D326,14,F014,road_edge,道路边缘,geometry,0.95
+327,D327,6,F006,small alley entrance,小巷口,geometry,0.98
+328,D328,55,F055,small alley entrance,小巷口,geometry,0.98
+329,D329,36,F036,pedestrian walk,人行道,geometry,0.98
+330,D330,54,F054,highlighted_lane,高亮车道,geometry,0.92
+331,D331,57,F057,streetlight illumination,路灯照明,geometry,0.95
+332,D332,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+333,D333,32,F032,tree-lined walk,绿树行道,geometry,0.92
+334,D334,15,F015,tree_shade_street,树荫道,geometry,0.98
+335,D335,29,F029,electric_bike_parking,电动车停放,geometry,0.98
+336,D336,58,F058,shaded alley,树荫小径,geometry,0.98
+337,D337,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+338,D338,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+339,D339,27,F027,car_top_heat,车顶热区,material,0.85
+340,D340,14,F014,road_edge,道路边缘,geometry,0.95
+341,D341,5,F005,palm_trees_and_buildings,棕榈树与建筑,geometry,0.98
+342,D342,46,F046,window_heat_zone,窗体热区,geometry,0.85
+343,D343,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+344,D344,27,F027,car_top_heat,车顶热区,material,0.85
+345,D345,31,F031,road_edge,道路边缘,geometry,0.95
+346,D346,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+347,D347,2,F002,shaded patches,树荫斑驳,geometry,0.98
+348,D348,17,F017,building facade,建筑立面,geometry,0.95
+349,D349,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+350,D350,17,F017,building facade,建筑立面,geometry,0.95
+351,D351,48,F048,shaded path,树荫小径,geometry,0.98
+352,D352,55,F055,small alley entrance,小巷口,geometry,0.98
+353,D353,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+354,D354,2,F002,shaded patches,树荫斑驳,geometry,0.98
+355,D355,50,F050,greenery_and_water,绿植与水体,material,0.85
+356,D356,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+357,D357,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+358,D358,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+359,D359,34,F034,red_door_street,红门街景,geometry,0.85
+360,D360,48,F048,shaded path,树荫小径,geometry,0.98
+361,D361,36,F036,pedestrian walk,人行道,geometry,0.98
+362,D362,61,F061,sunlit street,阳光照射的街道,color_light,0.9
+363,D363,28,F028,red_car_street,红车街景,object,0.95
+364,D364,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+365,D365,26,F026,tree_shadows,树影斑驳,geometry,0.9
+366,D366,2,F002,shaded patches,树荫斑驳,geometry,0.98
+367,D367,36,F036,pedestrian walk,人行道,geometry,0.98
+368,D368,9,F009,highlighted road,高亮道路,geometry,0.85
+369,D369,16,F016,construction scaffolding,建筑脚手架,object,0.98
+370,D370,40,F040,cobblestone,石板路,geometry,0.98
+371,D371,56,F056,stone_wall_street,石墙街景,geometry,0.98
+372,D372,1,F001,shaded_corner,树荫街角,geometry,0.98
+373,D373,56,F056,stone_wall_street,石墙街景,geometry,0.98
+374,D374,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+375,D375,61,F061,sunlit street,阳光照射的街道,color_light,0.9
+376,D376,43,F043,tree_shadows,树影斑驳,geometry,0.98
+377,D377,54,F054,highlighted_lane,高亮车道,geometry,0.92
+378,D378,55,F055,small alley entrance,小巷口,geometry,0.98
+379,D379,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+380,D380,10,F010,green_wall,绿植墙,geometry,0.98
+381,D381,5,F005,palm_trees_and_buildings,棕榈树与建筑,geometry,0.98
+382,D382,31,F031,road_edge,道路边缘,geometry,0.95
+383,D383,11,F011,road_edge,道路边缘,geometry,0.98
+384,D384,60,F060,street_corner_shop,街角店铺,object,0.98
+385,D385,26,F026,tree_shadows,树影斑驳,geometry,0.9
+386,D386,45,F045,underpass glow,高架桥下光带,geometry,0.98
+387,D387,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+388,D388,20,F020,advertising_wall,广告墙,object,0.95
+389,D389,20,F020,advertising_wall,广告墙,object,0.95
+390,D390,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+391,D391,48,F048,shaded path,树荫小径,geometry,0.98
+392,D392,9,F009,highlighted road,高亮道路,geometry,0.85
+393,D393,4,F004,highlighted_buildings,高亮建筑,object,0.98
+394,D394,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+395,D395,38,F038,red-yellow hotspot,红黄热区,color_light,0.85
+396,D396,37,F037,street_corner_shops,街角商铺,object,0.98
+397,D397,15,F015,tree_shade_street,树荫道,geometry,0.98
+398,D398,15,F015,tree_shade_street,树荫道,geometry,0.98
+399,D399,15,F015,tree_shade_street,树荫道,geometry,0.98
+400,D400,60,F060,street_corner_shop,街角店铺,object,0.98
+401,D401,15,F015,tree_shade_street,树荫道,geometry,0.98
+402,D402,48,F048,shaded path,树荫小径,geometry,0.98
+403,D403,40,F040,cobblestone,石板路,geometry,0.98
+404,D404,11,F011,road_edge,道路边缘,geometry,0.98
+405,D405,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+406,D406,36,F036,pedestrian walk,人行道,geometry,0.98
+407,D407,2,F002,shaded patches,树荫斑驳,geometry,0.98
+408,D408,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+409,D409,10,F010,green_wall,绿植墙,geometry,0.98
+410,D410,29,F029,electric_bike_parking,电动车停放,geometry,0.98
+411,D411,9,F009,highlighted road,高亮道路,geometry,0.85
+412,D412,33,F033,zebra_crossing,斑马线,geometry,0.98
+413,D413,47,F047,underpass,高架桥下,geometry,0.98
+414,D414,51,F051,zebra_crossing,斑马线,geometry,0.98
+415,D415,35,F035,small alley entrance,小巷口,geometry,0.95
+416,D416,63,F063,blue_wall_graffiti,蓝墙涂鸦,object,0.98
+417,D417,47,F047,underpass,高架桥下,geometry,0.98
+418,D418,10,F010,green_wall,绿植墙,geometry,0.98
+419,D419,18,F018,small alley flowerbed,小巷花丛,geometry,0.98
+420,D420,61,F061,sunlit street,阳光照射的街道,color_light,0.9
+421,D421,10,F010,green_wall,绿植墙,geometry,0.98
+422,D422,16,F016,construction scaffolding,建筑脚手架,object,0.98
+423,D423,25,F025,shaded alley,树荫小路,geometry,0.98
+424,D424,28,F028,red_car_street,红车街景,object,0.95
+425,D425,33,F033,zebra_crossing,斑马线,geometry,0.98
+426,D426,2,F002,shaded patches,树荫斑驳,geometry,0.98
+427,D427,45,F045,underpass glow,高架桥下光带,geometry,0.98
+428,D428,31,F031,road_edge,道路边缘,geometry,0.95
+429,D429,52,F052,palm_tree_street,棕榈树街景,geometry,0.98
+430,D430,41,F041,concrete_wall,混凝土墙,geometry,0.95
+431,D431,9,F009,highlighted road,高亮道路,geometry,0.85
+432,D432,61,F061,sunlit street,阳光照射的街道,color_light,0.9
+433,D433,12,F012,bamboo,竹林,geometry,0.98
+434,D434,62,F062,shaded alley,树荫小径,geometry,0.98
+435,D435,47,F047,underpass,高架桥下,geometry,0.98
+436,D436,54,F054,highlighted_lane,高亮车道,geometry,0.92
+437,D437,57,F057,streetlight illumination,路灯照明,geometry,0.95
+438,D438,58,F058,shaded alley,树荫小径,geometry,0.98
+439,D439,38,F038,red-yellow hotspot,红黄热区,color_light,0.85
+440,D440,62,F062,shaded alley,树荫小径,geometry,0.98
+441,D441,36,F036,pedestrian walk,人行道,geometry,0.98
+442,D442,29,F029,electric_bike_parking,电动车停放,geometry,0.98
+443,D443,44,F044,road_and_buildings,道路与建筑,object,0.85
+444,D444,43,F043,tree_shadows,树影斑驳,geometry,0.98
+445,D445,56,F056,stone_wall_street,石墙街景,geometry,0.98
+446,D446,63,F063,blue_wall_graffiti,蓝墙涂鸦,object,0.98
+447,D447,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+448,D448,37,F037,street_corner_shops,街角商铺,object,0.98
+449,D449,9,F009,highlighted road,高亮道路,geometry,0.85
+450,D450,21,F021,road_and_building,道路与建筑,spatial_layout,0.85
+451,D451,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+452,D452,22,F022,tree_canopy_and_road,树冠与道路,geometry,0.98
+453,D453,28,F028,red_car_street,红车街景,object,0.95
+454,D454,23,F023,street_corner_cafe,街角咖啡座,object,0.98
+455,D455,54,F054,highlighted_lane,高亮车道,geometry,0.92
+456,D456,4,F004,highlighted_buildings,高亮建筑,object,0.98
+457,D457,2,F002,shaded patches,树荫斑驳,geometry,0.98
+458,D458,28,F028,red_car_street,红车街景,object,0.95
+459,D459,6,F006,small alley entrance,小巷口,geometry,0.98
+460,D460,6,F006,small alley entrance,小巷口,geometry,0.98
+461,D461,60,F060,street_corner_shop,街角店铺,object,0.98
+462,D462,54,F054,highlighted_lane,高亮车道,geometry,0.92
+463,D463,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+464,D464,0,F000,red brick corner,红砖街角,geometry,0.98
+465,D465,12,F012,bamboo,竹林,geometry,0.98
+466,D466,20,F020,advertising_wall,广告墙,object,0.95
+467,D467,38,F038,red-yellow hotspot,红黄热区,color_light,0.85
+468,D468,38,F038,red-yellow hotspot,红黄热区,color_light,0.85
+469,D469,6,F006,small alley entrance,小巷口,geometry,0.98
+470,D470,50,F050,greenery_and_water,绿植与水体,material,0.85
+471,D471,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+472,D472,49,F049,red_wall_yellow_wall,红墙黄墙,material,0.95
+473,D473,32,F032,tree-lined walk,绿树行道,geometry,0.92
+474,D474,40,F040,cobblestone,石板路,geometry,0.98
+475,D475,24,F024,road_edge,道路边缘,geometry,0.98
+476,D476,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+477,D477,13,F013,tree-lined_driveway,绿树行道,spatial_layout,0.98
+478,D478,40,F040,cobblestone,石板路,geometry,0.98
+479,D479,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+480,D480,40,F040,cobblestone,石板路,geometry,0.98
+481,D481,37,F037,street_corner_shops,街角商铺,object,0.98
+482,D482,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+483,D483,4,F004,highlighted_buildings,高亮建筑,object,0.98
+484,D484,39,F039,red car corner,红车街角,geometry,0.98
+485,D485,48,F048,shaded path,树荫小径,geometry,0.98
+486,D486,45,F045,underpass glow,高架桥下光带,geometry,0.98
+487,D487,7,F007,roof_and_eaves,屋顶与屋檐,geometry,0.98
+488,D488,62,F062,shaded alley,树荫小径,geometry,0.98
+489,D489,26,F026,tree_shadows,树影斑驳,geometry,0.9
+490,D490,58,F058,shaded alley,树荫小径,geometry,0.98
+491,D491,40,F040,cobblestone,石板路,geometry,0.98
+492,D492,26,F026,tree_shadows,树影斑驳,geometry,0.9
+493,D493,37,F037,street_corner_shops,街角商铺,object,0.98
+494,D494,40,F040,cobblestone,石板路,geometry,0.98
+495,D495,25,F025,shaded alley,树荫小路,geometry,0.98
+496,D496,15,F015,tree_shade_street,树荫道,geometry,0.98
+497,D497,35,F035,small alley entrance,小巷口,geometry,0.95
+498,D498,43,F043,tree_shadows,树影斑驳,geometry,0.98
+499,D499,40,F040,cobblestone,石板路,geometry,0.98
+500,D500,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
+501,D501,37,F037,street_corner_shops,街角商铺,object,0.98
+502,D502,23,F023,street_corner_cafe,街角咖啡座,object,0.98
+503,D503,28,F028,red_car_street,红车街景,object,0.95
+504,D504,54,F054,highlighted_lane,高亮车道,geometry,0.92
+505,D505,8,F008,stone_wall_and_retaining_wall,石墙与护坡,geometry,0.9
+506,D506,40,F040,cobblestone,石板路,geometry,0.98
+507,D507,44,F044,road_and_buildings,道路与建筑,object,0.85
+508,D508,38,F038,red-yellow hotspot,红黄热区,color_light,0.85
+509,D509,19,F019,road_and_building,道路与建筑,object,0.85
+510,D510,35,F035,small alley entrance,小巷口,geometry,0.95
+511,D511,42,F042,Red-yellow glow street,红黄光晕街,geometry,0.9
