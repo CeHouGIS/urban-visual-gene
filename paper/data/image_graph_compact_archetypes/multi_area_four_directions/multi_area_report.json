@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-09-26T00:37:43.086173+00:00",
+  "areas": 10,
+  "cities": 10,
+  "images": 40,
+  "same_panorama_within_each_area": true,
+  "headings_per_area": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "directions_previously_cached": 17,
+  "directions_completed_by_mae": 23,
+  "all_40_directions_recomputed_by_mae": true,
+  "graph_qa": {
+    "images": 40,
+    "maximum_node_sum_error": 1.1920928955078125e-07,
+    "nan_count": 0,
+    "inf_count": 0,
+    "minimum_cross_category_boundaries": 0,
+    "maximum_cross_category_boundaries": 223,
+    "adjacency_pairs_per_image": 364
+  },
+  "photo_atlas_png": "paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Four_Direction_Atlas.png",
+  "graph_atlas_png": "paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Four_Direction_Graphs.png",
+  "archetype_matrix_png": "paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Archetype_Matrix.png",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}
