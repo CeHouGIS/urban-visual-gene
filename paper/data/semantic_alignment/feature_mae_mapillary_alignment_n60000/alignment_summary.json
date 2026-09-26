@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-09-26T15:35:39.405198+00:00",
+  "method": "per-dimension high-activation patches; no winner/argmax assignment",
+  "semantic_model": "facebook/mask2former-swin-large-mapillary-vistas-semantic",
+  "feature_representation": "frozen dense Feature-MAE 512D bottleneck",
+  "sampled_panoramas": 60000,
+  "valid_aligned_panoramas": 59992,
+  "excluded_feature_mae_errors": 8,
+  "dimensions": 512,
+  "semantic_classes": 65,
+  "top_images_per_dimension": 50,
+  "top_patches_per_dimension": 1000,
+  "visual_case_studies": 20,
+  "case_study_unique_cities": 20,
+  "assessment_counts": {
+    "clear_single_semantic": 291,
+    "coherent_semantic_mixture": 119,
+    "low_mapillary_specificity": 72,
+    "spatial_artifact_candidate": 30
+  },
+  "assessment_thresholds": {
+    "clear_single_semantic": "top1_share >= 0.55 and top1_lift_vs_global >= 1.5",
+    "coherent_semantic_mixture": "not clear; top3_cumulative_share >= 0.75 and js_divergence_vs_global >= 0.04",
+    "spatial_artifact_candidate": "not clear/coherent; top1_share < 0.35 and either seam_lift >= 1.75 or min(row_entropy, column_entropy) < 0.55"
+  },
+  "interpretation_warning": "Low Mapillary-class specificity is not proof of artifact; dimensions may encode texture, material, lighting, geometry, or concepts absent from the taxonomy."
+}
