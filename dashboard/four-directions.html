@@ -25,7 +25,7 @@
 </style>
 </head>
 <body>
-<header class="top"><div class="brand"><i></i>Urban Visual Gene</div><nav class="tabs"><a class="tab" href="index.html">街道景观地图</a><a class="tab" href="feature.html">特征空间</a><a class="tab" href="analysis.html">分析</a><a class="tab active" href="four-directions.html">四方向视觉构图</a></nav></header>
+<header class="top"><div class="brand"><i></i>Urban Visual Gene</div><nav class="tabs"><a class="tab" href="index.html">街道景观地图</a><a class="tab" href="feature.html">特征空间</a><a class="tab" href="analysis.html">分析</a><a class="tab active" href="four-directions.html">四方向视觉构图</a><a class="tab" href="semantic-alignment.html">512D × 语义</a></nav></header>
 <main class="shell">
   <section class="hero"><div><div class="eyebrow">Overlap-fused panorama graph · 2026-09-26</div><h1>同一地点的<span>四方向视觉构图</span></h1><p class="lead">四个方向首先组成环形 patch 画布，并增加 45°、135°、225°、315° 四个跨边界上下文窗口。冻结的 Feature-MAE 对 8 个重叠窗口重新推理，先融合原始 512D 激活，再生成连续的 14×56 F map 和地点级环形 graph。</p></div><div class="kpis" id="kpis"></div></section>
   <section class="workspace">

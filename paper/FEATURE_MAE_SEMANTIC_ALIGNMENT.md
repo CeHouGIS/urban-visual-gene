@@ -160,6 +160,22 @@ be used when exact IDs and percentages are required. The separate
 `dimension_f64_mapping.csv` remains available for other analyses but is not
 used to arrange or annotate this heatmap.
 
+## Interactive web explorer
+
+`dashboard/semantic-alignment.html` provides an interactive version of the
+complete 512-by-65 matrix. It supports the same deterministic response ordering
+as the static figure as well as raw ID ordering. Selecting a matrix cell shows
+the selected dimension's top semantic fractions, the selected Mapillary
+class's strongest dimensions, global class prevalence, lift, specificity,
+Jensen-Shannon divergence, and the artifact-screening assessment. The page
+loads the compact, reproducibly generated
+`dashboard/semantic_alignment/data.json`; regenerate it with:
+
+```bash
+taskset -c 0-7,10-15 python3 -m \
+  scripts.multicity.build_semantic_alignment_dashboard
+```
+
 ## Conclusion
 
 The experiment supports the feasibility of semantic interpretation: most
