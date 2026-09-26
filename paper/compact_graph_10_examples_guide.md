@@ -16,7 +16,9 @@ image:
    categories. For readability the panel shows the 12 largest nodes, the 18
    strongest nonzero edges, and any extra edge endpoints.
 4. **512D spatial support.** This is the number of the 196 patches for which
-   each dimension is the top-1 winner. These counts always sum to 196.
+   each dimension is the top-1 winner. To suppress isolated noise, the figures
+   display only dimensions winning at least 4/196 patches; the exported CSV
+   retains all 512 unthresholded counts, which always sum to 196.
 
 The continuous 512D activation-strength view is kept in the separate 10×512
 heatmap and in each high-resolution individual sample figure. For every

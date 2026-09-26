@@ -44,6 +44,7 @@ DEFAULT_STANDARDIZED_ACTIVATIONS = Path(
 DEFAULT_FIGURE_ROOT = Path(
     "paper/figures/supplementary/compact_graph_examples"
 )
+MIN_WINNER_PATCHES = 4
 
 
 def select_examples(representatives: pd.DataFrame) -> pd.DataFrame:
@@ -168,22 +169,27 @@ def activation_panel(ax, z_scores: np.ndarray, label_top: bool = True) -> None:
     ax.spines[["top", "right"]].set_visible(False)
 
 
-def winner_panel(ax, winner_counts: np.ndarray) -> None:
+def winner_panel(
+    ax, winner_counts: np.ndarray, minimum_patches: int = MIN_WINNER_PATCHES
+) -> None:
     dimensions = np.arange(512)
-    positive = winner_counts > 0
+    # Suppress isolated 1--3 patch winners in the visualization. The complete
+    # unthresholded 512D count vector remains available in the exported CSV.
+    positive = winner_counts >= minimum_patches
     ax.bar(
         dimensions[positive], winner_counts[positive], width=1.4,
         color="#e9a23b", linewidth=0,
     )
-    top = np.argsort(-winner_counts)[:5]
+    displayed = np.where(positive, winner_counts, 0)
+    top = np.argsort(-displayed)[:5]
     for dimension in top:
-        if winner_counts[dimension] > 0:
+        if displayed[dimension] > 0:
             ax.text(
                 dimension, winner_counts[dimension] + 0.6, f"D{dimension:03d}",
                 rotation=90, ha="center", va="bottom", fontsize=4.4,
             )
     ax.set_xlim(-1, 512)
-    ax.set_ylim(0, max(5, float(winner_counts.max()) * 1.28))
+    ax.set_ylim(0, max(5, float(displayed.max(initial=0)) * 1.28))
     ax.set_xticks([0, 128, 256, 384, 511])
     ax.tick_params(labelsize=5, length=2)
     ax.set_ylabel("patches", fontsize=6)
@@ -250,7 +256,10 @@ def make_atlas(
 
         ax_winner = fig.add_subplot(grid[row_index, 3])
         winner_panel(ax_winner, winner_counts[row_index])
-        ax_winner.set_title("512D spatial support (winner patches / 196)", fontsize=7)
+        ax_winner.set_title(
+            f"512D spatial support (shown when ≥{MIN_WINNER_PATCHES}/196 patches)",
+            fontsize=7,
+        )
     fig.suptitle(
         "Ten image-level graph examples with activation overlaid on the photographs\n"
         "Overlay colour = patch-winning F category; node size = F area; edge width = 4-neighbour contacts",
@@ -478,6 +487,7 @@ def run(args: argparse.Namespace) -> dict:
         "activation_score": "mean of strongest 20 of 196 patch responses per dimension",
         "activation_display": "global standardized activation from cached all-image z-score array",
         "spatial_support": "number of 196 patches for which each D dimension is the top-1 winner",
+        "spatial_support_display_threshold": f">={MIN_WINNER_PATCHES} winner patches",
         "atlas_png": str(atlas_path),
         "atlas_pdf": str(atlas_path.with_suffix(".pdf")),
         "overlay_atlas_png": str(overlay_path),
