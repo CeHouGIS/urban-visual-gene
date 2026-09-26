@@ -1,0 +1,61 @@
+{
+  "created_utc": "2026-09-26T00:29:56.259572+00:00",
+  "city": "UnitedStates/NewYorkCity",
+  "panorama_id": "BFlilbUSNYggO3YcnRY3kg",
+  "coordinates": [
+    40.89517472490672,
+    -73.85979552568753
+  ],
+  "headings": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "same_panorama_for_all_directions": true,
+  "directions_previously_cached": 2,
+  "directions_completed_by_mae": 2,
+  "all_four_directions_recomputed_by_mae": true,
+  "archetypes": [
+    "A05",
+    "A07",
+    "A01",
+    "A04"
+  ],
+  "distance_to_centroid": [
+    0.8688550591468811,
+    0.8493949770927429,
+    0.614795446395874,
+    0.8054983615875244
+  ],
+  "winner_display_threshold": 4,
+  "graph_qa": {
+    "images": 4,
+    "maximum_node_sum_error": 0.0,
+    "nan_count": 0,
+    "inf_count": 0,
+    "minimum_cross_category_boundaries": 0,
+    "maximum_cross_category_boundaries": 201,
+    "adjacency_pairs_per_image": 364
+  },
+  "result_stitch_png": "paper/figures/supplementary/four_direction_area/Fig_Four_Direction_Result_Stitch.png",
+  "result_stitch_pdf": "paper/figures/supplementary/four_direction_area/Fig_Four_Direction_Result_Stitch.pdf",
+  "photo_activation_stitch_png": "paper/figures/supplementary/four_direction_area/Fig_Four_Direction_Photo_Activation_Stitch.png",
+  "photo_activation_stitch_pdf": "paper/figures/supplementary/four_direction_area/Fig_Four_Direction_Photo_Activation_Stitch.pdf",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}
