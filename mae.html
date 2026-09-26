@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-<header class="top"><div class="brand"><i></i>Urban Visual Gene</div><nav class="tabs"><a class="tab" href="latest.html">30城市 Patch-SAE</a><a class="tab active" href="mae.html">Feature-MAE 热图</a><a class="tab" href="genes.html">视觉基因谱系</a><a class="tab" href="coexpr.html">基因组合</a><a class="tab" href="citygenome.html">城市基因组</a><a class="tab" href="interpret.html">方法与可解释性</a></nav></header>
+<header class="top"><div class="brand"><i></i>Urban Visual Gene</div><nav class="tabs"><a class="tab" href="latest.html">30城市 Patch-SAE</a><a class="tab active" href="mae.html">Feature-MAE 热图</a><a class="tab" href="genes.html">视觉基因谱系</a><a class="tab" href="coexpr.html">基因组合</a><a class="tab" href="citygenome.html">城市基因组</a><a class="tab" href="interpret.html">方法与可解释性</a><a class="tab" href="four-directions.html">四方向视觉构图</a></nav></header>
 <main class="wrap">
   <section class="hero"><div class="eyebrow">Quality-filtered experiment · 2026-09-20</div><h1>质量过滤后的<br><span>512 维 Feature-MAE 热图</span></h1><p class="lead">从 30 城市的 384,000 张街景中剔除伪影、黑屏、模糊与隧道样本，在保留的 <b>378,818</b> 张图上训练 DINOv3 特征空间 MAE。五视图统计相似性在同一棵 Ward 树上形成 <b>32 个粗类 / 64 个细类</b>；每类再由 <b>Qwen3-VL-2B</b> 审阅统计中心维度的 10 张代表图，给出后验语义名称。</p><div class="kpis" id="kpis"></div></section>
   <section class="method"><div class="step"><b>01 · 质量过滤</b><span>已有轻量质量模型结合黑屏、模糊与隧道规则</span></div><div class="arrow">→</div><div class="step"><b>02 · Patch 特征</b><span>DINOv3 ViT-B/16，每图 196×768 patch token</span></div><div class="arrow">→</div><div class="step"><b>03 · 掩码重建</b><span>遮挡 75% patch，学习 196×512 上下文潜变量</span></div><div class="arrow">→</div><div class="step"><b>04 · 原图回投</b><span>每维全库 Top-10，正响应以蓝—青—黄—红叠加</span></div></section>
