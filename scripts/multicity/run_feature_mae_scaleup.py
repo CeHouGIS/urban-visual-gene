@@ -21,6 +21,18 @@ DEFAULT_ROOT = Path(
 SAMPLE_SIZES = (500, 1000, 2000, 4000, 8000, 10000)
 WIDTHS = (128, 256, 512, 1024)
 MICROBATCH = {128: 240, 256: 240, 512: 240, 1024: 60}
+EXCLUDED_CPUS = {8, 9}
+
+
+def _allowed_cpus() -> set[int]:
+    """Return the current affinity mask with the reserved CPUs removed."""
+    current = set(os.sched_getaffinity(0))
+    allowed = current.difference(EXCLUDED_CPUS)
+    if not allowed:
+        raise RuntimeError(
+            f"no CPUs remain after excluding reserved CPUs {sorted(EXCLUDED_CPUS)}"
+        )
+    return allowed
 
 
 def _configuration_order() -> list[dict]:
@@ -114,6 +126,9 @@ def main() -> None:
     parser.add_argument("--only", nargs="*")
     args = parser.parse_args()
 
+    allowed_cpus = _allowed_cpus()
+    os.sched_setaffinity(0, allowed_cpus)
+
     args.root.mkdir(parents=True, exist_ok=True)
     lock_handle = (args.root / "scaleup.lock").open("w")
     try:
@@ -202,12 +217,13 @@ def main() -> None:
             ]
             print(f"[{index}/{len(rows)}] start {config['experiment_id']} at {_utc()}", file=runner_log)
             env = os.environ.copy()
+            thread_count = str(len(allowed_cpus))
             env.update(
                 {
                     "CUDA_VISIBLE_DEVICES": "0",
-                    "OMP_NUM_THREADS": str(os.cpu_count() or 1),
-                    "MKL_NUM_THREADS": str(os.cpu_count() or 1),
-                    "OPENBLAS_NUM_THREADS": str(os.cpu_count() or 1),
+                    "OMP_NUM_THREADS": thread_count,
+                    "MKL_NUM_THREADS": thread_count,
+                    "OPENBLAS_NUM_THREADS": thread_count,
                 }
             )
             safety_stop = ""

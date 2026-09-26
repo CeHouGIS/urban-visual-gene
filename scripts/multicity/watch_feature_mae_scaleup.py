@@ -17,6 +17,7 @@ from pathlib import Path
 
 DEFAULT_ROOT = Path("outputs/experiments/dinov3_multicity/feature_mae_scaleup")
 TERMINAL_STATES = {"completed", "failed", "blocked_resources"}
+EXCLUDED_CPUS = {8, 9}
 
 
 def _utc() -> str:
@@ -100,10 +101,16 @@ def _find_pid(module_name: str) -> int | None:
         if not proc.name.isdigit() or int(proc.name) == os.getpid():
             continue
         try:
-            command = (proc / "cmdline").read_bytes().replace(b"\0", b" ").decode()
+            arguments = [
+                value.decode(errors="replace")
+                for value in (proc / "cmdline").read_bytes().split(b"\0")
+                if value
+            ]
         except (OSError, UnicodeDecodeError):
             continue
-        if module_name in command:
+        # Match an argv item exactly. A substring search can mistake the
+        # orchestration shell for the actual runner or trainer process.
+        if module_name in arguments:
             return int(proc.name)
     return None
 
@@ -167,13 +174,13 @@ def _process_snapshot(pid: int | None) -> dict | None:
         return None
 
 
-def _ensure_full_cpu_affinity(pid: int | None, full_cpu_set: set[int]) -> bool:
+def _ensure_safe_cpu_affinity(pid: int | None, allowed_cpu_set: set[int]) -> bool:
     if pid is None:
         return False
     try:
-        if os.sched_getaffinity(pid) == full_cpu_set:
+        if os.sched_getaffinity(pid) == allowed_cpu_set:
             return False
-        os.sched_setaffinity(pid, full_cpu_set)
+        os.sched_setaffinity(pid, allowed_cpu_set)
         return True
     except (OSError, ProcessLookupError):
         return False
@@ -218,9 +225,14 @@ def main() -> None:
 
     state_path = args.root / "watcher_state.json"
     runner_state_path = args.root / "runner_state.json"
-    full_cpu_set = set(range(os.cpu_count() or 1))
-    os.sched_setaffinity(0, full_cpu_set)
-    allowed_cpus = sorted(full_cpu_set)
+    available_cpu_set = set(os.sched_getaffinity(0))
+    allowed_cpu_set = available_cpu_set.difference(EXCLUDED_CPUS)
+    if not allowed_cpu_set:
+        raise RuntimeError(
+            f"no CPUs remain after excluding reserved CPUs {sorted(EXCLUDED_CPUS)}"
+        )
+    os.sched_setaffinity(0, allowed_cpu_set)
+    allowed_cpus = sorted(allowed_cpu_set)
     critical_streak = 0
     last_reasons: tuple[str, ...] = ()
     previous_cpu_times = _cpu_times()
@@ -241,14 +253,16 @@ def main() -> None:
             runner_pid = _find_pid("scripts.multicity.run_feature_mae_scaleup")
             trainer_pid = _find_pid("scripts.multicity.train_feature_mae")
             experiment_id = _current_experiment(args.root)
-            if _ensure_full_cpu_affinity(runner_pid, full_cpu_set):
+            if _ensure_safe_cpu_affinity(runner_pid, allowed_cpu_set):
                 print(
-                    f"{_utc()} removed CPU affinity limit from runner {runner_pid}",
+                    f"{_utc()} enforced safe CPU affinity on runner {runner_pid}: "
+                    f"{allowed_cpus}",
                     file=log,
                 )
-            if _ensure_full_cpu_affinity(trainer_pid, full_cpu_set):
+            if _ensure_safe_cpu_affinity(trainer_pid, allowed_cpu_set):
                 print(
-                    f"{_utc()} removed CPU affinity limit from trainer {trainer_pid}",
+                    f"{_utc()} enforced safe CPU affinity on trainer {trainer_pid}: "
+                    f"{allowed_cpus}",
                     file=log,
                 )
 
