@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-09-26T01:25:48.626412+00:00",
+  "areas": 10,
+  "winner_shape": [
+    10,
+    14,
+    56
+  ],
+  "f_category_map_shape": [
+    10,
+    14,
+    56
+  ],
+  "graph_shape": [
+    10,
+    2080
+  ],
+  "patches_per_panorama": 784,
+  "adjacency_pairs_per_panorama": 1512,
+  "horizontal_adjacency": "circular, including column 55 to column 0",
+  "independent_f_seam_agreement": 0.13035714285714287,
+  "fused_f_seam_agreement": 0.3535714285714286,
+  "independent_f_internal_agreement": 0.5300824175824176,
+  "fused_f_internal_agreement": 0.5148351648351648,
+  "maximum_node_sum_error": 5.960464477539063e-08,
+  "minimum_cross_category_boundaries": 729,
+  "maximum_cross_category_boundaries": 872,
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}

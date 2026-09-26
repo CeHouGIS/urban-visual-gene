@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-26T00:54:54.598805+00:00",
+  "created_utc": "2026-09-26T01:27:33.410053+00:00",
   "areas": 10,
   "stitched_images": 10,
   "stitched_heatmap_shape": [
@@ -11,7 +11,8 @@
     10,
     2080
   ],
-  "graph_aggregation": "mean node area and mean edge weight over four directions",
+  "activation_fusion": "raw 512D sine-squared overlap-add before winner selection",
+  "graph_aggregation": "single circular graph from the fused 14x56 panorama map",
   "overview_png": "paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Stitched_Heatmap_Graph.png",
   "web_data": "dashboard/multi_area/data.json",
   "web_assets": "dashboard/multi_area/assets",

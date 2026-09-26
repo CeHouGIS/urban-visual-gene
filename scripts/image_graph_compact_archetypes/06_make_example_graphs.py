@@ -84,11 +84,12 @@ def image_graph_panel(
     positions: dict[str, np.ndarray],
     node_scale: float,
     contact_scale: float,
+    adjacencies: int = ADJACENCIES,
 ) -> None:
     left, right, _ = edge_definition()
     node_values = vector[:NODES]
     edge_values = vector[NODES:]
-    contacts = edge_values * ADJACENCIES
+    contacts = edge_values * adjacencies
     primary_nodes = set(np.argsort(-node_values)[:12].tolist())
     positive_edges = np.flatnonzero(contacts > 0)
     edge_order = positive_edges[np.argsort(-contacts[positive_edges])[:18]]
@@ -136,7 +137,8 @@ def image_graph_panel(
     active_nodes = int(np.count_nonzero(node_values))
     cross_contacts = int(round(contacts.sum()))
     ax.text(
-        0.02, 0.02, f"active F: {active_nodes}\ncross contacts: {cross_contacts}/364",
+        0.02, 0.02,
+        f"active F: {active_nodes}\ncross contacts: {cross_contacts}/{adjacencies}",
         transform=ax.transAxes, fontsize=5.5, va="bottom", ha="left",
         bbox={"facecolor": "white", "alpha": 0.78, "edgecolor": "none", "pad": 1.5},
     )

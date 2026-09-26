@@ -20,7 +20,6 @@ import pandas as pd
 from PIL import Image, ImageOps
 
 from scripts.image_graph_archetypes.utils import (
-    ADJACENCIES,
     NODES,
     assert_safe_affinity,
     edge_definition,
@@ -38,6 +37,7 @@ DEFAULT_FIGURE_ROOT = Path(
 DEFAULT_WEB_ROOT = Path("dashboard/multi_area")
 HEADINGS = (0, 90, 180, 270)
 DIRECTION_NAMES = ("North", "East", "South", "West")
+PANORAMA_ADJACENCIES = 14 * 56 + 13 * 56
 
 
 def stitch_images(images: list[Image.Image], size: tuple[int, int] = (480, 360)) -> Image.Image:
@@ -68,7 +68,7 @@ def make_overview(
         "scripts.image_graph_compact_archetypes.06_make_example_graphs"
     )
     node_scale = float(area_graphs[:, :NODES].max())
-    contact_scale = float((area_graphs[:, NODES:] * ADJACENCIES).max())
+    contact_scale = float((area_graphs[:, NODES:] * PANORAMA_ADJACENCIES).max())
     cmap = plt.get_cmap("turbo", NODES)
     fig = plt.figure(figsize=(23, 29), constrained_layout=True)
     grid = fig.add_gridspec(10, 3, width_ratios=[6.7, 2.7, 3.2], hspace=0.13)
@@ -94,19 +94,23 @@ def make_overview(
             interpolation="nearest", aspect="auto",
         )
         for boundary in (13.5, 27.5, 41.5):
-            ax.axvline(boundary, color="white", linewidth=0.8, alpha=0.85)
+            ax.axvline(
+                boundary, color="white", linewidth=0.6, alpha=0.3,
+                linestyle=":",
+            )
         ax.set_xticks([6.5, 20.5, 34.5, 48.5], ["N", "E", "S", "W"], fontsize=7)
         ax.set_yticks([])
-        ax.set_title("14×56 stitched F heatmap", fontsize=8)
+        ax.set_title("14×56 overlap-fused F heatmap", fontsize=8)
 
         ax = fig.add_subplot(grid[index, 2])
         examples.image_graph_panel(
-            ax, area_graphs[index], positions, node_scale, contact_scale
+            ax, area_graphs[index], positions, node_scale, contact_scale,
+            adjacencies=PANORAMA_ADJACENCIES,
         )
-        ax.set_title("Four-view mean graph", fontsize=8)
+        ax.set_title("Overlap-fused panorama graph", fontsize=8)
     fig.suptitle(
         "Location-level four-direction composition\n"
-        "Stitched street views · stitched Feature-MAE heatmap · aggregated image graph",
+        "Stitched street views · overlap-fused Feature-MAE heatmap · circular graph",
         fontsize=16,
     )
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -125,8 +129,12 @@ def run(args: argparse.Namespace) -> dict:
     summary = pd.read_csv(args.data / "multi_area_summary.csv")
     f_maps = np.load(args.data / "f_category_maps.npy")
     graph_features = np.load(args.data / "graph_features_2080d.npy")
+    panorama_maps = np.load(args.data / "panorama_f_category_maps.npy")
+    panorama_graphs = np.load(args.data / "panorama_graph_features_2080d.npy")
     if f_maps.shape != (40, 14, 14) or graph_features.shape != (40, 2080):
         raise ValueError("multi-area feature arrays have unexpected shapes")
+    if panorama_maps.shape != (10, 14, 56) or panorama_graphs.shape != (10, 2080):
+        raise ValueError("overlap-fused panorama arrays have unexpected shapes")
 
     positions = examples.normalize_positions(
         json.loads((args.graph_root / "global_node_positions.json").read_text())
@@ -142,13 +150,19 @@ def run(args: argparse.Namespace) -> dict:
     for area_index, area in enumerate(summary.itertuples()):
         rows = metadata[metadata["area_id"].eq(area.area_id)].sort_values("heading")
         assigned = assignments[assignments["area_id"].eq(area.area_id)].sort_values("heading")
-        indices = rows["result_row"].to_numpy(np.int64)
         if rows["heading"].astype(int).tolist() != list(HEADINGS):
             raise ValueError(f"{area.area_id}: incomplete heading order")
+        stitched_map = panorama_maps[area_index]
+        area_graph = panorama_graphs[area_index]
         originals = [read_original(row) for _, row in rows.iterrows()]
         overlays = [
-            Image.fromarray(examples.activation_overlay(image, f_maps[index], alpha=0.43))
-            for image, index in zip(originals, indices)
+            Image.fromarray(
+                examples.activation_overlay(
+                    image, stitched_map[:, direction * 14 : (direction + 1) * 14],
+                    alpha=0.43,
+                )
+            )
+            for direction, image in enumerate(originals)
         ]
         original_stitch = stitch_images(originals)
         overlay_stitch = stitch_images(overlays)
@@ -158,8 +172,6 @@ def run(args: argparse.Namespace) -> dict:
         overlay_stitch.save(assets / overlay_name, "WEBP", quality=88, method=6)
         original_stitches.append(original_stitch)
 
-        stitched_map = np.concatenate([f_maps[index] for index in indices], axis=1)
-        area_graph = graph_features[indices].mean(axis=0, dtype=np.float64).astype(np.float32)
         stitched_maps.append(stitched_map)
         area_graphs.append(area_graph)
 
@@ -170,7 +182,7 @@ def run(args: argparse.Namespace) -> dict:
                 "source": int(left[edge]),
                 "target": int(right[edge]),
                 "weight": round(float(edge_values[edge]), 7),
-                "mean_contacts": round(float(edge_values[edge] * ADJACENCIES), 3),
+                "contacts": round(float(edge_values[edge] * PANORAMA_ADJACENCIES), 3),
             }
             for edge in np.flatnonzero(edge_values > 0)
         ]
@@ -211,8 +223,8 @@ def run(args: argparse.Namespace) -> dict:
                 "edges": edges,
                 "directions": directions,
                 "top_nodes": [f"F{node:03d}" for node in np.argsort(-node_values)[:8]],
-                "mean_cross_contacts": round(
-                    float(edge_values.sum() * ADJACENCIES), 2
+                "cross_contacts": round(
+                    float(edge_values.sum() * PANORAMA_ADJACENCIES), 2
                 ),
             }
         )
@@ -228,8 +240,11 @@ def run(args: argparse.Namespace) -> dict:
             "cities": 10,
             "direction_images": 40,
             "headings": list(HEADINGS),
+            "overlap_window_headings": list(range(0, 360, 45)),
             "heatmap_shape": [14, 56],
-            "graph_aggregation": "mean node area and mean edge weight over four directions",
+            "activation_fusion": "raw 512D sine-squared overlap-add before winner selection",
+            "graph_aggregation": "single circular graph from the fused 14x56 panorama map",
+            "adjacency_pairs": PANORAMA_ADJACENCIES,
         },
         "areas": web_areas,
     }
@@ -251,6 +266,7 @@ def run(args: argparse.Namespace) -> dict:
         "stitched_images": 10,
         "stitched_heatmap_shape": [10, 14, 56],
         "aggregated_graph_shape": list(area_graphs_array.shape),
+        "activation_fusion": web_payload["experiment"]["activation_fusion"],
         "graph_aggregation": web_payload["experiment"]["graph_aggregation"],
         "overview_png": str(overview),
         "web_data": str(args.web_root / "data.json"),

@@ -15,7 +15,21 @@ Graph 总图：`paper/figures/supplementary/multi_area_four_directions/Fig_Multi
 
 方向 archetype 矩阵：`paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Archetype_Matrix.png`
 
-地点级四方向拼接、14×56 heatmap 与四向均值 graph：`paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Stitched_Heatmap_Graph.png`
+地点级四方向拼接、重叠融合 14×56 heatmap 与环形 graph：`paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Stitched_Heatmap_Graph.png`
+
+## 跨方向一致性修正
+
+为避免四张方向图分别经过 Feature-MAE 后在边界处形成 512D 激活断层，本版在原有 0°、90°、180°、270° 窗口之间增加 45°、135°、225°、315° 四个跨边界 token 窗口。冻结 Feature-MAE 对 8 个窗口重新推理，使用 sine-squared 权重先融合原始 512D 激活，最后才选择 winner dimension 并映射到 64 个 F 类别。
+
+- 512D 边界平均余弦相似度：`0.6774 → 0.8316`
+- winner dimension 边界一致率：`11.96% → 26.61%`
+- F category 边界一致率：`13.04% → 35.36%`
+- 峰值 GPU 显存：`0.075 GiB`
+- Graph：直接从融合后的 `14×56` map 构建，包含最右列到最左列的环形邻接，共 `1,512` 对 patch adjacency
+
+推理报告：`overlap_panorama_inference_report.json`
+
+Graph QA：`overlap_panorama_graph_report.json`
 
 交互网页：`dashboard/four-directions.html`
 
