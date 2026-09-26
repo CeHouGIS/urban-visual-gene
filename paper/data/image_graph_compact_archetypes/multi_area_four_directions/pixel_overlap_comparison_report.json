@@ -1,0 +1,54 @@
+{
+  "created_utc": "2026-09-26T03:33:24.488107+00:00",
+  "areas": 10,
+  "methods": [
+    "independent",
+    "token_overlap",
+    "pixel_overlap"
+  ],
+  "global_metrics": {
+    "independent": {
+      "f_seam_agreement": 0.13035714285714284,
+      "f_internal_agreement": 0.5300824175824176,
+      "seam_gap": 0.39972527472527475
+    },
+    "token_overlap": {
+      "f_seam_agreement": 0.35357142857142854,
+      "f_internal_agreement": 0.5148351648351648,
+      "seam_gap": 0.16126373626373625
+    },
+    "pixel_overlap": {
+      "f_seam_agreement": 0.5482142857142857,
+      "f_internal_agreement": 0.504532967032967,
+      "seam_gap": -0.04368131868131864
+    }
+  },
+  "independent_512d_seam_cosine": 0.6774668097496033,
+  "pixel_overlap_512d_seam_cosine": 0.925806999206543,
+  "independent_winner_seam_agreement": 0.11964285714285715,
+  "pixel_overlap_winner_seam_agreement": 0.5035714285714286,
+  "graph_shape": [
+    10,
+    2080
+  ],
+  "maximum_node_sum_error": 5.960464477539063e-08,
+  "minimum_cross_category_boundaries": 719,
+  "maximum_cross_category_boundaries": 870,
+  "figure": "paper/figures/supplementary/multi_area_four_directions/Fig_Pixel_Overlap_Panorama_Comparison.png",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}
