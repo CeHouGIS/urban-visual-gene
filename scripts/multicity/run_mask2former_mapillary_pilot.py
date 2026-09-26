@@ -177,9 +177,13 @@ def label_palette(num_classes: int) -> np.ndarray:
 
 
 def mask_filename(row: pd.Series) -> str:
-    city = str(row.city_key).replace("/", "__")
     panoid = str(row.panoid).replace("/", "_")
-    return f"{int(row.sample_index):04d}__{city}__{panoid}__h{int(row.heading):03d}.png"
+    return f"{int(row.sample_index):07d}__{panoid}__h{int(row.heading):03d}.png"
+
+
+def mask_path_for(mask_root: Path, row: pd.Series) -> Path:
+    city = str(row.city_key).replace("/", "__")
+    return mask_root / city / mask_filename(row)
 
 
 def make_qa_figure(
@@ -231,6 +235,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--panoramas", type=int, default=100)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--qa-images", type=int, default=10)
+    parser.add_argument("--progress-every", type=int, default=100)
+    parser.add_argument(
+        "--write-direction-fractions",
+        action="store_true",
+        help="Also store the redundant N_direction x 14 x 14 x 65 array.",
+    )
     parser.add_argument("--model-id", default=MODEL_ID)
     return parser.parse_args()
 
@@ -267,7 +277,20 @@ def main() -> None:
         raise ValueError(f"expected class IDs 0..64, got {sorted(id2label)}")
     palette = label_palette(NUM_CLASSES)
 
-    fractions = np.empty((len(sample), PATCH_GRID, PATCH_GRID, NUM_CLASSES), dtype=np.float16)
+    panorama_shape = (args.panoramas, PATCH_GRID, 4 * PATCH_GRID, NUM_CLASSES)
+    panorama_path = args.output_root / "panorama_semantic_fractions_14x56x65.f16.npy"
+    panorama_fractions = np.lib.format.open_memmap(
+        panorama_path, mode="w+", dtype=np.float16, shape=panorama_shape
+    )
+    direction_fractions = None
+    direction_path = args.output_root / "semantic_patch_fractions_65.f16.npy"
+    if args.write_direction_fractions:
+        direction_fractions = np.lib.format.open_memmap(
+            direction_path,
+            mode="w+",
+            dtype=np.float16,
+            shape=(len(sample), PATCH_GRID, PATCH_GRID, NUM_CLASSES),
+        )
     class_pixels = np.zeros(NUM_CLASSES, dtype=np.uint64)
     class_images = np.zeros(NUM_CLASSES, dtype=np.uint32)
     metadata = []
@@ -279,7 +302,8 @@ def main() -> None:
 
     try:
         for position, (_, row) in enumerate(sample.iterrows()):
-            mask_path = mask_root / mask_filename(row)
+            mask_path = mask_path_for(mask_root, row)
+            mask_path.parent.mkdir(parents=True, exist_ok=True)
             image = reader.image(str(row.tar_path), int(row.jpg_offset), int(row.jpg_size))
             width, height = image.size
             inference_seconds = 0.0
@@ -322,7 +346,15 @@ def main() -> None:
 
             if mask.shape != (height, width):
                 raise ValueError(f"prediction shape {mask.shape} != source {(height, width)}")
-            fractions[position] = patch_fractions(mask)
+            semantic_fractions = patch_fractions(mask)
+            panorama_index = int(row.panorama_sample_index)
+            heading_slot = HEADINGS.index(int(row.heading))
+            column_start = heading_slot * PATCH_GRID
+            panorama_fractions[
+                panorama_index, :, column_start:column_start + PATCH_GRID, :
+            ] = semantic_fractions
+            if direction_fractions is not None:
+                direction_fractions[position] = semantic_fractions
             counts = np.bincount(mask.reshape(-1), minlength=NUM_CLASSES)[:NUM_CLASSES]
             class_pixels += counts.astype(np.uint64)
             class_images += (counts > 0).astype(np.uint32)
@@ -346,7 +378,10 @@ def main() -> None:
                 qa_records.append(
                     {"image": image.copy(), "mask": mask.copy(), "city": row.city_key, "heading": row.heading}
                 )
-            if (position + 1) % 10 == 0 or position + 1 == len(sample):
+            if (position + 1) % args.progress_every == 0 or position + 1 == len(sample):
+                panorama_fractions.flush()
+                if direction_fractions is not None:
+                    direction_fractions.flush()
                 elapsed = time.monotonic() - started
                 atomic_json(
                     args.output_root / "progress.json",
@@ -363,12 +398,9 @@ def main() -> None:
     finally:
         reader.close()
 
-    np.save(args.output_root / "semantic_patch_fractions_65.f16.npy", fractions)
-    panorama_fractions = fractions.reshape(args.panoramas, 4, PATCH_GRID, PATCH_GRID, NUM_CLASSES)
-    panorama_fractions = panorama_fractions.transpose(0, 2, 1, 3, 4).reshape(
-        args.panoramas, PATCH_GRID, 4 * PATCH_GRID, NUM_CLASSES
-    )
-    np.save(args.output_root / "panorama_semantic_fractions_14x56x65.f16.npy", panorama_fractions)
+    panorama_fractions.flush()
+    if direction_fractions is not None:
+        direction_fractions.flush()
     metadata_frame = pd.DataFrame(metadata)
     metadata_frame.to_csv(args.paper_data / "prediction_metadata.csv", index=False)
 
@@ -401,8 +433,11 @@ def main() -> None:
         "seed": args.seed,
         "processor_size": dict(processor.size),
         "source_resolution_counts": metadata_frame.groupby(["width", "height"]).size().rename("count").reset_index().to_dict("records"),
-        "patch_fraction_shape": list(fractions.shape),
-        "panorama_fraction_shape": list(panorama_fractions.shape),
+        "direction_fraction_shape": (
+            list(direction_fractions.shape) if direction_fractions is not None else None
+        ),
+        "panorama_fraction_shape": list(panorama_shape),
+        "panorama_fraction_path": str(panorama_path),
         "peak_cuda_memory_gib": peak_memory / 2**30,
         "elapsed_seconds": elapsed,
         "images_per_second": len(sample) / elapsed,

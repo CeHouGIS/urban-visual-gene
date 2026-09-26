@@ -101,12 +101,17 @@ TOKENIZERS_PARALLELISM=false \
 taskset -c 0-7,10-15 \
 python3 -m scripts.multicity.run_mask2former_mapillary_pilot \
   --panoramas 100 \
-  --qa-images 10
+  --qa-images 10 \
+  --write-direction-fractions
 ```
 
 Existing valid masks are reused, making the run resumable. CUDA out-of-memory
 errors are recorded in `progress.json` and terminate the run instead of
 silently changing the model or input resolution.
+
+For large runs, omit `--write-direction-fractions`. The script then writes the
+`N_panorama × 14 × 56 × 65` array directly as a disk-backed NumPy memmap and
+does not create a redundant direction-level copy in RAM or on disk.
 
 ## Interpretation boundary
 
