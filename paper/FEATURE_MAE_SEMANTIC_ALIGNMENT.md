@@ -146,21 +146,15 @@ paper/figures/supplementary/feature_mae_semantic_alignment_20/
   P20_semantic_feature_alignment.jpg
 ```
 
-The 512-row figure is an ordinary heatmap of every dimension's complete
-65-class semantic profile; it does not apply hierarchical clustering. Rows are
-grouped by the frozen visual-element mapping `F000`-`F063`, and dimensions
-within each F group are ordered by ascending D ID. Each displayed row label
-therefore describes one F group and reports its number of constituent
-dimensions. The adjacent `F64` strip makes these fixed groups explicit. Columns
-use a stable, human-readable order by nature, ground/road, built structure,
-people/riders, street-object, and vehicle roles. The coloured `type` side strip
-identifies clear, mixed, low-specificity, and artifact-candidate dimensions.
-The exact fixed row and column orders are recorded in
-`heatmap_dimension_order.csv` and `heatmap_semantic_order.csv`; the former also
-contains each D dimension's rank within its F group. These CSV tables should be
-used when exact dimension IDs and percentages are required. The full D-to-F
-mapping, including the prior English and Chinese F labels, is stored in
-`dimension_f64_mapping.csv`.
+The 512-row figure is a plain heatmap of every dimension's complete 65-class
+semantic profile. It intentionally adds no hierarchy, F64 grouping, semantic
+role grouping, side strips, or category legends. Rows follow the original
+`D000`-`D511` dimension-ID order, and columns follow the original Mapillary
+`class_id` order. The fixed row and column orders are recorded in
+`heatmap_dimension_order.csv` and `heatmap_semantic_order.csv`. These tables and
+the full distribution CSV should be used when exact IDs and percentages are
+required. The separate `dimension_f64_mapping.csv` remains available for other
+analyses but is not used to arrange or annotate this heatmap.
 
 ## Conclusion
 

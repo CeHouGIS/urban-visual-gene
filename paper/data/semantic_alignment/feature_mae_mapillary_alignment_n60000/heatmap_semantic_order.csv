@@ -1,66 +1,66 @@
-heatmap_column,class_id,class_name,scene_role
-0,27,Sky,Nature
-1,30,Vegetation,Nature
-2,29,Terrain,Nature
-3,25,Mountain,Nature
-4,26,Sand,Nature
-5,28,Snow,Nature
-6,31,Water,Nature
-7,0,Bird,Nature
-8,1,Ground Animal,Nature
-9,13,Road,Ground / road
-10,15,Sidewalk,Ground / road
-11,7,Bike Lane,Ground / road
-12,8,Crosswalk - Plain,Ground / road
-13,9,Curb Cut,Ground / road
-14,10,Parking,Ground / road
-15,11,Pedestrian Area,Ground / road
-16,12,Rail Track,Ground / road
-17,14,Service Lane,Ground / road
-18,23,Lane Marking - Crosswalk,Ground / road
-19,24,Lane Marking - General,Ground / road
-20,17,Building,Built structure
-21,2,Curb,Built structure
-22,3,Fence,Built structure
-23,4,Guard Rail,Built structure
-24,5,Barrier,Built structure
-25,6,Wall,Built structure
-26,16,Bridge,Built structure
-27,18,Tunnel,Built structure
-28,19,Person,People / riders
-29,20,Bicyclist,People / riders
-30,21,Motorcyclist,People / riders
-31,22,Other Rider,People / riders
-32,32,Banner,Street objects
-33,33,Bench,Street objects
-34,34,Bike Rack,Street objects
-35,35,Billboard,Street objects
-36,36,Catch Basin,Street objects
-37,37,CCTV Camera,Street objects
-38,38,Fire Hydrant,Street objects
-39,39,Junction Box,Street objects
-40,40,Mailbox,Street objects
-41,41,Manhole,Street objects
-42,42,Phone Booth,Street objects
-43,43,Pothole,Street objects
-44,44,Street Light,Street objects
-45,45,Pole,Street objects
-46,46,Traffic Sign Frame,Street objects
-47,47,Utility Pole,Street objects
-48,48,Traffic Light,Street objects
-49,49,Traffic Sign (Back),Street objects
-50,50,Traffic Sign (Front),Street objects
-51,51,Trash Can,Street objects
-52,52,Bicycle,Vehicles
-53,53,Boat,Vehicles
-54,54,Bus,Vehicles
-55,55,Car,Vehicles
-56,56,Caravan,Vehicles
-57,57,Motorcycle,Vehicles
-58,58,On Rails,Vehicles
-59,59,Other Vehicle,Vehicles
-60,60,Trailer,Vehicles
-61,61,Truck,Vehicles
-62,62,Wheeled Slow,Vehicles
-63,63,Car Mount,Vehicles
-64,64,Ego Vehicle,Vehicles
+heatmap_column,class_id,class_name
+0,0,Bird
+1,1,Ground Animal
+2,2,Curb
+3,3,Fence
+4,4,Guard Rail
+5,5,Barrier
+6,6,Wall
+7,7,Bike Lane
+8,8,Crosswalk - Plain
+9,9,Curb Cut
+10,10,Parking
+11,11,Pedestrian Area
+12,12,Rail Track
+13,13,Road
+14,14,Service Lane
+15,15,Sidewalk
+16,16,Bridge
+17,17,Building
+18,18,Tunnel
+19,19,Person
+20,20,Bicyclist
+21,21,Motorcyclist
+22,22,Other Rider
+23,23,Lane Marking - Crosswalk
+24,24,Lane Marking - General
+25,25,Mountain
+26,26,Sand
+27,27,Sky
+28,28,Snow
+29,29,Terrain
+30,30,Vegetation
+31,31,Water
+32,32,Banner
+33,33,Bench
+34,34,Bike Rack
+35,35,Billboard
+36,36,Catch Basin
+37,37,CCTV Camera
+38,38,Fire Hydrant
+39,39,Junction Box
+40,40,Mailbox
+41,41,Manhole
+42,42,Phone Booth
+43,43,Pothole
+44,44,Street Light
+45,45,Pole
+46,46,Traffic Sign Frame
+47,47,Utility Pole
+48,48,Traffic Light
+49,49,Traffic Sign (Back)
+50,50,Traffic Sign (Front)
+51,51,Trash Can
+52,52,Bicycle
+53,53,Boat
+54,54,Bus
+55,55,Car
+56,56,Caravan
+57,57,Motorcycle
+58,58,On Rails
+59,59,Other Vehicle
+60,60,Trailer
+61,61,Truck
+62,62,Wheeled Slow
+63,63,Car Mount
+64,64,Ego Vehicle

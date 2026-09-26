@@ -1,513 +1,513 @@
-heatmap_row,dimension_id,dimension,fine_id,fine_category,fine_label_en,fine_label_zh,within_fine_rank,top1_class,assessment
-0,0,D000,0,F000,red brick corner,红砖街角,0,Terrain,coherent_semantic_mixture
-1,18,D018,0,F000,red brick corner,红砖街角,1,Truck,coherent_semantic_mixture
-2,33,D033,0,F000,red brick corner,红砖街角,2,Vegetation,coherent_semantic_mixture
-3,68,D068,0,F000,red brick corner,红砖街角,3,Vegetation,coherent_semantic_mixture
-4,93,D093,0,F000,red brick corner,红砖街角,4,Vegetation,clear_single_semantic
-5,128,D128,0,F000,red brick corner,红砖街角,5,Building,clear_single_semantic
-6,154,D154,0,F000,red brick corner,红砖街角,6,Building,coherent_semantic_mixture
-7,249,D249,0,F000,red brick corner,红砖街角,7,Fence,spatial_artifact_candidate
-8,464,D464,0,F000,red brick corner,红砖街角,8,Bus,coherent_semantic_mixture
-9,1,D001,1,F001,shaded_corner,树荫街角,0,Vegetation,clear_single_semantic
-10,21,D021,1,F001,shaded_corner,树荫街角,1,Vegetation,clear_single_semantic
-11,77,D077,1,F001,shaded_corner,树荫街角,2,Vegetation,clear_single_semantic
-12,164,D164,1,F001,shaded_corner,树荫街角,3,Vegetation,low_mapillary_specificity
-13,231,D231,1,F001,shaded_corner,树荫街角,4,Building,clear_single_semantic
-14,285,D285,1,F001,shaded_corner,树荫街角,5,Tunnel,clear_single_semantic
-15,291,D291,1,F001,shaded_corner,树荫街角,6,Road,low_mapillary_specificity
-16,304,D304,1,F001,shaded_corner,树荫街角,7,Vegetation,spatial_artifact_candidate
-17,313,D313,1,F001,shaded_corner,树荫街角,8,Vegetation,coherent_semantic_mixture
-18,372,D372,1,F001,shaded_corner,树荫街角,9,Tunnel,spatial_artifact_candidate
-19,2,D002,2,F002,shaded patches,树荫斑驳,0,Vegetation,clear_single_semantic
-20,49,D049,2,F002,shaded patches,树荫斑驳,1,Car,clear_single_semantic
-21,55,D055,2,F002,shaded patches,树荫斑驳,2,Bridge,coherent_semantic_mixture
-22,81,D081,2,F002,shaded patches,树荫斑驳,3,Vegetation,coherent_semantic_mixture
-23,135,D135,2,F002,shaded patches,树荫斑驳,4,Sky,clear_single_semantic
-24,149,D149,2,F002,shaded patches,树荫斑驳,5,Sky,clear_single_semantic
-25,196,D196,2,F002,shaded patches,树荫斑驳,6,Vegetation,clear_single_semantic
-26,254,D254,2,F002,shaded patches,树荫斑驳,7,Bridge,clear_single_semantic
-27,347,D347,2,F002,shaded patches,树荫斑驳,8,Sky,clear_single_semantic
-28,354,D354,2,F002,shaded patches,树荫斑驳,9,Vegetation,coherent_semantic_mixture
-29,366,D366,2,F002,shaded patches,树荫斑驳,10,Vegetation,clear_single_semantic
-30,407,D407,2,F002,shaded patches,树荫斑驳,11,Sky,clear_single_semantic
-31,426,D426,2,F002,shaded patches,树荫斑驳,12,Building,clear_single_semantic
-32,457,D457,2,F002,shaded patches,树荫斑驳,13,Vegetation,clear_single_semantic
-33,3,D003,3,F003,building facade,建筑立面,0,Building,clear_single_semantic
-34,4,D004,3,F003,building facade,建筑立面,1,Vegetation,clear_single_semantic
-35,12,D012,3,F003,building facade,建筑立面,2,Sky,clear_single_semantic
-36,64,D064,3,F003,building facade,建筑立面,3,Sky,clear_single_semantic
-37,127,D127,3,F003,building facade,建筑立面,4,Sky,clear_single_semantic
-38,202,D202,3,F003,building facade,建筑立面,5,Road,clear_single_semantic
-39,264,D264,3,F003,building facade,建筑立面,6,Building,coherent_semantic_mixture
-40,311,D311,3,F003,building facade,建筑立面,7,Building,clear_single_semantic
-41,5,D005,4,F004,highlighted_buildings,高亮建筑,0,Building,clear_single_semantic
-42,141,D141,4,F004,highlighted_buildings,高亮建筑,1,Vegetation,clear_single_semantic
-43,393,D393,4,F004,highlighted_buildings,高亮建筑,2,Bridge,coherent_semantic_mixture
-44,456,D456,4,F004,highlighted_buildings,高亮建筑,3,Building,clear_single_semantic
-45,483,D483,4,F004,highlighted_buildings,高亮建筑,4,Building,clear_single_semantic
-46,6,D006,5,F005,palm_trees_and_buildings,棕榈树与建筑,0,Road,clear_single_semantic
-47,100,D100,5,F005,palm_trees_and_buildings,棕榈树与建筑,1,Vegetation,clear_single_semantic
-48,145,D145,5,F005,palm_trees_and_buildings,棕榈树与建筑,2,Road,clear_single_semantic
-49,184,D184,5,F005,palm_trees_and_buildings,棕榈树与建筑,3,Building,clear_single_semantic
-50,341,D341,5,F005,palm_trees_and_buildings,棕榈树与建筑,4,Vegetation,clear_single_semantic
-51,381,D381,5,F005,palm_trees_and_buildings,棕榈树与建筑,5,Road,low_mapillary_specificity
-52,7,D007,6,F006,small alley entrance,小巷口,0,Car,clear_single_semantic
-53,28,D028,6,F006,small alley entrance,小巷口,1,Vegetation,clear_single_semantic
-54,115,D115,6,F006,small alley entrance,小巷口,2,Car,clear_single_semantic
-55,137,D137,6,F006,small alley entrance,小巷口,3,Road,clear_single_semantic
-56,230,D230,6,F006,small alley entrance,小巷口,4,Road,clear_single_semantic
-57,327,D327,6,F006,small alley entrance,小巷口,5,Guard Rail,coherent_semantic_mixture
-58,459,D459,6,F006,small alley entrance,小巷口,6,Bridge,clear_single_semantic
-59,460,D460,6,F006,small alley entrance,小巷口,7,Building,spatial_artifact_candidate
-60,469,D469,6,F006,small alley entrance,小巷口,8,Road,clear_single_semantic
-61,8,D008,7,F007,roof_and_eaves,屋顶与屋檐,0,Vegetation,clear_single_semantic
-62,89,D089,7,F007,roof_and_eaves,屋顶与屋檐,1,Building,clear_single_semantic
-63,112,D112,7,F007,roof_and_eaves,屋顶与屋檐,2,Building,coherent_semantic_mixture
-64,122,D122,7,F007,roof_and_eaves,屋顶与屋檐,3,Vegetation,low_mapillary_specificity
-65,228,D228,7,F007,roof_and_eaves,屋顶与屋檐,4,Bridge,clear_single_semantic
-66,269,D269,7,F007,roof_and_eaves,屋顶与屋檐,5,Sky,clear_single_semantic
-67,319,D319,7,F007,roof_and_eaves,屋顶与屋檐,6,Building,clear_single_semantic
-68,346,D346,7,F007,roof_and_eaves,屋顶与屋檐,7,Building,clear_single_semantic
-69,353,D353,7,F007,roof_and_eaves,屋顶与屋檐,8,Sky,clear_single_semantic
-70,379,D379,7,F007,roof_and_eaves,屋顶与屋檐,9,Vegetation,clear_single_semantic
-71,487,D487,7,F007,roof_and_eaves,屋顶与屋檐,10,Sky,clear_single_semantic
-72,9,D009,8,F008,stone_wall_and_retaining_wall,石墙与护坡,0,Sky,clear_single_semantic
-73,169,D169,8,F008,stone_wall_and_retaining_wall,石墙与护坡,1,Sky,coherent_semantic_mixture
-74,241,D241,8,F008,stone_wall_and_retaining_wall,石墙与护坡,2,Mountain,coherent_semantic_mixture
-75,276,D276,8,F008,stone_wall_and_retaining_wall,石墙与护坡,3,Sky,clear_single_semantic
-76,297,D297,8,F008,stone_wall_and_retaining_wall,石墙与护坡,4,Sky,coherent_semantic_mixture
-77,320,D320,8,F008,stone_wall_and_retaining_wall,石墙与护坡,5,Sky,clear_single_semantic
-78,451,D451,8,F008,stone_wall_and_retaining_wall,石墙与护坡,6,Vegetation,clear_single_semantic
-79,476,D476,8,F008,stone_wall_and_retaining_wall,石墙与护坡,7,Road,clear_single_semantic
-80,479,D479,8,F008,stone_wall_and_retaining_wall,石墙与护坡,8,Sky,clear_single_semantic
-81,505,D505,8,F008,stone_wall_and_retaining_wall,石墙与护坡,9,Vegetation,clear_single_semantic
-82,10,D010,9,F009,highlighted road,高亮道路,0,Sky,clear_single_semantic
-83,51,D051,9,F009,highlighted road,高亮道路,1,Building,clear_single_semantic
-84,182,D182,9,F009,highlighted road,高亮道路,2,Bridge,clear_single_semantic
-85,197,D197,9,F009,highlighted road,高亮道路,3,Sky,clear_single_semantic
-86,240,D240,9,F009,highlighted road,高亮道路,4,Building,clear_single_semantic
-87,265,D265,9,F009,highlighted road,高亮道路,5,Vegetation,clear_single_semantic
-88,274,D274,9,F009,highlighted road,高亮道路,6,Building,clear_single_semantic
-89,368,D368,9,F009,highlighted road,高亮道路,7,Sky,clear_single_semantic
-90,392,D392,9,F009,highlighted road,高亮道路,8,Building,coherent_semantic_mixture
-91,411,D411,9,F009,highlighted road,高亮道路,9,Tunnel,coherent_semantic_mixture
-92,431,D431,9,F009,highlighted road,高亮道路,10,Road,low_mapillary_specificity
-93,449,D449,9,F009,highlighted road,高亮道路,11,Sky,coherent_semantic_mixture
-94,11,D011,10,F010,green_wall,绿植墙,0,Vegetation,coherent_semantic_mixture
-95,121,D121,10,F010,green_wall,绿植墙,1,Sky,clear_single_semantic
-96,174,D174,10,F010,green_wall,绿植墙,2,Sky,clear_single_semantic
-97,188,D188,10,F010,green_wall,绿植墙,3,Terrain,low_mapillary_specificity
-98,262,D262,10,F010,green_wall,绿植墙,4,Building,clear_single_semantic
-99,307,D307,10,F010,green_wall,绿植墙,5,Building,clear_single_semantic
-100,315,D315,10,F010,green_wall,绿植墙,6,Bridge,clear_single_semantic
-101,380,D380,10,F010,green_wall,绿植墙,7,Sky,coherent_semantic_mixture
-102,409,D409,10,F010,green_wall,绿植墙,8,Vegetation,clear_single_semantic
-103,418,D418,10,F010,green_wall,绿植墙,9,Building,clear_single_semantic
-104,421,D421,10,F010,green_wall,绿植墙,10,Sky,clear_single_semantic
-105,13,D013,11,F011,road_edge,道路边缘,0,Vegetation,clear_single_semantic
-106,31,D031,11,F011,road_edge,道路边缘,1,Road,coherent_semantic_mixture
-107,147,D147,11,F011,road_edge,道路边缘,2,Vegetation,coherent_semantic_mixture
-108,204,D204,11,F011,road_edge,道路边缘,3,Car,coherent_semantic_mixture
-109,205,D205,11,F011,road_edge,道路边缘,4,Road,clear_single_semantic
-110,207,D207,11,F011,road_edge,道路边缘,5,Road,coherent_semantic_mixture
-111,213,D213,11,F011,road_edge,道路边缘,6,Barrier,low_mapillary_specificity
-112,214,D214,11,F011,road_edge,道路边缘,7,Building,low_mapillary_specificity
-113,220,D220,11,F011,road_edge,道路边缘,8,Car,clear_single_semantic
-114,242,D242,11,F011,road_edge,道路边缘,9,Vegetation,clear_single_semantic
-115,383,D383,11,F011,road_edge,道路边缘,10,Terrain,coherent_semantic_mixture
-116,404,D404,11,F011,road_edge,道路边缘,11,Terrain,low_mapillary_specificity
-117,14,D014,12,F012,bamboo,竹林,0,Sky,coherent_semantic_mixture
-118,114,D114,12,F012,bamboo,竹林,1,Vegetation,low_mapillary_specificity
-119,151,D151,12,F012,bamboo,竹林,2,Truck,low_mapillary_specificity
-120,270,D270,12,F012,bamboo,竹林,3,Sky,clear_single_semantic
-121,282,D282,12,F012,bamboo,竹林,4,Sky,clear_single_semantic
-122,310,D310,12,F012,bamboo,竹林,5,Sky,clear_single_semantic
-123,433,D433,12,F012,bamboo,竹林,6,Vegetation,clear_single_semantic
-124,465,D465,12,F012,bamboo,竹林,7,Building,clear_single_semantic
-125,15,D015,13,F013,tree-lined_driveway,绿树行道,0,Vegetation,coherent_semantic_mixture
-126,54,D054,13,F013,tree-lined_driveway,绿树行道,1,Building,clear_single_semantic
-127,198,D198,13,F013,tree-lined_driveway,绿树行道,2,Vegetation,clear_single_semantic
-128,253,D253,13,F013,tree-lined_driveway,绿树行道,3,Vegetation,clear_single_semantic
-129,261,D261,13,F013,tree-lined_driveway,绿树行道,4,Building,clear_single_semantic
-130,266,D266,13,F013,tree-lined_driveway,绿树行道,5,Building,coherent_semantic_mixture
-131,357,D357,13,F013,tree-lined_driveway,绿树行道,6,Road,low_mapillary_specificity
-132,374,D374,13,F013,tree-lined_driveway,绿树行道,7,Fence,coherent_semantic_mixture
-133,408,D408,13,F013,tree-lined_driveway,绿树行道,8,Terrain,coherent_semantic_mixture
-134,471,D471,13,F013,tree-lined_driveway,绿树行道,9,Terrain,coherent_semantic_mixture
-135,477,D477,13,F013,tree-lined_driveway,绿树行道,10,Bridge,spatial_artifact_candidate
-136,16,D016,14,F014,road_edge,道路边缘,0,Car,low_mapillary_specificity
-137,62,D062,14,F014,road_edge,道路边缘,1,Road,clear_single_semantic
-138,226,D226,14,F014,road_edge,道路边缘,2,Road,clear_single_semantic
-139,235,D235,14,F014,road_edge,道路边缘,3,Vegetation,clear_single_semantic
-140,257,D257,14,F014,road_edge,道路边缘,4,Vegetation,low_mapillary_specificity
-141,288,D288,14,F014,road_edge,道路边缘,5,Vegetation,clear_single_semantic
-142,323,D323,14,F014,road_edge,道路边缘,6,Vegetation,spatial_artifact_candidate
-143,326,D326,14,F014,road_edge,道路边缘,7,Truck,spatial_artifact_candidate
-144,340,D340,14,F014,road_edge,道路边缘,8,Road,coherent_semantic_mixture
-145,17,D017,15,F015,tree_shade_street,树荫道,0,Vegetation,clear_single_semantic
-146,126,D126,15,F015,tree_shade_street,树荫道,1,Building,coherent_semantic_mixture
-147,176,D176,15,F015,tree_shade_street,树荫道,2,Building,clear_single_semantic
-148,190,D190,15,F015,tree_shade_street,树荫道,3,Building,coherent_semantic_mixture
-149,256,D256,15,F015,tree_shade_street,树荫道,4,Sky,coherent_semantic_mixture
-150,324,D324,15,F015,tree_shade_street,树荫道,5,Sky,spatial_artifact_candidate
-151,334,D334,15,F015,tree_shade_street,树荫道,6,Sky,coherent_semantic_mixture
-152,397,D397,15,F015,tree_shade_street,树荫道,7,Building,clear_single_semantic
-153,398,D398,15,F015,tree_shade_street,树荫道,8,Vegetation,clear_single_semantic
-154,399,D399,15,F015,tree_shade_street,树荫道,9,Sky,clear_single_semantic
-155,401,D401,15,F015,tree_shade_street,树荫道,10,Building,clear_single_semantic
-156,496,D496,15,F015,tree_shade_street,树荫道,11,Vegetation,clear_single_semantic
-157,19,D019,16,F016,construction scaffolding,建筑脚手架,0,Sky,clear_single_semantic
-158,140,D140,16,F016,construction scaffolding,建筑脚手架,1,Vegetation,clear_single_semantic
-159,296,D296,16,F016,construction scaffolding,建筑脚手架,2,Vegetation,coherent_semantic_mixture
-160,317,D317,16,F016,construction scaffolding,建筑脚手架,3,Road,clear_single_semantic
-161,369,D369,16,F016,construction scaffolding,建筑脚手架,4,Vegetation,clear_single_semantic
-162,422,D422,16,F016,construction scaffolding,建筑脚手架,5,Sky,clear_single_semantic
-163,20,D020,17,F017,building facade,建筑立面,0,Building,coherent_semantic_mixture
-164,60,D060,17,F017,building facade,建筑立面,1,Vegetation,clear_single_semantic
-165,160,D160,17,F017,building facade,建筑立面,2,Bridge,coherent_semantic_mixture
-166,167,D167,17,F017,building facade,建筑立面,3,Vegetation,clear_single_semantic
-167,277,D277,17,F017,building facade,建筑立面,4,Building,coherent_semantic_mixture
-168,290,D290,17,F017,building facade,建筑立面,5,Vegetation,clear_single_semantic
-169,348,D348,17,F017,building facade,建筑立面,6,Building,clear_single_semantic
-170,350,D350,17,F017,building facade,建筑立面,7,Sky,clear_single_semantic
-171,22,D022,18,F018,small alley flowerbed,小巷花丛,0,Vegetation,clear_single_semantic
-172,26,D026,18,F018,small alley flowerbed,小巷花丛,1,Road,spatial_artifact_candidate
-173,43,D043,18,F018,small alley flowerbed,小巷花丛,2,Bus,coherent_semantic_mixture
-174,72,D072,18,F018,small alley flowerbed,小巷花丛,3,Wall,low_mapillary_specificity
-175,200,D200,18,F018,small alley flowerbed,小巷花丛,4,Road,low_mapillary_specificity
-176,419,D419,18,F018,small alley flowerbed,小巷花丛,5,Fence,spatial_artifact_candidate
-177,23,D023,19,F019,road_and_building,道路与建筑,0,Vegetation,clear_single_semantic
-178,57,D057,19,F019,road_and_building,道路与建筑,1,Building,clear_single_semantic
-179,142,D142,19,F019,road_and_building,道路与建筑,2,Car,low_mapillary_specificity
-180,212,D212,19,F019,road_and_building,道路与建筑,3,Building,clear_single_semantic
-181,294,D294,19,F019,road_and_building,道路与建筑,4,Sky,clear_single_semantic
-182,509,D509,19,F019,road_and_building,道路与建筑,5,Vegetation,clear_single_semantic
-183,24,D024,20,F020,advertising_wall,广告墙,0,Terrain,low_mapillary_specificity
-184,66,D066,20,F020,advertising_wall,广告墙,1,Building,spatial_artifact_candidate
-185,158,D158,20,F020,advertising_wall,广告墙,2,Road,clear_single_semantic
-186,221,D221,20,F020,advertising_wall,广告墙,3,Vegetation,clear_single_semantic
-187,388,D388,20,F020,advertising_wall,广告墙,4,Truck,low_mapillary_specificity
-188,389,D389,20,F020,advertising_wall,广告墙,5,Building,coherent_semantic_mixture
-189,466,D466,20,F020,advertising_wall,广告墙,6,Road,clear_single_semantic
-190,25,D025,21,F021,road_and_building,道路与建筑,0,Bridge,clear_single_semantic
-191,42,D042,21,F021,road_and_building,道路与建筑,1,Car,clear_single_semantic
-192,237,D237,21,F021,road_and_building,道路与建筑,2,Car,clear_single_semantic
-193,251,D251,21,F021,road_and_building,道路与建筑,3,Car,clear_single_semantic
-194,286,D286,21,F021,road_and_building,道路与建筑,4,Truck,clear_single_semantic
-195,321,D321,21,F021,road_and_building,道路与建筑,5,Vegetation,low_mapillary_specificity
-196,337,D337,21,F021,road_and_building,道路与建筑,6,Road,clear_single_semantic
-197,343,D343,21,F021,road_and_building,道路与建筑,7,Barrier,low_mapillary_specificity
-198,450,D450,21,F021,road_and_building,道路与建筑,8,Vegetation,coherent_semantic_mixture
-199,27,D027,22,F022,tree_canopy_and_road,树冠与道路,0,Vegetation,clear_single_semantic
-200,138,D138,22,F022,tree_canopy_and_road,树冠与道路,1,Building,coherent_semantic_mixture
-201,245,D245,22,F022,tree_canopy_and_road,树冠与道路,2,Sky,clear_single_semantic
-202,295,D295,22,F022,tree_canopy_and_road,树冠与道路,3,Vegetation,clear_single_semantic
-203,349,D349,22,F022,tree_canopy_and_road,树冠与道路,4,Building,clear_single_semantic
-204,356,D356,22,F022,tree_canopy_and_road,树冠与道路,5,Bridge,clear_single_semantic
-205,390,D390,22,F022,tree_canopy_and_road,树冠与道路,6,Bus,coherent_semantic_mixture
-206,394,D394,22,F022,tree_canopy_and_road,树冠与道路,7,Building,clear_single_semantic
-207,452,D452,22,F022,tree_canopy_and_road,树冠与道路,8,Vegetation,coherent_semantic_mixture
-208,29,D029,23,F023,street_corner_cafe,街角咖啡座,0,Road,clear_single_semantic
-209,58,D058,23,F023,street_corner_cafe,街角咖啡座,1,Truck,clear_single_semantic
-210,109,D109,23,F023,street_corner_cafe,街角咖啡座,2,Road,low_mapillary_specificity
-211,116,D116,23,F023,street_corner_cafe,街角咖啡座,3,Wall,low_mapillary_specificity
-212,177,D177,23,F023,street_corner_cafe,街角咖啡座,4,Sidewalk,spatial_artifact_candidate
-213,183,D183,23,F023,street_corner_cafe,街角咖啡座,5,Road,clear_single_semantic
-214,454,D454,23,F023,street_corner_cafe,街角咖啡座,6,Terrain,coherent_semantic_mixture
-215,502,D502,23,F023,street_corner_cafe,街角咖啡座,7,Road,clear_single_semantic
-216,30,D030,24,F024,road_edge,道路边缘,0,Road,clear_single_semantic
-217,37,D037,24,F024,road_edge,道路边缘,1,Road,clear_single_semantic
-218,46,D046,24,F024,road_edge,道路边缘,2,Road,clear_single_semantic
-219,101,D101,24,F024,road_edge,道路边缘,3,Road,low_mapillary_specificity
-220,123,D123,24,F024,road_edge,道路边缘,4,Road,coherent_semantic_mixture
-221,475,D475,24,F024,road_edge,道路边缘,5,Fence,low_mapillary_specificity
-222,32,D032,25,F025,shaded alley,树荫小路,0,Building,clear_single_semantic
-223,52,D052,25,F025,shaded alley,树荫小路,1,Vegetation,clear_single_semantic
-224,53,D053,25,F025,shaded alley,树荫小路,2,Building,clear_single_semantic
-225,165,D165,25,F025,shaded alley,树荫小路,3,Building,coherent_semantic_mixture
-226,175,D175,25,F025,shaded alley,树荫小路,4,Building,clear_single_semantic
-227,178,D178,25,F025,shaded alley,树荫小路,5,Sky,coherent_semantic_mixture
-228,229,D229,25,F025,shaded alley,树荫小路,6,Sky,clear_single_semantic
-229,308,D308,25,F025,shaded alley,树荫小路,7,Building,clear_single_semantic
-230,423,D423,25,F025,shaded alley,树荫小路,8,Vegetation,low_mapillary_specificity
-231,495,D495,25,F025,shaded alley,树荫小路,9,Sky,clear_single_semantic
-232,34,D034,26,F026,tree_shadows,树影斑驳,0,Road,clear_single_semantic
-233,365,D365,26,F026,tree_shadows,树影斑驳,1,Vegetation,coherent_semantic_mixture
-234,385,D385,26,F026,tree_shadows,树影斑驳,2,Vegetation,clear_single_semantic
-235,489,D489,26,F026,tree_shadows,树影斑驳,3,Tunnel,clear_single_semantic
-236,492,D492,26,F026,tree_shadows,树影斑驳,4,Road,low_mapillary_specificity
-237,35,D035,27,F027,car_top_heat,车顶热区,0,Building,clear_single_semantic
-238,91,D091,27,F027,car_top_heat,车顶热区,1,Road,clear_single_semantic
-239,103,D103,27,F027,car_top_heat,车顶热区,2,Vegetation,clear_single_semantic
-240,106,D106,27,F027,car_top_heat,车顶热区,3,Road,clear_single_semantic
-241,224,D224,27,F027,car_top_heat,车顶热区,4,Building,low_mapillary_specificity
-242,267,D267,27,F027,car_top_heat,车顶热区,5,Car,low_mapillary_specificity
-243,339,D339,27,F027,car_top_heat,车顶热区,6,Sidewalk,coherent_semantic_mixture
-244,344,D344,27,F027,car_top_heat,车顶热区,7,Vegetation,clear_single_semantic
-245,36,D036,28,F028,red_car_street,红车街景,0,Sky,clear_single_semantic
-246,59,D059,28,F028,red_car_street,红车街景,1,Vegetation,coherent_semantic_mixture
-247,85,D085,28,F028,red_car_street,红车街景,2,Fence,spatial_artifact_candidate
-248,131,D131,28,F028,red_car_street,红车街景,3,Sky,clear_single_semantic
-249,168,D168,28,F028,red_car_street,红车街景,4,Building,clear_single_semantic
-250,189,D189,28,F028,red_car_street,红车街景,5,Sky,clear_single_semantic
-251,258,D258,28,F028,red_car_street,红车街景,6,Sky,coherent_semantic_mixture
-252,363,D363,28,F028,red_car_street,红车街景,7,Vegetation,coherent_semantic_mixture
-253,424,D424,28,F028,red_car_street,红车街景,8,Tunnel,low_mapillary_specificity
-254,453,D453,28,F028,red_car_street,红车街景,9,Vegetation,coherent_semantic_mixture
-255,458,D458,28,F028,red_car_street,红车街景,10,Building,clear_single_semantic
-256,503,D503,28,F028,red_car_street,红车街景,11,Building,clear_single_semantic
-257,38,D038,29,F029,electric_bike_parking,电动车停放,0,Road,clear_single_semantic
-258,96,D096,29,F029,electric_bike_parking,电动车停放,1,Truck,coherent_semantic_mixture
-259,236,D236,29,F029,electric_bike_parking,电动车停放,2,Road,clear_single_semantic
-260,246,D246,29,F029,electric_bike_parking,电动车停放,3,Motorcycle,clear_single_semantic
-261,268,D268,29,F029,electric_bike_parking,电动车停放,4,Road,low_mapillary_specificity
-262,335,D335,29,F029,electric_bike_parking,电动车停放,5,Road,spatial_artifact_candidate
-263,410,D410,29,F029,electric_bike_parking,电动车停放,6,Road,clear_single_semantic
-264,442,D442,29,F029,electric_bike_parking,电动车停放,7,Road,spatial_artifact_candidate
-265,39,D039,30,F030,stone_wall_and_shadows,石墙与树影,0,Vegetation,low_mapillary_specificity
-266,82,D082,30,F030,stone_wall_and_shadows,石墙与树影,1,Barrier,low_mapillary_specificity
-267,132,D132,30,F030,stone_wall_and_shadows,石墙与树影,2,Building,clear_single_semantic
-268,195,D195,30,F030,stone_wall_and_shadows,石墙与树影,3,Building,spatial_artifact_candidate
-269,223,D223,30,F030,stone_wall_and_shadows,石墙与树影,4,Building,coherent_semantic_mixture
-270,40,D040,31,F031,road_edge,道路边缘,0,Road,coherent_semantic_mixture
-271,170,D170,31,F031,road_edge,道路边缘,1,Vegetation,coherent_semantic_mixture
-272,217,D217,31,F031,road_edge,道路边缘,2,Road,spatial_artifact_candidate
-273,238,D238,31,F031,road_edge,道路边缘,3,Vegetation,low_mapillary_specificity
-274,279,D279,31,F031,road_edge,道路边缘,4,Vegetation,spatial_artifact_candidate
-275,345,D345,31,F031,road_edge,道路边缘,5,Building,clear_single_semantic
-276,382,D382,31,F031,road_edge,道路边缘,6,Terrain,low_mapillary_specificity
-277,428,D428,31,F031,road_edge,道路边缘,7,Building,clear_single_semantic
-278,41,D041,32,F032,tree-lined walk,绿树行道,0,Building,coherent_semantic_mixture
-279,94,D094,32,F032,tree-lined walk,绿树行道,1,Sky,coherent_semantic_mixture
-280,333,D333,32,F032,tree-lined walk,绿树行道,2,Building,spatial_artifact_candidate
-281,473,D473,32,F032,tree-lined walk,绿树行道,3,Building,clear_single_semantic
-282,44,D044,33,F033,zebra_crossing,斑马线,0,Road,clear_single_semantic
-283,171,D171,33,F033,zebra_crossing,斑马线,1,Road,spatial_artifact_candidate
-284,412,D412,33,F033,zebra_crossing,斑马线,2,Road,clear_single_semantic
-285,425,D425,33,F033,zebra_crossing,斑马线,3,Wall,coherent_semantic_mixture
-286,45,D045,34,F034,red_door_street,红门街景,0,Wall,coherent_semantic_mixture
-287,80,D080,34,F034,red_door_street,红门街景,1,Road,clear_single_semantic
-288,110,D110,34,F034,red_door_street,红门街景,2,Terrain,coherent_semantic_mixture
-289,216,D216,34,F034,red_door_street,红门街景,3,Terrain,clear_single_semantic
-290,305,D305,34,F034,red_door_street,红门街景,4,Road,clear_single_semantic
-291,359,D359,34,F034,red_door_street,红门街景,5,Building,clear_single_semantic
-292,47,D047,35,F035,small alley entrance,小巷口,0,Vegetation,clear_single_semantic
-293,148,D148,35,F035,small alley entrance,小巷口,1,Building,low_mapillary_specificity
-294,163,D163,35,F035,small alley entrance,小巷口,2,Road,coherent_semantic_mixture
-295,302,D302,35,F035,small alley entrance,小巷口,3,Building,low_mapillary_specificity
-296,415,D415,35,F035,small alley entrance,小巷口,4,Truck,clear_single_semantic
-297,497,D497,35,F035,small alley entrance,小巷口,5,Vegetation,coherent_semantic_mixture
-298,510,D510,35,F035,small alley entrance,小巷口,6,Building,spatial_artifact_candidate
-299,48,D048,36,F036,pedestrian walk,人行道,0,Terrain,coherent_semantic_mixture
-300,67,D067,36,F036,pedestrian walk,人行道,1,Road,clear_single_semantic
-301,78,D078,36,F036,pedestrian walk,人行道,2,Road,clear_single_semantic
-302,83,D083,36,F036,pedestrian walk,人行道,3,Building,clear_single_semantic
-303,130,D130,36,F036,pedestrian walk,人行道,4,Building,coherent_semantic_mixture
-304,239,D239,36,F036,pedestrian walk,人行道,5,Road,clear_single_semantic
-305,271,D271,36,F036,pedestrian walk,人行道,6,Car,clear_single_semantic
-306,272,D272,36,F036,pedestrian walk,人行道,7,Road,clear_single_semantic
-307,322,D322,36,F036,pedestrian walk,人行道,8,Road,low_mapillary_specificity
-308,329,D329,36,F036,pedestrian walk,人行道,9,Car,clear_single_semantic
-309,361,D361,36,F036,pedestrian walk,人行道,10,Road,clear_single_semantic
-310,367,D367,36,F036,pedestrian walk,人行道,11,Road,low_mapillary_specificity
-311,406,D406,36,F036,pedestrian walk,人行道,12,Road,coherent_semantic_mixture
-312,441,D441,36,F036,pedestrian walk,人行道,13,Road,low_mapillary_specificity
-313,50,D050,37,F037,street_corner_shops,街角商铺,0,Sky,clear_single_semantic
-314,74,D074,37,F037,street_corner_shops,街角商铺,1,Road,clear_single_semantic
-315,155,D155,37,F037,street_corner_shops,街角商铺,2,Vegetation,coherent_semantic_mixture
-316,199,D199,37,F037,street_corner_shops,街角商铺,3,Bridge,clear_single_semantic
-317,201,D201,37,F037,street_corner_shops,街角商铺,4,Sky,clear_single_semantic
-318,263,D263,37,F037,street_corner_shops,街角商铺,5,Vegetation,clear_single_semantic
-319,396,D396,37,F037,street_corner_shops,街角商铺,6,Building,clear_single_semantic
-320,448,D448,37,F037,street_corner_shops,街角商铺,7,Building,clear_single_semantic
-321,481,D481,37,F037,street_corner_shops,街角商铺,8,Road,coherent_semantic_mixture
-322,493,D493,37,F037,street_corner_shops,街角商铺,9,Building,low_mapillary_specificity
-323,501,D501,37,F037,street_corner_shops,街角商铺,10,Road,clear_single_semantic
-324,56,D056,38,F038,red-yellow hotspot,红黄热区,0,Vegetation,coherent_semantic_mixture
-325,95,D095,38,F038,red-yellow hotspot,红黄热区,1,Building,low_mapillary_specificity
-326,129,D129,38,F038,red-yellow hotspot,红黄热区,2,Sky,spatial_artifact_candidate
-327,395,D395,38,F038,red-yellow hotspot,红黄热区,3,Building,coherent_semantic_mixture
-328,439,D439,38,F038,red-yellow hotspot,红黄热区,4,Vegetation,low_mapillary_specificity
-329,467,D467,38,F038,red-yellow hotspot,红黄热区,5,Building,low_mapillary_specificity
-330,468,D468,38,F038,red-yellow hotspot,红黄热区,6,Vegetation,low_mapillary_specificity
-331,508,D508,38,F038,red-yellow hotspot,红黄热区,7,Vegetation,coherent_semantic_mixture
-332,61,D061,39,F039,red car corner,红车街角,0,Vegetation,coherent_semantic_mixture
-333,134,D134,39,F039,red car corner,红车街角,1,Sky,clear_single_semantic
-334,299,D299,39,F039,red car corner,红车街角,2,Road,clear_single_semantic
-335,484,D484,39,F039,red car corner,红车街角,3,Vegetation,coherent_semantic_mixture
-336,63,D063,40,F040,cobblestone,石板路,0,Vegetation,clear_single_semantic
-337,117,D117,40,F040,cobblestone,石板路,1,Building,low_mapillary_specificity
-338,166,D166,40,F040,cobblestone,石板路,2,Building,low_mapillary_specificity
-339,209,D209,40,F040,cobblestone,石板路,3,Bridge,coherent_semantic_mixture
-340,252,D252,40,F040,cobblestone,石板路,4,Guard Rail,spatial_artifact_candidate
-341,280,D280,40,F040,cobblestone,石板路,5,Road,low_mapillary_specificity
-342,314,D314,40,F040,cobblestone,石板路,6,Building,clear_single_semantic
-343,370,D370,40,F040,cobblestone,石板路,7,Barrier,low_mapillary_specificity
-344,403,D403,40,F040,cobblestone,石板路,8,Road,coherent_semantic_mixture
-345,474,D474,40,F040,cobblestone,石板路,9,Sidewalk,low_mapillary_specificity
-346,478,D478,40,F040,cobblestone,石板路,10,Road,clear_single_semantic
-347,480,D480,40,F040,cobblestone,石板路,11,Road,low_mapillary_specificity
-348,491,D491,40,F040,cobblestone,石板路,12,Road,spatial_artifact_candidate
-349,494,D494,40,F040,cobblestone,石板路,13,Vegetation,low_mapillary_specificity
-350,499,D499,40,F040,cobblestone,石板路,14,Terrain,coherent_semantic_mixture
-351,506,D506,40,F040,cobblestone,石板路,15,Building,low_mapillary_specificity
-352,65,D065,41,F041,concrete_wall,混凝土墙,0,Building,coherent_semantic_mixture
-353,86,D086,41,F041,concrete_wall,混凝土墙,1,Sky,coherent_semantic_mixture
-354,118,D118,41,F041,concrete_wall,混凝土墙,2,Vegetation,clear_single_semantic
-355,275,D275,41,F041,concrete_wall,混凝土墙,3,Vegetation,clear_single_semantic
-356,289,D289,41,F041,concrete_wall,混凝土墙,4,Building,clear_single_semantic
-357,430,D430,41,F041,concrete_wall,混凝土墙,5,Wall,coherent_semantic_mixture
-358,69,D069,42,F042,Red-yellow glow street,红黄光晕街,0,Building,coherent_semantic_mixture
-359,119,D119,42,F042,Red-yellow glow street,红黄光晕街,1,Vegetation,clear_single_semantic
-360,161,D161,42,F042,Red-yellow glow street,红黄光晕街,2,Sky,clear_single_semantic
-361,172,D172,42,F042,Red-yellow glow street,红黄光晕街,3,Vegetation,clear_single_semantic
-362,255,D255,42,F042,Red-yellow glow street,红黄光晕街,4,Vegetation,coherent_semantic_mixture
-363,300,D300,42,F042,Red-yellow glow street,红黄光晕街,5,Sky,clear_single_semantic
-364,332,D332,42,F042,Red-yellow glow street,红黄光晕街,6,Building,coherent_semantic_mixture
-365,364,D364,42,F042,Red-yellow glow street,红黄光晕街,7,Sky,clear_single_semantic
-366,447,D447,42,F042,Red-yellow glow street,红黄光晕街,8,Vegetation,coherent_semantic_mixture
-367,482,D482,42,F042,Red-yellow glow street,红黄光晕街,9,Vegetation,clear_single_semantic
-368,500,D500,42,F042,Red-yellow glow street,红黄光晕街,10,Vegetation,clear_single_semantic
-369,511,D511,42,F042,Red-yellow glow street,红黄光晕街,11,Vegetation,clear_single_semantic
-370,70,D070,43,F043,tree_shadows,树影斑驳,0,Vegetation,clear_single_semantic
-371,76,D076,43,F043,tree_shadows,树影斑驳,1,Sky,clear_single_semantic
-372,113,D113,43,F043,tree_shadows,树影斑驳,2,Sky,clear_single_semantic
-373,133,D133,43,F043,tree_shadows,树影斑驳,3,Building,clear_single_semantic
-374,191,D191,43,F043,tree_shadows,树影斑驳,4,Building,spatial_artifact_candidate
-375,376,D376,43,F043,tree_shadows,树影斑驳,5,Bridge,coherent_semantic_mixture
-376,444,D444,43,F043,tree_shadows,树影斑驳,6,Bridge,clear_single_semantic
-377,498,D498,43,F043,tree_shadows,树影斑驳,7,Vegetation,clear_single_semantic
-378,71,D071,44,F044,road_and_buildings,道路与建筑,0,Building,clear_single_semantic
-379,150,D150,44,F044,road_and_buildings,道路与建筑,1,Wall,coherent_semantic_mixture
-380,157,D157,44,F044,road_and_buildings,道路与建筑,2,Sky,clear_single_semantic
-381,250,D250,44,F044,road_and_buildings,道路与建筑,3,Sky,clear_single_semantic
-382,309,D309,44,F044,road_and_buildings,道路与建筑,4,Car,low_mapillary_specificity
-383,312,D312,44,F044,road_and_buildings,道路与建筑,5,Bridge,clear_single_semantic
-384,318,D318,44,F044,road_and_buildings,道路与建筑,6,Vegetation,coherent_semantic_mixture
-385,443,D443,44,F044,road_and_buildings,道路与建筑,7,Sky,clear_single_semantic
-386,507,D507,44,F044,road_and_buildings,道路与建筑,8,Sky,coherent_semantic_mixture
-387,73,D073,45,F045,underpass glow,高架桥下光带,0,Bridge,clear_single_semantic
-388,181,D181,45,F045,underpass glow,高架桥下光带,1,Sky,clear_single_semantic
-389,210,D210,45,F045,underpass glow,高架桥下光带,2,Vegetation,clear_single_semantic
-390,278,D278,45,F045,underpass glow,高架桥下光带,3,Building,clear_single_semantic
-391,298,D298,45,F045,underpass glow,高架桥下光带,4,Building,clear_single_semantic
-392,386,D386,45,F045,underpass glow,高架桥下光带,5,Building,clear_single_semantic
-393,427,D427,45,F045,underpass glow,高架桥下光带,6,Building,clear_single_semantic
-394,486,D486,45,F045,underpass glow,高架桥下光带,7,Vegetation,clear_single_semantic
-395,75,D075,46,F046,window_heat_zone,窗体热区,0,Building,clear_single_semantic
-396,104,D104,46,F046,window_heat_zone,窗体热区,1,Vegetation,clear_single_semantic
-397,107,D107,46,F046,window_heat_zone,窗体热区,2,Wall,low_mapillary_specificity
-398,108,D108,46,F046,window_heat_zone,窗体热区,3,Sky,coherent_semantic_mixture
-399,144,D144,46,F046,window_heat_zone,窗体热区,4,Vegetation,clear_single_semantic
-400,208,D208,46,F046,window_heat_zone,窗体热区,5,Vegetation,coherent_semantic_mixture
-401,219,D219,46,F046,window_heat_zone,窗体热区,6,Building,low_mapillary_specificity
-402,233,D233,46,F046,window_heat_zone,窗体热区,7,Vegetation,clear_single_semantic
-403,234,D234,46,F046,window_heat_zone,窗体热区,8,Building,spatial_artifact_candidate
-404,301,D301,46,F046,window_heat_zone,窗体热区,9,Vegetation,clear_single_semantic
-405,342,D342,46,F046,window_heat_zone,窗体热区,10,Sky,clear_single_semantic
-406,79,D079,47,F047,underpass,高架桥下,0,Road,clear_single_semantic
-407,136,D136,47,F047,underpass,高架桥下,1,Sky,clear_single_semantic
-408,215,D215,47,F047,underpass,高架桥下,2,Bridge,clear_single_semantic
-409,413,D413,47,F047,underpass,高架桥下,3,Sky,coherent_semantic_mixture
-410,417,D417,47,F047,underpass,高架桥下,4,Vegetation,clear_single_semantic
-411,435,D435,47,F047,underpass,高架桥下,5,Truck,clear_single_semantic
-412,84,D084,48,F048,shaded path,树荫小径,0,Sky,coherent_semantic_mixture
-413,225,D225,48,F048,shaded path,树荫小径,1,Sky,coherent_semantic_mixture
-414,351,D351,48,F048,shaded path,树荫小径,2,Building,coherent_semantic_mixture
-415,360,D360,48,F048,shaded path,树荫小径,3,Building,clear_single_semantic
-416,391,D391,48,F048,shaded path,树荫小径,4,Road,low_mapillary_specificity
-417,402,D402,48,F048,shaded path,树荫小径,5,Bridge,coherent_semantic_mixture
-418,485,D485,48,F048,shaded path,树荫小径,6,Sky,clear_single_semantic
-419,87,D087,49,F049,red_wall_yellow_wall,红墙黄墙,0,Road,clear_single_semantic
-420,97,D097,49,F049,red_wall_yellow_wall,红墙黄墙,1,Building,coherent_semantic_mixture
-421,120,D120,49,F049,red_wall_yellow_wall,红墙黄墙,2,Road,clear_single_semantic
-422,187,D187,49,F049,red_wall_yellow_wall,红墙黄墙,3,Road,low_mapillary_specificity
-423,218,D218,49,F049,red_wall_yellow_wall,红墙黄墙,4,Road,clear_single_semantic
-424,244,D244,49,F049,red_wall_yellow_wall,红墙黄墙,5,Road,low_mapillary_specificity
-425,247,D247,49,F049,red_wall_yellow_wall,红墙黄墙,6,Sky,clear_single_semantic
-426,358,D358,49,F049,red_wall_yellow_wall,红墙黄墙,7,Vegetation,coherent_semantic_mixture
-427,387,D387,49,F049,red_wall_yellow_wall,红墙黄墙,8,Road,low_mapillary_specificity
-428,463,D463,49,F049,red_wall_yellow_wall,红墙黄墙,9,Road,clear_single_semantic
-429,472,D472,49,F049,red_wall_yellow_wall,红墙黄墙,10,Vegetation,clear_single_semantic
-430,88,D088,50,F050,greenery_and_water,绿植与水体,0,Vegetation,coherent_semantic_mixture
-431,92,D092,50,F050,greenery_and_water,绿植与水体,1,Road,coherent_semantic_mixture
-432,111,D111,50,F050,greenery_and_water,绿植与水体,2,Road,clear_single_semantic
-433,203,D203,50,F050,greenery_and_water,绿植与水体,3,Road,clear_single_semantic
-434,355,D355,50,F050,greenery_and_water,绿植与水体,4,Building,low_mapillary_specificity
-435,470,D470,50,F050,greenery_and_water,绿植与水体,5,Vegetation,coherent_semantic_mixture
-436,90,D090,51,F051,zebra_crossing,斑马线,0,Truck,spatial_artifact_candidate
-437,102,D102,51,F051,zebra_crossing,斑马线,1,Fence,spatial_artifact_candidate
-438,139,D139,51,F051,zebra_crossing,斑马线,2,Road,clear_single_semantic
-439,143,D143,51,F051,zebra_crossing,斑马线,3,Vegetation,clear_single_semantic
-440,162,D162,51,F051,zebra_crossing,斑马线,4,Vegetation,clear_single_semantic
-441,211,D211,51,F051,zebra_crossing,斑马线,5,Barrier,low_mapillary_specificity
-442,248,D248,51,F051,zebra_crossing,斑马线,6,Bridge,low_mapillary_specificity
-443,287,D287,51,F051,zebra_crossing,斑马线,7,Road,clear_single_semantic
-444,306,D306,51,F051,zebra_crossing,斑马线,8,Road,clear_single_semantic
-445,414,D414,51,F051,zebra_crossing,斑马线,9,Building,low_mapillary_specificity
-446,98,D098,52,F052,palm_tree_street,棕榈树街景,0,Sky,clear_single_semantic
-447,180,D180,52,F052,palm_tree_street,棕榈树街景,1,Sky,clear_single_semantic
-448,193,D193,52,F052,palm_tree_street,棕榈树街景,2,Building,clear_single_semantic
-449,281,D281,52,F052,palm_tree_street,棕榈树街景,3,Sky,clear_single_semantic
-450,283,D283,52,F052,palm_tree_street,棕榈树街景,4,Sky,clear_single_semantic
-451,284,D284,52,F052,palm_tree_street,棕榈树街景,5,Sky,clear_single_semantic
-452,338,D338,52,F052,palm_tree_street,棕榈树街景,6,Building,coherent_semantic_mixture
-453,405,D405,52,F052,palm_tree_street,棕榈树街景,7,Vegetation,clear_single_semantic
-454,429,D429,52,F052,palm_tree_street,棕榈树街景,8,Vegetation,clear_single_semantic
-455,99,D099,53,F053,road_marking,道路标线,0,Road,clear_single_semantic
-456,124,D124,53,F053,road_marking,道路标线,1,Vegetation,clear_single_semantic
-457,186,D186,53,F053,road_marking,道路标线,2,Road,clear_single_semantic
-458,206,D206,53,F053,road_marking,道路标线,3,Road,coherent_semantic_mixture
-459,316,D316,53,F053,road_marking,道路标线,4,Road,clear_single_semantic
-460,105,D105,54,F054,highlighted_lane,高亮车道,0,Road,clear_single_semantic
-461,222,D222,54,F054,highlighted_lane,高亮车道,1,Road,clear_single_semantic
-462,232,D232,54,F054,highlighted_lane,高亮车道,2,Road,clear_single_semantic
-463,330,D330,54,F054,highlighted_lane,高亮车道,3,Car,clear_single_semantic
-464,377,D377,54,F054,highlighted_lane,高亮车道,4,Road,clear_single_semantic
-465,436,D436,54,F054,highlighted_lane,高亮车道,5,Road,clear_single_semantic
-466,455,D455,54,F054,highlighted_lane,高亮车道,6,Terrain,spatial_artifact_candidate
-467,462,D462,54,F054,highlighted_lane,高亮车道,7,Road,clear_single_semantic
-468,504,D504,54,F054,highlighted_lane,高亮车道,8,Vegetation,low_mapillary_specificity
-469,125,D125,55,F055,small alley entrance,小巷口,0,Road,low_mapillary_specificity
-470,194,D194,55,F055,small alley entrance,小巷口,1,Building,clear_single_semantic
-471,328,D328,55,F055,small alley entrance,小巷口,2,Road,coherent_semantic_mixture
-472,352,D352,55,F055,small alley entrance,小巷口,3,Car,clear_single_semantic
-473,378,D378,55,F055,small alley entrance,小巷口,4,Road,clear_single_semantic
-474,146,D146,56,F056,stone_wall_street,石墙街景,0,Vegetation,low_mapillary_specificity
-475,260,D260,56,F056,stone_wall_street,石墙街景,1,Road,coherent_semantic_mixture
-476,293,D293,56,F056,stone_wall_street,石墙街景,2,Wall,coherent_semantic_mixture
-477,371,D371,56,F056,stone_wall_street,石墙街景,3,Vegetation,clear_single_semantic
-478,373,D373,56,F056,stone_wall_street,石墙街景,4,Building,clear_single_semantic
-479,445,D445,56,F056,stone_wall_street,石墙街景,5,Building,clear_single_semantic
-480,152,D152,57,F057,streetlight illumination,路灯照明,0,Barrier,low_mapillary_specificity
-481,156,D156,57,F057,streetlight illumination,路灯照明,1,Vegetation,clear_single_semantic
-482,259,D259,57,F057,streetlight illumination,路灯照明,2,Vegetation,clear_single_semantic
-483,331,D331,57,F057,streetlight illumination,路灯照明,3,Sky,clear_single_semantic
-484,437,D437,57,F057,streetlight illumination,路灯照明,4,Sky,clear_single_semantic
-485,153,D153,58,F058,shaded alley,树荫小径,0,Wall,coherent_semantic_mixture
-486,185,D185,58,F058,shaded alley,树荫小径,1,Road,coherent_semantic_mixture
-487,192,D192,58,F058,shaded alley,树荫小径,2,Building,clear_single_semantic
-488,336,D336,58,F058,shaded alley,树荫小径,3,Road,clear_single_semantic
-489,438,D438,58,F058,shaded alley,树荫小径,4,Road,low_mapillary_specificity
-490,490,D490,58,F058,shaded alley,树荫小径,5,Road,low_mapillary_specificity
-491,159,D159,59,F059,road_edge,道路边缘,0,Road,clear_single_semantic
-492,173,D173,59,F059,road_edge,道路边缘,1,Terrain,coherent_semantic_mixture
-493,243,D243,59,F059,road_edge,道路边缘,2,Road,clear_single_semantic
-494,303,D303,59,F059,road_edge,道路边缘,3,Wall,coherent_semantic_mixture
-495,179,D179,60,F060,street_corner_shop,街角店铺,0,Vegetation,clear_single_semantic
-496,227,D227,60,F060,street_corner_shop,街角店铺,1,Building,low_mapillary_specificity
-497,325,D325,60,F060,street_corner_shop,街角店铺,2,Building,clear_single_semantic
-498,384,D384,60,F060,street_corner_shop,街角店铺,3,Road,low_mapillary_specificity
-499,400,D400,60,F060,street_corner_shop,街角店铺,4,Car,clear_single_semantic
-500,461,D461,60,F060,street_corner_shop,街角店铺,5,Road,spatial_artifact_candidate
-501,273,D273,61,F061,sunlit street,阳光照射的街道,0,Vegetation,coherent_semantic_mixture
-502,362,D362,61,F061,sunlit street,阳光照射的街道,1,Vegetation,clear_single_semantic
-503,375,D375,61,F061,sunlit street,阳光照射的街道,2,Sky,coherent_semantic_mixture
-504,420,D420,61,F061,sunlit street,阳光照射的街道,3,Sky,clear_single_semantic
-505,432,D432,61,F061,sunlit street,阳光照射的街道,4,Terrain,coherent_semantic_mixture
-506,292,D292,62,F062,shaded alley,树荫小径,0,Building,clear_single_semantic
-507,434,D434,62,F062,shaded alley,树荫小径,1,Vegetation,clear_single_semantic
-508,440,D440,62,F062,shaded alley,树荫小径,2,Sky,clear_single_semantic
-509,488,D488,62,F062,shaded alley,树荫小径,3,Sky,coherent_semantic_mixture
-510,416,D416,63,F063,blue_wall_graffiti,蓝墙涂鸦,0,Building,coherent_semantic_mixture
-511,446,D446,63,F063,blue_wall_graffiti,蓝墙涂鸦,1,Vegetation,clear_single_semantic
+heatmap_row,dimension_id,dimension
+0,0,D000
+1,1,D001
+2,2,D002
+3,3,D003
+4,4,D004
+5,5,D005
+6,6,D006
+7,7,D007
+8,8,D008
+9,9,D009
+10,10,D010
+11,11,D011
+12,12,D012
+13,13,D013
+14,14,D014
+15,15,D015
+16,16,D016
+17,17,D017
+18,18,D018
+19,19,D019
+20,20,D020
+21,21,D021
+22,22,D022
+23,23,D023
+24,24,D024
+25,25,D025
+26,26,D026
+27,27,D027
+28,28,D028
+29,29,D029
+30,30,D030
+31,31,D031
+32,32,D032
+33,33,D033
+34,34,D034
+35,35,D035
+36,36,D036
+37,37,D037
+38,38,D038
+39,39,D039
+40,40,D040
+41,41,D041
+42,42,D042
+43,43,D043
+44,44,D044
+45,45,D045
+46,46,D046
+47,47,D047
+48,48,D048
+49,49,D049
+50,50,D050
+51,51,D051
+52,52,D052
+53,53,D053
+54,54,D054
+55,55,D055
+56,56,D056
+57,57,D057
+58,58,D058
+59,59,D059
+60,60,D060
+61,61,D061
+62,62,D062
+63,63,D063
+64,64,D064
+65,65,D065
+66,66,D066
+67,67,D067
+68,68,D068
+69,69,D069
+70,70,D070
+71,71,D071
+72,72,D072
+73,73,D073
+74,74,D074
+75,75,D075
+76,76,D076
+77,77,D077
+78,78,D078
+79,79,D079
+80,80,D080
+81,81,D081
+82,82,D082
+83,83,D083
+84,84,D084
+85,85,D085
+86,86,D086
+87,87,D087
+88,88,D088
+89,89,D089
+90,90,D090
+91,91,D091
+92,92,D092
+93,93,D093
+94,94,D094
+95,95,D095
+96,96,D096
+97,97,D097
+98,98,D098
+99,99,D099
+100,100,D100
+101,101,D101
+102,102,D102
+103,103,D103
+104,104,D104
+105,105,D105
+106,106,D106
+107,107,D107
+108,108,D108
+109,109,D109
+110,110,D110
+111,111,D111
+112,112,D112
+113,113,D113
+114,114,D114
+115,115,D115
+116,116,D116
+117,117,D117
+118,118,D118
+119,119,D119
+120,120,D120
+121,121,D121
+122,122,D122
+123,123,D123
+124,124,D124
+125,125,D125
+126,126,D126
+127,127,D127
+128,128,D128
+129,129,D129
+130,130,D130
+131,131,D131
+132,132,D132
+133,133,D133
+134,134,D134
+135,135,D135
+136,136,D136
+137,137,D137
+138,138,D138
+139,139,D139
+140,140,D140
+141,141,D141
+142,142,D142
+143,143,D143
+144,144,D144
+145,145,D145
+146,146,D146
+147,147,D147
+148,148,D148
+149,149,D149
+150,150,D150
+151,151,D151
+152,152,D152
+153,153,D153
+154,154,D154
+155,155,D155
+156,156,D156
+157,157,D157
+158,158,D158
+159,159,D159
+160,160,D160
+161,161,D161
+162,162,D162
+163,163,D163
+164,164,D164
+165,165,D165
+166,166,D166
+167,167,D167
+168,168,D168
+169,169,D169
+170,170,D170
+171,171,D171
+172,172,D172
+173,173,D173
+174,174,D174
+175,175,D175
+176,176,D176
+177,177,D177
+178,178,D178
+179,179,D179
+180,180,D180
+181,181,D181
+182,182,D182
+183,183,D183
+184,184,D184
+185,185,D185
+186,186,D186
+187,187,D187
+188,188,D188
+189,189,D189
+190,190,D190
+191,191,D191
+192,192,D192
+193,193,D193
+194,194,D194
+195,195,D195
+196,196,D196
+197,197,D197
+198,198,D198
+199,199,D199
+200,200,D200
+201,201,D201
+202,202,D202
+203,203,D203
+204,204,D204
+205,205,D205
+206,206,D206
+207,207,D207
+208,208,D208
+209,209,D209
+210,210,D210
+211,211,D211
+212,212,D212
+213,213,D213
+214,214,D214
+215,215,D215
+216,216,D216
+217,217,D217
+218,218,D218
+219,219,D219
+220,220,D220
+221,221,D221
+222,222,D222
+223,223,D223
+224,224,D224
+225,225,D225
+226,226,D226
+227,227,D227
+228,228,D228
+229,229,D229
+230,230,D230
+231,231,D231
+232,232,D232
+233,233,D233
+234,234,D234
+235,235,D235
+236,236,D236
+237,237,D237
+238,238,D238
+239,239,D239
+240,240,D240
+241,241,D241
+242,242,D242
+243,243,D243
+244,244,D244
+245,245,D245
+246,246,D246
+247,247,D247
+248,248,D248
+249,249,D249
+250,250,D250
+251,251,D251
+252,252,D252
+253,253,D253
+254,254,D254
+255,255,D255
+256,256,D256
+257,257,D257
+258,258,D258
+259,259,D259
+260,260,D260
+261,261,D261
+262,262,D262
+263,263,D263
+264,264,D264
+265,265,D265
+266,266,D266
+267,267,D267
+268,268,D268
+269,269,D269
+270,270,D270
+271,271,D271
+272,272,D272
+273,273,D273
+274,274,D274
+275,275,D275
+276,276,D276
+277,277,D277
+278,278,D278
+279,279,D279
+280,280,D280
+281,281,D281
+282,282,D282
+283,283,D283
+284,284,D284
+285,285,D285
+286,286,D286
+287,287,D287
+288,288,D288
+289,289,D289
+290,290,D290
+291,291,D291
+292,292,D292
+293,293,D293
+294,294,D294
+295,295,D295
+296,296,D296
+297,297,D297
+298,298,D298
+299,299,D299
+300,300,D300
+301,301,D301
+302,302,D302
+303,303,D303
+304,304,D304
+305,305,D305
+306,306,D306
+307,307,D307
+308,308,D308
+309,309,D309
+310,310,D310
+311,311,D311
+312,312,D312
+313,313,D313
+314,314,D314
+315,315,D315
+316,316,D316
+317,317,D317
+318,318,D318
+319,319,D319
+320,320,D320
+321,321,D321
+322,322,D322
+323,323,D323
+324,324,D324
+325,325,D325
+326,326,D326
+327,327,D327
+328,328,D328
+329,329,D329
+330,330,D330
+331,331,D331
+332,332,D332
+333,333,D333
+334,334,D334
+335,335,D335
+336,336,D336
+337,337,D337
+338,338,D338
+339,339,D339
+340,340,D340
+341,341,D341
+342,342,D342
+343,343,D343
+344,344,D344
+345,345,D345
+346,346,D346
+347,347,D347
+348,348,D348
+349,349,D349
+350,350,D350
+351,351,D351
+352,352,D352
+353,353,D353
+354,354,D354
+355,355,D355
+356,356,D356
+357,357,D357
+358,358,D358
+359,359,D359
+360,360,D360
+361,361,D361
+362,362,D362
+363,363,D363
+364,364,D364
+365,365,D365
+366,366,D366
+367,367,D367
+368,368,D368
+369,369,D369
+370,370,D370
+371,371,D371
+372,372,D372
+373,373,D373
+374,374,D374
+375,375,D375
+376,376,D376
+377,377,D377
+378,378,D378
+379,379,D379
+380,380,D380
+381,381,D381
+382,382,D382
+383,383,D383
+384,384,D384
+385,385,D385
+386,386,D386
+387,387,D387
+388,388,D388
+389,389,D389
+390,390,D390
+391,391,D391
+392,392,D392
+393,393,D393
+394,394,D394
+395,395,D395
+396,396,D396
+397,397,D397
+398,398,D398
+399,399,D399
+400,400,D400
+401,401,D401
+402,402,D402
+403,403,D403
+404,404,D404
+405,405,D405
+406,406,D406
+407,407,D407
+408,408,D408
+409,409,D409
+410,410,D410
+411,411,D411
+412,412,D412
+413,413,D413
+414,414,D414
+415,415,D415
+416,416,D416
+417,417,D417
+418,418,D418
+419,419,D419
+420,420,D420
+421,421,D421
+422,422,D422
+423,423,D423
+424,424,D424
+425,425,D425
+426,426,D426
+427,427,D427
+428,428,D428
+429,429,D429
+430,430,D430
+431,431,D431
+432,432,D432
+433,433,D433
+434,434,D434
+435,435,D435
+436,436,D436
+437,437,D437
+438,438,D438
+439,439,D439
+440,440,D440
+441,441,D441
+442,442,D442
+443,443,D443
+444,444,D444
+445,445,D445
+446,446,D446
+447,447,D447
+448,448,D448
+449,449,D449
+450,450,D450
+451,451,D451
+452,452,D452
+453,453,D453
+454,454,D454
+455,455,D455
+456,456,D456
+457,457,D457
+458,458,D458
+459,459,D459
+460,460,D460
+461,461,D461
+462,462,D462
+463,463,D463
+464,464,D464
+465,465,D465
+466,466,D466
+467,467,D467
+468,468,D468
+469,469,D469
+470,470,D470
+471,471,D471
+472,472,D472
+473,473,D473
+474,474,D474
+475,475,D475
+476,476,D476
+477,477,D477
+478,478,D478
+479,479,D479
+480,480,D480
+481,481,D481
+482,482,D482
+483,483,D483
+484,484,D484
+485,485,D485
+486,486,D486
+487,487,D487
+488,488,D488
+489,489,D489
+490,490,D490
+491,491,D491
+492,492,D492
+493,493,D493
+494,494,D494
+495,495,D495
+496,496,D496
+497,497,D497
+498,498,D498
+499,499,D499
+500,500,D500
+501,501,D501
+502,502,D502
+503,503,D503
+504,504,D504
+505,505,D505
+506,506,D506
+507,507,D507
+508,508,D508
+509,509,D509
+510,510,D510
+511,511,D511
