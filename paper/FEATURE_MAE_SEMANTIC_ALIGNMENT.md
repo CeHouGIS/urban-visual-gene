@@ -148,13 +148,17 @@ paper/figures/supplementary/feature_mae_semantic_alignment_20/
 
 The 512-row figure is a plain heatmap of every dimension's complete 65-class
 semantic profile. It intentionally adds no hierarchy, F64 grouping, semantic
-role grouping, side strips, or category legends. Rows follow the original
-`D000`-`D511` dimension-ID order, and columns follow the original Mapillary
-`class_id` order. The fixed row and column orders are recorded in
-`heatmap_dimension_order.csv` and `heatmap_semantic_order.csv`. These tables and
-the full distribution CSV should be used when exact IDs and percentages are
-required. The separate `dimension_f64_mapping.csv` remains available for other
-analyses but is not used to arrange or annotate this heatmap.
+role grouping, side strips, or category legends. To make the response structure
+readable without clustering, semantic columns are ordered by the number of
+dimensions for which each class is the strongest response (ties use mean share
+and class ID). Dimensions are then ordered by the position of their strongest
+semantic class, followed by decreasing peak fraction and dimension ID. The
+exact deterministic row and column orders, including the values used for
+sorting, are recorded in `heatmap_dimension_order.csv` and
+`heatmap_semantic_order.csv`. These tables and the full distribution CSV should
+be used when exact IDs and percentages are required. The separate
+`dimension_f64_mapping.csv` remains available for other analyses but is not
+used to arrange or annotate this heatmap.
 
 ## Conclusion
 

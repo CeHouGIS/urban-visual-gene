@@ -655,8 +655,22 @@ def plot_all_dimension_heatmap(
     class_names = (
         distribution.drop_duplicates("class_id").sort_values("class_id").class_name.to_numpy()
     )
-    ordered = np.arange(DIMENSIONS, dtype=np.int64)
-    column_order = np.arange(CLASSES, dtype=np.int64)
+    dimension_ids = np.arange(DIMENSIONS, dtype=np.int64)
+    class_ids = np.arange(CLASSES, dtype=np.int64)
+    dominant_class_ids = profiles.argmax(axis=1).astype(np.int64)
+    dominant_fractions = profiles[dimension_ids, dominant_class_ids]
+    dominant_counts = np.bincount(dominant_class_ids, minlength=CLASSES)
+    mean_fractions = profiles.mean(axis=0)
+
+    # A transparent non-clustering order: place classes that are the dominant
+    # response of more dimensions first, then order dimensions by the position
+    # of their dominant class and their peak fraction. IDs break all ties.
+    column_order = np.lexsort((class_ids, -mean_fractions, -dominant_counts))
+    class_rank = np.empty(CLASSES, dtype=np.int64)
+    class_rank[column_order] = np.arange(CLASSES)
+    ordered = np.lexsort(
+        (dimension_ids, -dominant_fractions, class_rank[dominant_class_ids])
+    )
 
     figure, axis = plt.subplots(figsize=(17, 22), constrained_layout=True)
     image = axis.imshow(
@@ -667,9 +681,9 @@ def plot_all_dimension_heatmap(
         np.arange(CLASSES), class_names[column_order], rotation=90, fontsize=6
     )
     y_ticks = np.arange(0, DIMENSIONS, 8)
-    axis.set_yticks(y_ticks, [f"D{x:03d}" for x in y_ticks], fontsize=5)
-    axis.set_xlabel("Mapillary Vistas semantic classes (class ID order)")
-    axis.set_ylabel("Feature-MAE dimensions (dimension ID order)")
+    axis.set_yticks(y_ticks, [f"D{ordered[x]:03d}" for x in y_ticks], fontsize=5)
+    axis.set_xlabel("Mapillary Vistas semantic classes (ordered by dominant-dimension count)")
+    axis.set_ylabel("Feature-MAE dimensions (ordered by dominant class and peak strength)")
     axis.set_title(
         "512 Feature-MAE dimensions × 65 Mapillary semantic classes",
         fontsize=13,
@@ -684,6 +698,9 @@ def plot_all_dimension_heatmap(
             "heatmap_row": np.arange(DIMENSIONS),
             "dimension_id": ordered,
             "dimension": [f"D{x:03d}" for x in ordered],
+            "dominant_class_id": dominant_class_ids[ordered],
+            "dominant_class_name": class_names[dominant_class_ids[ordered]],
+            "dominant_fraction": dominant_fractions[ordered],
         }
     )
     semantic_order = pd.DataFrame(
@@ -691,6 +708,8 @@ def plot_all_dimension_heatmap(
             "heatmap_column": np.arange(CLASSES),
             "class_id": column_order,
             "class_name": class_names[column_order],
+            "dominant_dimension_count": dominant_counts[column_order],
+            "mean_semantic_fraction": mean_fractions[column_order],
         }
     )
     return dimension_order, semantic_order
