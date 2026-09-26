@@ -1,5 +1,0 @@
-direction_id,heading,panorama_id,city,lat,lon,was_in_analysis_cache,cached_top1_match_fraction,archetype_id,distance_to_centroid,active_f_nodes,cross_category_boundaries
-H000,0,BFlilbUSNYggO3YcnRY3kg,UnitedStates/NewYorkCity,40.89517472490672,-73.85979552568753,True,0.9897959183673468,A05,0.86885506,30,158
-H090,90,BFlilbUSNYggO3YcnRY3kg,UnitedStates/NewYorkCity,40.89517472490672,-73.85979552568753,False,,A07,0.849395,31,185
-H180,180,BFlilbUSNYggO3YcnRY3kg,UnitedStates/NewYorkCity,40.89517472490672,-73.85979552568753,True,0.979591836734694,A01,0.61479545,34,201
-H270,270,BFlilbUSNYggO3YcnRY3kg,UnitedStates/NewYorkCity,40.89517472490672,-73.85979552568753,False,,A04,0.80549836,29,192
