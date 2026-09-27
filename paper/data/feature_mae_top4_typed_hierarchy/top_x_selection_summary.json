@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-09-27T02:25:18.497404+00:00",
+  "selected_top_x": 4,
+  "selection_rule": "smallest X>=2 with >=95% dimension coverage, >=0.85 mean cross-city marginal cosine, and >=90% of Top-2 Mapillary-parent purity",
+  "sample_cities": 30,
+  "sample_panoramas_per_city": 32,
+  "sample_patches": 752640
+}

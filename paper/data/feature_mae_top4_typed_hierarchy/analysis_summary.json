@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-09-27T03:14:50.403464+00:00",
+  "analysis_unit": "complete four-direction panorama",
+  "cities": 30,
+  "panoramas": 296462,
+  "patches": 232426208,
+  "dimensions": 512,
+  "top_x": 4,
+  "activation_magnitudes_used_after_top_x_selection": false,
+  "winner_assignments": 929704832,
+  "panorama_presence_threshold_patches": 16,
+  "mean_active_dimensions_per_panorama": 55.83267670055521,
+  "macro_parent_count": 48,
+  "relation_thresholds": {
+    "and_score_floor": 1.0661892701584683,
+    "or_score_floor": 0.12325020429097418,
+    "role_similarity_floor": 0.25718173005167455,
+    "and_candidate_pairs": 9739,
+    "or_candidate_pairs": 46,
+    "and_score_quantile": 0.95,
+    "or_score_quantile": 0.75,
+    "and_pairs": 487,
+    "or_pairs": 12
+  },
+  "mapillary_usage": "Top-X validation and post-hoc naming/audit only; excluded from relation scores, hierarchy fingerprints, and hierarchical linkage",
+  "hierarchy_fingerprint": {
+    "panorama_context_ppmi_weight": 0.65,
+    "same_patch_context_ppmi_weight": 0.2,
+    "14x14_local_position_weight": 0.15
+  }
+}

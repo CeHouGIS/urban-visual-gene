@@ -1,0 +1,513 @@
+dimension_id,dimension,macro_parent_id,macro_parent_label,global_top4_patch_assignments,panorama_presence_count,panorama_presence_share,mapillary_parent_posthoc,f64_category_posthoc,f64_label_posthoc
+171,D171,P01,Building / Vegetation,30286105,292039,0.9850807186081184,Road,F033,zebra_crossing
+119,D119,P01,Building / Vegetation,26959797,249541,0.8417301374206475,Vegetation,F042,Red-yellow glow street
+329,D329,P01,Building / Vegetation,22763268,278769,0.9403195013188874,Car,F036,pedestrian walk
+491,D491,P01,Building / Vegetation,16861123,279136,0.9415574340050327,Road,F040,cobblestone
+442,D442,P01,Building / Vegetation,14680214,261960,0.8836208350479994,Vegetation,F029,electric_bike_parking
+503,D503,P01,Building / Vegetation,13238749,223252,0.7530543543523285,Building,F028,red_car_street
+168,D168,P01,Building / Vegetation,12083024,233063,0.7861479717468006,Building,F028,red_car_street
+138,D138,P01,Building / Vegetation,11074726,193505,0.6527143445028368,Building,F022,tree_canopy_and_road
+436,D436,P01,Building / Vegetation,9432107,197755,0.6670500772443011,Road,F054,highlighted_lane
+292,D292,P01,Building / Vegetation,9074663,160608,0.5417490268567303,Building,F062,shaded alley
+163,D163,P01,Building / Vegetation,8437640,208490,0.7032604515924469,Road,F035,small alley entrance
+278,D278,P01,Building / Vegetation,8332253,156638,0.5283577659194095,Building,F045,underpass glow
+15,D015,P01,Building / Vegetation,7280594,191802,0.6469699320654924,Vegetation,F013,tree-lined_driveway
+418,D418,P01,Building / Vegetation,7082532,160256,0.5405616908743786,Building,F010,green_wall
+477,D477,P01,Building / Vegetation,6996666,174963,0.5901700723870176,Bridge,F013,tree-lined_driveway
+279,D279,P01,Building / Vegetation,6958812,165467,0.5581389857722069,Vegetation,F031,road_edge
+386,D386,P01,Building / Vegetation,6563988,155864,0.5257469760036699,Building,F045,underpass glow
+113,D113,P01,Building / Vegetation,5994511,142840,0.4818155446566508,Sky,F043,tree_shadows
+266,D266,P01,Building / Vegetation,5639799,152004,0.5127267575608341,Building,F013,tree-lined_driveway
+289,D289,P01,Building / Vegetation,4869165,111859,0.3773131126417551,Building,F041,concrete_wall
+148,D148,P01,Building / Vegetation,4536893,99051,0.3341102738293609,Building,F035,small alley entrance
+441,D441,P01,Building / Vegetation,4357846,106055,0.3577355613872942,Road,F036,pedestrian walk
+89,D089,P01,Building / Vegetation,4143626,103298,0.3484358872300666,Building,F007,roof_and_eaves
+157,D157,P01,Building / Vegetation,3373174,78567,0.26501541512908905,Sky,F044,road_and_buildings
+430,D430,P01,Building / Vegetation,3366451,77556,0.26160519729341364,Wall,F041,concrete_wall
+20,D020,P01,Building / Vegetation,3206563,69229,0.23351728046090223,Building,F017,building facade
+465,D465,P01,Building / Vegetation,3136294,59436,0.20048437911098219,Building,F012,bamboo
+413,D413,P01,Building / Vegetation,2877031,62594,0.21113667181628673,Sky,F047,underpass
+332,D332,P01,Building / Vegetation,2818124,58588,0.19762397878986177,Building,F042,Red-yellow glow street
+429,D429,P01,Building / Vegetation,2782884,63965,0.21576121054300382,Vegetation,F052,palm_tree_street
+112,D112,P01,Building / Vegetation,2751933,60744,0.20489641168176698,Building,F007,roof_and_eaves
+427,D427,P01,Building / Vegetation,2644960,56892,0.19190317814762095,Building,F045,underpass glow
+11,D011,P01,Building / Vegetation,2462150,52460,0.1769535387334633,Vegetation,F010,green_wall
+313,D313,P01,Building / Vegetation,2307961,47275,0.15946394478887682,Vegetation,F001,shaded_corner
+267,D267,P01,Building / Vegetation,2215907,48393,0.1632350857782785,Car,F027,car_top_heat
+25,D025,P01,Building / Vegetation,2064250,41663,0.14053403134297143,Bridge,F021,road_and_building
+49,D049,P01,Building / Vegetation,2040515,43202,0.14572525315217463,Car,F002,shaded patches
+426,D426,P01,Building / Vegetation,1943514,36859,0.12432959367473741,Building,F002,shaded patches
+132,D132,P01,Building / Vegetation,1936366,39080,0.13182127894974735,Building,F030,stone_wall_and_shadows
+298,D298,P01,Building / Vegetation,1716233,36613,0.12349980773252558,Building,F045,underpass glow
+325,D325,P01,Building / Vegetation,1653169,30734,0.10366927295909763,Building,F060,street_corner_shop
+122,D122,P01,Building / Vegetation,1644438,28895,0.09746611707402635,Vegetation,F007,roof_and_eaves
+45,D045,P01,Building / Vegetation,1501047,23387,0.07888700744108858,Wall,F034,red_door_street
+345,D345,P01,Building / Vegetation,1187767,17422,0.0587663848992451,Building,F031,road_edge
+147,D147,P01,Building / Vegetation,1087538,17284,0.05830089522434578,Vegetation,F011,road_edge
+55,D055,P01,Building / Vegetation,1081769,20262,0.0683460274841295,Bridge,F002,shaded patches
+377,D377,P01,Building / Vegetation,1062029,17497,0.05901936841821211,Road,F054,highlighted_lane
+202,D202,P01,Building / Vegetation,1033918,16612,0.05603416289440131,Road,F003,building facade
+92,D092,P01,Building / Vegetation,1011196,16343,0.05512679533970627,Road,F050,greenery_and_water
+53,D053,P01,Building / Vegetation,986384,14784,0.049868111258778526,Building,F025,shaded alley
+359,D359,P01,Building / Vegetation,959540,16004,0.05398330983397535,Building,F034,red_door_street
+57,D057,P01,Building / Vegetation,944692,17473,0.05893841369214267,Building,F019,road_and_building
+406,D406,P01,Building / Vegetation,917242,16462,0.05552819585646727,Road,F036,pedestrian walk
+456,D456,P01,Building / Vegetation,861227,12521,0.04223475521314705,Building,F004,highlighted_buildings
+318,D318,P01,Building / Vegetation,816433,12139,0.04094622582320837,Vegetation,F044,road_and_buildings
+116,D116,P01,Building / Vegetation,777963,11413,0.03849734535960764,Wall,F023,street_corner_cafe
+303,D303,P01,Building / Vegetation,777113,10919,0.03683102724801155,Wall,F059,road_edge
+231,D231,P01,Building / Vegetation,749005,9721,0.03279003717171172,Building,F001,shaded_corner
+223,D223,P01,Building / Vegetation,743442,12666,0.04272385668314995,Building,F030,stone_wall_and_shadows
+175,D175,P01,Building / Vegetation,675044,10009,0.033761493884545066,Building,F025,shaded alley
+293,D293,P01,Building / Vegetation,671680,3735,0.01259857924455748,Wall,F056,stone_wall_street
+214,D214,P01,Building / Vegetation,560144,7581,0.025571574097186148,Building,F011,road_edge
+317,D317,P01,Building / Vegetation,559557,7622,0.02570987175422145,Road,F016,construction scaffolding
+246,D246,P01,Building / Vegetation,533401,5551,0.018724153517145535,Motorcycle,F029,electric_bike_parking
+274,D274,P01,Building / Vegetation,529779,9348,0.03153186580404908,Building,F009,highlighted road
+204,D204,P01,Building / Vegetation,527683,5293,0.017853890211898996,Car,F011,road_edge
+460,D460,P01,Building / Vegetation,503462,8627,0.02909985090837949,Building,F006,small alley entrance
+356,D356,P01,Building / Vegetation,488954,7419,0.02502512969621739,Bridge,F022,tree_canopy_and_road
+188,D188,P01,Building / Vegetation,440552,3527,0.011896971618622286,Terrain,F010,green_wall
+192,D192,P01,Building / Vegetation,434236,2560,0.00863517078074087,Building,F058,shaded alley
+399,D399,P01,Building / Vegetation,430166,5051,0.017037596724032086,Sky,F015,tree_shade_street
+130,D130,P01,Building / Vegetation,409546,3335,0.01124933381006672,Building,F036,pedestrian walk
+268,D268,P01,Building / Vegetation,395285,4869,0.01642369005133879,Road,F029,electric_bike_parking
+96,D096,P01,Building / Vegetation,391377,5057,0.017057835405549445,Truck,F029,electric_bike_parking
+287,D287,P01,Building / Vegetation,387027,4583,0.015458979565677895,Road,F051,zebra_crossing
+115,D115,P01,Building / Vegetation,365700,4076,0.013748810977460856,Car,F006,small alley entrance
+224,D224,P01,Building / Vegetation,346416,2274,0.0076704602950799766,Building,F027,car_top_heat
+83,D083,P01,Building / Vegetation,330245,3197,0.010783844135167408,Building,F036,pedestrian walk
+232,D232,P01,Building / Vegetation,327050,1597,0.005386862397204363,Road,F054,highlighted_lane
+508,D508,P01,Building / Vegetation,303382,5642,0.019031106853492186,Vegetation,F038,red-yellow hotspot
+251,D251,P01,Building / Vegetation,293776,1195,0.004030870735541149,Car,F021,road_and_building
+311,D311,P01,Building / Vegetation,280976,5022,0.016939776430031504,Building,F003,building facade
+271,D271,P01,Building / Vegetation,267860,1374,0.004634658067475764,Car,F036,pedestrian walk
+237,D237,P01,Building / Vegetation,255286,1488,0.005019193016305631,Car,F021,road_and_building
+400,D400,P01,Building / Vegetation,252594,1146,0.0038655881698160303,Car,F060,street_corner_shop
+396,D396,P01,Building / Vegetation,231593,1471,0.004961850085339774,Building,F037,street_corner_shops
+199,D199,P01,Building / Vegetation,217583,2577,0.008692513711706727,Bridge,F037,street_corner_shops
+480,D480,P01,Building / Vegetation,215726,965,0.003255054610708961,Road,F040,cobblestone
+241,D241,P01,Building / Vegetation,195083,1325,0.004469375501750646,Mountain,F008,stone_wall_and_retaining_wall
+102,D102,P01,Building / Vegetation,192891,1100,0.003710424944849593,Fence,F051,zebra_crossing
+177,D177,P01,Building / Vegetation,186938,1319,0.004449136820233284,Sidewalk,F023,street_corner_cafe
+234,D234,P01,Building / Vegetation,180852,937,0.003160607430294608,Building,F046,window_heat_zone
+467,D467,P01,Building / Vegetation,148705,599,0.002020495038149915,Building,F038,red-yellow hotspot
+409,D409,P01,Building / Vegetation,133070,521,0.0017573921784242164,Vegetation,F010,green_wall
+448,D448,P01,Building / Vegetation,132872,1220,0.004115198575196821,Building,F037,street_corner_shops
+308,D308,P01,Building / Vegetation,128465,365,0.0012311864589728194,Building,F025,shaded alley
+394,D394,P01,Building / Vegetation,127123,663,0.0022363743076684365,Building,F022,tree_canopy_and_road
+35,D035,P01,Building / Vegetation,116775,317,0.0010692770068339282,Building,F027,car_top_heat
+425,D425,P01,Building / Vegetation,116144,1125,0.0037947527845052656,Wall,F033,zebra_crossing
+150,D150,P01,Building / Vegetation,97703,498,0.0016798105659409975,Wall,F044,road_and_buildings
+307,D307,P01,Building / Vegetation,79976,410,0.0013829765703530302,Building,F010,green_wall
+219,D219,P01,Building / Vegetation,77073,126,0.0004250123118645897,Building,F046,window_heat_zone
+176,D176,P01,Building / Vegetation,68774,250,0.0008432783965567256,Building,F015,tree_shade_street
+18,D018,P01,Building / Vegetation,65108,353,0.0011907090959380965,Truck,F000,red brick corner
+389,D389,P01,Building / Vegetation,60439,351,0.0011839628687656428,Building,F020,advertising_wall
+328,D328,P01,Building / Vegetation,55529,97,0.00032719201786400955,Road,F055,small alley entrance
+302,D302,P01,Building / Vegetation,54153,285,0.0009613373720746672,Building,F035,small alley entrance
+184,D184,P01,Building / Vegetation,53272,424,0.0014302001605602068,Building,F005,palm_trees_and_buildings
+220,D220,P01,Building / Vegetation,46611,258,0.0008702633052465409,Car,F011,road_edge
+14,D014,P01,Building / Vegetation,42270,206,0.000694861398762742,Sky,F012,bamboo
+72,D072,P01,Building / Vegetation,38037,13,4.3850476620949734e-05,Wall,F018,small alley flowerbed
+262,D262,P01,Building / Vegetation,35565,49,0.00016528256572511822,Building,F010,green_wall
+338,D338,P01,Building / Vegetation,33949,34,0.00011468586193171469,Building,F052,palm_tree_street
+368,D368,P01,Building / Vegetation,33152,7,2.3611795103588317e-05,Sky,F009,highlighted road
+193,D193,P01,Building / Vegetation,32614,63,0.00021250615593229486,Building,F052,palm_tree_street
+133,D133,P01,Building / Vegetation,28922,67,0.00022599861027720248,Building,F043,tree_shadows
+166,D166,P01,Building / Vegetation,25810,48,0.00016190945213889133,Building,F040,cobblestone
+504,D504,P01,Building / Vegetation,21131,52,0.00017540190648379894,Vegetation,F054,highlighted_lane
+324,D324,P01,Building / Vegetation,19110,1,3.3731135862269026e-06,Sky,F015,tree_shade_street
+126,D126,P01,Building / Vegetation,17638,52,0.00017540190648379894,Building,F015,tree_shade_street
+194,D194,P01,Building / Vegetation,15033,7,2.3611795103588317e-05,Building,F055,small alley entrance
+381,D381,P01,Building / Vegetation,10921,2,6.746227172453805e-06,Road,F005,palm_trees_and_buildings
+387,D387,P01,Building / Vegetation,7730,20,6.746227172453805e-05,Road,F049,red_wall_yellow_wall
+481,D481,P01,Building / Vegetation,5405,2,6.746227172453805e-06,Road,F037,street_corner_shops
+351,D351,P01,Building / Vegetation,5062,33,0.00011131274834548779,Building,F048,shaded path
+3,D003,P01,Building / Vegetation,3401,16,5.396981737963044e-05,Building,F003,building facade
+451,D451,P02,Vegetation / Road,13343883,198891,0.6708819342782549,Vegetation,F008,stone_wall_and_retaining_wall
+67,D067,P02,Vegetation / Road,7564552,140102,0.4725799596575615,Road,F036,pedestrian walk
+454,D454,P02,Vegetation / Road,6308797,154280,0.5204039640830865,Terrain,F023,street_corner_cafe
+124,D124,P02,Vegetation / Road,5571265,129385,0.4364303013539678,Vegetation,F053,road_marking
+93,D093,P02,Vegetation / Road,4005128,91225,0.3077122869035492,Vegetation,F000,red brick corner
+210,D210,P02,Vegetation / Road,4000420,86594,0.2920913978857324,Vegetation,F045,underpass glow
+144,D144,P02,Vegetation / Road,3357122,65702,0.22162030884227996,Vegetation,F046,window_heat_zone
+233,D233,P02,Vegetation / Road,2507534,50285,0.1696170166834198,Vegetation,F046,window_heat_zone
+290,D290,P02,Vegetation / Road,2504608,56553,0.19075969264189002,Vegetation,F017,building facade
+221,D221,P02,Vegetation / Road,2499315,50388,0.16996444738280117,Vegetation,F020,advertising_wall
+455,D455,P02,Vegetation / Road,2478675,56741,0.19139383799610069,Terrain,F054,highlighted_lane
+2,D002,P02,Vegetation / Road,2237620,47434,0.16000026984908688,Vegetation,F002,shaded patches
+103,D103,P02,Vegetation / Road,2230815,49862,0.16819018963644583,Vegetation,F027,car_top_heat
+167,D167,P02,Vegetation / Road,2215842,40292,0.13590949261625435,Vegetation,F017,building facade
+101,D101,P02,Vegetation / Road,2206370,43975,0.14833266995432803,Road,F024,road_edge
+104,D104,P02,Vegetation / Road,2039358,41090,0.13860123725806342,Vegetation,F046,window_heat_zone
+450,D450,P02,Vegetation / Road,1865119,37508,0.12651874439219865,Vegetation,F021,road_and_building
+216,D216,P02,Vegetation / Road,1854941,41735,0.14077689552117978,Terrain,F034,red_door_street
+173,D173,P02,Vegetation / Road,1831417,34383,0.11597776443523959,Terrain,F059,road_edge
+47,D047,P02,Vegetation / Road,1689166,30940,0.10436413435786036,Vegetation,F035,small alley entrance
+179,D179,P02,Vegetation / Road,1619907,31200,0.10524114389027936,Vegetation,F060,street_corner_shop
+511,D511,P02,Vegetation / Road,1184355,19417,0.06549574650376777,Vegetation,F042,Red-yellow glow street
+403,D403,P02,Vegetation / Road,1146144,20962,0.07070720699448833,Road,F040,cobblestone
+61,D061,P02,Vegetation / Road,983483,12491,0.04213356180556024,Vegetation,F039,red car corner
+466,D466,P02,Vegetation / Road,903402,10227,0.03449683264634253,Road,F020,advertising_wall
+379,D379,P02,Vegetation / Road,775331,12379,0.041755773083902825,Vegetation,F007,roof_and_eaves
+417,D417,P02,Vegetation / Road,756512,14169,0.047793646403248985,Vegetation,F047,underpass
+341,D341,P02,Vegetation / Road,674209,9491,0.03201422104687953,Vegetation,F005,palm_trees_and_buildings
+369,D369,P02,Vegetation / Road,610241,10891,0.036736580067597197,Vegetation,F016,construction scaffolding
+41,D041,P02,Vegetation / Road,598051,7016,0.02366576492096795,Building,F032,tree-lined walk
+235,D235,P02,Vegetation / Road,583527,10367,0.0349690685484143,Vegetation,F014,road_edge
+505,D505,P02,Vegetation / Road,533337,5075,0.01711855145010153,Vegetation,F008,stone_wall_and_retaining_wall
+141,D141,P02,Vegetation / Road,484613,2999,0.010115967645094481,Vegetation,F004,highlighted_buildings
+84,D084,P02,Vegetation / Road,475655,2695,0.009090541114881502,Sky,F048,shaded path
+8,D008,P02,Vegetation / Road,446368,8009,0.027015266712091264,Vegetation,F007,roof_and_eaves
+344,D344,P02,Vegetation / Road,444143,7737,0.026097779816637544,Vegetation,F027,car_top_heat
+447,D447,P02,Vegetation / Road,400283,1891,0.006378557791555073,Vegetation,F042,Red-yellow glow street
+240,D240,P02,Vegetation / Road,371463,6111,0.020613097125432602,Building,F009,highlighted road
+13,D013,P02,Vegetation / Road,368048,3975,0.013408126505251939,Vegetation,F011,road_edge
+143,D143,P02,Vegetation / Road,324268,3080,0.01038918984557886,Vegetation,F051,zebra_crossing
+492,D492,P02,Vegetation / Road,309964,1324,0.004466002388164419,Road,F026,tree_shadows
+500,D500,P02,Vegetation / Road,301408,4245,0.0143188671735332,Vegetation,F042,Red-yellow glow street
+385,D385,P02,Vegetation / Road,285076,2527,0.008523858032395384,Vegetation,F026,tree_shadows
+383,D383,P02,Vegetation / Road,253036,3217,0.010851306406891945,Terrain,F011,road_edge
+56,D056,P02,Vegetation / Road,235402,3538,0.01193407586807078,Vegetation,F038,red-yellow hotspot
+172,D172,P02,Vegetation / Road,221775,1630,0.005498175145549851,Vegetation,F042,Red-yellow glow street
+375,D375,P02,Vegetation / Road,211717,1187,0.0040038858268513335,Sky,F061,sunlit street
+306,D306,P02,Vegetation / Road,208842,1728,0.005828740277000088,Road,F051,zebra_crossing
+362,D362,P02,Vegetation / Road,198284,2158,0.007279179119077656,Vegetation,F061,sunlit street
+98,D098,P02,Vegetation / Road,194507,858,0.0028941314569826825,Sky,F052,palm_tree_street
+68,D068,P02,Vegetation / Road,175691,188,0.0006341453542106577,Vegetation,F000,red brick corner
+0,D000,P02,Vegetation / Road,175300,1067,0.003599112196504105,Terrain,F000,red brick corner
+339,D339,P02,Vegetation / Road,163663,145,0.0004891014700029009,Sidewalk,F027,car_top_heat
+110,D110,P02,Vegetation / Road,154981,1264,0.004263615572990805,Terrain,F034,red_door_street
+354,D354,P02,Vegetation / Road,149081,1638,0.005525160054239667,Vegetation,F002,shaded patches
+486,D486,P02,Vegetation / Road,129221,616,0.002077837969115772,Vegetation,F045,underpass glow
+222,D222,P02,Vegetation / Road,129149,733,0.0024724922587043194,Road,F054,highlighted_lane
+265,D265,P02,Vegetation / Road,128056,1873,0.006317841747002988,Vegetation,F009,highlighted road
+118,D118,P02,Vegetation / Road,125582,230,0.0007758161248321876,Vegetation,F041,concrete_wall
+496,D496,P02,Vegetation / Road,125215,1794,0.006051365773691063,Vegetation,F015,tree_shade_street
+136,D136,P02,Vegetation / Road,123576,872,0.002941355047189859,Sky,F047,underpass
+494,D494,P02,Vegetation / Road,98719,651,0.0021958969446337134,Vegetation,F040,cobblestone
+365,D365,P02,Vegetation / Road,96692,174,0.000586921764003481,Vegetation,F026,tree_shadows
+60,D060,P02,Vegetation / Road,95735,171,0.0005768024232448004,Vegetation,F017,building facade
+42,D042,P02,Vegetation / Road,79903,1,3.3731135862269026e-06,Car,F021,road_and_building
+79,D079,P02,Vegetation / Road,74350,130,0.0004385047662094973,Road,F047,underpass
+158,D158,P02,Vegetation / Road,65799,16,5.396981737963044e-05,Road,F020,advertising_wall
+125,D125,P02,Vegetation / Road,65702,61,0.00020575992875984105,Road,F055,small alley entrance
+28,D028,P02,Vegetation / Road,58254,524,0.001767511519182897,Vegetation,F006,small alley entrance
+472,D472,P02,Vegetation / Road,47534,36,0.0001214320891041685,Vegetation,F049,red_wall_yellow_wall
+81,D081,P02,Vegetation / Road,44969,29,9.782029400058017e-05,Vegetation,F002,shaded patches
+156,D156,P02,Vegetation / Road,37299,276,0.0009309793497986251,Vegetation,F057,streetlight illumination
+88,D088,P02,Vegetation / Road,36638,70,0.00023611795103588317,Vegetation,F050,greenery_and_water
+208,D208,P02,Vegetation / Road,30174,49,0.00016528256572511822,Vegetation,F046,window_heat_zone
+205,D205,P02,Vegetation / Road,29175,66,0.00022262549669097557,Road,F011,road_edge
+340,D340,P02,Vegetation / Road,27372,66,0.00022262549669097557,Road,F014,road_edge
+17,D017,P02,Vegetation / Road,18610,41,0.00013829765703530302,Vegetation,F015,tree_shade_street
+482,D482,P02,Vegetation / Road,18159,60,0.00020238681517361417,Vegetation,F042,Red-yellow glow street
+145,D145,P02,Vegetation / Road,15314,5,1.6865567931134513e-05,Road,F005,palm_trees_and_buildings
+295,D295,P02,Vegetation / Road,14461,14,4.7223590207176635e-05,Vegetation,F022,tree_canopy_and_road
+33,D033,P02,Vegetation / Road,10340,21,7.083538531076495e-05,Vegetation,F000,red brick corner
+242,D242,P02,Vegetation / Road,10263,77,0.0002597297461394715,Vegetation,F011,road_edge
+100,D100,P02,Vegetation / Road,9718,10,3.3731135862269026e-05,Vegetation,F005,palm_trees_and_buildings
+488,D488,P02,Vegetation / Road,9371,1,3.3731135862269026e-06,Sky,F062,shaded alley
+46,D046,P02,Vegetation / Road,9227,23,7.758161248321877e-05,Road,F024,road_edge
+288,D288,P02,Vegetation / Road,8753,27,9.107406682812637e-05,Vegetation,F014,road_edge
+23,D023,P02,Vegetation / Road,6238,10,3.3731135862269026e-05,Vegetation,F019,road_and_building
+405,D405,P02,Vegetation / Road,5542,16,5.396981737963044e-05,Vegetation,F052,palm_tree_street
+243,D243,P02,Vegetation / Road,4835,5,1.6865567931134513e-05,Road,F059,road_edge
+452,D452,P02,Vegetation / Road,2267,4,1.349245434490761e-05,Vegetation,F022,tree_canopy_and_road
+270,D270,P03,Sky / Road,31147439,284821,0.9607335847427326,Sky,F012,bamboo
+105,D105,P03,Sky / Road,25938093,273241,0.9216729294142251,Road,F054,highlighted_lane
+335,D335,P03,Sky / Road,24948122,280583,0.946438329364303,Road,F029,electric_bike_parking
+437,D437,P03,Sky / Road,24131029,280481,0.9460942717785079,Sky,F057,streetlight illumination
+372,D372,P03,Sky / Road,20157631,281555,0.9497169957701156,Tunnel,F001,shaded_corner
+31,D031,P03,Sky / Road,18861569,275706,0.9299876544042744,Road,F011,road_edge
+161,D161,P03,Sky / Road,18204768,241755,0.8154670750382849,Sky,F042,Red-yellow glow street
+164,D164,P03,Sky / Road,15330414,276446,0.9324837584580823,Vegetation,F001,shaded_corner
+419,D419,P03,Sky / Road,12821410,260525,0.8787804170517638,Fence,F018,small alley flowerbed
+180,D180,P03,Sky / Road,12063423,225665,0.761193677435894,Sky,F052,palm_tree_street
+449,D449,P03,Sky / Road,11984891,192087,0.6479312694375671,Sky,F009,highlighted road
+269,D269,P03,Sky / Road,11886123,240273,0.8104681207034966,Sky,F007,roof_and_eaves
+284,D284,P03,Sky / Road,10316000,183782,0.6199175611039526,Sky,F052,palm_tree_street
+300,D300,P03,Sky / Road,9270576,223027,0.7522954037954274,Sky,F042,Red-yellow glow street
+361,D361,P03,Sky / Road,9076568,140113,0.47261706390701,Road,F036,pedestrian walk
+131,D131,P03,Sky / Road,8090366,194220,0.6551261207169891,Sky,F028,red_car_street
+159,D159,P03,Sky / Road,8062326,171206,0.5774972846435631,Road,F059,road_edge
+471,D471,P03,Sky / Road,7131619,178096,0.6007380372526665,Terrain,F013,tree-lined_driveway
+476,D476,P03,Sky / Road,6994544,149937,0.5057545317781031,Road,F008,stone_wall_and_retaining_wall
+319,D319,P03,Sky / Road,6718076,158824,0.5357313922189015,Building,F007,roof_and_eaves
+114,D114,P03,Sky / Road,6690410,154187,0.5200902645195674,Vegetation,F012,bamboo
+364,D364,P03,Sky / Road,6622977,171947,0.5799967618109573,Sky,F042,Red-yellow glow street
+434,D434,P03,Sky / Road,6462386,160090,0.5400017540190648,Vegetation,F062,shaded alley
+479,D479,P03,Sky / Road,6222822,127285,0.4293467628228913,Sky,F008,stone_wall_and_retaining_wall
+213,D213,P03,Sky / Road,6217909,137306,0.4631487340704711,Barrier,F011,road_edge
+245,D245,P03,Sky / Road,6069875,156459,0.527753978587475,Sky,F022,tree_canopy_and_road
+186,D186,P03,Sky / Road,5873343,155033,0.5229439186135154,Road,F053,road_marking
+181,D181,P03,Sky / Road,4659543,104962,0.35404874823754817,Sky,F045,underpass glow
+80,D080,P03,Sky / Road,4606620,105116,0.3545682077298271,Road,F034,red_door_street
+140,D140,P03,Sky / Road,4408156,102900,0.34709338802274825,Vegetation,F016,construction scaffolding
+438,D438,P03,Sky / Road,4393997,111969,0.37768415513624004,Road,F058,shaded alley
+252,D252,P03,Sky / Road,4357329,115398,0.3892505616234121,Guard Rail,F040,cobblestone
+282,D282,P03,Sky / Road,3769973,89576,0.302150022599861,Sky,F012,bamboo
+305,D305,P03,Sky / Road,3739152,85056,0.2869035491901154,Road,F034,red_door_street
+106,D106,P03,Sky / Road,3735933,85805,0.2894300112661994,Road,F027,car_top_heat
+350,D350,P03,Sky / Road,3687868,88014,0.2968812191781746,Sky,F017,building facade
+48,D048,P03,Sky / Road,3621320,85059,0.28691366853087413,Terrain,F036,pedestrian walk
+294,D294,P03,Sky / Road,3456989,80938,0.273013067442033,Sky,F019,road_and_building
+310,D310,P03,Sky / Road,2733097,58760,0.1982041543266928,Sky,F012,bamboo
+142,D142,P03,Sky / Road,2649424,57225,0.1930264249718345,Car,F019,road_and_building
+331,D331,P03,Sky / Road,2505005,54198,0.18281601014632567,Sky,F057,streetlight illumination
+404,D404,P03,Sky / Road,2358535,49184,0.16590321862498397,Terrain,F011,road_edge
+185,D185,P03,Sky / Road,2293757,46709,0.15755476249907238,Road,F058,shaded alley
+353,D353,P03,Sky / Road,2082545,43375,0.1463088018025919,Sky,F007,roof_and_eaves
+337,D337,P03,Sky / Road,2015328,36554,0.1233007940309382,Road,F021,road_and_building
+139,D139,P03,Sky / Road,1871510,39387,0.132856824820719,Road,F051,zebra_crossing
+407,D407,P03,Sky / Road,1756853,42074,0.1419203810269107,Sky,F002,shaded patches
+217,D217,P03,Sky / Road,1673199,33566,0.1132219306352922,Road,F031,road_edge
+170,D170,P03,Sky / Road,1535252,22652,0.0764077689552118,Vegetation,F031,road_edge
+149,D149,P03,Sky / Road,1398075,19005,0.06410602370624228,Sky,F002,shaded patches
+19,D019,P03,Sky / Road,1389896,27056,0.09126296118895508,Sky,F016,construction scaffolding
+9,D009,P03,Sky / Road,1316371,24352,0.08214206205179753,Sky,F008,stone_wall_and_retaining_wall
+10,D010,P03,Sky / Road,1146452,19804,0.06680114146163758,Sky,F009,highlighted road
+392,D392,P03,Sky / Road,1125241,20669,0.06971888471372385,Building,F009,highlighted road
+410,D410,P03,Sky / Road,1071818,18408,0.06209227489526482,Road,F029,electric_bike_parking
+322,D322,P03,Sky / Road,943409,12538,0.0422920981441129,Road,F036,pedestrian walk
+495,D495,P03,Sky / Road,622500,4963,0.016740762728444117,Sky,F025,shaded alley
+382,D382,P03,Sky / Road,578209,5264,0.017756069917898416,Terrain,F031,road_edge
+197,D197,P03,Sky / Road,563900,9530,0.032145772476742385,Sky,F009,highlighted road
+86,D086,P03,Sky / Road,535373,1644,0.005545398735757028,Sky,F041,concrete_wall
+275,D275,P03,Sky / Road,499400,6856,0.023126066747171645,Vegetation,F041,concrete_wall
+152,D152,P03,Sky / Road,484631,7482,0.025237635852149685,Barrier,F057,streetlight illumination
+336,D336,P03,Sky / Road,477999,6188,0.020872826871572072,Road,F058,shaded alley
+16,D016,P03,Sky / Road,447387,2420,0.008162934878669105,Car,F014,road_edge
+174,D174,P03,Sky / Road,394694,2893,0.009758417604954429,Sky,F010,green_wall
+211,D211,P03,Sky / Road,356406,3673,0.012389446202211413,Barrier,F051,zebra_crossing
+421,D421,P03,Sky / Road,348322,3453,0.011647361213241494,Sky,F010,green_wall
+250,D250,P03,Sky / Road,290897,2653,0.008948870344259972,Sky,F044,road_and_buildings
+85,D085,P03,Sky / Road,250170,1300,0.004385047662094973,Fence,F028,red_car_street
+349,D349,P03,Sky / Road,245260,775,0.0026141630293258496,Building,F022,tree_canopy_and_road
+453,D453,P03,Sky / Road,186670,1410,0.004756090156579932,Vegetation,F028,red_car_street
+74,D074,P03,Sky / Road,164032,926,0.0031235031808461117,Road,F037,street_corner_shops
+478,D478,P03,Sky / Road,156088,420,0.001416707706215299,Road,F040,cobblestone
+40,D040,P03,Sky / Road,147537,230,0.0007758161248321876,Road,F031,road_edge
+135,D135,P03,Sky / Road,133431,1657,0.005589249212377977,Sky,F002,shaded patches
+256,D256,P03,Sky / Road,119537,256,0.0008635170780740871,Sky,F015,tree_shade_street
+34,D034,P03,Sky / Road,119259,914,0.003083025817811389,Road,F026,tree_shadows
+37,D037,P03,Sky / Road,106072,576,0.001942913425666696,Road,F024,road_edge
+370,D370,P03,Sky / Road,77994,109,0.00036766938089873236,Barrier,F040,cobblestone
+299,D299,P03,Sky / Road,75086,427,0.0014403195013188875,Road,F039,red car corner
+183,D183,P03,Sky / Road,33628,14,4.7223590207176635e-05,Road,F023,street_corner_cafe
+327,D327,P03,Sky / Road,24456,80,0.0002698490868981522,Guard Rail,F006,small alley entrance
+94,D094,P03,Sky / Road,24111,4,1.349245434490761e-05,Sky,F032,tree-lined walk
+189,D189,P03,Sky / Road,23271,28,9.444718041435327e-05,Sky,F028,red_car_street
+218,D218,P03,Sky / Road,11865,19,6.408915813831115e-05,Road,F049,red_wall_yellow_wall
+111,D111,P03,Sky / Road,1703,2,6.746227172453805e-06,Road,F050,greenery_and_water
+433,D433,P04,Vegetation / Bridge,2669257,55789,0.18818263386201267,Vegetation,F012,bamboo
+151,D151,P04,Vegetation / Bridge,2559051,50533,0.17045354885280406,Truck,F012,bamboo
+457,D457,P04,Vegetation / Bridge,2333661,51241,0.17284171327185271,Vegetation,F002,shaded patches
+21,D021,P04,Vegetation / Bridge,2015268,36520,0.12318610816900648,Vegetation,F001,shaded_corner
+90,D090,P04,Vegetation / Bridge,1520949,26972,0.09097961964771202,Truck,F051,zebra_crossing
+215,D215,P04,Vegetation / Bridge,1111759,15360,0.05181102468444523,Bridge,F047,underpass
+285,D285,P04,Vegetation / Bridge,913312,13021,0.043921312006260496,Tunnel,F001,shaded_corner
+326,D326,P04,Vegetation / Bridge,821807,14553,0.049088922020360116,Truck,F014,road_edge
+69,D069,P04,Vegetation / Bridge,808511,7566,0.025520977393392746,Building,F042,Red-yellow glow street
+209,D209,P04,Vegetation / Bridge,668589,4795,0.016174079645957996,Bridge,F040,cobblestone
+182,D182,P04,Vegetation / Bridge,599593,9509,0.03207493709143162,Bridge,F009,highlighted road
+424,D424,P04,Vegetation / Bridge,577354,3043,0.010264384642888464,Tunnel,F028,red_car_street
+191,D191,P04,Vegetation / Bridge,573510,4411,0.014878804028846867,Building,F043,tree_shadows
+315,D315,P04,Vegetation / Bridge,474894,5874,0.019813669205496827,Bridge,F010,green_wall
+73,D073,P04,Vegetation / Bridge,435602,6893,0.02325087194986204,Bridge,F045,underpass glow
+502,D502,P04,Vegetation / Bridge,411984,5369,0.01811024684445224,Road,F023,street_corner_cafe
+160,D160,P04,Vegetation / Bridge,221630,2593,0.00874648352908636,Bridge,F017,building facade
+248,D248,P04,Vegetation / Bridge,211322,1344,0.004533464659888957,Bridge,F051,zebra_crossing
+82,D082,P04,Vegetation / Bridge,205436,1217,0.00410507923443814,Barrier,F030,stone_wall_and_shadows
+155,D155,P04,Vegetation / Bridge,198532,663,0.0022363743076684365,Vegetation,F037,street_corner_shops
+393,D393,P04,Vegetation / Bridge,170114,1665,0.005616234121067792,Bridge,F004,highlighted_buildings
+228,D228,P04,Vegetation / Bridge,153245,1051,0.0035451423791244747,Bridge,F007,roof_and_eaves
+489,D489,P04,Vegetation / Bridge,136212,1025,0.003457441425882575,Tunnel,F026,tree_shadows
+490,D490,P04,Vegetation / Bridge,135735,1004,0.00338660604057181,Road,F058,shaded alley
+190,D190,P04,Vegetation / Bridge,134463,698,0.002354433283186378,Building,F015,tree_shade_street
+444,D444,P04,Vegetation / Bridge,126341,756,0.0025500738711875383,Bridge,F043,tree_shadows
+355,D355,P04,Vegetation / Bridge,96253,339,0.0011434855057309199,Building,F050,greenery_and_water
+459,D459,P04,Vegetation / Bridge,79704,283,0.0009545911449022135,Bridge,F006,small alley entrance
+470,D470,P04,Vegetation / Bridge,61298,451,0.0015212742273883332,Vegetation,F050,greenery_and_water
+343,D343,P04,Vegetation / Bridge,59782,170,0.0005734293096585735,Barrier,F021,road_and_building
+312,D312,P04,Vegetation / Bridge,19338,114,0.0003845349488298669,Bridge,F044,road_and_buildings
+411,D411,P04,Vegetation / Bridge,11361,37,0.0001248052026903954,Tunnel,F009,highlighted road
+264,D264,P04,Vegetation / Bridge,10398,107,0.0003609231537262786,Building,F003,building facade
+376,D376,P04,Vegetation / Bridge,4875,14,4.7223590207176635e-05,Bridge,F043,tree_shadows
+30,D030,P04,Vegetation / Bridge,839,1,3.3731135862269026e-06,Road,F024,road_edge
+236,D236,P05,Road / Building,7985104,199461,0.6728046090224042,Road,F029,electric_bike_parking
+458,D458,P05,Road / Building,7660652,187457,0.6323137535333365,Building,F028,red_car_street
+499,D499,P05,Road / Building,7619007,180244,0.6079834852358819,Terrain,F040,cobblestone
+474,D474,P05,Road / Building,7527244,194132,0.6548292867214011,Sidewalk,F040,cobblestone
+412,D412,P05,Road / Building,5399051,131717,0.4442964022370489,Road,F033,zebra_crossing
+212,D212,P05,Road / Building,2427774,50886,0.17164425794874216,Building,F019,road_and_building
+207,D207,P05,Road / Building,2174889,48323,0.1629989678272426,Road,F011,road_edge
+77,D077,P05,Road / Building,1908216,37643,0.1269741147263393,Vegetation,F001,shaded_corner
+348,D348,P05,Road / Building,1684477,30773,0.10380082438896047,Building,F017,building facade
+272,D272,P05,Road / Building,1625261,28046,0.09460234363931971,Road,F036,pedestrian walk
+373,D373,P05,Road / Building,1581086,23217,0.07831357813143,Building,F056,stone_wall_street
+44,D044,P05,Road / Building,1017827,18266,0.0616132927660206,Road,F033,zebra_crossing
+226,D226,P05,Road / Building,847951,8486,0.028624241892721496,Road,F014,road_edge
+206,D206,P05,Road / Building,222613,3402,0.011475332420343922,Road,F053,road_marking
+52,D052,P05,Road / Building,188624,2445,0.008247262718324776,Vegetation,F025,shaded alley
+398,D398,P05,Road / Building,108039,747,0.0025197158489114963,Vegetation,F015,tree_shade_street
+5,D005,P05,Road / Building,74170,216,0.000728592534625011,Building,F004,highlighted_buildings
+27,D027,P05,Road / Building,64882,563,0.0018990629490457463,Vegetation,F022,tree_canopy_and_road
+78,D078,P06,Road / Sky,7366568,176134,0.5941199883964893,Road,F036,pedestrian walk
+38,D038,P06,Road / Sky,3884576,97686,0.3295059737841612,Road,F029,electric_bike_parking
+378,D378,P06,Road / Sky,2033851,41995,0.1416539050535988,Road,F055,small alley entrance
+342,D342,P06,Road / Sky,1534780,29455,0.09935506068231342,Sky,F046,window_heat_zone
+120,D120,P06,Road / Sky,760233,6251,0.021085333027504368,Road,F049,red_wall_yellow_wall
+178,D178,P06,Road / Sky,580217,950,0.0032044579069155574,Sky,F025,shaded alley
+50,D050,P06,Road / Sky,571065,7426,0.02504874149132098,Sky,F037,street_corner_shops
+29,D029,P06,Road / Sky,436518,9170,0.0309314515857007,Road,F023,street_corner_cafe
+261,D261,P06,Road / Sky,245918,469,0.0015819902719404174,Building,F013,tree-lined_driveway
+203,D203,P06,Road / Sky,235351,1423,0.004799940633200882,Road,F050,greenery_and_water
+510,D510,P06,Road / Sky,96949,347,0.0011704704144207352,Building,F035,small alley entrance
+314,D314,P06,Road / Sky,93389,990,0.0033393824503646337,Building,F040,cobblestone
+506,D506,P06,Road / Sky,12619,28,9.444718041435327e-05,Building,F040,cobblestone
+469,D469,P06,Road / Sky,10092,11,3.7104249448495926e-05,Road,F006,small alley entrance
+464,D464,P07,Building / Bus,111883,186,0.0006273991270382039,Bus,F000,red brick corner
+461,D461,P07,Building / Bus,70122,288,0.000971456712833348,Road,F060,street_corner_shop
+374,D374,P07,Building / Bus,64939,295,0.0009950685079369362,Fence,F013,tree-lined_driveway
+128,D128,P07,Building / Bus,56645,9,3.0358022276042125e-05,Building,F000,red brick corner
+321,D321,P07,Building / Bus,49494,400,0.001349245434490761,Vegetation,F021,road_and_building
+51,D051,P07,Building / Bus,36813,29,9.782029400058017e-05,Building,F009,highlighted road
+435,D435,P07,Building / Bus,18876,144,0.000485728356416674,Truck,F047,underpass
+416,D416,P07,Building / Bus,15973,3,1.0119340758680708e-05,Building,F063,blue_wall_graffiti
+58,D058,P07,Building / Bus,11992,72,0.000242864178208337,Truck,F023,street_corner_cafe
+388,D388,P07,Building / Bus,10765,25,8.432783965567257e-05,Truck,F020,advertising_wall
+286,D286,P07,Building / Bus,8051,1,3.3731135862269026e-06,Truck,F021,road_and_building
+414,D414,P07,Building / Bus,4213,7,2.3611795103588317e-05,Building,F051,zebra_crossing
+415,D415,P07,Building / Bus,3562,3,1.0119340758680708e-05,Truck,F035,small alley entrance
+395,D395,P08,Building / Vegetation,527312,3355,0.011316796081791258,Building,F038,red-yellow hotspot
+195,D195,P08,Building / Vegetation,170683,239,0.0008061741471082297,Building,F030,stone_wall_and_shadows
+446,D446,P08,Building / Vegetation,155117,364,0.0012278133453865925,Vegetation,F063,blue_wall_graffiti
+255,D255,P08,Building / Vegetation,132099,463,0.0015617515904230558,Vegetation,F042,Red-yellow glow street
+363,D363,P08,Building / Vegetation,108528,310,0.0010456652117303397,Vegetation,F028,red_car_street
+507,D507,P08,Building / Vegetation,77605,160,0.0005396981737963044,Sky,F044,road_and_buildings
+304,D304,P08,Building / Vegetation,46431,10,3.3731135862269026e-05,Vegetation,F001,shaded_corner
+483,D483,P08,Building / Vegetation,44145,184,0.0006206528998657501,Building,F004,highlighted_buildings
+462,D462,P08,Building / Vegetation,33522,43,0.00014504388420775682,Road,F054,highlighted_lane
+4,D004,P08,Building / Vegetation,15059,38,0.0001281783162766223,Vegetation,F003,building facade
+360,D360,P08,Building / Vegetation,13629,1,3.3731135862269026e-06,Building,F048,shaded path
+123,D123,P08,Building / Vegetation,1089,1,3.3731135862269026e-06,Road,F024,road_edge
+431,D431,P09,Vegetation / Road,34921,22,7.420849889699185e-05,Road,F009,highlighted road
+162,D162,P09,Vegetation / Road,22285,21,7.083538531076495e-05,Vegetation,F051,zebra_crossing
+63,D063,P09,Vegetation / Road,21527,41,0.00013829765703530302,Vegetation,F040,cobblestone
+153,D153,P09,Vegetation / Road,15580,90,0.00030358022276042124,Wall,F058,shaded alley
+296,D296,P09,Vegetation / Road,4467,1,3.3731135862269026e-06,Vegetation,F016,construction scaffolding
+22,D022,P09,Vegetation / Road,3016,1,3.3731135862269026e-06,Vegetation,F018,small alley flowerbed
+75,D075,P10,Building / Sky,19007,0,0.0,Building,F046,window_heat_zone
+36,D036,P10,Building / Sky,15303,0,0.0,Sky,F028,red_car_street
+108,D108,P10,Building / Sky,4080,0,0.0,Sky,F046,window_heat_zone
+301,D301,P10,Building / Sky,1725,0,0.0,Vegetation,F046,window_heat_zone
+127,D127,P10,Building / Sky,1699,0,0.0,Sky,F003,building facade
+258,D258,P10,Building / Sky,1523,0,0.0,Sky,F028,red_car_street
+291,D291,P11,Building / Road,564,0,0.0,Road,F001,shaded_corner
+249,D249,P11,Building / Road,497,0,0.0,Fence,F000,red brick corner
+227,D227,P11,Building / Road,142,0,0.0,Building,F060,street_corner_shop
+468,D468,P11,Building / Road,86,0,0.0,Vegetation,F038,red-yellow hotspot
+493,D493,P11,Building / Road,1,0,0.0,Building,F037,street_corner_shops
+316,D316,P12,Road / Building,99183,225,0.000758950556901053,Road,F053,road_marking
+117,D117,P12,Road / Building,37560,10,3.3731135862269026e-05,Building,F040,cobblestone
+276,D276,P12,Road / Building,18552,10,3.3731135862269026e-05,Sky,F008,stone_wall_and_retaining_wall
+95,D095,P12,Road / Building,13813,3,1.0119340758680708e-05,Building,F038,red-yellow hotspot
+397,D397,P12,Road / Building,3005,5,1.6865567931134513e-05,Building,F015,tree_shade_street
+1,D001,P13,Vegetation / Sky,70077,114,0.0003845349488298669,Vegetation,F001,shaded_corner
+439,D439,P13,Vegetation / Sky,47912,30,0.00010119340758680708,Vegetation,F038,red-yellow hotspot
+334,D334,P13,Vegetation / Sky,16905,4,1.349245434490761e-05,Sky,F015,tree_shade_street
+12,D012,P13,Vegetation / Sky,12644,3,1.0119340758680708e-05,Sky,F003,building facade
+445,D445,P13,Vegetation / Sky,4723,11,3.7104249448495926e-05,Building,F056,stone_wall_street
+283,D283,P14,Sky / Vegetation,18010,0,0.0,Sky,F052,palm_tree_street
+70,D070,P14,Sky / Vegetation,4496,0,0.0,Vegetation,F043,tree_shadows
+443,D443,P14,Sky / Vegetation,3574,0,0.0,Sky,F044,road_and_buildings
+420,D420,P14,Sky / Vegetation,1240,0,0.0,Sky,F061,sunlit street
+509,D509,P14,Sky / Vegetation,425,0,0.0,Vegetation,F019,road_and_building
+257,D257,P15,Vegetation / Sky,352669,1843,0.006216648339416182,Vegetation,F014,road_edge
+196,D196,P15,Vegetation / Sky,220395,204,0.0006881151715902881,Vegetation,F002,shaded patches
+297,D297,P15,Vegetation / Sky,31091,23,7.758161248321877e-05,Sky,F008,stone_wall_and_retaining_wall
+229,D229,P15,Vegetation / Sky,26471,7,2.3611795103588317e-05,Sky,F025,shaded alley
+59,D059,P15,Vegetation / Sky,22220,5,1.6865567931134513e-05,Vegetation,F028,red_car_street
+201,D201,P16,Sky / Vegetation,32802,23,7.758161248321877e-05,Sky,F037,street_corner_shops
+487,D487,P16,Sky / Vegetation,13370,10,3.3731135862269026e-05,Sky,F007,roof_and_eaves
+281,D281,P16,Sky / Vegetation,2599,1,3.3731135862269026e-06,Sky,F052,palm_tree_street
+238,D238,P16,Sky / Vegetation,1477,1,3.3731135862269026e-06,Vegetation,F031,road_edge
+309,D309,P16,Sky / Vegetation,431,1,3.3731135862269026e-06,Car,F044,road_and_buildings
+260,D260,P17,Road / Vegetation,15087,0,0.0,Road,F056,stone_wall_street
+154,D154,P17,Road / Vegetation,3995,0,0.0,Building,F000,red brick corner
+408,D408,P17,Road / Vegetation,632,0,0.0,Terrain,F013,tree-lined_driveway
+39,D039,P17,Road / Vegetation,363,0,0.0,Vegetation,F030,stone_wall_and_shadows
+484,D484,P17,Road / Vegetation,18,0,0.0,Vegetation,F039,red car corner
+346,D346,P18,Building / Sky,250426,1574,0.005309280784721144,Building,F007,roof_and_eaves
+24,D024,P18,Building / Sky,13079,4,1.349245434490761e-05,Terrain,F020,advertising_wall
+137,D137,P18,Building / Sky,6997,2,6.746227172453805e-06,Road,F006,small alley entrance
+7,D007,P18,Building / Sky,4486,1,3.3731135862269026e-06,Car,F006,small alley entrance
+423,D423,P19,Vegetation / Terrain,21822,14,4.7223590207176635e-05,Vegetation,F025,shaded alley
+253,D253,P19,Vegetation / Terrain,8829,2,6.746227172453805e-06,Vegetation,F013,tree-lined_driveway
+129,D129,P19,Vegetation / Terrain,2612,1,3.3731135862269026e-06,Sky,F038,red-yellow hotspot
+330,D330,P19,Vegetation / Terrain,1430,1,3.3731135862269026e-06,Car,F054,highlighted_lane
+498,D498,P20,Vegetation / Building,75959,397,0.0013391260937320804,Vegetation,F043,tree_shadows
+259,D259,P20,Vegetation / Building,30313,86,0.00029008776841551364,Vegetation,F057,streetlight illumination
+66,D066,P20,Vegetation / Building,13061,7,2.3611795103588317e-05,Building,F020,advertising_wall
+198,D198,P20,Vegetation / Building,2864,7,2.3611795103588317e-05,Vegetation,F013,tree-lined_driveway
+239,D239,P21,Road / Sky,871,0,0.0,Road,F036,pedestrian walk
+187,D187,P21,Road / Sky,683,0,0.0,Road,F049,red_wall_yellow_wall
+247,D247,P21,Road / Sky,311,0,0.0,Sky,F049,red_wall_yellow_wall
+273,D273,P21,Road / Sky,56,0,0.0,Vegetation,F061,sunlit street
+200,D200,P22,Road / Vegetation,5749,0,0.0,Road,F018,small alley flowerbed
+280,D280,P22,Road / Vegetation,3617,0,0.0,Road,F040,cobblestone
+91,D091,P22,Road / Vegetation,543,0,0.0,Road,F027,car_top_heat
+384,D384,P22,Road / Vegetation,397,0,0.0,Road,F060,street_corner_shop
+497,D497,P23,Vegetation / Building,2888,0,0.0,Vegetation,F035,small alley entrance
+432,D432,P23,Vegetation / Building,2424,0,0.0,Terrain,F061,sunlit street
+254,D254,P23,Vegetation / Building,628,0,0.0,Bridge,F002,shaded patches
+401,D401,P23,Vegetation / Building,237,0,0.0,Building,F015,tree_shade_street
+380,D380,P24,Sky / Vegetation,2695,0,0.0,Sky,F010,green_wall
+121,D121,P24,Sky / Vegetation,2341,0,0.0,Sky,F010,green_wall
+485,D485,P24,Sky / Vegetation,1252,0,0.0,Sky,F048,shaded path
+402,D402,P24,Sky / Vegetation,27,0,0.0,Bridge,F048,shaded path
+263,D263,P25,Vegetation / Sky,2136,0,0.0,Vegetation,F037,street_corner_shops
+225,D225,P25,Vegetation / Sky,1700,0,0.0,Sky,F048,shaded path
+347,D347,P25,Vegetation / Sky,1220,0,0.0,Sky,F002,shaded patches
+277,D277,P26,Building / Sky,2650,0,0.0,Building,F017,building facade
+65,D065,P26,Building / Sky,1424,0,0.0,Building,F041,concrete_wall
+97,D097,P26,Building / Sky,1257,0,0.0,Building,F049,red_wall_yellow_wall
+463,D463,P27,Road / Sky,720,0,0.0,Road,F049,red_wall_yellow_wall
+501,D501,P27,Road / Sky,326,0,0.0,Road,F037,street_corner_shops
+26,D026,P27,Road / Sky,19,0,0.0,Road,F018,small alley flowerbed
+165,D165,P28,Building / Fence,12623,8,2.698490868981522e-05,Building,F025,shaded alley
+391,D391,P28,Building / Fence,4734,2,6.746227172453805e-06,Road,F048,shaded path
+473,D473,P28,Building / Fence,1563,1,3.3731135862269026e-06,Building,F032,tree-lined walk
+146,D146,P29,Vegetation / Car,861,0,0.0,Vegetation,F056,stone_wall_street
+371,D371,P29,Vegetation / Car,272,0,0.0,Vegetation,F056,stone_wall_street
+244,D244,P29,Vegetation / Car,38,0,0.0,Road,F049,red_wall_yellow_wall
+366,D366,P30,Vegetation / Bridge,27693,6,2.0238681517361417e-05,Vegetation,F002,shaded patches
+107,D107,P30,Vegetation / Bridge,9543,1,3.3731135862269026e-06,Wall,F046,window_heat_zone
+323,D323,P30,Vegetation / Bridge,391,1,3.3731135862269026e-06,Vegetation,F014,road_edge
+109,D109,P31,Road / Sidewalk,17454,0,0.0,Road,F023,street_corner_cafe
+230,D230,P31,Road / Sidewalk,1248,0,0.0,Road,F006,small alley entrance
+352,D352,P31,Road / Sidewalk,905,0,0.0,Car,F055,small alley entrance
+62,D062,P32,Road / Terrain,1992,0,0.0,Road,F014,road_edge
+6,D006,P32,Road / Terrain,54,0,0.0,Road,F005,palm_trees_and_buildings
+390,D390,P33,Bus / Building,3244,0,0.0,Bus,F022,tree_canopy_and_road
+358,D358,P33,Bus / Building,2663,0,0.0,Vegetation,F049,red_wall_yellow_wall
+320,D320,P34,Sky / Tunnel,736,0,0.0,Sky,F008,stone_wall_and_retaining_wall
+440,D440,P34,Sky / Tunnel,660,0,0.0,Sky,F062,shaded alley
+357,D357,P35,Road / Building,1591,0,0.0,Road,F013,tree-lined_driveway
+54,D054,P35,Road / Building,509,0,0.0,Building,F013,tree-lined_driveway
+422,D422,P36,Sky / Building,1542,0,0.0,Sky,F016,construction scaffolding
+71,D071,P36,Sky / Building,151,0,0.0,Building,F044,road_and_buildings
+333,D333,P37,Building / Vegetation,40704,2,6.746227172453805e-06,Building,F032,tree-lined walk
+428,D428,P38,Building / Motorcycle,87,0,0.0,Building,F031,road_edge
+367,D367,P39,Road / Motorcycle,51,0,0.0,Road,F036,pedestrian walk
+76,D076,P40,Sky / Road,64,0,0.0,Sky,F043,tree_shadows
+169,D169,P41,Sky / Building,44747,55,0.00018552124724247965,Sky,F008,stone_wall_and_retaining_wall
+134,D134,P42,Sky / Building,0,0,0.0,Sky,F039,red car corner
+99,D099,P43,Road / Sidewalk,732,0,0.0,Road,F053,road_marking
+87,D087,P44,Road / Sidewalk,0,0,0.0,Road,F049,red_wall_yellow_wall
+64,D064,P45,Sky / Vegetation,4880,2,6.746227172453805e-06,Sky,F003,building facade
+43,D043,P46,Bus / Building,0,0,0.0,Bus,F018,small alley flowerbed
+32,D032,P47,Building / Vegetation,2191,1,3.3731135862269026e-06,Building,F025,shaded alley
+475,D475,P48,Fence / Road,0,0,0.0,Fence,F024,road_edge
