@@ -96,7 +96,8 @@ def _gpu_snapshot() -> dict[str, float]:
     return dict(zip(names, values))
 
 
-def _find_pid(module_name: str) -> int | None:
+def _find_pids(module_name: str) -> list[int]:
+    matches = []
     for proc in Path("/proc").iterdir():
         if not proc.name.isdigit() or int(proc.name) == os.getpid():
             continue
@@ -111,8 +112,14 @@ def _find_pid(module_name: str) -> int | None:
         # Match an argv item exactly. A substring search can mistake the
         # orchestration shell for the actual runner or trainer process.
         if module_name in arguments:
-            return int(proc.name)
-    return None
+            matches.append(int(proc.name))
+    return sorted(matches)
+
+
+def _find_pid(module_name: str) -> int | None:
+    """Return the first matching PID for backward-compatible state fields."""
+    matches = _find_pids(module_name)
+    return matches[0] if matches else None
 
 
 def _current_experiment(root: Path) -> str | None:
@@ -250,21 +257,25 @@ def main() -> None:
             except (OSError, json.JSONDecodeError):
                 pass
             status = runner_state.get("status", "unknown")
-            runner_pid = _find_pid("scripts.multicity.run_feature_mae_scaleup")
-            trainer_pid = _find_pid("scripts.multicity.train_feature_mae")
+            runner_pids = _find_pids("scripts.multicity.run_feature_mae_scaleup")
+            trainer_pids = _find_pids("scripts.multicity.train_feature_mae")
+            runner_pid = runner_pids[0] if runner_pids else None
+            trainer_pid = trainer_pids[0] if trainer_pids else None
             experiment_id = _current_experiment(args.root)
-            if _ensure_safe_cpu_affinity(runner_pid, allowed_cpu_set):
-                print(
-                    f"{_utc()} enforced safe CPU affinity on runner {runner_pid}: "
-                    f"{allowed_cpus}",
-                    file=log,
-                )
-            if _ensure_safe_cpu_affinity(trainer_pid, allowed_cpu_set):
-                print(
-                    f"{_utc()} enforced safe CPU affinity on trainer {trainer_pid}: "
-                    f"{allowed_cpus}",
-                    file=log,
-                )
+            for pid in runner_pids:
+                if _ensure_safe_cpu_affinity(pid, allowed_cpu_set):
+                    print(
+                        f"{_utc()} enforced safe CPU affinity on runner {pid}: "
+                        f"{allowed_cpus}",
+                        file=log,
+                    )
+            for pid in trainer_pids:
+                if _ensure_safe_cpu_affinity(pid, allowed_cpu_set):
+                    print(
+                        f"{_utc()} enforced safe CPU affinity on trainer {pid}: "
+                        f"{allowed_cpus}",
+                        file=log,
+                    )
 
             try:
                 gpu = _gpu_snapshot()
@@ -280,6 +291,14 @@ def main() -> None:
             load1 = os.getloadavg()[0]
             runner_process = _process_snapshot(runner_pid)
             trainer_process = _process_snapshot(trainer_pid)
+            runner_processes = [
+                snapshot for pid in runner_pids
+                if (snapshot := _process_snapshot(pid)) is not None
+            ]
+            trainer_processes = [
+                snapshot for pid in trainer_pids
+                if (snapshot := _process_snapshot(pid)) is not None
+            ]
             disk = shutil.disk_usage(args.root)
             disk_free_gib = disk.free / 2**30
             disk_used_pct = 100.0 * disk.used / disk.total
@@ -331,6 +350,8 @@ def main() -> None:
                 "runner_status": status,
                 "runner_pid": runner_pid,
                 "trainer_pid": trainer_pid,
+                "runner_pids": runner_pids,
+                "trainer_pids": trainer_pids,
                 "experiment_id": experiment_id,
                 "allowed_cpus": allowed_cpus,
                 "load_1m": load1,
@@ -338,6 +359,8 @@ def main() -> None:
                 "cpu_temperature_c": cpu_temperature,
                 "runner_process": runner_process,
                 "trainer_process": trainer_process,
+                "runner_processes": runner_processes,
+                "trainer_processes": trainer_processes,
                 "memory": memory,
                 "disk_free_gib": disk_free_gib,
                 "disk_used_pct": disk_used_pct,
@@ -356,17 +379,18 @@ def main() -> None:
                     print(f"{_utc()} resources recovered to safe range", file=log)
                 last_reasons = reason_tuple
 
-            if reasons and critical_streak >= args.consecutive_critical and trainer_pid:
+            if reasons and critical_streak >= args.consecutive_critical and trainer_pids:
                 print(
-                    f"{_utc()} SAFETY_STOP trainer={trainer_pid}: "
+                    f"{_utc()} SAFETY_STOP trainers={trainer_pids}: "
                     f"{'; '.join(reasons)}",
                     file=log,
                     flush=True,
                 )
-                _terminate(trainer_pid, log)
+                for pid in trainer_pids:
+                    _terminate(pid, log)
                 return
 
-            if status in TERMINAL_STATES and runner_pid is None and trainer_pid is None:
+            if status in TERMINAL_STATES and not runner_pids and not trainer_pids:
                 print(f"{_utc()} watcher exiting on runner status={status}", file=log)
                 return
             time.sleep(args.interval)

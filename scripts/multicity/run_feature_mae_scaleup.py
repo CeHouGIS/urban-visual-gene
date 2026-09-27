@@ -124,13 +124,25 @@ def main() -> None:
     parser.add_argument("--epoch-images-per-city", type=int, default=10000)
     parser.add_argument("--images-per-city", type=int, default=16)
     parser.add_argument("--only", nargs="*")
+    parser.add_argument(
+        "--lane-name",
+        default="",
+        help="use independent lock, registry, state, and log files for a parallel lane",
+    )
+    parser.add_argument("--min-gpu-free-mib", type=int, default=10000)
     args = parser.parse_args()
+
+    if args.lane_name and not all(
+        character.isalnum() or character in "_.-" for character in args.lane_name
+    ):
+        raise ValueError("--lane-name may only contain letters, numbers, '.', '-', and '_'")
+    suffix = f".{args.lane_name}" if args.lane_name else ""
 
     allowed_cpus = _allowed_cpus()
     os.sched_setaffinity(0, allowed_cpus)
 
     args.root.mkdir(parents=True, exist_ok=True)
-    lock_handle = (args.root / "scaleup.lock").open("w")
+    lock_handle = (args.root / f"scaleup{suffix}.lock").open("w")
     try:
         fcntl.flock(lock_handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError as error:
@@ -144,7 +156,8 @@ def main() -> None:
         if missing:
             raise ValueError(f"unknown experiment IDs: {sorted(missing)}")
 
-    registry_path = args.root / "experiment_registry.csv"
+    registry_path = args.root / f"experiment_registry{suffix}.csv"
+    state_path = args.root / f"runner_state{suffix}.json"
     old = {}
     if registry_path.exists():
         with registry_path.open(newline="") as handle:
@@ -165,11 +178,11 @@ def main() -> None:
         )
     _write_registry(registry_path, rows)
     _atomic_json(
-        args.root / "runner_state.json",
+        state_path,
         {"status": "running", "started_utc": _utc(), "tasks": len(rows)},
     )
 
-    log_path = args.root / "runner.log"
+    log_path = args.root / f"runner{suffix}.log"
     with log_path.open("a", buffering=1) as runner_log:
         for index, (config, row) in enumerate(zip(configurations, rows), 1):
             output = Path(row["output_dir"])
@@ -182,12 +195,12 @@ def main() -> None:
             ram = _available_ram_gib()
             disk = shutil.disk_usage(args.root).free / 2**30
             gpu = _gpu_free_mib()
-            if ram < 8 or disk < 500 or gpu < 10000:
+            if ram < 8 or disk < 500 or gpu < args.min_gpu_free_mib:
                 message = f"unsafe resources: ram={ram:.1f}GiB disk={disk:.1f}GiB gpu={gpu}MiB"
                 row["status"] = "blocked_resources"
                 _write_registry(registry_path, rows)
                 _atomic_json(
-                    args.root / "runner_state.json",
+                    state_path,
                     {"status": "blocked_resources", "time_utc": _utc(), "message": message},
                 )
                 raise RuntimeError(message)
@@ -257,7 +270,7 @@ def main() -> None:
             _write_registry(registry_path, rows)
             if row["status"] != "completed":
                 _atomic_json(
-                    args.root / "runner_state.json",
+                    state_path,
                     {
                         "status": "failed", "time_utc": _utc(),
                         "experiment_id": config["experiment_id"],
@@ -269,7 +282,7 @@ def main() -> None:
             print(f"[{index}/{len(rows)}] complete {config['experiment_id']} at {_utc()}", file=runner_log)
 
     _atomic_json(
-        args.root / "runner_state.json",
+        state_path,
         {"status": "completed", "finished_utc": _utc(), "tasks": len(rows)},
     )
 
