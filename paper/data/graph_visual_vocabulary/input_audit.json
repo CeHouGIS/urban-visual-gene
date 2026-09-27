@@ -1,0 +1,38 @@
+{
+  "analysis_unit": "complete four-direction panorama",
+  "input_construction": "four 640x640 views -> 2560x640 -> 896x224",
+  "latent_grid": [
+    14,
+    56
+  ],
+  "spatial_profile_shape": [
+    512,
+    784
+  ],
+  "panoramas": 296462,
+  "patches": 232426208,
+  "cities": 30,
+  "encoder_shape": [
+    512,
+    768
+  ],
+  "decoder_shape": [
+    512,
+    768
+  ],
+  "dimensions_with_zero_top1_spatial_support": [
+    26,
+    43,
+    71,
+    76,
+    87,
+    134,
+    367,
+    402,
+    475,
+    484,
+    493
+  ],
+  "zero_spatial_profile_policy": "Retain the node. Its normalized P vector and P-view similarities are zero; E and D still determine graph relations.",
+  "correction_to_original_plan": "The current frozen inference unit is a four-direction panorama with a 14x56 latent map, not an independent 14x14 direction image. P therefore retains all 784 circular panorama positions."
+}

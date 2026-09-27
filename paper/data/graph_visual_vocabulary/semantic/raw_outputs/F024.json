@@ -1,0 +1,19 @@
+{
+  "result": {
+    "community_id": "F024",
+    "name_zh": "稻田与道路",
+    "name_en": "rice_field_and_road",
+    "semantic_type": "environment",
+    "summary_zh": "稻田与道路的视觉模式",
+    "visual_cues_zh": [
+      "稻田与道路",
+      "稻田与道路"
+    ],
+    "urban_meaning_zh": "农业与交通的融合",
+    "artifact_probability": 0.0,
+    "confidence": 0.0
+  },
+  "raw_response": "```json\n{\n  \"community_id\": \"F024\",\n  \"name_zh\": \"稻田与道路\",\n  \"name_en\": \"rice_field_and_road\",\n  \"semantic_type\": \"environment\",\n  \"summary_zh\": \"稻田与道路的视觉模式\",\n  \"visual_cues_zh\": [\n    \"稻田与道路\",\n    \"稻田与道路\"\n  ],\n  \"urban_meaning_zh\": \"农业与交通的融合\",\n  \"artifact_probability\": 0.0,\n  \"confidence\": 0.0\n}\n```",
+  "parse_error": "",
+  "post_hoc_only": true
+}

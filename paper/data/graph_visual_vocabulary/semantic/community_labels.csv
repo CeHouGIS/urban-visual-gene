@@ -1,0 +1,40 @@
+community_id,community_size,medoid_dimension,name_zh,name_en,semantic_type,summary_zh,visual_cues_zh,urban_meaning_zh,artifact_probability,confidence,semantic_role
+F001,27,31,城市街景,urban street,environment,城市道路、建筑、绿化、交通设施,"[""城市道路"", ""建筑""]",城市道路与建筑的视觉特征,0.0,0.0,post-hoc interpretation only
+F002,25,124,道路与农田,road_and_farm,mixed,道路、农田、植被、建筑,"[""道路与农田"", ""道路与农田""]",城市与乡村的交汇,0.0,0.0,post-hoc interpretation only
+F003,22,235,城市街景,urban street,environment,城市道路、建筑、植被、车辆,"[""道路与建筑"", ""车辆与植被""]",城市环境中的道路与建筑,0.0,0.0,post-hoc interpretation only
+F004,21,93,城市街景,urban street,environment,城市街道、建筑、道路、绿化,"[""城市街景"", ""道路与建筑""]",城市街道与建筑,0.0,0.0,post-hoc interpretation only
+F005,21,139,城市街景,urban street,environment,城市街道、建筑、车辆、道路,"[""原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F006,20,426,城市街景,urban street,environment,城市街道、建筑、车辆、天空,"[""城市街景"", ""建筑""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only
+F007,19,364,城市街景,urban street,environment,城市街道、建筑、天空、道路,"[""城市街景"", ""建筑""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only
+F008,19,84,城市街景,urban street,environment,道路、建筑、树木、车辆,"[""道路、建筑、树木、车辆"", ""道路、建筑、树木、车辆""]",城市街道的日常景象,0.0,0.0,post-hoc interpretation only
+F009,19,141,城市街景,urban street,environment,城市街道、建筑、树木、车辆,"[""原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F010,19,317,城市街景,urban street,environment,城市街道、建筑、道路、天空,"[""城市街景"", ""建筑""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F011,19,332,城市街景,urban street,environment,城市街道、建筑、道路、树木,"[""城市街景"", ""建筑""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only
+F012,18,96,城市街景,urban street,environment,城市街道、建筑、车辆、交通,"[""城市街景"", ""建筑""]",城市街道的日常景象,0.0,0.0,post-hoc interpretation only
+F013,18,374,城市街景,urban street,environment,城市街道、建筑、交通、自然景观,"[""城市街景"", ""建筑与道路""]",城市环境的视觉特征,0.0,0.0,post-hoc interpretation only
+F014,17,331,城市街景,urban street,environment,城市街道、建筑、车辆、树木,"[""城市街景"", ""建筑""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only
+F015,17,50,城市街景,urban street,environment,城市街道、建筑、车辆、天空,"[""城市街景"", ""建筑与车辆""]",城市街道与建筑,0.0,0.0,post-hoc interpretation only
+F016,16,241,城市街景,urban street,environment,城市街道、建筑、道路、绿化,"[""原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F017,15,279,城市街景,urban street,environment,城市街道、建筑、交通、绿化,"[""街道、建筑、交通、绿化"", ""街道、建筑、交通、绿化""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only
+F018,15,319,城市街景,urban street,environment,多为住宅区与道路交叉,"[""多为住宅区与道路交叉"", ""多为住宅区与道路交叉""]",城市住宅区与道路交叉,0.0,0.0,post-hoc interpretation only
+F019,15,437,城市街景,urban street,environment,城市街道、建筑、天空、树木,"[""城市街景"", ""建筑""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F020,14,59,城市街景,urban street,environment,城市街道、建筑、车辆、树木,"[""原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F021,14,348,城市街景,urban street,environment,多为住宅区与街道,"[""多为住宅区与街道"", ""多为住宅区与街道""]",多为住宅区与街道,0.0,0.0,post-hoc interpretation only
+F022,14,255,城市街景,urban street,environment,城市街道、建筑、车辆、树木,"[""城市街景"", ""建筑""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only
+F023,13,456,日落街景,sunset street,environment,黄昏时分的街道，建筑与车辆,"[""日落时分的街道"", ""建筑与车辆""]",城市傍晚的街景,0.0,0.0,post-hoc interpretation only
+F024,13,47,稻田与道路,rice_field_and_road,environment,稻田与道路的视觉模式,"[""稻田与道路"", ""稻田与道路""]",农业与交通的融合,0.0,0.0,post-hoc interpretation only
+F025,13,270,城市街景,urban street,environment,城市街道、建筑、车辆、天空,"[""城市街景"", ""建筑与车辆""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only
+F026,11,128,工业区,industrial zone,environment,工业区的建筑、车辆和道路,"[""工业区的建筑、车辆和道路"", ""工业区的建筑、车辆和道路""]",工业区的建筑、车辆和道路,0.0,0.0,post-hoc interpretation only
+F027,8,453,城市街景,urban street,environment,城市街道、建筑、桥梁、隧道等,"[""原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F028,7,98,城市街景,urban street,environment,城市街道、建筑、道路、树木,"[""道路、建筑、树木"", ""街道、建筑、道路""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F029,6,269,城市街景,urban street,environment,城市街道、建筑、天空、道路、树木,"[""四方向拼接原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F030,6,78,城市街景,urban street,environment,城市街景的视觉模式,"[""街道"", ""建筑""]",城市街景的视觉模式,0.0,0.0,post-hoc interpretation only
+F031,5,205,城市街景,urban street,environment,城市街道、建筑、车辆、道路,"[""原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F032,5,6,城市街景,urban street,environment,城市街道、建筑、植被、道路,"[""城市街景"", ""建筑与道路""]",城市环境中的街道与建筑,0.0,0.0,post-hoc interpretation only
+F033,5,454,城市街景,urban street,environment,城市街道、建筑、道路、绿化,"[""原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F034,4,484,道路与田野,road_and_fields,environment,道路与田野的视觉模式,"[""道路与田野"", ""道路与田野""]",道路与田野的视觉模式,0.0,0.0,post-hoc interpretation only
+F035,3,217,城市街景,urban street,environment,城市街道、建筑、道路、桥梁、水体,"[""城市街景"", ""道路交叉口""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only
+F036,3,200,黄昏街景,dusk street,environment,黄昏时分的街道，有暖色调光晕。,"[""黄昏时分的街道"", ""暖色调光晕""]",黄昏时分的街道，有暖色调光晕。,0.0,0.0,post-hoc interpretation only
+F037,3,13,城市街景,urban street,environment,城市街道、建筑、树木、道路,"[""原始全景"", ""激活叠加图""]",城市街景的视觉特征,0.0,0.0,post-hoc interpretation only
+F038,2,43,城市街景,urban scene,environment,城市街道、建筑、车辆、交通,"[""城市街景"", ""建筑与车辆""]",城市街道与建筑,0.0,0.0,post-hoc interpretation only
+F039,1,462,城市街景,urban street,environment,城市街道、建筑、树木、道路,"[""城市街景"", ""道路、建筑、树木""]",城市街道的视觉特征,0.0,0.0,post-hoc interpretation only

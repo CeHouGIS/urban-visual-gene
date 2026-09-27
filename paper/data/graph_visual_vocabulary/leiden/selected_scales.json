@@ -1,0 +1,41 @@
+{
+  "stability_threshold_used": 0.85,
+  "candidate_plateaus": [
+    {
+      "start_index": 52,
+      "end_index": 54,
+      "gamma_min": 2.65,
+      "gamma_max": 2.75,
+      "points": 3,
+      "k_min": 35,
+      "k_max": 37,
+      "mean_seed_nmi": 0.8555747510453194,
+      "mean_adjacent_nmi": 0.8859921418717901
+    }
+  ],
+  "coarse": {
+    "gamma": 2.7,
+    "n_communities": 35,
+    "index": 53,
+    "plateau": {
+      "start_index": 52,
+      "end_index": 54,
+      "gamma_min": 2.65,
+      "gamma_max": 2.75,
+      "points": 3,
+      "k_min": 35,
+      "k_max": 37,
+      "mean_seed_nmi": 0.8555747510453194,
+      "mean_adjacent_nmi": 0.8859921418717901
+    },
+    "status": "stable"
+  },
+  "fine": {
+    "gamma": 2.85,
+    "n_communities": 39,
+    "index": 56,
+    "plateau": null,
+    "status": "exploratory_secondary"
+  },
+  "community_numbers_prespecified": false
+}

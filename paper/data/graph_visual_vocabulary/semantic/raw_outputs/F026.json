@@ -1,0 +1,19 @@
+{
+  "result": {
+    "community_id": "F026",
+    "name_zh": "工业区",
+    "name_en": "industrial zone",
+    "semantic_type": "environment",
+    "summary_zh": "工业区的建筑、车辆和道路",
+    "visual_cues_zh": [
+      "工业区的建筑、车辆和道路",
+      "工业区的建筑、车辆和道路"
+    ],
+    "urban_meaning_zh": "工业区的建筑、车辆和道路",
+    "artifact_probability": 0.0,
+    "confidence": 0.0
+  },
+  "raw_response": "```json\n{\n  \"community_id\": \"F026\",\n  \"name_zh\": \"工业区\",\n  \"name_en\": \"industrial zone\",\n  \"semantic_type\": \"environment\",\n  \"summary_zh\": \"工业区的建筑、车辆和道路\",\n  \"visual_cues_zh\": [\n    \"工业区的建筑、车辆和道路\",\n    \"工业区的建筑、车辆和道路\"\n  ],\n  \"urban_meaning_zh\": \"工业区的建筑、车辆和道路\",\n  \"artifact_probability\": 0.0,\n  \"confidence\": 0.0\n}\n```",
+  "parse_error": "",
+  "post_hoc_only": true
+}

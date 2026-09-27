@@ -1,0 +1,19 @@
+{
+  "result": {
+    "community_id": "F023",
+    "name_zh": "日落街景",
+    "name_en": "sunset street",
+    "semantic_type": "environment",
+    "summary_zh": "黄昏时分的街道，建筑与车辆",
+    "visual_cues_zh": [
+      "日落时分的街道",
+      "建筑与车辆"
+    ],
+    "urban_meaning_zh": "城市傍晚的街景",
+    "artifact_probability": 0.0,
+    "confidence": 0.0
+  },
+  "raw_response": "```json\n{\n  \"community_id\": \"F023\",\n  \"name_zh\": \"日落街景\",\n  \"name_en\": \"sunset street\",\n  \"semantic_type\": \"environment\",\n  \"summary_zh\": \"黄昏时分的街道，建筑与车辆\",\n  \"visual_cues_zh\": [\n    \"日落时分的街道\",\n    \"建筑与车辆\"\n  ],\n  \"urban_meaning_zh\": \"城市傍晚的街景\",\n  \"artifact_probability\": 0.0,\n  \"confidence\": 0.0\n}\n```",
+  "parse_error": "",
+  "post_hoc_only": true
+}

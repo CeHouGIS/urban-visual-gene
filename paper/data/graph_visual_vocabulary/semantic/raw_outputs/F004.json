@@ -1,0 +1,19 @@
+{
+  "result": {
+    "community_id": "F004",
+    "name_zh": "城市街景",
+    "name_en": "urban street",
+    "semantic_type": "environment",
+    "summary_zh": "城市街道、建筑、道路、绿化",
+    "visual_cues_zh": [
+      "城市街景",
+      "道路与建筑"
+    ],
+    "urban_meaning_zh": "城市街道与建筑",
+    "artifact_probability": 0.0,
+    "confidence": 0.0
+  },
+  "raw_response": "```json\n{\n  \"community_id\": \"F004\",\n  \"name_zh\": \"城市街景\",\n  \"name_en\": \"urban street\",\n  \"semantic_type\": \"environment\",\n  \"summary_zh\": \"城市街道、建筑、道路、绿化\",\n  \"visual_cues_zh\": [\n    \"城市街景\",\n    \"道路与建筑\"\n  ],\n  \"urban_meaning_zh\": \"城市街道与建筑\",\n  \"artifact_probability\": 0.0,\n  \"confidence\": 0.0\n}\n```",
+  "parse_error": "",
+  "post_hoc_only": true
+}

@@ -1,0 +1,19 @@
+{
+  "result": {
+    "community_id": "F034",
+    "name_zh": "道路与田野",
+    "name_en": "road_and_fields",
+    "semantic_type": "environment",
+    "summary_zh": "道路与田野的视觉模式",
+    "visual_cues_zh": [
+      "道路与田野",
+      "道路与田野"
+    ],
+    "urban_meaning_zh": "道路与田野的视觉模式",
+    "artifact_probability": 0.0,
+    "confidence": 0.0
+  },
+  "raw_response": "```json\n{\n  \"community_id\": \"F034\",\n  \"name_zh\": \"道路与田野\",\n  \"name_en\": \"road_and_fields\",\n  \"semantic_type\": \"environment\",\n  \"summary_zh\": \"道路与田野的视觉模式\",\n  \"visual_cues_zh\": [\n    \"道路与田野\",\n    \"道路与田野\"\n  ],\n  \"urban_meaning_zh\": \"道路与田野的视觉模式\",\n  \"artifact_probability\": 0.0,\n  \"confidence\": 0.0\n}\n```",
+  "parse_error": "",
+  "post_hoc_only": true
+}

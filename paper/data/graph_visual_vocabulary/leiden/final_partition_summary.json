@@ -1,0 +1,11 @@
+{
+  "coarse": {
+    "gamma": 2.7,
+    "n_communities": 35
+  },
+  "fine": {
+    "gamma": 2.85,
+    "n_communities": 39
+  },
+  "strictly_nested": false
+}

@@ -1,0 +1,45 @@
+{
+  "partitions": [
+    {
+      "comparison": "old_Ward_64_vs_new_fine",
+      "old_k": 64,
+      "new_k": 39,
+      "nmi": 0.5572402818660164,
+      "ari": 0.11866804479798636
+    },
+    {
+      "comparison": "old_Ward_32_vs_new_coarse",
+      "old_k": 32,
+      "new_k": 35,
+      "nmi": 0.49673214704859325,
+      "ari": 0.14931758032394116
+    }
+  ],
+  "downstream": [
+    {
+      "comparison": "city_composition_cosine_matrices",
+      "spearman_rho": 0.6672606959531269,
+      "n_units": 30
+    },
+    {
+      "comparison": "city_cooccurrence_similarity_matrices",
+      "spearman_rho": 0.4939303463729176,
+      "n_units": 30
+    },
+    {
+      "comparison": "dimension_lifted_global_PPMI",
+      "spearman_rho": 0.008617463601664906,
+      "n_units": 512
+    },
+    {
+      "comparison": "city_homogeneity_ranking",
+      "spearman_rho": 0.6525027808676307,
+      "n_units": 30
+    },
+    {
+      "comparison": "city_continuity_ranking",
+      "spearman_rho": 0.6636262513904337,
+      "n_units": 30
+    }
+  ]
+}

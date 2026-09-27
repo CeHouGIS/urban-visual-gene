@@ -1,0 +1,19 @@
+{
+  "result": {
+    "community_id": "F002",
+    "name_zh": "道路与农田",
+    "name_en": "road_and_farm",
+    "semantic_type": "mixed",
+    "summary_zh": "道路、农田、植被、建筑",
+    "visual_cues_zh": [
+      "道路与农田",
+      "道路与农田"
+    ],
+    "urban_meaning_zh": "城市与乡村的交汇",
+    "artifact_probability": 0.0,
+    "confidence": 0.0
+  },
+  "raw_response": "```json\n{\n  \"community_id\": \"F002\",\n  \"name_zh\": \"道路与农田\",\n  \"name_en\": \"road_and_farm\",\n  \"semantic_type\": \"geometry|spatial_layout|environment\",\n  \"summary_zh\": \"道路、农田、植被、建筑\",\n  \"visual_cues_zh\": [\n    \"道路与农田\",\n    \"道路与农田\"\n  ],\n  \"urban_meaning_zh\": \"城市与乡村的交汇\",\n  \"artifact_probability\": 0.0,\n  \"confidence\": 0.0\n}\n```",
+  "parse_error": "",
+  "post_hoc_only": true
+}

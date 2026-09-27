@@ -1,0 +1,46 @@
+{
+  "E": {
+    "nodes": 512,
+    "edges": 8515,
+    "density": 0.06509142612524461,
+    "connected_components": 1,
+    "degree_min": 30,
+    "degree_mean": 33.26171875,
+    "degree_median": 32.0,
+    "degree_max": 52,
+    "mean_nonzero_weight": 1.0000001192092896
+  },
+  "D": {
+    "nodes": 512,
+    "edges": 8474,
+    "density": 0.06477800880626224,
+    "connected_components": 1,
+    "degree_min": 30,
+    "degree_mean": 33.1015625,
+    "degree_median": 32.0,
+    "degree_max": 46,
+    "mean_nonzero_weight": 1.0000001192092896
+  },
+  "P": {
+    "nodes": 512,
+    "edges": 9627,
+    "density": 0.07359191536203523,
+    "connected_components": 12,
+    "degree_min": 0,
+    "degree_mean": 37.60546875,
+    "degree_median": 35.0,
+    "degree_max": 78,
+    "mean_nonzero_weight": 1.0
+  },
+  "fused": {
+    "nodes": 512,
+    "edges": 24673,
+    "density": 0.1886084271037182,
+    "connected_components": 1,
+    "degree_min": 58,
+    "degree_mean": 96.37890625,
+    "degree_median": 95.0,
+    "degree_max": 133,
+    "mean_nonzero_weight": 0.3595833480358124
+  }
+}

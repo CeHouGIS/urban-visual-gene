@@ -1,0 +1,6 @@
+comparison,spearman_rho,n_units
+city_composition_cosine_matrices,0.6672606959531269,30
+city_cooccurrence_similarity_matrices,0.4939303463729176,30
+dimension_lifted_global_PPMI,0.008617463601664906,512
+city_homogeneity_ranking,0.6525027808676307,30
+city_continuity_ranking,0.6636262513904337,30

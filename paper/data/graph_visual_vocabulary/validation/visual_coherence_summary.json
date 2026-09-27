@@ -1,0 +1,9 @@
+{
+  "embedding": "frozen DINOv3 CLS embedding of each dimension's ten top-activated panorama crops; embeddings excluded from discovery",
+  "mean_within_community_similarity": 0.3530222759832107,
+  "mean_between_community_similarity": 0.2988879397384152,
+  "difference": 0.05413433624479547,
+  "cohens_d": 0.4141298254166931,
+  "permutation_p_value": 0.000999000999000999,
+  "n_permutations": 1000
+}
