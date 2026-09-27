@@ -4,8 +4,9 @@
 For each of the 512 dense Feature-MAE dimensions, the analysis first finds the
 50 panorama locations with the strongest image-level activation summary.  It
 then reads that dimension's full 14x56 maps in those panoramas and retains its
-1,000 strongest patches.  Their fractional Mapillary-65 labels define the
-dimension's semantic profile.  No per-patch winner/argmax assignment is used.
+1,000 strongest patches.  Their fractional Mapillary-65 labels are averaged
+with the selected patch activations as normalized weights.  No per-patch
+winner/argmax assignment is used.
 """
 from __future__ import annotations
 
@@ -168,6 +169,32 @@ def js_divergence(profiles: np.ndarray, baseline: np.ndarray) -> np.ndarray:
     return 0.5 * (first + second)
 
 
+def activation_weighted_semantic_profile(
+    selected_semantics: np.ndarray,
+    selected_activations: np.ndarray,
+) -> tuple[np.ndarray, float, float]:
+    """Return a normalized semantic profile and weight diagnostics."""
+    weights = np.asarray(selected_activations, dtype=np.float64)
+    semantics = np.asarray(selected_semantics, dtype=np.float64)
+    if semantics.ndim != 2 or weights.shape != (len(semantics),):
+        raise ValueError("semantic rows and activation weights are not aligned")
+    weight_sum = float(weights.sum())
+    if np.any(weights < 0) or weight_sum <= 0:
+        raise ValueError(
+            f"invalid activation weights: min={weights.min():.6f}, "
+            f"sum={weight_sum:.6f}"
+        )
+    profile = np.average(semantics, axis=0, weights=weights)
+    profile_sum = float(profile.sum())
+    if profile_sum <= 0:
+        raise ValueError("weighted semantic profile has no positive mass")
+    # Stored patch fractions may be float16 and can miss unit sum by a few
+    # parts in 1e-5.  Renormalize that numerical residue after averaging.
+    profile /= profile_sum
+    effective_count = weight_sum**2 / float(np.square(weights).sum())
+    return profile, weight_sum, effective_count
+
+
 def load_aligned_index(
     panos: pd.DataFrame,
     semantic: np.ndarray,
@@ -226,8 +253,11 @@ def dimension_high_activation_profiles(
     split = len(activations) - top_images
     top_image_rows = np.argpartition(activations, split, axis=0)[split:]
     profiles = np.zeros((DIMENSIONS, CLASSES), dtype=np.float64)
+    unweighted_profiles = np.zeros((DIMENSIONS, CLASSES), dtype=np.float64)
     thresholds = np.zeros(DIMENSIONS, dtype=np.float32)
     means = np.zeros(DIMENSIONS, dtype=np.float32)
+    weight_sums = np.zeros(DIMENSIONS, dtype=np.float64)
+    effective_patch_counts = np.zeros(DIMENSIONS, dtype=np.float64)
     row_counts = np.zeros((DIMENSIONS, ROWS), dtype=np.uint32)
     column_counts = np.zeros((DIMENSIONS, COLS), dtype=np.uint32)
     city_counts = np.zeros(DIMENSIONS, dtype=np.uint16)
@@ -268,7 +298,17 @@ def dimension_high_activation_profiles(
         top = np.argpartition(values, len(values) - top_patches)[-top_patches:]
         top = top[np.argsort(-values[top])]
         selected_semantics = semantic_values[top]
-        profiles[dimension] = selected_semantics.mean(axis=0, dtype=np.float64)
+        selected_activations = values[top].astype(np.float64)
+        (
+            profiles[dimension],
+            weight_sums[dimension],
+            effective_patch_counts[dimension],
+        ) = activation_weighted_semantic_profile(
+            selected_semantics, selected_activations
+        )
+        unweighted_profiles[dimension] = selected_semantics.mean(
+            axis=0, dtype=np.float64
+        )
         thresholds[dimension] = float(values[top[-1]])
         means[dimension] = float(values[top].mean())
         row_counts[dimension] = np.bincount(patch_rows[top], minlength=ROWS)
@@ -335,8 +375,11 @@ def dimension_high_activation_profiles(
             "dimension": [f"D{x:03d}" for x in range(DIMENSIONS)],
             "profile_top_images": top_images,
             "profile_top_patches": top_patches,
+            "profile_weighting": "raw_selected_patch_activation",
             "high_activation_threshold": thresholds,
             "mean_selected_activation": means,
+            "selected_activation_weight_sum": weight_sums,
+            "activation_weight_effective_patch_count": effective_patch_counts,
             "selected_image_count": image_counts,
             "selected_city_count": city_counts,
             "top1_class_id": top1,
@@ -368,6 +411,7 @@ def dimension_high_activation_profiles(
             "class_id": np.tile(np.arange(CLASSES), DIMENSIONS),
             "class_name": np.tile(class_names, DIMENSIONS),
             "semantic_fraction": profiles.reshape(-1),
+            "unweighted_semantic_fraction": unweighted_profiles.reshape(-1),
             "global_semantic_fraction": np.tile(baseline, DIMENSIONS),
         }
     )
@@ -689,7 +733,7 @@ def plot_all_dimension_heatmap(
         fontsize=13,
     )
     colourbar = figure.colorbar(image, ax=axis, fraction=0.015, pad=0.01)
-    colourbar.set_label("Semantic fraction")
+    colourbar.set_label("Activation-weighted semantic fraction")
     output.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(output, dpi=180)
     plt.close(figure)
@@ -726,6 +770,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--points", type=int, default=20)
     parser.add_argument("--top-images-per-dimension", type=int, default=50)
     parser.add_argument("--top-patches-per-dimension", type=int, default=1000)
+    parser.add_argument(
+        "--skip-case-studies",
+        action="store_true",
+        help="only rebuild profile tables and summary figures; retain existing case-study files",
+    )
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
 
@@ -780,21 +829,25 @@ def main() -> None:
     f64_mapping.to_csv(args.output_data / "dimension_f64_mapping.csv", index=False)
     distribution.to_csv(args.output_data / "dimension_semantic_distribution_65.csv", index=False)
     exemplars.to_csv(args.output_data / "dimension_top_patch_exemplars.csv", index=False)
-    selected = select_diverse_points(
-        activations, image_semantics, valid, args.points, args.seed
-    )
-    selected.to_csv(args.output_data / "selected_20_points.csv", index=False)
-    details = render_cases(
-        selected,
-        manifest,
-        activations,
-        args.semantic_root,
-        args.feature_root,
-        metrics,
-        distribution,
-        args.output_figures,
-    )
-    details.to_csv(args.output_data / "selected_point_top_dimensions.csv", index=False)
+    if args.skip_case_studies:
+        selected_path = args.output_data / "selected_20_points.csv"
+        selected = pd.read_csv(selected_path) if selected_path.exists() else pd.DataFrame()
+    else:
+        selected = select_diverse_points(
+            activations, image_semantics, valid, args.points, args.seed
+        )
+        selected.to_csv(args.output_data / "selected_20_points.csv", index=False)
+        details = render_cases(
+            selected,
+            manifest,
+            activations,
+            args.semantic_root,
+            args.feature_root,
+            metrics,
+            distribution,
+            args.output_figures,
+        )
+        details.to_csv(args.output_data / "selected_point_top_dimensions.csv", index=False)
     plot_summary(metrics, args.output_figures / "Fig_Dimension_Semantic_Clarity.png")
     dimension_order, semantic_order = plot_all_dimension_heatmap(
         metrics,
@@ -806,7 +859,15 @@ def main() -> None:
     counts = metrics.assessment.value_counts().to_dict()
     report = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
-        "method": "per-dimension high-activation patches; no winner/argmax assignment",
+        "method": (
+            "per-dimension high-activation patches with raw activation-strength "
+            "weighting; no winner/argmax assignment"
+        ),
+        "profile_weighting": (
+            "semantic_fraction[d,c] = sum_p activation[p,d] * "
+            "semantic_fraction[p,c] / sum_p activation[p,d], over each "
+            "dimension's selected top patches"
+        ),
         "semantic_model": "facebook/mask2former-swin-large-mapillary-vistas-semantic",
         "feature_representation": "frozen dense Feature-MAE 512D bottleneck",
         "f64_mapping": str(args.hierarchy_root / "hierarchy_arrays.npz"),

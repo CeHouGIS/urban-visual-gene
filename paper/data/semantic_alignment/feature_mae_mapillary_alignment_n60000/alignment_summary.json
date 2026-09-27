@@ -1,6 +1,7 @@
 {
-  "created_utc": "2026-09-26T16:14:14.102738+00:00",
-  "method": "per-dimension high-activation patches; no winner/argmax assignment",
+  "created_utc": "2026-09-27T01:06:04.414259+00:00",
+  "method": "per-dimension high-activation patches with raw activation-strength weighting; no winner/argmax assignment",
+  "profile_weighting": "semantic_fraction[d,c] = sum_p activation[p,d] * semantic_fraction[p,c] / sum_p activation[p,d], over each dimension's selected top patches",
   "semantic_model": "facebook/mask2former-swin-large-mapillary-vistas-semantic",
   "feature_representation": "frozen dense Feature-MAE 512D bottleneck",
   "f64_mapping": "/workplace/urban_visual_gene/outputs/experiments/dinov3_multicity/feature_mae_n30x12800_qc/mae/hierarchy_edp_32_64/hierarchy_arrays.npz",
@@ -15,9 +16,9 @@
   "visual_case_studies": 20,
   "case_study_unique_cities": 20,
   "assessment_counts": {
-    "clear_single_semantic": 291,
+    "clear_single_semantic": 292,
     "coherent_semantic_mixture": 119,
-    "low_mapillary_specificity": 72,
+    "low_mapillary_specificity": 71,
     "spatial_artifact_candidate": 30
   },
   "assessment_thresholds": {

@@ -40,7 +40,20 @@ For every dimension `D000`–`D511` independently:
 2. Retain the 50 strongest panoramas for that dimension.
 3. Read that dimension's complete `14 × 56` activation map in those panoramas.
 4. Retain the dimension's 1,000 strongest patches.
-5. Average the 65-class fractional Mask2Former composition of those patches.
+5. Weight each selected patch by its raw positive activation for that dimension
+   and compute the normalized weighted mean of its 65-class fractional
+   Mask2Former composition.
+
+For dimension (d), class (c), selected activation (a_{p,d}), and the
+within-patch semantic area fraction (q_{p,c}), the reported heatmap value is:
+
+```text
+H[d,c] = sum_p a[p,d] q[p,c] / sum_p a[p,d]
+```
+
+The unweighted mean is retained in the distribution table as
+`unweighted_semantic_fraction` for direct comparison, but the main
+`semantic_fraction` column, derived metrics, and heatmap use the weighted value.
 
 The resulting vector estimates:
 
@@ -146,8 +159,8 @@ paper/figures/supplementary/feature_mae_semantic_alignment_20/
   P20_semantic_feature_alignment.jpg
 ```
 
-The 512-row figure is a plain heatmap of every dimension's complete 65-class
-semantic profile. It intentionally adds no hierarchy, F64 grouping, semantic
+The 512-row figure is a plain heatmap of every dimension's complete,
+activation-weighted 65-class semantic profile. It intentionally adds no hierarchy, F64 grouping, semantic
 role grouping, side strips, or category legends. To make the response structure
 readable without clustering, semantic columns are ordered by the number of
 dimensions for which each class is the strongest response (ties use mean share
