@@ -1,0 +1,1673 @@
+{
+  "schema": "semantic-parent/latent-child/typed-lateral-relations-v2",
+  "parents": [
+    {
+      "id": "RDP",
+      "label": "Road / Path",
+      "children": [
+        {
+          "id": "RDP-C01",
+          "label": "Road / Building",
+          "dimension_count": 24,
+          "bootstrap_stability": 0.6382246376811594,
+          "dimensions": [
+            "D006",
+            "D029",
+            "D030",
+            "D034",
+            "D037",
+            "D046",
+            "D062",
+            "D101",
+            "D111",
+            "D120",
+            "D123",
+            "D145",
+            "D203",
+            "D232",
+            "D287",
+            "D316",
+            "D317",
+            "D322",
+            "D357",
+            "D377",
+            "D436",
+            "D441",
+            "D463",
+            "D501"
+          ],
+          "top_semantics": [
+            "Road",
+            "Sidewalk",
+            "Building"
+          ]
+        },
+        {
+          "id": "RDP-C02",
+          "label": "Road / Lane Marking - General",
+          "dimension_count": 22,
+          "bootstrap_stability": 0.4298701298701298,
+          "dimensions": [
+            "D044",
+            "D067",
+            "D079",
+            "D080",
+            "D105",
+            "D139",
+            "D159",
+            "D185",
+            "D186",
+            "D205",
+            "D206",
+            "D222",
+            "D226",
+            "D272",
+            "D305",
+            "D306",
+            "D361",
+            "D410",
+            "D412",
+            "D462",
+            "D476",
+            "D492"
+          ],
+          "top_semantics": [
+            "Road",
+            "Vegetation",
+            "Pedestrian Area"
+          ]
+        },
+        {
+          "id": "RDP-C03",
+          "label": "Road / Lane Marking - General",
+          "dimension_count": 21,
+          "bootstrap_stability": 0.5102380952380953,
+          "dimensions": [
+            "D031",
+            "D038",
+            "D074",
+            "D106",
+            "D137",
+            "D183",
+            "D202",
+            "D207",
+            "D218",
+            "D236",
+            "D243",
+            "D299",
+            "D335",
+            "D336",
+            "D337",
+            "D378",
+            "D438",
+            "D469",
+            "D478",
+            "D490",
+            "D502"
+          ],
+          "top_semantics": [
+            "Road",
+            "Lane Marking - General",
+            "Sidewalk"
+          ]
+        },
+        {
+          "id": "RDP-C04",
+          "label": "Road / Vegetation",
+          "dimension_count": 8,
+          "bootstrap_stability": 0.5857142857142857,
+          "dimensions": [
+            "D091",
+            "D158",
+            "D200",
+            "D244",
+            "D280",
+            "D340",
+            "D384",
+            "D466"
+          ],
+          "top_semantics": [
+            "Road",
+            "Vegetation",
+            "Terrain"
+          ]
+        },
+        {
+          "id": "RDP-C05",
+          "label": "Road / Sidewalk",
+          "dimension_count": 7,
+          "bootstrap_stability": 0.5476190476190476,
+          "dimensions": [
+            "D099",
+            "D109",
+            "D187",
+            "D230",
+            "D239",
+            "D328",
+            "D367"
+          ],
+          "top_semantics": [
+            "Road",
+            "Sidewalk",
+            "Building"
+          ]
+        },
+        {
+          "id": "RDP-C06",
+          "label": "Road / Pedestrian Area",
+          "dimension_count": 5,
+          "bootstrap_stability": 0.76,
+          "dimensions": [
+            "D078",
+            "D171",
+            "D268",
+            "D406",
+            "D442"
+          ],
+          "top_semantics": [
+            "Road",
+            "Building",
+            "Sidewalk"
+          ]
+        },
+        {
+          "id": "RDP-C07",
+          "label": "Sidewalk / Fence",
+          "dimension_count": 3,
+          "bootstrap_stability": 0.85,
+          "dimensions": [
+            "D177",
+            "D387",
+            "D504"
+          ],
+          "top_semantics": [
+            "Road",
+            "Fence",
+            "Sidewalk"
+          ]
+        },
+        {
+          "id": "RDP-C08",
+          "label": "Sidewalk / Road",
+          "dimension_count": 2,
+          "bootstrap_stability": 0.6,
+          "dimensions": [
+            "D252",
+            "D474"
+          ],
+          "top_semantics": [
+            "Sidewalk",
+            "Road",
+            "Guard Rail"
+          ]
+        },
+        {
+          "id": "RDP-C09",
+          "label": "Road / Vegetation",
+          "dimension_count": 2,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D260",
+            "D323"
+          ],
+          "top_semantics": [
+            "Road",
+            "Vegetation",
+            "Sidewalk"
+          ]
+        },
+        {
+          "id": "RDP-C10",
+          "label": "Sky / Road",
+          "dimension_count": 2,
+          "bootstrap_stability": 0.4,
+          "dimensions": [
+            "D324",
+            "D334"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Road",
+            "Vegetation"
+          ]
+        },
+        {
+          "id": "RDP-C11",
+          "label": "Road / Sidewalk",
+          "dimension_count": 1,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D087"
+          ],
+          "top_semantics": [
+            "Road",
+            "Sidewalk",
+            "Pedestrian Area"
+          ]
+        },
+        {
+          "id": "RDP-C12",
+          "label": "Sidewalk / Road",
+          "dimension_count": 1,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D339"
+          ],
+          "top_semantics": [
+            "Sidewalk",
+            "Road",
+            "Wall"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "parent_id": "RDP",
+          "child_i": "RDP-C01",
+          "child_j": "RDP-C03",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 3.189431605575719,
+          "mean_city_sign_fraction": 0.8888888888888888,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D029+D502"
+        },
+        {
+          "parent_id": "RDP",
+          "child_i": "RDP-C02",
+          "child_j": "RDP-C03",
+          "relation": "AND",
+          "supporting_dimension_pairs": 2,
+          "relation_score": 2.777838062605637,
+          "mean_city_sign_fraction": 0.9791666666666667,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D139+D336; D336+D410"
+        },
+        {
+          "parent_id": "RDP",
+          "child_i": "RDP-C01",
+          "child_j": "RDP-C02",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 2.2831824693811753,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D029+D080"
+        }
+      ]
+    },
+    {
+      "id": "BLT",
+      "label": "Built / Boundary",
+      "children": [
+        {
+          "id": "BLT-C01",
+          "label": "Building / Vegetation",
+          "dimension_count": 44,
+          "bootstrap_stability": 0.5414376321353065,
+          "dimensions": [
+            "D003",
+            "D011",
+            "D035",
+            "D053",
+            "D057",
+            "D083",
+            "D130",
+            "D132",
+            "D138",
+            "D148",
+            "D168",
+            "D175",
+            "D176",
+            "D184",
+            "D192",
+            "D193",
+            "D212",
+            "D231",
+            "D240",
+            "D266",
+            "D274",
+            "D278",
+            "D289",
+            "D292",
+            "D298",
+            "D307",
+            "D308",
+            "D311",
+            "D325",
+            "D332",
+            "D338",
+            "D345",
+            "D346",
+            "D359",
+            "D373",
+            "D386",
+            "D396",
+            "D397",
+            "D418",
+            "D426",
+            "D427",
+            "D456",
+            "D458",
+            "D503"
+          ],
+          "top_semantics": [
+            "Building",
+            "Vegetation",
+            "Sky"
+          ]
+        },
+        {
+          "id": "BLT-C02",
+          "label": "Bridge / Building",
+          "dimension_count": 18,
+          "bootstrap_stability": 0.9565359477124183,
+          "dimensions": [
+            "D055",
+            "D073",
+            "D160",
+            "D182",
+            "D190",
+            "D199",
+            "D209",
+            "D215",
+            "D228",
+            "D248",
+            "D264",
+            "D312",
+            "D315",
+            "D356",
+            "D376",
+            "D393",
+            "D444",
+            "D459"
+          ],
+          "top_semantics": [
+            "Bridge",
+            "Building",
+            "Tunnel"
+          ]
+        },
+        {
+          "id": "BLT-C03",
+          "label": "Building / Fence",
+          "dimension_count": 15,
+          "bootstrap_stability": 0.5261904761904762,
+          "dimensions": [
+            "D024",
+            "D066",
+            "D085",
+            "D117",
+            "D128",
+            "D154",
+            "D165",
+            "D195",
+            "D261",
+            "D314",
+            "D374",
+            "D445",
+            "D473",
+            "D506",
+            "D510"
+          ],
+          "top_semantics": [
+            "Building",
+            "Fence",
+            "Wall"
+          ]
+        },
+        {
+          "id": "BLT-C04",
+          "label": "Building / Vegetation",
+          "dimension_count": 14,
+          "bootstrap_stability": 0.40549450549450544,
+          "dimensions": [
+            "D041",
+            "D051",
+            "D069",
+            "D089",
+            "D095",
+            "D114",
+            "D191",
+            "D319",
+            "D333",
+            "D348",
+            "D392",
+            "D395",
+            "D414",
+            "D416"
+          ],
+          "top_semantics": [
+            "Building",
+            "Vegetation",
+            "Sky"
+          ]
+        },
+        {
+          "id": "BLT-C05",
+          "label": "Building / Wall",
+          "dimension_count": 14,
+          "bootstrap_stability": 0.31703296703296696,
+          "dimensions": [
+            "D102",
+            "D150",
+            "D219",
+            "D223",
+            "D224",
+            "D234",
+            "D302",
+            "D303",
+            "D351",
+            "D394",
+            "D413",
+            "D430",
+            "D448",
+            "D465"
+          ],
+          "top_semantics": [
+            "Building",
+            "Wall",
+            "Vegetation"
+          ]
+        },
+        {
+          "id": "BLT-C06",
+          "label": "Building / Sky",
+          "dimension_count": 11,
+          "bootstrap_stability": 0.6863636363636364,
+          "dimensions": [
+            "D005",
+            "D032",
+            "D054",
+            "D071",
+            "D075",
+            "D262",
+            "D349",
+            "D360",
+            "D401",
+            "D428",
+            "D483"
+          ],
+          "top_semantics": [
+            "Building",
+            "Sky",
+            "Vegetation"
+          ]
+        },
+        {
+          "id": "BLT-C07",
+          "label": "Road / Wall",
+          "dimension_count": 10,
+          "bootstrap_stability": 0.37,
+          "dimensions": [
+            "D045",
+            "D072",
+            "D107",
+            "D116",
+            "D153",
+            "D163",
+            "D425",
+            "D460",
+            "D480",
+            "D491"
+          ],
+          "top_semantics": [
+            "Wall",
+            "Building",
+            "Road"
+          ]
+        },
+        {
+          "id": "BLT-C08",
+          "label": "Bridge / Building",
+          "dimension_count": 8,
+          "bootstrap_stability": 0.3285714285714286,
+          "dimensions": [
+            "D014",
+            "D020",
+            "D025",
+            "D126",
+            "D133",
+            "D194",
+            "D477",
+            "D481"
+          ],
+          "top_semantics": [
+            "Building",
+            "Bridge",
+            "Sky"
+          ]
+        },
+        {
+          "id": "BLT-C09",
+          "label": "Fence / Tunnel",
+          "dimension_count": 7,
+          "bootstrap_stability": 0.5976190476190475,
+          "dimensions": [
+            "D082",
+            "D217",
+            "D343",
+            "D355",
+            "D372",
+            "D419",
+            "D461"
+          ],
+          "top_semantics": [
+            "Barrier",
+            "Road",
+            "Fence"
+          ]
+        },
+        {
+          "id": "BLT-C10",
+          "label": "Wall / Vegetation",
+          "dimension_count": 5,
+          "bootstrap_stability": 0.33999999999999997,
+          "dimensions": [
+            "D129",
+            "D293",
+            "D304",
+            "D453",
+            "D468"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Wall",
+            "Building"
+          ]
+        },
+        {
+          "id": "BLT-C11",
+          "label": "Barrier / Road",
+          "dimension_count": 5,
+          "bootstrap_stability": 0.96,
+          "dimensions": [
+            "D152",
+            "D211",
+            "D213",
+            "D327",
+            "D370"
+          ],
+          "top_semantics": [
+            "Barrier",
+            "Guard Rail",
+            "Fence"
+          ]
+        },
+        {
+          "id": "BLT-C12",
+          "label": "Building / Sky",
+          "dimension_count": 4,
+          "bootstrap_stability": 0.6749999999999999,
+          "dimensions": [
+            "D065",
+            "D097",
+            "D277",
+            "D493"
+          ],
+          "top_semantics": [
+            "Building",
+            "Sky",
+            "Bridge"
+          ]
+        },
+        {
+          "id": "BLT-C13",
+          "label": "Tunnel / Bridge",
+          "dimension_count": 4,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D285",
+            "D411",
+            "D424",
+            "D489"
+          ],
+          "top_semantics": [
+            "Tunnel",
+            "Sky",
+            "Bridge"
+          ]
+        },
+        {
+          "id": "BLT-C14",
+          "label": "Fence / Building",
+          "dimension_count": 2,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D227",
+            "D249"
+          ],
+          "top_semantics": [
+            "Building",
+            "Fence",
+            "Wall"
+          ]
+        },
+        {
+          "id": "BLT-C15",
+          "label": "Vegetation / Building",
+          "dimension_count": 2,
+          "bootstrap_stability": 0.9,
+          "dimensions": [
+            "D484",
+            "D497"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Fence",
+            "Building"
+          ]
+        },
+        {
+          "id": "BLT-C16",
+          "label": "Bridge / Vegetation",
+          "dimension_count": 1,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D254"
+          ],
+          "top_semantics": [
+            "Bridge",
+            "Vegetation",
+            "Car"
+          ]
+        },
+        {
+          "id": "BLT-C17",
+          "label": "Bridge / Building",
+          "dimension_count": 1,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D402"
+          ],
+          "top_semantics": [
+            "Bridge",
+            "Building",
+            "Sky"
+          ]
+        },
+        {
+          "id": "BLT-C18",
+          "label": "Fence / Road",
+          "dimension_count": 1,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D475"
+          ],
+          "top_semantics": [
+            "Fence",
+            "Road",
+            "Sky"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C01",
+          "child_j": "BLT-C02",
+          "relation": "AND",
+          "supporting_dimension_pairs": 6,
+          "relation_score": 3.0205506652871756,
+          "mean_city_sign_fraction": 0.9814814814814815,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D053+D199; D055+D298; D055+D311; D190+D426; D199+D426"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C02",
+          "child_j": "BLT-C13",
+          "relation": "AND",
+          "supporting_dimension_pairs": 4,
+          "relation_score": 2.342614628630314,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D160+D285; D215+D424; D285+D315; D356+D424"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C02",
+          "child_j": "BLT-C08",
+          "relation": "AND",
+          "supporting_dimension_pairs": 6,
+          "relation_score": 2.338478244696707,
+          "mean_city_sign_fraction": 0.9933333333333333,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D020+D228; D020+D356; D025+D073; D025+D199; D025+D228"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C01",
+          "child_j": "BLT-C08",
+          "relation": "AND",
+          "supporting_dimension_pairs": 3,
+          "relation_score": 2.2768287737491812,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D025+D130; D025+D175; D025+D192"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C01",
+          "child_j": "BLT-C05",
+          "relation": "AND",
+          "supporting_dimension_pairs": 5,
+          "relation_score": 2.202480422552382,
+          "mean_city_sign_fraction": 0.9904761904761905,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D083+D465; D102+D359; D192+D223; D311+D465; D448+D456"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C01",
+          "child_j": "BLT-C07",
+          "relation": "AND",
+          "supporting_dimension_pairs": 3,
+          "relation_score": 2.2012400287252487,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D116+D359; D325+D480; D359+D460"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C04",
+          "child_j": "BLT-C13",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 2.2011034292492826,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 2.7785319707228873e-244,
+          "example_dimension_pairs": "D191+D285"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C05",
+          "child_j": "BLT-C07",
+          "relation": "AND",
+          "supporting_dimension_pairs": 2,
+          "relation_score": 2.1867318868560623,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D045+D223; D425+D465"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C01",
+          "child_j": "BLT-C03",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 2.0786968894954465,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 1.1716801173203346e-96,
+          "example_dimension_pairs": "D314+D325"
+        },
+        {
+          "parent_id": "BLT",
+          "child_i": "BLT-C03",
+          "child_j": "BLT-C07",
+          "relation": "OR",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 1.0223795714836936,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 8.387874928856796e-33,
+          "example_dimension_pairs": "D261+D480"
+        }
+      ]
+    },
+    {
+      "id": "TRN",
+      "label": "Terrain / Water",
+      "children": [
+        {
+          "id": "TRN-C01",
+          "label": "Terrain / Vegetation",
+          "dimension_count": 11,
+          "bootstrap_stability": 0.8636363636363636,
+          "dimensions": [
+            "D000",
+            "D033",
+            "D056",
+            "D170",
+            "D382",
+            "D383",
+            "D404",
+            "D408",
+            "D471",
+            "D499",
+            "D508"
+          ],
+          "top_semantics": [
+            "Terrain",
+            "Vegetation",
+            "Building"
+          ]
+        },
+        {
+          "id": "TRN-C02",
+          "label": "Terrain / Sky",
+          "dimension_count": 10,
+          "bootstrap_stability": 0.7422222222222222,
+          "dimensions": [
+            "D048",
+            "D110",
+            "D173",
+            "D188",
+            "D216",
+            "D297",
+            "D432",
+            "D449",
+            "D454",
+            "D455"
+          ],
+          "top_semantics": [
+            "Terrain",
+            "Road",
+            "Vegetation"
+          ]
+        },
+        {
+          "id": "TRN-C03",
+          "label": "Road / Sand",
+          "dimension_count": 3,
+          "bootstrap_stability": 0.7000000000000001,
+          "dimensions": [
+            "D291",
+            "D391",
+            "D403"
+          ],
+          "top_semantics": [
+            "Road",
+            "Sand",
+            "Terrain"
+          ]
+        },
+        {
+          "id": "TRN-C04",
+          "label": "Mountain / Vegetation",
+          "dimension_count": 1,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D241"
+          ],
+          "top_semantics": [
+            "Mountain",
+            "Vegetation",
+            "Wall"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "parent_id": "TRN",
+          "child_i": "TRN-C01",
+          "child_j": "TRN-C02",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 2.1769519821471492,
+          "mean_city_sign_fraction": 0.9473684210526315,
+          "best_q_value": 1.935377758479023e-203,
+          "example_dimension_pairs": "D173+D383"
+        }
+      ]
+    },
+    {
+      "id": "SKY",
+      "label": "Sky",
+      "children": [
+        {
+          "id": "SKY-C01",
+          "label": "Sky / Vegetation",
+          "dimension_count": 19,
+          "bootstrap_stability": 0.5415204678362573,
+          "dimensions": [
+            "D009",
+            "D012",
+            "D036",
+            "D050",
+            "D064",
+            "D121",
+            "D131",
+            "D174",
+            "D178",
+            "D201",
+            "D229",
+            "D245",
+            "D269",
+            "D342",
+            "D350",
+            "D353",
+            "D485",
+            "D487",
+            "D495"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Vegetation",
+            "Building"
+          ]
+        },
+        {
+          "id": "SKY-C02",
+          "label": "Sky / Building",
+          "dimension_count": 15,
+          "bootstrap_stability": 0.6838095238095239,
+          "dimensions": [
+            "D076",
+            "D098",
+            "D113",
+            "D127",
+            "D136",
+            "D157",
+            "D250",
+            "D281",
+            "D283",
+            "D368",
+            "D399",
+            "D420",
+            "D422",
+            "D443",
+            "D507"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Vegetation",
+            "Building"
+          ]
+        },
+        {
+          "id": "SKY-C03",
+          "label": "Sky / Building",
+          "dimension_count": 13,
+          "bootstrap_stability": 0.7935897435897435,
+          "dimensions": [
+            "D010",
+            "D019",
+            "D135",
+            "D149",
+            "D161",
+            "D180",
+            "D181",
+            "D284",
+            "D294",
+            "D300",
+            "D331",
+            "D364",
+            "D407"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Building",
+            "Road"
+          ]
+        },
+        {
+          "id": "SKY-C04",
+          "label": "Sky / Vegetation",
+          "dimension_count": 10,
+          "bootstrap_stability": 0.6433333333333333,
+          "dimensions": [
+            "D197",
+            "D270",
+            "D276",
+            "D282",
+            "D310",
+            "D320",
+            "D347",
+            "D421",
+            "D437",
+            "D440"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Tunnel",
+            "Vegetation"
+          ]
+        },
+        {
+          "id": "SKY-C05",
+          "label": "Sky / Building",
+          "dimension_count": 6,
+          "bootstrap_stability": 0.5766666666666667,
+          "dimensions": [
+            "D086",
+            "D094",
+            "D108",
+            "D169",
+            "D189",
+            "D256"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Building",
+            "Vegetation"
+          ]
+        },
+        {
+          "id": "SKY-C06",
+          "label": "Sky / Vegetation",
+          "dimension_count": 5,
+          "bootstrap_stability": 0.75,
+          "dimensions": [
+            "D084",
+            "D225",
+            "D258",
+            "D375",
+            "D479"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Vegetation",
+            "Road"
+          ]
+        },
+        {
+          "id": "SKY-C07",
+          "label": "Sky / Vegetation",
+          "dimension_count": 2,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D247",
+            "D380"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Vegetation",
+            "Road"
+          ]
+        },
+        {
+          "id": "SKY-C08",
+          "label": "Sky / Building",
+          "dimension_count": 1,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D134"
+          ],
+          "top_semantics": [
+            "Sky",
+            "Building",
+            "Wall"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "parent_id": "SKY",
+          "child_i": "SKY-C01",
+          "child_j": "SKY-C03",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 3.1633686292110292,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D010+D174"
+        },
+        {
+          "parent_id": "SKY",
+          "child_i": "SKY-C02",
+          "child_j": "SKY-C03",
+          "relation": "AND",
+          "supporting_dimension_pairs": 3,
+          "relation_score": 2.306104454699052,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D019+D399; D250+D331; D250+D407"
+        },
+        {
+          "parent_id": "SKY",
+          "child_i": "SKY-C03",
+          "child_j": "SKY-C06",
+          "relation": "OR",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 0.8065377620706423,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D300+D479"
+        }
+      ]
+    },
+    {
+      "id": "VEG",
+      "label": "Vegetation",
+      "children": [
+        {
+          "id": "VEG-C01",
+          "label": "Vegetation / Building",
+          "dimension_count": 26,
+          "bootstrap_stability": 0.45569230769230773,
+          "dimensions": [
+            "D004",
+            "D008",
+            "D013",
+            "D021",
+            "D060",
+            "D104",
+            "D118",
+            "D122",
+            "D141",
+            "D144",
+            "D156",
+            "D167",
+            "D198",
+            "D208",
+            "D210",
+            "D233",
+            "D253",
+            "D259",
+            "D290",
+            "D341",
+            "D366",
+            "D379",
+            "D409",
+            "D433",
+            "D446",
+            "D498"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Building",
+            "Road"
+          ]
+        },
+        {
+          "id": "VEG-C02",
+          "label": "Vegetation / Terrain",
+          "dimension_count": 22,
+          "bootstrap_stability": 0.7261904761904764,
+          "dimensions": [
+            "D022",
+            "D023",
+            "D028",
+            "D047",
+            "D061",
+            "D063",
+            "D088",
+            "D093",
+            "D100",
+            "D103",
+            "D124",
+            "D143",
+            "D162",
+            "D179",
+            "D221",
+            "D235",
+            "D242",
+            "D288",
+            "D344",
+            "D450",
+            "D472",
+            "D494"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Terrain",
+            "Fence"
+          ]
+        },
+        {
+          "id": "VEG-C03",
+          "label": "Vegetation / Building",
+          "dimension_count": 19,
+          "bootstrap_stability": 0.6353801169590643,
+          "dimensions": [
+            "D002",
+            "D017",
+            "D119",
+            "D172",
+            "D255",
+            "D318",
+            "D354",
+            "D362",
+            "D365",
+            "D369",
+            "D385",
+            "D417",
+            "D429",
+            "D447",
+            "D451",
+            "D488",
+            "D500",
+            "D505",
+            "D511"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Sky",
+            "Building"
+          ]
+        },
+        {
+          "id": "VEG-C04",
+          "label": "Vegetation / Building",
+          "dimension_count": 12,
+          "bootstrap_stability": 0.4515151515151516,
+          "dimensions": [
+            "D027",
+            "D052",
+            "D070",
+            "D081",
+            "D265",
+            "D295",
+            "D398",
+            "D405",
+            "D452",
+            "D482",
+            "D496",
+            "D509"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Sky",
+            "Road"
+          ]
+        },
+        {
+          "id": "VEG-C05",
+          "label": "Vegetation / Sky",
+          "dimension_count": 10,
+          "bootstrap_stability": 0.42333333333333334,
+          "dimensions": [
+            "D140",
+            "D155",
+            "D196",
+            "D263",
+            "D275",
+            "D301",
+            "D434",
+            "D457",
+            "D470",
+            "D486"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Sky",
+            "Road"
+          ]
+        },
+        {
+          "id": "VEG-C06",
+          "label": "Vegetation / Building",
+          "dimension_count": 6,
+          "bootstrap_stability": 0.5700000000000001,
+          "dimensions": [
+            "D001",
+            "D039",
+            "D238",
+            "D296",
+            "D423",
+            "D439"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Terrain",
+            "Building"
+          ]
+        },
+        {
+          "id": "VEG-C07",
+          "label": "Vegetation / Building",
+          "dimension_count": 5,
+          "bootstrap_stability": 0.41999999999999993,
+          "dimensions": [
+            "D015",
+            "D059",
+            "D146",
+            "D363",
+            "D371"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Building",
+            "Sky"
+          ]
+        },
+        {
+          "id": "VEG-C08",
+          "label": "Vegetation / Road",
+          "dimension_count": 4,
+          "bootstrap_stability": 0.3666666666666667,
+          "dimensions": [
+            "D068",
+            "D077",
+            "D164",
+            "D257"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Terrain",
+            "Road"
+          ]
+        },
+        {
+          "id": "VEG-C09",
+          "label": "Vegetation / Road",
+          "dimension_count": 2,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D273",
+            "D358"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Road",
+            "Terrain"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "parent_id": "VEG",
+          "child_i": "VEG-C03",
+          "child_j": "VEG-C05",
+          "relation": "AND",
+          "supporting_dimension_pairs": 2,
+          "relation_score": 2.7521787232292914,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D385+D457; D457+D500"
+        },
+        {
+          "parent_id": "VEG",
+          "child_i": "VEG-C01",
+          "child_j": "VEG-C03",
+          "relation": "AND",
+          "supporting_dimension_pairs": 8,
+          "relation_score": 2.632148995261093,
+          "mean_city_sign_fraction": 0.9844924812030076,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D002+D141; D002+D498; D008+D318; D008+D417; D233+D417"
+        },
+        {
+          "parent_id": "VEG",
+          "child_i": "VEG-C03",
+          "child_j": "VEG-C04",
+          "relation": "AND",
+          "supporting_dimension_pairs": 3,
+          "relation_score": 2.631732744671828,
+          "mean_city_sign_fraction": 0.9833333333333334,
+          "best_q_value": 2.900711817632339e-225,
+          "example_dimension_pairs": "D265+D369; D265+D429; D429+D496"
+        },
+        {
+          "parent_id": "VEG",
+          "child_i": "VEG-C01",
+          "child_j": "VEG-C04",
+          "relation": "AND",
+          "supporting_dimension_pairs": 5,
+          "relation_score": 2.5173226690761763,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D008+D265; D052+D167; D144+D265; D144+D496; D265+D379"
+        },
+        {
+          "parent_id": "VEG",
+          "child_i": "VEG-C01",
+          "child_j": "VEG-C08",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 2.073228465307998,
+          "mean_city_sign_fraction": 0.9259259259259259,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D008+D077"
+        },
+        {
+          "parent_id": "VEG",
+          "child_i": "VEG-C01",
+          "child_j": "VEG-C02",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 1.8624532477993851,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D341+D450"
+        }
+      ]
+    },
+    {
+      "id": "FUR",
+      "label": "Street Furniture",
+      "children": [
+        {
+          "id": "FUR-C01",
+          "label": "Vegetation / Building",
+          "dimension_count": 3,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D112",
+            "D279",
+            "D389"
+          ],
+          "top_semantics": [
+            "Building",
+            "Billboard",
+            "Vegetation"
+          ]
+        },
+        {
+          "id": "FUR-C02",
+          "label": "Truck / Billboard",
+          "dimension_count": 1,
+          "bootstrap_stability": 1.0,
+          "dimensions": [
+            "D388"
+          ],
+          "top_semantics": [
+            "Truck",
+            "Billboard",
+            "Fence"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "VEH",
+      "label": "Vehicle",
+      "children": [
+        {
+          "id": "VEH-C01",
+          "label": "Car / Sky",
+          "dimension_count": 10,
+          "bootstrap_stability": 0.9222222222222223,
+          "dimensions": [
+            "D016",
+            "D049",
+            "D115",
+            "D142",
+            "D204",
+            "D220",
+            "D237",
+            "D251",
+            "D267",
+            "D400"
+          ],
+          "top_semantics": [
+            "Car",
+            "Road",
+            "Building"
+          ]
+        },
+        {
+          "id": "VEH-C02",
+          "label": "Car / Ego Vehicle",
+          "dimension_count": 7,
+          "bootstrap_stability": 0.8428571428571429,
+          "dimensions": [
+            "D007",
+            "D042",
+            "D271",
+            "D309",
+            "D329",
+            "D330",
+            "D352"
+          ],
+          "top_semantics": [
+            "Car",
+            "Road",
+            "Building"
+          ]
+        },
+        {
+          "id": "VEH-C03",
+          "label": "Truck / Road",
+          "dimension_count": 7,
+          "bootstrap_stability": 0.9857142857142858,
+          "dimensions": [
+            "D058",
+            "D090",
+            "D096",
+            "D151",
+            "D286",
+            "D415",
+            "D435"
+          ],
+          "top_semantics": [
+            "Truck",
+            "Road",
+            "Car"
+          ]
+        },
+        {
+          "id": "VEH-C04",
+          "label": "Vegetation / Car",
+          "dimension_count": 5,
+          "bootstrap_stability": 0.645,
+          "dimensions": [
+            "D040",
+            "D125",
+            "D147",
+            "D313",
+            "D321"
+          ],
+          "top_semantics": [
+            "Vegetation",
+            "Road",
+            "Car"
+          ]
+        },
+        {
+          "id": "VEH-C05",
+          "label": "Truck / Building",
+          "dimension_count": 4,
+          "bootstrap_stability": 0.5833333333333334,
+          "dimensions": [
+            "D018",
+            "D166",
+            "D326",
+            "D467"
+          ],
+          "top_semantics": [
+            "Building",
+            "Truck",
+            "Car"
+          ]
+        },
+        {
+          "id": "VEH-C06",
+          "label": "Road / Ego Vehicle",
+          "dimension_count": 4,
+          "bootstrap_stability": 0.8999999999999999,
+          "dimensions": [
+            "D026",
+            "D092",
+            "D381",
+            "D431"
+          ],
+          "top_semantics": [
+            "Road",
+            "Ego Vehicle",
+            "Car"
+          ]
+        },
+        {
+          "id": "VEH-C07",
+          "label": "Bus / Building",
+          "dimension_count": 3,
+          "bootstrap_stability": 0.9333333333333332,
+          "dimensions": [
+            "D043",
+            "D390",
+            "D464"
+          ],
+          "top_semantics": [
+            "Bus",
+            "Building",
+            "Sky"
+          ]
+        },
+        {
+          "id": "VEH-C08",
+          "label": "Motorcycle / Building",
+          "dimension_count": 2,
+          "bootstrap_stability": 0.6,
+          "dimensions": [
+            "D214",
+            "D246"
+          ],
+          "top_semantics": [
+            "Motorcycle",
+            "Building",
+            "Road"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "parent_id": "VEH",
+          "child_i": "VEH-C01",
+          "child_j": "VEH-C02",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 3.583840802985907,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 9.667600532013918e-227,
+          "example_dimension_pairs": "D049+D271"
+        },
+        {
+          "parent_id": "VEH",
+          "child_i": "VEH-C03",
+          "child_j": "VEH-C05",
+          "relation": "AND",
+          "supporting_dimension_pairs": 1,
+          "relation_score": 2.5931346869957985,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 9.871690688100548e-186,
+          "example_dimension_pairs": "D096+D326"
+        },
+        {
+          "parent_id": "VEH",
+          "child_i": "VEH-C01",
+          "child_j": "VEH-C03",
+          "relation": "AND",
+          "supporting_dimension_pairs": 3,
+          "relation_score": 2.364524527720882,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 0.0,
+          "example_dimension_pairs": "D096+D115; D096+D204; D096+D267"
+        },
+        {
+          "parent_id": "VEH",
+          "child_i": "VEH-C01",
+          "child_j": "VEH-C04",
+          "relation": "AND",
+          "supporting_dimension_pairs": 2,
+          "relation_score": 2.273698983409982,
+          "mean_city_sign_fraction": 1.0,
+          "best_q_value": 4.631863254444613e-175,
+          "example_dimension_pairs": "D016+D147; D115+D147"
+        },
+        {
+          "parent_id": "VEH",
+          "child_i": "VEH-C01",
+          "child_j": "VEH-C05",
+          "relation": "AND",
+          "supporting_dimension_pairs": 2,
+          "relation_score": 2.138469131779493,
+          "mean_city_sign_fraction": 0.9642857142857143,
+          "best_q_value": 1.3503147280827244e-148,
+          "example_dimension_pairs": "D115+D326; D204+D326"
+        }
+      ]
+    }
+  ]
+}

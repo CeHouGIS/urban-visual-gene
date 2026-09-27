@@ -1,0 +1,33 @@
+{
+  "created_utc": "2026-09-27T08:30:38.789771+00:00",
+  "analysis_unit": "complete four-direction panorama",
+  "cities": 30,
+  "panoramas": 296462,
+  "patches": 232426208,
+  "dimensions": 512,
+  "top_x": 4,
+  "presence_threshold_patches": 16,
+  "activation_magnitudes_used_for_cooccurrence": false,
+  "activation_weighted_semantic_profiles_used_for_parent_assignment": true,
+  "nonempty_parents": 7,
+  "child_concepts": 61,
+  "city_bootstraps": 20,
+  "mean_dimension_bootstrap_stability": 0.6224863969020817,
+  "and_dimension_pairs": 185,
+  "or_dimension_pairs": 4,
+  "child_relation_edges": 28,
+  "similarity_weights": {
+    "panorama_role": 0.3,
+    "same_patch_context": 0.2,
+    "semantic_profile": 0.3,
+    "spatial_position": 0.1,
+    "city_profile": 0.1
+  },
+  "parent_assignment": "semantic mass multiplied by square-root positive lift vs global prevalence; primary plus optional secondary audit membership",
+  "relation_null": "city-conditioned independence at panorama and same-patch scales; normal residual p-values with within-parent Benjamini-Hochberg q<0.01",
+  "limitations": [
+    "Local evidence uses same-patch Top-4 co-activation, not a 3x3 neighborhood.",
+    "OR indicates substitutability evidence, not proof of semantic synonymy.",
+    "Semantic segmentation covers the existing 60,000-panorama alignment sample."
+  ]
+}
