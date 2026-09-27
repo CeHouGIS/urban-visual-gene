@@ -123,6 +123,17 @@ def main() -> None:
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--epoch-images-per-city", type=int, default=10000)
     parser.add_argument("--images-per-city", type=int, default=16)
+    parser.add_argument(
+        "--prefetch-batches",
+        type=int,
+        choices=(0, 1),
+        default=0,
+        help=(
+            "prefetch one mmap-backed batch in a background thread; disabled "
+            "by default because long, concurrent scale-up runs exposed native "
+            "NumPy/mmap instability"
+        ),
+    )
     parser.add_argument("--only", nargs="*")
     parser.add_argument(
         "--lane-name",
@@ -224,7 +235,7 @@ def main() -> None:
                 "--epochs", str(args.epochs),
                 "--images-per-city", str(args.images_per_city),
                 "--microbatch", str(MICROBATCH[config["width"]]),
-                "--prefetch-batches", "1",
+                "--prefetch-batches", str(args.prefetch_batches),
                 "--gradient-accumulation", "1",
                 "--seed", str(config["seed"]),
             ]
