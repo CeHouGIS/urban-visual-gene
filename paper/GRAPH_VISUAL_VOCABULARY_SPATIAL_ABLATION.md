@@ -167,6 +167,10 @@ E+D graph 在不同 gamma 下的代表性结果为：
 
 因此，E+D 在扫描范围 `0.05–3.00` 内没有识别出符合预注册规则的非平凡 stable plateau。
 
+下面的四联图汇总 graph edge 数量、gamma–K 曲线、跨 seed 稳定性和相邻 resolution 稳定性。蓝色阴影是 E+D+P 唯一满足规则的稳定区域；E+D 曲线在非平凡范围内始终没有同时越过稳定阈值并保持 community number 基本不变。
+
+![Spatial-view ablation resolution landscape](figures/graph_visual_vocabulary/spatial_view_ablation_landscape.png)
+
 ---
 
 ## 6. 将 E+D 调整到约35类是否可行？
@@ -198,6 +202,10 @@ ARI = 0.0082
 这表明单纯通过降低 gamma 把 community number 调回35，并不能恢复 E+D+P 所发现的稳定结构。
 
 为了获得接近35类而人为选择 γ=1.70，也会违反本研究“不以目标 community number 反向调节 gamma”的原则。
+
+下图使用完全相同的512个节点坐标，并通过最大-overlap matching 将 E+D community 颜色对齐到 E+D+P community。右侧稳定分区在固定布局中形成更连续的同色区域；左侧 E+D 分区的对应颜色更分散，直观反映两种 partition 的低 ARI 和节点重组。
+
+![Spatial-view ablation graph comparison](figures/graph_visual_vocabulary/spatial_view_ablation_graphs.png)
 
 ---
 
@@ -327,3 +335,24 @@ E+D+P.
 因此，当前实验最合理的判断是：
 
 > Spatial view 对主实验不是可有可无的辅助项，而是形成稳定 multiview visual communities 的关键组成部分。E+D 更适合作为 supplementary ablation，而不适合作为当前 Urban Visual Vocabulary 的主定义。
+
+---
+
+## 13. 输出文件
+
+```text
+paper/data/graph_visual_vocabulary/validation/
+├── spatial_view_ablation_graph_stats.csv
+└── spatial_view_ablation_resolution_sweep.csv
+
+paper/figures/graph_visual_vocabulary/
+├── spatial_view_ablation_landscape.png
+└── spatial_view_ablation_graphs.png
+```
+
+可复现脚本：
+
+```text
+scripts/multicity/graph_visual_vocabulary/
+13_spatial_view_ablation.py
+```
