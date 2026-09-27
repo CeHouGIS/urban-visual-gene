@@ -31,11 +31,24 @@ def build_payload(input_dir: Path) -> dict:
     semantic_order = pd.read_csv(input_dir / "heatmap_semantic_order.csv")
     summary = json.loads((input_dir / "alignment_summary.json").read_text())
 
+    required_distribution_columns = {
+        "semantic_fraction",
+        "unweighted_semantic_fraction",
+    }
+    missing = required_distribution_columns.difference(distribution.columns)
+    if missing:
+        raise ValueError(
+            "activation-weighted dashboard input is missing columns: "
+            + ", ".join(sorted(missing))
+        )
+
     profile_table = distribution.pivot(
         index="dimension_id", columns="class_id", values="semantic_fraction"
     ).reindex(index=np.arange(DIMENSIONS), columns=np.arange(CLASSES))
     if profile_table.shape != (DIMENSIONS, CLASSES) or profile_table.isna().any().any():
         raise ValueError("semantic distribution must form a complete 512 x 65 matrix")
+    if not np.allclose(profile_table.sum(axis=1), 1.0, atol=1e-6):
+        raise ValueError("activation-weighted semantic profiles must sum to one")
     if metrics.dimension_id.tolist() != list(range(DIMENSIONS)):
         raise ValueError("dimension metrics must contain D000-D511 exactly once")
 
@@ -99,8 +112,9 @@ def build_payload(input_dir: Path) -> dict:
         )
 
     return {
-        "version": 1,
+        "version": 2,
         "method": summary["method"],
+        "profile_weighting": summary["profile_weighting"],
         "summary": {
             "sampled_panoramas": int(summary["sampled_panoramas"]),
             "valid_aligned_panoramas": int(summary["valid_aligned_panoramas"]),
