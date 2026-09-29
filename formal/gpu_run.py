@@ -146,11 +146,15 @@ class Extractor:
         (ViT register-artifact tokens are high-norm; detected here BEFORE normalization,
         which otherwise erases the norm signal). art_factor<=0 disables (mask all False)."""
         d=self.proc(images=pils,return_tensors="pt",size={"height":self.res,"width":self.res})
-        px=d["pixel_values"].to(self.dev)
-        if self.dev.type=="cuda": px=px.to(torch.bfloat16)
         if len(self.models)==1:
+            px=d["pixel_values"].to(self.dev)
+            if self.dev.type=="cuda": px=px.to(torch.bfloat16)
             h=self.models[0](px).last_hidden_state
         else:
+            # Keep the decoded batch on host memory until each worker sends
+            # only its shard to its assigned GPU.  Copying the whole batch to
+            # cuda:0 first wastes memory and makes the second GPU wait.
+            px=d["pixel_values"]
             chunks=torch.tensor_split(px,len(self.models),dim=0)
             def run_one(pair):
                 device_index, (model, chunk) = pair
@@ -169,7 +173,9 @@ class Extractor:
                         # worker GPU and does not invalidate completed pieces.
                         width = min(step, chunk.shape[0] - start)
                         try:
-                            piece=chunk[start:start+width].to(f"cuda:{device_index}")
+                            piece=chunk[start:start+width].to(
+                                f"cuda:{device_index}", dtype=torch.bfloat16
+                            )
                             pieces.append(model(piece).last_hidden_state.to(self.dev))
                             start += width
                         except RuntimeError as exc:
@@ -413,10 +419,13 @@ def build_sample(ext, args):
         # Persist each panorama batch separately.  A killed job can resume at
         # the next batch without retaining the entire city's patch sample in
         # RAM or repeating completed DINOv3 work.
-        chunk_dir=OUT/"dict_chunks"/city
+        pano_batch_size = max(1, args.batch // len(HEADINGS))
+        # Include the batch and patch-sampling parameters in the directory so
+        # changing throughput settings cannot accidentally reuse incompatible
+        # chunk boundaries from an older run.
+        chunk_dir=OUT/"dict_chunks"/city/f"b{pano_batch_size}_p{args.keep_patches}"
         chunk_dir.mkdir(parents=True,exist_ok=True)
         qc_stats = {"candidates": 0, "black": 0, "tunnel": 0, "kept": 0}
-        pano_batch_size = max(1, args.batch // len(HEADINGS))
         for batch_no, i in enumerate(range(0, len(ondisk), pano_batch_size)):
             chunk_path=chunk_dir/f"{batch_no:06d}.f16.npy"
             if chunk_path.exists():
