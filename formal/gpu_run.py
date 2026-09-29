@@ -1,8 +1,8 @@
-"""Formal patch-level SAE run — GPU, 448 resolution, 4-city shared dictionary.
+"""Formal patch-level BatchTopK SAE run — GPU, 448 resolution.
 
 Stages (each skipped if its output exists -> resumable on requeue):
-  S0/S1  build a balanced patch sample from 4 cities @448, train a shared
-         Top-K SAE (K, topk configurable).
+  S0/S1  build a balanced patch sample from the selected cities @448, then
+         train a shared BatchTopK SAE (the sparsity budget is batch-level).
   S2     for street-analysis panos (roads with on-disk 4-heading coverage),
          extract @448, encode with the SAE, save argmax gene maps + thumbnails
          + per-point metadata per city.
@@ -10,55 +10,132 @@ Stages (each skipped if its output exists -> resumable on requeue):
 Downstream morphotype clustering + web assets are regenerated on the login node
 from S2 outputs (CPU-only, no GPU needed).
 
-  python -m formal.gpu_run --dict-panos 4000 --K 2048 --topk 32 --epochs 60 \
+  python -m formal.gpu_run --dict-panos 4000 --K-list 1024 --topk 8 --epochs 60 \
       --street-roads 60 --street-pts 5
 """
 import os, sys, json, time, random, argparse
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import numpy as np
 import torch, torch.nn as nn, torch.nn.functional as F
+from sae_experiments.models.base_sae import BatchTopKSAE
+from sae_experiments.models.panorama_context import mix_panorama_context
+from formal.quality.tiny_qc import QualityGate
 
-MID   = "facebook/dinov3-vitl16-pretrain-lvd1689m"
-TOK   = (Path.home()/".cache/huggingface/token").read_text().strip()
-REPO  = Path("/global/scratch/users/cehou/urban-visual-gene")
-IMROOT= Path("/global/scratch/users/cehou/data/SVIs/GSV/images")
-OUT   = Path(os.environ.get("FORMAL_OUT", REPO/"formal"/"formal_out")); OUT.mkdir(parents=True, exist_ok=True)
-CITY_DIR = {"HongKong":"China/HongKong","Singapore":"Singapore/Singapore",
-            "Amsterdam":"Netherlands/Amsterdam","CapeTown":"SouthAfrica/CapeTown",
-            # 9 additional download-complete cities (dictionary only; no road data yet)
-            "Paris":"France/Paris","SaoPaulo":"Brazil/SaoPaulo","MexicoCity":"Mexico/MexicoCity",
-            "Sydney":"Australia/Sydney","Jakarta":"Indonesia/Jakarta","Dhaka":"Bangladesh/Dhaka",
-            "NewDelhi":"India/NewDelhi","Manila":"Philippines/Manila","Vienna":"Austria/Vienna"}
+MID   = os.environ.get("DINO_MODEL_PATH", "facebook/dinov3-vitl16-pretrain-lvd1689m")
+_token_path = Path(os.environ.get("HF_TOKEN_FILE", Path.home()/".cache/huggingface/token"))
+TOK   = os.environ.get("HF_TOKEN", _token_path.read_text().strip() if _token_path.exists() else "")
+REPO  = Path(os.environ.get("UVG_REPO", Path(__file__).resolve().parents[1]))
+DATA_ROOT = Path(os.environ.get("GOOGLE_SV_ROOT", "/host/root/mnt/nas/huangyj/GoogleSV"))
+IMROOT= DATA_ROOT / "images"
+OUT   = Path(os.environ.get("FORMAL_OUT", REPO/"formal"/"formal_out_panorama_context")); OUT.mkdir(parents=True, exist_ok=True)
+# Formal sample: 37 globally distributed cities with at least 12,800 complete
+# four-heading panos verified in the NAS image catalogue. Experiment names are
+# ASCII and stable; values are the image and metadata catalogue paths.
+CITY_DIR = {
+    "HongKong": "China/HongKong",
+    "Taipei": "China/Taipei",
+    "Singapore": "Singapore/Singapore",
+    "Seoul": "Korea/Seoul",
+    "Sapporo": "Japan/Sapporo",
+    "Bengaluru": "India/Bengaluru",
+    "Kolkata": "India/Kolkata",
+    "Colombo": "SriLanka/Colombo",
+    "Bandung": "Indonesia/Bandung",
+    "Surabaya": "Indonesia/Surabaya",
+    "Dubai": "UAE/Dubai",
+    "Johannesburg": "SouthAfrica/Johannesburg",
+    "CapeTown": "SouthAfrica/CapeTown",
+    "Lagos": "Nigeria/Lagos",
+    "Amsterdam": "Netherlands/Amsterdam",
+    "Paris": "France/Paris",
+    "Barcelona": "Spain/Barcelona",
+    "Vienna": "Austria/Vienna",
+    "Prague": "CzechRepublic/Prague",
+    "Stockholm": "Sweden/Stockholm",
+    "Oslo": "Norway/Oslo",
+    "Moscow": "Russia/Moscow",
+    "Lisboa": "Portugal/Lisboa",
+    "BuenosAires": "Argentina/BuenosAires",
+    "SaoPaulo": "Brazil/SaoPaulo",
+    "RiodeJaneiro": "Brazil/RiodeJaneiro",
+    "Bogota": "Colombia/Bogota",
+    "NewYork": "US/NewYork",
+    "LosAngeles": "US/LosAngeles",
+    "Chicago": "US/Chicago",
+    "SanFrancisco": "US/SanFrancisco",
+    "Washington": "US/Washington",
+    "Sydney": "Australia/Sydney",
+    "Melbourne": "Australia/Melbourne",
+    "Vancouver": "Canada/Vancouver",
+    "Monterrey": "Mexico/Monterrey",
+    "ChiangMai": "Thailand/ChiangMai",
+}
+META_CITY_DIR = CITY_DIR.copy()
 HEADINGS=[0,90,180,270]
 
 def log(*a): print(f"[{time.strftime('%H:%M:%S')}]",*a,flush=True)
 def imgpath(city,pid,h):
-    # download pipeline LOWERCASES the 3-char dir prefix (letters); filenames keep
-    # original case. Using raw pid[0:3] silently missed ~79% of panos (any uppercase
-    # letter in first 3 chars). Lowercase the prefix to match on-disk dirs.
-    return IMROOT/CITY_DIR[city]/pid[0].lower()/pid[1].lower()/pid[2].lower()/f"{pid}_{h}.jpg"
+    # NAS catalogues shard by the first two pano-ID characters and preserve
+    # their case (for example ``F/4/F4...``).  Keep a lower-case fallback for
+    # older downloads that normalized the shard names.
+    root = IMROOT / CITY_DIR[city]
+    raw = root / pid[0] / pid[1] / f"{pid}_{h}.jpg"
+    if raw.exists():
+        return raw
+    return root / pid[0].lower() / pid[1].lower() / f"{pid}_{h}.jpg"
 
 # ─────────────────────────── DINOv3 batched extractor ───────────────────────
+class _HiddenStateModel(nn.Module):
+    """Return a tensor so DataParallel can gather transformer outputs safely."""
+    def __init__(self, model):
+        super().__init__()
+        self.model = model
+
+    def forward(self, pixel_values):
+        return self.model(pixel_values).last_hidden_state
+
+
 class Extractor:
-    def __init__(self, res, art_factor=0.0, proj_path=None):
+    def __init__(self, res, art_factor=0.0, proj_path=None, microbatch=32):
         from transformers import AutoImageProcessor, AutoModel
         self.res=res; self.G=res//16; self.art_factor=art_factor
+        self.microbatch=max(1,int(microbatch))
         self.P=None
         if proj_path and Path(proj_path).exists():
             A=torch.tensor(np.load(proj_path),dtype=torch.float32)          # (m, D)
             Q,_=torch.linalg.qr(A.T); self.P=Q.T                            # orthonormal rows (m, D)
             log(f"projecting out {self.P.shape[0]} artifact directions from features")
-        self.dev="cuda" if torch.cuda.is_available() else "cpu"
-        self.proc=AutoImageProcessor.from_pretrained(MID, token=TOK)
-        self.model=AutoModel.from_pretrained(MID, token=TOK).to(self.dev).eval()
-        if self.dev=="cuda": self.model=self.model.to(torch.bfloat16)
+        self.dev=torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        load_kwargs = {}
+        # ModelScope stores the authorized DINOv3 snapshot locally.  A local
+        # path avoids another Hugging Face resolution/download attempt; the
+        # token is only needed when MID remains a remote repository id.
+        if not Path(MID).exists() and TOK:
+            load_kwargs["token"] = TOK
+        self.proc=AutoImageProcessor.from_pretrained(MID, **load_kwargs)
+        backbone=AutoModel.from_pretrained(MID, **load_kwargs).to(self.dev).eval()
+        if self.dev.type=="cuda": backbone=backbone.to(torch.bfloat16)
+        # NCCL broadcast is unavailable on some multi-GPU login nodes.  Keep a
+        # local frozen replica per device and split batches explicitly; this
+        # preserves concurrent GPU use without relying on DataParallel's NCCL
+        # communicator.
+        self.models=[backbone]
+        self._pool=None
+        if self.dev.type=="cuda" and torch.cuda.device_count()>1:
+            for device_index in range(1, torch.cuda.device_count()):
+                replica=AutoModel.from_pretrained(MID, **load_kwargs).to(
+                    torch.device(f"cuda:{device_index}")).eval().to(torch.bfloat16)
+                self.models.append(replica)
+            self._pool=ThreadPoolExecutor(max_workers=len(self.models))
+            log(f"DINOv3 feature extraction across {len(self.models)} GPUs (manual split)")
         from PIL import Image
         with torch.no_grad():
             d=self.proc(images=Image.new("RGB",(res,res)),return_tensors="pt",
                         size={"height":res,"width":res})
             px=d["pixel_values"].to(self.dev)
-            if self.dev=="cuda": px=px.to(torch.bfloat16)
-            T=self.model(px).last_hidden_state.shape[1]
+            if self.dev.type=="cuda": px=px.to(torch.bfloat16)
+            T=self.models[0](px).last_hidden_state.shape[1]
         self.prefix=T-self.G*self.G
         log(f"extractor res={res} grid={self.G}x{self.G} tokens={T} prefix={self.prefix} dev={self.dev}")
 
@@ -70,8 +147,43 @@ class Extractor:
         which otherwise erases the norm signal). art_factor<=0 disables (mask all False)."""
         d=self.proc(images=pils,return_tensors="pt",size={"height":self.res,"width":self.res})
         px=d["pixel_values"].to(self.dev)
-        if self.dev=="cuda": px=px.to(torch.bfloat16)
-        h=self.model(px).last_hidden_state[:,self.prefix:,:].float()      # (B, G*G, 1024) RAW
+        if self.dev.type=="cuda": px=px.to(torch.bfloat16)
+        if len(self.models)==1:
+            h=self.models[0](px).last_hidden_state
+        else:
+            chunks=torch.tensor_split(px,len(self.models),dim=0)
+            def run_one(pair):
+                device_index, (model, chunk) = pair
+                if chunk.shape[0] == 0:
+                    return None
+                pieces=[]
+                # The outer ``@torch.no_grad`` is thread-local; repeat it in
+                # each worker or every microbatch retains a backward graph.
+                with torch.no_grad():
+                    start = 0
+                    step = self.microbatch
+                    while start < chunk.shape[0]:
+                        # Keep the fast default batch, but recover from a
+                        # transient activation OOM by retrying the same slice
+                        # with a smaller microbatch.  This is local to the
+                        # worker GPU and does not invalidate completed pieces.
+                        width = min(step, chunk.shape[0] - start)
+                        try:
+                            piece=chunk[start:start+width].to(f"cuda:{device_index}")
+                            pieces.append(model(piece).last_hidden_state.to(self.dev))
+                            start += width
+                        except RuntimeError as exc:
+                            if "out of memory" not in str(exc).lower() or step <= 1:
+                                raise
+                            del piece
+                            torch.cuda.empty_cache()
+                            step=max(1, step // 2)
+                            log(f"GPU {device_index}: activation OOM; retrying with microbatch {step}")
+                return torch.cat(pieces,dim=0)
+            outputs=self._pool.map(run_one, enumerate(zip(self.models,chunks)))
+            outputs=[x for x in outputs if x is not None]
+            h=torch.cat(outputs,dim=0)
+        h=h[:,self.prefix:,:].float()                                      # (B, G*G, 1024) RAW
         if self.P is not None:                                            # ROOT FIX: remove
             Pd=self.P.to(h.device)                                        # positional-artifact subspace
             h=h - (h @ Pd.t()) @ Pd                                       # z' = z - (z·A)A
@@ -93,22 +205,76 @@ def load_pils(items, res):
         except Exception: pass
     return pils, kept
 
-# ─────────────────────────── Top-K SAE ──────────────────────────────────────
-class SAE(nn.Module):
-    def __init__(s,D,K,topk):
-        super().__init__(); s.D,s.K,s.topk=D,K,topk
-        s.b_pre=nn.Parameter(torch.zeros(D)); s.enc=nn.Linear(D,K); s.dec=nn.Linear(K,D,bias=False)
-        with torch.no_grad():
-            nn.init.normal_(s.dec.weight); s._norm()
-            s.enc.weight.copy_(s.dec.weight.T.clone()); s.enc.bias.zero_()
-    def _norm(s):
-        with torch.no_grad():
-            w=s.dec.weight; s.dec.weight.copy_(w/w.norm(dim=0,keepdim=True).clamp(min=1e-8))
-    def encode(s,z):
-        pre=s.enc(z-s.b_pre); val,idx=pre.topk(s.topk,dim=1)
-        a=torch.zeros_like(pre); a.scatter_(1,idx,F.relu(val)); return a
-    def forward(s,z):
-        a=s.encode(z); return a, s.dec(a)+s.b_pre
+
+def load_panorama_pils(city, pano, res):
+    """Load all four views of one panorama, or return ``None`` if incomplete."""
+    from PIL import Image
+
+    views = []
+    try:
+        for heading in HEADINGS:
+            views.append(Image.open(imgpath(city, pano, heading)).convert("RGB").resize(
+                (res, res), Image.BILINEAR
+            ))
+    except Exception:
+        return None
+    return views
+
+
+def load_panorama_batch(city, panos, res, workers=16):
+    """Read a batch of complete panoramas concurrently from the NAS."""
+    workers=max(1, min(int(workers), len(panos) or 1))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        loaded=list(pool.map(lambda pid: load_panorama_pils(city, pid, res), panos))
+    return [(pid, views) for pid, views in zip(panos, loaded) if views is not None]
+
+
+def contextualize_views(features, artifact_mask, grid_size, context_weight):
+    """Apply the fixed ring-context filter while preserving the four-view layout."""
+    n_views, n_patches, dim = features.shape
+    if n_views % len(HEADINGS) != 0:
+        raise ValueError(f"expected a multiple of four views, got {n_views}")
+    n_panos = n_views // len(HEADINGS)
+    grouped = features.reshape(n_panos, len(HEADINGS), n_patches, dim)
+    valid = ~artifact_mask.reshape(n_panos, len(HEADINGS), n_patches)
+    contextual = mix_panorama_context(
+        grouped,
+        grid_size=grid_size,
+        context_weight=context_weight,
+        valid_mask=valid,
+    )
+    return contextual, valid
+
+# ─────────────────────────── BatchTopK SAE ─────────────────────────────────
+class SAE(BatchTopKSAE):
+    """Formal name for the shared BatchTopK implementation.
+
+    The aliases preserve the historical formal scripts' API. Older formal
+    checkpoints with ``enc``/``dec`` state-dict names remain loadable.
+    """
+    def __init__(self, D, K, topk):
+        super().__init__(input_dim=D, latent_dim=K, k=topk, decoder_unit_norm=True)
+
+    @property
+    def D(self): return self.input_dim
+    @property
+    def K(self): return self.latent_dim
+    @property
+    def topk(self): return self.k
+    @property
+    def enc(self): return self.encoder
+    @property
+    def dec(self): return self.decoder
+
+    def _norm(self):
+        self.normalize_decoder_()
+
+    def load_state_dict(self, state_dict, strict=True, assign=False):
+        translated = {
+            key.replace("enc.", "encoder.").replace("dec.", "decoder."): value
+            for key, value in state_dict.items()
+        }
+        return super().load_state_dict(translated, strict=strict, assign=assign)
 
 # ─────────────────────────── data helpers ───────────────────────────────────
 import pandas as pd
@@ -123,19 +289,28 @@ def city_panos(city):
     return rmp
 
 def disk_panos(city, n, rng, stride=4):
-    """Collect pano_ids straight from the image dir (fallback when no meta DB).
-    Scans heading-0 jpgs, samples n."""
+    """Collect complete four-heading pano IDs from the image tree.
+
+    This is the fallback when a city has no SQLite metadata DB.  A heading-0
+    file alone is insufficient for the panorama-context method, so candidates
+    are retained only when all four requested images are present.
+    """
     root=IMROOT/CITY_DIR[city]; ids=[]
     for r,dirs,files in os.walk(root):
         dirs.sort()
         for f in files:
-            if f.endswith("_0.jpg"): ids.append(f[:-6])
+            if not f.endswith("_0.jpg"):
+                continue
+            pid=f[:-6]
+            if all((Path(r)/f"{pid}_{h}.jpg").is_file() for h in HEADINGS):
+                ids.append(pid)
         if len(ids)>=n*stride: break
     rng.shuffle(ids); return ids[:n]
 
 def _db(city, sub, fname):
-    country=CITY_DIR[city].split("/")[0]
-    return f"/global/scratch/users/cehou/data/SVIs/GSV/metadata/{country}/{city}/{sub}/{fname.format(country=country,city=city)}"
+    country, meta_city = META_CITY_DIR[city].split("/")
+    return str(DATA_ROOT / "metadata" / country / meta_city / sub /
+               fname.format(country=country, city=meta_city))
 def meta_db(city): return _db(city,"meta","{country}_{city}.db")
 def points_db(city): return _db(city,"sampling_points_db","combined.db")
 
@@ -174,8 +349,8 @@ def stratified_panos(city, quota, seed=0, grid=3):
     # road presence per cell from sampling points (∝ road length); glob all *.db
     # (naming varies: combined.db vs {city}_{country}_roads_N.db)
     import glob
-    country=CITY_DIR[city].split("/")[0]
-    pdir=f"/global/scratch/users/cehou/data/SVIs/GSV/metadata/{country}/{city}/sampling_points_db"
+    country, meta_city = META_CITY_DIR[city].split("/")
+    pdir=str(DATA_ROOT / "metadata" / country / meta_city / "sampling_points_db")
     roadw=collections.Counter(); got=False
     for db in glob.glob(f"{pdir}/*.db"):
         try:
@@ -209,32 +384,91 @@ def build_sample(ext, args):
         Z=np.load(sp); log(f"S0 reuse sample {Z.shape}"); return Z
     rng=random.Random(0)
     smap=getattr(args,"sample_map",None) or {}
-    log(f"S0 collecting dictionary patch sample (heading 0), per-city={'sample_counts.json' if smap else args.dict_panos} ...")
+    qc_model = getattr(args, "qc_model", "")
+    qc = None if getattr(args, "no_qc", False) else QualityGate(qc_model or None)
+    if qc is not None:
+        log(f"S0 quality gate: {'learned '+str(qc.model_path) if qc.model_loaded else 'rule fallback'}")
+    log(
+        "S0 collecting contextual dictionary patch sample (complete four-view "
+        f"panoramas), per-city={'sample_counts.json' if smap else args.dict_panos}, "
+        f"context_weight={args.context_weight} ..."
+    )
     for city in args.cities:
         cf=OUT/f"dict_{city}.f16.npy"
         if cf.exists():                                      # per-city checkpoint (resume on requeue)
             log(f"  {city}: cached {np.load(cf,mmap_mode='r').shape[0]:,} patches — skip"); continue
         per=smap.get(city, args.dict_panos)
         cands=stratified_panos(city, per, seed=0)            # ~6x oversample (weighted)
-        ondisk=[]                                            # Phase 1: verify on disk, keep `per`
+        ondisk=[]                                            # Phase 1: verify complete four-view coverage
         for pid in cands:
-            if imgpath(city,pid,0).exists(): ondisk.append(pid)
+            if all(imgpath(city, pid, heading).is_file() for heading in HEADINGS):
+                ondisk.append(pid)
             if len(ondisk)>=per: break
-        log(f"  {city}: {len(ondisk):,}/{per:,} on-disk panos from {len(cands):,} candidates")
-        items=[(city,pid,h) for pid in ondisk for h in HEADINGS]   # Phase 2: ALL 4 headings
-        buf=[]
-        for i in range(0, len(items), args.batch):
-            pils,kept=load_pils(items[i:i+args.batch], args.res)
-            if not pils: continue
-            pt,art=ext.batch(pils); pt=pt.numpy(); art=art.numpy()
-            for r in range(pt.shape[0]):
-                ok=np.where(~art[r])[0]                       # drop artifact patches from training
-                if len(ok)==0: continue
-                sel=rng.sample(list(ok),min(args.keep_patches,len(ok)))
-                buf.append(pt[r,sel].astype(np.float16))
-            if (i//args.batch)%40==0: log(f"  {city}: {i:,}/{len(items):,} imgs")
-        if buf:
-            cz=np.concatenate(buf,0); np.save(cf,cz); log(f"  {city}: {cz.shape[0]:,} patches -> {cf.name}")
+        log(f"  {city}: {len(ondisk):,}/{per:,} complete four-view panos from {len(cands):,} candidates")
+        if len(ondisk) < per:
+            log(
+                f"  WARNING {city}: only {len(ondisk):,} complete panos available; "
+                "the formal quota cannot be met from the current NAS catalogue"
+            )
+        # Persist each panorama batch separately.  A killed job can resume at
+        # the next batch without retaining the entire city's patch sample in
+        # RAM or repeating completed DINOv3 work.
+        chunk_dir=OUT/"dict_chunks"/city
+        chunk_dir.mkdir(parents=True,exist_ok=True)
+        qc_stats = {"candidates": 0, "black": 0, "tunnel": 0, "kept": 0}
+        pano_batch_size = max(1, args.batch // len(HEADINGS))
+        for batch_no, i in enumerate(range(0, len(ondisk), pano_batch_size)):
+            chunk_path=chunk_dir/f"{batch_no:06d}.f16.npy"
+            if chunk_path.exists():
+                log(f"  {city}: batch {batch_no} cached — skip")
+                continue
+            pano_batch = ondisk[i:i + pano_batch_size]
+            # The gate downsamples in memory, so each view is read from NAS
+            # only once.  Rejected panoramas never reach the DINOv3 batch.
+            loaded_qc = load_panorama_batch(city, pano_batch, args.res, args.io_workers)
+            if qc is not None:
+                loaded_qc, qst = qc.filter_loaded(loaded_qc)
+                for key in qc_stats:
+                    qc_stats[key] += qst[key]
+            loaded = loaded_qc
+            pano_pils = []
+            kept_panos = []
+            for pid, views in loaded:
+                pano_pils.extend(views)
+                kept_panos.append(pid)
+            if not pano_pils:
+                continue
+            pt, art = ext.batch(pano_pils)
+            contextual, valid = contextualize_views(
+                pt, art, ext.G, args.context_weight
+            )
+            contextual = contextual.numpy()
+            valid = valid.numpy()
+            batch_buf=[]
+            for r in range(contextual.shape[0]):
+                for direction in range(len(HEADINGS)):
+                    ok = np.flatnonzero(valid[r, direction])
+                    if len(ok) == 0:
+                        continue
+                    sel = rng.sample(list(ok), min(args.keep_patches, len(ok)))
+                    batch_buf.append(contextual[r, direction, sel].astype(np.float16))
+            if batch_buf:
+                cz=np.concatenate(batch_buf,0)
+                tmp=chunk_path.with_suffix(".tmp.npy")
+                np.save(tmp,cz)
+                os.replace(tmp,chunk_path)
+            if batch_no % 10 == 0:
+                log(f"  {city}: {i:,}/{len(ondisk):,} panos")
+        if qc is not None:
+            log(f"  {city}: QC candidates={qc_stats['candidates']:,} black={qc_stats['black']:,} "
+                f"tunnel={qc_stats['tunnel']:,} kept={qc_stats['kept']:,}")
+        chunks=sorted(chunk_dir.glob("*.f16.npy"))
+        if chunks:
+            cz=np.concatenate([np.load(p) for p in chunks],0)
+            tmp=cf.with_suffix(".tmp.npy")
+            np.save(tmp,cz)
+            os.replace(tmp,cf)
+            log(f"  {city}: {cz.shape[0]:,} patches -> {cf.name}")
     parts=[np.load(OUT/f"dict_{c}.f16.npy") for c in args.cities if (OUT/f"dict_{c}.f16.npy").exists()]
     Z=np.concatenate(parts,0); np.save(sp,Z)
     log(f"S0 done: {Z.shape[0]:,} patches x {Z.shape[1]} -> {sp.name}")
@@ -257,7 +491,13 @@ def train_sae(Z, K, args):
             loss.backward(); opt.step(); sae._norm(); tot+=loss.item()*len(zb)
         if ep%10==0 or ep==args.epochs-1: log(f"  K={K} ep{ep:3d} recon={tot/n:.4f}")
     torch.save({"state":{k:v.cpu() for k,v in sae.state_dict().items()},
-                "D":Z.shape[1],"K":K,"topk":args.topk,"res":args.res}, saep)
+                "D":Z.shape[1],"K":K,"topk":args.topk,"res":args.res,
+                "method":"panorama_context_batchtopk",
+                "context_weight":args.context_weight,
+                # train_sae is intentionally independent of the extractor;
+                # the patch grid is determined by the configured resolution.
+                "context_grid":args.res // 16,
+                "context_layout":"4 directions laid out on a horizontal circular ring"}, saep)
     log(f"S1 done K={K} -> {saep.name}")
     return saep
 
@@ -265,9 +505,16 @@ def train_sae(Z, K, args):
 def infer_streets(ext, saeps, args):
     dev="cuda" if torch.cuda.is_available() else "cpu"
     saes={}                                              # K -> loaded SAE
+    context_weight = args.context_weight
     for p in saeps:
         d=torch.load(p,map_location="cpu"); m=SAE(d["D"],d["K"],d["topk"]).to(dev)
         m.load_state_dict(d["state"]); m.eval(); saes[d["K"]]=m
+        context_weight = float(d.get("context_weight", context_weight))
+    log(f"S2 panorama context weight={context_weight}")
+    qc_model = getattr(args, "qc_model", "")
+    qc = None if getattr(args, "no_qc", False) else QualityGate(qc_model or None)
+    if qc is not None:
+        log(f"S2 quality gate: {'learned '+str(qc.model_path) if qc.model_loaded else 'rule fallback'}")
     Ks=sorted(saes); G=ext.G
     for city in args.cities:
         if all((OUT/f"streets_{city}_k{K}.npz").exists() for K in Ks):
@@ -291,14 +538,20 @@ def infer_streets(ext, saeps, args):
         gmaps={K:np.full((len(plan),4,G,G),-1,np.int16) for K in Ks}
         for pi in range(len(plan)):
             pid=plan.iloc[pi]["pano_id"]
-            pils,kept=load_pils([(city,pid,h) for h in HEADINGS],args.res)
-            if len(pils)<4: continue
-            ptf,art=ext.batch(pils)                          # (4,G*G,1024),(4,G*G) — extract ONCE
-            pt=ptf.to(dev).reshape(-1,1024); art_flat=art.reshape(-1).numpy()
+            pils=load_panorama_pils(city, pid, args.res)
+            if qc is not None and pils is not None and qc.score_views(pils)["is_bad"]:
+                continue
+            if pils is None: continue
+            ptf,art=ext.batch(pils)                          # extract all four views once
+            contextual, valid = contextualize_views(
+                ptf, art, ext.G, context_weight
+            )
+            pt=contextual.to(dev).reshape(-1,1024)
+            valid_flat=valid.reshape(-1).numpy()
             for K in Ks:
                 with torch.no_grad(): a=saes[K].encode(pt)
                 gm=a.argmax(1).cpu().numpy().astype(np.int16)
-                gm[art_flat]=-1                             # artifact patches -> no gene
+                gm[~valid_flat]=-1                          # invalid/artifact centers -> no gene
                 gmaps[K][pi]=gm.reshape(4,G,G)
             pils[0].resize((256,256)).save(tdir/f"{pi}.jpg",quality=72)
             if (pi+1)%50==0: log(f"  {city}: {pi+1}/{len(plan)}")
@@ -313,11 +566,19 @@ def main():
     ap.add_argument("--cities",nargs="+",default=list(CITY_DIR))
     ap.add_argument("--res",type=int,default=448)
     ap.add_argument("--dict-panos",type=int,default=4000)
-    ap.add_argument("--keep-patches",type=int,default=200)
-    ap.add_argument("--K-list",nargs="+",type=int,default=[256,512,1024])
-    ap.add_argument("--topk",type=int,default=32)
+    ap.add_argument("--keep-patches",type=int,default=32,
+                    help="random valid patches retained per view and panorama; 32 keeps the full-city cache bounded")
+    ap.add_argument("--K-list",nargs="+",type=int,default=[1024])
+    ap.add_argument("--topk",type=int,default=8)
+    ap.add_argument("--context-weight",type=float,default=0.25,
+                    help="neighbor contribution in the 4-view circular context filter")
     ap.add_argument("--epochs",type=int,default=60)
-    ap.add_argument("--batch",type=int,default=32)
+    ap.add_argument("--batch",type=int,default=256,
+                    help="number of direction images per DINOv3 batch; split across GPUs and adapt on OOM")
+    ap.add_argument("--microbatch",type=int,default=64,
+                    help="per-GPU DINOv3 forward size; halves automatically if activation memory is tight")
+    ap.add_argument("--io-workers",type=int,default=32,
+                    help="parallel NAS image readers per panorama batch")
     ap.add_argument("--street-roads",type=int,default=60)
     ap.add_argument("--street-pts",type=int,default=5)
     ap.add_argument("--scan-roads",type=int,default=400)
@@ -327,23 +588,38 @@ def main():
                     help="npy of artifact direction vectors to project OUT of features before SAE (root fix)")
     ap.add_argument("--infer-only",action="store_true",
                     help="skip S0/S1 training; load --sae-path and only run S2 prediction")
+    ap.add_argument("--skip-infer",action="store_true",
+                    help="train/cache the dictionary but do not run street-point S2 inference")
     ap.add_argument("--sae-path",default="",help="trained SAE to load for --infer-only")
     ap.add_argument("--no-thumbs",action="store_true",help="skip per-point thumbnails (large sweeps)")
     ap.add_argument("--sample-json",default="",help="json {city: n_panos} for per-city dict sampling")
+    ap.add_argument("--qc-model",default="",help="joblib tiny QC checkpoint; defaults to formal/quality/qc_model.joblib")
+    ap.add_argument("--no-qc",action="store_true",help="disable the pre-DINO black/tunnel quality gate")
     args=ap.parse_args()
+    # Keep resumed runs and checkpoint metadata reproducible across retries.
+    seed = 0
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
     args.sample_map=json.load(open(args.sample_json)) if args.sample_json else None
     if args.sample_map: log(f"per-city sampling: {sum(args.sample_map.values()):,} panos over {len(args.sample_map)} cities")
     log(f"FORMAL RUN cities={args.cities} res={args.res} infer_only={args.infer_only} proj={args.project_dirs or 'none'}")
     if torch.cuda.is_available(): log("GPU:",torch.cuda.get_device_name(0))
     else: log("WARN: no GPU — running on CPU")
-    ext=Extractor(args.res, art_factor=args.art_factor, proj_path=args.project_dirs or None)
+    ext=Extractor(args.res, art_factor=args.art_factor, proj_path=args.project_dirs or None,
+                  microbatch=args.microbatch)
     if args.infer_only:
         saeps=[args.sae_path]                             # predict-only with fixed trained dict
     else:
         Z=build_sample(ext,args)                          # one shared patch sample
         saeps=[train_sae(Z,K,args) for K in args.K_list]  # one SAE per K
         del Z
-    infer_streets(ext,saeps,args)                         # extract streets, encode
+    if not args.skip_infer:
+        infer_streets(ext,saeps,args)                     # extract streets, encode
+    else:
+        log("S2 skipped by --skip-infer")
     log("FORMAL RUN COMPLETE")
 
 if __name__=="__main__":
