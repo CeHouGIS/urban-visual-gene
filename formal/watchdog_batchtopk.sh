@@ -44,7 +44,7 @@ while :; do
       --cities $(python -c 'import json; print(" ".join(json.load(open("configs/formal_city_manifest.json"))))') \
       --dict-panos 12800 --K-list 1024 --topk 8 --epochs 60 \
       --context-weight 0.25 --sample-json configs/formal_city_manifest.json \
-      --skip-infer --batch 256 --microbatch 64 --io-workers 32 \
+      --skip-infer --batch 256 --microbatch 64 --io-workers 48 \
       >> "$LOG" 2>&1 &
   child=$!
   printf '%s\n' "$child" > "$PID_FILE"
