@@ -1,103 +1,21 @@
-# `formal/`: BatchTopK urban visual genes
+# Formal BatchTopK experiment
 
-This directory contains the paper-facing analysis built on frozen DINOv3 patch
-features and the final **BatchTopK sparse autoencoder**. The formal checkpoint
-is written to `formal/formal_out_panorama_context/sae_448_k1024.pt`.
+`gpu_run.py` 是当前正式实验入口。它对每个采样点的四张街景图像分别提取冻结的 DINOv3 patch 特征，再以环形全景 context mixer 融合空间邻接关系，训练共享的 W=1024、K=8 BatchTopK SAE。正式设计为 37 城市、每城 12,800 个完整四向采样点；城市清单位于 `configs/formal_city_manifest.json`。
 
-## Formal sampling design
+## 主要文件
 
-The formal study uses 37 representative cities spanning the major world
-regions. `configs/formal_city_manifest.json` assigns 12,800 street-view
-panoramas to every city. Each selected panorama must have four directional
-images (0°, 90°, 180°, and 270°), for 51,200 directional images per city
-before quality control. The manifest was checked against the NAS catalogue;
-the final paper should still report the retained count after quality control.
-
-An older 12-city, 14,400-directional-image pilot remains in
-`batchtopk_w1024_k8/summary.json` for audit history only. Its metrics are not
-formal results and must not be carried into the 37-city analysis.
-
-## Main model
-
-- Backbone: `facebook/dinov3-vitl16-pretrain-lvd1689m`, frozen.
-- Input: 448 x 448 pixels, yielding a 28 x 28 spatial patch grid.
-- Patch feature width: 1024, after removing prefix/register tokens and L2
-  normalizing each patch.
-- SAE: BatchTopK, dictionary width W=1024, average batch sparsity K=8,
-  unit-normalized decoder columns.
-- Training: cosine reconstruction loss, Adam, learning rate `1e-3`, no weight
-  decay, batch size `16384`, 60 epochs.
-
-## Important files
-
-| Path | Purpose |
+| 路径 | 用途 |
 | --- | --- |
-| `gpu_run.py` | Resumable DINOv3 extraction, BatchTopK training/inference, and image metadata handling. |
-| `interpretation/` | W1024 audits, hierarchy comparisons, and statistical taxonomy. |
-| `web/` | City composition, gene sharing, and site-data builders. |
-| `quality/` | Image quality and tunnel/blur screening utilities. |
-| `slurm/batchtopk_w1024_k8.sbatch` | Cluster training job. |
-| `slurm/encode_batchtopk_w1024_k8.sbatch` | Cluster encoding and prevalence summary job. |
-| `batchtopk_w1024_k8/summary.json` | Pilot-run metrics, not formal 30--40-city results. |
+| `gpu_run.py` | 可恢复的特征采样、BatchTopK 训练及编码入口 |
+| `watchdog_batchtopk.sh` | 当前服务器训练监控与重启脚本 |
+| `quality/tiny_qc.py` | 训练前过滤全黑和隧道图像 |
+| `quality/qc_model.joblib` | 小型质量分类器权重 |
+| `slurm/batchtopk_w1024_k8.sbatch` | 集群训练作业 |
+| `slurm/encode_batchtopk_w1024_k8.sbatch` | 集群编码作业 |
+| `batchtopk_w1024_k8/` | 早期 12 城市试运行审计结果 |
 
-The older `genes/` and `dict/` scripts and their W512 outputs are retained as
-historical analyses. They are not the final paper method.
+完整四向街景位于 NAS 的 `/host/root/mnt/nas/huangyj/GoogleSV/`。`gpu_run.py` 默认从该目录读取，可通过 `GOOGLE_SV_ROOT` 覆盖。默认输出目录 `formal/formal_out_panorama_context/` 含训练缓存、恢复点和最终 checkpoint，不提交到 Git。正式训练命令见仓库根目录的 `README.md`。
 
-## Pre-DINO quality gate
+质量门在 DINOv3 提取前检查四张视图。如果任意视图近乎全黑，或至少两张视图呈隧道特征，就剔除整个采样点。可运行 `python -m formal.quality.tiny_qc --help` 查看训练与校准参数；无可用分类器时会使用确定性规则。
 
-`gpu_run.py` applies `formal/quality/tiny_qc.py` before DINOv3. It reads each
-complete four-view panorama, computes a 96-pixel descriptor, and rejects a
-panorama if any view is near-black or at least two views are tunnel-like. A
-small `HistGradientBoostingClassifier` checkpoint can be trained from weak
-labels; without a checkpoint the same conservative black/tunnel rules run as a
-deterministic fallback. The gate never changes DINOv3 or SAE features.
-
-Train a local checkpoint on a representative image sample:
-
-```bash
-python -m formal.quality.tiny_qc \
-  --glob '/host/root/mnt/nas/huangyj/GoogleSV/images/**/*_0.jpg' \
-  --limit 50000 --output formal/quality/qc_model.joblib
-```
-
-Pass a different checkpoint with `--qc-model`; use `--no-qc` only for an
-explicit ablation. S0 logs `candidates`, `black`, `tunnel`, and `kept` counts
-for every city so the retained sample is auditable.
-
-## Data and GPU2
-
-Street-view images and metadata are on NAS:
-
-```text
-/host/root/mnt/nas/huangyj/GoogleSV/images
-/host/root/mnt/nas/huangyj/GoogleSV/metadata
-```
-
-`gpu_run.py` uses this root by default and accepts `GOOGLE_SV_ROOT` to override
-it. The formal city aliases and catalogue paths are defined in
-`formal/gpu_run.py` and are kept in sync with the manifest.
-
-For direct execution on the current server, use both available GPUs for the
-DINOv3 extraction stage:
-
-```bash
-export CUDA_VISIBLE_DEVICES=1,2
-export PYTHONPATH="$PWD"
-```
-
-For a pilot or a manifest-driven shard, run:
-
-```bash
-python -m formal.gpu_run --dict-panos 12800 --K-list 1024 --topk 8 \
-  --epochs 60 --batch 32 --sample-json configs/formal_city_manifest.json
-```
-
-The `HEADINGS` list in `gpu_run.py` is fixed to all four directions. The Slurm
-scripts leave GPU visibility to the scheduler; set `CUDA_VISIBLE_DEVICES=1,2`
-only for a direct, non-Slurm launch on this server.
-
-## Relationship to archived code
-
-`archive/road_mrlu/` contains the removed road MRLU pipeline. It is not needed
-for BatchTopK training, encoding, gene analysis, or the chapter's reported
-results.
+旧的 Feature-MAE、基因层次分析、网站和非 BatchTopK 实验已移至 `archive/non_batchtopk/`；道路 MRLU 流水线位于 `archive/road_mrlu/`。

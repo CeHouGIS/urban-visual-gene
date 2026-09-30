@@ -1,76 +1,47 @@
 # Urban Visual Gene
 
-城市街景视觉分析代码库。当前论文主方法是 **DINOv3 patch features + BatchTopK sparse autoencoder (SAE)**：冻结 DINOv3 ViT-L/16，在 448×448 图像上得到 28×28 patch grid，再用共享的 W=1024、K=8 BatchTopK SAE 学习可复用的 visual genes。
+本仓库当前维护的实验是 **DINOv3 + 四向全景 patch context + BatchTopK SAE**。其他研究线已归档，见下文。
 
-## 主实验
+## 当前实验
 
-正式实验固定为 37 个具有代表性的城市。每个城市抽取 12,800 个街景采样点，并获取每个采样点的四个方向（0°、90°、180°、270°）图像，即每城最多 51,200 张方向图像。城市和配额写在 [`configs/formal_city_manifest.json`](configs/formal_city_manifest.json)；当前可复现的 BatchTopK 配置是 [`configs/dinov3_patch_batchtopk_w1024_k8.yaml`](configs/dinov3_patch_batchtopk_w1024_k8.yaml)。
+- 37 个代表性城市，配置见 [`configs/formal_city_manifest.json`](configs/formal_city_manifest.json)；每城目标为 12,800 个采样点，每点采集 0°、90°、180°、270° 四张图像。
+- 冻结 DINOv3 ViT-L/16，分别处理四张 448×448 图像，取得各自的 28×28 patch 特征。
+- 将四个 patch 网格按水平方向组成环形全景，并用局部 context mixer 处理相邻视角及 270°→0° 的接缝；SAE 接收 1024 维 patch 特征。
+- 共享 BatchTopK SAE：字典宽度 W=1024，batch 平均激活数 K=8。正式训练使用 60 epochs。
 
-- DINOv3 ViT-L/16，输入 448×448，冻结 backbone，移除 prefix/register tokens；
-- BatchTopK SAE，字典宽度 1024，batch-level K=8，decoder columns 做 unit normalization；
-- cosine reconstruction loss，Adam，learning rate 1e-3（无 weight decay），batch size 16,384，60 epochs；
-- `formal/batchtopk_w1024_k8/summary.json` 是现有 12 城市、14,400 张方向图像的试运行审计结果（不是正式世界城市样本的最终结果）：final train loss 0.154989，reconstruction cosine 0.845011；
-- 该试运行中 896 个 latent 被使用、128 个未使用；79 个 universal genes、125 个 single-city genes、121 个 two-city genes 只适用于这次试运行，不能直接外推到正式 30--40 城市结果。
+主入口是 [`formal/gpu_run.py`](formal/gpu_run.py)，模型和特征组件在 [`sae_experiments/`](sae_experiments/)，质量筛选器在 [`formal/quality/`](formal/quality/)。`formal/batchtopk_w1024_k8/` 保存早期 12 城市试运行的审计结果，不能当作正式 37 城市结果。
 
-模型实现位于 [`sae_experiments/models/base_sae.py`](sae_experiments/models/base_sae.py)，训练入口位于 [`sae_experiments/training/train_sae_from_features.py`](sae_experiments/training/train_sae_from_features.py)，编码入口位于 [`sae_experiments/evaluation/encode_batchtopk_w1024_k8.py`](sae_experiments/evaluation/encode_batchtopk_w1024_k8.py)。
+## 数据与运行
 
-## 数据位置
-
-街景图像在 NAS：
-
-```text
-/host/root/mnt/nas/huangyj/GoogleSV/images/
-```
-
-元数据在：
-
-```text
-/host/root/mnt/nas/huangyj/GoogleSV/metadata/
-```
-
-formal 代码默认使用 `GOOGLE_SV_ROOT=/host/root/mnt/nas/huangyj/GoogleSV`，也可以覆盖：
+街景图像和元数据默认读取 NAS 的 `/host/root/mnt/nas/huangyj/GoogleSV/`，可用 `GOOGLE_SV_ROOT` 覆盖。DINOv3 权重可通过 `DINO_MODEL_PATH` 指定。当前服务器直接运行时可让 GPU 1、2 同时参与特征提取：
 
 ```bash
-export GOOGLE_SV_ROOT=/host/root/mnt/nas/huangyj/GoogleSV
-export CUDA_VISIBLE_DEVICES=1,2 # 当前服务器可并行使用 GPU1 和 GPU2
+export CUDA_VISIBLE_DEVICES=1,2
 export PYTHONPATH="$PWD"
-```
-
-NAS 上已核对 manifest 中 37 个城市都至少有 12,800 个完整四向全景（每个 pano 同时存在 `0/90/180/270` 四张图像）。城市路径映射在 [`formal/gpu_run.py`](formal/gpu_run.py) 中，配额 manifest 是唯一的正式城市来源。
-
-## 运行 BatchTopK SAE
-
-从仓库根目录运行 manifest 驱动的正式 pipeline：
-
-```bash
-CUDA_VISIBLE_DEVICES=1,2 python -m formal.gpu_run \
+python -m formal.gpu_run \
   --cities $(python -c 'import json; print(" ".join(json.load(open("configs/formal_city_manifest.json"))))') \
   --dict-panos 12800 --K-list 1024 --topk 8 --epochs 60 \
   --context-weight 0.25 --sample-json configs/formal_city_manifest.json \
   --skip-infer
 ```
 
-formal GPU runner 使用共享的 BatchTopK 实现；旧的 per-row Top-K checkpoint 只保留兼容读取能力，不再作为论文主方法。它先分别提取四个方向的 DINOv3 patch，再把四个 28×28 patch 网格按水平环形排列，用局部邻域 context mixer 建模图像边界和 270°→0° 的环绕邻接关系。SAE 输入仍是 1024 维 patch 向量，不使用 4096 维直接拼接。
+训练输出和恢复点默认位于 `formal/formal_out_panorama_context/`，该目录不提交到 Git。更多参数与质量筛选说明见 [`formal/README.md`](formal/README.md)。
 
 ## 目录
 
-| 路径 | 用途 |
-|---|---|
-| `sae_experiments/` | DINOv3 特征、BatchTopK SAE 训练和编码 |
-| `formal/` | visual gene 统计、层次结构、城市 prevalence、共现和网站资产 |
-| `configs/` | 当前实验配置 |
-| `results/`、`paper/data/` | 已导出的分析结果 |
-| `tests/` | 接口和合成数据测试 |
-| `archive/road_mrlu/` | 已归档的道路 MRLU 历史代码，不属于当前论文主流程 |
+| 路径 | 内容 |
+| --- | --- |
+| `formal/` | BatchTopK 正式训练入口、质量筛选、Slurm 作业和试运行审计 |
+| `sae_experiments/` | DINOv3 特征提取、BatchTopK 模型、训练和编码 |
+| `configs/` | BatchTopK 配置与正式城市清单 |
+| `tests/` | 当前 BatchTopK 接口与全景 context 测试 |
+| `archive/non_batchtopk/` | Feature-MAE、图视觉词汇、图原型、旧城市分析、网站及历史结果 |
+| `archive/road_mrlu/` | 道路 MRLU 历史流水线 |
 
-`scripts/multicity/` 下的早期分析脚本和旧结果仅供历史追溯，不属于当前论文主流程，也不应作为正式结果来源。正式采样时，`formal/gpu_run.py` 的 `--dict-panos` 应设为 `12800`，并保持四个 `HEADINGS` 全部采集；城市列表使用 `configs/formal_city_manifest.json`。
+旧实验仍保留原有相对目录结构，方便追溯；归档中的脚本不再作为当前实验入口。`configs/dinov3_batchtopk_k16_width16_seed42.yaml` 是早期 BatchTopK 草案配置，正式运行以 `formal/gpu_run.py` 参数和城市清单为准。
 
-## 测试
-
-若环境已安装 pytest：
+## 验证
 
 ```bash
-OMP_NUM_THREADS=1 python -m pytest tests/test_dinov3_sae_interfaces.py -q
+python -m pytest tests/test_panorama_context.py tests/test_dinov3_sae_interfaces.py -q
 ```
-
-完整街景数据、DINOv3 权重和大规模缓存不提交到 Git。训练和编码需要 PyTorch、Transformers、Pillow、NumPy；具体模块的额外依赖以实际 import 为准。
