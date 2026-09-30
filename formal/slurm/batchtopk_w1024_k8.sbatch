@@ -20,18 +20,21 @@ export LD_LIBRARY_PATH=$ENV/lib:${LD_LIBRARY_PATH:-}
 export PYTHONPATH=$REPO OMP_NUM_THREADS=8 KMP_DUPLICATE_LIB_OK=TRUE
 
 cd "$REPO"
+# On a directly allocated server, use GPU2 with CUDA_VISIBLE_DEVICES=2.
+# Slurm allocations set CUDA_VISIBLE_DEVICES themselves; do not override it here.
 nvidia-smi -L
-"$PY" -u -m sae_experiments.training.train_sae_from_features \
-  --sample-path "$REPO/formal/formal_out_global3/dict_sample.f16.npy" \
-  --outdir "$REPO/formal/batchtopk_w1024_k8" \
-  --model-type batch_topk \
-  --width 1024 \
-  --k 8 \
+FORMAL_OUT="$REPO/formal/formal_out_panorama_context" \
+  "$PY" -u -m formal.gpu_run \
+  --cities $($PY - <<'PY'
+import json
+print(" ".join(json.load(open("configs/formal_city_manifest.json"))))
+PY
+  ) \
+  --dict-panos 12800 \
+  --K-list 1024 \
+  --topk 8 \
   --epochs 60 \
-  --batch-size 16384 \
-  --lr 0.0003 \
-  --weight-decay 0.00001 \
-  --grad-clip 1.0 \
-  --load-ram \
-  --log-every 100
+  --context-weight 0.25 \
+  --sample-json "$REPO/configs/formal_city_manifest.json" \
+  --skip-infer
 echo "=== BATCHTOPK W1024 K8 DONE $(date '+%F %T') ==="

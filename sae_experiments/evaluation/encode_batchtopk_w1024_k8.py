@@ -10,13 +10,19 @@ import numpy as np
 import torch
 from PIL import Image
 
-from formal.gpu_run import Extractor, imgpath
+from formal.gpu_run import Extractor, contextualize_views, imgpath
+from sae_experiments.models.panorama_context import PANORAMA_CONTEXT_WEIGHT
 from sae_experiments.models.base_sae import build_sae
 
 
 CITY_ORDER = [
-    "HongKong", "Singapore", "Amsterdam", "CapeTown", "Paris", "SaoPaulo",
-    "MexicoCity", "Sydney", "Jakarta", "Dhaka", "NewDelhi", "Manila",
+    "HongKong", "Taipei", "Singapore", "Seoul", "Sapporo", "Bengaluru",
+    "Kolkata", "Colombo", "Bandung", "Surabaya", "Dubai", "Johannesburg",
+    "CapeTown", "Lagos", "Amsterdam", "Paris", "Barcelona", "Vienna",
+    "Prague", "Stockholm", "Oslo", "Moscow", "Lisboa", "BuenosAires",
+    "SaoPaulo", "RiodeJaneiro", "Bogota", "NewYork", "LosAngeles", "Chicago",
+    "SanFrancisco", "Washington", "Sydney", "Melbourne", "Vancouver",
+    "Monterrey", "ChiangMai",
 ]
 
 
@@ -32,6 +38,24 @@ def reference_rows(ref_sparse: Path) -> list[tuple[str, str, int]]:
     rows = list(zip(city, pano, heading))
     log(f"reference rows={len(rows):,} from {ref_sparse}")
     return rows
+
+
+def panorama_groups(rows: list[tuple[str, str, int]]) -> list[list[tuple[str, str, int]]]:
+    """Return complete four-view groups while preserving reference order."""
+    groups: dict[tuple[str, str], dict[int, tuple[str, str, int]]] = {}
+    order: list[tuple[str, str]] = []
+    for row in rows:
+        key = (row[0], row[1])
+        if key not in groups:
+            groups[key] = {}
+            order.append(key)
+        groups[key][int(row[2])] = row
+    complete = []
+    for key in order:
+        group = groups[key]
+        if set(group) == {0, 90, 180, 270}:
+            complete.append([group[d] for d in (0, 90, 180, 270)])
+    return complete
 
 
 def load_model(checkpoint: Path, device: str):
@@ -68,8 +92,12 @@ def encode(args: argparse.Namespace) -> None:
     rows = reference_rows(Path(args.ref_sparse))
     if args.max_images:
         rows = rows[: args.max_images]
+    groups = panorama_groups(rows)
+    log(f"complete panorama groups={len(groups):,} from {len(rows):,} reference rows")
     device = "cuda" if torch.cuda.is_available() and not args.cpu else "cpu"
     model, meta = load_model(Path(args.checkpoint), device)
+    context_weight = float(meta.get("context_weight", args.context_weight))
+    log(f"panorama context weight={context_weight}")
     width = int(meta["K"])
     k = int(meta.get("k", meta.get("topk", 8)))
     ext = Extractor(args.res, proj_path=args.project_dirs or None)
@@ -82,30 +110,44 @@ def encode(args: argparse.Namespace) -> None:
     keep_heading: list[int] = []
     kept = 0
 
-    for st in range(0, len(rows), args.batch):
-        batch_rows = rows[st:st + args.batch]
+    group_batch_size = max(1, args.batch // 4)
+    for st in range(0, len(groups), group_batch_size):
+        group_batch = groups[st:st + group_batch_size]
         pils = []
-        valid = []
-        for city, pano, heading in batch_rows:
+        valid_groups = []
+        for group in group_batch:
             try:
-                p = imgpath(city, pano, int(heading))
-                pils.append(Image.open(p).convert("RGB").resize((args.res, args.res), Image.BILINEAR))
-                valid.append((city, pano, int(heading)))
+                views = [
+                    Image.open(imgpath(city, pano, int(heading))).convert("RGB").resize(
+                        (args.res, args.res), Image.BILINEAR
+                    )
+                    for city, pano, heading in group
+                ]
             except Exception as e:
-                log(f"skip unreadable {city}/{pano}/{heading}: {e}")
+                log(f"skip incomplete panorama {group[0][0]}/{group[0][1]}: {e}")
+                continue
+            pils.extend(views)
+            valid_groups.append(group)
         if not pils:
             continue
-        feats, _art = ext.batch(pils)
-        for local_i, (city, pano, heading) in enumerate(valid):
-            zt = feats[local_i].to(device)
-            acts = model.encode(zt)
-            v, ix = acts.topk(k, dim=1)
-            idx[kept] = ix.cpu().numpy().astype(np.int16)
-            val[kept] = v.cpu().numpy().astype(np.float16)
-            keep_city.append(city)
-            keep_pano.append(pano)
-            keep_heading.append(heading)
-            kept += 1
+        feats, artifacts = ext.batch(pils)
+        contextual, valid_mask = contextualize_views(
+            feats, artifacts, grid, context_weight
+        )
+        flat = contextual.reshape(-1, contextual.shape[-1]).to(device)
+        acts = model.encode(flat)
+        acts[~valid_mask.reshape(-1).to(device)] = 0
+        acts = acts.reshape(len(valid_groups), 4, n_patch, width)
+        for local_i, group in enumerate(valid_groups):
+            for direction_i, (city, pano, heading) in enumerate(group):
+                row_acts = acts[local_i, direction_i]
+                v, ix = row_acts.topk(k, dim=1)
+                idx[kept] = ix.cpu().numpy().astype(np.int16)
+                val[kept] = v.cpu().numpy().astype(np.float16)
+                keep_city.append(city)
+                keep_pano.append(pano)
+                keep_heading.append(heading)
+                kept += 1
         if kept % 512 < args.batch:
             log(f"encoded {kept:,}/{len(rows):,} images")
 
@@ -126,6 +168,7 @@ def summarize(sparse_path: Path, checkpoint: Path, threshold: float, summary_out
     idx = z["idx"].astype(np.int64)
     val = z["val"].astype(np.float32)
     city = np.array([str(c) for c in z["city"]])
+    pano = np.array([str(p) for p in z["pano"]])
     meta = torch.load(checkpoint, map_location="cpu")
     width = int(meta["K"])
     top = idx[:, :, 0]
@@ -134,10 +177,15 @@ def summarize(sparse_path: Path, checkpoint: Path, threshold: float, summary_out
     for ci, c in enumerate(CITY_ORDER):
         mask = city == c
         images_per_city[c] = int(mask.sum())
-        genes = top[mask].ravel()
-        counts = np.bincount(genes, minlength=width).astype(np.float64)
-        prof[ci] = counts / max(float(counts.sum()), 1.0)
+        counts = np.zeros(width, dtype=np.float64)
+        city_rows = np.flatnonzero(mask)
+        city_panos = np.unique(pano[city_rows])
+        for pano_id in city_panos:
+            genes = np.unique(top[city_rows[pano[city_rows] == pano_id]].ravel())
+            counts[genes] += 1.0
+        prof[ci] = counts / max(float(len(city_panos)), 1.0)
     prevalence = (prof >= threshold).sum(0)
+    n_cities = len(CITY_ORDER)
     classes = {
         "unused": int((prevalence == 0).sum()),
         "city_unique_1city": int((prevalence == 1).sum()),
@@ -145,9 +193,11 @@ def summarize(sparse_path: Path, checkpoint: Path, threshold: float, summary_out
         "regional_3to5cities": int(((prevalence >= 3) & (prevalence <= 5)).sum()),
         "accessory_6to8cities": int(((prevalence >= 6) & (prevalence <= 8)).sum()),
         "near_core_9to11cities": int(((prevalence >= 9) & (prevalence <= 11)).sum()),
-        "core_universal_12cities": int((prevalence == len(CITY_ORDER)).sum()),
+        f"core_universal_{n_cities}cities": int((prevalence == n_cities).sum()),
     }
-    uniq_per_img = np.array([len(np.unique(row)) for row in top.reshape(top.shape[0], -1)])
+    uniq_per_img = np.array([
+        len(np.unique(top[i].ravel())) for i in range(top.shape[0])
+    ])
     active_per_patch = (val > 0).sum(2).astype(np.float32)
     summary = {
         "model_type": meta.get("model_type", "batch_topk"),
@@ -156,11 +206,12 @@ def summarize(sparse_path: Path, checkpoint: Path, threshold: float, summary_out
         "threshold": threshold,
         "n_images": int(top.shape[0]),
         "n_patches": int(top.size),
+        "n_panoramas": int(np.unique(pano).size),
         "images_per_city": images_per_city,
         "n_used": int((prevalence >= 1).sum()),
         "class_counts": classes,
-        "prevalence_spectrum_1to12": [int((prevalence == i).sum()) for i in range(1, len(CITY_ORDER) + 1)],
-        "core_fraction": round(classes["core_universal_12cities"] / width, 4),
+        f"prevalence_spectrum_1to{n_cities}": [int((prevalence == i).sum()) for i in range(1, n_cities + 1)],
+        "core_fraction": round(classes[f"core_universal_{n_cities}cities"] / width, 4),
         "city_unique_fraction": round(classes["city_unique_1city"] / width, 4),
         "unique_or_pair_fraction": round((classes["city_unique_1city"] + classes["pair_specific_2cities"]) / width, 4),
         "unique_genes_per_image_mean": round(float(uniq_per_img.mean()), 3),
@@ -173,7 +224,7 @@ def summarize(sparse_path: Path, checkpoint: Path, threshold: float, summary_out
     with csv_out.open("w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow([
-            "model_type", "width", "k", "n_used", "core_12", "city_unique_1",
+            "model_type", "width", "k", "n_used", f"core_{n_cities}", "city_unique_1",
             "pair_specific_2", "regional_3to5", "accessory_6to8",
             "near_core_9to11", "unused", "core_fraction",
             "city_unique_fraction", "unique_or_pair_fraction",
@@ -183,7 +234,7 @@ def summarize(sparse_path: Path, checkpoint: Path, threshold: float, summary_out
         c = summary["class_counts"]
         writer.writerow([
             summary["model_type"], width, summary["k"], summary["n_used"],
-            c["core_universal_12cities"], c["city_unique_1city"],
+            c[f"core_universal_{n_cities}cities"], c["city_unique_1city"],
             c["pair_specific_2cities"], c["regional_3to5cities"],
             c["accessory_6to8cities"], c["near_core_9to11cities"], c["unused"],
             summary["core_fraction"], summary["city_unique_fraction"],
@@ -192,23 +243,27 @@ def summarize(sparse_path: Path, checkpoint: Path, threshold: float, summary_out
             summary["unique_genes_per_image_mean"],
         ])
     log(
-        f"summary core12={classes['core_universal_12cities']} unique1={classes['city_unique_1city']} "
+        f"summary core{n_cities}={classes[f'core_universal_{n_cities}cities']} unique1={classes['city_unique_1city']} "
         f"pair2={classes['pair_specific_2cities']} n_used={summary['n_used']}"
     )
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Encode shared examples with BatchTopK W1024 K8.")
-    p.add_argument("--checkpoint", default="formal/batchtopk_w1024_k8/batch_topk_w1024_k8.pt")
-    p.add_argument("--outdir", default="formal/batchtopk_w1024_k8")
-    p.add_argument("--ref-sparse", default="formal/formal_out_global3/genes/sparse_acts.npz")
-    p.add_argument("--project-dirs", default="formal/formal_out_global/artifact_dirs_pos.npy")
+    p = argparse.ArgumentParser(description="Encode complete four-view panoramas with contextual BatchTopK W1024 K8.")
+    # Keep the defaults aligned with the resumable formal runner.  The old
+    # ``panorama_context_batchtopk_w1024_k8`` and ``formal_out_global`` paths
+    # belong to pilot/ablation runs and may not exist in a fresh checkout.
+    p.add_argument("--checkpoint", default="formal/formal_out_panorama_context/sae_448_k1024.pt")
+    p.add_argument("--outdir", default="formal/formal_out_panorama_context/encoded")
+    p.add_argument("--ref-sparse", default="formal/formal_out_panorama_context/genes/sparse_acts.npz")
+    p.add_argument("--project-dirs", default="")
     p.add_argument("--res", type=int, default=448)
     p.add_argument("--batch", type=int, default=32)
     p.add_argument("--threshold", type=float, default=5e-4)
     p.add_argument("--max-images", type=int, default=0)
     p.add_argument("--force", action="store_true")
     p.add_argument("--cpu", action="store_true")
+    p.add_argument("--context-weight", type=float, default=PANORAMA_CONTEXT_WEIGHT)
     return p.parse_args()
 
 

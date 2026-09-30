@@ -1,144 +1,76 @@
-# Urban Visual Gene — 道路型最小景观单元（MRLU）
+# Urban Visual Gene
 
-基于街景视觉特征，将城市路网自动切分为**视觉同质的最小道路景观单元**（Minimum Road-based Landscape Unit, MRLU）。
+城市街景视觉分析代码库。当前论文主方法是 **DINOv3 patch features + BatchTopK sparse autoencoder (SAE)**：冻结 DINOv3 ViT-L/16，在 448×448 图像上得到 28×28 patch grid，再用共享的 W=1024、K=8 BatchTopK SAE 学习可复用的 visual genes。
 
-## 方法概览
+## 主实验
 
-```
-Y = Enc(I)                 街景图像 → 4 方向 DINOv2 特征 concat (D=3072, L2 归一化)
-Z_road = P_Groad(Y)        点特征经距离衰减聚合到路网节点（多路段非归一化加权）
-Z_road ≈ A · X             稀疏自编码器学习视觉基 X (K×D) 与激活 A (M×K, ≥0)
-U = R(A, G_road)           相邻节点激活余弦距离超阈值处断边 → 连通分量 = MRLU
-```
+正式实验固定为 37 个具有代表性的城市。每个城市抽取 12,800 个街景采样点，并获取每个采样点的四个方向（0°、90°、180°、270°）图像，即每城最多 51,200 张方向图像。城市和配额写在 [`configs/formal_city_manifest.json`](configs/formal_city_manifest.json)；当前可复现的 BatchTopK 配置是 [`configs/dinov3_patch_batchtopk_w1024_k8.yaml`](configs/dinov3_patch_batchtopk_w1024_k8.yaml)。
 
-完整 7 阶段：Stage1 特征提取 → Stage2 地图匹配 → Stage3 Z_road 上下文 → Stage4 稀疏基学习 → Stage5 激活推断 → Stage6 单元提取 →（Stage7 baseline）。
+- DINOv3 ViT-L/16，输入 448×448，冻结 backbone，移除 prefix/register tokens；
+- BatchTopK SAE，字典宽度 1024，batch-level K=8，decoder columns 做 unit normalization；
+- cosine reconstruction loss，Adam，learning rate 1e-3（无 weight decay），batch size 16,384，60 epochs；
+- `formal/batchtopk_w1024_k8/summary.json` 是现有 12 城市、14,400 张方向图像的试运行审计结果（不是正式世界城市样本的最终结果）：final train loss 0.154989，reconstruction cosine 0.845011；
+- 该试运行中 896 个 latent 被使用、128 个未使用；79 个 universal genes、125 个 single-city genes、121 个 two-city genes 只适用于这次试运行，不能直接外推到正式 30--40 城市结果。
 
-## 目录结构
+模型实现位于 [`sae_experiments/models/base_sae.py`](sae_experiments/models/base_sae.py)，训练入口位于 [`sae_experiments/training/train_sae_from_features.py`](sae_experiments/training/train_sae_from_features.py)，编码入口位于 [`sae_experiments/evaluation/encode_batchtopk_w1024_k8.py`](sae_experiments/evaluation/encode_batchtopk_w1024_k8.py)。
 
-```
-scripts/        各阶段实现（均可 import，也支持 CLI）
-  stage1_extract_pano_features.py    4 方向 DINOv2 特征
-  stage2_map_match_road.py           UTM 地图匹配 + 路网图
-  stage3_build_road_context_features.py
-  stage4_train_road_basis_model.py   稀疏自编码器
-  stage5_infer_road_basis_activation.py
-  stage6_extract_road_units.py       MRLU 提取
-  road_graph_utils.py / road_basis_model.py / io_utils.py
-  _env.py                            线程池锁定（每个 runner 最先导入）
-  cities.py                          城市数据加载（torch-free）
-  run_stage1.py … run_stage6.py      各 stage 的隔离进程入口
-  copy_data.py                       从 NAS 复制数据到本地 ./data
-  plot_results.py / plot_pca_maps.py 出图
-tests/          48 个合成数据单元测试（pytest，CPU，无需真实数据/GPU）
-run_experiment.py    端到端编排器（纯子进程，避免 OpenMP 冲突崩溃）
-outputs/        EXPERIMENT_REPORT.md + figures/ + 统计（大产物已 gitignore）
+## 数据位置
+
+街景图像在 NAS：
+
+```text
+/host/root/mnt/nas/huangyj/GoogleSV/images/
 ```
 
-## 运行
+元数据在：
+
+```text
+/host/root/mnt/nas/huangyj/GoogleSV/metadata/
+```
+
+formal 代码默认使用 `GOOGLE_SV_ROOT=/host/root/mnt/nas/huangyj/GoogleSV`，也可以覆盖：
 
 ```bash
-# 依赖
-pip install pytest numpy pandas scipy networkx geopandas shapely torch matplotlib
-
-# 测试
-pytest tests/ -q
-
-# 实验（读本地 ./data，需先用 scripts/copy_data.py 准备数据）
-python run_experiment.py --city both --max-panos 500 --K 32 --epochs 50
-# 复用已提取特征 / 已建路网图：
-python run_experiment.py --city Vienna --max-panos 500 --skip-stage1 --skip-stage2
+export GOOGLE_SV_ROOT=/host/root/mnt/nas/huangyj/GoogleSV
+export CUDA_VISIBLE_DEVICES=1,2 # 当前服务器可并行使用 GPU1 和 GPU2
+export PYTHONPATH="$PWD"
 ```
 
-### 进程隔离架构（避免崩溃）
+NAS 上已核对 manifest 中 37 个城市都至少有 12,800 个完整四向全景（每个 pano 同时存在 `0/90/180/270` 四张图像）。城市路径映射在 [`formal/gpu_run.py`](formal/gpu_run.py) 中，配额 manifest 是唯一的正式城市来源。
 
-PyTorch 用 Intel OpenMP/MKL（`libiomp5`），numpy/scipy/geopandas 用 GNU OpenMP
-（`libgomp`）。两套线程库在**同一进程**会冲突，导致随机 native segfault
-（详见 `crash_report_20260613.md`）。因此 `run_experiment.py` 是一个**纯子进程编排器**
-（自身不导入任何重库），每个 stage 在独立进程运行：
+## 运行 BatchTopK SAE
 
-| Stage | runner | 栈 |
-|---|---|---|
-| 1 特征提取 | `scripts/run_stage1.py` | torch |
-| 2 地图匹配+路网图 | `scripts/run_stage2.py` | geopandas/scipy |
-| 3 Z_road | `scripts/run_stage3.py` | scipy |
-| 4-5 基学习+激活 | `scripts/run_stage45.py` | torch |
-| 6 单元提取 | `scripts/run_stage6.py` | networkx/scipy |
+从仓库根目录运行 manifest 驱动的正式 pipeline：
 
-`scripts/_env.py` 在每个 runner 最先导入，将所有 BLAS/OpenMP 线程池锁为 1。
-**切勿在同一进程同时 `import torch` 与做 scipy/geopandas 重运算。**
+```bash
+CUDA_VISIBLE_DEVICES=1,2 python -m formal.gpu_run \
+  --cities $(python -c 'import json; print(" ".join(json.load(open("configs/formal_city_manifest.json"))))') \
+  --dict-panos 12800 --K-list 1024 --topk 8 --epochs 60 \
+  --context-weight 0.25 --sample-json configs/formal_city_manifest.json \
+  --skip-infer
+```
 
-## 实验结果（每城 500 抽样点）
+formal GPU runner 使用共享的 BatchTopK 实现；旧的 per-row Top-K checkpoint 只保留兼容读取能力，不再作为论文主方法。它先分别提取四个方向的 DINOv3 patch，再把四个 28×28 patch 网格按水平环形排列，用局部邻域 context mixer 建模图像边界和 270°→0° 的环绕邻接关系。SAE 输入仍是 1024 维 patch 向量，不使用 4096 维直接拼接。
 
-> 配置：4 方向 DINOv2-ViT-B/14 concat（D=3072）；稀疏自编码器 K=32、hidden=512、epochs=50、`lambda_sparse=5e-3`、`lambda_spatial=1e-3`、`lambda_div=1e-3`；全程读本地数据，不访问 NAS。
+## 目录
 
-### 全流程指标
+| 路径 | 用途 |
+|---|---|
+| `sae_experiments/` | DINOv3 特征、BatchTopK SAE 训练和编码 |
+| `formal/` | visual gene 统计、层次结构、城市 prevalence、共现和网站资产 |
+| `configs/` | 当前实验配置 |
+| `results/`、`paper/data/` | 已导出的分析结果 |
+| `tests/` | 接口和合成数据测试 |
+| `archive/road_mrlu/` | 已归档的道路 MRLU 历史代码，不属于当前论文主流程 |
 
-| 指标 | Vienna | HongKong |
-|------|-------:|---------:|
-| 抽样街景点 / 缺失图片 | 500 / 0 | 500 / 0 |
-| 街景点匹配率 | 500/500 (100%) | 499/500 (99.8%) |
-| 道路图节点 / 边 | 237,590 / 565,412 | 247,772 / 700,502 |
-| 路网最大连通分量比 (LCC) | 99.98% | 99.99% |
-| 有 pano 直接覆盖的节点 | 9,656 (4.1%) | 17,806 (7.2%) |
-| 重建误差 (mean cosine) | 0.220 | 0.237 |
-| 激活稀疏度 (median active / 32) | 18 | 9 |
-| 激活边界数 | 19,898 | 48,664 |
-| **MRLU 单元数** | **549** | **744** |
+`scripts/multicity/` 下的早期分析脚本和旧结果仅供历史追溯，不属于当前论文主流程，也不应作为正式结果来源。正式采样时，`formal/gpu_run.py` 的 `--dict-panos` 应设为 `12800`，并保持四个 `HEADINGS` 全部采集；城市列表使用 `configs/formal_city_manifest.json`。
 
-### 单元统计（`unit_statistics.csv`）
+## 测试
 
-| 统计量 | Vienna (549) | HongKong (744) |
-|--------|-------------:|---------------:|
-| 每单元路网节点 mean / median | 343.3 / 267 | 242.2 / 98 |
-| 每单元 pano mean / median | 16.2 / 15 | 21.1 / 16 |
-| 单元道路长度 (m) mean / median | 7,716 / 5,941 | 5,427 / 2,075 |
-| 激活熵 mean | 3.35 | 3.33 |
-| 单元置信度 mean | 0.53 | 0.53 |
-| 主导基（dominant basis）覆盖 | 32 / 32 | 32 / 32 |
+若环境已安装 pytest：
 
-### 两城对比图
+```bash
+OMP_NUM_THREADS=1 python -m pytest tests/test_dinov3_sae_interfaces.py -q
+```
 
-![comparison](outputs/figures/comparison_charts.png)
-
-**(a)** 香港单元数（744）多于 Vienna（549）；**(b)** 香港单元道路长度整体偏短，Vienna 偏长；**(c)** 香港每单元节点中位 98，Vienna 偏大（中位 267）；**(d)** 32 个视觉基全部被用到，两城各有偏好（香港 basis 7/27/11 突出，Vienna basis 30/31/18 突出）。
-
-### MRLU 空间分布（按视觉激活 PCA→RGB 着色）
-
-每个单元的 32 维平均基激活经**两城联合 PCA** 投影到 3 主成分映射为 RGB（连续配色，颜色相近=风貌相近，两城可比）：
-
-| Vienna | Hong Kong |
-|:---:|:---:|
-| ![vienna units pca](outputs/figures/map_units_pca_Vienna.png) | ![hk units pca](outputs/figures/map_units_pca_HongKong.png) |
-
-同色路段在空间上聚成片 = 视觉相似的连续街景被划入相近表征。（按离散主导基着色的旧版：`outputs/figures/map_units_<City>.png`。）
-
-### MRLU 按单元长度着色（log）
-
-| Vienna | Hong Kong |
-|:---:|:---:|
-| ![vienna length](outputs/figures/map_length_Vienna.png) | ![hk length](outputs/figures/map_length_HongKong.png) |
-
-黄色长单元多在城市外围/快速路（视觉单调、边界少）；蓝绿短单元集中在市中心高异质区。
-
-### 视觉特征空间 UMAP
-
-对有街景覆盖节点的 3072 维 Z_road 特征做**两城联合 UMAP**（脚本 `scripts/plot_umap.py`）：
-
-![umap](outputs/figures/umap_feature_space.png)
-
-**(a) 按城市**：Vienna 与香港部分分离、又有重叠区——两城视觉风貌既有共性、又各自占据特征空间的不同区域；**(b) 按主导基**：同色（同一视觉基）点局部成簇，说明所学视觉基捕捉到了特征空间的局部结构。
-
-- **香港比 Vienna 切得更多更细**（744 vs 549，中位 98 vs 267 节点），且激活更稀疏（median 9 vs 18）——符合「香港高密度异质街景 → 更频繁的视觉边界」的直觉。
-- 32 个学到的视觉基在两城激活出**不同的主导模式**，说明基具备跨城区分能力。
-- 路网经 OSM `u/v` 拓扑修复后 LCC ≈ 100%（旧建图为 77.7% / 59.9%）。
-
-### 已知局限
-
-- **边界阈值 τ=0**：两城激活余弦距离的 0.90 分位都为 0（>90% 相邻节点激活完全相同），实际成了「只要有差异即设边界」，单元对噪声偏敏感。建议改用非零分位阈值，或 Stage4 末端用 ReLU / top-k 激活以获得精确零值、增强区分度。
-- **覆盖率低（4–7%）**：500 抽样点仅覆盖路网很小一部分，多数单元几何来自插值节点，置信度普遍 ~0.53。扩大抽样量（5k–全量）可显著改善。
-
-> 完整说明见 [`outputs/EXPERIMENT_REPORT.md`](outputs/EXPERIMENT_REPORT.md)。
-
-## 数据
-
-街景图像与路网元数据**不随仓库分发**（`data/` 已 gitignore）。用 `scripts/copy_data.py` 从数据源准备到本地 `./data/SVIs/GSV`。
+完整街景数据、DINOv3 权重和大规模缓存不提交到 Git。训练和编码需要 PyTorch、Transformers、Pillow、NumPy；具体模块的额外依赖以实际 import 为准。

@@ -21,14 +21,17 @@ export HF_TOKEN="$(cat ~/.cache/huggingface/token)" HF_HUB_DISABLE_XET=1
 export PYTHONPATH=$REPO OMP_NUM_THREADS=8 KMP_DUPLICATE_LIB_OK=TRUE
 
 cd "$REPO"
+# On a directly allocated server, use GPU2 with CUDA_VISIBLE_DEVICES=2.
+# Slurm allocations set CUDA_VISIBLE_DEVICES themselves; do not override it here.
 nvidia-smi -L
 "$PY" -u -m sae_experiments.evaluation.encode_batchtopk_w1024_k8 \
-  --checkpoint "$REPO/formal/batchtopk_w1024_k8/batch_topk_w1024_k8.pt" \
-  --outdir "$REPO/formal/batchtopk_w1024_k8" \
-  --ref-sparse "$REPO/formal/formal_out_global3/genes/sparse_acts.npz" \
+  --checkpoint "$REPO/formal/formal_out_panorama_context/sae_448_k1024.pt" \
+  --outdir "$REPO/formal/formal_out_panorama_context/encoded" \
+  --ref-sparse "$REPO/formal/formal_out_panorama_context/genes/sparse_acts.npz" \
   --project-dirs "$REPO/formal/formal_out_global/artifact_dirs_pos.npy" \
   --res 448 \
   --batch 32 \
   --threshold 0.0005 \
+  --context-weight 0.25 \
   --force
 echo "=== ENCODE BATCHTOPK W1024 K8 DONE $(date '+%F %T') ==="

@@ -12,7 +12,7 @@
 | 子包 | 职责 | 主要模块 |
 |---|---|---|
 | `scripts/core/` | 共享基础设施 | `io_utils` `cities` `road_graph_utils` `road_basis_model` |
-| `scripts/pipeline/` | 主流水线(测试 + `run_experiment.py` 依赖) | `stage1..6_*`、`run_stage1/2/3/45/6` |
+| `archive/road_mrlu/scripts/pipeline/` | 已归档的道路 MRLU 管线（`scripts/pipeline` 仅保留兼容软链接） | `stage1..6_*`、`run_stage1/2/3/45/6` |
 | `scripts/analysis/` | 评估 / 解释 / baseline | `baseline_common` `sae_metrics` `basis_{interpret,roles,similarity,align}` `visual_syntax` `spatial_organization` `unit_coherence` `eval_segmentation` `stage7_baselines` |
 | `scripts/sampling/` | 街景采样与 sweep | `pano_sampling` `select_panos` `bench_sampling` `run_sampling_sweep` `run_k_eval` `run_basis_train` |
 | `scripts/quality/` | 图像质量 | `image_quality` `train_quality_model` `validate_glare` |
@@ -21,8 +21,9 @@
 | `scripts/dedup/` | pano 特征 / 去重 / 联合基 / 建筑感知 | 见下 |
 | `scripts/buildings/` | 建筑轮廓下载 | `download_buildings` |
 
-依赖方向(单向,无环):`core` ← {`pipeline`,`analysis`,`sampling`,`quality`,`viz`,`dash`,`dedup`};
-`pipeline` ← {`dash`,`dedup`,`tests`,`run_experiment`};`_env` 被所有包依赖。
+依赖方向(单向,无环):`core` ← {`analysis`,`sampling`,`quality`,`viz`,`dash`,`dedup`};
+归档的 `road_mrlu` 代码仍由部分历史分析脚本、抽样脚本和测试通过兼容导入路径引用；
+`_env` 被所有包依赖。
 
 ### scripts/dash/ — Dashboard 数据与服务
 | 脚本 | 作用 |
@@ -51,11 +52,9 @@
 
 ## 端到端常用流程(均从项目根、串行)
 
-**主流水线**(每 stage 独立子进程):
-```
-/opt/conda/bin/python3 run_experiment.py --city Vienna           # 编排 stage1→6
-/opt/conda/bin/python3 run_experiment.py --city both --skip-stage1
-```
+道路 MRLU 主流水线已经移至 `archive/road_mrlu/`，包括根目录编排器、
+`scripts/pipeline/` stage 实现和历史 Slurm 启动脚本。归档代码仅用于历史复现；
+`scripts/pipeline` 目前只是指向归档目录的兼容软链接。
 
 **A. 重建 Dashboard 数据**(改了某实验目录后)
 ```
@@ -73,8 +72,9 @@ python scripts/dash/serve.py 8765
 **D. 发布**:站点 = `dashboard/`;GitHub Pages 经 `gh-pages` 分支 + Actions workflow;图片走 `config.js` 的 `IMG_BASE` 指向公网 HTTPS 图片后端(`serve.py` 已带 CORS)。
 
 ## 验收
-`OMP_NUM_THREADS=1 /opt/conda/bin/python3 -m pytest tests/ -q` 应 **51 passed**。
-测试直接 import `scripts.pipeline.*` / `scripts.core.*` / `scripts.sampling.pano_sampling`,
-移动模块时务必同步更新测试 import 并复跑。
+当前测试集合覆盖仍在维护的视觉分析模块，也包含历史道路模块的接口测试。
+运行前请确认本地环境已安装对应依赖：
+`OMP_NUM_THREADS=1 /opt/conda/bin/python3 -m pytest tests/ -q`。
+历史测试通过 `scripts/pipeline` 兼容软链接加载归档模块。
 
 > 已删除的废弃脚本:`export_panos.py`(被 `dedup/export_panos_full` 取代)、`dedup_panos.py`(被 `dedup/dedup_chain` 取代)。

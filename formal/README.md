@@ -1,72 +1,103 @@
-# Urban Visual Gene — pipeline (`formal/`)
+# `formal/`: BatchTopK urban visual genes
 
-DINOv3 patch features → Top-K Sparse Autoencoder → interpretable "visual genes"
-of street scenes, across 12 cities. Live site: https://cehougis.github.io/urban-visual-gene
+This directory contains the paper-facing analysis built on frozen DINOv3 patch
+features and the final **BatchTopK sparse autoencoder**. The formal checkpoint
+is written to `formal/formal_out_panorama_context/sae_448_k1024.pt`.
 
-## Layout
+## Formal sampling design
 
-```
-formal/
-├── gpu_run.py            # CORE: DINOv3 Extractor (+positional-subspace projection),
-│                         #   Top-K SAE, de-biased road-weighted sampling (stratified_panos,
-│                         #   auto-excludes QC-flagged panos via bad_panos), meta/points DBs.
-├── dict/                 # dictionary training
-│   ├── pos_subspace.py   #   estimate positional-artifact subspace (top-r PCs of per-position mean)
-│   └── retrain_debias.py #   train the global K=512 SAE with that subspace projected out
-├── genes/                # 512-gene dashboard + category taxonomy
-│   ├── gene_encode.py    #   encode a cross-city pool -> sparse top-k acts + thumbs (GPU)
-│   ├── gene_render.py    #   512 x top-20 jet activation overlays + manifest
-│   ├── gene_orig.py      #   paired original crops (for the 原图⇄激活 toggle)
-│   ├── gene_tree.py      #   balanced ward hierarchy (super/sub branches)
-│   ├── gene_posdiag.py   #   positional-gene diagnostic (posR2)
-│   ├── gene_coexpr.py    #   co-expression (lift) + Louvain modules
-│   ├── gene_modules_viz.py, coexpr_web.py   # module exemplars + coexpr web data
-│   ├── build_taxonomy.py, branch_cats.py    # 6-parent/16-child semantic taxonomy
-│   └── cat_distinguish.py, explore_taxonomy.py   # category-redundancy diagnostics
-├── interpretation/       # semantic audit + typed ontology
-│   ├── build_w1024_audit.py  # all-gene diagnostics + stratified W1024 pilot
-│   ├── build_statistical_taxonomy.py  # language-free multiview hierarchy + relations
-│   └── ontology_v0_1.yaml    # semantic/status/relation vocabulary
-├── web/                  # site data builders
-│   ├── compose_cities.py / compose_analyze.py  # per-pano composition + scene types
-│   ├── build_explorer.py # per-street category overlays (4 road cities)
-│   ├── render_global.py / interp_montage.py / dendro512.py  # interpret-page assets
-├── quality/              # image quality filter (drop black/blur/dark/tunnel)
-│   ├── quality_filter.py # fast heuristics (brightness + tiled Laplacian)
-│   ├── clip_tunnel.py    # CLIP zero-shot tunnel scoring
-│   ├── qc_net.py         # small 4-class CNN {good,dark,blur,tunnel}, synthetic + labeled
-│   ├── qc_net_cities.py  # full-sample CNN inference -> qc_full/<city>.parquet (shardable)
-│   ├── qc_cities.py      # heuristic per-city blocklist
-│   ├── qc_label_tool.py  # generate the online tunnel-labeling page
-│   └── render_dropped.py # montage of dropped images
-├── slurm/                # SLURM batch scripts (run via `-m formal.<pkg>.<mod>`)
-├── site/                 # web pages (deployed to gh-pages)
-├── figures/              # analysis figures (committed)
-└── (gitignored data) formal_out_global2/ (de-biased K=512 dict + genes/web assets),
-                     formal_out_expglobal2/, qc/ qc_full/ (QC blocklists), ondisk/
-```
+The formal study uses 37 representative cities spanning the major world
+regions. `configs/formal_city_manifest.json` assigns 12,800 street-view
+panoramas to every city. Each selected panorama must have four directional
+images (0°, 90°, 180°, and 270°), for 51,200 directional images per city
+before quality control. The manifest was checked against the NAS catalogue;
+the final paper should still report the retained count after quality control.
 
-## Key artifacts
-- `formal_out_global2/sae_448_k512.pt` — de-biased global K=512 dictionary (recon cos 0.892).
-- `formal_out_global2/artifact_dirs_pos.npy` — 11-dim positional subspace projected out.
-- `formal_out_global2/gene2cat.npy` + `taxonomy.json` — gene→parent (6-class) taxonomy.
-- `qc_full/<city>.parquet` — full-sample QC blocklist (auto-used by `stratified_panos`).
+An older 12-city, 14,400-directional-image pilot remains in
+`batchtopk_w1024_k8/summary.json` for audit history only. Its metrics are not
+formal results and must not be carried into the 37-city analysis.
 
-## Run (examples; PYTHONPATH=repo root)
+## Main model
+
+- Backbone: `facebook/dinov3-vitl16-pretrain-lvd1689m`, frozen.
+- Input: 448 x 448 pixels, yielding a 28 x 28 spatial patch grid.
+- Patch feature width: 1024, after removing prefix/register tokens and L2
+  normalizing each patch.
+- SAE: BatchTopK, dictionary width W=1024, average batch sparsity K=8,
+  unit-normalized decoder columns.
+- Training: cosine reconstruction loss, Adam, learning rate `1e-3`, no weight
+  decay, batch size `16384`, 60 epochs.
+
+## Important files
+
+| Path | Purpose |
+| --- | --- |
+| `gpu_run.py` | Resumable DINOv3 extraction, BatchTopK training/inference, and image metadata handling. |
+| `interpretation/` | W1024 audits, hierarchy comparisons, and statistical taxonomy. |
+| `web/` | City composition, gene sharing, and site-data builders. |
+| `quality/` | Image quality and tunnel/blur screening utilities. |
+| `slurm/batchtopk_w1024_k8.sbatch` | Cluster training job. |
+| `slurm/encode_batchtopk_w1024_k8.sbatch` | Cluster encoding and prevalence summary job. |
+| `batchtopk_w1024_k8/summary.json` | Pilot-run metrics, not formal 30--40-city results. |
+
+The older `genes/` and `dict/` scripts and their W512 outputs are retained as
+historical analyses. They are not the final paper method.
+
+## Pre-DINO quality gate
+
+`gpu_run.py` applies `formal/quality/tiny_qc.py` before DINOv3. It reads each
+complete four-view panorama, computes a 96-pixel descriptor, and rejects a
+panorama if any view is near-black or at least two views are tunnel-like. A
+small `HistGradientBoostingClassifier` checkpoint can be trained from weak
+labels; without a checkpoint the same conservative black/tunnel rules run as a
+deterministic fallback. The gate never changes DINOv3 or SAE features.
+
+Train a local checkpoint on a representative image sample:
+
 ```bash
-# dictionary (GPU): pos subspace then retrain
-python -m formal.dict.pos_subspace ; python -m formal.dict.retrain_debias
-# gene dashboard (GPU encode + CPU render): sbatch slurm/gene_panel2.sbatch
-# quality filter full-sample (CPU array): sbatch slurm/qc_full_array.sbatch  (then qc_full_combine)
-# BatchTopK W1024/K8 audit (CPU; then open site/w1024_audit.html via HTTP)
-python -m formal.interpretation.build_w1024_audit
-# Fully statistical W1024 taxonomy (no annotations or language model)
-python -m formal.interpretation.build_statistical_taxonomy
-# Compare hierarchy cuts with separation, balance, and half-sample stability
-python -m formal.interpretation.compare_hierarchy_cuts
-# Audit branch quality, strict redundancy groups, and specialization DAG
-python -m formal.interpretation.analyze_statistical_structure
-# Add exemplars for statistically active genes omitted by the old city threshold
-python -m formal.web.build_ablation_genes batchtopk_w1024_k8 --backfill-missing
+python -m formal.quality.tiny_qc \
+  --glob '/host/root/mnt/nas/huangyj/GoogleSV/images/**/*_0.jpg' \
+  --limit 50000 --output formal/quality/qc_model.joblib
 ```
-Env: `/global/scratch/users/cehou/conda_envs/svi/bin/python`. Deploy: gh-pages worktree + SSH push.
+
+Pass a different checkpoint with `--qc-model`; use `--no-qc` only for an
+explicit ablation. S0 logs `candidates`, `black`, `tunnel`, and `kept` counts
+for every city so the retained sample is auditable.
+
+## Data and GPU2
+
+Street-view images and metadata are on NAS:
+
+```text
+/host/root/mnt/nas/huangyj/GoogleSV/images
+/host/root/mnt/nas/huangyj/GoogleSV/metadata
+```
+
+`gpu_run.py` uses this root by default and accepts `GOOGLE_SV_ROOT` to override
+it. The formal city aliases and catalogue paths are defined in
+`formal/gpu_run.py` and are kept in sync with the manifest.
+
+For direct execution on the current server, use both available GPUs for the
+DINOv3 extraction stage:
+
+```bash
+export CUDA_VISIBLE_DEVICES=1,2
+export PYTHONPATH="$PWD"
+```
+
+For a pilot or a manifest-driven shard, run:
+
+```bash
+python -m formal.gpu_run --dict-panos 12800 --K-list 1024 --topk 8 \
+  --epochs 60 --batch 32 --sample-json configs/formal_city_manifest.json
+```
+
+The `HEADINGS` list in `gpu_run.py` is fixed to all four directions. The Slurm
+scripts leave GPU visibility to the scheduler; set `CUDA_VISIBLE_DEVICES=1,2`
+only for a direct, non-Slurm launch on this server.
+
+## Relationship to archived code
+
+`archive/road_mrlu/` contains the removed road MRLU pipeline. It is not needed
+for BatchTopK training, encoding, gene analysis, or the chapter's reported
+results.
