@@ -20,7 +20,8 @@ note() { printf '[%s] %s\n' "$(stamp)" "$*" >> "$WATCHDOG_LOG"; }
 
 if [[ -n "$ADOPT_PID" ]]; then
   note "adopting existing BatchTopK PID $ADOPT_PID"
-  while kill -0 "$ADOPT_PID" 2>/dev/null; do
+  while kill -0 "$ADOPT_PID" 2>/dev/null &&
+        [[ "$(ps -o stat= -p "$ADOPT_PID" 2>/dev/null)" != *Z* ]]; do
     sleep 30
   done
   note "adopted PID $ADOPT_PID exited; checking checkpoint"
@@ -35,6 +36,10 @@ while :; do
   fi
 
   note "starting/resuming formal BatchTopK"
+  extra_args=()
+  if [[ -f "$OUT/dict_sample.f16.npy" ]]; then
+    extra_args=(--train-only)
+  fi
   env CUDA_VISIBLE_DEVICES=1,2 \
     DINO_MODEL_PATH="$MODEL" \
     FORMAL_OUT="$OUT" \
@@ -44,7 +49,7 @@ while :; do
       --cities $(python -c 'import json; print(" ".join(json.load(open("configs/formal_city_manifest.json"))))') \
       --dict-panos 12800 --K-list 1024 --topk 8 --epochs 60 \
       --context-weight 0.25 --sample-json configs/formal_city_manifest.json \
-      --skip-infer --batch 256 --microbatch 64 --io-workers 48 \
+      --skip-infer "${extra_args[@]}" --batch 256 --microbatch 64 --io-workers 48 \
       >> "$LOG" 2>&1 &
   child=$!
   printf '%s\n' "$child" > "$PID_FILE"

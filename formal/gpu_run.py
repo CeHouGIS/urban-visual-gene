@@ -487,11 +487,25 @@ def build_sample(ext, args):
 def train_sae(Z, K, args):
     saep=OUT/f"sae_{args.res}_k{K}.pt"
     if saep.exists(): log(f"S1 skip K={K} — exists"); return saep
+    resumep=OUT/f"sae_{args.res}_k{K}.train.pt"
     dev="cuda" if torch.cuda.is_available() else "cpu"
     sae=SAE(Z.shape[1],K,args.topk).to(dev); opt=torch.optim.Adam(sae.parameters(),lr=1e-3)
     Zt=torch.from_numpy(Z); n=Zt.shape[0]; bs=16384
-    log(f"S1 train K={K} topk={args.topk} on {n:,} patches")
-    for ep in range(args.epochs):
+    start_epoch=0
+    if resumep.exists():
+        saved=torch.load(resumep,map_location=dev,weights_only=False)
+        saved_shape=(saved["D"],saved["K"],saved["topk"],saved["res"],saved["n"])
+        if saved_shape != (Z.shape[1],K,args.topk,args.res,n):
+            raise ValueError(f"incompatible training checkpoint: {resumep}")
+        sae.load_state_dict(saved["state"])
+        opt.load_state_dict(saved["optimizer"])
+        torch.set_rng_state(saved["rng_cpu"].cpu())
+        if dev=="cuda" and "rng_cuda" in saved:
+            torch.cuda.set_rng_state_all(saved["rng_cuda"])
+        start_epoch=saved["epoch"]+1
+        log(f"S1 resume K={K} at epoch {start_epoch}/{args.epochs}")
+    log(f"S1 train K={K} topk={args.topk} on {n:,} patches, epoch {start_epoch}/{args.epochs}")
+    for ep in range(start_epoch,args.epochs):
         perm=torch.randperm(n); tot=0.0
         for st in range(0,n,bs):
             zb=Zt[perm[st:st+bs]].to(dev,torch.float32)
@@ -499,14 +513,25 @@ def train_sae(Z, K, args):
             loss=(1-F.cosine_similarity(zb,zh,dim=1)).mean()
             loss.backward(); opt.step(); sae._norm(); tot+=loss.item()*len(zb)
         if ep%10==0 or ep==args.epochs-1: log(f"  K={K} ep{ep:3d} recon={tot/n:.4f}")
-    torch.save({"state":{k:v.cpu() for k,v in sae.state_dict().items()},
+        training_state={"state":sae.state_dict(),"optimizer":opt.state_dict(),
+                        "epoch":ep,"D":Z.shape[1],"K":K,"topk":args.topk,
+                        "res":args.res,"n":n,"rng_cpu":torch.get_rng_state()}
+        if dev=="cuda":
+            training_state["rng_cuda"]=torch.cuda.get_rng_state_all()
+        tmp=resumep.with_suffix(".tmp")
+        torch.save(training_state,tmp)
+        os.replace(tmp,resumep)
+    final={"state":{k:v.cpu() for k,v in sae.state_dict().items()},
                 "D":Z.shape[1],"K":K,"topk":args.topk,"res":args.res,
                 "method":"panorama_context_batchtopk",
                 "context_weight":args.context_weight,
                 # train_sae is intentionally independent of the extractor;
                 # the patch grid is determined by the configured resolution.
                 "context_grid":args.res // 16,
-                "context_layout":"4 directions laid out on a horizontal circular ring"}, saep)
+                "context_layout":"4 directions laid out on a horizontal circular ring"}
+    tmp=saep.with_suffix(".tmp")
+    torch.save(final,tmp)
+    os.replace(tmp,saep)
     log(f"S1 done K={K} -> {saep.name}")
     return saep
 
@@ -599,6 +624,8 @@ def main():
                     help="skip S0/S1 training; load --sae-path and only run S2 prediction")
     ap.add_argument("--skip-infer",action="store_true",
                     help="train/cache the dictionary but do not run street-point S2 inference")
+    ap.add_argument("--train-only",action="store_true",
+                    help="train SAE from the existing dictionary sample without loading DINOv3")
     ap.add_argument("--sae-path",default="",help="trained SAE to load for --infer-only")
     ap.add_argument("--no-thumbs",action="store_true",help="skip per-point thumbnails (large sweeps)")
     ap.add_argument("--sample-json",default="",help="json {city: n_panos} for per-city dict sampling")
@@ -617,12 +644,24 @@ def main():
     log(f"FORMAL RUN cities={args.cities} res={args.res} infer_only={args.infer_only} proj={args.project_dirs or 'none'}")
     if torch.cuda.is_available(): log("GPU:",torch.cuda.get_device_name(0))
     else: log("WARN: no GPU — running on CPU")
-    ext=Extractor(args.res, art_factor=args.art_factor, proj_path=args.project_dirs or None,
-                  microbatch=args.microbatch)
+    if args.train_only and args.infer_only:
+        ap.error("--train-only and --infer-only cannot be combined")
+    if args.train_only and not args.skip_infer:
+        ap.error("--train-only requires --skip-infer")
+    ext=None if args.train_only else Extractor(
+        args.res, art_factor=args.art_factor, proj_path=args.project_dirs or None,
+        microbatch=args.microbatch)
     if args.infer_only:
         saeps=[args.sae_path]                             # predict-only with fixed trained dict
     else:
-        Z=build_sample(ext,args)                          # one shared patch sample
+        if args.train_only:
+            sample=OUT/"dict_sample.f16.npy"
+            if not sample.is_file():
+                raise FileNotFoundError(f"dictionary sample missing: {sample}")
+            Z=np.load(sample,mmap_mode="r")
+            log(f"S0 reuse sample {Z.shape} (memory mapped)")
+        else:
+            Z=build_sample(ext,args)                      # one shared patch sample
         saeps=[train_sae(Z,K,args) for K in args.K_list]  # one SAE per K
         del Z
     if not args.skip_infer:
