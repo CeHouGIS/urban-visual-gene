@@ -32,6 +32,10 @@ Chapter 5 主要回答四个问题：
 
 1024 个 SAE latent 的 encoder、decoder 和空间激活具有系统关系。层次聚类在 16 到 128 个类别的不同 cut 上进行，论文将 64 类作为主要 fine-resolution 视觉词汇，较粗层级用于描述更宽泛的 visual families。
 
+[查看 DINOv3 patch 表征的城市间 UMAP](figures/chapter5/chapter5_umap.pdf)
+
+![BatchTopK latent 的 encoder、decoder 和空间激活层次结构](figures/chapter5/hierarchy_edp.png)
+
 ### 2. 大多数视觉响应来自跨城市共享模式
 
 在 64 个 visual genes 中，按照论文的操作性阈值，32 个被定义为 broadly shared：
@@ -53,6 +57,14 @@ Chapter 5 主要回答四个问题：
 
 因此，“城市独特性”不等于“城市专属 feature”；共享模式的比例变化本身就足以形成地方视觉特征。
 
+[查看共享与城市差异 visual genes 原图](figures/chapter5/shared_distinctive.pdf)
+
+![城市 visual-gene composition](figures/chapter5/city_composition.png)
+
+![城市间 visual-gene composition similarity](figures/chapter5/city_similarity.png)
+
+![visual-gene 的全局共现结构](figures/chapter5/global_cooccurrence.png)
+
 ### 4. 视觉结构在城市内部也具有空间组织
 
 在 `1 km x 1 km` 网格上，同一城市不同区域的 visual-gene composition 并不均匀。论文区分了：
@@ -62,11 +74,19 @@ Chapter 5 主要回答四个问题：
 
 两者并不等价：城市可以整体差异较大，但局部街区仍然连续；也可以整体较均一，但邻接区域出现较强碎片化。500 m 和 2 km 的分辨率敏感性分析，以及 Moran's I 的多重检验结果，支持这种空间组织并非单一网格尺度的偶然现象。
 
+![城市内部 visual structure](figures/chapter5/within_city_structure.png)
+
+![Global homogeneity 与 local continuity](figures/chapter5/homogeneity_continuity.png)
+
 ### 5. 可解释性来自多重证据，而不是单一 feature label
 
 高激活图像和 overlay 显示，部分 latent 对植被、建筑立面、步行表面、道路垃圾、围栏和高密度建筑组合等视觉内容具有局部响应。与此同时，也存在冗余、位置相关、不稳定和图像质量相关的 latent。
 
 因此论文将 related latent groups 作为 visual genes，而不是把每个 latent index 直接等同于一个稳定语义。独立训练、激活上下文、跨城市分布、外部 urban-form 关联和 post-hoc semantic interpretation 共同构成解释证据。
+
+![BatchTopK patch activation examples 1](figures/chapter5/patch_examples_1.png)
+
+![BatchTopK patch activation examples 2](figures/chapter5/patch_examples_2.png)
 
 ### 6. 稳健性和外部有效性
 
@@ -86,6 +106,14 @@ Chapter 5 主要回答四个问题：
 - `W=1024 -> W=2048`：436 个严格一对一稳定匹配，199 个 split candidates。
 
 这里的 split candidate 指一个小字典 feature 对应多个大字典 feature，且多个子 feature 的高激活样本合计覆盖父 feature 的高激活样本。它是候选关系，不等同于已经完成的人工语义确认；最终确认还需要检查原始图像 activation maps、子 feature 的空间分化和组合重构误差。
+
+![W=512 到 W=1024 的 split candidates](figures/chapter5/split_examples_w512_w1024.png)
+
+![W=1024 到 W=2048 的 split candidates](figures/chapter5/split_examples_w1024_w2048.png)
+
+![W=512 到 W=1024 的原始街景 activation maps](figures/chapter5/activation_maps_w512_w1024.png)
+
+![W=1024 到 W=2048 的原始街景 activation maps](figures/chapter5/activation_maps_w1024_w2048.png)
 
 ## 论文结论
 
