@@ -24,6 +24,10 @@ Chapter 5 主要回答四个问题：
 - SAE latent 先通过 encoder、decoder 和空间激活三个视角整合成层次结构，再在 fine resolution 划分为 64 个 visual-gene categories。
 - 城市标签和语义描述没有进入 SAE 训练或 feature discovery，而是在后续分析阶段使用。
 
+![Chapter 5 urban visual genome pipeline](figures/chapter5/pipeline.jpg)
+
+![Panorama-aware patch feature construction](figures/chapter5/panorama_aware.jpg)
+
 ## 论文正式结果
 
 ### 1. 学到了共享且有层次的视觉词汇
