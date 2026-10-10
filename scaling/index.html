@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Urban Scene Primitives 的 BatchTopK SAE 字典尺度分析：真实街景实例、激活图、特征分流与稳定性。">
   <title>街景特征如何随字典宽度变化 | Urban Scene Primitives</title>
-  <link rel="stylesheet" href="atlas.css">
+  <link rel="stylesheet" href="atlas.css?v=panorama1">
   <style>
     :root { color-scheme: light; --ink:#243235; --muted:#56666a; --line:#dbe2e1; --paper:#fff; --wash:#f3f6f5; --green:#20877a; --amber:#c78420; --red:#b84d60; --blue:#657e9f; }
     * { box-sizing:border-box; }
@@ -110,7 +110,7 @@
 
   <main>
     <section id="atlas"><div class="wrap">
-      <div class="section-head"><div><h2>512 个特征，逐行查看流向</h2><p>选择类别或输入特征编号。每行使用同一张街景对照旧特征和新特征；点击后继编号可切换分流证据，展开后可同时比较两张街景。</p></div></div>
+      <div class="section-head"><div><h2>512 个特征，逐行查看流向</h2><p>选择类别或输入特征编号。每个点位按 0°、90°、180°、270° 拼接四张图片，同时对照旧特征和新特征。每行最多 6 个不同 pano，可切换点位、后继特征，或展开全部实例；点击图片可单独放大某个方向。</p></div></div>
       <div class="atlas-buckets" id="atlas-buckets" aria-label="点击筛选特征关系">
         <button type="button" data-kind="all" aria-pressed="true"><span class="bucket-count">512</span><span>全部旧特征</span></button>
         <span class="bucket-arrow" aria-hidden="true">→</span>
@@ -124,7 +124,7 @@
       <p id="atlas-status" class="atlas-status" role="status">正在加载逐特征街景实例…</p>
       <div id="atlas-list" class="atlas-list"></div>
       <div class="atlas-pagination"><button id="atlas-prev" type="button" disabled aria-label="上一页">←</button><span id="atlas-page"></span><button id="atlas-next" type="button" disabled aria-label="下一页">→</button></div>
-      <p class="chart-note">激活与类别来自稀疏 BatchTopK；图片热区是完整 28×28 网格上的稠密正预激活，同一街景中的热图共享色标。未激活行展示预激活最高的候选街景，不是有效激活实例。</p>
+      <p class="chart-note">激活与类别来自稀疏 BatchTopK；图片热区是四个完整 28×28 网格上的稠密正预激活，同一 pano 的四个方向及对照特征共享色标。这里是四视角并排展示，接缝未经几何校正。未激活行展示预激活最高的候选街景，不是有效激活实例。</p>
     </div></section>
     <section id="examples"><div class="wrap">
       <div class="section-head"><div><h2>先看街景实例</h2><p>每幅图按“原始街景 → 旧特征响应 → 新特征响应”排列；分流例子会显示两个新特征。点击放大查看 patch 激活区域。</p></div></div>
@@ -175,8 +175,8 @@
   </main>
   <footer class="foot"><div class="wrap">Urban Scene Primitives · BatchTopK SAE 尺度分析 · <a href="#method">判定标准与研究限制</a></div></footer>
   <dialog id="image-dialog" aria-label="放大的街景激活图"><div class="dialog-bar"><span id="dialog-title"></span><button type="button" id="close-dialog" aria-label="关闭">×</button></div><div class="dialog-scroll"><img id="dialog-image" alt="放大的街景实例"></div></dialog>
-  <dialog id="atlas-dialog" aria-label="放大的逐特征街景实例"><div class="dialog-bar"><span id="atlas-dialog-title"></span><button type="button" id="atlas-dialog-close" aria-label="关闭">×</button></div><div class="atlas-dialog-image"><img id="atlas-dialog-base" alt="街景原图"><img id="atlas-dialog-mask" alt="特征热图"></div></dialog>
-  <script src="atlas.js" defer></script>
+  <dialog id="atlas-dialog" aria-label="放大的逐特征街景实例"><div class="dialog-bar"><span id="atlas-dialog-title"></span><button type="button" id="atlas-dialog-close" aria-label="关闭">×</button></div><div id="atlas-directions" aria-label="选择放大方向"><button type="button" data-direction="all" aria-pressed="true">四视角</button><button type="button" data-direction="0" aria-pressed="false">0°</button><button type="button" data-direction="90" aria-pressed="false">90°</button><button type="button" data-direction="180" aria-pressed="false">180°</button><button type="button" data-direction="270" aria-pressed="false">270°</button></div><div class="atlas-dialog-scroll"><div class="atlas-dialog-image"><img id="atlas-dialog-base" alt="四视角街景原图"><img id="atlas-dialog-mask" alt="四视角特征热图"></div></div></dialog>
+  <script src="atlas.js?v=panorama1" defer></script>
   <script>
     const tabs = [...document.querySelectorAll('[data-tab]')];
     const panels = [...document.querySelectorAll('[data-panel]')];

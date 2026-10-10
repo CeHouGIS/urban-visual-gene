@@ -15,6 +15,7 @@
   let page = 0;
   const expanded = new Set();
   const focused = new Map();
+  const points = new Map();
 
   function escape(value) {
     return String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
@@ -44,8 +45,8 @@
     if (!example) return '';
     const image = escape(example.image);
     const mask = feature === null ? '' : escape(example.maps[`${width}:${feature}`] || '');
-    const title = escape(`${example.city} · ${example.heading}° · ${label}`);
-    return `<button type="button" class="atlas-tile" data-action="zoom" data-image="${image}" data-mask="${mask}" data-title="${title}" aria-label="放大 ${title}"><img loading="lazy" src="${image}" alt="${escape(example.city)} 街景">${mask ? `<img loading="lazy" class="atlas-mask" src="${mask}" alt="">` : ''}<span>${escape(label)}</span></button>`;
+    const title = escape(`${example.city} · pano ${example.source_pano} · ${label}`);
+    return `<button type="button" class="atlas-tile" data-action="zoom" data-image="${image}" data-mask="${mask}" data-title="${title}" aria-label="放大 ${title}"><img loading="lazy" src="${image}" alt="${escape(example.city)} 四视角街景拼接">${mask ? `<img loading="lazy" class="atlas-mask" src="${mask}" alt="">` : ''}<i class="atlas-seams" aria-hidden="true"></i><span>${escape(label)}</span></button>`;
   }
 
   function selectedChild(row) {
@@ -57,7 +58,14 @@
   }
 
   function selectedExample(row, child) {
+    if (points.has(keyFor(row))) return row.examples[points.get(keyFor(row))];
     return row.examples.find(example => example.focus_child === child) || row.examples[0];
+  }
+
+  function headings() { return '<div class="atlas-headings" aria-label="拼接方向"><span>0°</span><span>90°</span><span>180°</span><span>270°</span></div>'; }
+
+  function pointChoices(row, example) {
+    return `<div class="atlas-points" aria-label="选择不同 pano 点位">${row.examples.map((item, index) => `<button type="button" data-action="point" data-key="${keyFor(row)}" data-point="${index}" aria-pressed="${item === example}" title="${escape(item.city)} · pano ${item.source_pano}${row.kind === 'split' ? ` · 后继 f${item.focus_child}` : ''}">${index + 1} · ${escape(item.city)}${row.kind === 'split' ? ` / f${item.focus_child}` : ''}</button>`).join('')}</div>`;
   }
 
   function metrics(row, child) {
@@ -82,7 +90,7 @@
     if (!example) return '';
     const parent = row.kind === 'orphan' ? row.nearest_parent : row.id;
     const children = row.kind === 'orphan' ? [row.id] : [...new Set((row.edges || []).map(edge => edge.child))];
-    return `<div class="atlas-sample"><h4>${escape(example.city)} · ${example.heading}°${row.kind === 'split' ? ` · 子特征 f${example.focus_child} 的独占激活实例` : ''}</h4><div class="atlas-sample-images">${tile(example, 512, null, '街景原图')}${tile(example, 512, parent, `W512 f${parent}`)}${children.map(id => tile(example, 1024, id, `W1024 f${id}`)).join('')}</div></div>`;
+    return `<div class="atlas-sample"><h4>${escape(example.city)} · pano ${example.source_pano}${row.kind === 'split' ? ` · 子特征 f${example.focus_child} 的独占激活实例（${example.heading}° 的采样 patch）` : ''}</h4>${headings()}<div class="atlas-sample-images">${tile(example, 512, null, '四视角原图')}${tile(example, 512, parent, `W512 f${parent}`)}${children.map(id => tile(example, 1024, id, `W1024 f${id}`)).join('')}</div></div>`;
   }
 
   function rowMarkup(row) {
@@ -90,9 +98,9 @@
     const example = selectedExample(row, child);
     const parent = row.kind === 'orphan' ? row.nearest_parent : row.id;
     const childTile = child === null ? '' : tile(example, 1024, child, `W1024 f${child}`);
-    const caption = example ? `${escape(example.city)} · ${example.heading}°${row.kind === 'inactive' ? ' · 未被 TopK 选中' : ''}` : '当前没有可核验的街景实例';
+    const caption = example ? `${escape(example.city)} · pano ${example.source_pano} · ${row.examples.length} / ${row.example_target} 个点位${row.examples.length < row.example_target ? '（符合条件的不同点位不足）' : ''}${row.kind === 'inactive' ? ' · 未被 TopK 选中' : ''}` : '当前没有可核验的街景实例';
     const key = keyFor(row);
-    return `<article class="atlas-row" id="feature-${key}"><div class="atlas-top"><div class="atlas-identity"><span class="atlas-id">${row.kind === 'orphan' ? 'W1024' : 'W512'} f${row.id}</span><span class="atlas-kind ${row.kind}">${names[row.kind]}</span><span class="atlas-support">稀疏激活 patch：${row.support.toLocaleString()}</span></div><div><div class="atlas-flow">${flow(row, child)}</div><div class="atlas-metrics">${metrics(row, child)}</div></div><div><div class="atlas-preview">${example ? `${tile(example, 512, null, '原图')}${tile(example, 512, parent, `W512 f${parent}`)}${childTile}` : '<span class="atlas-preview-empty">没有可核验图片</span>'}</div><div class="atlas-meta"><span>${caption}</span><button type="button" class="atlas-expand" data-action="expand" data-key="${key}" aria-expanded="${expanded.has(key)}">${expanded.has(key) ? '收起证据 ↑' : '展开全部证据 ↓'}</button></div></div></div>${expanded.has(key) ? `<div class="atlas-extra"><p>${row.kind === 'split' ? '两张街景分别突出不同子特征；一个父特征可同时拥有稳定后继。' : row.kind === 'inactive' ? '这张街景仅用于检查稠密预激活；该旧特征在测试集的稀疏输出中从未被选中。' : row.kind === 'orphan' ? '左侧最近旧特征仅作参照；它未达到可靠单一对应标准。' : '在相同街景上对照父子特征的正预激活，关系统计仍以稀疏输出为准。'}</p>${row.examples.map(example => exampleStrip(row, example)).join('') || '<p>没有可核验图片。</p>'}</div>` : ''}</article>`;
+    return `<article class="atlas-row" id="feature-${key}"><div class="atlas-top"><div class="atlas-identity"><span class="atlas-id">${row.kind === 'orphan' ? 'W1024' : 'W512'} f${row.id}</span><span class="atlas-kind ${row.kind}">${names[row.kind]}</span><span class="atlas-support">稀疏激活 patch：${row.support.toLocaleString()}</span></div><div><div class="atlas-flow">${flow(row, child)}</div><div class="atlas-metrics">${metrics(row, child)}</div></div><div class="atlas-evidence">${pointChoices(row, example)}${headings()}<div class="atlas-preview">${example ? `${tile(example, 512, null, '四视角原图')}${tile(example, 512, parent, `W512 f${parent}`)}${childTile}` : '<span class="atlas-preview-empty">没有可核验图片</span>'}</div><div class="atlas-meta"><span>${caption}</span><button type="button" class="atlas-expand" data-action="expand" data-key="${key}" aria-expanded="${expanded.has(key)}">${expanded.has(key) ? '收起证据 ↑' : `展开 ${row.examples.length} 个点位 ↓`}</button></div></div></div>${expanded.has(key) ? `<div class="atlas-extra"><p>${row.kind === 'split' ? '每个后继最多选 3 个不同点位，对照四个方向的响应；一个父特征可同时拥有稳定后继。独占关系由选点 patch 的稀疏输出确定，整幅全景可能同时出现两个后继的响应。' : row.kind === 'inactive' ? '这些点位仅用于检查稠密预激活；该旧特征在测试集的稀疏输出中从未被选中。' : row.kind === 'orphan' ? '最近旧特征仅作参照；它未达到可靠单一对应标准。' : '在同一 pano 的四个方向上对照父子特征的正预激活，关系统计仍以稀疏输出为准。'}</p>${row.examples.map(example => exampleStrip(row, example)).join('') || '<p>没有可核验图片。</p>'}</div>` : ''}</article>`;
   }
 
   function render() {
@@ -102,7 +110,7 @@
     page = Math.min(page, pages - 1);
     const visible = rows.slice(page * perPage, (page + 1) * perPage);
     list.innerHTML = visible.map(rowMarkup).join('') || '<p class="atlas-status">没有符合筛选条件的特征。</p>';
-    status.textContent = category === 'orphan' ? `W1024 无近似旧对应候选：${rows.length} 个` : `W512 旧特征：${rows.length} / 512 个`;
+    status.textContent = (category === 'orphan' ? `W1024 无近似旧对应候选：${rows.length} 个` : `W512 旧特征：${rows.length} / 512 个`) + ` · 图库共 ${atlas.scene_count.toLocaleString()} 个不同 pano，每点四视角`;
     pageLabel.textContent = `${page + 1} / ${pages}`;
     previous.disabled = page === 0;
     next.disabled = page >= pages - 1;
@@ -137,6 +145,7 @@
       else document.getElementById('atlas-dialog-mask').removeAttribute('src');
       document.getElementById('atlas-dialog-mask').hidden = !button.dataset.mask;
       document.getElementById('atlas-dialog-title').textContent = button.dataset.title;
+      setDirection('all');
       dialog.showModal();
       return;
     }
@@ -147,8 +156,23 @@
     }
     if (action === 'focus') {
       focused.set(button.dataset.key, button.dataset.child === 'parent' ? null : Number(button.dataset.child));
+      points.delete(button.dataset.key);
       render();
     }
+    if (action === 'point') {
+      points.set(button.dataset.key, Number(button.dataset.point));
+      render();
+    }
+  });
+  function setDirection(direction) {
+    const frame = document.querySelector('.atlas-dialog-image');
+    frame.classList.toggle('single-direction', direction !== 'all');
+    frame.style.setProperty('--heading-offset', direction === 'all' ? '0%' : `${-Number(direction) / 90 * 100}%`);
+    document.querySelectorAll('[data-direction]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.direction === direction)));
+  }
+  document.getElementById('atlas-directions').addEventListener('click', event => {
+    const button = event.target.closest('[data-direction]');
+    if (button) setDirection(button.dataset.direction);
   });
   document.getElementById('atlas-dialog-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
