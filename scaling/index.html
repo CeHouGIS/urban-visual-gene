@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Urban Scene Primitives 的 BatchTopK SAE 字典尺度分析：真实街景实例、激活图、特征分流与稳定性。">
   <title>街景特征如何随字典宽度变化 | Urban Scene Primitives</title>
-  <link rel="stylesheet" href="atlas.css?v=panorama1">
+  <link rel="stylesheet" href="atlas.css?v=sample40pano">
   <style>
     :root { color-scheme: light; --ink:#243235; --muted:#56666a; --line:#dbe2e1; --paper:#fff; --wash:#f3f6f5; --green:#20877a; --amber:#c78420; --red:#b84d60; --blue:#657e9f; }
     * { box-sizing:border-box; }
@@ -105,7 +105,7 @@
     <div class="eyebrow">BatchTopK SAE · 字典尺度分析</div>
     <h1>字典变大后，街景特征去了哪里？</h1>
     <p>用同一批街景 patch 对照三种字典。逐行查看哪些响应保持稳定、发生分流，哪些暂时无法匹配。</p>
-    <div class="facts"><div class="fact"><strong>295</strong><span>参与比较的城市</span></div><div class="fact"><strong>1,180</strong><span>四视角采样点</span></div><div class="fact"><strong>151,040</strong><span>测试 patch</span></div><div class="fact"><strong>268</strong><span>贯穿三种宽度的稳定链</span></div></div>
+    <div class="facts"><div class="fact"><strong>295</strong><span>参与比较的城市</span></div><div class="fact"><strong>11,800</strong><span>四视角采样点</span></div><div class="fact"><strong>1,510,400</strong><span>测试 patch</span></div><div class="fact"><strong>271</strong><span>贯穿三种宽度的稳定链</span></div></div>
   </div></header>
 
   <main>
@@ -114,11 +114,11 @@
       <div class="atlas-buckets" id="atlas-buckets" aria-label="点击筛选特征关系">
         <button type="button" data-kind="all" aria-pressed="true"><span class="bucket-count">512</span><span>全部旧特征</span></button>
         <span class="bucket-arrow" aria-hidden="true">→</span>
-        <button type="button" data-kind="stable" aria-pressed="false"><span class="bucket-count">139</span><span>仅稳定</span></button>
-        <button type="button" data-kind="split" aria-pressed="false"><span class="bucket-count">164</span><span>发生分流</span></button>
+        <button type="button" data-kind="stable" aria-pressed="false"><span class="bucket-count">142</span><span>仅稳定</span></button>
+        <button type="button" data-kind="split" aria-pressed="false"><span class="bucket-count">161</span><span>发生分流</span></button>
         <button type="button" data-kind="unresolved" aria-pressed="false"><span class="bucket-count">36</span><span>关系未确定</span></button>
         <button type="button" data-kind="inactive" aria-pressed="false"><span class="bucket-count">173</span><span>未激活</span></button>
-        <button type="button" data-kind="orphan" aria-pressed="false"><span class="bucket-count">30</span><span>新字典无近似旧对应</span></button>
+        <button type="button" data-kind="orphan" aria-pressed="false"><span class="bucket-count">35</span><span>新字典无近似旧对应</span></button>
       </div>
       <div class="atlas-tools"><label>查找特征 <input id="atlas-search" type="search" inputmode="search" placeholder="旧 f66 / 新 1024:66 / 城市" aria-label="按编号或城市搜索特征"></label><label>排序 <select id="atlas-sort" aria-label="特征排序"><option value="id">特征编号</option><option value="support">激活支持数</option></select></label><label>热图强度 <input id="atlas-opacity" type="range" min="0" max="100" value="85" aria-label="热图透明度"></label></div>
       <p id="atlas-status" class="atlas-status" role="status">正在加载逐特征街景实例…</p>
@@ -136,22 +136,22 @@
       <div role="tabpanel" id="panel-split" aria-labelledby="tab-split" data-panel="split">
         <div class="category-lead"><span class="swatch" style="background:var(--amber)"></span><p>分流指旧特征的激活由两个有部分独占响应的新特征覆盖。图像能帮助判断这种分工是否真的对应不同景观外观，还是仅仅受位置影响。</p></div>
         <div class="examples">
-          <figure class="example"><header><div class="label">W=1024 → W=2048 · 树木响应</div><h3>Nagpur 与 Kota Bharu：同一旧响应分到两个后继</h3><p>f514 → f1979 / f997；下方还有 Kazan 与 Chandigarh 的 f932 → f870 / f1851。</p></header><div class="image-scroll"><img loading="eager" src="../figures/scaling_heldout/split_w1024_w2048.png" alt="Nagpur、Kota Bharu、Kazan、Chandigarh 四处树木街景的原图和旧特征、两个新特征激活图"></div><figcaption>树木区域出现不同的响应分工；还不能据此给它们命名为具体树种。<br><button class="open-image" type="button" data-image="../figures/scaling_heldout/split_w1024_w2048.png" data-title="树木分流实例">放大图片 ↗</button></figcaption></figure>
-          <figure class="example"><header><div class="label">W=512 → W=1024 · 车辆与位置响应</div><h3>Gold Coast 与 Medellín：车辆区域的局部响应</h3><p>f66 → f1012 / f508；Resistencia 与 Recife 的另一组则更接近图像左缘模式。</p></header><div class="image-scroll"><img loading="lazy" src="../figures/scaling_heldout/split_w512_w1024.png" alt="Gold Coast、Medellín、Resistencia、Recife 的街景原图和分流候选激活图"></div><figcaption>统计上的分流未必是语义细分；左缘响应提示了位置偏差。<br><button class="open-image" type="button" data-image="../figures/scaling_heldout/split_w512_w1024.png" data-title="车辆与位置分流实例">放大图片 ↗</button></figcaption></figure>
+          <figure class="example"><header><div class="label">W=1024 → W=2048 · 扩样后的分流候选</div><h3>GeorgeTown、Sydney、SanAntonio、Bologna</h3><p>f514 → f1979 / f997；f932 → f870 / f1851</p></header><div class="image-scroll"><img loading="eager" src="assets/summary_40pano/split_w1024_w2048.png" alt="扩样计算后 1024 到 2048 的分流候选激活对照"></div><figcaption>从 40 pano／城的新计算结果选取。响应区域用于核验候选，具体语义仍需人工判断。<br><button class="open-image" type="button" data-image="assets/summary_40pano/split_w1024_w2048.png" data-title="树木分流实例">放大图片 ↗</button></figcaption></figure>
+          <figure class="example"><header><div class="label">W=512 → W=1024 · 扩样后的分流候选</div><h3>Arequipa、SantoDomingo、Córdoba、Samara</h3><p>f66 → f1012 / f508；f311 → f492 / f676</p></header><div class="image-scroll"><img loading="lazy" src="assets/summary_40pano/split_w512_w1024.png" alt="扩样计算后 512 到 1024 的分流候选激活对照"></div><figcaption>从 40 pano／城的新计算结果选取。响应区域用于核验候选，具体语义仍需人工判断。<br><button class="open-image" type="button" data-image="assets/summary_40pano/split_w512_w1024.png" data-title="车辆与位置分流实例">放大图片 ↗</button></figcaption></figure>
         </div>
       </div>
       <div role="tabpanel" id="panel-stable" aria-labelledby="tab-stable" data-panel="stable" hidden>
         <div class="category-lead"><span class="swatch" style="background:var(--green)"></span><p>稳定指旧特征与新特征在 decoder、激活强度和激活位置上均达到匹配门槛。图中比较的是同一张街景上的响应区域。</p></div>
         <div class="examples">
-          <figure class="example"><header><div class="label">W=512 → W=1024</div><h3>Kota Bharu 的香蕉叶与 Malmö 的建筑立面</h3><p>f345 → f474；f205 → f73。</p></header><div class="image-scroll"><img loading="lazy" src="../figures/scaling_heldout/stable_w512_w1024.png" alt="Kota Bharu 香蕉叶和 Malmö 建筑立面的原图与稳定特征激活对照"></div><figcaption>扩大字典后，主要响应仍落在相近区域。<br><button class="open-image" type="button" data-image="../figures/scaling_heldout/stable_w512_w1024.png" data-title="512 到 1024 的稳定实例">放大图片 ↗</button></figcaption></figure>
-          <figure class="example"><header><div class="label">W=1024 → W=2048</div><h3>Makassar 的上缘区域与 Oslo 的桥底</h3><p>f282 → f1860；f734 → f945。</p></header><div class="image-scroll"><img loading="lazy" src="../figures/scaling_heldout/stable_w1024_w2048.png" alt="Makassar 和 Oslo 街景的原图与稳定特征激活对照"></div><figcaption>桥底响应相近；上缘响应仍需排除图像位置偏好。<br><button class="open-image" type="button" data-image="../figures/scaling_heldout/stable_w1024_w2048.png" data-title="1024 到 2048 的稳定实例">放大图片 ↗</button></figcaption></figure>
+          <figure class="example"><header><div class="label">W=512 → W=1024 · 扩样后的稳定候选</div><h3>Thiruvananthapuram、Bucaramanga</h3><p>f345 → f474；f205 → f73</p></header><div class="image-scroll"><img loading="lazy" src="assets/summary_40pano/stable_w512_w1024.png" alt="扩样计算后 512 到 1024 的稳定候选激活对照"></div><figcaption>从 40 pano／城的新计算结果选取。响应区域用于核验候选，具体语义仍需人工判断。<br><button class="open-image" type="button" data-image="assets/summary_40pano/stable_w512_w1024.png" data-title="512 到 1024 的稳定实例">放大图片 ↗</button></figcaption></figure>
+          <figure class="example"><header><div class="label">W=1024 → W=2048 · 扩样后的稳定候选</div><h3>Volgograd、Kolkata</h3><p>f282 → f1860；f417 → f184</p></header><div class="image-scroll"><img loading="lazy" src="assets/summary_40pano/stable_w1024_w2048.png" alt="扩样计算后 1024 到 2048 的稳定候选激活对照"></div><figcaption>从 40 pano／城的新计算结果选取。响应区域用于核验候选，具体语义仍需人工判断。<br><button class="open-image" type="button" data-image="assets/summary_40pano/stable_w1024_w2048.png" data-title="1024 到 2048 的稳定实例">放大图片 ↗</button></figcaption></figure>
         </div>
       </div>
       <div role="tabpanel" id="panel-no-close" aria-labelledby="tab-no-close" data-panel="no-close" hidden>
         <div class="category-lead"><span class="swatch" style="background:var(--red)"></span><p>“无近似对应”只表示在本次阈值下找不到可靠的单个旧特征。图中仍放入最接近的旧特征作为参照；这不是“发现了全新对象类别”的证明。</p></div>
         <div class="examples">
-          <figure class="example"><header><div class="label">W=512 → W=1024</div><h3>Cilegon 与 Krasnodar：画面下方的响应</h3><p>新特征 f129、f587，主要集中在地表或图像下部。</p></header><div class="image-scroll"><img loading="lazy" src="../figures/scaling_heldout/no_close_match_w512_w1024.png" alt="Cilegon 和 Krasnodar 街景中无近似旧对应特征及最接近旧特征的激活对照"></div><figcaption>需要继续区分地表纹理与画面位置的影响。<br><button class="open-image" type="button" data-image="../figures/scaling_heldout/no_close_match_w512_w1024.png" data-title="512 到 1024 的无近似对应实例">放大图片 ↗</button></figcaption></figure>
-          <figure class="example"><header><div class="label">W=1024 → W=2048</div><h3>Surabaya 与 Yekaterinburg：天空和画面上方</h3><p>新特征 f1482、f1622。</p></header><div class="image-scroll"><img loading="lazy" src="../figures/scaling_heldout/no_close_match_w1024_w2048.png" alt="Surabaya 和 Yekaterinburg 街景中天空和上缘区域的新特征与旧特征对照"></div><figcaption>当前实例更像区域或位置响应，尚不足以命名新语义。<br><button class="open-image" type="button" data-image="../figures/scaling_heldout/no_close_match_w1024_w2048.png" data-title="1024 到 2048 的无近似对应实例">放大图片 ↗</button></figcaption></figure>
+          <figure class="example"><header><div class="label">W=512 → W=1024 · 扩样后的无近似对应候选</div><h3>Ibadan、Lucknow</h3><p>新 f129；新 f587</p></header><div class="image-scroll"><img loading="lazy" src="assets/summary_40pano/no_close_match_w512_w1024.png" alt="扩样计算后 512 到 1024 的无近似对应候选激活对照"></div><figcaption>从 40 pano／城的新计算结果选取。响应区域用于核验候选，具体语义仍需人工判断。<br><button class="open-image" type="button" data-image="assets/summary_40pano/no_close_match_w512_w1024.png" data-title="512 到 1024 的无近似对应实例">放大图片 ↗</button></figcaption></figure>
+          <figure class="example"><header><div class="label">W=1024 → W=2048 · 扩样后的无近似对应候选</div><h3>Hamburg、Philadelphia</h3><p>新 f1482；新 f1622</p></header><div class="image-scroll"><img loading="lazy" src="assets/summary_40pano/no_close_match_w1024_w2048.png" alt="扩样计算后 1024 到 2048 的无近似对应候选激活对照"></div><figcaption>从 40 pano／城的新计算结果选取。响应区域用于核验候选，具体语义仍需人工判断。<br><button class="open-image" type="button" data-image="assets/summary_40pano/no_close_match_w1024_w2048.png" data-title="1024 到 2048 的无近似对应实例">放大图片 ↗</button></figcaption></figure>
         </div>
       </div>
       <p class="chart-note">图中的热区是稠密 ReLU 预激活，用于看响应位置；下方关系统计来自稀疏 BatchTopK 输出。每张图内旧、新特征使用相同色标。</p>
@@ -160,23 +160,24 @@
     <section id="flows"><div class="wrap">
       <div class="section-head"><div><h2>从 512 流向 1024，再到 2048</h2><p>每条带按较大字典中的特征数绘制，两段分别归一化。左侧统计的是后继特征的来源类别，并非独立父特征数。</p></div></div>
       <div class="legend"><span><i class="swatch" style="background:var(--green)"></i>稳定延续</span><span><i class="swatch" style="background:var(--amber)"></i>分流后继</span><span><i class="swatch" style="background:var(--red)"></i>无近似对应</span><span><i class="swatch" style="background:var(--blue)"></i>有关联但未能归类</span><span><i class="swatch" style="background:#b3bac0"></i>支持不足</span></div>
-      <div class="chart-frame"><img loading="lazy" src="../figures/scaling_heldout/dictionary_scaling_sankey.png" alt="字典宽度从 512 到 1024 再到 2048 时，稳定、分流、无近似对应及证据不足特征的桑基图"></div>
-      <p class="chart-note">其中 268 条稳定链贯穿三种宽度。图里的 No assigned parent 表示未能指定可靠的单一旧特征，并不意味着所有这些特征都是新出现的街景语义。</p>
+      <div class="chart-frame"><img loading="lazy" src="assets/summary_40pano/dictionary_scaling_sankey.png" alt="字典宽度从 512 到 1024 再到 2048 时，稳定、分流、无近似对应及证据不足特征的桑基图"></div>
+      <p class="chart-note">其中 271 条稳定链贯穿三种宽度。图里的 No assigned parent 表示未能指定可靠的单一旧特征，并不意味着所有这些特征都是新出现的街景语义。</p>
     </div></section>
 
     <section id="method"><div class="wrap">
-      <div class="section-head"><div><h2>这些名称具体指什么</h2><p>按同一组 151,040 个 SAE 训练缓存之外的 patch 计算，城市本身仍在模型训练数据中出现过。</p></div></div>
-      <div class="definition"><h3>No assigned parent：没有确定的单一来源</h3><p>512→1024 的 637 个 = 无近似对应 30 + 有关联但未能归类 169 + 支持不足 438；1024→2048 的 1,473 个 = 14 + 118 + 1,341。这是绘制流向时的归属入口，不是模型学出的一个类别，也不等于新语义数量。</p></div>
+      <div class="section-head"><div><h2>这些名称具体指什么</h2><p>按同一组 1,510,400 个 SAE 训练缓存之外的 patch 计算，城市本身仍在模型训练数据中出现过。</p></div></div>
+      <div class="definition"><h3>No assigned parent：没有确定的单一来源</h3><p>512→1024 的 638 个 = 无近似对应 35 + 有关联但未能归类 166 + 支持不足 437；1024→2048 的 1,476 个 = 无近似对应 17 + 有关联但未能归类 119 + 支持不足 1340。这是绘制流向时的归属入口，不是模型学出的一个类别，也不等于新语义数量。</p></div>
       <div class="three"><div><h3>稳定</h3><p>两边至少各有 25 个激活 patch，互为最佳匹配；decoder 余弦相似度 ≥0.70、激活余弦相似度 ≥0.35、支持集 Jaccard ≥0.15。</p></div><div><h3>分流</h3><p>两个子特征各覆盖父特征至少 15% 的激活，并有各自独占的父特征支持；合计覆盖至少 50%。一个父特征可以既稳定延续又发生额外分流。</p></div><div><h3>无近似对应</h3><p>新特征至少有 25 个激活 patch，但与所有旧特征的最大 decoder 余弦相似度 &lt;0.45、最大激活余弦相似度 &lt;0.25。它也可能由多个旧特征共同表达。</p></div></div>
       <div class="section-head" style="margin:31px 0 10px"><div><h2 style="font-size:20px">数量与限制</h2></div></div>
-      <table><thead><tr><th>字典宽度变化</th><th>稳定匹配</th><th>分流父特征候选</th><th>无近似对应候选</th></tr></thead><tbody><tr><td>512 → 1024</td><td>286</td><td>164</td><td>30</td></tr><tr><td>1024 → 2048</td><td>464</td><td>201</td><td>14</td></tr></tbody></table>
+      <table><thead><tr><th>字典宽度变化</th><th>稳定匹配</th><th>分流父特征候选</th><th>无近似对应候选</th></tr></thead><tbody><tr><td>512 → 1024</td><td>286</td><td>161</td><td>35</td></tr><tr><td>1024 → 2048</td><td>466</td><td>205</td><td>17</td></tr></tbody></table>
       <p class="chart-note">每种宽度只有一个训练初始化。这些关系是可复查的候选，尚非已验证的语义类别或普适尺度规律。2048 字典在本次评估中有 1,340 个特征未激活，重构损失略高于 1024。</p>
+<div class="section-head" style="margin-top:25px"><div><h2 style="font-size:20px">增加计算样本后，关系是否保持？</h2><p>每城从 4 个扩大到 40 个 pano，保留原有点位与 patch；共 47,200 张方向图像。每 pano 四个方向各抽 32 个 patch，总计 1,510,400 个 patch。三个模型使用相同的样本顺序与 4,096 的 BatchTopK 批大小；新增样本会改变批内竞争，所以关系变化同时包含街景覆盖和批组成的影响。</p></div></div><table><thead><tr><th>字典宽度变化</th><th>稳定：旧 → 新</th><th>分流：旧 → 新</th><th>对应关系完全保持</th></tr></thead><tbody><tr><td>512 → 1024</td><td>286 → 286</td><td>164 → 161</td><td>497 / 512 个父特征</td></tr><tr><td>1024 → 2048</td><td>464 → 466</td><td>201 → 205</td><td>984 / 1024 个父特征</td></tr></tbody></table><p class="chart-note">完全保持同时核对稳定后继编号和两个分流后继编号，包括两次均未确定关系的父特征。增加样本仍未激活的特征，不能仅归因于展示图片少。</p><p class="chart-note">512→1024：原来 286 条稳定匹配中，286 条保持同一后继；原来 164 个分流父特征中，151 个保留相同的两个后继。</p><p class="chart-note">1024→2048：原来 464 条稳定匹配中，459 条保持同一后继；原来 201 个分流父特征中，183 个保留相同的两个后继。</p><p class="chart-note"><a href="assets/summary_40pano/sample_expansion_relations.csv">下载逐父特征的扩样前后关系表 CSV</a></p>
     </div></section>
   </main>
   <footer class="foot"><div class="wrap">Urban Scene Primitives · BatchTopK SAE 尺度分析 · <a href="#method">判定标准与研究限制</a></div></footer>
   <dialog id="image-dialog" aria-label="放大的街景激活图"><div class="dialog-bar"><span id="dialog-title"></span><button type="button" id="close-dialog" aria-label="关闭">×</button></div><div class="dialog-scroll"><img id="dialog-image" alt="放大的街景实例"></div></dialog>
   <dialog id="atlas-dialog" aria-label="放大的逐特征街景实例"><div class="dialog-bar"><span id="atlas-dialog-title"></span><button type="button" id="atlas-dialog-close" aria-label="关闭">×</button></div><div id="atlas-directions" aria-label="选择放大方向"><button type="button" data-direction="all" aria-pressed="true">四视角</button><button type="button" data-direction="0" aria-pressed="false">0°</button><button type="button" data-direction="90" aria-pressed="false">90°</button><button type="button" data-direction="180" aria-pressed="false">180°</button><button type="button" data-direction="270" aria-pressed="false">270°</button></div><div class="atlas-dialog-scroll"><div class="atlas-dialog-image"><img id="atlas-dialog-base" alt="四视角街景原图"><img id="atlas-dialog-mask" alt="四视角特征热图"></div></div></dialog>
-  <script src="atlas.js?v=panorama1" defer></script>
+  <script src="atlas.js?v=sample40pano" defer></script>
   <script>
     const tabs = [...document.querySelectorAll('[data-tab]')];
     const panels = [...document.querySelectorAll('[data-panel]')];

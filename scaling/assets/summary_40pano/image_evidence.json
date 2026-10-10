@@ -1,0 +1,1494 @@
+[
+  {
+    "pair": "512->1024",
+    "relation_type": "stable",
+    "relation": {
+      "parent": 345,
+      "child": 474,
+      "decoder_cosine": 0.9818243384361267,
+      "activation_cosine": 0.9789302349090576,
+      "support_jaccard": 0.7707042098045349,
+      "parent_top_anchor_rows": [
+        1354572,
+        1230099,
+        836368,
+        839144,
+        1228910,
+        1232174,
+        1089713,
+        720202,
+        1089712,
+        718221,
+        1354506,
+        839145,
+        440966,
+        1355563,
+        1294315,
+        1228872
+      ],
+      "child_top_anchor_rows": [
+        829397,
+        1089718,
+        1089717,
+        1232176,
+        825521,
+        829396,
+        1090100,
+        1354572,
+        367697,
+        709902,
+        1355504,
+        1352947,
+        709903,
+        1232174,
+        1211125,
+        202193
+      ]
+    },
+    "anchor": 1354572,
+    "image_mapping": {
+      "city": "Thiruvananthapuram",
+      "filtered_pano": 1149,
+      "source_pano": 1149,
+      "heading": 180,
+      "patch": 356,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Thiruvananthapuram/Y/9/Y9HBofhdVfetj7ZNWFPPpw_180.jpg",
+      "pano_id": "Y9HBofhdVfetj7ZNWFPPpw",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Thiruvananthapuram/Y/9/Y9HBofhdVfetj7ZNWFPPpw_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Thiruvananthapuram/Y/9/Y9HBofhdVfetj7ZNWFPPpw_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Thiruvananthapuram/Y/9/Y9HBofhdVfetj7ZNWFPPpw_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Thiruvananthapuram/Y/9/Y9HBofhdVfetj7ZNWFPPpw_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "stable",
+    "relation": {
+      "parent": 205,
+      "child": 73,
+      "decoder_cosine": 0.9739311933517456,
+      "activation_cosine": 0.9599273800849915,
+      "support_jaccard": 0.7524651885032654,
+      "parent_top_anchor_rows": [
+        184492,
+        973011,
+        217812,
+        217817,
+        262707,
+        184528,
+        1420098,
+        265839,
+        786764,
+        834545,
+        688020,
+        409897,
+        184493,
+        380525,
+        1045039,
+        1424942
+      ],
+      "child_top_anchor_rows": [
+        217817,
+        184492,
+        973011,
+        688020,
+        217812,
+        265839,
+        220083,
+        141976,
+        210258,
+        262707,
+        217815,
+        1424942,
+        410768,
+        413964,
+        413971,
+        598801
+      ]
+    },
+    "anchor": 184492,
+    "image_mapping": {
+      "city": "Bucaramanga",
+      "filtered_pano": 129,
+      "source_pano": 129,
+      "heading": 90,
+      "patch": 380,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Colombia/Bucaramanga/t/t/ttfT8nXbRJ3E7GZGRMD84A_90.jpg",
+      "pano_id": "ttfT8nXbRJ3E7GZGRMD84A",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Colombia/Bucaramanga/t/t/ttfT8nXbRJ3E7GZGRMD84A_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Colombia/Bucaramanga/t/t/ttfT8nXbRJ3E7GZGRMD84A_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Colombia/Bucaramanga/t/t/ttfT8nXbRJ3E7GZGRMD84A_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Colombia/Bucaramanga/t/t/ttfT8nXbRJ3E7GZGRMD84A_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "split",
+    "relation": {
+      "parent": 66,
+      "children": [
+        1012,
+        508
+      ],
+      "parent_coverage": 0.878790882061447,
+      "minimum_unique_parent_fraction": 0.32517343904856294,
+      "decoder_cosines": [
+        0.8622345924377441,
+        0.6671326160430908
+      ],
+      "parent_recalls": [
+        0.5446977019309998,
+        0.5536174178123474
+      ],
+      "parent_top_anchor_rows": [
+        54842,
+        218811,
+        1241692,
+        866584,
+        866585,
+        394775,
+        1454301,
+        536605,
+        1216029,
+        32730,
+        652760,
+        866586,
+        1300189,
+        906973,
+        451804,
+        423225
+      ],
+      "child_top_anchor_rows": [
+        [
+          1470046,
+          1241692,
+          1470043,
+          438648,
+          696279,
+          342840,
+          652760,
+          589946,
+          296697,
+          595610,
+          451804,
+          1035199,
+          57594,
+          516248,
+          536605,
+          996471
+        ],
+        [
+          1212668,
+          151928,
+          1496541,
+          526492,
+          403611,
+          197242,
+          926878,
+          1205558,
+          1293434,
+          542908,
+          157278,
+          1015163,
+          937983,
+          866583,
+          54844,
+          1266170
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          57593,
+          542302,
+          1241695,
+          1491869,
+          391417,
+          1155837,
+          1220086,
+          1097174,
+          1026268,
+          1280854,
+          170844,
+          338871,
+          1315198,
+          1055453,
+          720318,
+          1492156
+        ],
+        [
+          1212668,
+          151928,
+          1496541,
+          526492,
+          403611,
+          197242,
+          926878,
+          1205558,
+          1293434,
+          542908,
+          157278,
+          1015163,
+          937983,
+          866583,
+          54844,
+          1266170
+        ]
+      ]
+    },
+    "anchor": 57593,
+    "image_mapping": {
+      "city": "Arequipa",
+      "filtered_pano": 778,
+      "source_pano": 778,
+      "heading": 270,
+      "patch": 659,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Peru/Arequipa/v/Z/vZP5sANC2Jkv25_xVdl9yQ_270.jpg",
+      "pano_id": "vZP5sANC2Jkv25_xVdl9yQ",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Peru/Arequipa/v/Z/vZP5sANC2Jkv25_xVdl9yQ_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Peru/Arequipa/v/Z/vZP5sANC2Jkv25_xVdl9yQ_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Peru/Arequipa/v/Z/vZP5sANC2Jkv25_xVdl9yQ_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Peru/Arequipa/v/Z/vZP5sANC2Jkv25_xVdl9yQ_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "split",
+    "relation": {
+      "parent": 66,
+      "children": [
+        1012,
+        508
+      ],
+      "parent_coverage": 0.878790882061447,
+      "minimum_unique_parent_fraction": 0.32517343904856294,
+      "decoder_cosines": [
+        0.8622345924377441,
+        0.6671326160430908
+      ],
+      "parent_recalls": [
+        0.5446977019309998,
+        0.5536174178123474
+      ],
+      "parent_top_anchor_rows": [
+        54842,
+        218811,
+        1241692,
+        866584,
+        866585,
+        394775,
+        1454301,
+        536605,
+        1216029,
+        32730,
+        652760,
+        866586,
+        1300189,
+        906973,
+        451804,
+        423225
+      ],
+      "child_top_anchor_rows": [
+        [
+          1470046,
+          1241692,
+          1470043,
+          438648,
+          696279,
+          342840,
+          652760,
+          589946,
+          296697,
+          595610,
+          451804,
+          1035199,
+          57594,
+          516248,
+          536605,
+          996471
+        ],
+        [
+          1212668,
+          151928,
+          1496541,
+          526492,
+          403611,
+          197242,
+          926878,
+          1205558,
+          1293434,
+          542908,
+          157278,
+          1015163,
+          937983,
+          866583,
+          54844,
+          1266170
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          57593,
+          542302,
+          1241695,
+          1491869,
+          391417,
+          1155837,
+          1220086,
+          1097174,
+          1026268,
+          1280854,
+          170844,
+          338871,
+          1315198,
+          1055453,
+          720318,
+          1492156
+        ],
+        [
+          1212668,
+          151928,
+          1496541,
+          526492,
+          403611,
+          197242,
+          926878,
+          1205558,
+          1293434,
+          542908,
+          157278,
+          1015163,
+          937983,
+          866583,
+          54844,
+          1266170
+        ]
+      ]
+    },
+    "anchor": 1212668,
+    "image_mapping": {
+      "city": "SantoDomingo",
+      "filtered_pano": 1856,
+      "source_pano": 1857,
+      "heading": 270,
+      "patch": 742,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/DominicanRepublic/SantoDomingo/_/g/_gTykCoY5skR7-SNlFrYdA_270.jpg",
+      "pano_id": "_gTykCoY5skR7-SNlFrYdA",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/DominicanRepublic/SantoDomingo/_/g/_gTykCoY5skR7-SNlFrYdA_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/DominicanRepublic/SantoDomingo/_/g/_gTykCoY5skR7-SNlFrYdA_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/DominicanRepublic/SantoDomingo/_/g/_gTykCoY5skR7-SNlFrYdA_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/DominicanRepublic/SantoDomingo/_/g/_gTykCoY5skR7-SNlFrYdA_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "split",
+    "relation": {
+      "parent": 311,
+      "children": [
+        492,
+        676
+      ],
+      "parent_coverage": 0.8975526129108536,
+      "minimum_unique_parent_fraction": 0.3152045400803973,
+      "decoder_cosines": [
+        0.8990777730941772,
+        0.7294409275054932
+      ],
+      "parent_recalls": [
+        0.5059706568717957,
+        0.5823480486869812
+      ],
+      "parent_top_anchor_rows": [
+        167447,
+        942871,
+        474992,
+        893873,
+        596981,
+        1130102,
+        636465,
+        474937,
+        329044,
+        271858,
+        893848,
+        695029,
+        165111,
+        692017,
+        1289497,
+        974258
+      ],
+      "child_top_anchor_rows": [
+        [
+          591034,
+          404344,
+          359483,
+          1259992,
+          1370745,
+          1348307,
+          1259991,
+          882391,
+          233364,
+          1095768,
+          271863,
+          400467,
+          279674,
+          1425753,
+          729140,
+          1103413
+        ],
+        [
+          1162392,
+          1329909,
+          1121006,
+          471604,
+          732723,
+          741559,
+          1223732,
+          565398,
+          279673,
+          792887,
+          1228336,
+          1223739,
+          1335635,
+          1393298,
+          732724,
+          1100787
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          404344,
+          591034,
+          1259992,
+          1370745,
+          1348307,
+          1259991,
+          271863,
+          400467,
+          1425753,
+          729140,
+          1103413,
+          1127067,
+          1071607,
+          1158615,
+          733974,
+          353364
+        ],
+        [
+          1162392,
+          1329909,
+          1121006,
+          1223732,
+          741559,
+          792887,
+          1228336,
+          1335635,
+          1223739,
+          219627,
+          1411403,
+          572405,
+          1179607,
+          905239,
+          215219,
+          973426
+        ]
+      ]
+    },
+    "anchor": 404344,
+    "image_mapping": {
+      "city": "C\u00f3rdoba",
+      "filtered_pano": 2596,
+      "source_pano": 2600,
+      "heading": 270,
+      "patch": 630,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Spain/C\u00f3rdoba/c/h/ch_EWe6pmFvVbg8wtW0djw_270.jpg",
+      "pano_id": "ch_EWe6pmFvVbg8wtW0djw",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Spain/C\u00f3rdoba/c/h/ch_EWe6pmFvVbg8wtW0djw_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Spain/C\u00f3rdoba/c/h/ch_EWe6pmFvVbg8wtW0djw_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Spain/C\u00f3rdoba/c/h/ch_EWe6pmFvVbg8wtW0djw_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Spain/C\u00f3rdoba/c/h/ch_EWe6pmFvVbg8wtW0djw_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "split",
+    "relation": {
+      "parent": 311,
+      "children": [
+        492,
+        676
+      ],
+      "parent_coverage": 0.8975526129108536,
+      "minimum_unique_parent_fraction": 0.3152045400803973,
+      "decoder_cosines": [
+        0.8990777730941772,
+        0.7294409275054932
+      ],
+      "parent_recalls": [
+        0.5059706568717957,
+        0.5823480486869812
+      ],
+      "parent_top_anchor_rows": [
+        167447,
+        942871,
+        474992,
+        893873,
+        596981,
+        1130102,
+        636465,
+        474937,
+        329044,
+        271858,
+        893848,
+        695029,
+        165111,
+        692017,
+        1289497,
+        974258
+      ],
+      "child_top_anchor_rows": [
+        [
+          591034,
+          404344,
+          359483,
+          1259992,
+          1370745,
+          1348307,
+          1259991,
+          882391,
+          233364,
+          1095768,
+          271863,
+          400467,
+          279674,
+          1425753,
+          729140,
+          1103413
+        ],
+        [
+          1162392,
+          1329909,
+          1121006,
+          471604,
+          732723,
+          741559,
+          1223732,
+          565398,
+          279673,
+          792887,
+          1228336,
+          1223739,
+          1335635,
+          1393298,
+          732724,
+          1100787
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          404344,
+          591034,
+          1259992,
+          1370745,
+          1348307,
+          1259991,
+          271863,
+          400467,
+          1425753,
+          729140,
+          1103413,
+          1127067,
+          1071607,
+          1158615,
+          733974,
+          353364
+        ],
+        [
+          1162392,
+          1329909,
+          1121006,
+          1223732,
+          741559,
+          792887,
+          1228336,
+          1335635,
+          1223739,
+          219627,
+          1411403,
+          572405,
+          1179607,
+          905239,
+          215219,
+          973426
+        ]
+      ]
+    },
+    "anchor": 1162392,
+    "image_mapping": {
+      "city": "Samara",
+      "filtered_pano": 28,
+      "source_pano": 28,
+      "heading": 0,
+      "patch": 498,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Samara/d/5/d5a8_4O4_TYddw3ZizHqow_0.jpg",
+      "pano_id": "d5a8_4O4_TYddw3ZizHqow",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Samara/d/5/d5a8_4O4_TYddw3ZizHqow_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Samara/d/5/d5a8_4O4_TYddw3ZizHqow_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Samara/d/5/d5a8_4O4_TYddw3ZizHqow_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Samara/d/5/d5a8_4O4_TYddw3ZizHqow_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "no_close_match",
+    "relation": {
+      "feature": 129,
+      "heldout_frequency": 52049,
+      "max_decoder_cosine": 0.43003126978874207,
+      "max_activation_cosine": 0.10507285594940186,
+      "top_anchor_rows": [
+        622519,
+        1172286,
+        706712,
+        1412663,
+        695387,
+        1353268,
+        1385976,
+        9463,
+        121943,
+        269113,
+        511157,
+        327512,
+        7513,
+        547834,
+        1067701,
+        350902
+      ]
+    },
+    "anchor": 622519,
+    "image_mapping": {
+      "city": "Ibadan",
+      "filtered_pano": 1653,
+      "source_pano": 1653,
+      "heading": 90,
+      "patch": 544,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Nigeria/Ibadan/d/h/dhNG828QFxCy6JK-fwKSvg_90.jpg",
+      "pano_id": "dhNG828QFxCy6JK-fwKSvg",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Nigeria/Ibadan/d/h/dhNG828QFxCy6JK-fwKSvg_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Nigeria/Ibadan/d/h/dhNG828QFxCy6JK-fwKSvg_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Nigeria/Ibadan/d/h/dhNG828QFxCy6JK-fwKSvg_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Nigeria/Ibadan/d/h/dhNG828QFxCy6JK-fwKSvg_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "no_close_match",
+    "relation": {
+      "feature": 587,
+      "heldout_frequency": 38616,
+      "max_decoder_cosine": 0.4137757420539856,
+      "max_activation_cosine": 0.23916542530059814,
+      "top_anchor_rows": [
+        806904,
+        1367768,
+        378450,
+        806905,
+        68407,
+        301272,
+        579602,
+        625211,
+        730519,
+        1354261,
+        442744,
+        1041110,
+        579601,
+        74267,
+        742425,
+        316860
+      ]
+    },
+    "anchor": 806904,
+    "image_mapping": {
+      "city": "Lucknow",
+      "filtered_pano": 1328,
+      "source_pano": 1339,
+      "heading": 270,
+      "patch": 603,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Lucknow/5/D/5DLo8eTc15BMD7WWMjhxTQ_270.jpg",
+      "pano_id": "5DLo8eTc15BMD7WWMjhxTQ",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Lucknow/5/D/5DLo8eTc15BMD7WWMjhxTQ_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Lucknow/5/D/5DLo8eTc15BMD7WWMjhxTQ_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Lucknow/5/D/5DLo8eTc15BMD7WWMjhxTQ_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Lucknow/5/D/5DLo8eTc15BMD7WWMjhxTQ_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "stable",
+    "relation": {
+      "parent": 282,
+      "child": 1860,
+      "decoder_cosine": 0.9453478455543518,
+      "activation_cosine": 0.969889223575592,
+      "support_jaccard": 0.8723181486129761,
+      "parent_top_anchor_rows": [
+        1463841,
+        676865,
+        666048,
+        969251,
+        824480,
+        291553,
+        1258275,
+        509218,
+        1289057,
+        201986,
+        1502880,
+        1116256,
+        1133217,
+        986915,
+        1327234,
+        190944
+      ],
+      "child_top_anchor_rows": [
+        186497,
+        1289057,
+        368417,
+        762433,
+        1341505,
+        964833,
+        244738,
+        376353,
+        1461856,
+        355968,
+        735968,
+        412544,
+        1288513,
+        244737,
+        696128,
+        834944
+      ]
+    },
+    "anchor": 1463841,
+    "image_mapping": {
+      "city": "Volgograd",
+      "filtered_pano": 2249,
+      "source_pano": 2249,
+      "heading": 90,
+      "patch": 25,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Volgograd/s/S/sSoz1TfGxT30PWkyHjFCFw_90.jpg",
+      "pano_id": "sSoz1TfGxT30PWkyHjFCFw",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Volgograd/s/S/sSoz1TfGxT30PWkyHjFCFw_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Volgograd/s/S/sSoz1TfGxT30PWkyHjFCFw_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Volgograd/s/S/sSoz1TfGxT30PWkyHjFCFw_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Volgograd/s/S/sSoz1TfGxT30PWkyHjFCFw_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "stable",
+    "relation": {
+      "parent": 417,
+      "child": 184,
+      "decoder_cosine": 0.9785621166229248,
+      "activation_cosine": 0.9860965013504028,
+      "support_jaccard": 0.8106704950332642,
+      "parent_top_anchor_rows": [
+        705134,
+        702386,
+        506420,
+        503862,
+        922288,
+        11122,
+        1296692,
+        506418,
+        43282,
+        269330,
+        503860,
+        705135,
+        503855,
+        766319,
+        1319121,
+        269331
+      ],
+      "child_top_anchor_rows": [
+        705134,
+        12041,
+        705132,
+        12040,
+        702386,
+        13352,
+        269330,
+        11122,
+        703634,
+        1296687,
+        269331,
+        766319,
+        626643,
+        1296692,
+        605806,
+        366379
+      ]
+    },
+    "anchor": 705134,
+    "image_mapping": {
+      "city": "Kolkata",
+      "filtered_pano": 1939,
+      "source_pano": 1953,
+      "heading": 270,
+      "patch": 405,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Kolkata/p/w/pw1HGyvuoNzReXVgMAumsA_270.jpg",
+      "pano_id": "pw1HGyvuoNzReXVgMAumsA",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Kolkata/p/w/pw1HGyvuoNzReXVgMAumsA_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Kolkata/p/w/pw1HGyvuoNzReXVgMAumsA_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Kolkata/p/w/pw1HGyvuoNzReXVgMAumsA_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Kolkata/p/w/pw1HGyvuoNzReXVgMAumsA_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "split",
+    "relation": {
+      "parent": 514,
+      "children": [
+        1979,
+        997
+      ],
+      "parent_coverage": 0.9753694581280788,
+      "minimum_unique_parent_fraction": 0.3435960591133005,
+      "decoder_cosines": [
+        0.7103420495986938,
+        0.7843713760375977
+      ],
+      "parent_recalls": [
+        0.6317734122276306,
+        0.3571428656578064
+      ],
+      "parent_top_anchor_rows": [
+        724493,
+        16362,
+        16363,
+        923249,
+        16364,
+        16270,
+        247786,
+        1301163,
+        923242,
+        1349449,
+        16329,
+        724584,
+        16360,
+        1289770,
+        724586,
+        16330
+      ],
+      "child_top_anchor_rows": [
+        [
+          524708,
+          923242,
+          903818,
+          903809,
+          1289770,
+          524748,
+          1289763,
+          923241,
+          724493,
+          343841,
+          903817,
+          923249,
+          343846,
+          343845,
+          343847,
+          1263235
+        ],
+        [
+          1301163,
+          1301165,
+          627430,
+          1349449,
+          16362,
+          466664,
+          1350986,
+          466658,
+          1349448,
+          247780,
+          16363,
+          1350989,
+          16359,
+          1301153,
+          247786,
+          563012
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          524708,
+          923242,
+          903818,
+          903809,
+          1289770,
+          524748,
+          1289763,
+          923241,
+          724493,
+          343841,
+          903817,
+          923249,
+          343846,
+          343845,
+          343847,
+          1263235
+        ],
+        [
+          1301163,
+          1301165,
+          627430,
+          1349449,
+          16362,
+          466664,
+          1350986,
+          466658,
+          1349448,
+          247780,
+          16363,
+          1350989,
+          16359,
+          247786,
+          1301153,
+          563012
+        ]
+      ]
+    },
+    "anchor": 524708,
+    "image_mapping": {
+      "city": "GeorgeTown",
+      "filtered_pano": 1305,
+      "source_pano": 1305,
+      "heading": 90,
+      "patch": 118,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Malaysia/GeorgeTown/o/w/owdQu92liTmJ7l4IhlKYJA_90.jpg",
+      "pano_id": "owdQu92liTmJ7l4IhlKYJA",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Malaysia/GeorgeTown/o/w/owdQu92liTmJ7l4IhlKYJA_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Malaysia/GeorgeTown/o/w/owdQu92liTmJ7l4IhlKYJA_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Malaysia/GeorgeTown/o/w/owdQu92liTmJ7l4IhlKYJA_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Malaysia/GeorgeTown/o/w/owdQu92liTmJ7l4IhlKYJA_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "split",
+    "relation": {
+      "parent": 514,
+      "children": [
+        1979,
+        997
+      ],
+      "parent_coverage": 0.9753694581280788,
+      "minimum_unique_parent_fraction": 0.3435960591133005,
+      "decoder_cosines": [
+        0.7103420495986938,
+        0.7843713760375977
+      ],
+      "parent_recalls": [
+        0.6317734122276306,
+        0.3571428656578064
+      ],
+      "parent_top_anchor_rows": [
+        724493,
+        16362,
+        16363,
+        923249,
+        16364,
+        16270,
+        247786,
+        1301163,
+        923242,
+        1349449,
+        16329,
+        724584,
+        16360,
+        1289770,
+        724586,
+        16330
+      ],
+      "child_top_anchor_rows": [
+        [
+          524708,
+          923242,
+          903818,
+          903809,
+          1289770,
+          524748,
+          1289763,
+          923241,
+          724493,
+          343841,
+          903817,
+          923249,
+          343846,
+          343845,
+          343847,
+          1263235
+        ],
+        [
+          1301163,
+          1301165,
+          627430,
+          1349449,
+          16362,
+          466664,
+          1350986,
+          466658,
+          1349448,
+          247780,
+          16363,
+          1350989,
+          16359,
+          1301153,
+          247786,
+          563012
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          524708,
+          923242,
+          903818,
+          903809,
+          1289770,
+          524748,
+          1289763,
+          923241,
+          724493,
+          343841,
+          903817,
+          923249,
+          343846,
+          343845,
+          343847,
+          1263235
+        ],
+        [
+          1301163,
+          1301165,
+          627430,
+          1349449,
+          16362,
+          466664,
+          1350986,
+          466658,
+          1349448,
+          247780,
+          16363,
+          1350989,
+          16359,
+          247786,
+          1301153,
+          563012
+        ]
+      ]
+    },
+    "anchor": 1301163,
+    "image_mapping": {
+      "city": "Sydney",
+      "filtered_pano": 564,
+      "source_pano": 564,
+      "heading": 90,
+      "patch": 264,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Australia/Sydney/E/O/EO9KRRwOqdpS2fmYQQPjhg_90.jpg",
+      "pano_id": "EO9KRRwOqdpS2fmYQQPjhg",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Australia/Sydney/E/O/EO9KRRwOqdpS2fmYQQPjhg_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Australia/Sydney/E/O/EO9KRRwOqdpS2fmYQQPjhg_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Australia/Sydney/E/O/EO9KRRwOqdpS2fmYQQPjhg_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Australia/Sydney/E/O/EO9KRRwOqdpS2fmYQQPjhg_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "split",
+    "relation": {
+      "parent": 932,
+      "children": [
+        870,
+        1851
+      ],
+      "parent_coverage": 0.9579418553143869,
+      "minimum_unique_parent_fraction": 0.3377007903387499,
+      "decoder_cosines": [
+        0.8235545754432678,
+        0.8003753423690796
+      ],
+      "parent_recalls": [
+        0.6040379405021667,
+        0.6202410459518433
+      ],
+      "parent_top_anchor_rows": [
+        300651,
+        1166284,
+        401167,
+        1084395,
+        929324,
+        371664,
+        354860,
+        625770,
+        97290,
+        1129738,
+        1188876,
+        347373,
+        231946,
+        11465,
+        930087,
+        1129771
+      ],
+      "child_top_anchor_rows": [
+        [
+          1180869,
+          1166279,
+          680811,
+          169290,
+          399176,
+          1166282,
+          1327592,
+          625767,
+          729765,
+          71944,
+          776842,
+          127112,
+          1411593,
+          1389450,
+          802822,
+          964842
+        ],
+        [
+          157166,
+          1411595,
+          964749,
+          1070479,
+          1496749,
+          271247,
+          680649,
+          868048,
+          190859,
+          190860,
+          1488305,
+          710061,
+          401198,
+          1479690,
+          1358767,
+          64784
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          1180869,
+          1166279,
+          680811,
+          169290,
+          399176,
+          1166282,
+          1327592,
+          625767,
+          729765,
+          71944,
+          776842,
+          1389450,
+          802822,
+          964842,
+          412587,
+          1341451
+        ],
+        [
+          157166,
+          964749,
+          1070479,
+          1496749,
+          271247,
+          680649,
+          868048,
+          190859,
+          190860,
+          1488305,
+          401198,
+          710061,
+          1479690,
+          1358767,
+          64784,
+          1119339
+        ]
+      ]
+    },
+    "anchor": 1180869,
+    "image_mapping": {
+      "city": "SanAntonio",
+      "filtered_pano": 1533,
+      "source_pano": 1534,
+      "heading": 180,
+      "patch": 238,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/SanAntonio/l/-/l-6uH31CnJBaEbK1DUP66Q_180.jpg",
+      "pano_id": "l-6uH31CnJBaEbK1DUP66Q",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/SanAntonio/l/-/l-6uH31CnJBaEbK1DUP66Q_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/SanAntonio/l/-/l-6uH31CnJBaEbK1DUP66Q_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/SanAntonio/l/-/l-6uH31CnJBaEbK1DUP66Q_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/SanAntonio/l/-/l-6uH31CnJBaEbK1DUP66Q_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "split",
+    "relation": {
+      "parent": 932,
+      "children": [
+        870,
+        1851
+      ],
+      "parent_coverage": 0.9579418553143869,
+      "minimum_unique_parent_fraction": 0.3377007903387499,
+      "decoder_cosines": [
+        0.8235545754432678,
+        0.8003753423690796
+      ],
+      "parent_recalls": [
+        0.6040379405021667,
+        0.6202410459518433
+      ],
+      "parent_top_anchor_rows": [
+        300651,
+        1166284,
+        401167,
+        1084395,
+        929324,
+        371664,
+        354860,
+        625770,
+        97290,
+        1129738,
+        1188876,
+        347373,
+        231946,
+        11465,
+        930087,
+        1129771
+      ],
+      "child_top_anchor_rows": [
+        [
+          1180869,
+          1166279,
+          680811,
+          169290,
+          399176,
+          1166282,
+          1327592,
+          625767,
+          729765,
+          71944,
+          776842,
+          127112,
+          1411593,
+          1389450,
+          802822,
+          964842
+        ],
+        [
+          157166,
+          1411595,
+          964749,
+          1070479,
+          1496749,
+          271247,
+          680649,
+          868048,
+          190859,
+          190860,
+          1488305,
+          710061,
+          401198,
+          1479690,
+          1358767,
+          64784
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          1180869,
+          1166279,
+          680811,
+          169290,
+          399176,
+          1166282,
+          1327592,
+          625767,
+          729765,
+          71944,
+          776842,
+          1389450,
+          802822,
+          964842,
+          412587,
+          1341451
+        ],
+        [
+          157166,
+          964749,
+          1070479,
+          1496749,
+          271247,
+          680649,
+          868048,
+          190859,
+          190860,
+          1488305,
+          401198,
+          710061,
+          1479690,
+          1358767,
+          64784,
+          1119339
+        ]
+      ]
+    },
+    "anchor": 157166,
+    "image_mapping": {
+      "city": "Bologna",
+      "filtered_pano": 1741,
+      "source_pano": 1743,
+      "heading": 270,
+      "patch": 355,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Italy/Bologna/i/6/i6lb2FqxB66k8pBpvUJIVA_270.jpg",
+      "pano_id": "i6lb2FqxB66k8pBpvUJIVA",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Italy/Bologna/i/6/i6lb2FqxB66k8pBpvUJIVA_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Italy/Bologna/i/6/i6lb2FqxB66k8pBpvUJIVA_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Italy/Bologna/i/6/i6lb2FqxB66k8pBpvUJIVA_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Italy/Bologna/i/6/i6lb2FqxB66k8pBpvUJIVA_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "no_close_match",
+    "relation": {
+      "feature": 1482,
+      "heldout_frequency": 70145,
+      "max_decoder_cosine": 0.43587934970855713,
+      "max_activation_cosine": 0.23813332617282867,
+      "top_anchor_rows": [
+        579686,
+        1254501,
+        579684,
+        368322,
+        1502150,
+        138565,
+        1479876,
+        1243681,
+        682951,
+        630178,
+        1279073,
+        271653,
+        1292902,
+        929031,
+        47750,
+        19685
+      ]
+    },
+    "anchor": 579686,
+    "image_mapping": {
+      "city": "Hamburg",
+      "filtered_pano": 463,
+      "source_pano": 463,
+      "heading": 270,
+      "patch": 93,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Germany/Hamburg/H/K/HKTOsgxheVe3a3uLqZWz5g_270.jpg",
+      "pano_id": "HKTOsgxheVe3a3uLqZWz5g",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/Germany/Hamburg/H/K/HKTOsgxheVe3a3uLqZWz5g_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/Germany/Hamburg/H/K/HKTOsgxheVe3a3uLqZWz5g_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/Germany/Hamburg/H/K/HKTOsgxheVe3a3uLqZWz5g_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/Germany/Hamburg/H/K/HKTOsgxheVe3a3uLqZWz5g_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "no_close_match",
+    "relation": {
+      "feature": 1622,
+      "heldout_frequency": 48949,
+      "max_decoder_cosine": 0.4146524667739868,
+      "max_activation_cosine": 0.23531056940555573,
+      "top_anchor_rows": [
+        1037547,
+        1037549,
+        1509703,
+        1408129,
+        518980,
+        242888,
+        360011,
+        1489289,
+        1197957,
+        1143110,
+        380514,
+        176711,
+        1401295,
+        1421286,
+        656236,
+        250988
+      ]
+    },
+    "anchor": 1037547,
+    "image_mapping": {
+      "city": "Philadelphia",
+      "filtered_pano": 1751,
+      "source_pano": 1751,
+      "heading": 270,
+      "patch": 259,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/Philadelphia/g/N/gNuygtbsqfiOgv5jAXDJ-w_270.jpg",
+      "pano_id": "gNuygtbsqfiOgv5jAXDJ-w",
+      "images": {
+        "0": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/Philadelphia/g/N/gNuygtbsqfiOgv5jAXDJ-w_0.jpg",
+        "90": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/Philadelphia/g/N/gNuygtbsqfiOgv5jAXDJ-w_90.jpg",
+        "180": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/Philadelphia/g/N/gNuygtbsqfiOgv5jAXDJ-w_180.jpg",
+        "270": "/host/root/mnt/nas/huangyj/GoogleSV/images/US/Philadelphia/g/N/gNuygtbsqfiOgv5jAXDJ-w_270.jpg"
+      }
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  }
+]

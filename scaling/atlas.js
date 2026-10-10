@@ -71,7 +71,7 @@
   function metrics(row, child) {
     if (row.kind === 'orphan') return `最近旧特征 f${row.nearest_parent} · 最大 decoder ${row.max_decoder_cosine} · 最大激活 ${row.max_activation_cosine}`;
     const edge = row.edges?.find(item => item.child === child);
-    if (row.kind === 'inactive') return '仅为预激活候选；该特征在 151,040 个测试 patch 中没有稀疏激活';
+    if (row.kind === 'inactive') return `仅为预激活候选；该特征在 ${atlas.sample.anchors.toLocaleString()} 个测试 patch 中没有稀疏激活`;
     if (!edge) return row.split_coverage !== null ? `两个子特征合计覆盖父激活 ${Math.round(row.split_coverage * 100)}%` : '点击子特征查看对应指标';
     const overlap = edge.support_jaccard !== undefined ? ` · 支持集 Jaccard ${edge.support_jaccard}` : '';
     return `${edge.kind === 'reference' ? '最近特征，仅供比较 · ' : ''}decoder ${edge.decoder_cosine} · 激活 ${edge.activation_cosine}${overlap}`;
@@ -181,8 +181,12 @@
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     return response.json();
   }).then(data => {
-    if (data.parents.length !== 512 || data.unassigned_children.length !== 30) throw new Error('实例清单数量不完整');
+    if (data.parents.length !== 512 || data.parents.some(row => !row.examples.length)) throw new Error('实例清单数量不完整');
     atlas = data;
+    document.querySelectorAll('#atlas-buckets [data-kind]').forEach(button => {
+      const kind = button.dataset.kind;
+      button.querySelector('.bucket-count').textContent = kind === 'all' ? data.parents.length : kind === 'orphan' ? data.unassigned_children.length : data.counts[kind] || 0;
+    });
     render();
   }).catch(error => { status.textContent = `实例清单加载失败：${error.message}`; });
 })();
