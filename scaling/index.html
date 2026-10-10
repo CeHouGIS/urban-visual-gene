@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Urban Scene Primitives 的 BatchTopK SAE 字典尺度分析：真实街景实例、激活图、特征分流与稳定性。">
   <title>街景特征如何随字典宽度变化 | Urban Scene Primitives</title>
+  <link rel="stylesheet" href="atlas.css">
   <style>
     :root { color-scheme: light; --ink:#243235; --muted:#56666a; --line:#dbe2e1; --paper:#fff; --wash:#f3f6f5; --green:#20877a; --amber:#c78420; --red:#b84d60; --blue:#657e9f; }
     * { box-sizing:border-box; }
@@ -82,10 +83,14 @@
       .topbar .wrap { min-height:56px; }
       .topbar nav { gap:12px; font-size:13px; }
       .brand { font-size:13px; }
-      header.intro { padding:30px 0 28px; }
-      .intro p { font-size:15px; }
-      .fact { min-width:130px; margin:0 18px 15px 0; padding-right:18px; }
-      .fact strong { font-size:20px; }
+      header.intro { padding:20px 0; }
+      h1 { font-size:30px; }
+      .intro p { font-size:14px; }
+      .facts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:17px; padding-top:12px; }
+      .fact { min-width:0; margin:0; padding:0 5px; }
+      .fact:first-child { padding-left:0; }
+      .fact strong { font-size:17px; }
+      .fact span { font-size:10px; line-height:1.35; }
       section { padding:30px 0; }
       .examples,.three { grid-template-columns:1fr; }
       .section-head h2 { font-size:23px; }
@@ -95,15 +100,32 @@
   </style>
 </head>
 <body>
-  <div class="topbar"><div class="wrap"><a class="brand" href="#top">Urban Scene Primitives</a><nav aria-label="页面导航"><a href="#examples">街景实例</a><a href="#flows">尺度流向</a><a href="#method">如何判定</a></nav></div></div>
+  <div class="topbar"><div class="wrap"><a class="brand" href="#top">Urban Scene Primitives</a><nav aria-label="页面导航"><a href="#atlas">逐特征实例</a><a href="#examples">精选实例</a><a href="#flows">尺度流向</a><a href="#method">如何判定</a></nav></div></div>
   <header class="intro" id="top"><div class="wrap">
     <div class="eyebrow">BatchTopK SAE · 字典尺度分析</div>
     <h1>字典变大后，街景特征去了哪里？</h1>
-    <p>用同一批街景 patch 比较宽度 512、1024、2048 的字典。下面先看原图和激活图，再看统计流向：哪些响应仍在原位置，哪些出现互补分工，哪些暂时没有可信对应。</p>
+    <p>用同一批街景 patch 对照三种字典。逐行查看哪些响应保持稳定、发生分流，哪些暂时无法匹配。</p>
     <div class="facts"><div class="fact"><strong>295</strong><span>参与比较的城市</span></div><div class="fact"><strong>1,180</strong><span>四视角采样点</span></div><div class="fact"><strong>151,040</strong><span>测试 patch</span></div><div class="fact"><strong>268</strong><span>贯穿三种宽度的稳定链</span></div></div>
   </div></header>
 
   <main>
+    <section id="atlas"><div class="wrap">
+      <div class="section-head"><div><h2>512 个特征，逐行查看流向</h2><p>选择类别或输入特征编号。每行使用同一张街景对照旧特征和新特征；点击后继编号可切换分流证据，展开后可同时比较两张街景。</p></div></div>
+      <div class="atlas-buckets" id="atlas-buckets" aria-label="点击筛选特征关系">
+        <button type="button" data-kind="all" aria-pressed="true"><span class="bucket-count">512</span><span>全部旧特征</span></button>
+        <span class="bucket-arrow" aria-hidden="true">→</span>
+        <button type="button" data-kind="stable" aria-pressed="false"><span class="bucket-count">139</span><span>仅稳定</span></button>
+        <button type="button" data-kind="split" aria-pressed="false"><span class="bucket-count">164</span><span>发生分流</span></button>
+        <button type="button" data-kind="unresolved" aria-pressed="false"><span class="bucket-count">36</span><span>关系未确定</span></button>
+        <button type="button" data-kind="inactive" aria-pressed="false"><span class="bucket-count">173</span><span>未激活</span></button>
+        <button type="button" data-kind="orphan" aria-pressed="false"><span class="bucket-count">30</span><span>新字典无近似旧对应</span></button>
+      </div>
+      <div class="atlas-tools"><label>查找特征 <input id="atlas-search" type="search" inputmode="search" placeholder="旧 f66 / 新 1024:66 / 城市" aria-label="按编号或城市搜索特征"></label><label>排序 <select id="atlas-sort" aria-label="特征排序"><option value="id">特征编号</option><option value="support">激活支持数</option></select></label><label>热图强度 <input id="atlas-opacity" type="range" min="0" max="100" value="85" aria-label="热图透明度"></label></div>
+      <p id="atlas-status" class="atlas-status" role="status">正在加载逐特征街景实例…</p>
+      <div id="atlas-list" class="atlas-list"></div>
+      <div class="atlas-pagination"><button id="atlas-prev" type="button" disabled aria-label="上一页">←</button><span id="atlas-page"></span><button id="atlas-next" type="button" disabled aria-label="下一页">→</button></div>
+      <p class="chart-note">激活与类别来自稀疏 BatchTopK；图片热区是完整 28×28 网格上的稠密正预激活，同一街景中的热图共享色标。未激活行展示预激活最高的候选街景，不是有效激活实例。</p>
+    </div></section>
     <section id="examples"><div class="wrap">
       <div class="section-head"><div><h2>先看街景实例</h2><p>每幅图按“原始街景 → 旧特征响应 → 新特征响应”排列；分流例子会显示两个新特征。点击放大查看 patch 激活区域。</p></div></div>
       <div class="tabs" role="tablist" aria-label="特征变化类别">
@@ -153,6 +175,8 @@
   </main>
   <footer class="foot"><div class="wrap">Urban Scene Primitives · BatchTopK SAE 尺度分析 · <a href="#method">判定标准与研究限制</a></div></footer>
   <dialog id="image-dialog" aria-label="放大的街景激活图"><div class="dialog-bar"><span id="dialog-title"></span><button type="button" id="close-dialog" aria-label="关闭">×</button></div><div class="dialog-scroll"><img id="dialog-image" alt="放大的街景实例"></div></dialog>
+  <dialog id="atlas-dialog" aria-label="放大的逐特征街景实例"><div class="dialog-bar"><span id="atlas-dialog-title"></span><button type="button" id="atlas-dialog-close" aria-label="关闭">×</button></div><div class="atlas-dialog-image"><img id="atlas-dialog-base" alt="街景原图"><img id="atlas-dialog-mask" alt="特征热图"></div></dialog>
+  <script src="atlas.js" defer></script>
   <script>
     const tabs = [...document.querySelectorAll('[data-tab]')];
     const panels = [...document.querySelectorAll('[data-panel]')];
