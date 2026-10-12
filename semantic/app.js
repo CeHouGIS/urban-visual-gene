@@ -6,7 +6,7 @@ let atlas, points = [], byId, selected = null, hovered = null;
 let width = 1, height = 1, scale = 1, panX = 0, panY = 0, drag = null, bounds;
 let currentExamples = [], visibleCount = 0, requestId = 0, hoverTimer;
 const SVG = 'http://www.w3.org/2000/svg';
-const imageURL = (id, thumb = false) => `${thumb ? 'thumbs' : 'images'}/${String(id).padStart(4, '0')}.webp`;
+const imageURL = (id, thumb = false) => `${document.body.dataset.imageBase || ''}${thumb ? 'thumbs' : 'images'}/${String(id).padStart(4, '0')}.webp`;
 
 async function json(url) {
   const response = await fetch(url);
@@ -181,6 +181,11 @@ async function init() {
     byId = new Map(atlas.points.map(p => [p.feature, p]));
     const xs = points.map(p => p.x), ys = points.map(p => p.y);
     bounds = {minX: Math.min(...xs), maxX: Math.max(...xs), minY: Math.min(...ys), maxY: Math.max(...ys)};
+    $('model-label').textContent = `SAE DIMENSION ATLAS · W${atlas.width} / k${atlas.k}`;
+    $('model-spec').textContent = `${atlas.width} 维字典、k=${atlas.k}`;
+    $('feature-input').max = atlas.width - 1;
+    $('nav-' + atlas.width)?.setAttribute('aria-current', 'page');
+    $('projection-note').textContent = `坐标相近表示实例语义相近，颜色不是分类准确率。${atlas.width - points.length} 个实例不足的维度不投影，仍可用编号查看。`;
     $('summary').textContent = `${points.length} / ${atlas.width} 个维度进入投影 · ${atlas.cities} 城市 · ${atlas.panos} 全景点位 · ${atlas.crop_count.toLocaleString()} 个激活区域`;
     resize(); const id = /^#f(\d+)$/.exec(location.hash); await select(id ? Number(id[1]) : 2073, false);
   } catch (error) { $('summary').textContent = `${error.message}，请刷新重试。`; }

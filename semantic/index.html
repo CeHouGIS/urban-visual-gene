@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang="zh-CN">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="4096 个 SAE 维度的语义 UMAP：悬停查看原始街景，点击浏览 Top100 激活区域。">
+<meta name="description" content="BatchTopK SAE 维度的语义 UMAP：悬停查看原始街景，点击浏览 Top100 激活区域。">
 <title>特征语义图谱 | Urban Scene Primitives</title>
 <link rel="stylesheet" href="style.css?v=1"><script src="app.js?v=1" defer></script></head>
 <body>
-<nav><a href="../scaling/">Urban Scene Primitives</a><a href="../scaling/">尺度分析</a><a href="./" aria-current="page">特征语义图谱</a></nav>
-<header><p class="eyebrow">SAE DIMENSION ATLAS · W4096 / k64</p><h1>从特征维度，看见街景语义</h1><p>悬停在点上看原图，点击查看该维度的完整 Top100。每个点代表一个 SAE 维度，位置来自高激活区域的图像语义。</p><p id="summary" role="status">正在加载图谱…</p></header>
+<nav><a href="../scaling/">Urban Scene Primitives</a><a href="../scaling/">尺度分析</a><a href="../semantic/" id="nav-4096">4096 维</a><a href="../semantic-2048/" id="nav-2048">2048 维</a></nav>
+<header><p class="eyebrow" id="model-label">SAE DIMENSION ATLAS</p><h1>从特征维度，看见街景语义</h1><p>悬停在点上看原图，点击查看该维度的完整 Top100。每个点代表一个 SAE 维度，位置来自高激活区域的图像语义。</p><p id="summary" role="status">正在加载图谱…</p></header>
 <main>
 <section class="plot-panel" aria-label="特征语义 UMAP">
-<div class="toolbar"><label>维度编号 <input id="feature-input" type="number" min="0" max="4095" placeholder="例如 2073"></label><button id="jump">查看</button><button id="reset">重置视图</button></div>
-<canvas id="plot" aria-label="4096 个特征维度；使用上方编号搜索查看各维度" tabindex="0"></canvas>
+<div class="toolbar"><label>维度编号 <input id="feature-input" type="number" min="0" placeholder="例如 820"></label><button id="jump">查看</button><button id="reset">重置视图</button></div>
+<canvas id="plot" aria-label="SAE 特征维度语义投影；使用上方编号搜索查看各维度" tabindex="0"></canvas>
 <p id="plot-status" aria-live="polite">悬停看原图 · 点击固定维度 · 滚轮缩放 · 拖动平移</p>
 <div class="legend"><span class="gradient"></span>颜色：高激活区域 embedding 的一致性</div>
-<p class="note">坐标相近表示实例语义相近，颜色不是分类准确率。15 个实例不足的维度不投影，仍可用编号查看。</p>
-<details><summary>数据与方法</summary><p>最新 BatchTopK SAE：1024 维输入、4096 维字典、k=64。模型在 304 城市的 3000 万 patch 上训练。本次分析使用 295 城市 × 4 个 pano × 4 个方向，共 4720 张图，每图全部 28×28 patch；点位排除 SAE 训练缓存。</p><p>以每张图的最大稀疏激活排名，每维取至多 100 张不同图像。峰值连通区域裁剪 → SigLIP encoder → 每例归一化 → 每维等权均值归一化 → 余弦 UMAP。城市、位置与 decoder 向量不参与降维。</p><p>原图为网页尺寸预览，百度实例按训练方式切出方向视图。区域框是 patch 激活的候选范围，尚未经物体分割或类别验证。</p><a href="feature_semantic_umap.csv">下载维度坐标 CSV</a> · <a href="provenance.json">数据来源</a></details>
+<p class="note" id="projection-note">坐标相近表示实例语义相近，颜色不是分类准确率。</p>
+<details><summary>数据与方法</summary><p>BatchTopK SAE：1024 维输入、<span id="model-spec">字典维度与 k 加载中</span>。模型在 304 城市的 3000 万 patch 上训练。本次分析使用 295 城市 × 4 个 pano × 4 个方向，共 4720 张图，每图全部 28×28 patch；点位排除 SAE 训练缓存。</p><p>以每张图的最大稀疏激活排名，每维取至多 100 张不同图像。峰值连通区域裁剪 → SigLIP encoder → 每例归一化 → 每维等权均值归一化 → 余弦 UMAP。城市、位置与 decoder 向量不参与降维。</p><p>原图为网页尺寸预览，百度实例按训练方式切出方向视图。区域框是 patch 激活的候选范围，尚未经物体分割或类别验证。</p><a href="feature_semantic_umap.csv">下载维度坐标 CSV</a> · <a href="provenance.json">数据来源</a></details>
 </section>
 <section id="detail" aria-label="维度实例"><p class="eyebrow">TOP ACTIVATION EVIDENCE</p><h2 id="detail-title">选择一个特征维度</h2><p id="detail-stats"></p>
 <div class="toolbar"><label>展示 <select id="view-mode"><option value="both">原图 + 激活区域</option><option value="original">原图</option><option value="crop">激活区域</option></select></label><label><input id="show-box" type="checkbox" checked> 在原图标出区域</label></div>
