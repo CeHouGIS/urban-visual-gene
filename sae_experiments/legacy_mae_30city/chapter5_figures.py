@@ -126,8 +126,12 @@ def hierarchy(output: Path, figures: Path) -> None:
     fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.4),
                              gridspec_kw={"width_ratios": [2.5, 1]},
                              constrained_layout=True)
-    dendrogram(tree, truncate_mode="lastp", p=64, no_labels=True,
-               color_threshold=0, above_threshold_color="#337e7a", ax=axes[0])
+    branches = dendrogram(tree, truncate_mode="lastp", p=64, no_labels=True,
+                          color_threshold=0, above_threshold_color="#337e7a", ax=axes[0])
+    merge_heights = np.asarray(branches["dcoord"])
+    merge_heights = merge_heights[merge_heights > 0]
+    margin = max(float(np.ptp(merge_heights)) * .06, 1e-3)
+    axes[0].set_ylim(merge_heights.min() - margin, merge_heights.max() + margin)
     axes[0].set(xlabel="64 terminal branches", ylabel="Decoder cosine distance",
                 title="Average-linkage hierarchy of 4,096 SAE decoder directions")
     axes[1].hist(sizes, bins=16, color="#be7654", edgecolor="white")
