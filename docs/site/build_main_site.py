@@ -22,6 +22,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from PIL import Image
+from panorama_display import render_panorama_galleries
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPERIMENT = ROOT / "experiments/vitl30_panorama_w4096_k32"
@@ -141,7 +142,7 @@ def semantic_pages(out, source, reports):
                          'image': image_id, 'box': example['bbox_native_view'], 'heat': heat})
         write_compressed_json(target/f'features/{fid}.json.gz', {'feature': fid, 'group': points[fid]['group'],
                                                               'coherence': point['coherence'], 'examples': rows})
-    original = original.replace("'features/'+id+'.html'", "'feature.html?f='+id")
+    original = original.replace("'features/'+id+'.html'", "'feature.html?v=panorama2&f='+id")
     original = original.replace('im.src=crop;', "setPreview(im,crop,'sources/');")
     original = original.replace('<script>const atlas=', '<script src="../assets/preview.js"></script><script>const atlas=')
     original = original.replace('</head>', '<link rel="stylesheet" href="../assets/site.css"></head>') if '</head>' in original else original.replace('<style>', '<link rel="stylesheet" href="../assets/site.css"><style>', 1)
@@ -219,7 +220,7 @@ def combination_pages(out, reports, snapshot):
     motif_cards = [re.sub(r'href="#f(\d+)"', r'href="../semantic/feature.html?f=\1"', c).replace('panoramas/', 'motifs/') for c in motif_cards]
     content = '''<div class="eyebrow">Composition · exploratory analysis</div><h1>景观组合探索</h1>
 <p class="lead">在当前 4,096 维 SAE 激活上，寻找反复共同出现的组成与全景实例。</p>
-<div class="note">这一页的两类结果均来自当前 ViT-L W4096/K32 模型。它们是候选组合，尚不能直接命名为独立的景观类型。</div>
+<div class="note">这一页的两类结果均来自当前 ViT-L W4096/K32 模型。它们是候选组合，尚不能直接命名为独立的景观类型。实例按 0° → 90° → 180° → 270° 展示同一全景的四张原图，保留原图比例；每张透视图单独标记方向，未进行无缝投影拼接。</div>
 <h2>全景组成模板</h2><p>对 3,712 个验证全景的维度组成做非负矩阵分解（NMF）。主展示为 32 个模板，并比较 16 / 32 / 64 个模板的跨城市重建表现；32 表示模型容量，不表示已确定有 32 类景观。</p>
 @OVERVIEW@<details><summary>展开全部 32 个模板及四方向全景</summary>@NMF@</details>
 <h2>跨城市共同出现的维度</h2><p>在空间稀疏化后的全景中，使用部分城市发现组合，再在留出城市验证共同出现与峰值关系。这里保留全部结果表，并展示 30 组代表实例；显著性只对应报告中明确检验的统计量。</p>
@@ -230,9 +231,6 @@ def combination_pages(out, reports, snapshot):
     content = content.replace('@OVERVIEW@', figure('Fig_ViTL30_Landscape_Prototype_Overview.jpg', '32 个 NMF 候选组成模板的代表全景', '../assets/figures/'))
     content = content.replace('@EVIDENCE@', figure('Fig_Dimension_and_Motif_Evidence.png', '逐维证据与组合验证的统计摘要', '../assets/figures/'))
     (target/'index.html').write_text(page('组合探索', 'combinations', content, snapshot))
-    for source, dest in [(reports/'landscape_prototypes/panoramas', target/'panoramas'),
-                         (reports/'unit_motifs/panoramas', target/'motifs')]:
-        shutil.copytree(source, dest)
     for filename in ['motifs.csv', 'dimension_audit.csv', 'EXPERIMENT_DESIGN.md']:
         shutil.copyfile(reports/'unit_motifs'/filename, target/filename)
     write_json(target/'summary.json', {'nmf': nmf, 'motifs': motifs})
@@ -268,6 +266,7 @@ def build(out, workers):
     (out/'assets/figures').mkdir()
     for filename in figure_names:
         shutil.copyfile(EXPERIMENT/'results/figures'/filename, out/'assets/figures'/filename)
+    panorama_display = render_panorama_galleries(out, source, reports)
     (out/'data/training').mkdir(parents=True)
     shutil.copyfile(EXPERIMENT/'results/training/history.csv', out/'data/training/history.csv')
     training = read_json(EXPERIMENT/'results/training/training_report.json')
@@ -328,6 +327,8 @@ jobs:
         'training': {'cities': 30, 'panoramas': 89031, 'train': 85191, 'validation': 3840},
         'image_semantics': {'cities': 29, 'panoramas': 3712, 'images': len(image_rows), 'dimensions': dimensions, 'projected_dimensions': 2863, 'top100_instances': examples, 'top10_umap_points': 29934},
         'vlm_status_counts': counts, 'file_count': len(files)+1, 'bytes_before_manifest': size,
+        'panorama_display': {**{k: v for k, v in panorama_display.items() if k != 'panorama_indices_by_panel'},
+                             'layout_manifest': 'combinations/panorama_layout.json'},
         'packaging': 'Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.',
         'source_result_manifest_sha256': hashlib.sha256((EXPERIMENT/'results/manifest.json').read_bytes()).hexdigest()})
     print(json.dumps({'output': str(out), 'files': len(files)+1, 'MB': round(size/1e6,1), 'vlm': counts}, ensure_ascii=False), flush=True)
