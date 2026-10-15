@@ -1,4 +1,4 @@
-name: Deploy dashboard to GitHub Pages
+name: Deploy main experiment to GitHub Pages
 on:
   push:
     branches: [gh-pages]
