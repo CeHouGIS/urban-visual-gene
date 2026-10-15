@@ -1,0 +1,18 @@
+{
+  "model": "W2048/k64",
+  "heldout_panoramas": 11800,
+  "cities": 295,
+  "discovery_cities": 207,
+  "validation_cities": 88,
+  "eligible_features": 2047,
+  "candidates": 100,
+  "max_semantic_cosine": 0.85,
+  "permutations": 9999,
+  "fdr_05_pairs": 100,
+  "threshold": "feature-specific 90th percentile of patch counts on discovery panoramas, minimum 1",
+  "null": "permute one feature within city and panorama activation-richness quartile",
+  "limitation": "richness matched in quartiles, not exact row-degree preserving; co-occurrence alone does not establish spatial template or causal relation",
+  "semantic_embedding": "reports/data/semantic_umap_w2048_k64_top100/feature_semantic_embeddings.f32.npy",
+  "semantic_embedding_sha256": "ff036a74a24070a92d8700b4dce2c46bb399ced47acfee66a7a4f3ada53bdde1",
+  "seed": 20261013
+}

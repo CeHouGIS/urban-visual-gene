@@ -1,0 +1,18 @@
+{
+  "512_to_1024": {
+    "original_stable_pairs": 286,
+    "retained_stable_pairs": 286,
+    "original_split_parents": 164,
+    "retained_split_parent_child_pairs": 151,
+    "original_zero_support": 173,
+    "expanded_zero_support": 173
+  },
+  "1024_to_2048": {
+    "original_stable_pairs": 464,
+    "retained_stable_pairs": 459,
+    "original_split_parents": 201,
+    "retained_split_parent_child_pairs": 183,
+    "original_zero_support": 437,
+    "expanded_zero_support": 437
+  }
+}

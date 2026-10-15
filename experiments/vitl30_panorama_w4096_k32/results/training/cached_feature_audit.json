@@ -1,0 +1,277 @@
+{
+  "source": "/root/code/urban-visual-gene/outputs/experiments/nas_30city_vitl_panorama_w4096_k32/cached_feature_map.json",
+  "cities": [
+    {
+      "city": "Argentina/BuenosAires",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_BuenosAires_p784.f16.npy",
+      "panoramas": 2689,
+      "train_panoramas": 2561,
+      "validation_panoramas": 128,
+      "identity": "0b1f2bd4dedbebe8ba3e86670f7d6628245c2af57cbd4ef0fea46e034dea2902",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Australia/Melbourne",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Melbourne_p784.f16.npy",
+      "panoramas": 2823,
+      "train_panoramas": 2695,
+      "validation_panoramas": 128,
+      "identity": "4dc13d4ffdb8231f443e1da6f1e53759f2030b92986ad5531303c0121cd6349a",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Australia/Sydney",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Sydney_p784.f16.npy",
+      "panoramas": 3000,
+      "train_panoramas": 2872,
+      "validation_panoramas": 128,
+      "identity": "ca2fd393e1839729498053f8d107502cf8b18b6007a5d25de078da454f909c11",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Austria/Vienna",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Vienna_p784.f16.npy",
+      "panoramas": 2999,
+      "train_panoramas": 2871,
+      "validation_panoramas": 128,
+      "identity": "c11d4ce1397fcc6eb271d9d252f145edcc490f5bbb69f926dc27e55dcd4830c2",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Bangladesh/Dhaka",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Dhaka_p784.f16.npy",
+      "panoramas": 3000,
+      "train_panoramas": 2872,
+      "validation_panoramas": 128,
+      "identity": "07648d2411508d95c9d8e9b889016558d57f54212e4c573776e43d4e8a7fa48b",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Belgium/Antwerp",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Antwerp_p784.f16.npy",
+      "panoramas": 2999,
+      "train_panoramas": 2871,
+      "validation_panoramas": 128,
+      "identity": "7b8bc21850814f1549cca2c26ffd7bdd5d94dfc9a344b59a7103f041fd58a8dc",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "SouthAfrica/CapeTown",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_CapeTown_p784.f16.npy",
+      "panoramas": 3000,
+      "train_panoramas": 2872,
+      "validation_panoramas": 128,
+      "identity": "4161190bd6faca0fd138ffc2382604eb4da76ff15220d0ab761a4e06e19e6810",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Brazil/SaoPaulo",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_SaoPaulo_p784.f16.npy",
+      "panoramas": 2999,
+      "train_panoramas": 2871,
+      "validation_panoramas": 128,
+      "identity": "b3ee827f473ee99932c3eed7131daffb45b134e3e098542edee079d267964ac3",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "US/Phoenix",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Phoenix_p784.f16.npy",
+      "panoramas": 2998,
+      "train_panoramas": 2870,
+      "validation_panoramas": 128,
+      "identity": "52889fd0707cd2e52b263cada595a71cbc572b4b93541fa06e601121da2f333a",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "China/Taipei",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Taipei_p784.f16.npy",
+      "panoramas": 2994,
+      "train_panoramas": 2866,
+      "validation_panoramas": 128,
+      "identity": "47d8fe2630637ddc4d879289951d56fb395bd0f567b1f508dfee16d1d0b45484",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Brazil/RiodeJaneiro",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_RiodeJaneiro_p784.f16.npy",
+      "panoramas": 2993,
+      "train_panoramas": 2865,
+      "validation_panoramas": 128,
+      "identity": "157d1618da9b53033d99a41b2085cc33d2efceb924e57b12f6b6630b1f993ab2",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Australia/Perth",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Perth_p784.f16.npy",
+      "panoramas": 3000,
+      "train_panoramas": 2872,
+      "validation_panoramas": 128,
+      "identity": "3faf42716878ef48c7a0b55ea16c5e70b1402f9989d001d53f9ea478b02c7381",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "France/Paris",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Paris_p784.f16.npy",
+      "panoramas": 2997,
+      "train_panoramas": 2869,
+      "validation_panoramas": 128,
+      "identity": "6c1e22ae0d8c8d60a2783db620add73c814c124825f7d3c5468f213e09ac34fb",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Germany/Hamburg",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Hamburg_p784.f16.npy",
+      "panoramas": 2999,
+      "train_panoramas": 2871,
+      "validation_panoramas": 128,
+      "identity": "ad64092b029842768d09d1ccaaa62046f0caf9aca0b9778a2f273f391beec8e2",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Brazil/Brasília",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Brasília_p784.f16.npy",
+      "panoramas": 3000,
+      "train_panoramas": 2872,
+      "validation_panoramas": 128,
+      "identity": "c76169f67132d9c5566fe48bb40841b7db926f039e80e17d8ec8a03b59309dee",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Indonesia/Yogyakarta",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/nas_30city_vitl_panorama_w4096_k32/Indonesia__Yogyakarta/context.f16.npy",
+      "panoramas": 3200,
+      "train_panoramas": 3072,
+      "validation_panoramas": 128,
+      "identity": "a958ecb228f93360f3e888b3e71a0ee16ce16210fda6ae235d74b2b90248e9c8",
+      "pano_id_mapping_available": true
+    },
+    {
+      "city": "Italy/Naples",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Naples_p784.f16.npy",
+      "panoramas": 2991,
+      "train_panoramas": 2863,
+      "validation_panoramas": 128,
+      "identity": "2a9aac2ef2a2a1d56bda27b638af768276cb78cd8bff12d699cb9636a647dfe1",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Korea/Seoul",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Seoul_p784.f16.npy",
+      "panoramas": 2997,
+      "train_panoramas": 2869,
+      "validation_panoramas": 128,
+      "identity": "06e6a5d751f7d1c6796a57cab0eb6e35d71f6eadb9c7c4f3a2b8acb19a56d344",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Mexico/Monterrey",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Monterrey_p784.f16.npy",
+      "panoramas": 2999,
+      "train_panoramas": 2871,
+      "validation_panoramas": 128,
+      "identity": "a87b335f60745b082df6fb22a0a9a6010162632d5bb6e6362b5d7a64c082c4fe",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Belgium/Brussels",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Brussels_p784.f16.npy",
+      "panoramas": 2993,
+      "train_panoramas": 2865,
+      "validation_panoramas": 128,
+      "identity": "e33edb8b2cfa32fae6fd129eddf61b7b337f8e5db33a3520d13c8a7f71cc4a18",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Nigeria/Lagos",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Lagos_p784.f16.npy",
+      "panoramas": 3000,
+      "train_panoramas": 2872,
+      "validation_panoramas": 128,
+      "identity": "8b32dd41bd3109ae9a35b505bf996b01d8f63d47febdabe081552c6a2c9933b0",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Portugal/Lisbon",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Lisbon_p784.f16.npy",
+      "panoramas": 2998,
+      "train_panoramas": 2870,
+      "validation_panoramas": 128,
+      "identity": "eadbf49a3dd2d0a6d2d241165575acd9c5d7963fcc5f0b40c2154ec4d072ced7",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Russia/Moscow",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Moscow_p784.f16.npy",
+      "panoramas": 2993,
+      "train_panoramas": 2865,
+      "validation_panoramas": 128,
+      "identity": "5550deebecff017a690962ae507b26d5aed5d6f458eaee048cbb92eb7c199b0a",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Singapore/Singapore",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Singapore_p784.f16.npy",
+      "panoramas": 2874,
+      "train_panoramas": 2746,
+      "validation_panoramas": 128,
+      "identity": "21e2a21133d81efe9a2ab96caef62a23fa89302b8aecb1b26378080a02b7a4e0",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "SouthAfrica/Johannesburg",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Johannesburg_p784.f16.npy",
+      "panoramas": 2932,
+      "train_panoramas": 2804,
+      "validation_panoramas": 128,
+      "identity": "58603e13790365918b58caa62959d17706caf478315c8657d7837dc157762b09",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Spain/Barcelona",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Barcelona_p784.f16.npy",
+      "panoramas": 2594,
+      "train_panoramas": 2466,
+      "validation_panoramas": 128,
+      "identity": "1273b4b3bffbd6feb98bfa8302e592f7022b26204f6bd675f316e7d4d3a3fd43",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Sweden/Stockholm",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Stockholm_p784.f16.npy",
+      "panoramas": 3000,
+      "train_panoramas": 2872,
+      "validation_panoramas": 128,
+      "identity": "8fcd22e67ce67db3ea9be62267f27977d2481894ec720c58364170d43b9f71b5",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "UAE/Dubai",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Dubai_p784.f16.npy",
+      "panoramas": 2974,
+      "train_panoramas": 2846,
+      "validation_panoramas": 128,
+      "identity": "ab9e68169315578cd1646e4b6750e51f8431de0ad779786c944dd8d8fa3805d7",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "US/Chicago",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Chicago_p784.f16.npy",
+      "panoramas": 2998,
+      "train_panoramas": 2870,
+      "validation_panoramas": 128,
+      "identity": "63741bd604ed4e47efd6f22ecf4f3cdd6afacd2b0a7b2940e0f3621692b8b93c",
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "US/NewYork",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_NewYork_p784.f16.npy",
+      "panoramas": 2998,
+      "train_panoramas": 2870,
+      "validation_panoramas": 128,
+      "identity": "e920d980d373e708c8a8b4bd22d5d3a3ed7bc1b4c6d18ca1d62dd9eaef688bb9",
+      "pano_id_mapping_available": false
+    }
+  ],
+  "panoramas": 89031,
+  "extraction_required": false
+}

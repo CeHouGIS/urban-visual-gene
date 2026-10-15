@@ -1,0 +1,19 @@
+{
+  "updated_utc": "2026-10-15T13:28:11.892967+00:00",
+  "scope": "local workspace; directory allocation only; no NAS traversal or symlink following",
+  "allocated_bytes": {
+    "outputs": 5891641344,
+    "reports": 12144984064,
+    "archive": 1306447872,
+    ".git": 4969644032,
+    "formal": 3104768,
+    "sae_experiments": 1163264,
+    "tests": 335872,
+    "configs": 110592
+  },
+  "vitb_removed": true,
+  "main_experiment": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32",
+  "reclaimed_project_allocated_bytes": 114862555136,
+  "latest_detailed_inventory": "remaining_inventory.json",
+  "remaining_file_explanation": "REMAINING_FILES.md"
+}

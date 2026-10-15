@@ -1,0 +1,1899 @@
+[
+  {
+    "w512": 0,
+    "w1024": 117,
+    "w2048": 511,
+    "minimum_decoder_cosine": 0.7673503756523132,
+    "minimum_activation_cosine": 0.6861905455589294
+  },
+  {
+    "w512": 1,
+    "w1024": 792,
+    "w2048": 1264,
+    "minimum_decoder_cosine": 0.8068386316299438,
+    "minimum_activation_cosine": 0.6239932179450989
+  },
+  {
+    "w512": 3,
+    "w1024": 199,
+    "w2048": 580,
+    "minimum_decoder_cosine": 0.8931294679641724,
+    "minimum_activation_cosine": 0.7688875198364258
+  },
+  {
+    "w512": 4,
+    "w1024": 139,
+    "w2048": 261,
+    "minimum_decoder_cosine": 0.7281345129013062,
+    "minimum_activation_cosine": 0.6154504418373108
+  },
+  {
+    "w512": 5,
+    "w1024": 512,
+    "w2048": 287,
+    "minimum_decoder_cosine": 0.9604246020317078,
+    "minimum_activation_cosine": 0.9010621309280396
+  },
+  {
+    "w512": 7,
+    "w1024": 315,
+    "w2048": 1355,
+    "minimum_decoder_cosine": 0.8188793659210205,
+    "minimum_activation_cosine": 0.6640908718109131
+  },
+  {
+    "w512": 8,
+    "w1024": 14,
+    "w2048": 29,
+    "minimum_decoder_cosine": 0.8308370113372803,
+    "minimum_activation_cosine": 0.7235152721405029
+  },
+  {
+    "w512": 10,
+    "w1024": 925,
+    "w2048": 1837,
+    "minimum_decoder_cosine": 0.7460058927536011,
+    "minimum_activation_cosine": 0.5930845141410828
+  },
+  {
+    "w512": 12,
+    "w1024": 804,
+    "w2048": 1208,
+    "minimum_decoder_cosine": 0.8980506658554077,
+    "minimum_activation_cosine": 0.7848849892616272
+  },
+  {
+    "w512": 13,
+    "w1024": 30,
+    "w2048": 1799,
+    "minimum_decoder_cosine": 0.9009320735931396,
+    "minimum_activation_cosine": 0.4186851978302002
+  },
+  {
+    "w512": 14,
+    "w1024": 741,
+    "w2048": 1072,
+    "minimum_decoder_cosine": 0.8587228059768677,
+    "minimum_activation_cosine": 0.7144988179206848
+  },
+  {
+    "w512": 21,
+    "w1024": 717,
+    "w2048": 1400,
+    "minimum_decoder_cosine": 0.9376510977745056,
+    "minimum_activation_cosine": 0.8566138744354248
+  },
+  {
+    "w512": 22,
+    "w1024": 724,
+    "w2048": 812,
+    "minimum_decoder_cosine": 0.9211935997009277,
+    "minimum_activation_cosine": 0.6378682851791382
+  },
+  {
+    "w512": 23,
+    "w1024": 443,
+    "w2048": 1931,
+    "minimum_decoder_cosine": 0.7718778252601624,
+    "minimum_activation_cosine": 0.5983552932739258
+  },
+  {
+    "w512": 24,
+    "w1024": 305,
+    "w2048": 277,
+    "minimum_decoder_cosine": 0.8963937163352966,
+    "minimum_activation_cosine": 0.8349772691726685
+  },
+  {
+    "w512": 27,
+    "w1024": 750,
+    "w2048": 1511,
+    "minimum_decoder_cosine": 0.739438533782959,
+    "minimum_activation_cosine": 0.72111576795578
+  },
+  {
+    "w512": 29,
+    "w1024": 565,
+    "w2048": 1916,
+    "minimum_decoder_cosine": 0.7841106653213501,
+    "minimum_activation_cosine": 0.587194561958313
+  },
+  {
+    "w512": 30,
+    "w1024": 513,
+    "w2048": 1476,
+    "minimum_decoder_cosine": 0.7361571192741394,
+    "minimum_activation_cosine": 0.7559358477592468
+  },
+  {
+    "w512": 34,
+    "w1024": 210,
+    "w2048": 1761,
+    "minimum_decoder_cosine": 0.9548534750938416,
+    "minimum_activation_cosine": 0.8595735430717468
+  },
+  {
+    "w512": 36,
+    "w1024": 450,
+    "w2048": 14,
+    "minimum_decoder_cosine": 0.8987329006195068,
+    "minimum_activation_cosine": 0.857138454914093
+  },
+  {
+    "w512": 39,
+    "w1024": 430,
+    "w2048": 1625,
+    "minimum_decoder_cosine": 0.9738990664482117,
+    "minimum_activation_cosine": 0.8996853828430176
+  },
+  {
+    "w512": 40,
+    "w1024": 593,
+    "w2048": 1352,
+    "minimum_decoder_cosine": 0.9270075559616089,
+    "minimum_activation_cosine": 0.8904082179069519
+  },
+  {
+    "w512": 42,
+    "w1024": 853,
+    "w2048": 1152,
+    "minimum_decoder_cosine": 0.7744573950767517,
+    "minimum_activation_cosine": 0.7554383277893066
+  },
+  {
+    "w512": 46,
+    "w1024": 921,
+    "w2048": 1676,
+    "minimum_decoder_cosine": 0.9539252519607544,
+    "minimum_activation_cosine": 0.9196428060531616
+  },
+  {
+    "w512": 48,
+    "w1024": 761,
+    "w2048": 1056,
+    "minimum_decoder_cosine": 0.9004479646682739,
+    "minimum_activation_cosine": 0.7060348391532898
+  },
+  {
+    "w512": 50,
+    "w1024": 259,
+    "w2048": 1328,
+    "minimum_decoder_cosine": 0.961755633354187,
+    "minimum_activation_cosine": 0.840575098991394
+  },
+  {
+    "w512": 54,
+    "w1024": 744,
+    "w2048": 1214,
+    "minimum_decoder_cosine": 0.8819380402565002,
+    "minimum_activation_cosine": 0.6692487001419067
+  },
+  {
+    "w512": 55,
+    "w1024": 64,
+    "w2048": 1484,
+    "minimum_decoder_cosine": 0.9797176122665405,
+    "minimum_activation_cosine": 0.8955119252204895
+  },
+  {
+    "w512": 56,
+    "w1024": 264,
+    "w2048": 128,
+    "minimum_decoder_cosine": 0.9134013652801514,
+    "minimum_activation_cosine": 0.8552712798118591
+  },
+  {
+    "w512": 58,
+    "w1024": 729,
+    "w2048": 551,
+    "minimum_decoder_cosine": 0.9318300485610962,
+    "minimum_activation_cosine": 0.904656708240509
+  },
+  {
+    "w512": 59,
+    "w1024": 875,
+    "w2048": 1415,
+    "minimum_decoder_cosine": 0.9351363182067871,
+    "minimum_activation_cosine": 0.6319162845611572
+  },
+  {
+    "w512": 61,
+    "w1024": 996,
+    "w2048": 305,
+    "minimum_decoder_cosine": 0.85674649477005,
+    "minimum_activation_cosine": 0.8527532815933228
+  },
+  {
+    "w512": 62,
+    "w1024": 536,
+    "w2048": 18,
+    "minimum_decoder_cosine": 0.7918081283569336,
+    "minimum_activation_cosine": 0.6848761439323425
+  },
+  {
+    "w512": 63,
+    "w1024": 445,
+    "w2048": 1886,
+    "minimum_decoder_cosine": 0.8642070889472961,
+    "minimum_activation_cosine": 0.5310271382331848
+  },
+  {
+    "w512": 64,
+    "w1024": 98,
+    "w2048": 1624,
+    "minimum_decoder_cosine": 0.9428424835205078,
+    "minimum_activation_cosine": 0.5518003702163696
+  },
+  {
+    "w512": 66,
+    "w1024": 1012,
+    "w2048": 1913,
+    "minimum_decoder_cosine": 0.829913854598999,
+    "minimum_activation_cosine": 0.798225462436676
+  },
+  {
+    "w512": 67,
+    "w1024": 353,
+    "w2048": 75,
+    "minimum_decoder_cosine": 0.8962712287902832,
+    "minimum_activation_cosine": 0.4899030327796936
+  },
+  {
+    "w512": 70,
+    "w1024": 653,
+    "w2048": 953,
+    "minimum_decoder_cosine": 0.9095402359962463,
+    "minimum_activation_cosine": 0.6102914810180664
+  },
+  {
+    "w512": 72,
+    "w1024": 225,
+    "w2048": 275,
+    "minimum_decoder_cosine": 0.9376388192176819,
+    "minimum_activation_cosine": 0.8906041979789734
+  },
+  {
+    "w512": 73,
+    "w1024": 342,
+    "w2048": 1239,
+    "minimum_decoder_cosine": 0.8693490624427795,
+    "minimum_activation_cosine": 0.7420763969421387
+  },
+  {
+    "w512": 74,
+    "w1024": 447,
+    "w2048": 461,
+    "minimum_decoder_cosine": 0.9071440100669861,
+    "minimum_activation_cosine": 0.5247175693511963
+  },
+  {
+    "w512": 75,
+    "w1024": 835,
+    "w2048": 1091,
+    "minimum_decoder_cosine": 0.731031060218811,
+    "minimum_activation_cosine": 0.6186536550521851
+  },
+  {
+    "w512": 76,
+    "w1024": 137,
+    "w2048": 1029,
+    "minimum_decoder_cosine": 0.8736621737480164,
+    "minimum_activation_cosine": 0.7519293427467346
+  },
+  {
+    "w512": 77,
+    "w1024": 958,
+    "w2048": 557,
+    "minimum_decoder_cosine": 0.8450577259063721,
+    "minimum_activation_cosine": 0.7283652424812317
+  },
+  {
+    "w512": 78,
+    "w1024": 368,
+    "w2048": 1926,
+    "minimum_decoder_cosine": 0.9633086323738098,
+    "minimum_activation_cosine": 0.8833175301551819
+  },
+  {
+    "w512": 79,
+    "w1024": 948,
+    "w2048": 810,
+    "minimum_decoder_cosine": 0.9132405519485474,
+    "minimum_activation_cosine": 0.8182873725891113
+  },
+  {
+    "w512": 80,
+    "w1024": 300,
+    "w2048": 1616,
+    "minimum_decoder_cosine": 0.9381276965141296,
+    "minimum_activation_cosine": 0.736026406288147
+  },
+  {
+    "w512": 83,
+    "w1024": 975,
+    "w2048": 1151,
+    "minimum_decoder_cosine": 0.9461603164672852,
+    "minimum_activation_cosine": 0.8030416965484619
+  },
+  {
+    "w512": 84,
+    "w1024": 390,
+    "w2048": 2021,
+    "minimum_decoder_cosine": 0.9120830297470093,
+    "minimum_activation_cosine": 0.9125958681106567
+  },
+  {
+    "w512": 87,
+    "w1024": 80,
+    "w2048": 848,
+    "minimum_decoder_cosine": 0.9455079436302185,
+    "minimum_activation_cosine": 0.8989905714988708
+  },
+  {
+    "w512": 89,
+    "w1024": 41,
+    "w2048": 572,
+    "minimum_decoder_cosine": 0.8933064341545105,
+    "minimum_activation_cosine": 0.44112154841423035
+  },
+  {
+    "w512": 95,
+    "w1024": 240,
+    "w2048": 1607,
+    "minimum_decoder_cosine": 0.7465296983718872,
+    "minimum_activation_cosine": 0.6886405348777771
+  },
+  {
+    "w512": 96,
+    "w1024": 613,
+    "w2048": 1387,
+    "minimum_decoder_cosine": 0.7711710333824158,
+    "minimum_activation_cosine": 0.5489890575408936
+  },
+  {
+    "w512": 97,
+    "w1024": 70,
+    "w2048": 1250,
+    "minimum_decoder_cosine": 0.9607589244842529,
+    "minimum_activation_cosine": 0.9120315909385681
+  },
+  {
+    "w512": 99,
+    "w1024": 19,
+    "w2048": 1073,
+    "minimum_decoder_cosine": 0.9433065056800842,
+    "minimum_activation_cosine": 0.8848868012428284
+  },
+  {
+    "w512": 100,
+    "w1024": 74,
+    "w2048": 225,
+    "minimum_decoder_cosine": 0.9000647068023682,
+    "minimum_activation_cosine": 0.6592627763748169
+  },
+  {
+    "w512": 103,
+    "w1024": 299,
+    "w2048": 1245,
+    "minimum_decoder_cosine": 0.9477189779281616,
+    "minimum_activation_cosine": 0.8749089241027832
+  },
+  {
+    "w512": 104,
+    "w1024": 238,
+    "w2048": 244,
+    "minimum_decoder_cosine": 0.7310592532157898,
+    "minimum_activation_cosine": 0.6643407344818115
+  },
+  {
+    "w512": 105,
+    "w1024": 94,
+    "w2048": 1757,
+    "minimum_decoder_cosine": 0.723642885684967,
+    "minimum_activation_cosine": 0.6459342837333679
+  },
+  {
+    "w512": 110,
+    "w1024": 375,
+    "w2048": 165,
+    "minimum_decoder_cosine": 0.8048522472381592,
+    "minimum_activation_cosine": 0.5724491477012634
+  },
+  {
+    "w512": 111,
+    "w1024": 167,
+    "w2048": 877,
+    "minimum_decoder_cosine": 0.8959989547729492,
+    "minimum_activation_cosine": 0.8643302917480469
+  },
+  {
+    "w512": 112,
+    "w1024": 959,
+    "w2048": 514,
+    "minimum_decoder_cosine": 0.8780112862586975,
+    "minimum_activation_cosine": 0.737047553062439
+  },
+  {
+    "w512": 113,
+    "w1024": 532,
+    "w2048": 123,
+    "minimum_decoder_cosine": 0.738469660282135,
+    "minimum_activation_cosine": 0.6214026808738708
+  },
+  {
+    "w512": 117,
+    "w1024": 693,
+    "w2048": 104,
+    "minimum_decoder_cosine": 0.9128991961479187,
+    "minimum_activation_cosine": 0.7495207786560059
+  },
+  {
+    "w512": 119,
+    "w1024": 699,
+    "w2048": 954,
+    "minimum_decoder_cosine": 0.9361286759376526,
+    "minimum_activation_cosine": 0.8504663705825806
+  },
+  {
+    "w512": 122,
+    "w1024": 737,
+    "w2048": 1736,
+    "minimum_decoder_cosine": 0.9469097852706909,
+    "minimum_activation_cosine": 0.9315593838691711
+  },
+  {
+    "w512": 123,
+    "w1024": 489,
+    "w2048": 403,
+    "minimum_decoder_cosine": 0.9521560668945312,
+    "minimum_activation_cosine": 0.6018155813217163
+  },
+  {
+    "w512": 124,
+    "w1024": 939,
+    "w2048": 1925,
+    "minimum_decoder_cosine": 0.7401418685913086,
+    "minimum_activation_cosine": 0.4695221483707428
+  },
+  {
+    "w512": 126,
+    "w1024": 460,
+    "w2048": 1426,
+    "minimum_decoder_cosine": 0.9046018719673157,
+    "minimum_activation_cosine": 0.36875730752944946
+  },
+  {
+    "w512": 127,
+    "w1024": 371,
+    "w2048": 55,
+    "minimum_decoder_cosine": 0.7947123050689697,
+    "minimum_activation_cosine": 0.6585596203804016
+  },
+  {
+    "w512": 128,
+    "w1024": 938,
+    "w2048": 355,
+    "minimum_decoder_cosine": 0.78494793176651,
+    "minimum_activation_cosine": 0.6049487590789795
+  },
+  {
+    "w512": 135,
+    "w1024": 468,
+    "w2048": 1084,
+    "minimum_decoder_cosine": 0.9180443286895752,
+    "minimum_activation_cosine": 0.6867900490760803
+  },
+  {
+    "w512": 136,
+    "w1024": 67,
+    "w2048": 1060,
+    "minimum_decoder_cosine": 0.9479004144668579,
+    "minimum_activation_cosine": 0.8653935194015503
+  },
+  {
+    "w512": 137,
+    "w1024": 143,
+    "w2048": 805,
+    "minimum_decoder_cosine": 0.790532648563385,
+    "minimum_activation_cosine": 0.4163447618484497
+  },
+  {
+    "w512": 138,
+    "w1024": 559,
+    "w2048": 575,
+    "minimum_decoder_cosine": 0.8584539890289307,
+    "minimum_activation_cosine": 0.8258752822875977
+  },
+  {
+    "w512": 139,
+    "w1024": 194,
+    "w2048": 1238,
+    "minimum_decoder_cosine": 0.9211337566375732,
+    "minimum_activation_cosine": 0.7787551879882812
+  },
+  {
+    "w512": 141,
+    "w1024": 716,
+    "w2048": 1635,
+    "minimum_decoder_cosine": 0.8996093273162842,
+    "minimum_activation_cosine": 0.7390756011009216
+  },
+  {
+    "w512": 142,
+    "w1024": 446,
+    "w2048": 71,
+    "minimum_decoder_cosine": 0.7676351070404053,
+    "minimum_activation_cosine": 0.4430577754974365
+  },
+  {
+    "w512": 143,
+    "w1024": 723,
+    "w2048": 1097,
+    "minimum_decoder_cosine": 0.9477824568748474,
+    "minimum_activation_cosine": 0.445171594619751
+  },
+  {
+    "w512": 144,
+    "w1024": 75,
+    "w2048": 590,
+    "minimum_decoder_cosine": 0.9740344882011414,
+    "minimum_activation_cosine": 0.9594171047210693
+  },
+  {
+    "w512": 147,
+    "w1024": 103,
+    "w2048": 1390,
+    "minimum_decoder_cosine": 0.8518189191818237,
+    "minimum_activation_cosine": 0.7866165637969971
+  },
+  {
+    "w512": 151,
+    "w1024": 749,
+    "w2048": 1574,
+    "minimum_decoder_cosine": 0.9367706179618835,
+    "minimum_activation_cosine": 0.5765743851661682
+  },
+  {
+    "w512": 152,
+    "w1024": 480,
+    "w2048": 1794,
+    "minimum_decoder_cosine": 0.7826046347618103,
+    "minimum_activation_cosine": 0.6489782929420471
+  },
+  {
+    "w512": 153,
+    "w1024": 0,
+    "w2048": 498,
+    "minimum_decoder_cosine": 0.9495229721069336,
+    "minimum_activation_cosine": 0.9463327527046204
+  },
+  {
+    "w512": 155,
+    "w1024": 736,
+    "w2048": 11,
+    "minimum_decoder_cosine": 0.8137624859809875,
+    "minimum_activation_cosine": 0.6836478114128113
+  },
+  {
+    "w512": 156,
+    "w1024": 110,
+    "w2048": 1789,
+    "minimum_decoder_cosine": 0.742684006690979,
+    "minimum_activation_cosine": 0.5337629914283752
+  },
+  {
+    "w512": 158,
+    "w1024": 961,
+    "w2048": 270,
+    "minimum_decoder_cosine": 0.9292012453079224,
+    "minimum_activation_cosine": 0.9303314089775085
+  },
+  {
+    "w512": 160,
+    "w1024": 916,
+    "w2048": 1747,
+    "minimum_decoder_cosine": 0.8767338991165161,
+    "minimum_activation_cosine": 0.40527427196502686
+  },
+  {
+    "w512": 162,
+    "w1024": 484,
+    "w2048": 257,
+    "minimum_decoder_cosine": 0.919391393661499,
+    "minimum_activation_cosine": 0.7957637310028076
+  },
+  {
+    "w512": 164,
+    "w1024": 326,
+    "w2048": 925,
+    "minimum_decoder_cosine": 0.9289181232452393,
+    "minimum_activation_cosine": 0.8763116002082825
+  },
+  {
+    "w512": 166,
+    "w1024": 681,
+    "w2048": 283,
+    "minimum_decoder_cosine": 0.7784795761108398,
+    "minimum_activation_cosine": 0.5209040641784668
+  },
+  {
+    "w512": 168,
+    "w1024": 180,
+    "w2048": 1116,
+    "minimum_decoder_cosine": 0.7145139575004578,
+    "minimum_activation_cosine": 0.6596328616142273
+  },
+  {
+    "w512": 174,
+    "w1024": 9,
+    "w2048": 226,
+    "minimum_decoder_cosine": 0.8044642806053162,
+    "minimum_activation_cosine": 0.6630827784538269
+  },
+  {
+    "w512": 175,
+    "w1024": 510,
+    "w2048": 245,
+    "minimum_decoder_cosine": 0.8951466083526611,
+    "minimum_activation_cosine": 0.8241415619850159
+  },
+  {
+    "w512": 178,
+    "w1024": 126,
+    "w2048": 267,
+    "minimum_decoder_cosine": 0.7937374114990234,
+    "minimum_activation_cosine": 0.737848699092865
+  },
+  {
+    "w512": 180,
+    "w1024": 304,
+    "w2048": 1567,
+    "minimum_decoder_cosine": 0.96248459815979,
+    "minimum_activation_cosine": 0.8962801098823547
+  },
+  {
+    "w512": 181,
+    "w1024": 652,
+    "w2048": 1162,
+    "minimum_decoder_cosine": 0.9014252424240112,
+    "minimum_activation_cosine": 0.6899909973144531
+  },
+  {
+    "w512": 182,
+    "w1024": 698,
+    "w2048": 1891,
+    "minimum_decoder_cosine": 0.8873516917228699,
+    "minimum_activation_cosine": 0.6147236227989197
+  },
+  {
+    "w512": 184,
+    "w1024": 27,
+    "w2048": 1506,
+    "minimum_decoder_cosine": 0.9388130903244019,
+    "minimum_activation_cosine": 0.8785558342933655
+  },
+  {
+    "w512": 188,
+    "w1024": 654,
+    "w2048": 1172,
+    "minimum_decoder_cosine": 0.818803071975708,
+    "minimum_activation_cosine": 0.6680682301521301
+  },
+  {
+    "w512": 190,
+    "w1024": 610,
+    "w2048": 1045,
+    "minimum_decoder_cosine": 0.85125333070755,
+    "minimum_activation_cosine": 0.767266035079956
+  },
+  {
+    "w512": 193,
+    "w1024": 338,
+    "w2048": 890,
+    "minimum_decoder_cosine": 0.9615089297294617,
+    "minimum_activation_cosine": 0.9692487120628357
+  },
+  {
+    "w512": 195,
+    "w1024": 228,
+    "w2048": 1323,
+    "minimum_decoder_cosine": 0.9013126492500305,
+    "minimum_activation_cosine": 0.8416700959205627
+  },
+  {
+    "w512": 196,
+    "w1024": 541,
+    "w2048": 456,
+    "minimum_decoder_cosine": 0.9033278226852417,
+    "minimum_activation_cosine": 0.9470614790916443
+  },
+  {
+    "w512": 198,
+    "w1024": 406,
+    "w2048": 1615,
+    "minimum_decoder_cosine": 0.9017996191978455,
+    "minimum_activation_cosine": 0.8691072463989258
+  },
+  {
+    "w512": 199,
+    "w1024": 796,
+    "w2048": 1902,
+    "minimum_decoder_cosine": 0.7159789800643921,
+    "minimum_activation_cosine": 0.7550312876701355
+  },
+  {
+    "w512": 201,
+    "w1024": 173,
+    "w2048": 354,
+    "minimum_decoder_cosine": 0.9114923477172852,
+    "minimum_activation_cosine": 0.6814760565757751
+  },
+  {
+    "w512": 202,
+    "w1024": 313,
+    "w2048": 693,
+    "minimum_decoder_cosine": 0.8124409914016724,
+    "minimum_activation_cosine": 0.7082834839820862
+  },
+  {
+    "w512": 203,
+    "w1024": 827,
+    "w2048": 952,
+    "minimum_decoder_cosine": 0.8702039122581482,
+    "minimum_activation_cosine": 0.8018162250518799
+  },
+  {
+    "w512": 205,
+    "w1024": 73,
+    "w2048": 1674,
+    "minimum_decoder_cosine": 0.9739311933517456,
+    "minimum_activation_cosine": 0.9599273800849915
+  },
+  {
+    "w512": 206,
+    "w1024": 966,
+    "w2048": 61,
+    "minimum_decoder_cosine": 0.7314112782478333,
+    "minimum_activation_cosine": 0.6657555103302002
+  },
+  {
+    "w512": 209,
+    "w1024": 809,
+    "w2048": 1999,
+    "minimum_decoder_cosine": 0.9599753022193909,
+    "minimum_activation_cosine": 0.8327406644821167
+  },
+  {
+    "w512": 210,
+    "w1024": 531,
+    "w2048": 1317,
+    "minimum_decoder_cosine": 0.929815948009491,
+    "minimum_activation_cosine": 0.8842461109161377
+  },
+  {
+    "w512": 211,
+    "w1024": 465,
+    "w2048": 493,
+    "minimum_decoder_cosine": 0.881675124168396,
+    "minimum_activation_cosine": 0.7809824347496033
+  },
+  {
+    "w512": 212,
+    "w1024": 172,
+    "w2048": 1620,
+    "minimum_decoder_cosine": 0.8665391802787781,
+    "minimum_activation_cosine": 0.7442764043807983
+  },
+  {
+    "w512": 215,
+    "w1024": 555,
+    "w2048": 1409,
+    "minimum_decoder_cosine": 0.8050126433372498,
+    "minimum_activation_cosine": 0.7343106269836426
+  },
+  {
+    "w512": 217,
+    "w1024": 278,
+    "w2048": 687,
+    "minimum_decoder_cosine": 0.9143772721290588,
+    "minimum_activation_cosine": 0.922146737575531
+  },
+  {
+    "w512": 218,
+    "w1024": 777,
+    "w2048": 1961,
+    "minimum_decoder_cosine": 0.7041209936141968,
+    "minimum_activation_cosine": 0.5233263969421387
+  },
+  {
+    "w512": 222,
+    "w1024": 473,
+    "w2048": 825,
+    "minimum_decoder_cosine": 0.9443878531455994,
+    "minimum_activation_cosine": 0.866939127445221
+  },
+  {
+    "w512": 224,
+    "w1024": 376,
+    "w2048": 256,
+    "minimum_decoder_cosine": 0.9601762294769287,
+    "minimum_activation_cosine": 0.8866726160049438
+  },
+  {
+    "w512": 228,
+    "w1024": 442,
+    "w2048": 759,
+    "minimum_decoder_cosine": 0.9773699045181274,
+    "minimum_activation_cosine": 0.8284012079238892
+  },
+  {
+    "w512": 230,
+    "w1024": 155,
+    "w2048": 1884,
+    "minimum_decoder_cosine": 0.9257957339286804,
+    "minimum_activation_cosine": 0.9077540040016174
+  },
+  {
+    "w512": 231,
+    "w1024": 955,
+    "w2048": 224,
+    "minimum_decoder_cosine": 0.9618661999702454,
+    "minimum_activation_cosine": 0.9093462228775024
+  },
+  {
+    "w512": 232,
+    "w1024": 93,
+    "w2048": 1295,
+    "minimum_decoder_cosine": 0.9106512069702148,
+    "minimum_activation_cosine": 0.784162163734436
+  },
+  {
+    "w512": 233,
+    "w1024": 81,
+    "w2048": 211,
+    "minimum_decoder_cosine": 0.8630367517471313,
+    "minimum_activation_cosine": 0.8491169810295105
+  },
+  {
+    "w512": 234,
+    "w1024": 728,
+    "w2048": 1698,
+    "minimum_decoder_cosine": 0.8916457891464233,
+    "minimum_activation_cosine": 0.8144686818122864
+  },
+  {
+    "w512": 238,
+    "w1024": 321,
+    "w2048": 1456,
+    "minimum_decoder_cosine": 0.7962350845336914,
+    "minimum_activation_cosine": 0.8034613132476807
+  },
+  {
+    "w512": 241,
+    "w1024": 101,
+    "w2048": 1039,
+    "minimum_decoder_cosine": 0.849897563457489,
+    "minimum_activation_cosine": 0.8066264390945435
+  },
+  {
+    "w512": 242,
+    "w1024": 556,
+    "w2048": 876,
+    "minimum_decoder_cosine": 0.8376235365867615,
+    "minimum_activation_cosine": 0.7295683026313782
+  },
+  {
+    "w512": 245,
+    "w1024": 472,
+    "w2048": 246,
+    "minimum_decoder_cosine": 0.7107234597206116,
+    "minimum_activation_cosine": 0.4483235478401184
+  },
+  {
+    "w512": 246,
+    "w1024": 46,
+    "w2048": 469,
+    "minimum_decoder_cosine": 0.8138341307640076,
+    "minimum_activation_cosine": 0.6908254027366638
+  },
+  {
+    "w512": 247,
+    "w1024": 880,
+    "w2048": 1134,
+    "minimum_decoder_cosine": 0.9655620455741882,
+    "minimum_activation_cosine": 0.9372064471244812
+  },
+  {
+    "w512": 248,
+    "w1024": 479,
+    "w2048": 1900,
+    "minimum_decoder_cosine": 0.8961577415466309,
+    "minimum_activation_cosine": 0.7662917971611023
+  },
+  {
+    "w512": 250,
+    "w1024": 576,
+    "w2048": 1729,
+    "minimum_decoder_cosine": 0.732337236404419,
+    "minimum_activation_cosine": 0.6734008193016052
+  },
+  {
+    "w512": 251,
+    "w1024": 962,
+    "w2048": 491,
+    "minimum_decoder_cosine": 0.918743908405304,
+    "minimum_activation_cosine": 0.6612710356712341
+  },
+  {
+    "w512": 256,
+    "w1024": 799,
+    "w2048": 956,
+    "minimum_decoder_cosine": 0.8220505714416504,
+    "minimum_activation_cosine": 0.6922281980514526
+  },
+  {
+    "w512": 259,
+    "w1024": 501,
+    "w2048": 1115,
+    "minimum_decoder_cosine": 0.7952526211738586,
+    "minimum_activation_cosine": 0.7793715000152588
+  },
+  {
+    "w512": 260,
+    "w1024": 798,
+    "w2048": 1522,
+    "minimum_decoder_cosine": 0.9555478096008301,
+    "minimum_activation_cosine": 0.8719832897186279
+  },
+  {
+    "w512": 261,
+    "w1024": 397,
+    "w2048": 861,
+    "minimum_decoder_cosine": 0.8569691181182861,
+    "minimum_activation_cosine": 0.7907590866088867
+  },
+  {
+    "w512": 263,
+    "w1024": 807,
+    "w2048": 144,
+    "minimum_decoder_cosine": 0.9577955603599548,
+    "minimum_activation_cosine": 0.8971769213676453
+  },
+  {
+    "w512": 265,
+    "w1024": 833,
+    "w2048": 358,
+    "minimum_decoder_cosine": 0.9135604500770569,
+    "minimum_activation_cosine": 0.7157080173492432
+  },
+  {
+    "w512": 266,
+    "w1024": 21,
+    "w2048": 1966,
+    "minimum_decoder_cosine": 0.873112142086029,
+    "minimum_activation_cosine": 0.8983429670333862
+  },
+  {
+    "w512": 267,
+    "w1024": 311,
+    "w2048": 1255,
+    "minimum_decoder_cosine": 0.9762411117553711,
+    "minimum_activation_cosine": 0.9212411046028137
+  },
+  {
+    "w512": 268,
+    "w1024": 448,
+    "w2048": 1688,
+    "minimum_decoder_cosine": 0.9002852439880371,
+    "minimum_activation_cosine": 0.551494836807251
+  },
+  {
+    "w512": 270,
+    "w1024": 339,
+    "w2048": 6,
+    "minimum_decoder_cosine": 0.9178892970085144,
+    "minimum_activation_cosine": 0.7597423791885376
+  },
+  {
+    "w512": 273,
+    "w1024": 357,
+    "w2048": 1551,
+    "minimum_decoder_cosine": 0.8973422050476074,
+    "minimum_activation_cosine": 0.6581196784973145
+  },
+  {
+    "w512": 278,
+    "w1024": 69,
+    "w2048": 746,
+    "minimum_decoder_cosine": 0.9381909370422363,
+    "minimum_activation_cosine": 0.6066904664039612
+  },
+  {
+    "w512": 279,
+    "w1024": 700,
+    "w2048": 2044,
+    "minimum_decoder_cosine": 0.7746307253837585,
+    "minimum_activation_cosine": 0.6345178484916687
+  },
+  {
+    "w512": 281,
+    "w1024": 13,
+    "w2048": 1587,
+    "minimum_decoder_cosine": 0.7960860133171082,
+    "minimum_activation_cosine": 0.6881856918334961
+  },
+  {
+    "w512": 282,
+    "w1024": 261,
+    "w2048": 926,
+    "minimum_decoder_cosine": 0.8735486268997192,
+    "minimum_activation_cosine": 0.7560950517654419
+  },
+  {
+    "w512": 283,
+    "w1024": 282,
+    "w2048": 1860,
+    "minimum_decoder_cosine": 0.7598627209663391,
+    "minimum_activation_cosine": 0.6752112507820129
+  },
+  {
+    "w512": 288,
+    "w1024": 689,
+    "w2048": 1532,
+    "minimum_decoder_cosine": 0.7509368062019348,
+    "minimum_activation_cosine": 0.7278805375099182
+  },
+  {
+    "w512": 291,
+    "w1024": 461,
+    "w2048": 282,
+    "minimum_decoder_cosine": 0.9796478748321533,
+    "minimum_activation_cosine": 0.9632415771484375
+  },
+  {
+    "w512": 292,
+    "w1024": 248,
+    "w2048": 1320,
+    "minimum_decoder_cosine": 0.9215732216835022,
+    "minimum_activation_cosine": 0.8887814283370972
+  },
+  {
+    "w512": 295,
+    "w1024": 389,
+    "w2048": 154,
+    "minimum_decoder_cosine": 0.8707517385482788,
+    "minimum_activation_cosine": 0.8235774040222168
+  },
+  {
+    "w512": 296,
+    "w1024": 928,
+    "w2048": 130,
+    "minimum_decoder_cosine": 0.78460693359375,
+    "minimum_activation_cosine": 0.5710276961326599
+  },
+  {
+    "w512": 297,
+    "w1024": 244,
+    "w2048": 1124,
+    "minimum_decoder_cosine": 0.820634126663208,
+    "minimum_activation_cosine": 0.6391218304634094
+  },
+  {
+    "w512": 298,
+    "w1024": 387,
+    "w2048": 1276,
+    "minimum_decoder_cosine": 0.9394496083259583,
+    "minimum_activation_cosine": 0.8193063139915466
+  },
+  {
+    "w512": 301,
+    "w1024": 120,
+    "w2048": 1130,
+    "minimum_decoder_cosine": 0.772357702255249,
+    "minimum_activation_cosine": 0.6999317407608032
+  },
+  {
+    "w512": 302,
+    "w1024": 318,
+    "w2048": 1665,
+    "minimum_decoder_cosine": 0.8524072170257568,
+    "minimum_activation_cosine": 0.6955130100250244
+  },
+  {
+    "w512": 303,
+    "w1024": 192,
+    "w2048": 336,
+    "minimum_decoder_cosine": 0.9655539393424988,
+    "minimum_activation_cosine": 0.9408662915229797
+  },
+  {
+    "w512": 304,
+    "w1024": 15,
+    "w2048": 2029,
+    "minimum_decoder_cosine": 0.8673200607299805,
+    "minimum_activation_cosine": 0.863726019859314
+  },
+  {
+    "w512": 305,
+    "w1024": 49,
+    "w2048": 402,
+    "minimum_decoder_cosine": 0.9587270021438599,
+    "minimum_activation_cosine": 0.9442523121833801
+  },
+  {
+    "w512": 307,
+    "w1024": 471,
+    "w2048": 1641,
+    "minimum_decoder_cosine": 0.9771825075149536,
+    "minimum_activation_cosine": 0.9357665777206421
+  },
+  {
+    "w512": 309,
+    "w1024": 595,
+    "w2048": 515,
+    "minimum_decoder_cosine": 0.9752691984176636,
+    "minimum_activation_cosine": 0.957564651966095
+  },
+  {
+    "w512": 311,
+    "w1024": 492,
+    "w2048": 510,
+    "minimum_decoder_cosine": 0.8990777730941772,
+    "minimum_activation_cosine": 0.6874378323554993
+  },
+  {
+    "w512": 312,
+    "w1024": 900,
+    "w2048": 1545,
+    "minimum_decoder_cosine": 0.7554013729095459,
+    "minimum_activation_cosine": 0.48769649863243103
+  },
+  {
+    "w512": 313,
+    "w1024": 297,
+    "w2048": 569,
+    "minimum_decoder_cosine": 0.9101616144180298,
+    "minimum_activation_cosine": 0.8833325505256653
+  },
+  {
+    "w512": 314,
+    "w1024": 820,
+    "w2048": 1443,
+    "minimum_decoder_cosine": 0.866115391254425,
+    "minimum_activation_cosine": 0.7924844622612
+  },
+  {
+    "w512": 315,
+    "w1024": 578,
+    "w2048": 1820,
+    "minimum_decoder_cosine": 0.8992656469345093,
+    "minimum_activation_cosine": 0.8555113077163696
+  },
+  {
+    "w512": 316,
+    "w1024": 872,
+    "w2048": 555,
+    "minimum_decoder_cosine": 0.897240161895752,
+    "minimum_activation_cosine": 0.7905677556991577
+  },
+  {
+    "w512": 317,
+    "w1024": 431,
+    "w2048": 27,
+    "minimum_decoder_cosine": 0.790432333946228,
+    "minimum_activation_cosine": 0.799595832824707
+  },
+  {
+    "w512": 318,
+    "w1024": 935,
+    "w2048": 1261,
+    "minimum_decoder_cosine": 0.7999558448791504,
+    "minimum_activation_cosine": 0.7063037157058716
+  },
+  {
+    "w512": 320,
+    "w1024": 337,
+    "w2048": 279,
+    "minimum_decoder_cosine": 0.7157667875289917,
+    "minimum_activation_cosine": 0.6178643107414246
+  },
+  {
+    "w512": 322,
+    "w1024": 945,
+    "w2048": 809,
+    "minimum_decoder_cosine": 0.9649664759635925,
+    "minimum_activation_cosine": 0.9439681172370911
+  },
+  {
+    "w512": 326,
+    "w1024": 112,
+    "w2048": 526,
+    "minimum_decoder_cosine": 0.8830429315567017,
+    "minimum_activation_cosine": 0.7654457092285156
+  },
+  {
+    "w512": 328,
+    "w1024": 679,
+    "w2048": 1457,
+    "minimum_decoder_cosine": 0.9691844582557678,
+    "minimum_activation_cosine": 0.9311426877975464
+  },
+  {
+    "w512": 329,
+    "w1024": 24,
+    "w2048": 1727,
+    "minimum_decoder_cosine": 0.8736924529075623,
+    "minimum_activation_cosine": 0.8585197329521179
+  },
+  {
+    "w512": 330,
+    "w1024": 361,
+    "w2048": 983,
+    "minimum_decoder_cosine": 0.8220728635787964,
+    "minimum_activation_cosine": 0.6047098636627197
+  },
+  {
+    "w512": 331,
+    "w1024": 711,
+    "w2048": 1448,
+    "minimum_decoder_cosine": 0.9056920409202576,
+    "minimum_activation_cosine": 0.7773048281669617
+  },
+  {
+    "w512": 333,
+    "w1024": 453,
+    "w2048": 125,
+    "minimum_decoder_cosine": 0.9434314966201782,
+    "minimum_activation_cosine": 0.9079877734184265
+  },
+  {
+    "w512": 335,
+    "w1024": 980,
+    "w2048": 340,
+    "minimum_decoder_cosine": 0.8609917163848877,
+    "minimum_activation_cosine": 0.7343182563781738
+  },
+  {
+    "w512": 336,
+    "w1024": 380,
+    "w2048": 635,
+    "minimum_decoder_cosine": 0.8694202899932861,
+    "minimum_activation_cosine": 0.854938268661499
+  },
+  {
+    "w512": 337,
+    "w1024": 429,
+    "w2048": 1721,
+    "minimum_decoder_cosine": 0.9088369011878967,
+    "minimum_activation_cosine": 0.805324137210846
+  },
+  {
+    "w512": 338,
+    "w1024": 247,
+    "w2048": 2022,
+    "minimum_decoder_cosine": 0.968553364276886,
+    "minimum_activation_cosine": 0.9383774399757385
+  },
+  {
+    "w512": 339,
+    "w1024": 354,
+    "w2048": 1812,
+    "minimum_decoder_cosine": 0.9430152773857117,
+    "minimum_activation_cosine": 0.782794177532196
+  },
+  {
+    "w512": 340,
+    "w1024": 764,
+    "w2048": 1516,
+    "minimum_decoder_cosine": 0.8935988545417786,
+    "minimum_activation_cosine": 0.6149985790252686
+  },
+  {
+    "w512": 345,
+    "w1024": 474,
+    "w2048": 1746,
+    "minimum_decoder_cosine": 0.9804918766021729,
+    "minimum_activation_cosine": 0.9758539199829102
+  },
+  {
+    "w512": 346,
+    "w1024": 771,
+    "w2048": 1509,
+    "minimum_decoder_cosine": 0.8316733837127686,
+    "minimum_activation_cosine": 0.7973340749740601
+  },
+  {
+    "w512": 347,
+    "w1024": 393,
+    "w2048": 204,
+    "minimum_decoder_cosine": 0.8022727370262146,
+    "minimum_activation_cosine": 0.6997990012168884
+  },
+  {
+    "w512": 350,
+    "w1024": 836,
+    "w2048": 859,
+    "minimum_decoder_cosine": 0.9174683690071106,
+    "minimum_activation_cosine": 0.9033445715904236
+  },
+  {
+    "w512": 351,
+    "w1024": 582,
+    "w2048": 103,
+    "minimum_decoder_cosine": 0.9467171430587769,
+    "minimum_activation_cosine": 0.8349088430404663
+  },
+  {
+    "w512": 355,
+    "w1024": 932,
+    "w2048": 870,
+    "minimum_decoder_cosine": 0.8235545754432678,
+    "minimum_activation_cosine": 0.665898323059082
+  },
+  {
+    "w512": 357,
+    "w1024": 580,
+    "w2048": 1650,
+    "minimum_decoder_cosine": 0.8003853559494019,
+    "minimum_activation_cosine": 0.716485857963562
+  },
+  {
+    "w512": 359,
+    "w1024": 877,
+    "w2048": 48,
+    "minimum_decoder_cosine": 0.8850125074386597,
+    "minimum_activation_cosine": 0.8530133962631226
+  },
+  {
+    "w512": 361,
+    "w1024": 566,
+    "w2048": 1756,
+    "minimum_decoder_cosine": 0.9313634634017944,
+    "minimum_activation_cosine": 0.3541966676712036
+  },
+  {
+    "w512": 364,
+    "w1024": 344,
+    "w2048": 330,
+    "minimum_decoder_cosine": 0.8935864567756653,
+    "minimum_activation_cosine": 0.7456189393997192
+  },
+  {
+    "w512": 371,
+    "w1024": 706,
+    "w2048": 1570,
+    "minimum_decoder_cosine": 0.9516981840133667,
+    "minimum_activation_cosine": 0.7397311329841614
+  },
+  {
+    "w512": 372,
+    "w1024": 366,
+    "w2048": 567,
+    "minimum_decoder_cosine": 0.8273518681526184,
+    "minimum_activation_cosine": 0.8476345539093018
+  },
+  {
+    "w512": 373,
+    "w1024": 554,
+    "w2048": 423,
+    "minimum_decoder_cosine": 0.7078087329864502,
+    "minimum_activation_cosine": 0.4775451123714447
+  },
+  {
+    "w512": 374,
+    "w1024": 351,
+    "w2048": 19,
+    "minimum_decoder_cosine": 0.8984050154685974,
+    "minimum_activation_cosine": 0.8212139010429382
+  },
+  {
+    "w512": 376,
+    "w1024": 802,
+    "w2048": 145,
+    "minimum_decoder_cosine": 0.8362270593643188,
+    "minimum_activation_cosine": 0.8112555742263794
+  },
+  {
+    "w512": 377,
+    "w1024": 791,
+    "w2048": 1829,
+    "minimum_decoder_cosine": 0.8912162780761719,
+    "minimum_activation_cosine": 0.8098962903022766
+  },
+  {
+    "w512": 380,
+    "w1024": 591,
+    "w2048": 717,
+    "minimum_decoder_cosine": 0.7987159490585327,
+    "minimum_activation_cosine": 0.46860453486442566
+  },
+  {
+    "w512": 381,
+    "w1024": 22,
+    "w2048": 827,
+    "minimum_decoder_cosine": 0.7525843381881714,
+    "minimum_activation_cosine": 0.6099977493286133
+  },
+  {
+    "w512": 383,
+    "w1024": 178,
+    "w2048": 796,
+    "minimum_decoder_cosine": 0.7624042630195618,
+    "minimum_activation_cosine": 0.5759196281433105
+  },
+  {
+    "w512": 384,
+    "w1024": 189,
+    "w2048": 407,
+    "minimum_decoder_cosine": 0.974022388458252,
+    "minimum_activation_cosine": 0.9669946432113647
+  },
+  {
+    "w512": 389,
+    "w1024": 971,
+    "w2048": 947,
+    "minimum_decoder_cosine": 0.8773493766784668,
+    "minimum_activation_cosine": 0.8669241070747375
+  },
+  {
+    "w512": 390,
+    "w1024": 372,
+    "w2048": 727,
+    "minimum_decoder_cosine": 0.8891740441322327,
+    "minimum_activation_cosine": 0.8893190622329712
+  },
+  {
+    "w512": 393,
+    "w1024": 739,
+    "w2048": 1921,
+    "minimum_decoder_cosine": 0.8837277889251709,
+    "minimum_activation_cosine": 0.8880710601806641
+  },
+  {
+    "w512": 394,
+    "w1024": 715,
+    "w2048": 1631,
+    "minimum_decoder_cosine": 0.9118983745574951,
+    "minimum_activation_cosine": 0.8362661004066467
+  },
+  {
+    "w512": 395,
+    "w1024": 659,
+    "w2048": 1937,
+    "minimum_decoder_cosine": 0.7476580142974854,
+    "minimum_activation_cosine": 0.7086934447288513
+  },
+  {
+    "w512": 400,
+    "w1024": 423,
+    "w2048": 626,
+    "minimum_decoder_cosine": 0.8300340175628662,
+    "minimum_activation_cosine": 0.7749519348144531
+  },
+  {
+    "w512": 401,
+    "w1024": 866,
+    "w2048": 1630,
+    "minimum_decoder_cosine": 0.9453172087669373,
+    "minimum_activation_cosine": 0.5147615671157837
+  },
+  {
+    "w512": 406,
+    "w1024": 879,
+    "w2048": 1011,
+    "minimum_decoder_cosine": 0.7517545819282532,
+    "minimum_activation_cosine": 0.6704056859016418
+  },
+  {
+    "w512": 409,
+    "w1024": 291,
+    "w2048": 179,
+    "minimum_decoder_cosine": 0.9118661880493164,
+    "minimum_activation_cosine": 0.8251920342445374
+  },
+  {
+    "w512": 415,
+    "w1024": 322,
+    "w2048": 1318,
+    "minimum_decoder_cosine": 0.8156031370162964,
+    "minimum_activation_cosine": 0.5442976355552673
+  },
+  {
+    "w512": 418,
+    "w1024": 223,
+    "w2048": 1258,
+    "minimum_decoder_cosine": 0.8160117268562317,
+    "minimum_activation_cosine": 0.4791804254055023
+  },
+  {
+    "w512": 420,
+    "w1024": 138,
+    "w2048": 1777,
+    "minimum_decoder_cosine": 0.9112533330917358,
+    "minimum_activation_cosine": 0.8392179012298584
+  },
+  {
+    "w512": 423,
+    "w1024": 434,
+    "w2048": 940,
+    "minimum_decoder_cosine": 0.7265171408653259,
+    "minimum_activation_cosine": 0.6030113101005554
+  },
+  {
+    "w512": 425,
+    "w1024": 918,
+    "w2048": 1536,
+    "minimum_decoder_cosine": 0.9610267281532288,
+    "minimum_activation_cosine": 0.7616630792617798
+  },
+  {
+    "w512": 426,
+    "w1024": 108,
+    "w2048": 1286,
+    "minimum_decoder_cosine": 0.9465516209602356,
+    "minimum_activation_cosine": 0.5903512835502625
+  },
+  {
+    "w512": 427,
+    "w1024": 302,
+    "w2048": 1610,
+    "minimum_decoder_cosine": 0.881843090057373,
+    "minimum_activation_cosine": 0.8841264843940735
+  },
+  {
+    "w512": 428,
+    "w1024": 560,
+    "w2048": 273,
+    "minimum_decoder_cosine": 0.8459610342979431,
+    "minimum_activation_cosine": 0.493569552898407
+  },
+  {
+    "w512": 433,
+    "w1024": 695,
+    "w2048": 449,
+    "minimum_decoder_cosine": 0.8975334763526917,
+    "minimum_activation_cosine": 0.7194897532463074
+  },
+  {
+    "w512": 435,
+    "w1024": 952,
+    "w2048": 1626,
+    "minimum_decoder_cosine": 0.8614429831504822,
+    "minimum_activation_cosine": 0.8989270329475403
+  },
+  {
+    "w512": 436,
+    "w1024": 325,
+    "w2048": 837,
+    "minimum_decoder_cosine": 0.7507160902023315,
+    "minimum_activation_cosine": 0.3506132662296295
+  },
+  {
+    "w512": 438,
+    "w1024": 520,
+    "w2048": 637,
+    "minimum_decoder_cosine": 0.8845758438110352,
+    "minimum_activation_cosine": 0.548634946346283
+  },
+  {
+    "w512": 439,
+    "w1024": 224,
+    "w2048": 2036,
+    "minimum_decoder_cosine": 0.8771190047264099,
+    "minimum_activation_cosine": 0.7977041006088257
+  },
+  {
+    "w512": 441,
+    "w1024": 876,
+    "w2048": 1491,
+    "minimum_decoder_cosine": 0.9330058693885803,
+    "minimum_activation_cosine": 0.8495461344718933
+  },
+  {
+    "w512": 444,
+    "w1024": 176,
+    "w2048": 1266,
+    "minimum_decoder_cosine": 0.7844650745391846,
+    "minimum_activation_cosine": 0.5571633577346802
+  },
+  {
+    "w512": 448,
+    "w1024": 645,
+    "w2048": 1010,
+    "minimum_decoder_cosine": 0.8823230266571045,
+    "minimum_activation_cosine": 0.8664736151695251
+  },
+  {
+    "w512": 449,
+    "w1024": 664,
+    "w2048": 1499,
+    "minimum_decoder_cosine": 0.8963974714279175,
+    "minimum_activation_cosine": 0.795146644115448
+  },
+  {
+    "w512": 451,
+    "w1024": 185,
+    "w2048": 775,
+    "minimum_decoder_cosine": 0.9468383193016052,
+    "minimum_activation_cosine": 0.9341126680374146
+  },
+  {
+    "w512": 454,
+    "w1024": 585,
+    "w2048": 1028,
+    "minimum_decoder_cosine": 0.9044082760810852,
+    "minimum_activation_cosine": 0.741878867149353
+  },
+  {
+    "w512": 457,
+    "w1024": 881,
+    "w2048": 938,
+    "minimum_decoder_cosine": 0.8262151479721069,
+    "minimum_activation_cosine": 0.532451868057251
+  },
+  {
+    "w512": 459,
+    "w1024": 806,
+    "w2048": 1915,
+    "minimum_decoder_cosine": 0.7686484456062317,
+    "minimum_activation_cosine": 0.7743498682975769
+  },
+  {
+    "w512": 460,
+    "w1024": 426,
+    "w2048": 1290,
+    "minimum_decoder_cosine": 0.9284992218017578,
+    "minimum_activation_cosine": 0.7071486711502075
+  },
+  {
+    "w512": 461,
+    "w1024": 953,
+    "w2048": 682,
+    "minimum_decoder_cosine": 0.8407990336418152,
+    "minimum_activation_cosine": 0.4966854155063629
+  },
+  {
+    "w512": 462,
+    "w1024": 530,
+    "w2048": 269,
+    "minimum_decoder_cosine": 0.8256422281265259,
+    "minimum_activation_cosine": 0.6805923581123352
+  },
+  {
+    "w512": 463,
+    "w1024": 317,
+    "w2048": 1633,
+    "minimum_decoder_cosine": 0.9393889904022217,
+    "minimum_activation_cosine": 0.8065525889396667
+  },
+  {
+    "w512": 464,
+    "w1024": 605,
+    "w2048": 91,
+    "minimum_decoder_cosine": 0.8144457936286926,
+    "minimum_activation_cosine": 0.6490268111228943
+  },
+  {
+    "w512": 465,
+    "w1024": 324,
+    "w2048": 180,
+    "minimum_decoder_cosine": 0.8749524354934692,
+    "minimum_activation_cosine": 0.7940727472305298
+  },
+  {
+    "w512": 466,
+    "w1024": 1020,
+    "w2048": 1564,
+    "minimum_decoder_cosine": 0.7822719812393188,
+    "minimum_activation_cosine": 0.5826752185821533
+  },
+  {
+    "w512": 468,
+    "w1024": 650,
+    "w2048": 611,
+    "minimum_decoder_cosine": 0.8925988078117371,
+    "minimum_activation_cosine": 0.38812124729156494
+  },
+  {
+    "w512": 469,
+    "w1024": 631,
+    "w2048": 706,
+    "minimum_decoder_cosine": 0.8263264298439026,
+    "minimum_activation_cosine": 0.526371419429779
+  },
+  {
+    "w512": 470,
+    "w1024": 417,
+    "w2048": 184,
+    "minimum_decoder_cosine": 0.9028641581535339,
+    "minimum_activation_cosine": 0.8958539366722107
+  },
+  {
+    "w512": 471,
+    "w1024": 119,
+    "w2048": 1737,
+    "minimum_decoder_cosine": 0.9143966436386108,
+    "minimum_activation_cosine": 0.814260721206665
+  },
+  {
+    "w512": 472,
+    "w1024": 290,
+    "w2048": 416,
+    "minimum_decoder_cosine": 0.83316570520401,
+    "minimum_activation_cosine": 0.638465940952301
+  },
+  {
+    "w512": 473,
+    "w1024": 506,
+    "w2048": 1170,
+    "minimum_decoder_cosine": 0.771343469619751,
+    "minimum_activation_cosine": 0.6336261630058289
+  },
+  {
+    "w512": 476,
+    "w1024": 779,
+    "w2048": 1673,
+    "minimum_decoder_cosine": 0.766298770904541,
+    "minimum_activation_cosine": 0.6915873885154724
+  },
+  {
+    "w512": 477,
+    "w1024": 38,
+    "w2048": 1046,
+    "minimum_decoder_cosine": 0.8003921508789062,
+    "minimum_activation_cosine": 0.4942796528339386
+  },
+  {
+    "w512": 480,
+    "w1024": 497,
+    "w2048": 1015,
+    "minimum_decoder_cosine": 0.850601315498352,
+    "minimum_activation_cosine": 0.7071816325187683
+  },
+  {
+    "w512": 481,
+    "w1024": 756,
+    "w2048": 1444,
+    "minimum_decoder_cosine": 0.9512227177619934,
+    "minimum_activation_cosine": 0.9009806513786316
+  },
+  {
+    "w512": 483,
+    "w1024": 726,
+    "w2048": 415,
+    "minimum_decoder_cosine": 0.778222382068634,
+    "minimum_activation_cosine": 0.7347076535224915
+  },
+  {
+    "w512": 486,
+    "w1024": 99,
+    "w2048": 420,
+    "minimum_decoder_cosine": 0.8380953669548035,
+    "minimum_activation_cosine": 0.7950514554977417
+  },
+  {
+    "w512": 488,
+    "w1024": 66,
+    "w2048": 1778,
+    "minimum_decoder_cosine": 0.9621286392211914,
+    "minimum_activation_cosine": 0.9119576811790466
+  },
+  {
+    "w512": 489,
+    "w1024": 915,
+    "w2048": 13,
+    "minimum_decoder_cosine": 0.8651153445243835,
+    "minimum_activation_cosine": 0.7198535203933716
+  },
+  {
+    "w512": 490,
+    "w1024": 991,
+    "w2048": 1155,
+    "minimum_decoder_cosine": 0.7309476137161255,
+    "minimum_activation_cosine": 0.6553757786750793
+  },
+  {
+    "w512": 492,
+    "w1024": 727,
+    "w2048": 1640,
+    "minimum_decoder_cosine": 0.920653223991394,
+    "minimum_activation_cosine": 0.7067575454711914
+  },
+  {
+    "w512": 493,
+    "w1024": 171,
+    "w2048": 1458,
+    "minimum_decoder_cosine": 0.9490400552749634,
+    "minimum_activation_cosine": 0.8391011953353882
+  },
+  {
+    "w512": 495,
+    "w1024": 753,
+    "w2048": 521,
+    "minimum_decoder_cosine": 0.947841227054596,
+    "minimum_activation_cosine": 0.9579651355743408
+  },
+  {
+    "w512": 496,
+    "w1024": 440,
+    "w2048": 212,
+    "minimum_decoder_cosine": 0.9649642705917358,
+    "minimum_activation_cosine": 0.7745943069458008
+  },
+  {
+    "w512": 500,
+    "w1024": 937,
+    "w2048": 1,
+    "minimum_decoder_cosine": 0.8781654238700867,
+    "minimum_activation_cosine": 0.789967954158783
+  },
+  {
+    "w512": 503,
+    "w1024": 483,
+    "w2048": 1325,
+    "minimum_decoder_cosine": 0.9605531096458435,
+    "minimum_activation_cosine": 0.8614678978919983
+  },
+  {
+    "w512": 504,
+    "w1024": 160,
+    "w2048": 1857,
+    "minimum_decoder_cosine": 0.7019946575164795,
+    "minimum_activation_cosine": 0.5224752426147461
+  },
+  {
+    "w512": 505,
+    "w1024": 562,
+    "w2048": 1833,
+    "minimum_decoder_cosine": 0.8421464562416077,
+    "minimum_activation_cosine": 0.5786834359169006
+  },
+  {
+    "w512": 506,
+    "w1024": 984,
+    "w2048": 377,
+    "minimum_decoder_cosine": 0.8956248760223389,
+    "minimum_activation_cosine": 0.7086174488067627
+  },
+  {
+    "w512": 508,
+    "w1024": 904,
+    "w2048": 1935,
+    "minimum_decoder_cosine": 0.8211918473243713,
+    "minimum_activation_cosine": 0.45107144117355347
+  },
+  {
+    "w512": 510,
+    "w1024": 396,
+    "w2048": 1690,
+    "minimum_decoder_cosine": 0.7678801417350769,
+    "minimum_activation_cosine": 0.6886588931083679
+  },
+  {
+    "w512": 511,
+    "w1024": 547,
+    "w2048": 1095,
+    "minimum_decoder_cosine": 0.7944024205207825,
+    "minimum_activation_cosine": 0.6883851289749146
+  }
+]

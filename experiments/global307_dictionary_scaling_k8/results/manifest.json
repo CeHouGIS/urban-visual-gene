@@ -1,0 +1,124 @@
+{
+  "snapshot_utc": "2026-10-15T14:03:41.629788+00:00",
+  "experiment": "global307_dictionary_scaling_k8",
+  "note": "Static selected results. Live VLM records, weights, caches and native crops are not included.",
+  "files": [
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/REPORT.md",
+      "file": "REPORT.md",
+      "sha256": "d75738a266da99eb991c975aa30ab058f49c44ba2190a6135d14d8eb7893d198",
+      "bytes": 9569,
+      "source_sha256": "2d0228940a14cdf656aa71233c6cc53b6be58ee671f3507cdbef21a496b35746",
+      "presentation_changes": "relative links adjusted for versioned results snapshot"
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/split_w512_w1024.png",
+      "file": "figures/split_w512_w1024.png",
+      "sha256": "fc89fcf6941a7ed465e39105b64a80a1d745c34817a2250434824b35c9ce54ce",
+      "bytes": 3590448
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/dictionary_scaling_sankey.svg",
+      "file": "figures/dictionary_scaling_sankey.svg",
+      "sha256": "b0ff8d239e14e4691e94edefcdb0e7a230c1498ce40f15c118c605a0eaad254a",
+      "bytes": 110341,
+      "presentation_changes": "SVG trailing spaces normalized; diagram content unchanged"
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/no_close_match_w1024_w2048.png",
+      "file": "figures/no_close_match_w1024_w2048.png",
+      "sha256": "c5df828a24050c9cacda76d43a7b957f8f353177e99be695f9170168ee7e89fc",
+      "bytes": 1210171
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/threshold_sensitivity.png",
+      "file": "figures/threshold_sensitivity.png",
+      "sha256": "df5335f9fbc8c3604363be20dd3430a87a151aa0ed34927cc5bccc23d696da65",
+      "bytes": 107848
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/no_close_match_w512_w1024.png",
+      "file": "figures/no_close_match_w512_w1024.png",
+      "sha256": "7d543cd94e4e8d5174f631eb5c161da1c8f62f84ea8426550264177c840f93a0",
+      "bytes": 1111688
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/scaling_overview.png",
+      "file": "figures/scaling_overview.png",
+      "sha256": "82c798d43ad120dff0f121e1f4752eeae077843fd106429dbacf761f6736ceab",
+      "bytes": 113271
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/dictionary_scaling_sankey.png",
+      "file": "figures/dictionary_scaling_sankey.png",
+      "sha256": "3bbe55042b07a606dc96af8cb4e1a92ba87165c89c126ab7a02a5e721e3c3a27",
+      "bytes": 309786
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/stable_w512_w1024.png",
+      "file": "figures/stable_w512_w1024.png",
+      "sha256": "17019cd3ce09b0e6182e8fb8e2265fea3938efaa1891b53cfb9a7d5346133429",
+      "bytes": 1354304
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/split_w1024_w2048.png",
+      "file": "figures/split_w1024_w2048.png",
+      "sha256": "8554536b0cc05f43e28659992fe3052fe806db6a4c03e2d2537899785c3327a0",
+      "bytes": 4017453
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/stable_w1024_w2048.png",
+      "file": "figures/stable_w1024_w2048.png",
+      "sha256": "21ee837bf7c9b64180ec4f1923d2790e6f43012ade87c89f4bb15f4a4030f8b0",
+      "bytes": 1410275
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/outputs/heldout/summary.json",
+      "file": "tables/summary.json",
+      "sha256": "b2e38c146e5550000ea1658431c2e74469200dc994cd1325331080c75ccc114d",
+      "bytes": 3308
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/outputs/heldout/sample_expansion_summary.json",
+      "file": "tables/sample_expansion_summary.json",
+      "sha256": "83f7f01317088c916c4f4bdf1d882d77e22b5c54a3d83992b0c4bdbaa895ba72",
+      "bytes": 483
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/outputs/heldout/dictionary_scaling_sankey_flows.csv",
+      "file": "tables/dictionary_scaling_sankey_flows.csv",
+      "sha256": "fee64015f4f7c99fe25e434fd15c41c86878a7c26daedd14f635299c3c45bf1a",
+      "bytes": 810
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/outputs/heldout/feature_relations_w512_to_w1024.csv",
+      "file": "tables/feature_relations_w512_to_w1024.csv",
+      "sha256": "d014a1bfc9c6b5f5659368d96b6259a38675ff8538bdfd3565c49e0b4c789421",
+      "bytes": 78363
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/outputs/heldout/feature_relations_w1024_to_w2048.csv",
+      "file": "tables/feature_relations_w1024_to_w2048.csv",
+      "sha256": "473d29a5ca486be7ab66378df8fce60e639c560787717ac5b6951c8bd313788c",
+      "bytes": 143616
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/outputs/heldout/threshold_sensitivity.csv",
+      "file": "tables/threshold_sensitivity.csv",
+      "sha256": "9d414147f26b3d9e2d0487f4ba58fa8570c474487c8773a195f44009a5ec3290",
+      "bytes": 2418
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/reports/figures/image_evidence.json",
+      "file": "figures/image_evidence.json",
+      "sha256": "c7e2ba1834a6f57f4e1b216874664ce584e78a1156ce856eb86c3be89cc8255b",
+      "bytes": 28480
+    },
+    {
+      "source": "experiments/global307_dictionary_scaling_k8/outputs/heldout/stable_three_width_chains.json",
+      "file": "tables/stable_three_width_chains.json",
+      "sha256": "9dde27e9f4728408f18bd24efbbd4a7bf392e0978638774d33a91c7a22b1faf4",
+      "bytes": 44413
+    }
+  ]
+}

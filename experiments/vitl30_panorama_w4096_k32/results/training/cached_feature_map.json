@@ -1,0 +1,249 @@
+{
+  "input_dim": 1024,
+  "grid": 28,
+  "context_weight": 0.25,
+  "backbone": "DINOv3 ViT-L/16",
+  "cities": [
+    {
+      "city": "Argentina/BuenosAires",
+      "original_city": "Argentina/BuenosAires",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_BuenosAires_p784.f16.npy",
+      "feature_rows": 8432704,
+      "panoramas": 2689,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Australia/Melbourne",
+      "original_city": "Australia/Melbourne",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Melbourne_p784.f16.npy",
+      "feature_rows": 8852928,
+      "panoramas": 2823,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Australia/Sydney",
+      "original_city": "Australia/Sydney",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Sydney_p784.f16.npy",
+      "feature_rows": 9408000,
+      "panoramas": 3000,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Austria/Vienna",
+      "original_city": "Austria/Vienna",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Vienna_p784.f16.npy",
+      "feature_rows": 9404864,
+      "panoramas": 2999,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Bangladesh/Dhaka",
+      "original_city": "Bangladesh/Dhaka",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Dhaka_p784.f16.npy",
+      "feature_rows": 9408000,
+      "panoramas": 3000,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Belgium/Antwerp",
+      "original_city": "Belgium/Antwerp",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Antwerp_p784.f16.npy",
+      "feature_rows": 9404864,
+      "panoramas": 2999,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "SouthAfrica/CapeTown",
+      "original_city": "SouthAfrica/CapeTown",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_CapeTown_p784.f16.npy",
+      "feature_rows": 9408000,
+      "panoramas": 3000,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Brazil/SaoPaulo",
+      "original_city": "Brazil/SaoPaulo",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_SaoPaulo_p784.f16.npy",
+      "feature_rows": 9404864,
+      "panoramas": 2999,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "US/Phoenix",
+      "original_city": "US/Phoenix",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Phoenix_p784.f16.npy",
+      "feature_rows": 9401728,
+      "panoramas": 2998,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "China/Taipei",
+      "original_city": "China/Taipei",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Taipei_p784.f16.npy",
+      "feature_rows": 9389184,
+      "panoramas": 2994,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Brazil/RiodeJaneiro",
+      "original_city": "Brazil/RiodeJaneiro",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_RiodeJaneiro_p784.f16.npy",
+      "feature_rows": 9386048,
+      "panoramas": 2993,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Australia/Perth",
+      "original_city": "Australia/Perth",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Perth_p784.f16.npy",
+      "feature_rows": 9408000,
+      "panoramas": 3000,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "France/Paris",
+      "original_city": "France/Paris",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Paris_p784.f16.npy",
+      "feature_rows": 9398592,
+      "panoramas": 2997,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Germany/Hamburg",
+      "original_city": "Germany/Berlin",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Hamburg_p784.f16.npy",
+      "feature_rows": 9404864,
+      "panoramas": 2999,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Brazil/Brasília",
+      "original_city": "Brazil/Brasília",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Brasília_p784.f16.npy",
+      "feature_rows": 9408000,
+      "panoramas": 3000,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Indonesia/Yogyakarta",
+      "original_city": "Indonesia/Yogyakarta",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/nas_30city_vitl_panorama_w4096_k32/Indonesia__Yogyakarta/context.f16.npy",
+      "feature_rows": 10035200,
+      "panoramas": 3200,
+      "pano_id_mapping_available": true
+    },
+    {
+      "city": "Italy/Naples",
+      "original_city": "Italy/Naples",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Naples_p784.f16.npy",
+      "feature_rows": 9379776,
+      "panoramas": 2991,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Korea/Seoul",
+      "original_city": "Korea/Seoul",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Seoul_p784.f16.npy",
+      "feature_rows": 9398592,
+      "panoramas": 2997,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Mexico/Monterrey",
+      "original_city": "Mexico/Monterrey",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Monterrey_p784.f16.npy",
+      "feature_rows": 9404864,
+      "panoramas": 2999,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Belgium/Brussels",
+      "original_city": "Netherlands/Amsterdam",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Brussels_p784.f16.npy",
+      "feature_rows": 9386048,
+      "panoramas": 2993,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Nigeria/Lagos",
+      "original_city": "Nigeria/Lagos",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Lagos_p784.f16.npy",
+      "feature_rows": 9408000,
+      "panoramas": 3000,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Portugal/Lisbon",
+      "original_city": "Portugal/Lisboa",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Lisbon_p784.f16.npy",
+      "feature_rows": 9401728,
+      "panoramas": 2998,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Russia/Moscow",
+      "original_city": "Russia/Moscow",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Moscow_p784.f16.npy",
+      "feature_rows": 9386048,
+      "panoramas": 2993,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Singapore/Singapore",
+      "original_city": "Singapore/Singapore",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Singapore_p784.f16.npy",
+      "feature_rows": 9012864,
+      "panoramas": 2874,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "SouthAfrica/Johannesburg",
+      "original_city": "SouthAfrica/Johannesburg",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Johannesburg_p784.f16.npy",
+      "feature_rows": 9194752,
+      "panoramas": 2932,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Spain/Barcelona",
+      "original_city": "Spain/Barcelona",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Barcelona_p784.f16.npy",
+      "feature_rows": 8134784,
+      "panoramas": 2594,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "Sweden/Stockholm",
+      "original_city": "Sweden/Stockholm",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Stockholm_p784.f16.npy",
+      "feature_rows": 9408000,
+      "panoramas": 3000,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "UAE/Dubai",
+      "original_city": "UAE/Dubai",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Dubai_p784.f16.npy",
+      "feature_rows": 9326464,
+      "panoramas": 2974,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "US/Chicago",
+      "original_city": "US/Chicago",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_Chicago_p784.f16.npy",
+      "feature_rows": 9401728,
+      "panoramas": 2998,
+      "pano_id_mapping_available": false
+    },
+    {
+      "city": "US/NewYork",
+      "original_city": "US/NewYork",
+      "feature_path": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_balanced_3000/dict_NewYork_p784.f16.npy",
+      "feature_rows": 9401728,
+      "panoramas": 2998,
+      "pano_id_mapping_available": false
+    }
+  ],
+  "notes": "Existing ring-context caches; old feature row IDs do not imply a verified image-ID mapping."
+}

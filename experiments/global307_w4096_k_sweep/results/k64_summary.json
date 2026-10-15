@@ -1,0 +1,18 @@
+{
+  "checkpoint": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_w4096_k64/sae_448_k4096.pt",
+  "dictionary_width": 4096,
+  "input_dim": 1024,
+  "batch_topk_k": 64,
+  "scanned_panos": 11800,
+  "anchor_patches": 1510400,
+  "heldout_cosine_loss": 0.04112027972431506,
+  "active_features": 4093,
+  "map_batch_patches": 3136,
+  "headings": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "selection": "8 deterministic features per support tercile; strongest distinct held-out panos"
+}

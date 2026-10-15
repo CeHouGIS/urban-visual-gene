@@ -1,0 +1,32 @@
+{
+  "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
+  "crop_manifest_sha256": "25074484bd9255b0334553e3726d6836cb98ffa1f9e6191fcedc4a14bbebedd0",
+  "encoder": "/root/.cache/urban_scene_models/siglip-base-patch16-224",
+  "encoder_dimension": 768,
+  "top_per_dimension": 10,
+  "dimensions": 4096,
+  "dimensions_with_instances": 3178,
+  "dimensions_without_instances": 918,
+  "dimensions_with_full_top": 2920,
+  "instances": 29934,
+  "source_panoramas": 3712,
+  "source_images": 14848,
+  "source_cities": 29,
+  "selection": "highest positive sparse activation per distinct panorama; best heading only",
+  "input": "individual L2-normalized SigLIP embeddings of clean activation crops",
+  "umap": {
+    "metric": "cosine",
+    "n_neighbors": 30,
+    "min_dist": 0.1,
+    "random_state": 42
+  },
+  "limitations": [
+    "Top ranks are within the fixed held-out sample, not the whole NAS",
+    "Dimensions with no positive activation have no image-semantic coordinate",
+    "UMAP distances are descriptive, not statistical significance"
+  ],
+  "coordinate_sha256": "ac72cecb8ba7e50242b046a27f48da251c5a2bf00fc17a16ccae3593ead4a90d",
+  "group_labels_sha256": "2ff52001c63b8ef65853a259f187be3e2610e0b8f35ec578df533ee61fa66c50",
+  "instance_csv": "instance_umap.csv",
+  "interactive_page": "index.html"
+}

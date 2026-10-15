@@ -1,0 +1,1 @@
+../../experiments/global307_w2048_k64/code/publish_semantic_w2048_k64.sh

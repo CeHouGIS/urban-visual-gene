@@ -1,0 +1,51 @@
+{
+  "snapshot_utc": "2026-10-15T14:03:41.629788+00:00",
+  "experiment": "global307_w4096_k64",
+  "note": "Static selected results. Live VLM records, weights, caches and native crops are not included.",
+  "files": [
+    {
+      "source": "experiments/global307_w4096_k64/outputs/semantic_top100/run.json",
+      "file": "semantic_umap/run.json",
+      "sha256": "51e57a9fba3169ccd1238fad133619915b7936595bb30992031d37b55e30fe21",
+      "bytes": 5556
+    },
+    {
+      "source": "experiments/global307_w4096_k64/outputs/semantic_top100/embedding_run.json",
+      "file": "semantic_umap/embedding_run.json",
+      "sha256": "1cc70eb6706468981af60e2c29ba8e539000067f478ac911972d0843d58203c6",
+      "bytes": 798
+    },
+    {
+      "source": "experiments/global307_w4096_k64/outputs/semantic_top100/reduction_run.json",
+      "file": "semantic_umap/reduction_run.json",
+      "sha256": "211234bd6693c049d013ee57fb316663cb7d82c76bd9c12c5cdc0eb9bcfd396a",
+      "bytes": 488
+    },
+    {
+      "source": "experiments/global307_w4096_k64/outputs/semantic_top100/feature_semantic_umap.csv",
+      "file": "semantic_umap/feature_semantic_umap.csv",
+      "sha256": "a13e212e1381eb10f361c945efc398dc06dfb70630b941789bd099a5deab5acb",
+      "bytes": 304465
+    },
+    {
+      "source": "experiments/global307_w4096_k64/outputs/semantic_top100/feature_semantic_umap.png",
+      "file": "semantic_umap/feature_semantic_umap.png",
+      "sha256": "da4e173453cd9c3db4de630a74ff9b635bf901de9e53b0b5e14b1b26d71430ab",
+      "bytes": 738694
+    },
+    {
+      "source": "experiments/global307_w4096_k64/outputs/semantic_top100/semantic_crop_examples.png",
+      "file": "semantic_umap/semantic_crop_examples.png",
+      "sha256": "8afaf25bf70586ff0d2f09d3e5cb474a32ffa8549ccf9512d430992194f71855",
+      "bytes": 3056492
+    },
+    {
+      "source": "experiments/global307_w4096_k64/reports/REPORT.md",
+      "file": "REPORT.md",
+      "sha256": "5810622c02e6c8c41d9952c24e6226af44abe90e4f1bfa1d0ad8f7ac0491c7e7",
+      "bytes": 2819,
+      "source_sha256": "eb61fb237a010e23421daef8ff23ad6854cbd9904b77227edd0d05a8d2318f7e",
+      "presentation_changes": "relative links adjusted for versioned results snapshot"
+    }
+  ]
+}

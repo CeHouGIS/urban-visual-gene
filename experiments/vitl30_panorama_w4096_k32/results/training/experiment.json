@@ -1,0 +1,138 @@
+{
+  "identity": {
+    "cities": [
+      [
+        "Argentina/BuenosAires",
+        "0b1f2bd4dedbebe8ba3e86670f7d6628245c2af57cbd4ef0fea46e034dea2902"
+      ],
+      [
+        "Australia/Melbourne",
+        "4dc13d4ffdb8231f443e1da6f1e53759f2030b92986ad5531303c0121cd6349a"
+      ],
+      [
+        "Australia/Sydney",
+        "ca2fd393e1839729498053f8d107502cf8b18b6007a5d25de078da454f909c11"
+      ],
+      [
+        "Austria/Vienna",
+        "c11d4ce1397fcc6eb271d9d252f145edcc490f5bbb69f926dc27e55dcd4830c2"
+      ],
+      [
+        "Bangladesh/Dhaka",
+        "07648d2411508d95c9d8e9b889016558d57f54212e4c573776e43d4e8a7fa48b"
+      ],
+      [
+        "Belgium/Antwerp",
+        "7b8bc21850814f1549cca2c26ffd7bdd5d94dfc9a344b59a7103f041fd58a8dc"
+      ],
+      [
+        "SouthAfrica/CapeTown",
+        "4161190bd6faca0fd138ffc2382604eb4da76ff15220d0ab761a4e06e19e6810"
+      ],
+      [
+        "Brazil/SaoPaulo",
+        "b3ee827f473ee99932c3eed7131daffb45b134e3e098542edee079d267964ac3"
+      ],
+      [
+        "US/Phoenix",
+        "52889fd0707cd2e52b263cada595a71cbc572b4b93541fa06e601121da2f333a"
+      ],
+      [
+        "China/Taipei",
+        "47d8fe2630637ddc4d879289951d56fb395bd0f567b1f508dfee16d1d0b45484"
+      ],
+      [
+        "Brazil/RiodeJaneiro",
+        "157d1618da9b53033d99a41b2085cc33d2efceb924e57b12f6b6630b1f993ab2"
+      ],
+      [
+        "Australia/Perth",
+        "3faf42716878ef48c7a0b55ea16c5e70b1402f9989d001d53f9ea478b02c7381"
+      ],
+      [
+        "France/Paris",
+        "6c1e22ae0d8c8d60a2783db620add73c814c124825f7d3c5468f213e09ac34fb"
+      ],
+      [
+        "Germany/Hamburg",
+        "ad64092b029842768d09d1ccaaa62046f0caf9aca0b9778a2f273f391beec8e2"
+      ],
+      [
+        "Brazil/Brasília",
+        "c76169f67132d9c5566fe48bb40841b7db926f039e80e17d8ec8a03b59309dee"
+      ],
+      [
+        "Indonesia/Yogyakarta",
+        "a958ecb228f93360f3e888b3e71a0ee16ce16210fda6ae235d74b2b90248e9c8"
+      ],
+      [
+        "Italy/Naples",
+        "2a9aac2ef2a2a1d56bda27b638af768276cb78cd8bff12d699cb9636a647dfe1"
+      ],
+      [
+        "Korea/Seoul",
+        "06e6a5d751f7d1c6796a57cab0eb6e35d71f6eadb9c7c4f3a2b8acb19a56d344"
+      ],
+      [
+        "Mexico/Monterrey",
+        "a87b335f60745b082df6fb22a0a9a6010162632d5bb6e6362b5d7a64c082c4fe"
+      ],
+      [
+        "Belgium/Brussels",
+        "e33edb8b2cfa32fae6fd129eddf61b7b337f8e5db33a3520d13c8a7f71cc4a18"
+      ],
+      [
+        "Nigeria/Lagos",
+        "8b32dd41bd3109ae9a35b505bf996b01d8f63d47febdabe081552c6a2c9933b0"
+      ],
+      [
+        "Portugal/Lisbon",
+        "eadbf49a3dd2d0a6d2d241165575acd9c5d7963fcc5f0b40c2154ec4d072ced7"
+      ],
+      [
+        "Russia/Moscow",
+        "5550deebecff017a690962ae507b26d5aed5d6f458eaee048cbb92eb7c199b0a"
+      ],
+      [
+        "Singapore/Singapore",
+        "21e2a21133d81efe9a2ab96caef62a23fa89302b8aecb1b26378080a02b7a4e0"
+      ],
+      [
+        "SouthAfrica/Johannesburg",
+        "58603e13790365918b58caa62959d17706caf478315c8657d7837dc157762b09"
+      ],
+      [
+        "Spain/Barcelona",
+        "1273b4b3bffbd6feb98bfa8302e592f7022b26204f6bd675f316e7d4d3a3fd43"
+      ],
+      [
+        "Sweden/Stockholm",
+        "8fcd22e67ce67db3ea9be62267f27977d2481894ec720c58364170d43b9f71b5"
+      ],
+      [
+        "UAE/Dubai",
+        "ab9e68169315578cd1646e4b6750e51f8431de0ad779786c944dd8d8fa3805d7"
+      ],
+      [
+        "US/Chicago",
+        "63741bd604ed4e47efd6f22ecf4f3cdd6afacd2b0a7b2940e0f3621692b8b93c"
+      ],
+      [
+        "US/NewYork",
+        "e920d980d373e708c8a8b4bd22d5d3a3ed7bc1b4c6d18ca1d62dd9eaef688bb9"
+      ]
+    ],
+    "weights": "dcb2e45127cccbf1601e5f42fef165eea275c8e5213197e8dcf3f48822718179",
+    "seed": 42,
+    "width": 4096,
+    "k": 32,
+    "epochs": 16,
+    "val_panos": 128,
+    "patches_per_epoch": 49,
+    "steps_per_epoch": 3072
+  },
+  "train_panoramas": 85191,
+  "val_panoramas": 3840,
+  "cities": 30,
+  "train_patch_coverage": "all 784 positions across 16 epochs"
+}

@@ -1,0 +1,20 @@
+[
+  "experiments/global307_baseline_w1024_k8/runtime/logs/README.md",
+  "experiments/global307_dictionary_scaling_k8/outputs/heldout/README.md",
+  "experiments/global307_dictionary_scaling_k8/reports/figures/README.md",
+  "experiments/global307_dictionary_scaling_k8/reports/website/README.md",
+  "experiments/global307_w2048_k64/outputs/feature_combinations/README.md",
+  "experiments/global307_w2048_k64/outputs/semantic_top100/README.md",
+  "experiments/global307_w4096_k64/outputs/semantic_top100/README.md",
+  "experiments/global307_w4096_k_sweep/reports/gallery/README.md",
+  "experiments/legacy12city/reports/figures/README.md",
+  "experiments/legacy30_paper_w1024_k8/reports/figures/README.md",
+  "experiments/semantic_pipeline_smoke/outputs/README.md",
+  "experiments/vitl30_panorama_w4096_k32/outputs/README.md",
+  "experiments/vitl30_panorama_w4096_k32/reports/instance_umap/README.md",
+  "experiments/vitl30_panorama_w4096_k32/reports/landscape_prototypes/README.md",
+  "experiments/vitl30_panorama_w4096_k32/reports/semantic_umap/README.md",
+  "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/README.md",
+  "experiments/vitl30_panorama_w4096_k32/reports/vlm_dimensions/README.md",
+  "experiments/vitl30_panorama_w4096_k32/reports/vlm_groups/README.md"
+]

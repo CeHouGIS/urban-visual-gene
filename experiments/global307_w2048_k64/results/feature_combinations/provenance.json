@@ -1,0 +1,9 @@
+{
+  "checkpoint": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_w2048_k64/sae_448_k2048.pt",
+  "checkpoint_sha256": "5311d99ef9177cf18463fcac4d0d5425f1ea86fb74074637a6974d6c4669cea7",
+  "anchor_manifest": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_scaling_heldout_295city_40pano/anchor_manifest.json",
+  "anchor_manifest_sha256": "7a8f2190f11009bfd5b8e2b676e543eb929327edf59889f381aee80ff2fd10bc",
+  "unit": "complete four-view panorama",
+  "patches_per_panorama": 3136,
+  "activation": "positive patches selected by panorama-level BatchTopK k64"
+}

@@ -1,0 +1,25 @@
+{
+  "snapshot_utc": "2026-10-15T14:03:41.629788+00:00",
+  "experiment": "global307_w4096_k_sweep",
+  "note": "Static selected results. Live VLM records, weights, caches and native crops are not included.",
+  "files": [
+    {
+      "source": "experiments/global307_w4096_k_sweep/reports/gallery/k16/gallery.json",
+      "file": "k16_summary.json",
+      "sha256": "f4afb5acd5ca85c3666f572ddbd2d5422e3a3bdc5963e219ffa99e0b3dc4351d",
+      "transform": "gallery metadata only; image rows omitted"
+    },
+    {
+      "source": "experiments/global307_w4096_k_sweep/reports/gallery/k32/gallery.json",
+      "file": "k32_summary.json",
+      "sha256": "d267b212d4067e4d05667b985738fe7ef94891f2d68e19e1e642013686467463",
+      "transform": "gallery metadata only; image rows omitted"
+    },
+    {
+      "source": "experiments/global307_w4096_k_sweep/reports/gallery/k64/gallery.json",
+      "file": "k64_summary.json",
+      "sha256": "2e0036406051cdf13fb89e6ca5ca9579ed9159f1098ed4357d632410d5d73f17",
+      "transform": "gallery metadata only; image rows omitted"
+    }
+  ]
+}

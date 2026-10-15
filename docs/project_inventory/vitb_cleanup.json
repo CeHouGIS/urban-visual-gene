@@ -1,0 +1,191 @@
+{
+  "completed_utc": "2026-10-15T13:21:07.711070+00:00",
+  "deleted": [
+    {
+      "path": "outputs/experiments/nas_30city_batchtopk_w4096_k32",
+      "files": 288,
+      "bytes": 114850416383,
+      "allocated_bytes": 114851385344
+    },
+    {
+      "path": "outputs/experiments/feature_mae_30city_batchtopk_w4096_k32",
+      "files": 54,
+      "bytes": 10486431,
+      "allocated_bytes": 10592256
+    },
+    {
+      "path": "sae_experiments/legacy_mae_30city",
+      "files": 31,
+      "bytes": 402190,
+      "allocated_bytes": 462848
+    },
+    {
+      "path": "reports/nas_30city_batchtopk_w4096_k32.md",
+      "files": 1,
+      "bytes": 4140,
+      "allocated_bytes": 8192
+    },
+    {
+      "path": "reports/nas_30city_batchtopk_w4096_k32_experiment_report.md",
+      "files": 1,
+      "bytes": 11646,
+      "allocated_bytes": 12288
+    }
+  ],
+  "reclaimed_allocated_bytes": 114862555136,
+  "retained_data_provenance": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/source_cohort",
+  "protected_vitl_integrity_verified": true,
+  "unused_thesis_copies_removed": [
+    {
+      "path": "/root/code/HKUST-Thesis/img_gene/nas30_w4096",
+      "bytes": 6908009,
+      "reason": "Unused ViT-B result copy; no LaTeX references"
+    },
+    {
+      "path": "/root/code/HKUST-Thesis/img_gene/Fig_PatchSAE_Examples_1.png",
+      "bytes": 5503105,
+      "reason": "Unused ViT-B result copy; no LaTeX references"
+    },
+    {
+      "path": "/root/code/HKUST-Thesis/img_gene/Fig_PatchSAE_Examples_2.png",
+      "bytes": 5477516,
+      "reason": "Unused ViT-B result copy; no LaTeX references"
+    },
+    {
+      "path": "/root/code/HKUST-Thesis/img_gene/Fig_PatchSAE_Examples_provenance.csv",
+      "bytes": 2039,
+      "reason": "Unused ViT-B result copy; no LaTeX references"
+    }
+  ],
+  "remaining_vitb_logs_removed": [
+    {
+      "path": "outputs/nas_experiment_runner.log",
+      "files": 1,
+      "bytes": 765,
+      "allocated_bytes": 4096,
+      "sha256": "bdca0bdd26b5eacc60afcfa2b5018205d2520e660457f3ec88c80a1a1b3c0be2",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu0.log",
+      "files": 1,
+      "bytes": 1702,
+      "allocated_bytes": 4096,
+      "sha256": "2305dbef4e4a3cd26345e400d5842027a66ec65fd5722dcf923edeea17949765",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu0_long.log",
+      "files": 1,
+      "bytes": 8906,
+      "allocated_bytes": 12288,
+      "sha256": "124b08b87f11aa9fa90d6cd693905045e54d3a75726d24a8abe2014f18746bc1",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu1.log",
+      "files": 1,
+      "bytes": 2003,
+      "allocated_bytes": 4096,
+      "sha256": "05820e7fad46d11a0303b874777124ecde967adeba7704fa173d36fe3517c80d",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu1_long.log",
+      "files": 1,
+      "bytes": 3714,
+      "allocated_bytes": 4096,
+      "sha256": "cce1977cd5f5a606bc81547458e31d8bf560a0324ac625e1d1b769f21381a703",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu1_next.log",
+      "files": 1,
+      "bytes": 1788,
+      "allocated_bytes": 4096,
+      "sha256": "82bfe2f16ccfef46f8bc9816cf44ff1837d8b3b646af462ff8ca2f6dca749c47",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu2.log",
+      "files": 1,
+      "bytes": 1917,
+      "allocated_bytes": 4096,
+      "sha256": "bb1ba84b872f9a0a6743d5ff8271da501c72008879e6a4ae4bdd0bf754d19b26",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu2_long.log",
+      "files": 1,
+      "bytes": 12662,
+      "allocated_bytes": 16384,
+      "sha256": "4894dcf780132a8c8aa59765ed80f5e5b68ff3cf71af5d9862abc43ec3cb652d",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu3.log",
+      "files": 1,
+      "bytes": 1788,
+      "allocated_bytes": 4096,
+      "sha256": "9553a67b4e6481a41a7c916f45b9ca90bcb839dd91ac4fae0ea3ee5eb51bd799",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_extract_gpu3_long.log",
+      "files": 1,
+      "bytes": 10950,
+      "allocated_bytes": 12288,
+      "sha256": "13f5aac7e4de080c79359c36617c64aff42da70ffbfbb2796e3b238219890ea4",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_manifest_build.log",
+      "files": 1,
+      "bytes": 1408,
+      "allocated_bytes": 4096,
+      "sha256": "a0f03754bc0ac5964581df80f81c0fe5e6cc65131c9da3150c682de441aa650e",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_quality_first.log",
+      "files": 1,
+      "bytes": 141,
+      "allocated_bytes": 4096,
+      "sha256": "d99a4a3720d802b3e5ed0d043b67357cdb36921c72a17bce04cf68d71c137d99",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_quality_last.log",
+      "files": 1,
+      "bytes": 144,
+      "allocated_bytes": 4096,
+      "sha256": "89bc8e97d9a21bf4efad560e9ed725456d21aa3af7ab79f80a5f0e27e602d5b5",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_quality_middle.log",
+      "files": 1,
+      "bytes": 130,
+      "allocated_bytes": 4096,
+      "sha256": "c2102ee8eaf6d187fd155a5da14b47c679355d6c2245603611c06f4036c8a04b",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_quality_pilot.log",
+      "files": 1,
+      "bytes": 40,
+      "allocated_bytes": 4096,
+      "sha256": "7727782522c6cc20273d5c04215f1dfb22f196943ad881d0607ac1350a63adf8",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    },
+    {
+      "path": "outputs/nas_train_audit.log",
+      "files": 1,
+      "bytes": 43,
+      "allocated_bytes": 4096,
+      "sha256": "36190da94021acb1d5daad84abd35aacad1e46db352c35ac884a1ae9b110690c",
+      "reason": "Leftover logs of the removed 30-city ViT-B pipeline; shared manifests and QC records already migrated to current ViT-L source_cohort."
+    }
+  ],
+  "last_followup_utc": "2026-10-15T13:33:51.632788+00:00"
+}

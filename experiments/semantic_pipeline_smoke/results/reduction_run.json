@@ -1,0 +1,17 @@
+{
+  "included": 521,
+  "excluded": 503,
+  "aggregation": "equal-weight mean of unit crop embeddings, then L2 normalization",
+  "top": 5,
+  "min_examples": 2,
+  "metric": "cosine",
+  "seed": 42,
+  "neighbors": 30,
+  "min_dist": 0.1,
+  "limitations": [
+    "UMAP distances do not validate semantic labels",
+    "Mean prototypes can conceal multiple concepts",
+    "Coherence is embedding agreement, not calibrated semantic purity",
+    "Ranking is limited to the supplied manifest"
+  ]
+}

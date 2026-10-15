@@ -1,0 +1,6 @@
+feature_a,feature_b,panoramas,validation_cities,observed_adjacency,random_shift_adjacency,spatial_lift,spatial_p_exploratory
+211,1546,120,70,0.008,0.0144,0.557,1.0
+1470,1875,120,70,0.0894,0.0915,0.977,0.85
+13,1546,119,70,0.0034,0.0038,0.895,0.815
+542,1012,87,51,0.0157,0.0172,0.911,0.825
+823,2014,108,62,0.9449,0.4916,1.922,0.005

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAE 图像实例 UMAP</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f4f6f7;color:#1d2933;font:14px system-ui,sans-serif}
+    header{background:#fff;border-bottom:1px solid #d8e0e5;padding:15px 24px}h1{font-size:22px;margin:0 0 5px;letter-spacing:0}
+    p{margin:4px 0;color:#586773;line-height:1.45}main{display:grid;grid-template-columns:minmax(0,1fr) 365px;min-height:calc(100vh - 103px)}
+    .workspace{min-width:0;padding:16px;display:flex;flex-direction:column;gap:10px}.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+    input,select,button{height:35px;border:1px solid #b9c8d1;background:#fff;color:#1d2933;border-radius:4px;padding:5px 9px;font:inherit}
+    input[type=number]{width:104px}input[type=range]{width:110px;vertical-align:middle}button{cursor:pointer}button:hover{background:#edf4f5}
+    #plot{width:100%;height:min(74vh,850px);min-height:460px;display:block;background:#fff;border:1px solid #d8e0e5;touch-action:none}
+    .hint{font-size:12px;color:#63717d}.detail{background:#fff;border-left:1px solid #d8e0e5;padding:17px;min-width:0}
+    .detail h2{font-size:18px;margin:0 0 5px}.detail h3{font-size:14px;margin:16px 0 8px}.hero{width:100%;aspect-ratio:1/1;object-fit:contain;background:#e6ecee;border:1px solid #d8e0e5}
+    .crop{width:100%;height:150px;object-fit:contain;background:#f1f3f4;border:1px solid #d8e0e5;margin-top:8px}
+    .results{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.results button{height:67px;padding:1px;position:relative;overflow:hidden}
+    .results button[aria-pressed=true]{outline:2px solid #bb410b}.results img{width:100%;height:100%;object-fit:cover}.results span{position:absolute;bottom:0;left:0;background:#fffde9e8;font-size:11px;padding:1px 3px}
+    .links{display:flex;gap:12px;margin-top:11px}.links a{color:#146b84}#tip{position:fixed;display:none;z-index:10;pointer-events:none;background:white;border:1px solid #b9c8d1;padding:7px;box-shadow:0 3px 14px #1d29332b;max-width:220px}
+    #tip img{display:block;width:170px;height:130px;object-fit:contain}#tip small{display:block;margin-top:5px}#count{font-variant-numeric:tabular-nums}
+    @media(max-width:900px){main{display:block}.detail{border-left:0;border-top:1px solid #d8e0e5}.workspace{padding:12px}#plot{height:58vh;min-height:360px}.detail .hero{max-height:430px}}
+  </style>
+</head>
+<body>
+  <header><h1>SAE 图像实例 UMAP</h1><p id="summary"></p></header>
+  <main>
+    <section class="workspace" aria-label="语义投影">
+      <div class="toolbar">
+        <label for="feature">维度</label><input id="feature" type="number" min="0" max="4095" placeholder="0–4095">
+        <button id="show-feature">定位</button><button id="all">显示全部</button>
+        <label for="group">分组</label><select id="group"><option value="">全部 64 组</option></select>
+        <label for="rank">前 <output id="rank-value">10</output> 名</label><input id="rank" type="range" min="1" max="10" value="10">
+        <button id="reset" title="重置缩放与平移">重置视图</button>
+      </div>
+      <canvas id="plot" aria-label="图像实例语义 UMAP 散点图"></canvas>
+      <div id="count" class="hint"></div>
+      <div class="hint">滚轮缩放，拖动平移；悬停预览高激活裁剪，点击查看原图与该维度的前十名实例。</div>
+    </section>
+    <aside class="detail">
+      <h2 id="selection-title">选择一个点</h2><p id="selection-meta">每个点代表一张方向图中的一个 SAE 高激活区域。</p>
+      <img class="hero" id="original" alt="选中实例的原始街景图像">
+      <img class="crop" id="crop" alt="高激活区域裁剪">
+      <div class="links"><a id="full-gallery" target="_blank" rel="noopener">查看该维全部实例及激活图</a></div>
+      <h3>当前维度的高激活实例</h3><div id="results" class="results"></div>
+    </aside>
+  </main>
+  <div id="tip"><img alt="高激活裁剪预览"><small></small></div>
+  <script>const atlas=__DATA__;
+    const P=atlas.points,C=atlas.colors,G=atlas.groups,source=atlas.source;
+    const canvas=document.querySelector('#plot'),ctx=canvas.getContext('2d'),tip=document.querySelector('#tip');
+    const originals=document.querySelector('#original'),crop=document.querySelector('#crop');
+    const byFeature=new Map();const groupCounts=Array(64).fill(0);
+    P.forEach((point,i)=>{const f=point[2];if(!byFeature.has(f))byFeature.set(f,[]);byFeature.get(f).push(i);groupCounts[G[f]]++});
+    document.querySelector('#summary').textContent=`${P.length.toLocaleString()} 个真实图像实例 · ${byFeature.size.toLocaleString()} / ${atlas.dimensions.toLocaleString()} 个 SAE 维度 · 每维最多 Top${atlas.top} · ${atlas.absent} 维在验证样本中无正激活`;
+    const groupSelect=document.querySelector('#group');groupCounts.forEach((n,g)=>{const option=document.createElement('option');option.value=g;option.textContent=`G${String(g).padStart(2,'0')} · ${n} 个实例`;option.disabled=!n;groupSelect.append(option)});
+    const xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),loX=Math.min(...xs),hiX=Math.max(...xs),loY=Math.min(...ys),hiY=Math.max(...ys);
+    let w=1,h=1,zoom=1,ox=0,oy=0,drag=null,feature=null,group=null,rank=10,selected=null;
+    function pointPosition(p){const unit=Math.min((w-44)/(hiX-loX),(h-44)/(hiY-loY));return [(w/2+(p[0]-(hiX+loX)/2)*unit)*zoom+ox,(h/2-(p[1]-(hiY+loY)/2)*unit)*zoom+oy]}
+    function inGroup(p){return group===null||G[p[2]]===group}
+    function color(p){return `rgb(${C[G[p[2]]].join(',')})`}
+    function draw(){ctx.clearRect(0,0,w,h);let visible=0;
+      for(let i=0;i<P.length;i++){const p=P[i];if(p[3]>rank||!inGroup(p))continue;const [x,y]=pointPosition(p);if(x<0||y<0||x>w||y>h)continue;visible++;
+        ctx.beginPath();ctx.arc(x,y,feature===null?2.6:2.1,0,Math.PI*2);ctx.fillStyle=feature!==null&&p[2]!==feature?'#dce2e5':color(p);ctx.fill()}
+      if(feature!==null&&byFeature.has(feature)){for(const i of byFeature.get(feature)){const p=P[i];if(p[3]>rank||!inGroup(p))continue;const [x,y]=pointPosition(p);ctx.beginPath();ctx.arc(x,y,i===selected?7:5,0,Math.PI*2);ctx.fillStyle=color(p);ctx.fill();ctx.strokeStyle='#18232b';ctx.lineWidth=i===selected?2:1;ctx.stroke()}}
+      document.querySelector('#count').textContent=`${visible.toLocaleString()} 个实例在当前视野 · ${group===null?'全部分组':`G${String(group).padStart(2,'0')}`} · ${feature===null?'全部维度':`f${feature}`}`;
+    }
+    function resize(){const box=canvas.getBoundingClientRect(),d=devicePixelRatio||1;w=box.width;h=box.height;canvas.width=Math.round(w*d);canvas.height=Math.round(h*d);ctx.setTransform(d,0,0,d,0,0);draw()}
+    function nearest(x,y){let best=null,distance=11;for(let i=0;i<P.length;i++){const p=P[i];if(p[3]>rank||!inGroup(p)||feature!==null&&p[2]!==feature)continue;const [a,b]=pointPosition(p),d=Math.hypot(a-x,b-y);if(d<distance){distance=d;best=i}}return best}
+    function select(i){if(i===null)return;selected=i;const p=P[i],f=p[2];feature=f;document.querySelector('#feature').value=f;
+      if(p[3]>rank){rank=p[3];document.querySelector('#rank').value=rank;document.querySelector('#rank-value').textContent=rank}
+      if(group!==null&&G[f]!==group){group=null;groupSelect.value=''}
+      document.querySelector('#selection-title').textContent=`f${f} · Top ${p[3]} · G${String(G[f]).padStart(2,'0')}`;
+      document.querySelector('#selection-meta').textContent=`${atlas.cities[p[4]]} · ${p[8]}°方向 · 激活峰值 ${p[7].toFixed(5)} · ${byFeature.get(f).length} 个真实实例`;
+      originals.src=`${source}/sources/${p[5]}.jpg`;crop.src=`${source}/${p[6]}`;
+      document.querySelector('#full-gallery').href=`${source}/features/${f}.html`;
+      const results=document.querySelector('#results');results.replaceChildren();for(const j of byFeature.get(f)){const q=P[j],button=document.createElement('button'),img=document.createElement('img'),label=document.createElement('span');button.title=`Top ${q[3]} · ${atlas.cities[q[4]]}`;button.setAttribute('aria-pressed',j===selected?'true':'false');img.src=`${source}/${q[6]}`;img.loading='lazy';label.textContent=`#${q[3]}`;button.append(img,label);button.onclick=()=>select(j);results.append(button)}
+      location.hash=`f${f}-r${p[3]}`;draw()}
+    function selectFeature(){const value=Number(document.querySelector('#feature').value);if(!Number.isInteger(value)||value<0||value>=atlas.dimensions)return;
+      if(!byFeature.has(value)){feature=value;selected=null;document.querySelector('#selection-title').textContent=`f${value} · 无正激活实例`;document.querySelector('#selection-meta').textContent='此维度在当前固定验证样本里没有可投影的图像实例。';originals.removeAttribute('src');crop.removeAttribute('src');document.querySelector('#results').replaceChildren();document.querySelector('#full-gallery').removeAttribute('href');draw();return}select(byFeature.get(value)[0])}
+    canvas.addEventListener('pointerdown',e=>{canvas.setPointerCapture(e.pointerId);drag={x:e.offsetX,y:e.offsetY,ox,oy,moved:false};tip.style.display='none'});
+    canvas.addEventListener('pointermove',e=>{if(drag){const dx=e.offsetX-drag.x,dy=e.offsetY-drag.y;if(Math.hypot(dx,dy)>4)drag.moved=true;ox=drag.ox+dx;oy=drag.oy+dy;draw();return}const i=nearest(e.offsetX,e.offsetY);if(i===null){tip.style.display='none';return}const p=P[i];tip.querySelector('img').src=`${source}/${p[6]}`;tip.querySelector('small').textContent=`f${p[2]} · #${p[3]} · ${atlas.cities[p[4]]}`;tip.style.display='block';tip.style.left=Math.min(innerWidth-230,e.clientX+12)+'px';tip.style.top=Math.min(innerHeight-170,e.clientY+12)+'px'});
+    canvas.addEventListener('pointerup',e=>{if(drag&&!drag.moved)select(nearest(e.offsetX,e.offsetY));drag=null});canvas.addEventListener('pointerleave',()=>tip.style.display='none');canvas.addEventListener('pointercancel',()=>drag=null);
+    canvas.addEventListener('wheel',e=>{e.preventDefault();const next=Math.max(.4,Math.min(16,zoom*Math.exp(-e.deltaY*.001)));const factor=next/zoom;ox=e.offsetX-(e.offsetX-ox)*factor;oy=e.offsetY-(e.offsetY-oy)*factor;zoom=next;draw()},{passive:false});
+    document.querySelector('#show-feature').onclick=selectFeature;document.querySelector('#feature').addEventListener('keydown',e=>{if(e.key==='Enter')selectFeature()});
+    document.querySelector('#all').onclick=()=>{feature=null;group=null;groupSelect.value='';document.querySelector('#feature').value='';draw()};
+    document.querySelector('#reset').onclick=()=>{zoom=1;ox=oy=0;draw()};groupSelect.onchange=()=>{group=groupSelect.value===''?null:Number(groupSelect.value);draw()};
+    document.querySelector('#rank').oninput=e=>{rank=Number(e.target.value);document.querySelector('#rank-value').textContent=rank;draw()};
+    addEventListener('resize',resize);resize();const match=location.hash.match(/^#f(\d+)-r(\d+)$/);let initial=null;
+    if(match){const entries=byFeature.get(Number(match[1]));if(entries)initial=entries.find(j=>P[j][3]===Number(match[2]))}
+    if(initial===null||initial===undefined)initial=(byFeature.get(2333)||[0])[0];select(initial);
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{
+  "sample": {
+    "verified_cities": 295,
+    "panoramas": 11800,
+    "anchors": 1510400,
+    "panoramas_per_city_target": 40,
+    "patches_per_pano": 128,
+    "seed": 20261009,
+    "excluded_training_cache_rows": 30000000,
+    "batch_size": 4096,
+    "baseline_dir": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_scaling_heldout_295city_4pano"
+  },
+  "heldout_cosine_loss": {
+    "512": 0.13687669523691726,
+    "1024": 0.12987291182501842,
+    "2048": 0.13176412756160155
+  },
+  "dictionary_activity": {
+    "512": {
+      "zero_support_features": 173,
+      "below_25_support_features": 173,
+      "supported_features": 339,
+      "mean_active_features_per_patch": 8.0
+    },
+    "1024": {
+      "zero_support_features": 437,
+      "below_25_support_features": 437,
+      "supported_features": 587,
+      "mean_active_features_per_patch": 8.0
+    },
+    "2048": {
+      "zero_support_features": 1340,
+      "below_25_support_features": 1340,
+      "supported_features": 708,
+      "mean_active_features_per_patch": 8.0
+    }
+  },
+  "stable_three_width_chains": 271,
+  "pairs": {
+    "w512_to_w1024": {
+      "parent_counts": {
+        "stable_only": 142,
+        "split_including_stable": 161,
+        "neither": 209
+      },
+      "child_counts": {
+        "stable": 286,
+        "split_child_not_stable": 100,
+        "no_close_match": 35,
+        "related_or_reconfigured": 166,
+        "insufficient_support": 437
+      }
+    },
+    "w1024_to_w2048": {
+      "parent_counts": {
+        "stable_only": 297,
+        "split_including_stable": 205,
+        "neither": 522
+      },
+      "child_counts": {
+        "stable": 466,
+        "split_child_not_stable": 106,
+        "no_close_match": 17,
+        "related_or_reconfigured": 119,
+        "insufficient_support": 1340
+      }
+    }
+  },
+  "thresholds": {
+    "minimum_feature_support": 25,
+    "stable_decoder_cosine": 0.7,
+    "stable_activation_cosine": 0.35,
+    "stable_support_jaccard": 0.15,
+    "split_decoder_cosine": 0.45,
+    "split_parent_recall_each": 0.15,
+    "split_child_precision_each": 0.2,
+    "split_parent_union_coverage": 0.5,
+    "split_unique_parent_fraction_each": 0.1,
+    "no_close_max_decoder_cosine": 0.45,
+    "no_close_max_activation_cosine": 0.25
+  },
+  "interpretation": "Matching on held-out SAE-training-excluded patches; relation labels are operational candidates, not validated semantics. Stable and split are separate parent properties and may overlap; child categories are exclusive.",
+  "local_feature_cache": "/tmp/uvg_scaling_heldout/anchors_4eae04367432033a.npy",
+  "checkpoints": {
+    "512": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_ablation_k512/sae_448_k512.pt",
+    "1024": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_qc_filtered/sae_448_k1024.pt",
+    "2048": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_ablation_k2048/sae_448_k2048.pt"
+  },
+  "limitations": [
+    "Thresholds are exploratory; sensitivity table accompanies counts",
+    "One initialization per width cannot establish seed stability",
+    "Positive/negative image inspection is needed for semantic names",
+    "Held-out refers to SAE training rows, not independent DINOv3 pretraining data"
+  ]
+}

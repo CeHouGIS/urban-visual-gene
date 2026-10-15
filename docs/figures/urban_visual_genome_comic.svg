@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1260" viewBox="0 0 1800 1260" role="img" aria-labelledby="title desc">
+  <title id="title">城市视觉基因研究：六格漫画</title>
+  <desc id="desc">从四方向街景，到 DINOv3 patch、环形全景邻域融合、BatchTopK SAE、visual gene 聚类，最后得到城市视觉基因组的组成、共现和空间结构。</desc>
+  <defs>
+    <pattern id="dot" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.5" fill="#e4e9e8"/></pattern>
+    <pattern id="grid-blue" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#bce4f2"/><path d="M0 0H20M0 0V20" stroke="#307da0" stroke-width="1.2"/></pattern>
+    <pattern id="grid-coral" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#ffd4b6"/><path d="M0 0H20M0 0V20" stroke="#d67d54" stroke-width="1.2"/></pattern>
+    <pattern id="grid-green" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#cdebc6"/><path d="M0 0H20M0 0V20" stroke="#5c9a64" stroke-width="1.2"/></pattern>
+    <pattern id="grid-violet" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#dfd3f1"/><path d="M0 0H20M0 0V20" stroke="#8d6bb1" stroke-width="1.2"/></pattern>
+    <marker id="arrow" markerWidth="11" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#263c45"/></marker>
+    <symbol id="street" viewBox="0 0 170 120">
+      <rect width="170" height="120" fill="#bde5f2"/>
+      <circle cx="134" cy="23" r="14" fill="#fff2a6"/>
+      <path d="M0 88L50 65L89 75L122 54L170 71V120H0Z" fill="#d6e4c7"/>
+      <rect x="14" y="26" width="44" height="66" fill="#f8c68f" stroke="#263c45" stroke-width="3"/>
+      <path d="M10 28L36 12L62 28" fill="#d97758" stroke="#263c45" stroke-width="3"/>
+      <rect x="28" y="41" width="12" height="17" fill="#5e9cba"/><rect x="29" y="68" width="13" height="24" fill="#6e5149"/>
+      <rect x="99" y="38" width="40" height="57" fill="#f2d9c8" stroke="#263c45" stroke-width="3"/>
+      <rect x="108" y="48" width="10" height="14" fill="#5e9cba"/><rect x="122" y="48" width="10" height="14" fill="#5e9cba"/>
+      <path d="M64 120L86 87L110 120Z" fill="#8a9ca0"/><path d="M85 93L84 120" stroke="#f6f0c6" stroke-width="3" stroke-dasharray="8 6"/>
+      <path d="M146 84V46" stroke="#684c38" stroke-width="5"/><circle cx="147" cy="44" r="19" fill="#5e9a67" stroke="#263c45" stroke-width="2"/>
+    </symbol>
+    <symbol id="street-corner" viewBox="0 0 170 120">
+      <rect width="170" height="120" fill="#bde5f2"/><circle cx="26" cy="21" r="14" fill="#fff2a6"/>
+      <path d="M0 91L77 82L170 91V120H0Z" fill="#a8aeb0"/>
+      <path d="M75 22L131 9L154 28L154 90L75 90Z" fill="#f7d4a9" stroke="#263c45" stroke-width="3"/>
+      <path d="M74 22L131 9L131 90L74 90Z" fill="#efbf91" stroke="#263c45" stroke-width="3"/>
+      <rect x="89" y="29" width="14" height="19" fill="#6ca4b9"/><rect x="112" y="24" width="12" height="21" fill="#6ca4b9"/>
+      <rect x="89" y="58" width="14" height="21" fill="#6ca4b9"/><rect x="112" y="55" width="12" height="23" fill="#6ca4b9"/>
+      <path d="M0 67L64 79L64 91L0 91Z" fill="#e9e1cc" stroke="#263c45" stroke-width="2"/>
+      <path d="M26 87L47 96M42 86L65 95" stroke="#fff9df" stroke-width="4"/>
+      <path d="M156 88V40" stroke="#684c38" stroke-width="5"/><circle cx="155" cy="39" r="20" fill="#5e9a67" stroke="#263c45" stroke-width="2"/>
+    </symbol>
+    <symbol id="street-building" viewBox="0 0 170 120">
+      <rect width="170" height="120" fill="#cce8f0"/><path d="M0 85L170 91V120H0Z" fill="#adb4b4"/>
+      <rect x="10" y="24" width="75" height="70" fill="#bd8270" stroke="#263c45" stroke-width="3"/>
+      <rect x="86" y="40" width="55" height="55" fill="#e6b391" stroke="#263c45" stroke-width="3"/>
+      <path d="M9 25L44 11L85 25" fill="#925c57" stroke="#263c45" stroke-width="3"/>
+      <g fill="#70a7b7"><rect x="22" y="38" width="13" height="18"/><rect x="44" y="38" width="13" height="18"/><rect x="65" y="38" width="12" height="18"/>
+      <rect x="22" y="68" width="13" height="18"/><rect x="44" y="68" width="13" height="18"/><rect x="65" y="68" width="12" height="18"/>
+      <rect x="98" y="54" width="12" height="17"/><rect x="119" y="54" width="12" height="17"/></g>
+      <path d="M0 113H170" stroke="#f7f1cb" stroke-width="3" stroke-dasharray="14 10"/>
+      <path d="M151 92V47" stroke="#684c38" stroke-width="5"/><circle cx="151" cy="41" r="20" fill="#5e9a67" stroke="#263c45" stroke-width="2"/>
+    </symbol>
+    <symbol id="street-road" viewBox="0 0 170 120">
+      <rect width="170" height="120" fill="#b8e4ef"/><circle cx="133" cy="19" r="13" fill="#fff2a6"/>
+      <path d="M0 71L70 83L88 83L170 68V120H0Z" fill="#c4d4b4"/>
+      <path d="M72 74L97 74L170 120H0Z" fill="#8da1a6"/>
+      <path d="M83 81L84 120" stroke="#faf0bc" stroke-width="3" stroke-dasharray="9 7"/>
+      <path d="M17 87V35M38 86V29M128 82V31M152 87V37" stroke="#694e3b" stroke-width="5"/>
+      <circle cx="17" cy="31" r="20" fill="#5e9a67" stroke="#263c45" stroke-width="2"/>
+      <circle cx="39" cy="28" r="19" fill="#4c9160" stroke="#263c45" stroke-width="2"/>
+      <circle cx="129" cy="29" r="22" fill="#68a86e" stroke="#263c45" stroke-width="2"/>
+      <circle cx="153" cy="34" r="20" fill="#4e9360" stroke="#263c45" stroke-width="2"/>
+    </symbol>
+    <symbol id="researcher" viewBox="0 0 70 120">
+      <path d="M18 110L20 70H50L53 110" fill="#355c75" stroke="#263c45" stroke-width="4"/>
+      <path d="M19 108H34M40 108H54" stroke="#263c45" stroke-width="7" stroke-linecap="round"/>
+      <path d="M17 47Q35 35 52 47L56 76H14Z" fill="#e9eee9" stroke="#263c45" stroke-width="4"/>
+      <path d="M19 50L7 73M51 50L65 72" stroke="#263c45" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="35" cy="24" r="19" fill="#f6c2a6" stroke="#263c45" stroke-width="4"/>
+      <path d="M18 24Q18 2 35 4Q54 2 54 26L48 16Q30 24 18 18Z" fill="#34434b"/>
+      <circle cx="29" cy="27" r="2" fill="#263c45"/><circle cx="42" cy="27" r="2" fill="#263c45"/>
+      <path d="M30 36Q36 40 42 35" fill="none" stroke="#a76555" stroke-width="2"/>
+    </symbol>
+    <style>
+      text { font-family: "WenQuanYi Zen Hei", "Noto Sans CJK SC", sans-serif; fill: #20353f; }
+      .title { font-size: 52px; font-weight: 700; }
+      .subtitle { font-size: 24px; fill: #52656b; }
+      .number { font-size: 26px; font-weight: 700; fill: #fff; }
+      .panel-title { font-size: 31px; font-weight: 700; }
+      .panel-copy { font-size: 22px; fill: #40545d; }
+      .bubble { font-size: 22px; font-weight: 700; }
+      .label { font-size: 19px; font-weight: 700; }
+      .small { font-size: 17px; fill: #53666d; }
+      .panel { fill: #fff; stroke: #243942; stroke-width: 3; rx: 12; }
+      .line { fill: none; stroke: #263c45; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1260" fill="#f7f9f7"/>
+  <rect width="1800" height="1260" fill="url(#dot)" opacity=".55"/>
+  <text x="80" y="76" class="title">一座城市的视觉基因，是怎么找出来的？</text>
+  <text x="82" y="113" class="subtitle">从街景的局部画面，到跨城市可比较的视觉结构</text>
+
+  <!-- Panel 1 -->
+  <g transform="translate(60 145)">
+    <rect class="panel" width="540" height="490"/>
+    <circle cx="42" cy="43" r="25" fill="#e06958"/><text x="33" y="52" class="number">1</text>
+    <text x="82" y="53" class="panel-title">同一个地点，看四个方向</text>
+    <g transform="translate(34 100)">
+      <use href="#street" x="0" y="0" width="186" height="132"/>
+      <use href="#street-corner" x="202" y="0" width="186" height="132"/>
+      <use href="#street-building" x="0" y="152" width="186" height="132"/>
+      <use href="#street-road" x="202" y="152" width="186" height="132"/>
+      <rect x="0" y="0" width="186" height="132" rx="4" fill="none" stroke="#263c45" stroke-width="3"/>
+      <rect x="202" y="0" width="186" height="132" rx="4" fill="none" stroke="#263c45" stroke-width="3"/>
+      <rect x="0" y="152" width="186" height="132" rx="4" fill="none" stroke="#263c45" stroke-width="3"/>
+      <rect x="202" y="152" width="186" height="132" rx="4" fill="none" stroke="#263c45" stroke-width="3"/>
+      <text x="72" y="151" class="label">0°</text><text x="265" y="151" class="label">90°</text>
+      <text x="67" y="304" class="label">180°</text><text x="265" y="304" class="label">270°</text>
+    </g>
+    <use href="#researcher" x="430" y="230" width="65" height="112"/>
+    <path d="M395 122Q488 82 510 143Q510 183 467 183L449 201L454 177Q393 169 395 122Z" fill="#fff6d8" stroke="#263c45" stroke-width="3"/>
+    <text x="409" y="142" class="bubble">别漏了</text><text x="409" y="170" class="bubble">背后！</text>
+    <text x="35" y="455" class="panel-copy">四向完整采样；先过滤全黑 / 隧道</text>
+  </g>
+
+  <!-- Panel 2 -->
+  <g transform="translate(630 145)">
+    <rect class="panel" width="540" height="490"/>
+    <circle cx="42" cy="43" r="25" fill="#4299ad"/><text x="33" y="52" class="number">2</text>
+    <text x="82" y="53" class="panel-title">DINOv3 逐张看图</text>
+    <use href="#street" x="33" y="120" width="156" height="112"/>
+    <rect x="33" y="120" width="156" height="112" rx="4" fill="none" stroke="#263c45" stroke-width="3"/>
+    <path d="M200 177H256" class="line" marker-end="url(#arrow)"/>
+    <rect x="272" y="113" width="148" height="129" rx="20" fill="#c9e8ed" stroke="#263c45" stroke-width="4"/>
+    <circle cx="346" cy="160" r="26" fill="#fff" stroke="#263c45" stroke-width="3"/>
+    <circle cx="346" cy="160" r="12" fill="#5295ad"/>
+    <text x="292" y="220" class="label">冻结的 DINOv3</text>
+    <path d="M345 254V290" class="line" marker-end="url(#arrow)"/>
+    <rect x="71" y="306" width="85" height="85" fill="url(#grid-blue)" stroke="#263c45" stroke-width="3"/>
+    <rect x="171" y="306" width="85" height="85" fill="url(#grid-coral)" stroke="#263c45" stroke-width="3"/>
+    <rect x="271" y="306" width="85" height="85" fill="url(#grid-green)" stroke="#263c45" stroke-width="3"/>
+    <rect x="371" y="306" width="85" height="85" fill="url(#grid-violet)" stroke="#263c45" stroke-width="3"/>
+    <text x="71" y="428" class="panel-copy">每张图 → 28×28 个 patch</text>
+    <text x="71" y="455" class="small">每个 patch 是 1024 维；DINOv3 不训练</text>
+  </g>
+
+  <!-- Panel 3 -->
+  <g transform="translate(1200 145)">
+    <rect class="panel" width="540" height="490"/>
+    <circle cx="42" cy="43" r="25" fill="#65a46e"/><text x="33" y="52" class="number">3</text>
+    <text x="82" y="53" class="panel-title">四个视角连成一个全景</text>
+    <text x="49" y="124" class="small">0°</text><text x="175" y="124" class="small">90°</text>
+    <text x="301" y="124" class="small">180°</text><text x="430" y="124" class="small">270°</text>
+    <rect x="47" y="139" width="116" height="93" fill="url(#grid-blue)" stroke="#263c45" stroke-width="2"/>
+    <rect x="163" y="139" width="116" height="93" fill="url(#grid-coral)" stroke="#263c45" stroke-width="2"/>
+    <rect x="279" y="139" width="116" height="93" fill="url(#grid-green)" stroke="#263c45" stroke-width="2"/>
+    <rect x="395" y="139" width="98" height="93" fill="url(#grid-violet)" stroke="#263c45" stroke-width="2"/>
+    <path d="M495 256Q522 319 280 322Q39 322 44 257" fill="none" stroke="#263c45" stroke-width="4" stroke-dasharray="12 9" marker-end="url(#arrow)"/>
+    <text x="160" y="295" class="label">28 × 112 patch 环</text>
+    <rect x="210" y="347" width="112" height="73" rx="8" fill="#fff6d8" stroke="#263c45" stroke-width="3"/>
+    <path d="M247 347V420M284 347V420M210 371H322M210 396H322" stroke="#af9b6f" stroke-width="2"/>
+    <rect x="247" y="371" width="37" height="25" fill="#e06958"/>
+    <text x="344" y="374" class="label">看邻近 3×3</text>
+    <text x="344" y="404" class="label">跨边界也相邻</text>
+    <text x="49" y="455" class="panel-copy">融合空间邻接，仍保持 1024 维</text>
+  </g>
+
+  <!-- Panel 4 -->
+  <g transform="translate(60 665)">
+    <rect class="panel" width="540" height="490"/>
+    <circle cx="42" cy="43" r="25" fill="#d28854"/><text x="33" y="52" class="number">4</text>
+    <text x="82" y="53" class="panel-title">BatchTopK SAE 稀疏分解</text>
+    <g transform="translate(47 126)">
+      <rect x="0" y="0" width="126" height="184" rx="10" fill="#d6e9ee" stroke="#263c45" stroke-width="3"/>
+      <text x="19" y="29" class="label">patch</text>
+      <g fill="#83b3c0">
+        <rect x="17" y="47" width="14" height="99" rx="4"/><rect x="40" y="40" width="14" height="106" rx="4"/>
+        <rect x="63" y="57" width="14" height="89" rx="4"/><rect x="86" y="45" width="14" height="101" rx="4"/>
+      </g>
+      <text x="13" y="173" class="small">1024 维</text>
+      <path d="M139 91H192" class="line" marker-end="url(#arrow)"/>
+      <rect x="202" y="22" width="116" height="138" rx="14" fill="#fce4ba" stroke="#263c45" stroke-width="3"/>
+      <path d="M222 45L297 136M297 45L222 136" stroke="#d28854" stroke-width="9" stroke-linecap="round"/>
+      <circle cx="260" cy="91" r="18" fill="#fff" stroke="#263c45" stroke-width="3"/>
+      <text x="218" y="189" class="label">编码器</text>
+      <path d="M328 91H380" class="line" marker-end="url(#arrow)"/>
+      <g transform="translate(394 7)">
+        <rect width="83" height="167" rx="8" fill="#e9edef" stroke="#263c45" stroke-width="3"/>
+        <g fill="#cbd4d8">
+          <rect x="13" y="12" width="57" height="10"/><rect x="13" y="30" width="57" height="10"/><rect x="13" y="48" width="57" height="10"/>
+          <rect x="13" y="66" width="57" height="10"/><rect x="13" y="84" width="57" height="10"/><rect x="13" y="102" width="57" height="10"/>
+          <rect x="13" y="120" width="57" height="10"/><rect x="13" y="138" width="57" height="10"/>
+        </g>
+        <rect x="13" y="30" width="57" height="10" fill="#e06958"/>
+        <rect x="13" y="84" width="57" height="10" fill="#e06958"/>
+        <rect x="13" y="138" width="57" height="10" fill="#e06958"/>
+      </g>
+    </g>
+    <path d="M136 360Q270 422 415 363" fill="none" stroke="#d28854" stroke-width="4" marker-end="url(#arrow)"/>
+    <text x="92" y="417" class="bubble">只让少数通道亮起来！</text>
+    <text x="48" y="455" class="small">字典 W=1024；每 patch 平均预算 k=8</text>
+  </g>
+
+  <!-- Panel 5 -->
+  <g transform="translate(630 665)">
+    <rect class="panel" width="540" height="490"/>
+    <circle cx="42" cy="43" r="25" fill="#9270b3"/><text x="33" y="52" class="number">5</text>
+    <text x="82" y="53" class="panel-title">相关特征组成 visual gene</text>
+    <g transform="translate(41 125)">
+      <rect x="0" y="0" width="130" height="49" rx="7" fill="#bce4f2" stroke="#263c45" stroke-width="3"/>
+      <rect x="0" y="66" width="130" height="49" rx="7" fill="#ffd4b6" stroke="#263c45" stroke-width="3"/>
+      <rect x="0" y="132" width="130" height="49" rx="7" fill="#cdebc6" stroke="#263c45" stroke-width="3"/>
+      <text x="15" y="32" class="label">latent #17</text>
+      <text x="15" y="98" class="label">latent #82</text>
+      <text x="15" y="164" class="label">latent #305</text>
+      <path d="M145 25H205V92H244M145 92H205M145 158H244" class="line"/>
+      <path d="M251 92H308" class="line" marker-end="url(#arrow)"/>
+      <circle cx="378" cy="92" r="65" fill="#e6d8f0" stroke="#263c45" stroke-width="4"/>
+      <path d="M348 90Q361 53 388 65Q420 84 405 112Q381 135 354 112Z" fill="#9270b3" opacity=".65"/>
+      <text x="337" y="101" class="label">Gene</text>
+      <text x="340" y="198" class="small">相关 latent 的一组</text>
+    </g>
+    <path d="M77 375H464" stroke="#d8dee0" stroke-width="2"/>
+    <text x="61" y="410" class="bubble">一个通道 ≠ 一个视觉基因</text>
+    <text x="61" y="455" class="small">论文在 fine resolution 使用 64 个 gene 类别</text>
+  </g>
+
+  <!-- Panel 6 -->
+  <g transform="translate(1200 665)">
+    <rect class="panel" width="540" height="490"/>
+    <circle cx="42" cy="43" r="25" fill="#438f8c"/><text x="33" y="52" class="number">6</text>
+    <text x="82" y="53" class="panel-title">组合起来，形成城市“基因组”</text>
+    <g transform="translate(43 125)">
+      <circle cx="70" cy="100" r="62" fill="#bce4f2" stroke="#263c45" stroke-width="3"/>
+      <path d="M70 100V38A62 62 0 0 1 126 127Z" fill="#e06958"/>
+      <path d="M70 100L126 127A62 62 0 0 1 48 158Z" fill="#6ba36e"/>
+      <text x="28" y="202" class="label">① 比例</text>
+      <circle cx="248" cy="59" r="25" fill="#e06958" stroke="#263c45" stroke-width="3"/>
+      <circle cx="193" cy="136" r="25" fill="#6ba36e" stroke="#263c45" stroke-width="3"/>
+      <circle cx="302" cy="138" r="25" fill="#9270b3" stroke="#263c45" stroke-width="3"/>
+      <path d="M233 77L207 114M263 77L288 114M219 137H278" class="line"/>
+      <text x="205" y="202" class="label">② 共现</text>
+      <rect x="364" y="43" width="122" height="121" rx="8" fill="#f1efdf" stroke="#263c45" stroke-width="3"/>
+      <path d="M365 83H484M365 123H484M405 45V162M446 45V162" stroke="#9aa8a3" stroke-width="2"/>
+      <rect x="367" y="45" width="37" height="37" fill="#bce4f2"/>
+      <rect x="407" y="85" width="38" height="37" fill="#cdebc6"/>
+      <rect x="447" y="125" width="37" height="37" fill="#ffd4b6"/>
+      <text x="372" y="202" class="label">③ 空间分布</text>
+    </g>
+    <rect x="42" y="361" width="455" height="62" rx="10" fill="#e6f0ee" stroke="#438f8c" stroke-width="2"/>
+    <text x="71" y="401" class="bubble">城市视觉基因组 = 三种关系</text>
+    <text x="47" y="455" class="small">共享同一套 gene，也能形成不同的城市面貌</text>
+  </g>
+
+  <text x="92" y="1215" class="subtitle">图解依据：HKUST-Thesis Chapter 5 · DINOv3 → panorama context → BatchTopK SAE → visual genes → urban visual genome</text>
+</svg>

@@ -1,0 +1,1114 @@
+{
+  "scan_utc": "2026-10-15T13:37:17.857887+00:00",
+  "scope": "Local project only, excluding .git internals. Symlink objects counted without following targets. Image assets aggregated; CSV lists source, reports, configs and metadata rather than each crop. VLM writes continue during scan.",
+  "files": 1660761,
+  "symlinks": 14851,
+  "directories": 14624,
+  "metadata_csv_rows": 869,
+  "directory_stats": {
+    "TOTAL": {
+      "files": 1660761,
+      "logical_bytes": 14840789613,
+      "allocated_file_bytes": 19221192704,
+      "symlinks": 14851
+    },
+    "reports": {
+      "files": 1235985,
+      "logical_bytes": 8528040320,
+      "allocated_file_bytes": 12128432128,
+      "symlinks": 0
+    },
+    "reports/vitl30_instance_umap": {
+      "files": 12,
+      "logical_bytes": 109614276,
+      "allocated_file_bytes": 109637632,
+      "symlinks": 0
+    },
+    "reports/figures": {
+      "files": 32,
+      "logical_bytes": 37903098,
+      "allocated_file_bytes": 37965824,
+      "symlinks": 0
+    },
+    "reports/figures/scaling_heldout": {
+      "files": 11,
+      "logical_bytes": 13365663,
+      "allocated_file_bytes": 13385728,
+      "symlinks": 0
+    },
+    "reports/figures/legacy_12city": {
+      "files": 3,
+      "logical_bytes": 127999,
+      "allocated_file_bytes": 135168,
+      "symlinks": 0
+    },
+    "reports/figures/chapter5": {
+      "files": 18,
+      "logical_bytes": 24409436,
+      "allocated_file_bytes": 24444928,
+      "symlinks": 0
+    },
+    "reports/data": {
+      "files": 1209754,
+      "logical_bytes": 7090088015,
+      "allocated_file_bytes": 10626387968,
+      "symlinks": 0
+    },
+    "reports/data/semantic_umap_w2048_k64_top100": {
+      "files": 408933,
+      "logical_bytes": 2552697356,
+      "allocated_file_bytes": 3739615232,
+      "symlinks": 0
+    },
+    "reports/data/semantic_umap_w2048_k64_top100/crops": {
+      "files": 408916,
+      "logical_bytes": 1674084151,
+      "allocated_file_bytes": 2860953600,
+      "symlinks": 0
+    },
+    "reports/data/scaling_heldout": {
+      "files": 10,
+      "logical_bytes": 1695937,
+      "allocated_file_bytes": 1720320,
+      "symlinks": 0
+    },
+    "reports/data/semantic_umap_pipeline_smoke": {
+      "files": 5,
+      "logical_bytes": 364480,
+      "allocated_file_bytes": 376832,
+      "symlinks": 0
+    },
+    "reports/data/feature_combinations_w2048_k64": {
+      "files": 304,
+      "logical_bytes": 49997485,
+      "allocated_file_bytes": 51187712,
+      "symlinks": 0
+    },
+    "reports/data/feature_combinations_w2048_k64/city_counts": {
+      "files": 295,
+      "logical_bytes": 48370560,
+      "allocated_file_bytes": 49541120,
+      "symlinks": 0
+    },
+    "reports/data/semantic_umap_w4096_k64_top100": {
+      "files": 800502,
+      "logical_bytes": 4485332757,
+      "allocated_file_bytes": 6833487872,
+      "symlinks": 0
+    },
+    "reports/data/semantic_umap_w4096_k64_top100/crops": {
+      "files": 800480,
+      "logical_bytes": 2761830373,
+      "allocated_file_bytes": 5109907456,
+      "symlinks": 0
+    },
+    "reports/vitl30_unit_motifs": {
+      "files": 45,
+      "logical_bytes": 33018414,
+      "allocated_file_bytes": 33103872,
+      "symlinks": 0
+    },
+    "reports/vitl30_unit_motifs/review_panels": {
+      "files": 2,
+      "logical_bytes": 286583,
+      "allocated_file_bytes": 290816,
+      "symlinks": 0
+    },
+    "reports/vitl30_unit_motifs/panoramas": {
+      "files": 30,
+      "logical_bytes": 15137279,
+      "allocated_file_bytes": 15192064,
+      "symlinks": 0
+    },
+    "reports/sae_4096": {
+      "files": 3408,
+      "logical_bytes": 299606637,
+      "allocated_file_bytes": 307896320,
+      "symlinks": 0
+    },
+    "reports/sae_4096/k64": {
+      "files": 1138,
+      "logical_bytes": 102015678,
+      "allocated_file_bytes": 104722432,
+      "symlinks": 0
+    },
+    "reports/sae_4096/k64/assets": {
+      "files": 1137,
+      "logical_bytes": 101992129,
+      "allocated_file_bytes": 104697856,
+      "symlinks": 0
+    },
+    "reports/sae_4096/k16": {
+      "files": 1141,
+      "logical_bytes": 97044122,
+      "allocated_file_bytes": 99856384,
+      "symlinks": 0
+    },
+    "reports/sae_4096/k16/assets": {
+      "files": 1140,
+      "logical_bytes": 97020588,
+      "allocated_file_bytes": 99831808,
+      "symlinks": 0
+    },
+    "reports/sae_4096/k32": {
+      "files": 1126,
+      "logical_bytes": 100531302,
+      "allocated_file_bytes": 103297024,
+      "symlinks": 0
+    },
+    "reports/sae_4096/k32/assets": {
+      "files": 1125,
+      "logical_bytes": 100507818,
+      "allocated_file_bytes": 103272448,
+      "symlinks": 0
+    },
+    "reports/vitl30_landscape_prototypes": {
+      "files": 44,
+      "logical_bytes": 15605643,
+      "allocated_file_bytes": 15704064,
+      "symlinks": 0
+    },
+    "reports/vitl30_landscape_prototypes/panoramas": {
+      "files": 32,
+      "logical_bytes": 11135787,
+      "allocated_file_bytes": 11206656,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap": {
+      "files": 54,
+      "logical_bytes": 30156306,
+      "allocated_file_bytes": 30281728,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence": {
+      "files": 32,
+      "logical_bytes": 5158653,
+      "allocated_file_bytes": 5226496,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence/f16": {
+      "files": 4,
+      "logical_bytes": 750547,
+      "allocated_file_bytes": 757760,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence/f2740": {
+      "files": 4,
+      "logical_bytes": 659489,
+      "allocated_file_bytes": 667648,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence/f2333": {
+      "files": 4,
+      "logical_bytes": 715943,
+      "allocated_file_bytes": 724992,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence/f14": {
+      "files": 4,
+      "logical_bytes": 639391,
+      "allocated_file_bytes": 651264,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence/f3029": {
+      "files": 4,
+      "logical_bytes": 560262,
+      "allocated_file_bytes": 569344,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence/f2536": {
+      "files": 4,
+      "logical_bytes": 441055,
+      "allocated_file_bytes": 450560,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence/f2763": {
+      "files": 4,
+      "logical_bytes": 578860,
+      "allocated_file_bytes": 585728,
+      "symlinks": 0
+    },
+    "reports/vitl30_semantic_umap/annotated_evidence/f698": {
+      "files": 4,
+      "logical_bytes": 813106,
+      "allocated_file_bytes": 819200,
+      "symlinks": 0
+    },
+    "reports/project_inventory": {
+      "files": 6,
+      "logical_bytes": 3664730,
+      "allocated_file_bytes": 3678208,
+      "symlinks": 0
+    },
+    "reports/vitl30_vlm_interpretation": {
+      "files": 13,
+      "logical_bytes": 15207112,
+      "allocated_file_bytes": 15233024,
+      "symlinks": 0
+    },
+    "reports/scaling": {
+      "files": 19813,
+      "logical_bytes": 652834512,
+      "allocated_file_bytes": 699179008,
+      "symlinks": 0
+    },
+    "reports/scaling/assets": {
+      "files": 19809,
+      "logical_bytes": 651284001,
+      "allocated_file_bytes": 697618432,
+      "symlinks": 0
+    },
+    "reports/scaling/assets/maps": {
+      "files": 1713,
+      "logical_bytes": 1383696,
+      "allocated_file_bytes": 7016448,
+      "symlinks": 0
+    },
+    "reports/scaling/assets/panorama_maps": {
+      "files": 14008,
+      "logical_bytes": 31481540,
+      "allocated_file_bytes": 63778816,
+      "symlinks": 0
+    },
+    "reports/scaling/assets/summary_40pano": {
+      "files": 13,
+      "logical_bytes": 13247640,
+      "allocated_file_bytes": 13283328,
+      "symlinks": 0
+    },
+    "reports/scaling/assets/panoramas": {
+      "files": 3487,
+      "logical_bytes": 580938753,
+      "allocated_file_bytes": 588099584,
+      "symlinks": 0
+    },
+    "reports/scaling/assets/scenes": {
+      "files": 588,
+      "logical_bytes": 24232372,
+      "allocated_file_bytes": 25440256,
+      "symlinks": 0
+    },
+    "reports/vitl30_dimension_vlm": {
+      "files": 2798,
+      "logical_bytes": 240301321,
+      "allocated_file_bytes": 249311232,
+      "symlinks": 0
+    },
+    "reports/vitl30_dimension_vlm/inputs": {
+      "files": 582,
+      "logical_bytes": 107039890,
+      "allocated_file_bytes": 108265472,
+      "symlinks": 0
+    },
+    "reports/vitl30_dimension_vlm/previous_prompt_v1": {
+      "files": 979,
+      "logical_bytes": 68908403,
+      "allocated_file_bytes": 72507392,
+      "symlinks": 0
+    },
+    "reports/vitl30_dimension_vlm/previous_prompt_v1/inputs": {
+      "files": 29,
+      "logical_bytes": 5393874,
+      "allocated_file_bytes": 5443584,
+      "symlinks": 0
+    },
+    "reports/vitl30_dimension_vlm/previous_prompt_v1/records": {
+      "files": 933,
+      "logical_bytes": 316104,
+      "allocated_file_bytes": 3825664,
+      "symlinks": 0
+    },
+    "reports/vitl30_dimension_vlm/records": {
+      "files": 1222,
+      "logical_bytes": 871309,
+      "allocated_file_bytes": 5005312,
+      "symlinks": 0
+    },
+    "archive": {
+      "files": 141272,
+      "logical_bytes": 1050986820,
+      "allocated_file_bytes": 1272582144,
+      "symlinks": 3
+    },
+    "archive/non_batchtopk": {
+      "files": 141245,
+      "logical_bytes": 1050883913,
+      "allocated_file_bytes": 1272422400,
+      "symlinks": 3
+    },
+    "archive/non_batchtopk/paper": {
+      "files": 501,
+      "logical_bytes": 390161440,
+      "allocated_file_bytes": 391315456,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/paper/sections": {
+      "files": 2,
+      "logical_bytes": 40981,
+      "allocated_file_bytes": 45056,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/paper/figures": {
+      "files": 167,
+      "logical_bytes": 256233868,
+      "allocated_file_bytes": 256585728,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/paper/references": {
+      "files": 1,
+      "logical_bytes": 1737,
+      "allocated_file_bytes": 4096,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/paper/tables": {
+      "files": 17,
+      "logical_bytes": 239244,
+      "allocated_file_bytes": 278528,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/paper/data": {
+      "files": 291,
+      "logical_bytes": 127526714,
+      "allocated_file_bytes": 128225280,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/paper/reproducibility": {
+      "files": 5,
+      "logical_bytes": 7185,
+      "allocated_file_bytes": 20480,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal": {
+      "files": 140214,
+      "logical_bytes": 609083563,
+      "allocated_file_bytes": 828166144,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/stability": {
+      "files": 2,
+      "logical_bytes": 34861,
+      "allocated_file_bytes": 36864,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/slurm": {
+      "files": 11,
+      "logical_bytes": 14128,
+      "allocated_file_bytes": 45056,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/interpretation": {
+      "files": 11,
+      "logical_bytes": 243776,
+      "allocated_file_bytes": 270336,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/seed_stability_w1024_k8": {
+      "files": 5,
+      "logical_bytes": 107029,
+      "allocated_file_bytes": 114688,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/gene_sharing": {
+      "files": 5,
+      "logical_bytes": 307221,
+      "allocated_file_bytes": 315392,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/genes": {
+      "files": 32,
+      "logical_bytes": 191851,
+      "allocated_file_bytes": 258048,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/web": {
+      "files": 26,
+      "logical_bytes": 222560,
+      "allocated_file_bytes": 282624,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/figures": {
+      "files": 21,
+      "logical_bytes": 26676533,
+      "allocated_file_bytes": 26714112,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/dict": {
+      "files": 6,
+      "logical_bytes": 15162,
+      "allocated_file_bytes": 24576,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/sampling_maps": {
+      "files": 6,
+      "logical_bytes": 4571738,
+      "allocated_file_bytes": 4587520,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/site": {
+      "files": 140082,
+      "logical_bytes": 574313596,
+      "allocated_file_bytes": 793108480,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/formal/quality": {
+      "files": 3,
+      "logical_bytes": 11491,
+      "allocated_file_bytes": 20480,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/dashboard": {
+      "files": 93,
+      "logical_bytes": 14264455,
+      "allocated_file_bytes": 14422016,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/dashboard/multi_area": {
+      "files": 21,
+      "logical_bytes": 3757296,
+      "allocated_file_bytes": 3805184,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/dashboard/semantic_alignment": {
+      "files": 62,
+      "logical_bytes": 10355700,
+      "allocated_file_bytes": 10444800,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs": {
+      "files": 155,
+      "logical_bytes": 23474856,
+      "allocated_file_bytes": 23990272,
+      "symlinks": 2
+    },
+    "archive/non_batchtopk/outputs/sweep": {
+      "files": 70,
+      "logical_bytes": 2621043,
+      "allocated_file_bytes": 2883584,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/Netherlands": {
+      "files": 7,
+      "logical_bytes": 394920,
+      "allocated_file_bytes": 417792,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/SouthAfrica": {
+      "files": 7,
+      "logical_bytes": 328375,
+      "allocated_file_bytes": 352256,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/figures": {
+      "files": 22,
+      "logical_bytes": 16035356,
+      "allocated_file_bytes": 16076800,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/transfer": {
+      "files": 3,
+      "logical_bytes": 804,
+      "allocated_file_bytes": 12288,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/dedup_bld": {
+      "files": 12,
+      "logical_bytes": 3303783,
+      "allocated_file_bytes": 3338240,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/ksweep": {
+      "files": 8,
+      "logical_bytes": 1618,
+      "allocated_file_bytes": 32768,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/Singapore": {
+      "files": 7,
+      "logical_bytes": 424230,
+      "allocated_file_bytes": 446464,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/China": {
+      "files": 8,
+      "logical_bytes": 344463,
+      "allocated_file_bytes": 372736,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/full_feats": {
+      "files": 2,
+      "logical_bytes": 11,
+      "allocated_file_bytes": 8192,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/Austria": {
+      "files": 8,
+      "logical_bytes": 14431,
+      "allocated_file_bytes": 40960,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/outputs/joint_view": {
+      "files": 0,
+      "logical_bytes": 0,
+      "allocated_file_bytes": 0,
+      "symlinks": 2
+    },
+    "archive/non_batchtopk/tests": {
+      "files": 16,
+      "logical_bytes": 38452,
+      "allocated_file_bytes": 73728,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/docs": {
+      "files": 5,
+      "logical_bytes": 47876,
+      "allocated_file_bytes": 61440,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/docs/operations": {
+      "files": 2,
+      "logical_bytes": 14963,
+      "allocated_file_bytes": 20480,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/configs": {
+      "files": 1,
+      "logical_bytes": 2227,
+      "allocated_file_bytes": 4096,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts": {
+      "files": 165,
+      "logical_bytes": 1285055,
+      "allocated_file_bytes": 1642496,
+      "symlinks": 1
+    },
+    "archive/non_batchtopk/scripts/dedup": {
+      "files": 9,
+      "logical_bytes": 23547,
+      "allocated_file_bytes": 40960,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/multicity": {
+      "files": 60,
+      "logical_bytes": 795001,
+      "allocated_file_bytes": 929792,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/image_graph_archetypes": {
+      "files": 10,
+      "logical_bytes": 65441,
+      "allocated_file_bytes": 90112,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/sampling": {
+      "files": 7,
+      "logical_bytes": 19678,
+      "allocated_file_bytes": 36864,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/viz": {
+      "files": 6,
+      "logical_bytes": 19442,
+      "allocated_file_bytes": 28672,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/core": {
+      "files": 10,
+      "logical_bytes": 44854,
+      "allocated_file_bytes": 65536,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/dash": {
+      "files": 18,
+      "logical_bytes": 73995,
+      "allocated_file_bytes": 110592,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/__pycache__": {
+      "files": 1,
+      "logical_bytes": 157,
+      "allocated_file_bytes": 4096,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/buildings": {
+      "files": 2,
+      "logical_bytes": 2503,
+      "allocated_file_bytes": 4096,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/quality": {
+      "files": 4,
+      "logical_bytes": 14689,
+      "allocated_file_bytes": 20480,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/image_graph_compact_archetypes": {
+      "files": 22,
+      "logical_bytes": 169159,
+      "allocated_file_bytes": 221184,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/scripts/analysis": {
+      "files": 12,
+      "logical_bytes": 46700,
+      "allocated_file_bytes": 73728,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/results": {
+      "files": 84,
+      "logical_bytes": 12365955,
+      "allocated_file_bytes": 12562432,
+      "symlinks": 0
+    },
+    "archive/non_batchtopk/results/city_cooccurrence": {
+      "files": 30,
+      "logical_bytes": 749860,
+      "allocated_file_bytes": 811008,
+      "symlinks": 0
+    },
+    "archive/road_mrlu": {
+      "files": 27,
+      "logical_bytes": 102907,
+      "allocated_file_bytes": 159744,
+      "symlinks": 0
+    },
+    "archive/road_mrlu/jobs": {
+      "files": 10,
+      "logical_bytes": 17117,
+      "allocated_file_bytes": 40960,
+      "symlinks": 0
+    },
+    "archive/road_mrlu/scripts": {
+      "files": 15,
+      "logical_bytes": 79448,
+      "allocated_file_bytes": 106496,
+      "symlinks": 0
+    },
+    "archive/road_mrlu/scripts/pipeline": {
+      "files": 15,
+      "logical_bytes": 79448,
+      "allocated_file_bytes": 106496,
+      "symlinks": 0
+    },
+    "formal": {
+      "files": 130,
+      "logical_bytes": 2769368,
+      "allocated_file_bytes": 3067904,
+      "symlinks": 0
+    },
+    "formal/slurm": {
+      "files": 5,
+      "logical_bytes": 4833,
+      "allocated_file_bytes": 20480,
+      "symlinks": 0
+    },
+    "formal/__pycache__": {
+      "files": 3,
+      "logical_bytes": 121045,
+      "allocated_file_bytes": 126976,
+      "symlinks": 0
+    },
+    "formal/logs": {
+      "files": 48,
+      "logical_bytes": 1676506,
+      "allocated_file_bytes": 1814528,
+      "symlinks": 0
+    },
+    "formal/quality": {
+      "files": 22,
+      "logical_bytes": 283564,
+      "allocated_file_bytes": 327680,
+      "symlinks": 0
+    },
+    "formal/quality/__pycache__": {
+      "files": 12,
+      "logical_bytes": 132585,
+      "allocated_file_bytes": 159744,
+      "symlinks": 0
+    },
+    "formal/analysis": {
+      "files": 44,
+      "logical_bytes": 593407,
+      "allocated_file_bytes": 675840,
+      "symlinks": 0
+    },
+    "formal/analysis/__pycache__": {
+      "files": 18,
+      "logical_bytes": 371945,
+      "allocated_file_bytes": 409600,
+      "symlinks": 0
+    },
+    "formal/analysis/semantic_site": {
+      "files": 3,
+      "logical_bytes": 19397,
+      "allocated_file_bytes": 24576,
+      "symlinks": 0
+    },
+    "outputs": {
+      "files": 283252,
+      "logical_bytes": 5257689957,
+      "allocated_file_bytes": 5815521280,
+      "symlinks": 14848
+    },
+    "outputs/experiments": {
+      "files": 283252,
+      "logical_bytes": 5257689957,
+      "allocated_file_bytes": 5815521280,
+      "symlinks": 14848
+    },
+    "outputs/experiments/nas_30city_vitl_panorama_w4096_k32": {
+      "files": 283252,
+      "logical_bytes": 5257689957,
+      "allocated_file_bytes": 5815521280,
+      "symlinks": 14848
+    },
+    "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/figures": {
+      "files": 30,
+      "logical_bytes": 33773737,
+      "allocated_file_bytes": 33841152,
+      "symlinks": 0
+    },
+    "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/manifests": {
+      "files": 30,
+      "logical_bytes": 13391916,
+      "allocated_file_bytes": 13443072,
+      "symlinks": 0
+    },
+    "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/cache_manifests": {
+      "files": 31,
+      "logical_bytes": 10880752,
+      "allocated_file_bytes": 10928128,
+      "symlinks": 0
+    },
+    "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/source_cohort": {
+      "files": 93,
+      "logical_bytes": 15308184,
+      "allocated_file_bytes": 15581184,
+      "symlinks": 0
+    },
+    "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/analysis": {
+      "files": 283038,
+      "logical_bytes": 5047842086,
+      "allocated_file_bytes": 5605158912,
+      "symlinks": 14848
+    },
+    "tests": {
+      "files": 35,
+      "logical_bytes": 261868,
+      "allocated_file_bytes": 335872,
+      "symlinks": 0
+    },
+    "tests/__pycache__": {
+      "files": 19,
+      "logical_bytes": 222302,
+      "allocated_file_bytes": 262144,
+      "symlinks": 0
+    },
+    ".pytest_cache": {
+      "files": 5,
+      "logical_bytes": 7632,
+      "allocated_file_bytes": 24576,
+      "symlinks": 0
+    },
+    ".pytest_cache/v": {
+      "files": 2,
+      "logical_bytes": 7102,
+      "allocated_file_bytes": 12288,
+      "symlinks": 0
+    },
+    ".pytest_cache/v/cache": {
+      "files": 2,
+      "logical_bytes": 7102,
+      "allocated_file_bytes": 12288,
+      "symlinks": 0
+    },
+    "configs": {
+      "files": 7,
+      "logical_bytes": 90037,
+      "allocated_file_bytes": 106496,
+      "symlinks": 0
+    },
+    "sae_experiments": {
+      "files": 73,
+      "logical_bytes": 938081,
+      "allocated_file_bytes": 1114112,
+      "symlinks": 0
+    },
+    "sae_experiments/backbones": {
+      "files": 12,
+      "logical_bytes": 36015,
+      "allocated_file_bytes": 65536,
+      "symlinks": 0
+    },
+    "sae_experiments/backbones/__pycache__": {
+      "files": 6,
+      "logical_bytes": 22008,
+      "allocated_file_bytes": 36864,
+      "symlinks": 0
+    },
+    "sae_experiments/training": {
+      "files": 4,
+      "logical_bytes": 16239,
+      "allocated_file_bytes": 28672,
+      "symlinks": 0
+    },
+    "sae_experiments/training/__pycache__": {
+      "files": 2,
+      "logical_bytes": 10707,
+      "allocated_file_bytes": 16384,
+      "symlinks": 0
+    },
+    "sae_experiments/__pycache__": {
+      "files": 19,
+      "logical_bytes": 518670,
+      "allocated_file_bytes": 557056,
+      "symlinks": 0
+    },
+    "sae_experiments/evaluation": {
+      "files": 4,
+      "logical_bytes": 33936,
+      "allocated_file_bytes": 45056,
+      "symlinks": 0
+    },
+    "sae_experiments/evaluation/__pycache__": {
+      "files": 2,
+      "logical_bytes": 22248,
+      "allocated_file_bytes": 28672,
+      "symlinks": 0
+    },
+    "sae_experiments/feature_extraction": {
+      "files": 8,
+      "logical_bytes": 11698,
+      "allocated_file_bytes": 36864,
+      "symlinks": 0
+    },
+    "sae_experiments/feature_extraction/__pycache__": {
+      "files": 4,
+      "logical_bytes": 7599,
+      "allocated_file_bytes": 20480,
+      "symlinks": 0
+    },
+    "sae_experiments/models": {
+      "files": 6,
+      "logical_bytes": 22660,
+      "allocated_file_bytes": 40960,
+      "symlinks": 0
+    },
+    "sae_experiments/models/__pycache__": {
+      "files": 3,
+      "logical_bytes": 14339,
+      "allocated_file_bytes": 24576,
+      "symlinks": 0
+    }
+  },
+  "file_extensions": {
+    ".jpg": 1026100,
+    ".png": 622384,
+    ".html": 4128,
+    ".jsonl": 3725,
+    ".json": 2724,
+    ".npy": 390,
+    ".csv": 355,
+    ".py": 319,
+    ".pyc": 136,
+    ".parquet": 123,
+    ".log": 66,
+    ".md": 65,
+    ".pdf": 61,
+    ".webp": 40,
+    ".npz": 39,
+    ".sbatch": 26,
+    ".u8": 20,
+    ".sh": 9,
+    ".pid": 8,
+    ".svg": 5,
+    ".lock": 5,
+    "[none]": 4,
+    ".js": 4,
+    ".yaml": 4,
+    ".stdout": 4,
+    ".css": 3,
+    ".tex": 3,
+    ".bib": 2,
+    ".graphml": 2,
+    ".progress": 2,
+    ".pt": 2,
+    ".gz": 1,
+    ".joblib": 1,
+    ".tag": 1
+  },
+  "largest_files": [
+    {
+      "path": "reports/data/semantic_umap_w4096_k64_top100/crop_embeddings.f32.npy",
+      "bytes": 1229537408
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/analysis/semantic_umap_top100/crop_embeddings.f32.npy",
+      "bytes": 866316416
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/analysis/semantic_umap_top100/unique_embeddings/crop_embeddings.f32.npy",
+      "bytes": 836167808
+    },
+    {
+      "path": "reports/data/semantic_umap_w2048_k64_top100/crop_embeddings.f32.npy",
+      "bytes": 628095104
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/analysis/semantic_umap_top100/crops.jsonl",
+      "bytes": 220265420
+    },
+    {
+      "path": "reports/data/semantic_umap_w4096_k64_top100/crops.jsonl",
+      "bytes": 215767649
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/analysis/semantic_umap_top100/unique_embeddings/crops.jsonl",
+      "bytes": 214040726
+    },
+    {
+      "path": "reports/data/semantic_umap_w4096_k64_top100/semantic_atlas.json",
+      "bytes": 142300472
+    },
+    {
+      "path": "reports/data/semantic_umap_w2048_k64_top100/crops.jsonl",
+      "bytes": 110138201
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/analysis/semantic_umap_top100/semantic_atlas.json",
+      "bytes": 102481162
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/checkpoint_last.pt",
+      "bytes": 101206501
+    },
+    {
+      "path": "reports/vitl30_instance_umap/instance_embeddings.f32.npy",
+      "bytes": 91957376
+    },
+    {
+      "path": "reports/data/semantic_umap_w4096_k64_top100/index.html",
+      "bytes": 82843373
+    },
+    {
+      "path": "reports/data/semantic_umap_w2048_k64_top100/semantic_atlas.json",
+      "bytes": 72647059
+    },
+    {
+      "path": "reports/vitl30_dimension_vlm/previous_prompt_v1/evidence.json",
+      "bytes": 58221404
+    },
+    {
+      "path": "reports/vitl30_dimension_vlm/evidence.json",
+      "bytes": 58221404
+    },
+    {
+      "path": "reports/data/semantic_umap_w2048_k64_top100/index.html",
+      "bytes": 42276231
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/analysis/semantic_umap_top100/top_images.jsonl",
+      "bytes": 34179490
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/model_best.pt",
+      "bytes": 33580697
+    },
+    {
+      "path": "reports/data/semantic_umap_w4096_k64_top100/top_images.jsonl",
+      "bytes": 32450614
+    },
+    {
+      "path": "archive/non_batchtopk/paper/data/atypical_cooccurrence/city_pair_statistics.csv",
+      "bytes": 26388124
+    },
+    {
+      "path": "archive/non_batchtopk/paper/data/image_layout_archetypes/image_layout_archetypes.parquet",
+      "bytes": 26186568
+    },
+    {
+      "path": "archive/non_batchtopk/paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Four_Direction_Atlas.png",
+      "bytes": 24464342
+    },
+    {
+      "path": "archive/non_batchtopk/paper/data/feature_mae_top4_typed_hierarchy/dimension_pair_relations.csv",
+      "bytes": 23946050
+    },
+    {
+      "path": "archive/non_batchtopk/paper/data/image_level_atypicality/image_atypicality.parquet",
+      "bytes": 20275476
+    },
+    {
+      "path": "archive/non_batchtopk/paper/figures/supplementary/multi_area_four_directions/Fig_Panorama_F_Category_Overlay_Comparison.png",
+      "bytes": 19736639
+    },
+    {
+      "path": "archive/non_batchtopk/paper/figures/supplementary/multi_area_four_directions/Fig_Multi_Area_Stitched_Heatmap_Graph.png",
+      "bytes": 17737688
+    },
+    {
+      "path": "reports/data/semantic_umap_w2048_k64_top100/top_images.jsonl",
+      "bytes": 16501903
+    },
+    {
+      "path": "reports/vitl30_unit_motifs/index.html",
+      "bytes": 13126337
+    },
+    {
+      "path": "reports/data/semantic_umap_w4096_k64_top100/feature_semantic_embeddings.f32.npy",
+      "bytes": 12583040
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/analysis/semantic_umap_top100/feature_semantic_embeddings.f32.npy",
+      "bytes": 12583040
+    },
+    {
+      "path": "archive/non_batchtopk/paper/figures/supplementary/multi_area_four_directions/Fig_Pixel_Overlap_Panorama_Comparison.png",
+      "bytes": 11519371
+    },
+    {
+      "path": "archive/non_batchtopk/paper/figures/supplementary/compact_graph_examples/Fig_Compact_Graph_10_Image_Activation_Overlays.png",
+      "bytes": 8228719
+    },
+    {
+      "path": "archive/non_batchtopk/paper/data/graph_visual_vocabulary/graph/visual_graph.graphml",
+      "bytes": 7004663
+    },
+    {
+      "path": "archive/non_batchtopk/paper/figures/supplementary/multi_area_four_directions/Fig_Panorama_F_Category_Overlay_Comparison.pdf",
+      "bytes": 6958761
+    },
+    {
+      "path": "reports/vitl30_instance_umap/instances.jsonl",
+      "bytes": 6869280
+    },
+    {
+      "path": "archive/non_batchtopk/paper/figures/supplementary/Fig_All_City_UMAP_Visual_Families.pdf",
+      "bytes": 6640840
+    },
+    {
+      "path": "reports/vitl30_vlm_interpretation/Fig_ViTL30_Activation_Examples.png",
+      "bytes": 6627397
+    },
+    {
+      "path": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32/figures/Fig_ViTL30_Activation_Examples.png",
+      "bytes": 6627397
+    },
+    {
+      "path": "archive/non_batchtopk/outputs/figures/basis_interpret_Vienna.png",
+      "bytes": 6620615
+    }
+  ],
+  "directory_allocation_by_top_directory": {
+    "reports": 77058048,
+    "archive": 33857536,
+    "formal": 36864,
+    "outputs": 15208448,
+    "tests": 8192,
+    ".pytest_cache": 12288,
+    "configs": 4096,
+    "sae_experiments": 49152
+  },
+  "errors": [],
+  "tracked_existing_metadata_rows": 351
+}

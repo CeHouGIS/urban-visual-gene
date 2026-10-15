@@ -1,0 +1,657 @@
+{
+  "migrated_utc": "2026-10-15T13:55:00.613987+00:00",
+  "moves": [
+    {
+      "old": "sae_experiments/panorama_vitl30.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_analysis.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_analysis.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_cache.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_cache.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_dimension_vlm.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_dimension_vlm.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_dimension_vlm_runner.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_dimension_vlm_runner.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_figures.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_figures.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_heatmaps.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_heatmaps.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_instance_umap.html",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_instance_umap.html",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_instance_umap.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_instance_umap.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_landscape_prototypes.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_landscape_prototypes.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_runner.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_runner.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_semantic_report.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_semantic_report.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_semantic_umap.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_semantic_umap.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_semantic_umap_evidence.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_semantic_umap_evidence.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_semantic_umap_report.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_semantic_umap_report.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_semantics.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_semantics.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/panorama_vitl30_unit_motifs.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/code/panorama_vitl30_unit_motifs.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/gpu_run.py",
+      "new": "experiments/global307_baseline_w1024_k8/code/gpu_run.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/select_city_density_candidates.py",
+      "new": "experiments/global307_baseline_w1024_k8/code/select_city_density_candidates.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "sae_experiments/evaluation/encode_batchtopk_w1024_k8.py",
+      "new": "experiments/global307_baseline_w1024_k8/code/encode_batchtopk_w1024_k8.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/analyze_dictionary_scaling.py",
+      "new": "experiments/global307_dictionary_scaling_k8/code/analyze_dictionary_scaling.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/analyze_heldout_scaling.py",
+      "new": "experiments/global307_dictionary_scaling_k8/code/analyze_heldout_scaling.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/build_scaling_atlas.py",
+      "new": "experiments/global307_dictionary_scaling_k8/code/build_scaling_atlas.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/discover_scene_templates.py",
+      "new": "experiments/global307_dictionary_scaling_k8/code/discover_scene_templates.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/plot_heldout_scaling.py",
+      "new": "experiments/global307_dictionary_scaling_k8/code/plot_heldout_scaling.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/plot_scaling_examples.py",
+      "new": "experiments/global307_dictionary_scaling_k8/code/plot_scaling_examples.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/plot_scaling_sankey.py",
+      "new": "experiments/global307_dictionary_scaling_k8/code/plot_scaling_sankey.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/train_expanded_sae.py",
+      "new": "experiments/global307_w4096_k_sweep/code/train_expanded_sae.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/build_expanded_sae_gallery.py",
+      "new": "experiments/global307_w4096_k_sweep/code/build_expanded_sae_gallery.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/run_expanded_sae_ksweep.sh",
+      "new": "experiments/global307_w4096_k_sweep/code/run_expanded_sae_ksweep.sh",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/analysis/test_feature_combinations.py",
+      "new": "experiments/global307_w2048_k64/code/test_feature_combinations.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/test_feature_pair_spatial.py",
+      "new": "experiments/global307_w2048_k64/code/test_feature_pair_spatial.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/plot_feature_combination_examples.py",
+      "new": "experiments/global307_w2048_k64/code/plot_feature_combination_examples.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/run_semantic_w2048_k64.sh",
+      "new": "experiments/global307_w2048_k64/code/run_semantic_w2048_k64.sh",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/analysis/publish_semantic_w2048_k64.sh",
+      "new": "experiments/global307_w2048_k64/code/publish_semantic_w2048_k64.sh",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/analysis/run_latest_semantic_umap.sh",
+      "new": "experiments/global307_w4096_k64/code/run_latest_semantic_umap.sh",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/analysis/semantic_feature_umap.py",
+      "new": "sae_experiments/semantic_tools/semantic_feature_umap.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/semantic_feature_umap.html",
+      "new": "sae_experiments/semantic_tools/semantic_feature_umap.html",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/plot_feature_activation_maps.py",
+      "new": "sae_experiments/semantic_tools/plot_feature_activation_maps.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/plot_semantic_umap_examples.py",
+      "new": "sae_experiments/semantic_tools/plot_semantic_umap_examples.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/prepare_semantic_umap_manifest.py",
+      "new": "sae_experiments/semantic_tools/prepare_semantic_umap_manifest.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/build_semantic_site.py",
+      "new": "sae_experiments/semantic_tools/build_semantic_site.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "formal/analysis/semantic_site",
+      "new": "sae_experiments/semantic_tools/semantic_site",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "configs/dinov3_patch_batchtopk_w1024_k8.yaml",
+      "new": "experiments/global307_baseline_w1024_k8/configs/dinov3_patch_batchtopk_w1024_k8.yaml",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "configs/final_global_300_google_city_map.json",
+      "new": "experiments/global307_baseline_w1024_k8/configs/final_global_300_google_city_map.json",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "configs/final_global_300_sample_3000.json",
+      "new": "experiments/global307_baseline_w1024_k8/configs/final_global_300_sample_3000.json",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "configs/final_global_307_cities.csv",
+      "new": "experiments/global307_baseline_w1024_k8/configs/final_global_307_cities.csv",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "configs/final_global_307_sample_3000.json",
+      "new": "experiments/global307_baseline_w1024_k8/configs/final_global_307_sample_3000.json",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "configs/final_global_7_baidu_city_map.json",
+      "new": "experiments/global307_baseline_w1024_k8/configs/final_global_7_baidu_city_map.json",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "configs/formal_city_manifest.json",
+      "new": "experiments/city37_plan/configs/formal_city_manifest.json",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/watchdog_batchtopk.sh",
+      "new": "experiments/city37_plan/code/watchdog_batchtopk.sh",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/watchdog_batchtopk_balanced.sh",
+      "new": "experiments/global307_baseline_w1024_k8/code/watchdog_batchtopk_balanced.sh",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/watchdog_batchtopk_cache_worker.sh",
+      "new": "experiments/global307_baseline_w1024_k8/code/watchdog_batchtopk_cache_worker.sh",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/watchdog_batchtopk_train_after_cache.sh",
+      "new": "experiments/global307_baseline_w1024_k8/code/watchdog_batchtopk_train_after_cache.sh",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/slurm/batchtopk_w1024_k8.sbatch",
+      "new": "experiments/city37_plan/code/slurm/batchtopk_w1024_k8.sbatch",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/slurm/encode_batchtopk_w1024_k8.sbatch",
+      "new": "experiments/city37_plan/code/slurm/encode_batchtopk_w1024_k8.sbatch",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "formal/logs",
+      "new": "experiments/global307_baseline_w1024_k8/runtime/logs",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "outputs/experiments/nas_30city_vitl_panorama_w4096_k32",
+      "new": "experiments/vitl30_panorama_w4096_k32/outputs",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/vitl30_semantic_umap",
+      "new": "experiments/vitl30_panorama_w4096_k32/reports/semantic_umap",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/vitl30_instance_umap",
+      "new": "experiments/vitl30_panorama_w4096_k32/reports/instance_umap",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/vitl30_vlm_interpretation",
+      "new": "experiments/vitl30_panorama_w4096_k32/reports/vlm_groups",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/vitl30_dimension_vlm",
+      "new": "experiments/vitl30_panorama_w4096_k32/reports/vlm_dimensions",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/vitl30_landscape_prototypes",
+      "new": "experiments/vitl30_panorama_w4096_k32/reports/landscape_prototypes",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/vitl30_unit_motifs",
+      "new": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/scaling",
+      "new": "experiments/global307_dictionary_scaling_k8/reports/website",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/data/scaling_heldout",
+      "new": "experiments/global307_dictionary_scaling_k8/outputs/heldout",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/figures/scaling_heldout",
+      "new": "experiments/global307_dictionary_scaling_k8/reports/figures",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/sae_4096",
+      "new": "experiments/global307_w4096_k_sweep/reports/gallery",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/data/semantic_umap_w2048_k64_top100",
+      "new": "experiments/global307_w2048_k64/outputs/semantic_top100",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/data/feature_combinations_w2048_k64",
+      "new": "experiments/global307_w2048_k64/outputs/feature_combinations",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/data/semantic_umap_w4096_k64_top100",
+      "new": "experiments/global307_w4096_k64/outputs/semantic_top100",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/data/semantic_umap_pipeline_smoke",
+      "new": "experiments/semantic_pipeline_smoke/outputs",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/figures/legacy_12city",
+      "new": "experiments/legacy12city/reports/figures",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/figures/chapter5",
+      "new": "experiments/legacy30_paper_w1024_k8/reports/figures",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/chapter5_results_brief.md",
+      "new": "experiments/legacy30_paper_w1024_k8/reports/chapter5_results_brief.md",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/urban_scene_primitives_30city_writing_plan.md",
+      "new": "experiments/legacy30_paper_w1024_k8/reports/writing_plan.md",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/urban_scene_primitives_dictionary_scaling.md",
+      "new": "experiments/global307_dictionary_scaling_k8/reports/REPORT.md",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/semantic_umap_latest_results.md",
+      "new": "experiments/global307_w4096_k64/reports/REPORT.md",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/feature_combination_significance_w2048_k64.md",
+      "new": "experiments/global307_w2048_k64/reports/feature_combinations.md",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/semantic_feature_umap_plan.md",
+      "new": "docs/methods/semantic_feature_umap_history.md",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "reports/project_inventory",
+      "new": "docs/project_inventory",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/legacy30_paper_w1024_k8/reports/figures/pipeline.jpg",
+      "new": "docs/figures/pipeline.jpg",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/legacy30_paper_w1024_k8/reports/figures/panorama_aware.jpg",
+      "new": "docs/figures/panorama_aware.jpg",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/legacy30_paper_w1024_k8/reports/figures/urban_visual_genome_comic.png",
+      "new": "docs/figures/urban_visual_genome_comic.png",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/legacy30_paper_w1024_k8/reports/figures/urban_visual_genome_comic.svg",
+      "new": "docs/figures/urban_visual_genome_comic.svg",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "tests/test_panorama_vitl30.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/tests/test_panorama_vitl30.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_panorama_vitl30_dimension_vlm.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/tests/test_panorama_vitl30_dimension_vlm.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_panorama_vitl30_instance_umap.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/tests/test_panorama_vitl30_instance_umap.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_panorama_vitl30_landscape_prototypes.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/tests/test_panorama_vitl30_landscape_prototypes.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_panorama_vitl30_semantic_umap.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/tests/test_panorama_vitl30_semantic_umap.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_panorama_vitl30_semantics.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/tests/test_panorama_vitl30_semantics.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_panorama_vitl30_unit_motifs.py",
+      "new": "experiments/vitl30_panorama_w4096_k32/tests/test_panorama_vitl30_unit_motifs.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_formal_feature_cache.py",
+      "new": "experiments/global307_baseline_w1024_k8/tests/test_formal_feature_cache.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_heldout_scaling.py",
+      "new": "experiments/global307_dictionary_scaling_k8/tests/test_heldout_scaling.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_scaling_atlas.py",
+      "new": "experiments/global307_dictionary_scaling_k8/tests/test_scaling_atlas.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_scene_templates.py",
+      "new": "experiments/global307_dictionary_scaling_k8/tests/test_scene_templates.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "tests/test_expanded_sae_gallery.py",
+      "new": "experiments/global307_w4096_k_sweep/tests/test_expanded_sae_gallery.py",
+      "compatibility_symlink": false
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list_6.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list_6.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_qc_3.log",
+      "new": "formal/quality/runtime/logs/formal_sample_qc_3.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list_3.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list_3.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_batchtopk_fullpatch_37city.log",
+      "new": "experiments/city37_plan/runtime/logs/formal_batchtopk_fullpatch_37city.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/expanded_sae_w4096_k16.log",
+      "new": "experiments/global307_w4096_k_sweep/runtime/logs/expanded_sae_w4096_k16.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/expanded_sae_w4096_k64.pid",
+      "new": "experiments/global307_w4096_k_sweep/runtime/logs/expanded_sae_w4096_k64.pid",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_city_qc.log",
+      "new": "formal/quality/runtime/logs/formal_city_qc.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/all_image_qc.log",
+      "new": "formal/quality/runtime/logs/all_image_qc.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list_1.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list_1.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_qc_5.log",
+      "new": "formal/quality/runtime/logs/formal_sample_qc_5.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_qc_6.log",
+      "new": "formal/quality/runtime/logs/formal_sample_qc_6.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_batchtopk_fullpatch_watchdog.log",
+      "new": "experiments/city37_plan/runtime/logs/formal_batchtopk_fullpatch_watchdog.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/semantic_umap_w4096_k64.log",
+      "new": "experiments/global307_w4096_k64/runtime/logs/semantic_umap_w4096_k64.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_qc_1.log",
+      "new": "formal/quality/runtime/logs/formal_sample_qc_1.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list_2.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list_2.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_batchtopk_307city_qc_filtered.log",
+      "new": "formal/quality/runtime/logs/formal_batchtopk_307city_qc_filtered.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list_0.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list_0.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/expanded_sae_w4096_k16.pid",
+      "new": "experiments/global307_w4096_k_sweep/runtime/logs/expanded_sae_w4096_k16.pid",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list_7.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list_7.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/expanded_sae_w4096_k64.log",
+      "new": "experiments/global307_w4096_k_sweep/runtime/logs/expanded_sae_w4096_k64.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/expanded_sae_w4096_k32.log",
+      "new": "experiments/global307_w4096_k_sweep/runtime/logs/expanded_sae_w4096_k32.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/legacy_image_qc.log",
+      "new": "formal/quality/runtime/logs/legacy_image_qc.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list_5.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list_5.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_batchtopk_fullpatch.pid",
+      "new": "experiments/city37_plan/runtime/logs/formal_batchtopk_fullpatch.pid",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_qc_4.log",
+      "new": "formal/quality/runtime/logs/formal_sample_qc_4.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/expanded_sae_w4096_k32.pid",
+      "new": "experiments/global307_w4096_k_sweep/runtime/logs/expanded_sae_w4096_k32.pid",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/semantic_w2048_k64_publish.log",
+      "new": "experiments/global307_w2048_k64/runtime/logs/semantic_w2048_k64_publish.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_list_4.log",
+      "new": "formal/quality/runtime/logs/formal_sample_list_4.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_qc_0.log",
+      "new": "formal/quality/runtime/logs/formal_sample_qc_0.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_qc_2.log",
+      "new": "formal/quality/runtime/logs/formal_sample_qc_2.log",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_batchtopk_fullpatch_watchdog.stdout",
+      "new": "experiments/city37_plan/runtime/logs/formal_batchtopk_fullpatch_watchdog.stdout",
+      "compatibility_symlink": true
+    },
+    {
+      "old": "experiments/global307_baseline_w1024_k8/runtime/logs/formal_sample_qc_7.log",
+      "new": "formal/quality/runtime/logs/formal_sample_qc_7.log",
+      "compatibility_symlink": true
+    }
+  ],
+  "nas_directories_moved": false,
+  "data_files_reencoded": false
+}

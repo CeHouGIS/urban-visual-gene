@@ -1,0 +1,1398 @@
+[
+  {
+    "pair": "512->1024",
+    "relation_type": "stable",
+    "relation": {
+      "parent": 345,
+      "child": 474,
+      "decoder_cosine": 0.9818243384361267,
+      "activation_cosine": 0.9780234694480896,
+      "support_jaccard": 0.7753509879112244,
+      "parent_top_anchor_rows": [
+        92144,
+        41428,
+        141200,
+        41429,
+        75277,
+        81327,
+        75406,
+        105164,
+        141199,
+        81326,
+        141260,
+        86608,
+        75278,
+        107731,
+        141198,
+        75276
+      ],
+      "child_top_anchor_rows": [
+        41429,
+        41428,
+        107731,
+        141200,
+        75277,
+        75276,
+        107733,
+        75406,
+        75278,
+        141204,
+        141203,
+        75307,
+        141199,
+        81326,
+        81327,
+        19854
+      ]
+    },
+    "anchor": 92144,
+    "image_mapping": {
+      "city": "KotaBharu",
+      "filtered_pano": 2891,
+      "source_pano": 2891,
+      "heading": 270,
+      "patch": 330,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Malaysia/KotaBharu/o/j/ojWfl3QTh3346IAa3DbPkQ_270.jpg",
+      "pano_id": "ojWfl3QTh3346IAa3DbPkQ"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "stable",
+    "relation": {
+      "parent": 205,
+      "child": 73,
+      "decoder_cosine": 0.9739311933517456,
+      "activation_cosine": 0.9601969718933105,
+      "support_jaccard": 0.7430796027183533,
+      "parent_top_anchor_rows": [
+        114673,
+        135789,
+        140727,
+        49359,
+        8980,
+        114674,
+        126541,
+        126538,
+        135883,
+        114672,
+        67344,
+        126545,
+        90444,
+        132719,
+        42522,
+        42512
+      ],
+      "child_top_anchor_rows": [
+        42512,
+        114673,
+        42522,
+        114674,
+        49359,
+        8980,
+        114672,
+        140727,
+        42510,
+        42518,
+        42580,
+        42516,
+        126541,
+        67344,
+        41465,
+        126538
+      ]
+    },
+    "anchor": 114673,
+    "image_mapping": {
+      "city": "Malm\u00f6",
+      "filtered_pano": 2790,
+      "source_pano": 2794,
+      "heading": 270,
+      "patch": 405,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Sweden/Malm\u00f6/m/o/mo_nM4vr16Cnk1S33P5GwA_270.jpg",
+      "pano_id": "mo_nM4vr16Cnk1S33P5GwA"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "split",
+    "relation": {
+      "parent": 66,
+      "children": [
+        1012,
+        508
+      ],
+      "parent_coverage": 0.8884297520661157,
+      "minimum_unique_parent_fraction": 0.33264462809917356,
+      "decoder_cosines": [
+        0.8622345924377441,
+        0.6671324968338013
+      ],
+      "parent_recalls": [
+        0.5547520518302917,
+        0.5557851195335388
+      ],
+      "parent_top_anchor_rows": [
+        27160,
+        27161,
+        27162,
+        10461,
+        124568,
+        60890,
+        114616,
+        141372,
+        10462,
+        27157,
+        140189,
+        101851,
+        23325,
+        75539,
+        127067,
+        63421
+      ],
+      "child_top_anchor_rows": [
+        [
+          82936,
+          124568,
+          27161,
+          82935,
+          141372,
+          27160,
+          100893,
+          23325,
+          10461,
+          10462,
+          40861,
+          114616,
+          75539,
+          85854,
+          5621,
+          87386
+        ],
+        [
+          27159,
+          114814,
+          114813,
+          48405,
+          21567,
+          69727,
+          29274,
+          15743,
+          96408,
+          115800,
+          1657,
+          147807,
+          25529,
+          10716,
+          42554,
+          118557
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          85854,
+          82077,
+          40541,
+          65183,
+          82937,
+          63420,
+          114711,
+          62926,
+          131410,
+          5618,
+          147581,
+          131386,
+          37751,
+          13114,
+          63423,
+          84861
+        ],
+        [
+          27159,
+          114814,
+          114813,
+          48405,
+          21567,
+          69727,
+          15743,
+          96408,
+          115800,
+          1657,
+          147807,
+          25529,
+          10716,
+          42554,
+          118557,
+          27571
+        ]
+      ]
+    },
+    "anchor": 85854,
+    "image_mapping": {
+      "city": "GoldCoast",
+      "filtered_pano": 2359,
+      "source_pano": 2362,
+      "heading": 180,
+      "patch": 769,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Australia/GoldCoast/x/P/xPSirze_Wj4dumfJsUoXXA_180.jpg",
+      "pano_id": "xPSirze_Wj4dumfJsUoXXA"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "split",
+    "relation": {
+      "parent": 66,
+      "children": [
+        1012,
+        508
+      ],
+      "parent_coverage": 0.8884297520661157,
+      "minimum_unique_parent_fraction": 0.33264462809917356,
+      "decoder_cosines": [
+        0.8622345924377441,
+        0.6671324968338013
+      ],
+      "parent_recalls": [
+        0.5547520518302917,
+        0.5557851195335388
+      ],
+      "parent_top_anchor_rows": [
+        27160,
+        27161,
+        27162,
+        10461,
+        124568,
+        60890,
+        114616,
+        141372,
+        10462,
+        27157,
+        140189,
+        101851,
+        23325,
+        75539,
+        127067,
+        63421
+      ],
+      "child_top_anchor_rows": [
+        [
+          82936,
+          124568,
+          27161,
+          82935,
+          141372,
+          27160,
+          100893,
+          23325,
+          10461,
+          10462,
+          40861,
+          114616,
+          75539,
+          85854,
+          5621,
+          87386
+        ],
+        [
+          27159,
+          114814,
+          114813,
+          48405,
+          21567,
+          69727,
+          29274,
+          15743,
+          96408,
+          115800,
+          1657,
+          147807,
+          25529,
+          10716,
+          42554,
+          118557
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          85854,
+          82077,
+          40541,
+          65183,
+          82937,
+          63420,
+          114711,
+          62926,
+          131410,
+          5618,
+          147581,
+          131386,
+          37751,
+          13114,
+          63423,
+          84861
+        ],
+        [
+          27159,
+          114814,
+          114813,
+          48405,
+          21567,
+          69727,
+          15743,
+          96408,
+          115800,
+          1657,
+          147807,
+          25529,
+          10716,
+          42554,
+          118557,
+          27571
+        ]
+      ]
+    },
+    "anchor": 27159,
+    "image_mapping": {
+      "city": "Medell\u00edn",
+      "filtered_pano": 642,
+      "source_pano": 643,
+      "heading": 0,
+      "patch": 708,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Colombia/Medell\u00edn/2/e/2exyExfAdmREAuww1JXFMQ_0.jpg",
+      "pano_id": "2exyExfAdmREAuww1JXFMQ"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "split",
+    "relation": {
+      "parent": 457,
+      "children": [
+        881,
+        426
+      ],
+      "parent_coverage": 0.9692827522653971,
+      "minimum_unique_parent_fraction": 0.29043157733067115,
+      "decoder_cosines": [
+        0.8596946597099304,
+        0.9359320402145386
+      ],
+      "parent_recalls": [
+        0.4701274633407593,
+        0.6788511872291565
+      ],
+      "parent_top_anchor_rows": [
+        17247,
+        66269,
+        240,
+        51358,
+        52120,
+        19612,
+        41882,
+        32252,
+        62708,
+        22109,
+        21874,
+        57174,
+        51892,
+        85755,
+        78584,
+        17308
+      ],
+      "child_top_anchor_rows": [
+        [
+          123133,
+          93434,
+          18651,
+          76700,
+          36031,
+          36413,
+          21404,
+          149306,
+          18932,
+          62141,
+          30909,
+          45144,
+          31610,
+          32413,
+          11833,
+          49591
+        ],
+        [
+          34488,
+          123730,
+          123091,
+          78549,
+          43665,
+          275,
+          11408,
+          13968,
+          139253,
+          44023,
+          71951,
+          87571,
+          133433,
+          10104,
+          125553,
+          24850
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          123133,
+          93434,
+          18651,
+          76700,
+          36031,
+          36413,
+          21404,
+          149306,
+          18932,
+          62141,
+          30909,
+          45144,
+          31610,
+          32413,
+          11833,
+          49591
+        ],
+        [
+          34488,
+          123730,
+          78549,
+          43665,
+          275,
+          11408,
+          139253,
+          44023,
+          71951,
+          87571,
+          133433,
+          10104,
+          125553,
+          13974,
+          35641,
+          86713
+        ]
+      ]
+    },
+    "anchor": 123133,
+    "image_mapping": {
+      "city": "Resistencia",
+      "filtered_pano": 1261,
+      "source_pano": 1261,
+      "heading": 270,
+      "patch": 674,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Argentina/Resistencia/N/f/NfiUxiQICaIeIvs6s_D28w_270.jpg",
+      "pano_id": "NfiUxiQICaIeIvs6s_D28w"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "split",
+    "relation": {
+      "parent": 457,
+      "children": [
+        881,
+        426
+      ],
+      "parent_coverage": 0.9692827522653971,
+      "minimum_unique_parent_fraction": 0.29043157733067115,
+      "decoder_cosines": [
+        0.8596946597099304,
+        0.9359320402145386
+      ],
+      "parent_recalls": [
+        0.4701274633407593,
+        0.6788511872291565
+      ],
+      "parent_top_anchor_rows": [
+        17247,
+        66269,
+        240,
+        51358,
+        52120,
+        19612,
+        41882,
+        32252,
+        62708,
+        22109,
+        21874,
+        57174,
+        51892,
+        85755,
+        78584,
+        17308
+      ],
+      "child_top_anchor_rows": [
+        [
+          123133,
+          93434,
+          18651,
+          76700,
+          36031,
+          36413,
+          21404,
+          149306,
+          18932,
+          62141,
+          30909,
+          45144,
+          31610,
+          32413,
+          11833,
+          49591
+        ],
+        [
+          34488,
+          123730,
+          123091,
+          78549,
+          43665,
+          275,
+          11408,
+          13968,
+          139253,
+          44023,
+          71951,
+          87571,
+          133433,
+          10104,
+          125553,
+          24850
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          123133,
+          93434,
+          18651,
+          76700,
+          36031,
+          36413,
+          21404,
+          149306,
+          18932,
+          62141,
+          30909,
+          45144,
+          31610,
+          32413,
+          11833,
+          49591
+        ],
+        [
+          34488,
+          123730,
+          78549,
+          43665,
+          275,
+          11408,
+          139253,
+          44023,
+          71951,
+          87571,
+          133433,
+          10104,
+          125553,
+          13974,
+          35641,
+          86713
+        ]
+      ]
+    },
+    "anchor": 34488,
+    "image_mapping": {
+      "city": "Recife",
+      "filtered_pano": 1461,
+      "source_pano": 1461,
+      "heading": 90,
+      "patch": 477,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Brazil/Recife/N/d/Ndkcxmn56pUGcaTvhtpMkQ_90.jpg",
+      "pano_id": "Ndkcxmn56pUGcaTvhtpMkQ"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "no_close_match",
+    "relation": {
+      "feature": 129,
+      "heldout_frequency": 5164,
+      "max_decoder_cosine": 0.43003126978874207,
+      "max_activation_cosine": 0.11281365901231766,
+      "top_anchor_rows": [
+        103256,
+        94294,
+        122772,
+        11799,
+        110004,
+        78102,
+        94459,
+        85206,
+        113938,
+        5084,
+        103389,
+        119835,
+        113943,
+        31152,
+        47127,
+        72476
+      ]
+    },
+    "anchor": 103256,
+    "image_mapping": {
+      "city": "Cilegon",
+      "filtered_pano": 2510,
+      "source_pano": 2510,
+      "heading": 180,
+      "patch": 625,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Indonesia/Cilegon/V/v/VvxU_PVmSdQx1qJ8QRJs8Q_180.jpg",
+      "pano_id": "VvxU_PVmSdQx1qJ8QRJs8Q"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "512->1024",
+    "relation_type": "no_close_match",
+    "relation": {
+      "feature": 587,
+      "heldout_frequency": 3852,
+      "max_decoder_cosine": 0.4137757420539856,
+      "max_activation_cosine": 0.21533581614494324,
+      "top_anchor_rows": [
+        68692,
+        62711,
+        22927,
+        86715,
+        41878,
+        77914,
+        85178,
+        29976,
+        142613,
+        39670,
+        123702,
+        86803,
+        39672,
+        142614,
+        74935,
+        142612
+      ]
+    },
+    "anchor": 68692,
+    "image_mapping": {
+      "city": "Krasnodar",
+      "filtered_pano": 698,
+      "source_pano": 699,
+      "heading": 180,
+      "patch": 630,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Krasnodar/G/h/GhLUNh0LGoK2ab_WhZOalg_180.jpg",
+      "pano_id": "GhLUNh0LGoK2ab_WhZOalg"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "stable",
+    "relation": {
+      "parent": 282,
+      "child": 1860,
+      "decoder_cosine": 0.9453478455543518,
+      "activation_cosine": 0.9722359776496887,
+      "support_jaccard": 0.8894087672233582,
+      "parent_top_anchor_rows": [
+        40992,
+        49793,
+        21793,
+        19522,
+        19907,
+        86497,
+        46465,
+        81058,
+        84640,
+        66753,
+        104451,
+        130592,
+        40961,
+        52739,
+        55074,
+        139616
+      ],
+      "child_top_anchor_rows": [
+        69378,
+        69377,
+        46464,
+        90816,
+        40961,
+        104672,
+        112160,
+        46465,
+        137792,
+        3810,
+        84640,
+        69376,
+        146464,
+        52065,
+        69379,
+        105314
+      ]
+    },
+    "anchor": 40992,
+    "image_mapping": {
+      "city": "Makassar",
+      "filtered_pano": 119,
+      "source_pano": 119,
+      "heading": 90,
+      "patch": 26,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Indonesia/Makassar/D/4/D4gAH6AuSFHwia2EEWgDVg_90.jpg",
+      "pano_id": "D4gAH6AuSFHwia2EEWgDVg"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "stable",
+    "relation": {
+      "parent": 734,
+      "child": 945,
+      "decoder_cosine": 0.8484938740730286,
+      "activation_cosine": 0.9545261263847351,
+      "support_jaccard": 0.8808932900428772,
+      "parent_top_anchor_rows": [
+        55558,
+        25130,
+        55594,
+        25127,
+        25128,
+        55559,
+        55649,
+        55591,
+        55619,
+        55586,
+        115976,
+        25157,
+        55590,
+        55651,
+        55589,
+        87461
+      ],
+      "child_top_anchor_rows": [
+        55616,
+        55617,
+        115971,
+        55556,
+        55649,
+        55648,
+        115969,
+        55620,
+        55590,
+        115970,
+        55585,
+        25122,
+        70088,
+        55586,
+        25125,
+        55555
+      ]
+    },
+    "anchor": 55558,
+    "image_mapping": {
+      "city": "Oslo",
+      "filtered_pano": 912,
+      "source_pano": 915,
+      "heading": 0,
+      "patch": 161,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Norway/Oslo/f/F/fFuhgg5FpE8diP6nHJ_4-g_0.jpg",
+      "pano_id": "fFuhgg5FpE8diP6nHJ_4-g"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "split",
+    "relation": {
+      "parent": 514,
+      "children": [
+        1979,
+        997
+      ],
+      "parent_coverage": 1.0,
+      "minimum_unique_parent_fraction": 0.4520547945205479,
+      "decoder_cosines": [
+        0.7103420495986938,
+        0.784371554851532
+      ],
+      "parent_recalls": [
+        0.465753436088562,
+        0.5479452013969421
+      ],
+      "parent_top_anchor_rows": [
+        20593,
+        20586,
+        20592,
+        149359,
+        149361,
+        20591,
+        149354,
+        91660,
+        91662,
+        149356,
+        149357,
+        20585,
+        20587,
+        20580,
+        149350,
+        149349
+      ],
+      "child_top_anchor_rows": [
+        [
+          20586,
+          20585,
+          20593,
+          20580,
+          20592,
+          20579,
+          20581,
+          20577,
+          20591,
+          20576,
+          20587,
+          91662,
+          48783,
+          20589,
+          18094,
+          77323
+        ],
+        [
+          91660,
+          149354,
+          27560,
+          149359,
+          149349,
+          149357,
+          149361,
+          149356,
+          149350,
+          149348,
+          50603,
+          149345,
+          2510,
+          27561,
+          9039,
+          27564
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          20586,
+          20585,
+          20593,
+          20580,
+          20592,
+          20579,
+          20581,
+          20577,
+          20591,
+          20576,
+          20587,
+          48783,
+          20589,
+          18094,
+          77323,
+          20582
+        ],
+        [
+          91660,
+          149354,
+          27560,
+          149359,
+          149349,
+          149357,
+          149361,
+          149356,
+          149350,
+          149348,
+          50603,
+          149345,
+          2510,
+          27561,
+          9039,
+          27564
+        ]
+      ]
+    },
+    "anchor": 20586,
+    "image_mapping": {
+      "city": "Nagpur",
+      "filtered_pano": 955,
+      "source_pano": 955,
+      "heading": 270,
+      "patch": 242,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Nagpur/a/K/aKcn05VDUqTLt1o8NXkYNQ_270.jpg",
+      "pano_id": "aKcn05VDUqTLt1o8NXkYNQ"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "split",
+    "relation": {
+      "parent": 514,
+      "children": [
+        1979,
+        997
+      ],
+      "parent_coverage": 1.0,
+      "minimum_unique_parent_fraction": 0.4520547945205479,
+      "decoder_cosines": [
+        0.7103420495986938,
+        0.784371554851532
+      ],
+      "parent_recalls": [
+        0.465753436088562,
+        0.5479452013969421
+      ],
+      "parent_top_anchor_rows": [
+        20593,
+        20586,
+        20592,
+        149359,
+        149361,
+        20591,
+        149354,
+        91660,
+        91662,
+        149356,
+        149357,
+        20585,
+        20587,
+        20580,
+        149350,
+        149349
+      ],
+      "child_top_anchor_rows": [
+        [
+          20586,
+          20585,
+          20593,
+          20580,
+          20592,
+          20579,
+          20581,
+          20577,
+          20591,
+          20576,
+          20587,
+          91662,
+          48783,
+          20589,
+          18094,
+          77323
+        ],
+        [
+          91660,
+          149354,
+          27560,
+          149359,
+          149349,
+          149357,
+          149361,
+          149356,
+          149350,
+          149348,
+          50603,
+          149345,
+          2510,
+          27561,
+          9039,
+          27564
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          20586,
+          20585,
+          20593,
+          20580,
+          20592,
+          20579,
+          20581,
+          20577,
+          20591,
+          20576,
+          20587,
+          48783,
+          20589,
+          18094,
+          77323,
+          20582
+        ],
+        [
+          91660,
+          149354,
+          27560,
+          149359,
+          149349,
+          149357,
+          149361,
+          149356,
+          149350,
+          149348,
+          50603,
+          149345,
+          2510,
+          27561,
+          9039,
+          27564
+        ]
+      ]
+    },
+    "anchor": 91660,
+    "image_mapping": {
+      "city": "KotaBharu",
+      "filtered_pano": 672,
+      "source_pano": 672,
+      "heading": 0,
+      "patch": 216,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Malaysia/KotaBharu/i/s/isdQO11hPOg4AGPKuMF7BQ_0.jpg",
+      "pano_id": "isdQO11hPOg4AGPKuMF7BQ"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "split",
+    "relation": {
+      "parent": 932,
+      "children": [
+        870,
+        1851
+      ],
+      "parent_coverage": 0.9580528223718281,
+      "minimum_unique_parent_fraction": 0.34153288451579494,
+      "decoder_cosines": [
+        0.8235545754432678,
+        0.8003754019737244
+      ],
+      "parent_recalls": [
+        0.6030554175376892,
+        0.6165199279785156
+      ],
+      "parent_top_anchor_rows": [
+        72685,
+        36200,
+        52078,
+        47438,
+        61355,
+        37576,
+        68944,
+        114029,
+        137966,
+        62604,
+        61353,
+        15275,
+        26699,
+        30603,
+        68945,
+        69415
+      ],
+      "child_top_anchor_rows": [
+        [
+          46571,
+          137738,
+          36168,
+          61958,
+          36198,
+          26890,
+          51720,
+          55114,
+          104518,
+          26699,
+          109674,
+          43111,
+          66890,
+          66919,
+          97865,
+          55051
+        ],
+        [
+          63375,
+          113965,
+          130735,
+          86412,
+          111057,
+          60145,
+          61736,
+          83563,
+          22127,
+          30959,
+          143754,
+          63627,
+          19468,
+          146513,
+          61735,
+          53903
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          46571,
+          137738,
+          61958,
+          36168,
+          36198,
+          26890,
+          51720,
+          55114,
+          104518,
+          26699,
+          109674,
+          43111,
+          66890,
+          66919,
+          97865,
+          55051
+        ],
+        [
+          63375,
+          113965,
+          130735,
+          86412,
+          111057,
+          60145,
+          83563,
+          22127,
+          30959,
+          63627,
+          19468,
+          61735,
+          146513,
+          53903,
+          51789,
+          40622
+        ]
+      ]
+    },
+    "anchor": 46571,
+    "image_mapping": {
+      "city": "Kazan",
+      "filtered_pano": 2530,
+      "source_pano": 2530,
+      "heading": 270,
+      "patch": 207,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Kazan/t/4/t4k4D4IQtVCpeYVkBDdWKw_270.jpg",
+      "pano_id": "t4k4D4IQtVCpeYVkBDdWKw"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "split",
+    "relation": {
+      "parent": 932,
+      "children": [
+        870,
+        1851
+      ],
+      "parent_coverage": 0.9580528223718281,
+      "minimum_unique_parent_fraction": 0.34153288451579494,
+      "decoder_cosines": [
+        0.8235545754432678,
+        0.8003754019737244
+      ],
+      "parent_recalls": [
+        0.6030554175376892,
+        0.6165199279785156
+      ],
+      "parent_top_anchor_rows": [
+        72685,
+        36200,
+        52078,
+        47438,
+        61355,
+        37576,
+        68944,
+        114029,
+        137966,
+        62604,
+        61353,
+        15275,
+        26699,
+        30603,
+        68945,
+        69415
+      ],
+      "child_top_anchor_rows": [
+        [
+          46571,
+          137738,
+          36168,
+          61958,
+          36198,
+          26890,
+          51720,
+          55114,
+          104518,
+          26699,
+          109674,
+          43111,
+          66890,
+          66919,
+          97865,
+          55051
+        ],
+        [
+          63375,
+          113965,
+          130735,
+          86412,
+          111057,
+          60145,
+          61736,
+          83563,
+          22127,
+          30959,
+          143754,
+          63627,
+          19468,
+          146513,
+          61735,
+          53903
+        ]
+      ],
+      "exclusive_shared_anchor_rows": [
+        [
+          46571,
+          137738,
+          61958,
+          36168,
+          36198,
+          26890,
+          51720,
+          55114,
+          104518,
+          26699,
+          109674,
+          43111,
+          66890,
+          66919,
+          97865,
+          55051
+        ],
+        [
+          63375,
+          113965,
+          130735,
+          86412,
+          111057,
+          60145,
+          83563,
+          22127,
+          30959,
+          63627,
+          19468,
+          61735,
+          146513,
+          53903,
+          51789,
+          40622
+        ]
+      ]
+    },
+    "anchor": 63375,
+    "image_mapping": {
+      "city": "Chandigarh",
+      "filtered_pano": 2201,
+      "source_pano": 2207,
+      "heading": 0,
+      "patch": 348,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/India/Chandigarh/R/Z/RZfyPrnHWcaLVI88jX9N7A_0.jpg",
+      "pano_id": "RZfyPrnHWcaLVI88jX9N7A"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "no_close_match",
+    "relation": {
+      "feature": 1482,
+      "heldout_frequency": 7110,
+      "max_decoder_cosine": 0.43587934970855713,
+      "max_activation_cosine": 0.23037008941173553,
+      "top_anchor_rows": [
+        15206,
+        43334,
+        114756,
+        29352,
+        91267,
+        41990,
+        50787,
+        118978,
+        83011,
+        165,
+        108132,
+        140645,
+        124293,
+        103046,
+        41989,
+        45157
+      ]
+    },
+    "anchor": 15206,
+    "image_mapping": {
+      "city": "Surabaya",
+      "filtered_pano": 1183,
+      "source_pano": 1183,
+      "heading": 270,
+      "patch": 94,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Indonesia/Surabaya/y/3/y3aVSp3B1ysqA3LEpxVstQ_270.jpg",
+      "pano_id": "y3aVSp3B1ysqA3LEpxVstQ"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  },
+  {
+    "pair": "1024->2048",
+    "relation_type": "no_close_match",
+    "relation": {
+      "feature": 1622,
+      "heldout_frequency": 4955,
+      "max_decoder_cosine": 0.4146524667739868,
+      "max_activation_cosine": 0.2406674474477768,
+      "top_anchor_rows": [
+        40073,
+        67275,
+        135778,
+        97160,
+        98658,
+        101090,
+        7459,
+        39939,
+        95559,
+        104392,
+        83298,
+        136514,
+        55204,
+        92455,
+        135779,
+        14853
+      ]
+    },
+    "anchor": 40073,
+    "image_mapping": {
+      "city": "Yekaterinburg",
+      "filtered_pano": 2211,
+      "source_pano": 2212,
+      "heading": 0,
+      "patch": 118,
+      "image": "/host/root/mnt/nas/huangyj/GoogleSV/images/Russia/Yekaterinburg/7/9/79k-wV6yo6c8b72062fN4w_0.jpg",
+      "pano_id": "79k-wV6yo6c8b72062fN4w"
+    },
+    "overlay": "dense ReLU preactivation; shared vmax per image; relation statistics use sparse BatchTopK"
+  }
+]

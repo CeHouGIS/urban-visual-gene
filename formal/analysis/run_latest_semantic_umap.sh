@@ -1,0 +1,1 @@
+../../experiments/global307_w4096_k64/code/run_latest_semantic_umap.sh

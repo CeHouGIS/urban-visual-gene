@@ -1,0 +1,28 @@
+{
+  "dataset": "Pipeline smoke test: 307-city checkpoint, 32 images from 8 cities; not the 30-city paper experiment",
+  "manifest_sha256": "caf13df4048a0e1a2bcb78689bba28e56951d0adb8186eaf84dcfdc1afbb456c",
+  "checkpoint_sha256": "ceb84bda5dae427ccecd44d77306547038aa78b7960424566dd78b3644c72971",
+  "checkpoint": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/formal_batchtopk_307city_qc_filtered/sae_448_k1024.pt",
+  "width": 1024,
+  "k": 8,
+  "cities": [
+    "Cilegon",
+    "GoldCoast",
+    "KotaBharu",
+    "Krasnodar",
+    "Malmö",
+    "Medellín",
+    "Recife",
+    "Resistencia"
+  ],
+  "images": 32,
+  "grid": 28,
+  "top": 5,
+  "crop_fraction": 0.5,
+  "margin": 1,
+  "min_side": 3,
+  "vlm_model": "/root/.cache/urban_scene_models/siglip-base-patch16-224",
+  "sparse_source_sha256": null,
+  "activation": "joint BatchTopK per complete panorama",
+  "ranking": "maximum sparse activation per distinct directional image; ties by manifest order"
+}

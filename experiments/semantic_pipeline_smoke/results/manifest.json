@@ -1,0 +1,25 @@
+{
+  "snapshot_utc": "2026-10-15T14:03:41.629788+00:00",
+  "experiment": "semantic_pipeline_smoke",
+  "note": "Static selected results. Live VLM records, weights, caches and native crops are not included.",
+  "files": [
+    {
+      "source": "experiments/semantic_pipeline_smoke/outputs/run.json",
+      "file": "run.json",
+      "sha256": "6fb1fe3222821b6c33310217e78dca26076e3a40e8f80c0a3f62defc91eebbc0",
+      "bytes": 958
+    },
+    {
+      "source": "experiments/semantic_pipeline_smoke/outputs/embedding_run.json",
+      "file": "embedding_run.json",
+      "sha256": "216141e94a05757ccb1fc820d4a5e34b8679d6a50649faea3dc1330e4ac39c2e",
+      "bytes": 773
+    },
+    {
+      "source": "experiments/semantic_pipeline_smoke/outputs/reduction_run.json",
+      "file": "reduction_run.json",
+      "sha256": "a745a544a49756f6b3caca1b1ce417281faab0d92eb4782538ca9b9d7286f0f1",
+      "bytes": 485
+    }
+  ]
+}

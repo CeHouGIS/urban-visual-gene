@@ -4,7 +4,7 @@
 
 # ── Trained models & large / regenerable artefacts ──────────────────────────
 # (git does not support trailing inline comments on pattern lines)
-models/
+/models/
 # pano features, road graph, Z_road context, activations
 *.parquet
 # basis matrix
@@ -56,3 +56,21 @@ formal/qc/
 formal/ondisk/
 formal/slurm-*.out
 formal/qc_full/
+
+# Top100 semantic analysis: hundreds of thousands of regenerable native crops.
+/reports/data/semantic_umap_w4096_k64_top100/
+
+# Versioned experiments: source/configs/results snapshots are published; live
+# caches, galleries, checkpoints and process state stay on this server.
+/experiments/**/outputs/
+/experiments/**/runtime/
+/experiments/**/reports/
+!/experiments/**/reports/
+/experiments/**/reports/*
+!/experiments/**/reports/README.md
+!/experiments/legacy30_paper_w1024_k8/reports/**
+!/experiments/legacy12city/reports/**
+*.pid
+*.lock
+*.partial
+/formal/quality/runtime/

@@ -1,0 +1,297 @@
+{
+  "snapshot_utc": "2026-10-15T14:03:41.629788+00:00",
+  "experiment": "vitl30_panorama_w4096_k32",
+  "note": "Static selected results. Live VLM records, weights, caches and native crops are not included.",
+  "files": [
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_City_Similarity.png",
+      "file": "figures/Fig_ViTL30_City_Similarity.png",
+      "sha256": "9fe2fd347a7953617e18a57e6b59bcdd211ebdda664bc7dea1e598f40a328c75",
+      "bytes": 122892
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Activation_Examples.png",
+      "file": "figures/Fig_ViTL30_Activation_Examples.png",
+      "sha256": "3163fd8a346359cc6aa012e2deb79fb35ca0f79ac5c8e30632b7ca4e6df2261d",
+      "bytes": 6627397
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Annotated_UMAP_Activations_1.png",
+      "file": "figures/Fig_ViTL30_Annotated_UMAP_Activations_1.png",
+      "sha256": "f57a9bc15b4ff87510dfce5235c67db9051986d6e97102acb49b17d755cc1258",
+      "bytes": 2952418
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Panorama_UMAP.png",
+      "file": "figures/Fig_ViTL30_Panorama_UMAP.png",
+      "sha256": "c3a145f33598ff89654f368f8074c33e4078026340942948140de87b8f8e6c3c",
+      "bytes": 435996
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_City_Composition.png",
+      "file": "figures/Fig_ViTL30_City_Composition.png",
+      "sha256": "4e3116eb46ea03846666a685de8d83c939190c66e6223748d10947c60dc64115",
+      "bytes": 112089
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Training_Loss.png",
+      "file": "figures/Fig_ViTL30_Training_Loss.png",
+      "sha256": "eb99fb21c0c79b160e92eaff4d75482b41d0482d5d113476148ed250befb0d48",
+      "bytes": 86051
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Spatial_Structure.png",
+      "file": "figures/Fig_ViTL30_Spatial_Structure.png",
+      "sha256": "3f56d070e3af97604044a2ab3190ee7de10b6292b289950d02739da96aec8e76",
+      "bytes": 125988
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Annotated_UMAP_Activations_2.png",
+      "file": "figures/Fig_ViTL30_Annotated_UMAP_Activations_2.png",
+      "sha256": "4471126663e6768207182dfb1aed3ab6b313fb00625c8ae7e7c82a71aa8f4254",
+      "bytes": 3064263
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Cooccurrence.png",
+      "file": "figures/Fig_ViTL30_Cooccurrence.png",
+      "sha256": "08dba2cd7fef8f3baaa37f4c714c1eaa12d625af415c6e418f6cef1f08f41ee4",
+      "bytes": 53377
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Replaced_UMAP_Activations.png",
+      "file": "figures/Fig_ViTL30_Replaced_UMAP_Activations.png",
+      "sha256": "ced8f71bc36b9e5787f603407d5721ddbb57bfe006a482fc293a85825783f810",
+      "bytes": 2012821
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Semantic_UMAP_Examples.png",
+      "file": "figures/Fig_ViTL30_Semantic_UMAP_Examples.png",
+      "sha256": "7f6c97c7c9fa8f83cf291fb4816eec4b79577573cf8c700f74d76dc84d6504e7",
+      "bytes": 3917286
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Study_Cities.png",
+      "file": "figures/Fig_ViTL30_Study_Cities.png",
+      "sha256": "cffb05e3f19f7378dbe8a0d37c3332448f83588eb9d6443ba408d67175cf01fd",
+      "bytes": 368629
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Shared_Distinctive.png",
+      "file": "figures/Fig_ViTL30_Shared_Distinctive.png",
+      "sha256": "9ab3896e39e667b2c516edde72a44c80a472006f97571bd3ea903ffafb4567ee",
+      "bytes": 130416
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Dimension_Semantic_UMAP.png",
+      "file": "figures/Fig_ViTL30_Dimension_Semantic_UMAP.png",
+      "sha256": "015cb43cc6647f5a2b6ca7cab902cb7526d104766419ba5d5bcb87694d52a4ae",
+      "bytes": 831271
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/figures/Fig_ViTL30_Decoder_Hierarchy.png",
+      "file": "figures/Fig_ViTL30_Decoder_Hierarchy.png",
+      "sha256": "4f53abcac84b09c1f9ea88bc958036b4c9a53272104797610bbafcece641286d",
+      "bytes": 62794
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/experiment.json",
+      "file": "training/experiment.json",
+      "sha256": "1058cb1466de62e5abc6ab320ec77e298b56c3b66879199a37456736e869709c",
+      "bytes": 3981
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/cached_feature_map.json",
+      "file": "training/cached_feature_map.json",
+      "sha256": "c439b238f0502662842d331265a771aedcb948912f556a49e229ecf5f4d3764d",
+      "bytes": 10122
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/cached_feature_audit.json",
+      "file": "training/cached_feature_audit.json",
+      "sha256": "157c281fb706ec24b076cdbd554ffa5bc3b59196894f8e9c78401383134c7dbb",
+      "bytes": 12460
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/history.csv",
+      "file": "training/history.csv",
+      "sha256": "09aa6112f58fc75bb69b425c1ee296b7c05c35b18636b42db4c2911873508817",
+      "bytes": 363840
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/outputs/training_report.json",
+      "file": "training/training_report.json",
+      "sha256": "f3ec126fe98b0ca7c2c2fab51286caf0854fbd6759a5568d10d692030896a890",
+      "bytes": 4059
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/semantic_umap/REPORT.md",
+      "file": "semantic_umap/REPORT.md",
+      "sha256": "e147dfc0b61eecae8e10381ba740ed6d5a1b8e3780bc9f5e8784b945eab527d5",
+      "bytes": 4233,
+      "source_sha256": "d02bee92ed0cc53e830eaa3690ae9d0abb45e91ffae12dd1a991ae37e474fb48",
+      "presentation_changes": "relative links adjusted for versioned results snapshot"
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/semantic_umap/summary.json",
+      "file": "semantic_umap/summary.json",
+      "sha256": "c26d1d3a0f767bc2000397925f7512fc055801839f1b33a877f596eff2379805",
+      "bytes": 4189
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/semantic_umap/feature_semantic_umap_groups.csv",
+      "file": "semantic_umap/feature_semantic_umap_groups.csv",
+      "sha256": "56ec57ce98cc55f33fff339345b5a9578ce3bd4c3480a9788e38b6b3ed61deb1",
+      "bytes": 254620
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/semantic_umap/group_palette.json",
+      "file": "semantic_umap/group_palette.json",
+      "sha256": "588b0b3b12ef35a404aa57ab7bd0f5c34b218e486594597fec7a4c60c1f29821",
+      "bytes": 4862
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/instance_umap/REPORT.md",
+      "file": "instance_umap/REPORT.md",
+      "sha256": "a6023d312066428a3fc7cb15b8ec83f2e4f8f0018349da793d2be8c88ba46dc2",
+      "bytes": 983,
+      "source_sha256": "84fef89bf3214f2d80de1ee42178f7d1e39ac6c973cc80761227cd0e64c30a75",
+      "presentation_changes": "relative links adjusted for versioned results snapshot"
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/instance_umap/summary.json",
+      "file": "instance_umap/summary.json",
+      "sha256": "7d2a6acb90f6f88e10e22cefe5e14a2fa280e2056570a4d51c5f7ce691e06ba2",
+      "bytes": 1335
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/instance_umap/instance_umap.csv",
+      "file": "instance_umap/instance_umap.csv",
+      "sha256": "b3a23cf4f0ee435646e33fb57de89e491481d94ddf34c6e52096d6c233d6e377",
+      "bytes": 4337314
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/vlm_groups/REPORT.md",
+      "file": "vlm_groups/REPORT.md",
+      "sha256": "5e60b300d37bab1cc99335803d0ffc74d7f8a1c70b490076afe48094ba5bfabb",
+      "bytes": 7119
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/vlm_groups/report.json",
+      "file": "vlm_groups/report.json",
+      "sha256": "a2b0f82ebf7c6b3222b2c242562a8ed058f26f0207b3722b7425729716490404",
+      "bytes": 3815
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/vlm_groups/group_interpretations.csv",
+      "file": "vlm_groups/group_interpretations.csv",
+      "sha256": "03a477e7f3babcf790bcc547ea7378a67d201eec50d0293d251b0283cdb93391",
+      "bytes": 26115
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/landscape_prototypes/REPORT.md",
+      "file": "landscape_prototypes/REPORT.md",
+      "sha256": "c7889146868457606cfdb7c214b05e77d594ffe796633c598af226b2e2145b30",
+      "bytes": 1420,
+      "source_sha256": "27c7e9539ba6889a644cafc129c1756e527472c7070b1cd40bbf10fee6fe504a",
+      "presentation_changes": "relative links adjusted for versioned results snapshot"
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/landscape_prototypes/summary.json",
+      "file": "landscape_prototypes/summary.json",
+      "sha256": "2b872a7fd2332216d8f568126b15058a47b0b6702a2cceca119376d464f8fd1c",
+      "bytes": 13397
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/landscape_prototypes/prototypes.csv",
+      "file": "landscape_prototypes/prototypes.csv",
+      "sha256": "0cd6928d84e9d59f089d508317fd6bb3258fad79ab83f48394327d6d201b73b9",
+      "bytes": 9420
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/REPORT.md",
+      "file": "unit_motifs/REPORT.md",
+      "sha256": "0ba17c8075b2ee73c11b8789fe5ee0998e0c2036aa86b16fd84386e74949368a",
+      "bytes": 1667,
+      "source_sha256": "0c8f63045dd31c47bed8de0988ff0038769da227e50f46971b5e1d17a95cb68a",
+      "presentation_changes": "relative links adjusted for versioned results snapshot"
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/summary.json",
+      "file": "unit_motifs/summary.json",
+      "sha256": "227b1bca16f90865af8e5ad2d1bb3e7671e087f00beadbc6bcf29d4847b462af",
+      "bytes": 2459
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/EXPERIMENT_DESIGN.md",
+      "file": "unit_motifs/EXPERIMENT_DESIGN.md",
+      "sha256": "03822b38dd87d7ed1f89933f15c16529f76d73da6ed7ca0e5c328d788a06fe90",
+      "bytes": 4591
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/TOP100_AND_PANORAMAS.md",
+      "file": "unit_motifs/TOP100_AND_PANORAMAS.md",
+      "sha256": "e5986089b500561828587553713f6973325d0ab88cfdf499da5988b626967cb2",
+      "bytes": 3759
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/motifs.csv",
+      "file": "unit_motifs/motifs.csv",
+      "sha256": "d45cfbfad0c83ce1537b96a2ca9746d4d5e37c5bbb2790f53cd1a13a9254f2f0",
+      "bytes": 191670
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/dimension_audit.csv",
+      "file": "unit_motifs/dimension_audit.csv",
+      "sha256": "8453783b4a6b8658372d4926d79bfa85beda909e1f6fc9e03924084d8204b31a",
+      "bytes": 764719
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/instance_umap/Fig_ViTL30_Top10_Image_Instance_UMAP.png",
+      "file": "figures/Fig_ViTL30_Top10_Image_Instance_UMAP.png",
+      "sha256": "b0fcb32a8530e22f6efd3888d6a4a546e3be39f6058b20127aa2fde031714dae",
+      "bytes": 1826282
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/landscape_prototypes/Fig_ViTL30_Landscape_Prototype_Overview.jpg",
+      "file": "figures/Fig_ViTL30_Landscape_Prototype_Overview.jpg",
+      "sha256": "bc5a4145ed3b6ee67aa6353a1df64a636cf2c5680d12589cab36cd99cba0bcba",
+      "bytes": 371203
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/Fig_Dimension_and_Motif_Evidence.png",
+      "file": "figures/Fig_Dimension_and_Motif_Evidence.png",
+      "sha256": "b9a6e4085f20f25cceff5afd9bacd983e6ea4cfb0381af8d022eaf64645a2f47",
+      "bytes": 120065
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/analysis_sample.csv",
+      "file": "unit_motifs/analysis_sample.csv",
+      "sha256": "184ee11a3c627e72ccdb6c5e4ff2ea87d67085e475ae80733c38045a9537c801",
+      "bytes": 327613
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/review_panels/feature_review_0.jpg",
+      "file": "unit_motifs/review_panels/feature_review_0.jpg",
+      "sha256": "ff7c4b3bbbdefc34879ab9a18afc0e751a2aeffb035264ee0fef16c001927f5c",
+      "bytes": 177873
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/unit_motifs/review_panels/feature_review_1.jpg",
+      "file": "unit_motifs/review_panels/feature_review_1.jpg",
+      "sha256": "0e1fcdfb0b06eb9a5c0e637624e24cbc21bdfac66e38e4eeb35d334d9b73fed3",
+      "bytes": 108710
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/landscape_prototypes/panorama_assignments.csv",
+      "file": "landscape_prototypes/panorama_assignments.csv",
+      "sha256": "e6ca8899cbb9bf187caa95616dfa26fe7630f7152ed382a272d479dfb4f3f8d2",
+      "bytes": 250199
+    },
+    {
+      "source": "experiments/vitl30_panorama_w4096_k32/reports/landscape_prototypes/heldout_rank_comparison.png",
+      "file": "landscape_prototypes/heldout_rank_comparison.png",
+      "sha256": "7f18669147679e0ab5232f91eb7d61bd292ab482dc2c6c61c0836498df2504b4",
+      "bytes": 46441
+    }
+  ]
+}
