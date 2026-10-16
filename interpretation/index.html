@@ -1,12 +1,22 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>维度解释 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/" aria-current=page>维度解释</a><a href="../combinations/">组合探索</a></nav>
+<link rel="stylesheet" href="../assets/site.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/" aria-current=page>维度解释</a><a href="../combinations/">组合探索</a></nav><div class="project-layout"><div class="project-main">
 <main class="page"><div class="eyebrow">Masked Top10 · Qwen3-VL-2B</div><h1>逐维语义解释</h1>
 <p>每维选前 10 个不同全景的最强方向，按该方向峰值约 50% 保留高激活 patch，裁到联合包围框，框内其余像素置灰（RGB 127）。Qwen 只看这些 masked 原图拼图。</p>
 <p class="note">名称与模型自述的信心均为待核查候选；patch mask 不是像素级分割。此处是发布时的进度快照。</p><p id="snapshot"></p>
 <p><a href="dimensions.csv">解释 CSV</a> · <a href="dimensions.json">全部记录 JSON</a></p>
 <div class="controls"><input id="search" placeholder="搜索编号、候选名称或类型" aria-label="搜索维度"><select id="type" aria-label="语义类型"><option value="">全部类型</option></select><select id="status" aria-label="解释状态"><option value="">全部状态</option><option value="interpreted">已解释</option><option value="pending">待解释</option><option value="unobserved_in_sample">样本内无正激活</option></select></div>
 <p class="muted" id="match-count"></p><div class="vlm-layout"><div class="vlm-list" id="listing" aria-label="维度列表"></div><section class="vlm-detail" id="detail"><h2>选择一个维度</h2></section></div></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
-发布快照：2026-10-16 01:04 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
-</footer><script src="interpretation.js"></script></body></html>
+发布快照：2026-10-16 11:49 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+</footer></div><aside class="project-sidebar" aria-label="项目进度">
+<details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
+<div class="project-progress-content"><p id="project-research-goal"></p>
+<div class="project-focus"><span class="project-progress-kicker">当前关键路径</span><strong id="project-research-focus"></strong><p id="project-next-step"></p></div>
+<p class="project-progress-context" id="project-milestone-count"></p><div id="project-milestones"></div>
+<div id="project-blockers"></div>
+<details class="project-runtime"><summary>计算任务明细<span id="project-runtime-count"></span></summary>
+<table class="project-progress-table"><caption class="project-sr-only">当前主实验与景观原型的阶段进度</caption><thead class="project-sr-only"><tr><th scope="col">阶段与进度</th><th scope="col">状态</th></tr></thead><tbody id="project-progress-rows"></tbody></table>
+<p id="project-progress-note"></p></details><details class="project-scope"><summary>研究范围与待核查项</summary><div id="project-research-scope"></div></details>
+<div class="project-progress-bottom"><time id="project-progress-time"></time><button type="button" id="project-progress-refresh" aria-label="刷新项目进度">刷新</button></div><p id="project-progress-freshness" role="status">读取发布快照…</p>
+<noscript>启用 JavaScript 后显示进度表，或查看 <a href="../data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="../assets/project-progress.js?v=1" defer></script><script src="interpretation.js"></script></body></html>

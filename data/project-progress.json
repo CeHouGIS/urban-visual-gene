@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-10-16T03:54:48.136018+00:00",
+  "experiment": "vitl30_panorama_w4096_k32",
+  "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
+  "headline": "完成原型模型与打乱对照",
+  "research": {
+    "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
+    "focus": "完成原型模型与打乱对照",
+    "next_step": "四组模型完成后，自动进入完整验证、稳定性分析和实例图生成。",
+    "milestones": [
+      {
+        "id": "data",
+        "label": "数据与全景表征",
+        "question": "是否有可回溯的街景与空间信息？",
+        "criterion": "数据身份、四方向顺序和划分可核查。",
+        "status": "complete",
+        "evidence": "主 SAE：30 城市、89,031 全景；原型层：29 城市、86,038 全景。"
+      },
+      {
+        "id": "units",
+        "label": "SAE 候选单元",
+        "question": "能否把视觉表征分解成稀疏单元？",
+        "criterion": "完成 SAE、重建评估及原图激活映射。",
+        "status": "complete",
+        "evidence": "W4096 / K32 训练完成，已有重建曲线、逐 patch 激活和 64 组归纳。"
+      },
+      {
+        "id": "meaning",
+        "label": "单元语义核查",
+        "question": "哪些维度能形成明确的语义？",
+        "criterion": "结合原图证据，区分一致、混合及证据不足的维度；Qwen 名称须核查。",
+        "remaining": "核查候选名称与混合维度，形成可解释性结论。",
+        "status": "partial",
+        "evidence": "3,178 维已解释；918 维样本内无正激活；UMAP 和图像证据已上线，独立语义验证未完成。"
+      },
+      {
+        "id": "patterns",
+        "label": "局部景观原型",
+        "question": "哪些维度组合与布局会反复出现？",
+        "criterion": "得到模板组成、空间响应、跨城市实例和原型解释。",
+        "status": "running",
+        "evidence": "2/4 组训练完成 · 3×3 / 7×7 / 15×15；原型图与解释待补齐。"
+      },
+      {
+        "id": "validity",
+        "label": "原型有效性验证",
+        "question": "组合是否依赖真实结构且可重复？",
+        "criterion": "完成完整验证、双种子匹配、两类置乱和 NMF 对照。",
+        "status": "pending",
+        "evidence": "完整验证 · 种子稳定性 · NMF · 置换检验"
+      },
+      {
+        "id": "geography",
+        "label": "城市与空间规律",
+        "question": "这些单元与组合在哪里共享或分化？",
+        "criterion": "区分已有 64 组城市结果与新增原型的地理证据。",
+        "remaining": "原型验证后，再判断其城市分布与空间差异。",
+        "status": "partial",
+        "evidence": "已有 64 组的城市组成、共现和空间图；新原型的地理归纳尚未完成。"
+      },
+      {
+        "id": "writing",
+        "label": "论文与成果发布",
+        "question": "证据能否支持最终研究叙述？",
+        "criterion": "方法、图表、数据范围和结论一致，发布可核查实例。",
+        "remaining": "把逐维 masked 解释与原型结果整合进 Chapter 5，再核对图表和结论。",
+        "status": "partial",
+        "evidence": "Chapter 5 已有主 SAE 方法和结果图；网站已有语义与组合浏览。"
+      }
+    ],
+    "completed": 2,
+    "scope_note": "只跟踪当前 ViT-L W4096/K32 主研究线。计算完成与科学结论完成分别记录。",
+    "caveats": [
+      "Moscow 原图映射待核实；原型层当前使用其余 29 城市。",
+      "原型的空间块验证针对新增原型层，冻结 SAE 已见过部分验证图像。"
+    ],
+    "blockers": [],
+    "reviewed_on": "2026-10-16"
+  },
+  "rows": [
+    {
+      "id": "sae",
+      "label": "BatchTopK SAE",
+      "status": "complete",
+      "detail": "30 城市 · W4096 / K32 · 16/16 轮",
+      "link": "#training"
+    },
+    {
+      "id": "semantics",
+      "label": "语义地图与实例",
+      "status": "complete",
+      "detail": "维度 UMAP · Top10 实例 · 激活图",
+      "link": "semantic/"
+    },
+    {
+      "id": "dimension_vlm",
+      "label": "逐维 Qwen 解释",
+      "status": "complete",
+      "detail": "3,178 维已解释；918 维样本内无正激活",
+      "link": "interpretation/"
+    },
+    {
+      "id": "activations",
+      "label": "完整稀疏激活",
+      "status": "complete",
+      "detail": "86,038 全景 · 29 城市"
+    },
+    {
+      "id": "prototypes",
+      "label": "多尺度原型训练",
+      "status": "running",
+      "detail": "2/4 组训练完成 · 3×3 / 7×7 / 15×15",
+      "progress": {
+        "current": 270444,
+        "total": 297888,
+        "unit": "训练步"
+      },
+      "runs": [
+        {
+          "label": "真实数据 · seed 42",
+          "status": "complete",
+          "detail": "8/8 轮",
+          "progress": {
+            "current": 74472,
+            "total": 74472,
+            "unit": "训练步"
+          }
+        },
+        {
+          "label": "真实数据 · seed 43",
+          "status": "complete",
+          "detail": "8/8 轮",
+          "progress": {
+            "current": 74472,
+            "total": 74472,
+            "unit": "训练步"
+          }
+        },
+        {
+          "label": "空间打乱对照",
+          "status": "running",
+          "detail": "第 7/8 轮 · GPU 0",
+          "progress": {
+            "current": 60700,
+            "total": 74472,
+            "unit": "训练步"
+          }
+        },
+        {
+          "label": "维度对应打乱对照",
+          "status": "running",
+          "detail": "第 7/8 轮 · GPU 2",
+          "progress": {
+            "current": 60800,
+            "total": 74472,
+            "unit": "训练步"
+          }
+        }
+      ]
+    },
+    {
+      "id": "evaluation",
+      "label": "验证与稳定性",
+      "status": "pending",
+      "detail": "完整验证 · 种子稳定性 · NMF · 置换检验"
+    },
+    {
+      "id": "gallery",
+      "label": "原型图像与激活",
+      "status": "pending",
+      "detail": "96 个候选模板的原图、响应及组成证据"
+    },
+    {
+      "id": "prototype_vlm",
+      "label": "原型 Qwen 解释",
+      "status": "pending",
+      "detail": "原型图完成后，对候选模板进行解释",
+      "progress": null
+    }
+  ],
+  "runtime_terminal": false,
+  "note": "各进度条仅表示该阶段已完成的计算量。96 是候选模板容量，解释名称仍需核查。"
+}
