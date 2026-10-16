@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T16:38:59.014443+00:00",
+  "updated_utc": "2026-10-16T17:37:24.200351+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "headline": "构建完整四方向环形全景输入",
+  "headline": "核查开放式全景原型是否稳定且可解释",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
-    "focus": "构建完整四方向环形全景输入",
-    "next_step": "复用现有SAE激活，将0°、90°、180°、270°组成首尾相接的28×112网格；随后启动带生成、合并和淘汰的开放式原型训练。",
+    "focus": "核查开放式全景原型是否稳定且可解释",
+    "next_step": "检查完整全景mask、跨城市支持、生成合并记录和空间块开发集覆盖；测试封存。",
     "milestones": [
       {
         "id": "data",
@@ -50,17 +50,17 @@
         "label": "开放式四方向全景原型",
         "question": "完整四方向全景中是否存在跨城市重复、可解释的景观模式？",
         "criterion": "按真实朝向构造环形28×112激活网格，通过生成、旋转对齐合并和淘汰开放式发现原型，并在空间块开发集上核查完整全景mask。",
-        "remaining": "复用现有ViT-L W4096/K32稀疏激活构建完整全景输入，完成开放式训练、跨城市支持检查和实例展示；最终测试继续封存。",
-        "status": "pending",
-        "evidence": "待从现有SAE激活构建四方向首尾相接的28×112网格；不预设最终原型数量。"
+        "remaining": "首轮18个完整全景候选和108组实例已完成；继续核查语义、生成停止规则、跨种子与打乱对照，最终测试封存。",
+        "status": "complete",
+        "evidence": "首轮完成：18个完整全景候选模板；开发集组级重建已评分，语义与稳定性待核查。"
       },
       {
         "id": "patterns",
         "label": "多要素景观组合",
         "question": "哪些不同要素的组合与布局会反复出现？",
         "criterion": "得到跨城市重复的多要素结构及实例，区分对象部件、纹理重建与景观组合。",
-        "status": "pending",
-        "evidence": "完整全景开放式原型尚未形成可发布结果。"
+        "status": "partial",
+        "evidence": "完整四方向原型已生成，语义和稳定性待核查。"
       },
       {
         "id": "prototype_capacity",
@@ -77,10 +77,10 @@
         "label": "逐图80% patch覆盖",
         "question": "有限的稳定原型能否使每张图至少80%的有效patch得到解释？",
         "criterion": "逐图判定覆盖率≥80%，报告达标图像比例、最差与低分位覆盖、无效patch数量及全景四方向全部达标比例；同时核查语义一致性。第一轮固定patch NMSE≤0.5作为探索性重建判据，不能直接当作语义解释。",
-        "remaining": "开放式全景原型尚未完成逐图patch覆盖评估。需将重建覆盖与经语义核查的景观组合覆盖分开报告；最终测试封存。",
-        "review_status": "pending",
-        "status": "pending",
-        "evidence": "开放式全景字典尚未进行逐全景80% patch覆盖评分。"
+        "remaining": "已完成64组池化网格的开发集重建覆盖评分；原4096维覆盖及语义解释覆盖仍待评估，最终测试封存。",
+        "review_status": "partial",
+        "status": "partial",
+        "evidence": "已评分12,755个开发全景；64组池化网格平均重建覆盖87.1%，四方向各≥80%网格达标的全景占53.3%。原4096维覆盖与语义解释覆盖尚未评估，不能据此认定目标达成。"
       },
       {
         "id": "validity",
@@ -111,7 +111,7 @@
         "evidence": "Chapter 5 已有主 SAE 方法和结果图；网站已有语义与组合浏览。"
       }
     ],
-    "completed": 2,
+    "completed": 3,
     "scope_note": "只跟踪当前 ViT-L W4096/K32 主研究线。计算完成与科学结论完成分别记录。",
     "caveats": [
       "Moscow 原图映射待核实；原型层当前使用其余 29 城市。",
@@ -166,12 +166,62 @@
     {
       "id": "open_panorama",
       "label": "开放式四方向全景原型",
-      "status": "pending",
-      "detail": "待从现有SAE激活构建四方向首尾相接的28×112网格；不预设最终原型数量。",
+      "status": "complete",
+      "detail": "首轮完成：18个完整全景候选模板；开发集组级重建已评分，语义与稳定性待核查。",
       "link": "elements/#open-method",
       "semantic_review": "pending",
       "test_sealed": true,
-      "metrics": null
+      "metrics": {
+        "panoramas": 12755,
+        "nmse_unit_normalized": 0.37363607798287185,
+        "zero_input_panoramas": 0,
+        "zero_reconstruction_baseline": 1.0,
+        "mean_templates_per_panorama": 3.5390043120344963,
+        "group_pooled_patch_coverage_all_denominator": 0.8711126689013512,
+        "group_pooled_patch_coverage_positive_denominator": 0.8711126689013512,
+        "four_directions_each_at_least_80pct": 0.5331242649941199,
+        "coverage_definition": "64 grouped channels,14x56 pooled sites; site NMSE<=0.5, not original4096 or semantic coverage",
+        "support": [
+          3459,
+          7981,
+          3035,
+          2820,
+          435,
+          1886,
+          7730,
+          5879,
+          1549,
+          1878,
+          237,
+          2137,
+          912,
+          233,
+          1984,
+          2775,
+          152,
+          58
+        ],
+        "support_cities": [
+          29,
+          29,
+          29,
+          18,
+          15,
+          29,
+          29,
+          29,
+          18,
+          29,
+          22,
+          28,
+          29,
+          16,
+          23,
+          29,
+          6,
+          12
+        ]
+      }
     }
   ],
   "runtime_terminal": true,
