@@ -3,7 +3,6 @@
   const detail = document.getElementById('relation-detail');
   const count = document.getElementById('relation-slot-count');
   if (!select || !detail) return;
-  const familyNames = {building:'建筑及附属部件',tree:'乔木及其部件',low_vegetation:'草灌及低矮植被',road:'道路及车行路面',pedestrian:'步行空间',barrier:'围合与防护设施',vehicle:'车辆及其部件',person:'行人',utility:'市政杆线设施',sign:'标识与交通控制',furniture:'街道家具',construction:'施工设施'};
   const node = (tag, className, value) => {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -23,10 +22,19 @@
       const slot = data.slots[Number(select.value)];
       detail.replaceChildren();
       count.textContent = `${slot.development_regions} 个开发区域 · ${slot.cities} 城市`;
-      const leaders = node('p', 'relation-families');
-      leaders.append(node('strong', '', '响应较高的候选要素：'));
-      leaders.append(document.createTextNode(slot.mean_element_strengths.map(item => familyNames[item.family] || item.family).join(' · ')));
-      detail.append(leaders);
+      const summary = node('p', 'relation-layout-summary');
+      summary.append(node('strong', '', '学习到的布局：'));
+      summary.append(document.createTextNode(slot.layout.leaders.slice(0, 5).map(item => `${item.label_zh}偏${item.position_zh}`).join('；')));
+      detail.append(summary);
+      const legend = node('div', 'relation-legend');
+      for (const item of slot.layout.leaders) {
+        const entry = node('span', 'relation-legend-item');
+        const swatch = node('i', 'relation-swatch');
+        swatch.style.backgroundColor = item.color;
+        entry.append(swatch, document.createTextNode(`${item.label_zh} · ${item.position_zh}`));
+        legend.append(entry);
+      }
+      detail.append(legend);
       const grid = node('div', 'relation-grid');
       for (const item of slot.examples) {
         const figure = node('figure', 'relation-example');
@@ -37,7 +45,7 @@
         const image = node('img');
         image.loading = 'lazy';
         image.src = link.href;
-        image.alt = `${item.city}，${item.heading}度方向的${item.region_size}乘${item.region_size} patch区域，四方向原图与裁剪`;
+        image.alt = `${item.city}，${item.heading}度方向的${item.region_size}乘${item.region_size} patch区域，四方向原图、学习布局mask与裁剪`;
         link.append(image);
         figure.append(link);
         figure.append(node('figcaption', '', `${item.city} · ${item.heading}° · ${item.region_size}×${item.region_size} patch · 开发MSE ${item.mse.toFixed(3)}`));
