@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T04:19:18.336220+00:00",
+  "updated_utc": "2026-10-16T04:29:26.690693+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "headline": "检验原型是否稳定、有结构意义",
+  "headline": "建立可核查的原型证据库",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
-    "focus": "检验原型是否稳定、有结构意义",
-    "next_step": "完成全部验证、种子匹配、NMF 和置换检验，核对真实结构相对对照的表现。",
+    "focus": "建立可核查的原型证据库",
+    "next_step": "补齐原图、贡献激活图和 Qwen 候选解释，检查混合与无效模板。",
     "milestones": [
       {
         "id": "data",
@@ -48,8 +48,8 @@
         "label": "原型有效性验证",
         "question": "组合是否依赖真实结构且可重复？",
         "criterion": "完成完整验证、双种子匹配、两类置乱和 NMF 对照。",
-        "status": "running",
-        "evidence": "4/4 组完成验证评分；含稳定性与置换检验"
+        "status": "complete",
+        "evidence": "完整验证 · 种子稳定性 · NMF · 置换检验"
       },
       {
         "id": "geography",
@@ -72,13 +72,15 @@
         "evidence": "Chapter 5 已有主 SAE 方法和结果图；网站已有语义与组合浏览。"
       }
     ],
-    "completed": 2,
+    "completed": 3,
     "scope_note": "只跟踪当前 ViT-L W4096/K32 主研究线。计算完成与科学结论完成分别记录。",
     "caveats": [
       "Moscow 原图映射待核实；原型层当前使用其余 29 城市。",
       "原型的空间块验证针对新增原型层，冻结 SAE 已见过部分验证图像。"
     ],
-    "blockers": [],
+    "blockers": [
+      "原型 Qwen 解释等待 GPU 资源。"
+    ],
     "reviewed_on": "2026-10-16"
   },
   "rows": [
@@ -165,8 +167,8 @@
     {
       "id": "evaluation",
       "label": "验证与稳定性",
-      "status": "running",
-      "detail": "4/4 组完成验证评分；含稳定性与置换检验"
+      "status": "complete",
+      "detail": "完整验证 · 种子稳定性 · NMF · 置换检验"
     },
     {
       "id": "gallery",
@@ -177,8 +179,8 @@
     {
       "id": "prototype_vlm",
       "label": "原型 Qwen 解释",
-      "status": "pending",
-      "detail": "原型图完成后，对候选模板进行解释",
+      "status": "waiting",
+      "detail": "等待可用 GPU 显存后运行 Qwen",
       "progress": null
     }
   ],
