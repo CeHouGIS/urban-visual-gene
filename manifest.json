@@ -33,7 +33,7 @@
     "interpreted": 3178,
     "unobserved_in_sample": 918
   },
-  "file_count": 23247,
+  "file_count": 23115,
   "bytes_before_manifest": 894983109,
   "panorama_display": {
     "view_order": [
@@ -54,8 +54,8 @@
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
     "candidate_dimensions": 1561,
     "semantic_validation": "pending",
-    "graph_training": "pilot_completed",
-    "instance_gallery": "elements/prototype-examples.json",
-    "published_at": "2026-10-16 23:34 CST"
+    "prototype_route": "open_full_panorama",
+    "open_panorama_status": "pending",
+    "published_at": "2026-10-17 00:38 CST"
   }
 }
