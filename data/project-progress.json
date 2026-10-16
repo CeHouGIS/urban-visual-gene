@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T04:09:10.162539+00:00",
+  "updated_utc": "2026-10-16T04:19:18.336220+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
   "headline": "检验原型是否稳定、有结构意义",
@@ -49,7 +49,7 @@
         "question": "组合是否依赖真实结构且可重复？",
         "criterion": "完成完整验证、双种子匹配、两类置乱和 NMF 对照。",
         "status": "running",
-        "evidence": "2/4 组完成验证评分；含稳定性与置换检验"
+        "evidence": "4/4 组完成验证评分；含稳定性与置换检验"
       },
       {
         "id": "geography",
@@ -166,12 +166,12 @@
       "id": "evaluation",
       "label": "验证与稳定性",
       "status": "running",
-      "detail": "2/4 组完成验证评分；含稳定性与置换检验"
+      "detail": "4/4 组完成验证评分；含稳定性与置换检验"
     },
     {
       "id": "gallery",
       "label": "原型图像与激活",
-      "status": "running",
+      "status": "complete",
       "detail": "96 个候选模板的原图、响应及组成证据"
     },
     {
