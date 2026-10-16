@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T06:46:52.460872+00:00",
+  "updated_utc": "2026-10-16T07:17:09.772420+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
   "headline": "让每张图至少80%的有效patch达到解释要求",
@@ -33,7 +33,7 @@
         "criterion": "结合原图证据，区分一致、混合及证据不足的维度；Qwen 名称须核查。",
         "remaining": "核查候选名称与混合维度，形成可解释性结论。",
         "status": "partial",
-        "evidence": "3,178 维原解释保留；扩样至 86,038 全景，新增解释 0/456 维；462 维仍无正激活。仅事后解释，含训练图像；等待 GPU，禁用 CPU 推理；UMAP 和图像证据已上线，独立语义验证未完成。"
+        "evidence": "3,178 维原解释保留；扩样至 86,038 全景，新增解释 186/456 维；462 维仍无正激活。仅事后解释，含训练图像；UMAP 和图像证据已上线，独立语义验证未完成。"
       },
       {
         "id": "patterns",
@@ -98,8 +98,7 @@
       "原型的空间块验证针对新增原型层，冻结 SAE 已见过部分验证图像。"
     ],
     "blockers": [
-      "逐维 Qwen 解释等待 GPU 资源。",
-      "原型 Qwen 解释等待 GPU 资源。"
+      "原型 Qwen 解释运行失败，需处理后继续。"
     ],
     "reviewed_on": "2026-10-16"
   },
@@ -121,10 +120,10 @@
     {
       "id": "dimension_vlm",
       "label": "逐维 Qwen 解释",
-      "status": "waiting",
-      "detail": "3,178 维原解释保留；扩样至 86,038 全景，新增解释 0/456 维；462 维仍无正激活。仅事后解释，含训练图像；等待 GPU，禁用 CPU 推理",
+      "status": "running",
+      "detail": "3,178 维原解释保留；扩样至 86,038 全景，新增解释 186/456 维；462 维仍无正激活。仅事后解释，含训练图像",
       "progress": {
-        "current": 0,
+        "current": 186,
         "total": 456,
         "unit": "新增维度解释"
       },
@@ -204,9 +203,13 @@
     {
       "id": "prototype_vlm",
       "label": "原型 Qwen 解释",
-      "status": "waiting",
-      "detail": "等待可用 GPU 显存后运行 Qwen",
-      "progress": null
+      "status": "error",
+      "detail": "已处理 96/96 个候选模板",
+      "progress": {
+        "current": 96,
+        "total": 96,
+        "unit": "候选模板"
+      }
     },
     {
       "id": "coverage_trial",
