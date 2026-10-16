@@ -1,0 +1,84 @@
+/* Scoped separately so legacy atlas styles cannot affect the progress table. */
+body:has(.project-layout){display:block;height:auto}
+.project-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;max-width:1600px;margin:0 auto;padding-right:20px;align-items:start}
+.project-main{min-width:0}
+.project-map .project-main{display:flex;flex-direction:column;height:calc(100vh - 57px);min-height:650px}
+.project-map main{min-height:0}
+.project-sidebar{position:sticky;top:20px;min-width:0;margin:28px 0;font:13px/1.6 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#18322d}
+#project-progress{padding:0;border:1px solid #d5e0d8;border-radius:12px;background:#fff;box-shadow:0 4px 18px #18322d06;max-height:calc(100vh - 40px);overflow:auto;scrollbar-width:thin}
+#project-progress>summary{display:block;padding:19px 18px 14px;cursor:pointer;list-style:none;border-bottom:1px solid #e5ece6;font-weight:400}
+#project-progress>summary::-webkit-details-marker{display:none}
+.project-progress-kicker{display:block;color:#668076;font-size:10px;letter-spacing:.15em}
+.project-progress-heading{display:flex;align-items:center;justify-content:space-between;font-size:20px;font-weight:700;margin:2px 0 6px;letter-spacing:0}
+.project-progress-pulse{width:8px;height:8px;border-radius:50%;background:#287b61;box-shadow:0 0 0 4px #e6f2eb}
+#project-progress-headline{font-size:12px;color:#536d61}
+.project-progress-content{padding:0 16px 12px}
+#project-progress .project-progress-context{font-size:11px;color:#76867e;margin:12px 0 3px}
+#project-progress .project-progress-table{width:100%;border-collapse:collapse;table-layout:fixed;font:12px/1.55 system-ui,sans-serif}
+.project-progress-table td{padding:12px 0;border:0;border-bottom:1px solid #e8eee9;vertical-align:top;text-align:left}
+.project-progress-table td+td{width:60px;text-align:right;padding-left:4px}
+.project-progress-title{font-weight:650;font-size:13px;display:block;color:#244137;text-decoration:none}
+.project-progress-title[href]:hover{text-decoration:underline}
+.project-progress-detail{font-size:11px;color:#6b7d73;margin-top:4px;overflow-wrap:anywhere;line-height:1.6}
+.project-progress-badge{font-size:10px;white-space:nowrap;border-radius:4px;padding:3px 5px;display:inline-block}
+.project-sidebar .is-complete{color:#286548;background:#edf5ed}
+.project-sidebar .is-running{color:#156780;background:#e7f3f8}
+.project-sidebar .is-pending,.project-sidebar .is-unknown{color:#778179;background:#f0f2f0}
+.project-sidebar .is-partial{color:#87651b;background:#f8f2e4}
+.project-sidebar .is-waiting,.project-sidebar .is-paused{color:#92601b;background:#fbf3e5}
+.project-sidebar .is-error{color:#ab3830;background:#fbece9}
+.project-progress-runs{list-style:none;padding:0 0 0 10px;margin:12px 0 0;border-left:2px solid #e6eee8}
+.project-progress-runs li{font-size:11px;line-height:1.6;margin:0 0 12px}
+.project-progress-runs li:last-child{margin-bottom:0}
+.project-progress-run-icon{display:inline-block;width:14px;margin-right:3px;text-align:center;background:none!important;font-size:10px}
+.project-progress-runs .project-progress-detail{margin:2px 0}
+.project-sidebar progress{display:block;width:100%;height:5px;border:0;border-radius:5px;overflow:hidden;background:#e9efeb;accent-color:#438d70;margin-top:5px}
+.project-sidebar progress::-webkit-progress-bar{background:#e9efeb;border-radius:5px}
+.project-sidebar progress::-webkit-progress-value{background:#438d70;border-radius:5px}
+.project-sidebar progress::-moz-progress-bar{background:#438d70;border-radius:5px}
+.project-progress-meter-label{font-size:10px;color:#6c8073;margin-top:6px;font-variant-numeric:tabular-nums}
+#project-research-goal{font-size:12px;line-height:1.7;color:#50675a;margin:13px 0}
+.project-focus{background:#edf3ee;border-left:3px solid #438d70;padding:10px 12px;border-radius:0 5px 5px 0;margin:13px 0 16px}
+.project-focus strong{display:block;font-size:13px;margin:4px 0;color:#284d38}
+#project-next-step{font-size:11px;line-height:1.7;margin:4px 0 0;color:#62786b}
+#project-progress .project-milestone{padding:0;border-bottom:1px solid #e8eee9}
+#project-progress .project-milestone>summary{display:flex;align-items:center;gap:9px;padding:12px 0;list-style:none;font-size:13px}
+.project-milestone>summary::-webkit-details-marker{display:none}
+.project-milestone-number{font-size:11px;font-variant-numeric:tabular-nums;color:#8b9c90;font-weight:400}
+.project-milestone-name{flex:1;font-weight:600}
+.project-milestone-name::after{content:" ＋";font-size:10px;font-weight:400;color:#879c8d}
+.project-milestone[open] .project-milestone-name::after{content:" −"}
+.project-milestone-content{padding:0 0 12px 23px}
+#project-progress .project-milestone-content p{font-size:11px;line-height:1.75;margin:5px 0;color:#6c7d70}
+#project-progress .project-milestone-question{color:#3b5b43;font-weight:600}
+#project-progress .project-milestone-criterion{color:#8a978c;border-left:2px solid #e5ece7;padding-left:8px;margin-top:8px}
+#project-progress .project-milestone-remaining{color:#8b6d30}
+#project-progress .project-runtime,#project-progress .project-scope{padding:10px 0;border-top:1px solid #e8eee9;margin-top:12px}
+.project-runtime>summary,.project-scope>summary{font-size:11px;color:#6c8071;font-weight:500}
+#project-runtime-count{float:right;font-size:10px}
+#project-research-scope p{font-size:10px;line-height:1.7;color:#7c8980;margin:7px 0}
+#project-blockers:empty{display:none}
+#project-blockers{font-size:11px;padding:10px;background:#fff4df;border-radius:5px;color:#96661e;margin-top:12px}
+#project-blockers p{font-size:11px;line-height:1.6;margin:3px 0;color:inherit}
+#project-progress-note{font-size:10px;line-height:1.6;color:#7c8980;margin:12px 0}
+.project-progress-bottom{display:flex;align-items:center;justify-content:space-between;gap:5px;border-top:1px solid #e8eee9;padding-top:10px}
+#project-progress-time{font-size:10px;color:#62766b;font-variant-numeric:tabular-nums}
+#project-progress-refresh{font:11px system-ui;cursor:pointer;margin:0;padding:4px 7px;height:auto;border:1px solid #d9e4dc;border-radius:4px;background:#fff;color:#426951}
+#project-progress-refresh:disabled{opacity:.5;cursor:wait}
+#project-progress-freshness{font-size:10px;color:#7c8980;line-height:1.6;margin:7px 0 0}
+.project-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1100px){
+ .project-layout{display:flex;flex-direction:column;gap:0;padding:0}
+ .project-main{width:100%;order:1}
+ .project-sidebar{position:static;order:0;width:calc(100% - 32px);margin:16px;max-width:none}
+ #project-progress{max-height:none}
+ #project-progress>summary{padding:11px 16px}
+ #project-progress>summary::after{content:"展开进度 ＋";float:right;font-size:11px;color:#587362;margin-top:-19px}
+ #project-progress[open]>summary::after{content:"收起 −"}
+ #project-progress>summary .project-progress-kicker{display:none}
+ .project-progress-heading{font-size:17px;margin:0 0 2px;justify-content:flex-start;gap:12px}
+ .project-progress-table td+td{width:64px}
+ .project-map .project-main{height:calc(100vh - 57px);min-height:650px}
+}
+@media(max-width:850px){.project-map .project-main{height:auto;min-height:0}}
+@media print{.project-sidebar{display:none}.project-layout{display:block;padding:0}}

@@ -23,6 +23,7 @@ from zoneinfo import ZoneInfo
 
 from PIL import Image
 from panorama_display import render_panorama_galleries
+from project_progress import install as install_progress
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPERIMENT = ROOT / "experiments/vitl30_panorama_w4096_k32"
@@ -77,7 +78,7 @@ def overview(out, snapshot, counts):
 <p>四方向图像分别经过冻结的 DINOv3 ViT-L/16（448 × 448 → 28 × 28 × 1024），再进行环形全景邻域 context mixing；逐 patch 输入 BatchTopK SAE，完成 1024 → 4096 → 1024 的稀疏分解。</p>
 <div class="cards"><a class="entry" href="semantic/"><span class="eyebrow">01 / Feature semantics</span><h2>维度语义地图 ↗</h2><p>2,863 个维度，各维 Top100 激活区域的 SigLIP embedding 汇总；悬停预览，点击核对原图、激活及四方向全景。</p><img loading="lazy" src="assets/figures/Fig_ViTL30_Dimension_Semantic_UMAP.png" alt="维度语义 UMAP"></a>
 <a class="entry" href="instances/"><span class="eyebrow">02 / Image evidence</span><h2>Top10 图像实例 ↗</h2><p>29,934 个实例单独投影。按维度、64 组和激活排名筛选，查看同一维度响应的不同景观。</p><img loading="lazy" src="assets/figures/Fig_ViTL30_Top10_Image_Instance_UMAP.png" alt="图像实例 UMAP"></a>
-<a class="entry" href="interpretation/"><span class="eyebrow">03 / Interpretation</span><h2>逐维 Qwen 解释 ↗</h2><p>每维 Top10 高激活区域裁剪并遮挡背景，查看模型看到的实际拼图、候选含义及局限。</p><p class="muted">已解释 @INTERPRETED@ 维；样本内无正激活 918 维；其余随任务继续补充。</p></a></div>
+<a class="entry" href="interpretation/"><span class="eyebrow">03 / Interpretation</span><h2>逐维 Qwen 解释 ↗</h2><p>每维 Top10 高激活区域裁剪并遮挡背景，查看模型看到的实际拼图、候选含义及局限。</p><p class="muted">@VLM_STATUS@</p></a></div>
 <div class="note">图像语义分析使用可回溯原图的 29 城市、3,712 个验证全景（14,848 张方向图）。Moscow 尚未核实原图映射，未进入这部分解释。它与 30 城市模型训练范围不同。</div>
 <section class="section" id="training"><h2>训练与激活</h2><p>85,191 个训练全景，3,840 个验证全景，每城固定留出 128 点。训练完成 16 轮，最优第 10 轮；sampled validation squared-L2 为 0.287344。K=32 是批次平均的激活预算，每个 patch 的非零数可以不同。</p>
 <div class="two">@LOSS@@ACTIVATION@</div><p><a href="data/training/history.csv">训练记录 CSV</a> · <a href="data/training_summary.json">训练设置与数据身份</a></p></section>
@@ -97,7 +98,11 @@ def overview(out, snapshot, counts):
     }
     for key, (name, caption) in figures.items():
         content = content.replace('@'+key+'@', figure(name, caption))
-    content = content.replace('@INTERPRETED@', f'{counts.get("interpreted", 0):,}')
+    interpreted, unobserved = counts.get('interpreted', 0), counts.get('unobserved_in_sample', 0)
+    remaining = 4096 - interpreted - unobserved
+    vlm_status = f'已解释 {interpreted:,} 维；样本内无正激活 {unobserved:,} 维。'
+    vlm_status += f'其余 {remaining:,} 维待补充。' if remaining else '本轮解释计算已完成，语义名称待核查。'
+    content = content.replace('@VLM_STATUS@', vlm_status)
     (out/'index.html').write_text(page("主实验", "overview", content, snapshot))
 
 
@@ -267,6 +272,7 @@ def build(out, workers):
     for filename in figure_names:
         shutil.copyfile(EXPERIMENT/'results/figures'/filename, out/'assets/figures'/filename)
     panorama_display = render_panorama_galleries(out, source, reports)
+    install_progress(out)
     (out/'data/training').mkdir(parents=True)
     shutil.copyfile(EXPERIMENT/'results/training/history.csv', out/'data/training/history.csv')
     training = read_json(EXPERIMENT/'results/training/training_report.json')
