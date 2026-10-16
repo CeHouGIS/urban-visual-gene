@@ -1,0 +1,50 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>原型覆盖评估 · Urban Scene Primitives</title>
+<meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
+<link rel="stylesheet" href="../assets/site.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/" aria-current=page>原型评估</a></nav><div class="project-layout"><div class="project-main">
+<main class="page"><div class="eyebrow">Main SAE · landscape prototype evaluation</div>
+<h1>景观原型：覆盖率与诊断</h1>
+<p class="lead">96个共享局部模板，能否让每张街景至少80%的patch达到重建质量要求？</p>
+<div class="note"><strong>本轮计算已完成，80%目标尚未达到。</strong>完整开发集平均patch覆盖为47.4%，
+仅141/51,020张方向图达标。冻结模板后，116张开发图的平均覆盖从47.8%提高到50.4%，仍为0/116达标。</div>
+<p>本页复用当前DINOv3 ViT-L、panorama-aware、W4096/K32主SAE的完整稀疏激活。
+原型层使用29城市、86,038个全景；Moscow原图映射未核实，暂未纳入。它与语义地图中固定的3,712个验证全景分析范围不同。</p>
+<div class="controls"><a href="#full-evaluation">完整评分</a><a href="#response-refit">冻结模板诊断</a><a href="#examples">原图实例</a><a href="#next">待办</a></div>
+<section class="section" id="criterion"><h2>什么叫一个patch被覆盖？</h2>
+<p>每个方向是一张28×28×4096的激活图。输入按训练集每维正激活RMS标准化并截断至8，
+在目标激活能量&gt;10<sup>−8</sup>的patch上计算 <code>NMSE = ||重建激活 − 目标激活||² / ||目标激活||²</code>。
+只有NMSE≤0.5才计为覆盖；一张图至少80%的有效patch覆盖才算达标。784个patch全部有效时，需要至少628个达标。</p>
+<p class="muted">这是预先固定的探索性重建判据；重建达标尚不等于语义解释成立。本次完整评分没有剔除任何无效patch，不能用全数据平均覆盖替代逐图达标要求。</p></section>
+<section class="section" id="full-evaluation"><h2>完整训练与开发集评分</h2>
+<p>3×3、7×7、15×15三个尺度各32个模板，共96个；非负秩4模板，训练8轮。
+按1公里空间块划分新增原型层，同一全景四方向不跨组。最终测试集13,050个全景、52,200张方向图保持封存。</p>
+<div class="table-wrap"><table><caption>相同固定判据下的完整评分</caption><thead><tr><th>划分</th><th>方向图像</th><th>平均patch覆盖</th><th>图像达标数（比例）</th><th>四方向全达标全景</th></tr></thead><tbody><tr><th scope="row">训练</th><td>240,932</td><td>47.31%</td><td>679（0.282%）</td><td>2/60,233</td></tr><tr><th scope="row">开发</th><td>51,020</td><td>47.38%</td><td>141（0.276%）</td><td>0/12,755</td></tr></tbody></table></div><figure><a href="../assets/prototypes/per_image_patch_coverage.png"><img loading="lazy" src="../assets/prototypes/per_image_patch_coverage.png" alt="完整训练与开发集的逐图覆盖率分布；图像覆盖至少80%才达标。"></a><figcaption>完整训练与开发集的逐图覆盖率分布；图像覆盖至少80%才达标。</figcaption></figure><p>训练与开发集平均覆盖接近，二者均明显低于目标。这一观察不能单独确定结构瓶颈，需进一步检查冻结模板能否通过更充分的响应求解提高覆盖。</p></section>
+<section class="section" id="response-refit"><h2>冻结96个模板，只优化图像响应</h2>
+<p>29座城市各取1个开发集全景，四方向共116张图。模板固定，从编码器响应开始，
+每张图分别运行两条150步优化路线，不加响应稀疏惩罚；每条路线保留观测到的最佳硬覆盖。</p>
+<div class="table-wrap"><table><caption>同一批116张图的配对比较；不是完整开发集的重跑</caption><thead><tr><th>方法</th><th>平均patch覆盖</th><th>低10%分位覆盖</th><th>达标图像</th><th>平均图像NMSE</th></tr></thead><tbody><tr><th scope="row">原编码器</th><td>47.8%</td><td>22.1%</td><td>0/116</td><td>0.533</td></tr><tr><th scope="row">只降重建误差</th><td>49.1%</td><td>24.4%</td><td>0/116</td><td>0.524</td></tr><tr><th scope="row">直接优化逐图覆盖</th><td>50.4%</td><td>26.2%</td><td>0/116</td><td>0.527</td></tr></tbody></table></div><figure><a href="../assets/prototypes/response_refit_diagnostic.png"><img loading="lazy" src="../assets/prototypes/response_refit_diagnostic.png" alt="左：相同步数的平均覆盖变化；右：每张图观测到的最佳覆盖分布。虚线为逐图80%目标。"></a><figcaption>左：相同步数的平均覆盖变化；右：每张图观测到的最佳覆盖分布。虚线为逐图80%目标。</figcaption></figure><p><strong>直接优化覆盖带来2.65个百分点的平均提升，但仍无图达标。</strong>
+约50步后曲线趋于稳定；50到150步的平均覆盖只增加约0.006个百分点。
+应优先检验模板数量、秩和空间约束，只延长当前响应优化可能收益有限。</p>
+<p class="muted">有限步求解不是模板表达能力的理论上限，也不能单独确定哪项结构约束负责。
+本次诊断在GPU 1运行约134秒，原模板权重未改变，测试集未使用。</p></section>
+<section class="section" id="examples"><h2>不同覆盖水平的原图实例</h2>
+<p>按完整开发集覆盖分布的5%、25%、50%、75%、95%分位数选择。
+绿色patch达到NMSE≤0.5，红色未达到，灰色为无有效目标激活。点击图片可放大；这些图展示重建覆盖，不是语义分割。</p><div class="two"><figure><a href="../assets/prototypes/dev_coverage_q05.jpg"><img loading="lazy" src="../assets/prototypes/dev_coverage_q05.jpg" alt="5%分位 · US/NewYork · 方向90° · 实际覆盖15.2%"></a><figcaption>5%分位 · US/NewYork · 方向90° · 实际覆盖15.2%</figcaption></figure><figure><a href="../assets/prototypes/dev_coverage_q25.jpg"><img loading="lazy" src="../assets/prototypes/dev_coverage_q25.jpg" alt="25%分位 · Mexico/Monterrey · 方向0° · 实际覆盖36.7%"></a><figcaption>25%分位 · Mexico/Monterrey · 方向0° · 实际覆盖36.7%</figcaption></figure><figure><a href="../assets/prototypes/dev_coverage_q50.jpg"><img loading="lazy" src="../assets/prototypes/dev_coverage_q50.jpg" alt="50%分位 · Singapore/Singapore · 方向180° · 实际覆盖49.6%"></a><figcaption>50%分位 · Singapore/Singapore · 方向180° · 实际覆盖49.6%</figcaption></figure><figure><a href="../assets/prototypes/dev_coverage_q75.jpg"><img loading="lazy" src="../assets/prototypes/dev_coverage_q75.jpg" alt="75%分位 · SouthAfrica/CapeTown · 方向0° · 实际覆盖60.3%"></a><figcaption>75%分位 · SouthAfrica/CapeTown · 方向0° · 实际覆盖60.3%</figcaption></figure><figure><a href="../assets/prototypes/dev_coverage_q95.jpg"><img loading="lazy" src="../assets/prototypes/dev_coverage_q95.jpg" alt="95%分位 · Australia/Sydney · 方向180° · 实际覆盖70.9%"></a><figcaption>95%分位 · Australia/Sydney · 方向180° · 实际覆盖70.9%</figcaption></figure></div></section><section class="section" id="next"><h2>后续待办</h2>
+<ul><li>模板数量调参：相同划分下比较每尺度16 / 32 / 64个模板，检查覆盖、有效模板数、语义重复与跨种子稳定性。</li>
+<li>模板结构对照：检验更高秩和空间约束变化是否改善难例；尚未启动。</li>
+<li>核查模板组成和原图证据，独立判断语义一致性，不能用重建覆盖代替语义结论。</li></ul>
+<p>冻结SAE曾见过部分开发和测试图像，因此本页空间留出仅针对新增原型层。</p>
+<p><a href="../data/prototype-coverage.json">下载结果与数据身份 JSON</a> ·
+<a href="../data/prototype-response-convergence.json">下载响应优化曲线 JSON</a></p></section></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
+发布快照：2026-10-16 15:53 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+</footer></div><aside class="project-sidebar" aria-label="项目进度">
+<details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
+<div class="project-progress-content"><p id="project-research-goal"></p>
+<div class="project-focus"><span class="project-progress-kicker">当前关键路径</span><strong id="project-research-focus"></strong><p id="project-next-step"></p></div>
+<p class="project-progress-context" id="project-milestone-count"></p><div id="project-milestones"></div>
+<div id="project-blockers"></div>
+<details class="project-runtime"><summary>计算任务明细<span id="project-runtime-count"></span></summary>
+<table class="project-progress-table"><caption class="project-sr-only">当前主实验与景观原型的阶段进度</caption><thead class="project-sr-only"><tr><th scope="col">阶段与进度</th><th scope="col">状态</th></tr></thead><tbody id="project-progress-rows"></tbody></table>
+<p id="project-progress-note"></p></details><details class="project-scope"><summary>研究范围与待核查项</summary><div id="project-research-scope"></div></details>
+<div class="project-progress-bottom"><time id="project-progress-time"></time><button type="button" id="project-progress-refresh" aria-label="刷新项目进度">刷新</button></div><p id="project-progress-freshness" role="status">读取发布快照…</p>
+<noscript>启用 JavaScript 后显示进度表，或查看 <a href="../data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="../assets/project-progress.js?v=1" defer></script></body></html>

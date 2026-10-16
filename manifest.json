@@ -1,1 +1,59 @@
-{"experiment":"vitl30_panorama_w4096_k32","checkpoint_sha256":"fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0","snapshot_label":"2026-10-16 11:49 CST","model":{"backbone":"DINOv3 ViT-L/16","image_size":448,"grid":[28,28],"input_dimension":1024,"dictionary_width":4096,"batchtopk_k":32,"panorama_context_mixing":true},"training":{"cities":30,"panoramas":89031,"train":85191,"validation":3840},"image_semantics":{"cities":29,"panoramas":3712,"images":14848,"dimensions":4096,"projected_dimensions":2863,"top100_instances":282004,"top10_umap_points":29934},"vlm_status_counts":{"interpreted":3178,"unobserved_in_sample":918},"file_count":22226,"bytes_before_manifest":894983109,"panorama_display":{"view_order":[0,90,180,270],"preserves_original_aspect":true,"projection":"separate perspective views; no seamless spherical reprojection","source":"semantic/sources/{4 * pano_index + heading_index}.jpg","layout_manifest":"combinations/panorama_layout.json"},"packaging":"Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.","source_result_manifest_sha256":"675fbd9694fd53bf1a225203b6740265d56f035f46621cd77520cb7b51e485a1"}
+{
+  "experiment": "vitl30_panorama_w4096_k32",
+  "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
+  "snapshot_label": "2026-10-16 11:49 CST",
+  "model": {
+    "backbone": "DINOv3 ViT-L/16",
+    "image_size": 448,
+    "grid": [
+      28,
+      28
+    ],
+    "input_dimension": 1024,
+    "dictionary_width": 4096,
+    "batchtopk_k": 32,
+    "panorama_context_mixing": true
+  },
+  "training": {
+    "cities": 30,
+    "panoramas": 89031,
+    "train": 85191,
+    "validation": 3840
+  },
+  "image_semantics": {
+    "cities": 29,
+    "panoramas": 3712,
+    "images": 14848,
+    "dimensions": 4096,
+    "projected_dimensions": 2863,
+    "top100_instances": 282004,
+    "top10_umap_points": 29934
+  },
+  "vlm_status_counts": {
+    "interpreted": 3178,
+    "unobserved_in_sample": 918
+  },
+  "file_count": 22236,
+  "bytes_before_manifest": 894983109,
+  "panorama_display": {
+    "view_order": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "preserves_original_aspect": true,
+    "projection": "separate perspective views; no seamless spherical reprojection",
+    "source": "semantic/sources/{4 * pano_index + heading_index}.jpg",
+    "layout_manifest": "combinations/panorama_layout.json"
+  },
+  "packaging": "Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.",
+  "source_result_manifest_sha256": "675fbd9694fd53bf1a225203b6740265d56f035f46621cd77520cb7b51e485a1",
+  "prototype_coverage": {
+    "page": "prototypes/",
+    "summary": "data/prototype-coverage.json",
+    "published_at": "2026-10-16 15:53 CST",
+    "target_achieved": false,
+    "semantic_review": "pending"
+  }
+}

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T07:27:18.179397+00:00",
+  "updated_utc": "2026-10-16T07:53:43.360105+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "headline": "让每张图至少80%的有效patch达到解释要求",
+  "headline": "定位景观原型覆盖不足的瓶颈",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
-    "focus": "让每张图至少80%的有效patch达到解释要求",
-    "next_step": "核查逐图达标比例、失败区域和语义一致性；本轮计算完成不代表所有图像已经达标，测试集继续封存。",
+    "focus": "定位景观原型覆盖不足的瓶颈",
+    "next_step": "冻结96模板的响应优化诊断已完成，116张图平均覆盖47.8%→50.4%，达标0/116张。下一步比较模板数量、秩与空间约束，核查失败区域和语义质量；调参尚未开始，测试集继续封存。",
     "milestones": [
       {
         "id": "data",
@@ -58,9 +58,10 @@
         "label": "逐图80% patch覆盖",
         "question": "有限的稳定原型能否使每张图至少80%的有效patch得到解释？",
         "criterion": "逐图判定覆盖率≥80%，报告达标图像比例、最差与低分位覆盖、无效patch数量及全景四方向全部达标比例；同时核查语义一致性。第一轮固定patch NMSE≤0.5作为探索性重建判据，不能直接当作语义解释。",
-        "remaining": "运行逐图缺口约束的8轮训练及完整训练/开发集评分，保留96个模板；核查失败区域及语义质量。每图80%是目标，实际达标比例待测；最终测试封存。",
+        "remaining": "8轮训练及完整训练/开发评分已完成：开发平均patch覆盖47.4%，141/51,020图达标；冻结96模板的116图诊断从47.8%提高到50.4%，仍0/116达标。下一步比较模板数量、秩和空间约束，核查失败区域与语义质量；最终测试封存。",
+        "review_status": "partial",
         "status": "partial",
-        "evidence": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 第8轮固定开发监控：达标图0.0%，平均patch覆盖47.8%，最差图2.3%。 完整开发集：达标图0.3%，四方向全部达标全景0.0%。 完整训练集：达标图0.3%，四方向全部达标全景0.0%。"
+        "evidence": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 第8轮固定开发监控：达标图0.0%，平均patch覆盖47.8%，最差图2.3%。 完整开发集：平均patch覆盖47.4%，达标图0.276%，四方向全部达标全景0.0%。 完整训练集：平均patch覆盖47.3%，达标图0.282%，四方向全部达标全景0.0%。 29城各1开发全景，116张方向图；冻结96模板，平均patch覆盖47.8%→50.4%，0/116张达到80%。150步响应优化，约50步后趋稳；有限步诊断不是理论上限，语义待核查。"
       },
       {
         "id": "validity",
@@ -248,7 +249,8 @@
       "id": "patch_coverage",
       "label": "逐图80% patch覆盖",
       "status": "complete",
-      "detail": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 第8轮固定开发监控：达标图0.0%，平均patch覆盖47.8%，最差图2.3%。 完整开发集：达标图0.3%，四方向全部达标全景0.0%。 完整训练集：达标图0.3%，四方向全部达标全景0.0%。",
+      "detail": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 第8轮固定开发监控：达标图0.0%，平均patch覆盖47.8%，最差图2.3%。 完整开发集：平均patch覆盖47.4%，达标图0.276%，四方向全部达标全景0.0%。 完整训练集：平均patch覆盖47.3%，达标图0.282%，四方向全部达标全景0.0%。",
+      "link": "prototypes/#full-evaluation",
       "policy": {
         "target_fraction": 0.8,
         "maximum_patch_nmse": 0.5,
@@ -317,6 +319,131 @@
           "detail": "240,932张方向图；保存未达标清单和逐patch覆盖图"
         }
       ]
+    },
+    {
+      "id": "patch_response_refit",
+      "label": "冻结模板响应诊断",
+      "status": "complete",
+      "detail": "29城各1开发全景，116张方向图；冻结96模板，平均patch覆盖47.8%→50.4%，0/116张达到80%。150步响应优化，约50步后趋稳；有限步诊断不是理论上限，语义待核查。",
+      "link": "prototypes/#response-refit",
+      "test_sealed": true,
+      "semantic_review": "pending",
+      "metrics": {
+        "encoder": {
+          "images": 116,
+          "panoramas": 29,
+          "policy": {
+            "target_fraction": 0.8,
+            "maximum_patch_nmse": 0.5,
+            "minimum_target_energy": 1e-08,
+            "temperature_start": 0.25,
+            "temperature_end": 0.1,
+            "coverage_weight": 5.0,
+            "robust_patch_weight": 0.1
+          },
+          "images_meeting_target": 0,
+          "images_below_target": 116,
+          "image_pass_fraction": 0.0,
+          "all_images_meet_target": false,
+          "mean_image_patch_coverage": 0.4778764954257565,
+          "pooled_patch_coverage": 0.4778764954257565,
+          "coverage_quantiles": {
+            "0": 0.04974489795918367,
+            "0.05": 0.14158163265306123,
+            "0.1": 0.22066326530612246,
+            "0.25": 0.3431122448979592,
+            "0.5": 0.4993622448979592,
+            "0.75": 0.6186224489795918,
+            "0.9": 0.7098214285714286,
+            "1": 0.7665816326530612
+          },
+          "panoramas_all_four_pass": 0,
+          "panorama_all_four_pass_fraction": 0.0,
+          "valid_patches": 90944,
+          "invalid_patches": 0,
+          "images_without_valid_patches": 0,
+          "semantic_coverage": null,
+          "semantic_review": "pending",
+          "meaning": "per-image patch reconstruction criterion, not semantic validation",
+          "mean_image_nmse": 0.5325058654978357
+        },
+        "energy": {
+          "images": 116,
+          "panoramas": 29,
+          "policy": {
+            "target_fraction": 0.8,
+            "maximum_patch_nmse": 0.5,
+            "minimum_target_energy": 1e-08,
+            "temperature_start": 0.25,
+            "temperature_end": 0.1,
+            "coverage_weight": 5.0,
+            "robust_patch_weight": 0.1
+          },
+          "images_meeting_target": 0,
+          "images_below_target": 116,
+          "image_pass_fraction": 0.0,
+          "all_images_meet_target": false,
+          "mean_image_patch_coverage": 0.49100545390570016,
+          "pooled_patch_coverage": 0.4910054539057002,
+          "coverage_quantiles": {
+            "0": 0.05612244897959184,
+            "0.05": 0.16071428571428573,
+            "0.1": 0.24426020408163265,
+            "0.25": 0.35427295918367346,
+            "0.5": 0.5140306122448979,
+            "0.75": 0.6265943877551021,
+            "0.9": 0.7206632653061225,
+            "1": 0.7882653061224489
+          },
+          "panoramas_all_four_pass": 0,
+          "panorama_all_four_pass_fraction": 0.0,
+          "valid_patches": 90944,
+          "invalid_patches": 0,
+          "images_without_valid_patches": 0,
+          "semantic_coverage": null,
+          "semantic_review": "pending",
+          "meaning": "per-image patch reconstruction criterion, not semantic validation",
+          "mean_image_nmse": 0.5242070129205441
+        },
+        "coverage": {
+          "images": 116,
+          "panoramas": 29,
+          "policy": {
+            "target_fraction": 0.8,
+            "maximum_patch_nmse": 0.5,
+            "minimum_target_energy": 1e-08,
+            "temperature_start": 0.25,
+            "temperature_end": 0.1,
+            "coverage_weight": 5.0,
+            "robust_patch_weight": 0.1
+          },
+          "images_meeting_target": 0,
+          "images_below_target": 116,
+          "image_pass_fraction": 0.0,
+          "all_images_meet_target": false,
+          "mean_image_patch_coverage": 0.5043983110485574,
+          "pooled_patch_coverage": 0.5043983110485574,
+          "coverage_quantiles": {
+            "0": 0.06505102040816327,
+            "0.05": 0.18048469387755103,
+            "0.1": 0.26211734693877553,
+            "0.25": 0.3695790816326531,
+            "0.5": 0.5242346938775511,
+            "0.75": 0.6403061224489796,
+            "0.9": 0.7283163265306123,
+            "1": 0.7959183673469388
+          },
+          "panoramas_all_four_pass": 0,
+          "panorama_all_four_pass_fraction": 0.0,
+          "valid_patches": 90944,
+          "invalid_patches": 0,
+          "images_without_valid_patches": 0,
+          "semantic_coverage": null,
+          "semantic_review": "pending",
+          "meaning": "per-image patch reconstruction criterion, not semantic validation",
+          "mean_image_nmse": 0.5265231795352081
+        }
+      }
     }
   ],
   "runtime_terminal": true,
