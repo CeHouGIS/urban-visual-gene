@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T06:08:13.943835+00:00",
+  "updated_utc": "2026-10-16T06:15:28.136735+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "headline": "诊断并改进原型的解释能力",
+  "headline": "让每张图至少80%的有效patch达到解释要求",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
-    "focus": "诊断并改进原型的解释能力",
-    "next_step": "完成固定模板响应诊断及两组试训，比较开发集质量；人工语义核查和最终测试另行完成。",
+    "focus": "让每张图至少80%的有效patch达到解释要求",
+    "next_step": "按逐图覆盖缺口训练96个模板，逐图统计是否达标；固定patch NMSE≤0.5，同时报告未达标图像、无有效激活patch及全景四方向全部达标比例。语义核查待完成。",
     "milestones": [
       {
         "id": "data",
@@ -55,12 +55,12 @@
       },
       {
         "id": "prototype_coverage",
-        "label": "原型覆盖率验证",
-        "question": "有限的稳定原型能否解释至少80%的全景？",
-        "criterion": "固定语义判据后，独立测试全景四方向的语义覆盖、解释复杂度和不确定性；重建下降不等于语义覆盖。",
-        "remaining": "先做固定模板响应诊断和两组每尺度32模板的试训；开发集人工核查后固定判据，最终测试暂封存。",
+        "label": "逐图80% patch覆盖",
+        "question": "有限的稳定原型能否使每张图至少80%的有效patch得到解释？",
+        "criterion": "逐图判定覆盖率≥80%，报告达标图像比例、最差与低分位覆盖、无效patch数量及全景四方向全部达标比例；同时核查语义一致性。第一轮固定patch NMSE≤0.5作为探索性重建判据，不能直接当作语义解释。",
+        "remaining": "运行逐图缺口约束的8轮训练及完整训练/开发集评分，保留96个模板；核查失败区域及语义质量。每图80%是目标，实际达标比例待测；最终测试封存。",
         "status": "running",
-        "evidence": "60,233训练 / 12,755开发 / 13,050测试全景；每尺度32模板；测试封存。 balanced_reference 第3/4轮，18,100训练步。"
+        "evidence": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 GPU 3 · 第1/8轮，600训练步。"
       },
       {
         "id": "validity",
@@ -210,9 +210,9 @@
     },
     {
       "id": "coverage_trial",
-      "label": "原型覆盖率试验",
+      "label": "重建目标对照试训",
       "status": "running",
-      "detail": "60,233训练 / 12,755开发 / 13,050测试全景；每尺度32模板；测试封存。 balanced_reference 第3/4轮，18,100训练步。",
+      "detail": "60,233训练 / 12,755开发 / 13,050测试全景；每尺度32模板；测试封存。 balanced_reference 第4/4轮，31,800训练步。",
       "progress": {
         "current": 2,
         "total": 7,
@@ -224,7 +224,7 @@
           "status": "running",
           "detail": "4轮筛选试训",
           "progress": {
-            "current": 18100,
+            "current": 31800,
             "total": 32712,
             "unit": "训练步"
           }
@@ -238,6 +238,41 @@
             "total": 32712,
             "unit": "训练步"
           }
+        }
+      ]
+    },
+    {
+      "id": "patch_coverage",
+      "label": "逐图80% patch覆盖",
+      "status": "running",
+      "detail": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 GPU 3 · 第1/8轮，600训练步。",
+      "policy": {
+        "target_fraction": 0.8,
+        "maximum_patch_nmse": 0.5,
+        "minimum_target_energy": 1e-08,
+        "temperature_start": 0.25,
+        "temperature_end": 0.1,
+        "coverage_weight": 5.0,
+        "robust_patch_weight": 0.1
+      },
+      "semantic_review": "pending",
+      "test_sealed": true,
+      "metrics": {},
+      "progress": {
+        "current": 600,
+        "total": 65424,
+        "unit": "训练步"
+      },
+      "runs": [
+        {
+          "label": "完整开发集评分",
+          "status": "pending",
+          "detail": "51,020张方向图；保存未达标清单和逐patch覆盖图"
+        },
+        {
+          "label": "完整训练集评分",
+          "status": "pending",
+          "detail": "240,932张方向图；保存未达标清单和逐patch覆盖图"
         }
       ]
     }
