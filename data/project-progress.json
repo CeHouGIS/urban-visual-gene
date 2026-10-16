@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T05:58:43.447013+00:00",
+  "updated_utc": "2026-10-16T06:08:13.943835+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
   "headline": "诊断并改进原型的解释能力",
@@ -60,7 +60,7 @@
         "criterion": "固定语义判据后，独立测试全景四方向的语义覆盖、解释复杂度和不确定性；重建下降不等于语义覆盖。",
         "remaining": "先做固定模板响应诊断和两组每尺度32模板的试训；开发集人工核查后固定判据，最终测试暂封存。",
         "status": "running",
-        "evidence": "60,233训练 / 12,755开发 / 13,050测试全景；每尺度32模板；测试封存。 固定模板响应诊断 41/116方向图。 NMSE 0.834→0.660（无稀疏惩罚的探索诊断）。"
+        "evidence": "60,233训练 / 12,755开发 / 13,050测试全景；每尺度32模板；测试封存。 balanced_reference 第3/4轮，18,100训练步。"
       },
       {
         "id": "validity",
@@ -212,19 +212,19 @@
       "id": "coverage_trial",
       "label": "原型覆盖率试验",
       "status": "running",
-      "detail": "60,233训练 / 12,755开发 / 13,050测试全景；每尺度32模板；测试封存。 固定模板响应诊断 41/116方向图。 NMSE 0.834→0.660（无稀疏惩罚的探索诊断）。",
+      "detail": "60,233训练 / 12,755开发 / 13,050测试全景；每尺度32模板；测试封存。 balanced_reference 第3/4轮，18,100训练步。",
       "progress": {
-        "current": 1,
+        "current": 2,
         "total": 7,
         "unit": "计算阶段"
       },
       "runs": [
         {
           "label": "原重建目标",
-          "status": "pending",
+          "status": "running",
           "detail": "4轮筛选试训",
           "progress": {
-            "current": 0,
+            "current": 18100,
             "total": 32712,
             "unit": "训练步"
           }
