@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T17:37:24.200351+00:00",
+  "updated_utc": "2026-10-16T18:50:28.410024+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "headline": "核查开放式全景原型是否稳定且可解释",
+  "headline": "核查跨街景重复的局部要素组合",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
-    "focus": "核查开放式全景原型是否稳定且可解释",
-    "next_step": "检查完整全景mask、跨城市支持、生成合并记录和空间块开发集覆盖；测试封存。",
+    "focus": "核查跨街景重复的局部要素组合",
+    "next_step": "人工审阅要素遮罩与对象完整性；合并等价关系，检验跨种子稳定性、三元组合以及完整样本上的语义覆盖。",
     "milestones": [
       {
         "id": "data",
@@ -46,13 +46,14 @@
         "evidence": "4,096维保留；1,561维暂定候选，15类要素；426维解释父类冲突待核查。人工验证未完成。"
       },
       {
-        "id": "open_panorama",
-        "label": "开放式四方向全景原型",
-        "question": "完整四方向全景中是否存在跨城市重复、可解释的景观模式？",
-        "criterion": "按真实朝向构造环形28×112激活网格，通过生成、旋转对齐合并和淘汰开放式发现原型，并在空间块开发集上核查完整全景mask。",
-        "remaining": "首轮18个完整全景候选和108组实例已完成；继续核查语义、生成停止规则、跨种子与打乱对照，最终测试封存。",
-        "status": "complete",
-        "evidence": "首轮完成：18个完整全景候选模板；开发集组级重建已评分，语义与稳定性待核查。"
+        "id": "local_compositions",
+        "label": "四方向局部要素组合",
+        "review_status": "partial",
+        "question": "哪些不同局部要素及相对关系在多个城市街景中重复？",
+        "criterion": "在完整四方向全景上提取自适应区域，发现不同要素关系；报告开发空间块、城市支持和置换对照。",
+        "remaining": "探索性抽样和双零假设置换已完成；人工审阅区域边界、跨种子稳定性、三元组合与完整训练集验证尚待完成，测试封存。",
+        "status": "partial",
+        "evidence": "29城，1,392训练 / 464开发全景；298个原始关系候选，遮罩和语义仍待人工核查。"
       },
       {
         "id": "patterns",
@@ -60,35 +61,35 @@
         "question": "哪些不同要素的组合与布局会反复出现？",
         "criterion": "得到跨城市重复的多要素结构及实例，区分对象部件、纹理重建与景观组合。",
         "status": "partial",
-        "evidence": "完整四方向原型已生成，语义和稳定性待核查。"
+        "evidence": "29城，1,392训练 / 464开发全景；298个原始关系候选，遮罩和语义仍待人工核查。"
       },
       {
         "id": "prototype_capacity",
         "label": "原型容量与停止规则",
         "review_status": "pending",
         "question": "模型应在何时停止生成原型？",
-        "criterion": "不预设最终原型数；以开发集边际收益、跨全景与跨城市支持、合并稳定性和语义重复程度确定停止与淘汰规则，计算容量仅作资源上限。",
-        "remaining": "待在开放式小试中校准生成、合并、淘汰阈值及容量上限，报告最终保留数量及其形成过程。",
+        "criterion": "不预设最终组合数；先按训练集重复和跨城支持提出关系，再结合开发集和人工审阅筛选。",
+        "remaining": "候选搜索没有固定原型槽位；还需校准停止规则、相似组合合并和人工语义验证。",
         "status": "pending",
-        "evidence": "不预设最终原型数；计算容量只作为上限。原型根据跨全景重复结构生成，相似原型合并，低支持或无验证贡献原型淘汰。"
+        "evidence": "候选搜索没有固定槽位；合并等价关系和停止规则仍需校准。"
       },
       {
         "id": "prototype_coverage",
         "label": "逐图80% patch覆盖",
         "question": "有限的稳定原型能否使每张图至少80%的有效patch得到解释？",
         "criterion": "逐图判定覆盖率≥80%，报告达标图像比例、最差与低分位覆盖、无效patch数量及全景四方向全部达标比例；同时核查语义一致性。第一轮固定patch NMSE≤0.5作为探索性重建判据，不能直接当作语义解释。",
-        "remaining": "已完成64组池化网格的开发集重建覆盖评分；原4096维覆盖及语义解释覆盖仍待评估，最终测试封存。",
+        "remaining": "旧64组池化重建覆盖不适用于新的局部要素组合；新方法的原4096维语义覆盖尚未评估，最终测试封存。",
         "review_status": "partial",
-        "status": "partial",
-        "evidence": "已评分12,755个开发全景；64组池化网格平均重建覆盖87.1%，四方向各≥80%网格达标的全景占53.3%。原4096维覆盖与语义解释覆盖尚未评估，不能据此认定目标达成。"
+        "status": "pending",
+        "evidence": "局部要素组合尚未评估逐图80%语义patch覆盖；既有重建试验不适用于当前路线。"
       },
       {
         "id": "validity",
         "label": "原型有效性验证",
         "question": "组合是否依赖真实结构且可重复？",
         "criterion": "检验移除要素、保留组成但打乱布局、同一主要对象更换周边环境时的响应；完成跨城市检索、双种子匹配及公平重建对照。",
-        "status": "pending",
-        "evidence": "环形旋转、方向打乱、跨城、空间块及跨种子检验待开展。"
+        "status": "partial",
+        "evidence": "已有探索性开发集置换检验；跨种子、人工语义核查和封存测试未完成。"
       },
       {
         "id": "geography",
@@ -111,11 +112,11 @@
         "evidence": "Chapter 5 已有主 SAE 方法和结果图；网站已有语义与组合浏览。"
       }
     ],
-    "completed": 3,
+    "completed": 2,
     "scope_note": "只跟踪当前 ViT-L W4096/K32 主研究线。计算完成与科学结论完成分别记录。",
     "caveats": [
       "Moscow 原图映射待核实；原型层当前使用其余 29 城市。",
-      "原型的空间块验证针对新增原型层，冻结 SAE 已见过部分验证图像。",
+      "局部组合的置换验证针对抽样开发集；冻结 SAE 已见过部分验证图像。",
       "沿用的VLM语义解释资料含原型层测试图像；语义先验不独立于封存测试，后续先作为探索性证据。",
       "patch重建覆盖与经核查的景观组合覆盖分别报告，原型响应不等于对应区域已经获得可靠语义解释。"
     ],
@@ -164,66 +165,15 @@
       "semantic_review": "pending"
     },
     {
-      "id": "open_panorama",
-      "label": "开放式四方向全景原型",
+      "id": "local_compositions",
+      "label": "局部要素组合探索",
       "status": "complete",
-      "detail": "首轮完成：18个完整全景候选模板；开发集组级重建已评分，语义与稳定性待核查。",
-      "link": "elements/#open-method",
+      "detail": "29城，1,392训练 / 464开发全景；298个原始关系候选，遮罩和语义仍待人工核查。",
+      "link": "elements/#local-results",
       "semantic_review": "pending",
-      "test_sealed": true,
-      "metrics": {
-        "panoramas": 12755,
-        "nmse_unit_normalized": 0.37363607798287185,
-        "zero_input_panoramas": 0,
-        "zero_reconstruction_baseline": 1.0,
-        "mean_templates_per_panorama": 3.5390043120344963,
-        "group_pooled_patch_coverage_all_denominator": 0.8711126689013512,
-        "group_pooled_patch_coverage_positive_denominator": 0.8711126689013512,
-        "four_directions_each_at_least_80pct": 0.5331242649941199,
-        "coverage_definition": "64 grouped channels,14x56 pooled sites; site NMSE<=0.5, not original4096 or semantic coverage",
-        "support": [
-          3459,
-          7981,
-          3035,
-          2820,
-          435,
-          1886,
-          7730,
-          5879,
-          1549,
-          1878,
-          237,
-          2137,
-          912,
-          233,
-          1984,
-          2775,
-          152,
-          58
-        ],
-        "support_cities": [
-          29,
-          29,
-          29,
-          18,
-          15,
-          29,
-          29,
-          29,
-          18,
-          29,
-          22,
-          28,
-          29,
-          16,
-          23,
-          29,
-          6,
-          12
-        ]
-      }
+      "test_sealed": true
     }
   ],
   "runtime_terminal": true,
-  "note": "当前路线使用完整四方向环形全景和开放式原型数量。计算完成仍不等于语义已验证。"
+  "note": "当前路线从四方向全景中的局部要素遮罩检索开放数量的重复组合。计算完成仍不等于语义已验证。"
 }

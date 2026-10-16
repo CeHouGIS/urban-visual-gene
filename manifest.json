@@ -33,20 +33,8 @@
     "interpreted": 3178,
     "unobserved_in_sample": 918
   },
-  "file_count": 23224,
+  "file_count": 23076,
   "bytes_before_manifest": 894983109,
-  "panorama_display": {
-    "view_order": [
-      0,
-      90,
-      180,
-      270
-    ],
-    "preserves_original_aspect": true,
-    "projection": "separate perspective views; no seamless spherical reprojection",
-    "source": "semantic/sources/{4 * pano_index + heading_index}.jpg",
-    "layout_manifest": "combinations/panorama_layout.json"
-  },
   "packaging": "Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.",
   "source_result_manifest_sha256": "675fbd9694fd53bf1a225203b6740265d56f035f46621cd77520cb7b51e485a1",
   "element_hierarchy": {
@@ -54,8 +42,8 @@
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
     "candidate_dimensions": 1561,
     "semantic_validation": "pending",
-    "prototype_route": "open_full_panorama",
-    "open_panorama_status": "complete",
-    "published_at": "2026-10-17 01:37 CST"
+    "prototype_route": "local_multi_element_compositions",
+    "local_composition_status": "complete",
+    "published_at": "2026-10-17 02:50 CST"
   }
 }
