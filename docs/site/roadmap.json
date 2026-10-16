@@ -6,6 +6,7 @@
     {"id": "units", "label": "SAE 候选单元", "question": "能否把视觉表征分解成稀疏单元？", "criterion": "完成 SAE、重建评估及原图激活映射。"},
     {"id": "meaning", "label": "单元语义核查", "review_status": "partial", "question": "哪些维度能形成明确的语义？", "criterion": "结合原图证据，区分一致、混合及证据不足的维度；Qwen 名称须核查。", "remaining": "核查候选名称与混合维度，形成可解释性结论。"},
     {"id": "patterns", "label": "局部景观原型", "question": "哪些维度组合与布局会反复出现？", "criterion": "得到模板组成、空间响应、跨城市实例和原型解释。"},
+    {"id": "prototype_capacity", "label": "模板数量调参", "review_status": "pending", "question": "每个尺度需要多少个候选模板？", "criterion": "在相同数据划分和训练设置下，结合验证集重建、有效模板数量、语义重复程度和跨种子稳定性选择容量。", "remaining": "待办：比较每尺度 16 / 32 / 64 个模板，必要时允许不同尺度采用不同数量；当前每尺度保留 32 个，调参尚未开始。"},
     {"id": "validity", "label": "原型有效性验证", "question": "组合是否依赖真实结构且可重复？", "criterion": "完成完整验证、双种子匹配、两类置乱和 NMF 对照。"},
     {"id": "geography", "label": "城市与空间规律", "review_status": "partial", "question": "这些单元与组合在哪里共享或分化？", "criterion": "区分已有 64 组城市结果与新增原型的地理证据。", "remaining": "原型验证后，再判断其城市分布与空间差异。"},
     {"id": "writing", "label": "论文与成果发布", "review_status": "partial", "question": "证据能否支持最终研究叙述？", "criterion": "方法、图表、数据范围和结论一致，发布可核查实例。", "remaining": "把逐维 masked 解释与原型结果整合进 Chapter 5，再核对图表和结论。"}

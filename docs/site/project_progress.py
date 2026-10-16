@@ -42,6 +42,7 @@ def research_progress(rows, corpus):
         'meaning': ('partial', tasks['dimension_vlm']['detail'] + '；UMAP 和图像证据已上线，独立语义验证未完成。'),
         'patterns': (tasks['prototype_vlm']['status'] if tasks['prototype_vlm']['status'] == 'complete' else tasks['prototypes']['status'],
                      tasks['prototypes']['detail'] + '；原型图与解释' + ('已完成。' if tasks['prototype_vlm']['status'] == 'complete' else '待补齐。')),
+        'prototype_capacity': ('pending', '当前 3×3、7×7、15×15 三个尺度各设 32 个模板，共 96 个候选槽位；模板数量调参待开始。'),
         'validity': (tasks['evaluation']['status'], tasks['evaluation']['detail']),
         'geography': ('partial', '已有 64 组的城市组成、共现和空间图；新原型的地理归纳尚未完成。'),
         'writing': ('partial', roadmap['writing_evidence'])
