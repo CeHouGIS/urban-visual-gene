@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "minimum_examples": 5,
+  "scope": "Provisional parent families, not object instance segmentation or an exhaustive ontology. Unlisted and ambiguous fine labels remain unresolved.",
+  "families": [
+    {"id":"building","label_zh":"建筑及附属部件","role":"element","counts_as_element":true,"aliases":["建筑","建筑物","房屋","住宅建筑","建筑群","高层住宅建筑群","建筑结构","建筑立面","建筑墙面","建筑墙体","建筑外墙","建筑表面","建筑表面纹理","建筑入口","建筑屋檐","建筑屋顶","屋顶","屋檐","屋顶结构","传统中式建筑屋顶","传统建筑屋顶","瓦片屋顶","波纹金属屋顶","红色屋顶","门","木门","铁门","卷帘门","门框","门廊","拱门","建筑拱门","窗户","玻璃窗","百叶窗","窗帘","阳台","阳台栏杆","建筑立柱","柱廊","空调外机","卫星天线","太阳能电池板","教堂","温室","工业建筑","摩天大楼","高楼","古典建筑","玻璃幕墙建筑","混凝土建筑","石质建筑","老屋","白色建筑","红色建筑","蓝色建筑","塔楼顶部","烟囱","水塔","车库","遮阳篷"]},
+    {"id":"tree","label_zh":"乔木及其部件","role":"element","counts_as_element":true,"aliases":["树","树木","树冠","树干","树叶","树皮","树皮纹理","树林","森林","林地","松树","柏树","柳树","棕榈树","棕榈树林","椰子树","香蕉树","香蕉叶","樱花树","橄榄树","紫花风铃木","龙血树","行道树","竹林"]},
+    {"id":"low_vegetation","label_zh":"草灌及低矮植被","role":"element","counts_as_element":true,"aliases":["草","草地","草坪","草丛","灌木","灌木丛","地面植被","花丛","花卉","花朵","橙色花朵","红色花朵","白色花朵","芦苇","苔藓","仙人掌","龙舌兰"]},
+    {"id":"vegetation_unspecified","label_zh":"植被（高度与类型未明）","role":"context","counts_as_element":false,"aliases":["植被","植物","绿植","叶片"]},
+    {"id":"road","label_zh":"道路及车行路面","role":"element","counts_as_element":true,"aliases":["道路","路面","道路标线","道路边缘"]},
+    {"id":"pedestrian","label_zh":"步行空间及附属部件","role":"element","counts_as_element":true,"aliases":["人行道","人行横道","台阶","楼梯","路缘石","混凝土路缘石"]},
+    {"id":"barrier","label_zh":"围合与防护设施","role":"element","counts_as_element":true,"aliases":["围墙","围栏","临时围栏","栅栏","栏杆","护栏","交通护栏","混凝土护栏","金属护栏","金属围栏","金属栏杆","石质栏杆","铁丝网","铁丝网围栏","铁栅栏","木栅栏","白色栅栏","路障"]},
+    {"id":"vehicle","label_zh":"车辆及其部件","role":"element","counts_as_element":true,"aliases":["车","车辆","汽车","公交车","卡车","卡车拖车","卡车车头","卡车货箱","卡车驾驶室","货车","白色货车","白色面包车","货车车厢","房车","越野车","垃圾车","三轮车","摩托车","自行车","拖车","平板拖车","车轮及轮胎","轮胎","车窗","车门","车顶","车头","车头灯","车尾","车尾灯","车尾箱","尾灯","车灯","车身","车身侧面","车体","车体表面","车辆后部","车辆尾部","驾驶室"]},
+    {"id":"person","label_zh":"行人及人体部件","role":"element","counts_as_element":true,"aliases":["人","人物","人群","人脸","手","皮肤纹理","雨天行人"]},
+    {"id":"water","label_zh":"水体","role":"element","counts_as_element":true,"aliases":["水面"]},
+    {"id":"terrain","label_zh":"自然地形","role":"element","counts_as_element":true,"aliases":["山","山丘","山体","山地","山坡","山脉","岩石","岩石表面","石块","沙地","沙土","雪地"]},
+    {"id":"transport_structure","label_zh":"交通构筑物","role":"element","counts_as_element":true,"aliases":["桥","桥梁","桥墩","桥面","桥梁结构","石拱桥","人行天桥","铁路轨道","轨道","铁轨","铁路货车车厢","车站站台","公交站台","隧道入口","隧道内壁","码头"]},
+    {"id":"utility","label_zh":"市政杆线设施","role":"element","counts_as_element":true,"aliases":["电线杆","电线","路灯","输电塔","铁塔","高压电线塔","配电箱","管道","消防栓","风力发电机"]},
+    {"id":"sign","label_zh":"标识与交通控制设施","role":"element","counts_as_element":true,"aliases":["路牌","路标","交通标志","交通信号灯","停车标志","禁止停车","禁止驶入","三角形警示标志","高速公路指示牌","广告牌","招牌","街道招牌","商店招牌","横幅","旗帜","交通锥"]},
+    {"id":"furniture","label_zh":"街道家具与小设施","role":"element","counts_as_element":true,"aliases":["垃圾桶","垃圾箱","邮箱","长椅","椅子","桌子","花盆","遮阳伞","雕塑","喷泉","移动厕所","篮球架"]},
+    {"id":"construction","label_zh":"施工设施与设备","role":"element","counts_as_element":true,"aliases":["脚手架","建筑脚手架","建筑起重机","塔式起重机","起重机","挖掘机","施工机械","压路机","拖拉机","水泥搅拌车","水泥搅拌机","工业设备","储罐","集装箱","蓝色集装箱"]},
+    {"id":"sky","label_zh":"天空与云","role":"background","counts_as_element":false,"aliases":["天空","云","太阳"]},
+    {"id":"ground_unspecified","label_zh":"地面（用途未明）","role":"context","counts_as_element":false,"aliases":["地面","地面纹理","地面铺装","铺装地面","铺地砖","铺路石","石板路","木质平台"]},
+    {"id":"scene_context","label_zh":"整体场景描述","role":"context","counts_as_element":false,"aliases":["街景","城市街景","街道","城市景观","城市天际线","住宅区","工业区","建筑工地","施工场地","停车场","林荫道","山地景观","山地村落","山景","沙漠景观","河岸","田野","农田","稻田","果园","葡萄园","广场","花园","花坛","圆形花坛","公园","商店","街道商铺","加油站","游乐场","墓地","雪景","集装箱堆场","篮球场","网球场"]},
+    {"id":"material_unspecified","label_zh":"材料与依附对象未明的部件","role":"material","counts_as_element":false,"aliases":["墙面","墙壁","墙体","砖墙","石墙","石砖墙","混凝土墙","木板墙","金属板墙","镂空砖墙","几何图案墙面","蓝色墙面","波纹金属板","木板","木材","堆叠的木板","木托盘","木柱","木桩","柱子","杆子","砖块","金属结构","金属网格结构","金属桁架结构","金属管材","金属表面","木质结构","棚架","棚顶","帐篷","涂鸦","抽象涂鸦","壁画","条纹","抽象图案","圆形图案","字母","箭头","标志","十字标志","灯","灯光","太阳光"]},
+    {"id":"unresolved","label_zh":"未归类或证据不明","role":"unresolved","counts_as_element":false,"aliases":[]}
+  ]
+}

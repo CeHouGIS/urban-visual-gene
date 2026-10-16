@@ -1,0 +1,199 @@
+{
+  "status": "complete",
+  "protocol": {
+    "version": 1,
+    "experiment_identity": "312f772cc12d9369c7daa93038c3845985c7f3cfb961bf0bf53e33a7f2ecf4eb",
+    "model_sha256": "f63942ab62d9df726f3b175a9be9449f8d4439290a1b642ffa0e905d8dc2acb8",
+    "code_sha256": "173cc2dc2fad6b4dce2561d6c71d3de3d86aedc30982d39d109c91f04dadcae4",
+    "panel": [
+      1779,
+      3292,
+      35134,
+      5849,
+      9704,
+      13065,
+      17153,
+      58988,
+      41771,
+      31204,
+      23206,
+      27343,
+      36853,
+      38924,
+      44772,
+      49741,
+      52755,
+      56468,
+      61017,
+      64249,
+      68246,
+      17525,
+      70449,
+      71591,
+      76524,
+      79504,
+      81086,
+      85179,
+      24257
+    ],
+    "partition": "dev",
+    "headings": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "per_city": 1,
+    "steps": 150,
+    "lr": 0.15,
+    "policy": {
+      "target_fraction": 0.8,
+      "maximum_patch_nmse": 0.5,
+      "minimum_target_energy": 1e-08,
+      "temperature_start": 0.25,
+      "temperature_end": 0.1,
+      "coverage_weight": 5.0,
+      "robust_patch_weight": 0.1
+    },
+    "arms": [
+      "energy",
+      "coverage"
+    ],
+    "no_sparsity_penalty": true,
+    "test_sealed": true,
+    "identity": "a2e96297d8bbd67eb4a4f13f9b8b3d589c0d2dc33366bcc90f036b1c33ed24dd"
+  },
+  "summaries": {
+    "encoder": {
+      "images": 116,
+      "panoramas": 29,
+      "policy": {
+        "target_fraction": 0.8,
+        "maximum_patch_nmse": 0.5,
+        "minimum_target_energy": 1e-08,
+        "temperature_start": 0.25,
+        "temperature_end": 0.1,
+        "coverage_weight": 5.0,
+        "robust_patch_weight": 0.1
+      },
+      "images_meeting_target": 0,
+      "images_below_target": 116,
+      "image_pass_fraction": 0.0,
+      "all_images_meet_target": false,
+      "mean_image_patch_coverage": 0.4778764954257565,
+      "pooled_patch_coverage": 0.4778764954257565,
+      "coverage_quantiles": {
+        "0": 0.04974489795918367,
+        "0.05": 0.14158163265306123,
+        "0.1": 0.22066326530612246,
+        "0.25": 0.3431122448979592,
+        "0.5": 0.4993622448979592,
+        "0.75": 0.6186224489795918,
+        "0.9": 0.7098214285714286,
+        "1": 0.7665816326530612
+      },
+      "panoramas_all_four_pass": 0,
+      "panorama_all_four_pass_fraction": 0.0,
+      "valid_patches": 90944,
+      "invalid_patches": 0,
+      "images_without_valid_patches": 0,
+      "semantic_coverage": null,
+      "semantic_review": "pending",
+      "meaning": "per-image patch reconstruction criterion, not semantic validation",
+      "mean_image_nmse": 0.5325058654978357
+    },
+    "energy": {
+      "images": 116,
+      "panoramas": 29,
+      "policy": {
+        "target_fraction": 0.8,
+        "maximum_patch_nmse": 0.5,
+        "minimum_target_energy": 1e-08,
+        "temperature_start": 0.25,
+        "temperature_end": 0.1,
+        "coverage_weight": 5.0,
+        "robust_patch_weight": 0.1
+      },
+      "images_meeting_target": 0,
+      "images_below_target": 116,
+      "image_pass_fraction": 0.0,
+      "all_images_meet_target": false,
+      "mean_image_patch_coverage": 0.49100545390570016,
+      "pooled_patch_coverage": 0.4910054539057002,
+      "coverage_quantiles": {
+        "0": 0.05612244897959184,
+        "0.05": 0.16071428571428573,
+        "0.1": 0.24426020408163265,
+        "0.25": 0.35427295918367346,
+        "0.5": 0.5140306122448979,
+        "0.75": 0.6265943877551021,
+        "0.9": 0.7206632653061225,
+        "1": 0.7882653061224489
+      },
+      "panoramas_all_four_pass": 0,
+      "panorama_all_four_pass_fraction": 0.0,
+      "valid_patches": 90944,
+      "invalid_patches": 0,
+      "images_without_valid_patches": 0,
+      "semantic_coverage": null,
+      "semantic_review": "pending",
+      "meaning": "per-image patch reconstruction criterion, not semantic validation",
+      "mean_image_nmse": 0.5242070129205441
+    },
+    "coverage": {
+      "images": 116,
+      "panoramas": 29,
+      "policy": {
+        "target_fraction": 0.8,
+        "maximum_patch_nmse": 0.5,
+        "minimum_target_energy": 1e-08,
+        "temperature_start": 0.25,
+        "temperature_end": 0.1,
+        "coverage_weight": 5.0,
+        "robust_patch_weight": 0.1
+      },
+      "images_meeting_target": 0,
+      "images_below_target": 116,
+      "image_pass_fraction": 0.0,
+      "all_images_meet_target": false,
+      "mean_image_patch_coverage": 0.5043983110485574,
+      "pooled_patch_coverage": 0.5043983110485574,
+      "coverage_quantiles": {
+        "0": 0.06505102040816327,
+        "0.05": 0.18048469387755103,
+        "0.1": 0.26211734693877553,
+        "0.25": 0.3695790816326531,
+        "0.5": 0.5242346938775511,
+        "0.75": 0.6403061224489796,
+        "0.9": 0.7283163265306123,
+        "1": 0.7959183673469388
+      },
+      "panoramas_all_four_pass": 0,
+      "panorama_all_four_pass_fraction": 0.0,
+      "valid_patches": 90944,
+      "invalid_patches": 0,
+      "images_without_valid_patches": 0,
+      "semantic_coverage": null,
+      "semantic_review": "pending",
+      "meaning": "per-image patch reconstruction criterion, not semantic validation",
+      "mean_image_nmse": 0.5265231795352081
+    }
+  },
+  "changes": {
+    "energy": {
+      "improved_images": 112,
+      "worsened_images": 0,
+      "newly_passing_images": 0,
+      "mean_coverage_gain": 0.013128958160764185
+    },
+    "coverage": {
+      "improved_images": 116,
+      "worsened_images": 0,
+      "newly_passing_images": 0,
+      "mean_coverage_gain": 0.026521814280542833
+    }
+  },
+  "interpretation": "Finite-step fixed-dictionary response search, not a certified maximum or semantic coverage",
+  "test_used": false,
+  "elapsed_seconds": 134.3
+}

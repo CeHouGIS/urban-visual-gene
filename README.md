@@ -8,7 +8,11 @@
 
 | 实验目录 | 数据与参数 | 内容 / 状态 |
 | --- | --- | --- |
-| [vitl30_panorama_w4096_k32](experiments/vitl30_panorama_w4096_k32/) | 30 城市；ViT-L/16；D=1024；W=4096，K=32 | **主实验**；16 轮训练完成；激活、语义 UMAP、景观组合；逐维 VLM 继续运行 |
+| [vitl30_panorama_w4096_k32](experiments/vitl30_panorama_w4096_k32/) | 30 城市；ViT-L/16；D=1024；W=4096，K=32 | **主实验**；训练及逐维 VLM 计算完成，语义核查待完成 |
+| [vitl30_local_compositions](experiments/vitl30_local_compositions/) | 冻结主 SAE；29 城；四方向非矩形要素遮罩 | **当前组合探索**；抽样检索跨街景重复的不同要素关系；独立语义核查待完成 |
+| [vitl30_relational_prototypes](experiments/vitl30_relational_prototypes/) | 冻结主 SAE；29城；14/21/28 patch区域 | **当前推进路线**；要素表与三组32槽位小试已完成，关系图未超过完整布局对照；语义待核查 |
+| [vitl30_multiscale_prototypes](experiments/vitl30_multiscale_prototypes/) | 冻结主 SAE；29 城、86,038 全景；3/7/15 patch 模板 | 新增局部景观原型实验；全量稀疏激活、卷积模板、置乱对照、原型 VLM |
+| [vitl30_patch_coverage](experiments/vitl30_patch_coverage/) | 冻结主 SAE；每尺度32模板；按空间块训练/开发/测试划分 | 当前覆盖目标：每张图至少80%有效patch满足固定重建门槛；逐图约束训练与评分，语义核查待完成 |
 | [global307_baseline_w1024_k8](experiments/global307_baseline_w1024_k8/) | 307 候选 / 304 缓存城市；W=1024，K=8 | 全球基线、城市清单、训练与编码 |
 | [global307_dictionary_scaling_k8](experiments/global307_dictionary_scaling_k8/) | 全球缓存；W=512/1024/2048，K=8 | 字典增宽后的稳定、分流与未匹配关系；Sankey 和交互实例 |
 | [global307_w4096_k_sweep](experiments/global307_w4096_k_sweep/) | 全球缓存；W=4096，K=16/32/64 | 稀疏预算消融、四视角激活图库 |
@@ -28,7 +32,13 @@
 - 实际复用缓存：**89,031 个全景**，训练 85,191，验证 3,840（每城 128）。实际数据身份以 experiment.json 和 cached_feature_map.json 为准。
 - 完成 16 轮，每轮每方向访问 49 个位置，16 轮覆盖全部 784 个位置。训练记录与图见 [主实验结果](experiments/vitl30_panorama_w4096_k32/results/)。
 - Top100 证据来自能回溯原图的 29 城市、3,712 个验证全景。逐维语义 UMAP 有 2,863 点，Top10 图像实例 UMAP 有 29,934 点。
-- VLM 名称是待复核的语义候选，当前没有独立验证的逐维语义准确率。
+- 当前逐维VLM使用每维Top10实例：将高于约50%峰值的patch映射回原图、裁剪并将其余像素置灰，再输入Qwen3-VL-2B。每例保留原裁剪、二值mask和masked图供核对，见[主实验说明](experiments/vitl30_panorama_w4096_k32/README.md)。VLM名称是待复核的语义候选，当前没有独立验证的逐维语义准确率。
+
+## 当前推进：多要素景观组合
+
+先将同一对象的部件维度归入共同父类，再寻找不同局部要素在四方向全景中重复出现的关系，避免把墙面和窗户的重组直接称为景观原型。[要素层级](experiments/vitl30_relational_prototypes/README.md)保留全部4,096维，整理出1,561个暂定要素候选，503维待核查，522维证据不足，1,048维为背景/材料，462维仍无正激活证据；全部语义均待独立验证。
+
+[当前在线结果](https://cehougis.github.io/urban-visual-gene/elements/#local-results)展示29城抽样中的四方向局部要素组合：1,392个训练全景、464个开发全景、298个原始关系候选；173个在两个置换对照中均达到BH-FDR q<0.05。网站仅合并方向等价的展示项，给出5个布局及30张四方向遮罩实例。这是探索性证据，尚不能确认景观原型，也未验证逐图80%语义覆盖。旧32槽位关系图小试保留在实验目录供对照，不再于网站发布。
 
 ![主实验训练曲线](experiments/vitl30_panorama_w4096_k32/results/figures/Fig_ViTL30_Training_Loss.png)
 
@@ -61,7 +71,7 @@ GitHub 发布代码和精选结果；大体积模型、特征、Top100 裁剪和
 python -m experiments.vitl30_panorama_w4096_k32.code.panorama_vitl30 status
 
 # 逐维 VLM 断点续跑；已有后台进程时运行锁阻止重复启动
-python -u -m sae_experiments.panorama_vitl30_dimension_vlm_runner --devices 1,3 --batch-size 1
+python -u -m sae_experiments.panorama_vitl30_dimension_vlm_runner --devices 1,3 --batch-size 1 --input-mode masked-top10 --mask-fraction 0.5
 
 # 共用及各版本测试，不遍历缓存与图库
 python -m pytest -q

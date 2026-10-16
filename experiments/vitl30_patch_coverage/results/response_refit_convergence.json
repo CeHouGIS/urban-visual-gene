@@ -1,0 +1,56 @@
+{
+  "energy": [
+    {
+      "step": 0,
+      "mean_patch_coverage": 0.4778435105008298,
+      "mean_image_nmse": 0.5325114059037176
+    },
+    {
+      "step": 25,
+      "mean_patch_coverage": 0.48867434844503116,
+      "mean_image_nmse": 0.5245217239034587
+    },
+    {
+      "step": 50,
+      "mean_patch_coverage": 0.48998284837680645,
+      "mean_image_nmse": 0.5239094791227373
+    },
+    {
+      "step": 100,
+      "mean_patch_coverage": 0.49014778342098,
+      "mean_image_nmse": 0.523819952175535
+    },
+    {
+      "step": 150,
+      "mean_patch_coverage": 0.49015877945027475,
+      "mean_image_nmse": 0.5238121822476387
+    }
+  ],
+  "coverage": [
+    {
+      "step": 0,
+      "mean_patch_coverage": 0.4778435105008298,
+      "mean_image_nmse": 0.5325114059037176
+    },
+    {
+      "step": 25,
+      "mean_patch_coverage": 0.5023311067629477,
+      "mean_image_nmse": 0.527187287550548
+    },
+    {
+      "step": 50,
+      "mean_patch_coverage": 0.5035296442822136,
+      "mean_image_nmse": 0.5264588365780896
+    },
+    {
+      "step": 100,
+      "mean_patch_coverage": 0.5035626323700979,
+      "mean_image_nmse": 0.5263630138902828
+    },
+    {
+      "step": 150,
+      "mean_patch_coverage": 0.5035846236579377,
+      "mean_image_nmse": 0.5263499324691707
+    }
+  ]
+}

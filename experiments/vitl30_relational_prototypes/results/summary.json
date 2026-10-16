@@ -1,0 +1,62 @@
+{
+  "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
+  "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
+  "dimensions": 4096,
+  "interpreted": 3634,
+  "source_counts": {
+    "vlm_dimensions_top10_masked": 3178,
+    "vlm_dimensions_top10_expanded": 456
+  },
+  "status_counts": {
+    "context_or_material": 1048,
+    "needs_review": 503,
+    "candidate_ready": 1561,
+    "unobserved": 462,
+    "insufficient_evidence": 522
+  },
+  "family_counts": {
+    "sky": 314,
+    "vehicle": 145,
+    "building": 593,
+    "ground_unspecified": 942,
+    "road": 251,
+    "pedestrian": 31,
+    "unresolved": 565,
+    "tree": 328,
+    "utility": 52,
+    "sign": 61,
+    "water": 25,
+    "person": 60,
+    "transport_structure": 54,
+    "terrain": 32,
+    "low_vegetation": 109,
+    "vegetation_unspecified": 222,
+    "material_unspecified": 122,
+    "scene_context": 86,
+    "barrier": 57,
+    "construction": 25,
+    "furniture": 22
+  },
+  "graph_candidate_family_counts": {
+    "building": 513,
+    "road": 225,
+    "pedestrian": 26,
+    "tree": 284,
+    "utility": 48,
+    "sign": 50,
+    "water": 17,
+    "low_vegetation": 79,
+    "vehicle": 122,
+    "person": 37,
+    "transport_structure": 43,
+    "barrier": 53,
+    "furniture": 22,
+    "terrain": 21,
+    "construction": 21
+  },
+  "family_disagreements": 426,
+  "semantic_validation": "pending",
+  "graph_training": "not_started",
+  "test_activations_opened": false,
+  "prior_semantic_evidence_includes_test": true
+}

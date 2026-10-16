@@ -1,0 +1,5 @@
+.element-results{width:100%;max-width:620px;border-collapse:collapse;font-variant-numeric:tabular-nums;margin:18px 0}
+.element-results th,.element-results td{text-align:left;padding:10px 12px;border-bottom:1px solid #dce3e7}
+.element-results th:last-child,.element-results td:last-child{text-align:right;white-space:nowrap}
+.element-results th{font-size:.85rem;color:#506861}
+@media(max-width:480px){.element-results th,.element-results td{padding:8px 5px;font-size:.82rem}}

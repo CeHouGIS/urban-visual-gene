@@ -1,0 +1,303 @@
+{
+  "protocol": {
+    "version": 1,
+    "source": "/root/code/urban-visual-gene/experiments/vitl30_multiscale_prototypes/outputs",
+    "source_corpus_identity": "e6439911655396bf8eddaada805851f65339f974e5df799057c0827dc08e734a",
+    "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
+    "source_manifest_sha256": "b8c481cbc538967c93fdb78ff091c6c732af17c471c8bcf5f6f42cc664880a0b",
+    "split_seed": 20261016,
+    "split": "70/15/15 percent of 1-km blocks within each city",
+    "split_counts": {
+      "train": 60233,
+      "test": 13050,
+      "dev": 12755
+    },
+    "cities": 29,
+    "panoramas": 86038,
+    "city_counts": {
+      "Argentina/BuenosAires": {
+        "dev": 404,
+        "test": 385,
+        "train": 1900
+      },
+      "Australia/Melbourne": {
+        "dev": 407,
+        "test": 412,
+        "train": 2004
+      },
+      "Australia/Perth": {
+        "dev": 468,
+        "test": 482,
+        "train": 2050
+      },
+      "Australia/Sydney": {
+        "dev": 460,
+        "test": 459,
+        "train": 2081
+      },
+      "Austria/Vienna": {
+        "dev": 410,
+        "test": 544,
+        "train": 2045
+      },
+      "Bangladesh/Dhaka": {
+        "dev": 422,
+        "test": 435,
+        "train": 2143
+      },
+      "Belgium/Antwerp": {
+        "dev": 498,
+        "test": 499,
+        "train": 2002
+      },
+      "Belgium/Brussels": {
+        "dev": 552,
+        "test": 387,
+        "train": 2054
+      },
+      "Brazil/Brasília": {
+        "dev": 426,
+        "test": 468,
+        "train": 2106
+      },
+      "Brazil/RiodeJaneiro": {
+        "dev": 463,
+        "test": 498,
+        "train": 2032
+      },
+      "Brazil/SaoPaulo": {
+        "dev": 500,
+        "test": 429,
+        "train": 2070
+      },
+      "China/Taipei": {
+        "dev": 431,
+        "test": 357,
+        "train": 2206
+      },
+      "France/Paris": {
+        "dev": 403,
+        "test": 512,
+        "train": 2082
+      },
+      "Germany/Hamburg": {
+        "dev": 445,
+        "test": 480,
+        "train": 2074
+      },
+      "Indonesia/Yogyakarta": {
+        "dev": 474,
+        "test": 470,
+        "train": 2256
+      },
+      "Italy/Naples": {
+        "dev": 437,
+        "test": 450,
+        "train": 2104
+      },
+      "Korea/Seoul": {
+        "dev": 457,
+        "test": 424,
+        "train": 2116
+      },
+      "Mexico/Monterrey": {
+        "dev": 417,
+        "test": 445,
+        "train": 2137
+      },
+      "Nigeria/Lagos": {
+        "dev": 477,
+        "test": 464,
+        "train": 2059
+      },
+      "Portugal/Lisbon": {
+        "dev": 428,
+        "test": 475,
+        "train": 2095
+      },
+      "Singapore/Singapore": {
+        "dev": 397,
+        "test": 429,
+        "train": 2048
+      },
+      "SouthAfrica/CapeTown": {
+        "dev": 455,
+        "test": 472,
+        "train": 2073
+      },
+      "SouthAfrica/Johannesburg": {
+        "dev": 400,
+        "test": 451,
+        "train": 2081
+      },
+      "Spain/Barcelona": {
+        "dev": 317,
+        "test": 394,
+        "train": 1883
+      },
+      "Sweden/Stockholm": {
+        "dev": 504,
+        "test": 410,
+        "train": 2086
+      },
+      "UAE/Dubai": {
+        "dev": 393,
+        "test": 450,
+        "train": 2131
+      },
+      "US/Chicago": {
+        "dev": 433,
+        "test": 471,
+        "train": 2094
+      },
+      "US/NewYork": {
+        "dev": 439,
+        "test": 441,
+        "train": 2118
+      },
+      "US/Phoenix": {
+        "dev": 438,
+        "test": 457,
+        "train": 2103
+      }
+    },
+    "test_policy": "sealed during this pilot; no test activations used for initialization, scale, monitoring or selection",
+    "scope": "held out for the NEW prototype layer only; frozen SAE has seen some of these images",
+    "target": "at least 80% semantically covered panoramas; requires a fixed criterion and independent annotation",
+    "panorama_rule": "all four directional images must pass; also report directional and any-direction rates",
+    "calibration": "positive RMS from NEW training blocks only; clip at 8",
+    "capacity": {
+      "scales": [
+        3,
+        7,
+        15
+      ],
+      "per_scale": 32,
+      "rank": 4
+    },
+    "pilot": "exploratory old-template refit; two matched four-epoch fresh fits; full development scoring",
+    "semantic_audit": "pending human review; reconstruction reduction is not semantic coverage",
+    "identity": "9e16b253876ac59b5314546ebc6929f3504880ff6d413372a3b6d8eb27f37187"
+  },
+  "diagnostic": {
+    "views": 116,
+    "total": 116,
+    "before_mean_nmse": 0.8360902995898806,
+    "refit_mean_nmse": 0.6590576593218178,
+    "elapsed_seconds": 53.7,
+    "model_sha256": "f36c3e4a6e011ba9864fa09fda21275dd105ee8c5ae788efc12d1834b8b531d1",
+    "steps": 150,
+    "old_normalization": true,
+    "exploratory": true,
+    "note": "Existing dictionary has seen some new dev blocks; no sparsity penalty; finite optimization does not certify an upper bound; not semantic coverage."
+  },
+  "arms": [
+    {
+      "arm": "balanced_reference",
+      "partition": "dev",
+      "panoramas": 12755,
+      "views": 51020,
+      "global_nmse": 0.7081598253914552,
+      "mean_direction_nmse": 0.7056000710552633,
+      "effective_templates_mean": 36.151734061729016,
+      "active_templates_mean": 86.38165425323403,
+      "curve": [
+        {
+          "minimum_energy_error_reduction": 0.0,
+          "direction_fraction": 0.9989807918463348,
+          "all_four_fraction": 0.9967071736573893,
+          "any_direction_fraction": 1.0
+        },
+        {
+          "minimum_energy_error_reduction": 0.1,
+          "direction_fraction": 0.9723049784398275,
+          "all_four_fraction": 0.9262250098000784,
+          "any_direction_fraction": 0.9964719717757742
+        },
+        {
+          "minimum_energy_error_reduction": 0.2,
+          "direction_fraction": 0.8456291650333203,
+          "all_four_fraction": 0.6858486867894943,
+          "any_direction_fraction": 0.9492747941983536
+        },
+        {
+          "minimum_energy_error_reduction": 0.3,
+          "direction_fraction": 0.5324774598196785,
+          "all_four_fraction": 0.2650725205801646,
+          "any_direction_fraction": 0.7560956487651901
+        },
+        {
+          "minimum_energy_error_reduction": 0.5,
+          "direction_fraction": 0.00013720109760878088,
+          "all_four_fraction": 0.0,
+          "any_direction_fraction": 0.0005488043904351235
+        },
+        {
+          "minimum_energy_error_reduction": 0.8,
+          "direction_fraction": 0.0,
+          "all_four_fraction": 0.0,
+          "any_direction_fraction": 0.0
+        }
+      ],
+      "semantic_coverage": null,
+      "semantic_audit": "pending",
+      "test_used": false,
+      "note": "Fractions refer ONLY to reconstruction error reduction, not semantic coverage; dev is used for model selection."
+    },
+    {
+      "arm": "energy_warmup",
+      "partition": "dev",
+      "panoramas": 12755,
+      "views": 51020,
+      "global_nmse": 0.5509663140644614,
+      "mean_direction_nmse": 0.5486796398207737,
+      "effective_templates_mean": 28.56562671126781,
+      "active_templates_mean": 63.69772638181105,
+      "curve": [
+        {
+          "minimum_energy_error_reduction": 0.0,
+          "direction_fraction": 1.0,
+          "all_four_fraction": 1.0,
+          "any_direction_fraction": 1.0
+        },
+        {
+          "minimum_energy_error_reduction": 0.1,
+          "direction_fraction": 1.0,
+          "all_four_fraction": 1.0,
+          "any_direction_fraction": 1.0
+        },
+        {
+          "minimum_energy_error_reduction": 0.2,
+          "direction_fraction": 0.999078792630341,
+          "all_four_fraction": 0.9970991767934143,
+          "any_direction_fraction": 0.999921599372795
+        },
+        {
+          "minimum_energy_error_reduction": 0.3,
+          "direction_fraction": 0.9579184633477068,
+          "all_four_fraction": 0.8938455507644061,
+          "any_direction_fraction": 0.9920031360250882
+        },
+        {
+          "minimum_energy_error_reduction": 0.5,
+          "direction_fraction": 0.2890435123480988,
+          "all_four_fraction": 0.06640533124264994,
+          "any_direction_fraction": 0.5306154449235594
+        },
+        {
+          "minimum_energy_error_reduction": 0.8,
+          "direction_fraction": 0.0,
+          "all_four_fraction": 0.0,
+          "any_direction_fraction": 0.0
+        }
+      ],
+      "semantic_coverage": null,
+      "semantic_audit": "pending",
+      "test_used": false,
+      "note": "Fractions refer ONLY to reconstruction error reduction, not semantic coverage; dev is used for model selection."
+    }
+  ],
+  "audit_panoramas": 290,
+  "semantic_coverage": null,
+  "status": "computational_pilot_complete; semantic audit pending; test sealed"
+}

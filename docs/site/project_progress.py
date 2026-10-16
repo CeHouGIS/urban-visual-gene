@@ -20,7 +20,7 @@ CHECKPOINT = 'fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0'
 RUNS = [('real_seed42', '真实数据 · seed 42'), ('real_seed43', '真实数据 · seed 43'),
         ('spatial_shuffle_seed42', '空间打乱对照'), ('feature_shuffle_seed42', '维度对应打乱对照')]
 PAGES = ['index.html', 'semantic/index.html', 'instances/index.html',
-         'interpretation/index.html', 'combinations/index.html']
+         'interpretation/index.html', 'elements/index.html']
 
 
 def read(path):
@@ -35,21 +35,29 @@ def research_progress(rows, corpus):
     """Research deliverables are broader than successful GPU jobs."""
     roadmap = read(Path(__file__).with_name('roadmap.json'))
     tasks = {row['id']: row for row in rows}
+    patch_coverage = tasks.get('patch_coverage', {})
+    refit = tasks.get('patch_response_refit', {})
+    hierarchy = tasks.get('element_hierarchy', {})
+    local_compositions = tasks.get('local_compositions', {})
+    coverage = patch_coverage or tasks.get('coverage_trial', {})
     states = {
         'data': ('complete' if tasks['activations']['status'] == 'complete' else 'partial',
                  f'主 SAE：30 城市、89,031 全景；原型层：29 城市、{corpus.get("panoramas", 0):,} 全景。'),
         'units': (tasks['sae']['status'], 'W4096 / K32 训练完成，已有重建曲线、逐 patch 激活和 64 组归纳。'),
         'meaning': ('partial', tasks['dimension_vlm']['detail'] + '；UMAP 和图像证据已上线，独立语义验证未完成。'),
-        'patterns': (tasks['prototype_vlm']['status'] if tasks['prototype_vlm']['status'] == 'complete' else tasks['prototypes']['status'],
-                     tasks['prototypes']['detail'] + '；原型图与解释' + ('已完成。' if tasks['prototype_vlm']['status'] == 'complete' else '待补齐。')),
-        'prototype_capacity': ('pending', '当前 3×3、7×7、15×15 三个尺度各设 32 个模板，共 96 个候选槽位；模板数量调参待开始。'),
-        'validity': (tasks['evaluation']['status'], tasks['evaluation']['detail']),
+        'element_families': ('partial' if hierarchy else 'pending', hierarchy.get('detail', '待整理维度—要素父类与图像证据。')),
+        'local_compositions': ('partial' if local_compositions.get('status') == 'complete' else 'pending',
+                               local_compositions.get('detail', '待提取四方向局部要素关系。')),
+        'patterns': ('partial' if local_compositions.get('status') == 'complete' else 'pending',
+                     local_compositions.get('detail', '尚无跨街景组合候选。')),
+        'prototype_capacity': ('pending', '不预设最终原型数；生成、合并、淘汰阈值和容量上限待校准。'),
+        'prototype_coverage': ('partial' if coverage.get('status') == 'complete' else coverage.get('status', 'pending'),
+                               coverage.get('detail', '待开始逐图patch覆盖试验；语义解释质量另行核查。')),
+        'validity': ('partial' if local_compositions.get('status') == 'complete' else 'pending',
+                     '已有探索性开发集置换检验；跨种子、人工语义核查和封存测试未完成。'),
         'geography': ('partial', '已有 64 组的城市组成、共现和空间图；新原型的地理归纳尚未完成。'),
         'writing': ('partial', roadmap['writing_evidence'])
     }
-    # Training alone does not finish the prototype discovery deliverable.
-    if states['patterns'][0] == 'complete' and tasks['prototype_vlm']['status'] != 'complete':
-        states['patterns'] = ('partial', states['patterns'][1])
     milestones = [{**item, 'status': states[item['id']][0], 'evidence': states[item['id']][1]}
                   for item in roadmap['milestones']]
     for item in milestones:
@@ -57,18 +65,80 @@ def research_progress(rows, corpus):
             if item['review_status'] not in {'partial', 'pending', 'running', 'complete'}:
                 raise ValueError(f'Invalid reviewed milestone status: {item["id"]}')
             item['status'] = item['review_status']
-    if tasks['prototypes']['status'] != 'complete':
-        focus = '完成原型模型与打乱对照'
-        next_step = '四组模型完成后，自动进入完整验证、稳定性分析和实例图生成。'
-    elif tasks['evaluation']['status'] != 'complete':
-        focus = '检验原型是否稳定、有结构意义'
-        next_step = '完成全部验证、种子匹配、NMF 和置换检验，核对真实结构相对对照的表现。'
-    elif tasks['prototype_vlm']['status'] != 'complete':
-        focus = '建立可核查的原型证据库'
-        next_step = '补齐原图、贡献激活图和 Qwen 候选解释，检查混合与无效模板。'
-    else:
-        focus = '从计算结果形成研究结论'
-        next_step = '核查单元和原型语义、整理城市证据，将支持的结论与局限写入 Chapter 5。'
+    focus = '核查跨街景重复的局部要素组合'
+    next_step = ('逐例核查遮罩与对象父类，合并方向等价关系；再比较跨种子稳定性、'
+                 '三元关系和新组合对完整样本的覆盖。')
+    if coverage.get('status') in {'running', 'waiting'}:
+        focus = '诊断并改进原型的解释能力'
+        next_step = '完成固定模板响应诊断及两组试训，比较开发集质量；人工语义核查和最终测试另行完成。'
+    if patch_coverage:
+        focus = '让每张图至少80%的有效patch达到解释要求'
+        next_step = ('按逐图覆盖缺口训练96个模板，逐图统计是否达标；固定patch NMSE≤0.5，'
+                     '同时报告未达标图像、无有效激活patch及全景四方向全部达标比例。语义核查待完成。')
+        if patch_coverage['status'] == 'complete':
+            next_step = '核查逐图达标比例、失败区域和语义一致性；本轮计算完成不代表所有图像已经达标，测试集继续封存。'
+    if refit.get('status') == 'complete':
+        focus = '定位景观原型覆盖不足的瓶颈'
+        before, after = refit['metrics']['encoder'], refit['metrics']['coverage']
+        next_step = (f'冻结96模板的响应优化诊断已完成，{after["images"]}张图平均覆盖'
+                     f'{before["mean_image_patch_coverage"]:.1%}→{after["mean_image_patch_coverage"]:.1%}，'
+                     f'达标{after["images_meeting_target"]}/{after["images"]}张。'
+                     '下一步比较模板数量、秩与空间约束，核查失败区域和语义质量；调参尚未开始，测试集继续封存。')
+        for item in milestones:
+            if item['id'] == 'prototype_coverage':
+                item['evidence'] += ' ' + refit['detail']
+    if roadmap.get('active_route') == 'open_panorama':
+        if open_panorama.get('status') in {'running', 'preparing'}:
+            focus = '构建完整四方向环形全景并开放式发现原型'
+            next_step = open_panorama['detail']
+        elif open_panorama.get('status') == 'complete':
+            focus = '核查开放式全景原型是否稳定且可解释'
+            next_step = '检查完整全景mask、跨城市支持、生成合并记录和空间块开发集覆盖；测试封存。'
+        elif open_panorama.get('status') == 'error':
+            focus = '修复开放式全景原型训练'
+            next_step = open_panorama['detail']
+        else:
+            focus = '构建完整四方向环形全景输入'
+            next_step = ('复用现有SAE激活，将0°、90°、180°、270°组成首尾相接的28×112网格；'
+                         '随后启动带生成、合并和淘汰的开放式原型训练。')
+        for item in milestones:
+            if item['id'] == 'patterns':
+                item['status'] = 'partial' if open_panorama.get('status') == 'complete' else 'pending'
+                item['evidence'] = ('完整四方向原型已生成，语义和稳定性待核查。'
+                                    if open_panorama.get('status') == 'complete'
+                                    else '完整全景开放式原型尚未形成可发布结果。')
+            elif item['id'] == 'prototype_capacity':
+                item['evidence'] = ('不预设最终原型数；计算容量只作为上限。原型根据跨全景重复结构生成，'
+                                    '相似原型合并，低支持或无验证贡献原型淘汰。')
+            elif item['id'] == 'validity':
+                item['status'] = 'pending'
+                item['evidence'] = '环形旋转、方向打乱、跨城、空间块及跨种子检验待开展。'
+            elif item['id'] == 'prototype_coverage':
+                metrics = open_panorama.get('metrics') or {}
+                if open_panorama.get('status') == 'complete' and metrics:
+                    item['status'] = 'partial'
+                    item['evidence'] = (
+                        f'已评分{metrics["panoramas"]:,}个开发全景；64组池化网格平均重建覆盖'
+                        f'{metrics["group_pooled_patch_coverage_all_denominator"]:.1%}，'
+                        f'四方向各≥80%网格达标的全景占{metrics["four_directions_each_at_least_80pct"]:.1%}。'
+                        '原4096维覆盖与语义解释覆盖尚未评估，不能据此认定目标达成。')
+                else:
+                    item['status'] = 'pending'
+                    item['evidence'] = '开放式全景字典尚未进行逐全景80% patch覆盖评分。'
+    if roadmap.get('active_route') == 'local_compositions':
+        focus = '核查跨街景重复的局部要素组合'
+        next_step = ('人工审阅要素遮罩与对象完整性；合并等价关系，检验跨种子稳定性、'
+                     '三元组合以及完整样本上的语义覆盖。')
+        for item in milestones:
+            if item['id'] == 'local_compositions':
+                item['status'] = 'partial' if local_compositions.get('status') == 'complete' else 'pending'
+            if item['id'] == 'prototype_capacity':
+                item['evidence'] = '候选搜索没有固定槽位；合并等价关系和停止规则仍需校准。'
+            if item['id'] == 'validity':
+                item['status'] = 'partial' if local_compositions.get('status') == 'complete' else 'pending'
+            if item['id'] == 'prototype_coverage':
+                item['status'] = 'pending'
+                item['evidence'] = '局部要素组合尚未评估逐图80%语义patch覆盖；既有重建试验不适用于当前路线。'
     blocked = [row['label'] + ('等待 GPU 资源。' if row['status'] == 'waiting' else '已暂停，需核查后台任务。' if row['status'] == 'paused' else '运行失败，需处理后继续。')
                for row in rows if row['status'] in {'error', 'paused', 'waiting'}]
     return {'goal': roadmap['goal'], 'focus': focus, 'next_step': next_step,
@@ -133,9 +203,40 @@ def snapshot(root=ROOT):
     interpreted = counts.get('interpreted', 0)
     unobserved = counts.get('unobserved_in_sample', 0)
     total = vlm.get('dimensions', 4096)
+    expansion_dir = main / 'reports/vlm_dimensions_top10_expanded'
+    expansion = read(expansion_dir / 'expansion_status.json')
+    expanded_summary = read(expansion_dir / 'summary.json')
+    ranking = read(main / 'outputs/analysis/interpretation_expanded_top10/ranking_summary.json')
+    expansion_alive = False
+    if expansion.get('pid'):
+        try:
+            expansion_alive = 'panorama_vitl30_expand_interpretation' in Path(
+                f'/proc/{int(expansion["pid"])}/cmdline').read_text()
+        except (OSError, ValueError):
+            pass
+    vlm_status = 'complete' if interpreted + unobserved == total else 'unknown'
+    vlm_detail = f'{interpreted:,} 维已解释；{unobserved:,} 维样本内无正激活'
+    vlm_progress = None
+    if expansion:
+        if ranking and ranking.get('checkpoint_sha256') != CHECKPOINT:
+            raise ValueError('Expanded interpretation uses a different SAE checkpoint')
+        new_counts = expanded_summary.get('status_counts', {})
+        new_done = new_counts.get('interpreted', 0)
+        recovered = ranking.get('observed_dimensions', 0)
+        no_evidence = ranking.get('unobserved_dimensions', unobserved)
+        vlm_detail = (f'{interpreted:,} 维原解释保留；扩样至 {ranking.get("panoramas", 0):,} 全景，'
+                      f'新增解释 {new_done}/{recovered} 维；{no_evidence} 维仍无正激活。仅事后解释，含训练图像')
+        vlm_status = ('complete' if expansion.get('status') == 'complete' else
+                      'error' if expansion.get('status') == 'failed' else
+                      'paused' if expansion.get('status') == 'stopped' or not expansion_alive else
+                      'waiting' if expansion.get('status') == 'waiting_for_gpu' else 'running')
+        if vlm_status == 'waiting':
+            vlm_detail += '；等待 GPU，禁用 CPU 推理'
+        elif expansion.get('stage') in {'ranking', 'crops', 'sheets'}:
+            vlm_detail += '；准备扩样证据'
+        vlm_progress = ratio(new_done, recovered, '新增维度解释')
     rows.append({'id': 'dimension_vlm', 'label': '逐维 Qwen 解释',
-                 'status': 'complete' if interpreted + unobserved == total else 'unknown',
-                 'detail': f'{interpreted:,} 维已解释；{unobserved:,} 维样本内无正激活',
+                 'status': vlm_status, 'detail': vlm_detail, 'progress': vlm_progress,
                  'link': 'interpretation/'})
     cache = read(proto / 'cache_complete.json')
     rows.append({'id': 'activations', 'label': '完整稀疏激活',
@@ -191,12 +292,247 @@ def snapshot(root=ROOT):
     rows.append({'id': 'prototype_vlm', 'label': '原型 Qwen 解释',
                  'status': stage_status('interpret', interpretation_done), 'detail': detail,
                  'progress': ratio(interpretation.get('processed', 0), interpretation.get('total', 0), '候选模板')})
+    coverage = coverage_status(root)
+    if coverage:
+        rows.append(coverage)
+    patch_coverage = patch_coverage_status(root)
+    if patch_coverage:
+        rows.append(patch_coverage)
+    refit = response_refit_status(root)
+    if refit:
+        rows.append(refit)
+    gallery = patch_gallery_status(root)
+    if gallery:
+        rows.append(gallery)
+    rows.extend(relational_status(root))
+    if any(row['id'] == 'local_compositions' for row in rows):
+        rows = [row for row in rows if row['id'] != 'open_panorama']
     research = research_progress(rows, corpus)
+    legacy = {'prototypes', 'evaluation', 'gallery', 'prototype_vlm', 'coverage_trial',
+              'patch_coverage', 'patch_response_refit', 'patch_prototype_gallery'}
+    rows = [row for row in rows if row['id'] not in legacy]
+    research['blockers'] = [row['label'] for row in rows if row['status'] in {'error', 'paused', 'waiting'}]
     return {'schema_version': 1, 'updated_utc': datetime.now(timezone.utc).isoformat(),
             'experiment': 'vitl30_panorama_w4096_k32', 'checkpoint_sha256': CHECKPOINT,
             'headline': research['focus'], 'research': research, 'rows': rows,
-            'runtime_terminal': pipeline.get('status') in {'complete', 'failed', 'stopped'} or (bool(pipeline) and not alive),
-            'note': '各进度条仅表示该阶段已完成的计算量。96 是候选模板容量，解释名称仍需核查。'}
+            'runtime_terminal': (pipeline.get('status') in {'complete', 'failed', 'stopped'} or (bool(pipeline) and not alive))
+                and (not expansion or expansion.get('status') in {'complete', 'failed', 'stopped'} or not expansion_alive)
+                and (not coverage or coverage['status'] in {'complete', 'error', 'paused', 'pending'})
+                and (not patch_coverage or patch_coverage['status'] in {'complete', 'error', 'paused', 'pending'}),
+            'note': ('当前路线从四方向全景中的局部要素遮罩检索开放数量的重复组合。'
+                     '计算完成仍不等于语义已验证。')}
+
+
+def relational_status(root):
+    """Publish the element hierarchy and exploratory local-composition result."""
+    result = root / 'experiments/vitl30_relational_prototypes/results'
+    summary = read(result / 'summary.json')
+    pilot = read(result / 'pilot_manifest_summary.json')
+    if not summary:
+        return []
+    if summary['checkpoint_sha256'] != CHECKPOINT:
+        raise ValueError('Element hierarchy uses another SAE checkpoint')
+    if pilot and pilot['hierarchy_identity'] != summary['identity']:
+        raise ValueError('Relational pilot uses another element hierarchy')
+    counts = summary['status_counts']
+    rows = [{'id': 'element_hierarchy', 'label': '维度—要素候选表', 'status': 'complete',
+             'detail': (f'{summary["dimensions"]:,}维保留；{counts["candidate_ready"]:,}维暂定候选，'
+                        f'{len(summary["graph_candidate_family_counts"])}类要素；'
+                        f'{summary["family_disagreements"]}维解释父类冲突待核查。人工验证未完成。'),
+             'link': 'elements/', 'semantic_review': summary['semantic_validation']}]
+    local_file = root / 'experiments/vitl30_local_compositions/outputs/results.json'
+    if not local_file.exists():
+        local_file = root / 'experiments/vitl30_local_compositions/results/results.json'
+    local = read(local_file)
+    if local:
+        if (local.get('checkpoint_sha256') != CHECKPOINT or
+                local.get('hierarchy_identity') != summary['identity']):
+            raise ValueError('Local-composition result uses another SAE or hierarchy')
+        rows.append({'id': 'local_compositions', 'label': '局部要素组合探索',
+                     'status': 'complete' if local.get('status') == 'complete' else 'pending',
+                     'detail': (f"{local['sampling']['cities']}城，{local['sampling']['train_panoramas']:,}训练 / "
+                                f"{local['sampling']['dev_panoramas']:,}开发全景；"
+                                f"{local['findings']['all_candidates']}个原始关系候选，"
+                                '遮罩和语义仍待人工核查。'),
+                     'link': 'elements/#local-results', 'semantic_review': 'pending',
+                     'test_sealed': True})
+        return rows
+    open_status = read(root / 'experiments/vitl30_open_panorama_prototypes/outputs/status.json')
+    state = {'training':'running','failed':'error'}.get(open_status.get('status'),open_status.get('status','pending'))
+    if state not in {'pending', 'preparing', 'running', 'complete', 'error', 'paused'}:
+        raise ValueError('Unknown open panorama prototype status')
+    detail = open_status.get('detail',
+        '待从现有SAE激活构建四方向首尾相接的28×112网格；不预设最终原型数量。')
+    if state in {'preparing','running'} and open_status.get('pid'):
+        try:
+            process = Path(f'/proc/{int(open_status["pid"])}')
+            command = (process/'cmdline').read_text()
+            if 'vitl30_open_panorama_prototypes' not in command:
+                raise OSError('Runner missing')
+        except (OSError,ValueError):
+            state = 'paused'
+            detail = '进程已退出，检查点保留；'+detail
+    rows.append({'id': 'open_panorama', 'label': '开放式四方向全景原型', 'status': state,
+                 'detail': detail, 'link': 'elements/#open-method',
+                 'semantic_review': 'pending', 'test_sealed': True,
+                 'metrics': open_status.get('metrics')})
+    return rows
+
+
+def coverage_status(root):
+    """Read the coverage pilot without importing models or touching activation data."""
+    out = root / 'experiments/vitl30_prototype_coverage/outputs'
+    protocol = read(out / 'protocol.json')
+    if not protocol:
+        return None
+    pipeline = read(out / 'pipeline_status.json')
+    status = pipeline.get('status', 'pending')
+    alive = False
+    if pipeline.get('pid'):
+        try:
+            alive = 'vitl30_prototype_coverage.code.run' in Path(f'/proc/{int(pipeline["pid"])}/cmdline').read_text()
+        except (OSError, ValueError):
+            pass
+    state = ('complete' if status == 'complete' else 'error' if status == 'failed' else
+             'paused' if status == 'stopped' or (pipeline and not alive) else
+             'waiting' if status in {'waiting_for_gpu', 'retrying_gpu_memory'} else
+             'running' if status == 'running' else 'pending')
+    counts = protocol['split_counts']
+    detail = (f'{counts["train"]:,}训练 / {counts["dev"]:,}开发 / {counts["test"]:,}测试全景；'
+              '每尺度32模板；测试封存。')
+    stage, arm = pipeline.get('stage'), pipeline.get('arm')
+    if stage == 'prepare':
+        prep = read(out / 'preparation_status.json')
+        detail += f' 训练集校准 {prep.get("panoramas", 0):,}/{protocol["panoramas"]:,}。'
+    elif stage == 'diagnostic':
+        diag = read(out / 'diagnostic/status.json')
+        detail += f' 固定模板响应诊断 {diag.get("views", 0)}/{diag.get("total", 116)}方向图。'
+        if 'refit_mean_nmse' in diag:
+            detail += f' NMSE {diag["before_mean_nmse"]:.3f}→{diag["refit_mean_nmse"]:.3f}（无稀疏惩罚的探索诊断）。'
+    elif stage == 'train':
+        training = read(out / 'models' / arm / 'status.json')
+        detail += f' {arm} 第{training.get("epoch", 0)}/4轮，{training.get("global_step", 0):,}训练步。'
+    elif stage == 'evaluate':
+        evaluation = read(out / 'development' / arm / 'status.json')
+        detail += f' {arm} 开发集评分 {evaluation.get("cities", 0)}/29城市。'
+    elif status == 'complete':
+        detail += ' 两组试训与开发评分完成；人工核查未完成，80%语义覆盖尚未验证。'
+    markers = [out / 'calibration.json', out / 'diagnostic/complete.json']
+    runs = []
+    for name, label in [('balanced_reference', '原重建目标'), ('energy_warmup', '能量目标＋稀疏预热')]:
+        train = read(out / 'models' / name / 'status.json')
+        done = (out / 'models' / name / 'complete.json').exists()
+        per_epoch = train.get('steps_per_epoch', 8178)
+        runs.append({'label': label, 'status': 'complete' if done else state if stage == 'train' and arm == name else 'pending',
+                     'detail': '4轮筛选试训',
+                     'progress': ratio(4 * per_epoch if done else train.get('global_step', 0), 4 * per_epoch, '训练步')})
+        markers += [out / 'models' / name / 'complete.json', out / 'development' / name / 'complete.json']
+    markers.append(out.parent / 'results/pilot_summary.json')
+    return {'id': 'coverage_trial', 'label': '重建目标对照试训', 'status': state, 'detail': detail,
+            'progress': ratio(sum(p.exists() for p in markers), len(markers), '计算阶段'), 'runs': runs}
+
+
+def patch_coverage_status(root):
+    """Actual per-image coverage run; no activation scans or CUDA imports."""
+    out = root / 'experiments/vitl30_patch_coverage/outputs'
+    protocol = read(out / 'protocol.json')
+    if not protocol:
+        return None
+    pipeline = read(out / 'pipeline_status.json')
+    status = pipeline.get('status', 'pending')
+    alive = False
+    if pipeline.get('pid'):
+        try:
+            alive = 'vitl30_patch_coverage.code.run' in Path(f'/proc/{int(pipeline["pid"])}/cmdline').read_text()
+        except (OSError, ValueError):
+            pass
+    state = ('complete' if status == 'complete' else 'error' if status == 'failed' else
+             'paused' if status == 'stopped' or (pipeline and not alive) else
+             'waiting' if status in {'waiting_for_gpu', 'retrying_gpu_memory'} else
+             'running' if status == 'running' else 'pending')
+    counts, policy = protocol['split_counts'], protocol['policy']
+    detail = (f'目标：每张方向图≥{policy["target_fraction"]:.0%}有效patch达标；'
+              f'固定patch NMSE≤{policy["maximum_patch_nmse"]:g}（重建判据，语义待核查）。'
+              f' {counts["train"] * 4:,}训练图 / {counts["dev"] * 4:,}开发图；'
+              f'{counts["test"] * 4:,}测试图封存。')
+    training = read(out / 'model/status.json')
+    stage = pipeline.get('stage')
+    if stage == 'train':
+        detail += (f' GPU {pipeline.get("device", "cuda:?").split(":")[-1]} · '
+                   f'第{training.get("epoch", 0)}/{protocol["epochs"]}轮，'
+                   f'{training.get("global_step", 0):,}训练步。')
+    elif stage in {'evaluate_dev', 'evaluate_train'}:
+        split = stage.removeprefix('evaluate_')
+        scoring = read(out / 'evaluation' / split / 'status.json')
+        detail += f' {"开发" if split == "dev" else "训练"}集逐图评分 {scoring.get("cities", 0)}/{protocol["cities"]}城市。'
+    epochs = sorted((out / 'model').glob('epoch_*.json'))
+    if epochs:
+        recent = read(epochs[-1])
+        detail += (f' 第{recent["epoch"]}轮固定开发监控：达标图{recent["image_pass_fraction"]:.1%}，'
+                   f'平均patch覆盖{recent["mean_image_patch_coverage"]:.1%}，'
+                   f'最差图{recent["minimum_image_patch_coverage"]:.1%}。')
+    metrics = {}
+    for split, name in [('dev', '开发'), ('train', '训练')]:
+        summary = read(out / 'evaluation' / split / 'complete.json')
+        if summary:
+            keys = ['images', 'image_pass_fraction', 'mean_image_patch_coverage',
+                    'panorama_all_four_pass_fraction', 'images_below_target',
+                    'invalid_patches', 'all_images_meet_target', 'coverage_quantiles']
+            metrics[split] = {k: summary[k] for k in keys}
+            detail += (f' 完整{name}集：平均patch覆盖{summary["mean_image_patch_coverage"]:.1%}，'
+                       f'达标图{summary["image_pass_fraction"]:.3%}，'
+                       f'四方向全部达标全景{summary["panorama_all_four_pass_fraction"]:.1%}。')
+    done = (out / 'model/complete.json').exists()
+    per_epoch = training.get('steps_per_epoch', 8178)
+    total = protocol['epochs'] * per_epoch
+    return {'id': 'patch_coverage', 'label': '逐图80% patch覆盖', 'status': state, 'detail': detail,
+            'link': 'prototypes/#full-evaluation',
+            'policy': policy, 'semantic_review': 'pending', 'test_sealed': True, 'metrics': metrics,
+            'progress': ratio(total if done else training.get('global_step', 0), total, '训练步'),
+            'runs': [{'label': f'完整{label}集评分',
+                      'status': 'complete' if split in metrics else state if stage == f'evaluate_{split}' else 'pending',
+                      'detail': f'{counts[split] * 4:,}张方向图；保存未达标清单和逐patch覆盖图'}
+                     for split, label in [('dev', '开发'), ('train', '训练')]]}
+
+
+def response_refit_status(root):
+    out = root / 'experiments/vitl30_patch_coverage/outputs'
+    complete = read(out / 'response_refit_v1/complete.json')
+    if not complete:
+        return None
+    protocol = read(out / 'protocol.json')
+    if complete['protocol']['experiment_identity'] != protocol.get('identity'):
+        raise ValueError('Response diagnostic belongs to another coverage protocol')
+    if complete['test_used'] or not complete['protocol']['test_sealed']:
+        raise ValueError('Response diagnostic unexpectedly used the sealed test')
+    before = complete['summaries']['encoder']
+    after = complete['summaries']['coverage']
+    detail = (f'{before["panoramas"]}城各1开发全景，{before["images"]}张方向图；冻结96模板，'
+              f'平均patch覆盖{before["mean_image_patch_coverage"]:.1%}→{after["mean_image_patch_coverage"]:.1%}，'
+              f'{after["images_meeting_target"]}/{after["images"]}张达到80%。'
+              '150步响应优化，约50步后趋稳；有限步诊断不是理论上限，语义待核查。')
+    return {'id': 'patch_response_refit', 'label': '冻结模板响应诊断', 'status': 'complete',
+            'detail': detail, 'link': 'prototypes/#response-refit',
+            'test_sealed': True, 'semantic_review': 'pending',
+            'metrics': complete['summaries']}
+
+
+def patch_gallery_status(root):
+    out = root / 'experiments/vitl30_patch_coverage/outputs'
+    complete = read(out / 'gallery/complete.json')
+    if not complete:
+        return None
+    protocol = read(out / 'protocol.json')
+    identity = complete['identity']
+    if (identity['experiment_identity'] != protocol.get('identity') or
+            identity['split'] != 'dev' or identity['test_used']):
+        raise ValueError('Current prototype gallery belongs to another experiment or partition')
+    missing = complete['templates'] - complete['templates_with_examples']
+    return {'id': 'patch_prototype_gallery', 'label': '当前原型逐模板实例', 'status': 'complete',
+            'detail': (f'{identity["images"]:,}开发图检索完成；{complete["templates_with_examples"]}个有实例模板，'
+                       f'共{complete["examples"]}组原图、贡献热图、裁剪；{missing}个模板暂无实例。语义一致性待核查。'),
+            'link': 'prototypes/#prototype-gallery', 'semantic_review': 'pending', 'test_sealed': True,
+            'model_sha256': identity['model_sha256']}
 
 
 def write_snapshot(site, value):
@@ -208,12 +544,14 @@ def write_snapshot(site, value):
 
 
 def install(site):
-    """Install once on the five public pages; keep feature iframes uncluttered."""
+    """Install on the public pages; keep feature iframes uncluttered."""
     for name in ['project-progress.css', 'project-progress.js']:
         target = site / 'assets' / name
         target.write_bytes((TEMPLATES / name).read_bytes())
     for name in PAGES:
         path = site / name
+        if not path.exists():
+            continue
         doc = path.read_text()
         if 'id="project-progress"' in doc:
             continue

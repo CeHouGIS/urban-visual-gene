@@ -1,0 +1,37 @@
+{
+  "identity": "152f0ae354a9dc937922dbfb1f630544b019e53aceeedf9f024fbb2b1efcb7b3",
+  "hierarchy_identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
+  "cities": 29,
+  "panoramas": 1160,
+  "images": 4640,
+  "split_counts": {
+    "train": 928,
+    "dev": 232
+  },
+  "sampling": {
+    "train_per_city": 32,
+    "dev_per_city": 8,
+    "all_four_headings": true,
+    "spatial_split": "reuse frozen 1-km train/dev blocks"
+  },
+  "regions": {
+    "sizes": [
+      14,
+      21,
+      28
+    ],
+    "coordinates": "direction-local patches; no convolution across heading seams"
+  },
+  "arms": [
+    "current_local_templates_frozen_reference",
+    "larger_context_reconstruction",
+    "element_relation_prototypes"
+  ],
+  "prototype_slots_initial": 32,
+  "stage": "manifest_prepared",
+  "training_started": false,
+  "semantic_review": "pending; provisional grouping available, human validation is not complete",
+  "test_activations_opened": false,
+  "prior_semantic_evidence_includes_test": true,
+  "comparability": "The existing frozen template arm is descriptive only; fair architecture comparisons must refit all arms on the same pilot, budgets and seeds."
+}

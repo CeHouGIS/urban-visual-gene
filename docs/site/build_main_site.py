@@ -22,8 +22,8 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from PIL import Image
-from panorama_display import render_panorama_galleries
 from project_progress import install as install_progress
+from element_hierarchy import install as install_element_hierarchy
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPERIMENT = ROOT / "experiments/vitl30_panorama_w4096_k32"
@@ -31,7 +31,7 @@ TEMPLATES = Path(__file__).with_name("templates")
 CHECKPOINT = "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0"
 NAV_ITEMS = [("overview", "主实验", ""), ("semantic", "语义地图", "semantic/"),
              ("instances", "图像实例", "instances/"), ("interpretation", "维度解释", "interpretation/"),
-             ("combinations", "组合探索", "combinations/")]
+             ("elements", "要素与组合", "elements/")]
 
 
 def read_json(path):
@@ -84,7 +84,7 @@ def overview(out, snapshot, counts):
 <div class="two">@LOSS@@ACTIVATION@</div><p><a href="data/training/history.csv">训练记录 CSV</a> · <a href="data/training_summary.json">训练设置与数据身份</a></p></section>
 <section class="section"><h2>城市与视觉组成</h2><p>4,096 维 decoder 按余弦距离与 average linkage 归纳为 64 组，用于组成和城市比较；分组颜色与语义地图一致。</p>
 <div class="two">@CITIES@@COMPOSITION@</div><details><summary>展开城市相似性、共现与空间结果</summary><div class="two">@SIMILARITY@@COOCCURRENCE@@SHARED@@SPATIAL@</div></details></section>
-<section class="section"><h2>景观组合探索</h2><p>在同一套 SAE 表征上，查看全景组成的 NMF 候选模板与跨城市共现组合。候选模板的数量由模型容量设定，还不能直接等同于景观类型数量。</p><a href="combinations/">查看组合、完整四方向实例与统计结果 →</a></section>
+<section class="section"><h2>跨街景的局部要素组合</h2><p>以完整四方向全景为统计单位，在各方向的 SAE 激活中提取自适应要素遮罩，检索重复的多要素关系。当前为探索性抽样，语义仍需核查。</p><a href="elements/#local-results">查看组合遮罩实例与置换对照 →</a></section>
 <details class="section"><summary>方法与解释范围</summary><p>语义地图使用图像裁剪的 SigLIP embedding，城市、空间坐标、decoder 分组和 VLM 文字均不参与 UMAP 拟合。维度地图中至少 20 个有效实例才进入投影，故 4,096 个模型维度对应 2,863 个散点；图像实例地图则保留 3,178 维的最多 Top10 实例。64 组使用各自唯一颜色，部分组暂无足够实例进入维度投影。</p><p>二维邻近关系供浏览，不证明类别边界或统计显著性。Qwen 名称为待核查的解释；维度可能对应物体、部件、纹理或混合概念。激活图表示 patch 级响应，不是像素分割。</p><p><a href="data/group_interpretations.csv">64 组解释 CSV</a> · <a href="data/feature_semantic_umap_groups.csv">维度坐标与分组 CSV</a> · <a href="data/group_palette.json">64 组色表与许可</a></p></details>'''
     figures = {
         "LOSS": ("Fig_ViTL30_Training_Loss.png", "训练 loss 与抽样验证误差"),
@@ -108,9 +108,8 @@ def overview(out, snapshot, counts):
 
 def identity_guard(semantic_root, reports):
     for p in [semantic_root/'run.json', reports/'semantic_umap/summary.json',
-              reports/'instance_umap/summary.json', reports/'unit_motifs/summary.json']:
+              reports/'instance_umap/summary.json']:
         assert read_json(p)['checkpoint_sha256'] == CHECKPOINT, f'Checkpoint mismatch: {p}'
-    assert read_json(reports/'landscape_prototypes/summary.json')['source_checkpoint_sha256'] == CHECKPOINT
 
 
 def copy_image(task):
@@ -263,7 +262,6 @@ def build(out, workers):
         assert [r['heading'] for r in group] == [0, 90, 180, 270]
     tasks += [(source/f'sources/{i}.jpg', out/f'semantic/sources/{i}.jpg', 'copy') for i in range(len(image_rows))]
     overview(out, snapshot, counts)
-    combination_pages(out, reports, snapshot)
     # Publish only figures actually used by the current pages.
     figure_names = set()
     for document in out.rglob('*.html'):
@@ -271,8 +269,6 @@ def build(out, workers):
     (out/'assets/figures').mkdir()
     for filename in figure_names:
         shutil.copyfile(EXPERIMENT/'results/figures'/filename, out/'assets/figures'/filename)
-    panorama_display = render_panorama_galleries(out, source, reports)
-    install_progress(out)
     (out/'data/training').mkdir(parents=True)
     shutil.copyfile(EXPERIMENT/'results/training/history.csv', out/'data/training/history.csv')
     training = read_json(EXPERIMENT/'results/training/training_report.json')
@@ -289,6 +285,9 @@ def build(out, workers):
     for src, dst, kind in masked[:2]:
         with Image.open(src) as a, Image.open(dst) as b:
             assert a.convert('RGB').tobytes() == b.convert('RGB').tobytes(), 'Lossless Qwen sheet check failed'
+    # Share the primary masked sheets after the image queue has materialized.
+    element_summary = install_element_hierarchy(out, page, snapshot)
+    install_progress(out)
     (out/'.nojekyll').touch()
     # A compatibility entry contains only a redirect to the current homepage.
     (out/'latest.html').write_text('<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./"><title>Urban Scene Primitives</title><a href="./">主实验结果</a></html>')
@@ -327,14 +326,17 @@ jobs:
 ''')
     files = [p for p in out.rglob('*') if p.is_file()]
     size = sum(p.stat().st_size for p in files)
-    assert size < 950_000_000, f'Website exceeds the intended Pages size budget: {size}'
+    assert size < 990_000_000, f'Website exceeds the intended Pages size budget: {size}'
     write_json(out/'manifest.json', {'experiment': EXPERIMENT.name, 'checkpoint_sha256': CHECKPOINT,
         'snapshot_label': snapshot, 'model': {'backbone': 'DINOv3 ViT-L/16', 'image_size': 448, 'grid': [28,28], 'input_dimension': 1024, 'dictionary_width': 4096, 'batchtopk_k': 32, 'panorama_context_mixing': True},
         'training': {'cities': 30, 'panoramas': 89031, 'train': 85191, 'validation': 3840},
         'image_semantics': {'cities': 29, 'panoramas': 3712, 'images': len(image_rows), 'dimensions': dimensions, 'projected_dimensions': 2863, 'top100_instances': examples, 'top10_umap_points': 29934},
         'vlm_status_counts': counts, 'file_count': len(files)+1, 'bytes_before_manifest': size,
-        'panorama_display': {**{k: v for k, v in panorama_display.items() if k != 'panorama_indices_by_panel'},
-                             'layout_manifest': 'combinations/panorama_layout.json'},
+        'element_hierarchy': {'page': 'elements/', 'identity': element_summary['identity'],
+                              'candidate_dimensions': element_summary['status_counts']['candidate_ready'],
+                              'semantic_validation': 'pending',
+                              'prototype_route': element_summary['prototype_route'],
+                              'local_composition_status': element_summary['local_composition_status']} if element_summary else None,
         'packaging': 'Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.',
         'source_result_manifest_sha256': hashlib.sha256((EXPERIMENT/'results/manifest.json').read_bytes()).hexdigest()})
     print(json.dumps({'output': str(out), 'files': len(files)+1, 'MB': round(size/1e6,1), 'vlm': counts}, ensure_ascii=False), flush=True)

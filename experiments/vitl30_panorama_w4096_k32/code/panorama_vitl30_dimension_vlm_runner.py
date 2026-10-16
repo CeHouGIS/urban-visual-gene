@@ -33,6 +33,8 @@ def main():
     parser.add_argument('--devices', default='1,3')
     parser.add_argument('--batch-size', type=int, default=1)
     parser.add_argument('--max-new-tokens', type=int, default=512)
+    parser.add_argument('--input-mode', choices=['masked-top10', 'clean-top100'], default='masked-top10')
+    parser.add_argument('--mask-fraction', type=float, default=.5)
     parser.add_argument('--min-free-mib', type=int, default=10000)
     args = parser.parse_args()
     args.report.mkdir(parents=True, exist_ok=True)
@@ -92,6 +94,7 @@ def main():
                     '--stage', 'worker', '--device', f'cuda:{device}', '--shard', str(shard),
                     '--shards', str(len(devices)), '--batch-size', str(args.batch_size),
                     '--max-new-tokens', str(args.max_new_tokens), '--source', str(args.source),
+                    '--input-mode', args.input_mode, '--mask-fraction', str(args.mask_fraction),
                     '--report', str(args.report), '--model', str(args.model)]
                 process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT)
                 running[shard] = (process, log, path)
@@ -101,8 +104,8 @@ def main():
             final = all(s['status'] in {'finished', 'failed'} for s in shards)
             summary = json.loads((args.report / 'summary.json').read_text())
             status = ('failed' if any(s['status'] == 'failed' for s in shards) else
-                      ('complete' if summary['status_counts'].get('interpreted', 0)
-                       + summary['status_counts'].get('unobserved_in_sample', 0) == 4096
+                      ('complete' if summary['completed_or_explicitly_unobserved']
+                       == summary.get('requested_dimensions', 4096)
                        else 'incomplete')) if final else (
                            'running' if running else 'waiting_gpu')
             atomic_json(args.report / 'runner_status.json', {
