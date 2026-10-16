@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T11:54:20.803139+00:00",
+  "updated_utc": "2026-10-16T14:18:43.165525+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
   "headline": "核查关系原型为何未超过完整区域模型",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
     "focus": "核查关系原型为何未超过完整区域模型",
-    "next_step": "三组小试已训练：组成0.2311、完整区域0.2121、关系图0.2166（开发MSE，越低越好）。下一步核查原图实例、要素归并与布局敏感性，再补同预算局部模板及跨种子对照；测试封存。",
+    "next_step": "三组小试已训练：组成0.2311、完整区域0.2121、关系图0.2166（开发MSE，越低越好）。每槽位已发布4组开发实例；下一步核查要素归并、布局敏感性与跨种子稳定性；测试封存。",
     "milestones": [
       {
         "id": "data",
@@ -49,26 +49,26 @@
         "id": "relational_pilot",
         "label": "大范围关系原型小试",
         "question": "较大区域中的要素组成和布局是否形成稳定模式？",
-        "criterion": "在相同小试划分、预算和种子下比较局部重建、大范围重建与关系原型；完成输入检查及三组训练。",
-        "remaining": "29城小试的组成、完整布局、关系图三个32槽位模型已训练。关系图开发MSE未超过完整布局；原定同预算局部模板重训、实例核查与跨种子比较尚未完成。",
+        "criterion": "在相同小试划分、预算和种子下比较组成、大范围布局与关系图输入；完成输入检查、三组训练及实例检查。",
+        "remaining": "29城小试的组成、完整布局、关系图三个32槽位模型已训练。关系图开发MSE未超过完整布局；每槽位已有4个开发集实例，语义核查与跨种子比较尚未完成。",
         "status": "partial",
-        "evidence": "24,113训练＋5,817开发多要素区域；组成MSE 0.2311、完整布局 0.2121、关系图 0.2166。关系图未超过完整布局；语义、同预算局部模板和跨种子验证待完成。"
+        "evidence": "24,113训练＋5,817开发多要素区域；组成MSE 0.2311、完整布局 0.2121、关系图 0.2166。关系图未超过完整布局；语义与跨种子验证待完成。"
       },
       {
         "id": "patterns",
         "label": "多要素景观组合",
         "question": "哪些不同要素的组合与布局会反复出现？",
-        "criterion": "得到跨城市重复的多要素结构及实例，区分对象部件、纹理重建与景观组合；已有局部模板仅作参考。",
+        "criterion": "得到跨城市重复的多要素结构及实例，区分对象部件、纹理重建与景观组合。",
         "status": "partial",
-        "evidence": "已有局部模板及528组实例作为重建参考；局部纹理与同一对象的部件组合仍较多。关系原型小试已训练，但完整布局不使用图消息的模型表现更好；组合语义尚未验证。"
+        "evidence": "32个关系槽位已有各4组开发集实例；完整布局不使用图消息的模型表现更好，组合语义尚未验证。"
       },
       {
         "id": "prototype_capacity",
         "label": "模板数量调参",
         "review_status": "pending",
-        "question": "每个尺度需要多少个候选模板？",
+        "question": "关系模型需要多少个候选槽位？",
         "criterion": "在相同数据划分和训练设置下，结合验证集重建、有效模板数量、语义重复程度和跨种子稳定性选择容量。",
-        "remaining": "待办：在匹配划分、预算和种子下比较16/32/64候选模板；新路线先用32槽位，已有局部重建每尺度32模板。数量调参尚未开始。",
+        "remaining": "待办：在匹配划分、预算和种子下比较16/32/64候选槽位；当前关系模型先用32槽位。数量调参尚未开始。",
         "status": "pending",
         "evidence": "关系原型小试先用32个候选槽位；后续比较16/32/64，不能把容量当作景观类型数量。"
       },
@@ -77,10 +77,10 @@
         "label": "逐图80% patch覆盖",
         "question": "有限的稳定原型能否使每张图至少80%的有效patch得到解释？",
         "criterion": "逐图判定覆盖率≥80%，报告达标图像比例、最差与低分位覆盖、无效patch数量及全景四方向全部达标比例；同时核查语义一致性。第一轮固定patch NMSE≤0.5作为探索性重建判据，不能直接当作语义解释。",
-        "remaining": "8轮训练及完整训练/开发评分已完成：开发平均patch覆盖47.4%，141/51,020图达标；冻结96模板的116图诊断从47.8%提高到50.4%，仍0/116达标。下一步比较模板数量、秩和空间约束，核查失败区域与语义质量；最终测试封存。",
-        "review_status": "partial",
-        "status": "partial",
-        "evidence": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 第8轮固定开发监控：达标图0.0%，平均patch覆盖47.8%，最差图2.3%。 完整开发集：平均patch覆盖47.4%，达标图0.276%，四方向全部达标全景0.0%。 完整训练集：平均patch覆盖47.3%，达标图0.282%，四方向全部达标全景0.0%。 29城各1开发全景，116张方向图；冻结96模板，平均patch覆盖47.8%→50.4%，0/116张达到80%。150步响应优化，约50步后趋稳；有限步诊断不是理论上限，语义待核查。"
+        "remaining": "当前关系槽位尚未完成全体patch覆盖评估。需另行定义景观组合覆盖，并与patch重建覆盖分开报告；最终测试封存。",
+        "review_status": "pending",
+        "status": "pending",
+        "evidence": "新关系槽位尚未进行全体patch覆盖评分。"
       },
       {
         "id": "validity",
@@ -88,7 +88,7 @@
         "question": "组合是否依赖真实结构且可重复？",
         "criterion": "检验移除要素、保留组成但打乱布局、同一主要对象更换周边环境时的响应；完成跨城市检索、双种子匹配及公平重建对照。",
         "status": "pending",
-        "evidence": "已有局部模型的对照不能代替新路线验证；移除要素、打乱布局、换周边、跨城及跨种子检验待开展。"
+        "evidence": "移除要素、打乱布局、换周边、跨城及跨种子检验待开展。"
       },
       {
         "id": "geography",
@@ -119,9 +119,7 @@
       "沿用的VLM语义解释资料含原型层测试图像；语义先验不独立于封存测试，后续先作为探索性证据。",
       "原有patch重建覆盖与经核查的景观组合覆盖分别报告，框内存在匹配不表示所有patch已获语义解释。"
     ],
-    "blockers": [
-      "原型 Qwen 解释运行失败，需处理后继续。"
-    ],
+    "blockers": [],
     "reviewed_on": "2026-10-16"
   },
   "rows": [
@@ -158,325 +156,6 @@
       "detail": "86,038 全景 · 29 城市"
     },
     {
-      "id": "prototypes",
-      "label": "多尺度原型训练",
-      "status": "complete",
-      "detail": "4/4 组训练完成 · 3×3 / 7×7 / 15×15",
-      "progress": {
-        "current": 297888,
-        "total": 297888,
-        "unit": "训练步"
-      },
-      "runs": [
-        {
-          "label": "真实数据 · seed 42",
-          "status": "complete",
-          "detail": "8/8 轮",
-          "progress": {
-            "current": 74472,
-            "total": 74472,
-            "unit": "训练步"
-          }
-        },
-        {
-          "label": "真实数据 · seed 43",
-          "status": "complete",
-          "detail": "8/8 轮",
-          "progress": {
-            "current": 74472,
-            "total": 74472,
-            "unit": "训练步"
-          }
-        },
-        {
-          "label": "空间打乱对照",
-          "status": "complete",
-          "detail": "8/8 轮",
-          "progress": {
-            "current": 74472,
-            "total": 74472,
-            "unit": "训练步"
-          }
-        },
-        {
-          "label": "维度对应打乱对照",
-          "status": "complete",
-          "detail": "8/8 轮",
-          "progress": {
-            "current": 74472,
-            "total": 74472,
-            "unit": "训练步"
-          }
-        }
-      ]
-    },
-    {
-      "id": "evaluation",
-      "label": "验证与稳定性",
-      "status": "complete",
-      "detail": "完整验证 · 种子稳定性 · NMF · 置换检验"
-    },
-    {
-      "id": "gallery",
-      "label": "原型图像与激活",
-      "status": "complete",
-      "detail": "96 个候选模板的原图、响应及组成证据"
-    },
-    {
-      "id": "prototype_vlm",
-      "label": "原型 Qwen 解释",
-      "status": "error",
-      "detail": "已处理 96/96 个候选模板",
-      "progress": {
-        "current": 96,
-        "total": 96,
-        "unit": "候选模板"
-      }
-    },
-    {
-      "id": "coverage_trial",
-      "label": "重建目标对照试训",
-      "status": "complete",
-      "detail": "60,233训练 / 12,755开发 / 13,050测试全景；每尺度32模板；测试封存。 两组试训与开发评分完成；人工核查未完成，80%语义覆盖尚未验证。",
-      "progress": {
-        "current": 7,
-        "total": 7,
-        "unit": "计算阶段"
-      },
-      "runs": [
-        {
-          "label": "原重建目标",
-          "status": "complete",
-          "detail": "4轮筛选试训",
-          "progress": {
-            "current": 32712,
-            "total": 32712,
-            "unit": "训练步"
-          }
-        },
-        {
-          "label": "能量目标＋稀疏预热",
-          "status": "complete",
-          "detail": "4轮筛选试训",
-          "progress": {
-            "current": 32712,
-            "total": 32712,
-            "unit": "训练步"
-          }
-        }
-      ]
-    },
-    {
-      "id": "patch_coverage",
-      "label": "逐图80% patch覆盖",
-      "status": "complete",
-      "detail": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 第8轮固定开发监控：达标图0.0%，平均patch覆盖47.8%，最差图2.3%。 完整开发集：平均patch覆盖47.4%，达标图0.276%，四方向全部达标全景0.0%。 完整训练集：平均patch覆盖47.3%，达标图0.282%，四方向全部达标全景0.0%。",
-      "link": "prototypes/#full-evaluation",
-      "policy": {
-        "target_fraction": 0.8,
-        "maximum_patch_nmse": 0.5,
-        "minimum_target_energy": 1e-08,
-        "temperature_start": 0.25,
-        "temperature_end": 0.1,
-        "coverage_weight": 5.0,
-        "robust_patch_weight": 0.1
-      },
-      "semantic_review": "pending",
-      "test_sealed": true,
-      "metrics": {
-        "dev": {
-          "images": 51020,
-          "image_pass_fraction": 0.0027636221089768717,
-          "mean_image_patch_coverage": 0.4737644151153209,
-          "panorama_all_four_pass_fraction": 0.0,
-          "images_below_target": 50879,
-          "invalid_patches": 0,
-          "all_images_meet_target": false,
-          "coverage_quantiles": {
-            "0": 0.0,
-            "0.05": 0.15178571428571427,
-            "0.1": 0.2308673469387755,
-            "0.25": 0.3673469387755102,
-            "0.5": 0.4961734693877551,
-            "0.75": 0.6033163265306123,
-            "0.9": 0.6747448979591837,
-            "1": 0.9196428571428571
-          }
-        },
-        "train": {
-          "images": 240932,
-          "image_pass_fraction": 0.002818222569023625,
-          "mean_image_patch_coverage": 0.473109584946824,
-          "panorama_all_four_pass_fraction": 3.320438962030781e-05,
-          "images_below_target": 240253,
-          "invalid_patches": 0,
-          "all_images_meet_target": false,
-          "coverage_quantiles": {
-            "0": 0.0,
-            "0.05": 0.15306122448979592,
-            "0.1": 0.22831632653061223,
-            "0.25": 0.3635204081632653,
-            "0.5": 0.4961734693877551,
-            "0.75": 0.6033163265306123,
-            "0.9": 0.6747448979591837,
-            "1": 0.9196428571428571
-          }
-        }
-      },
-      "progress": {
-        "current": 65424,
-        "total": 65424,
-        "unit": "训练步"
-      },
-      "runs": [
-        {
-          "label": "完整开发集评分",
-          "status": "complete",
-          "detail": "51,020张方向图；保存未达标清单和逐patch覆盖图"
-        },
-        {
-          "label": "完整训练集评分",
-          "status": "complete",
-          "detail": "240,932张方向图；保存未达标清单和逐patch覆盖图"
-        }
-      ]
-    },
-    {
-      "id": "patch_response_refit",
-      "label": "冻结模板响应诊断",
-      "status": "complete",
-      "detail": "29城各1开发全景，116张方向图；冻结96模板，平均patch覆盖47.8%→50.4%，0/116张达到80%。150步响应优化，约50步后趋稳；有限步诊断不是理论上限，语义待核查。",
-      "link": "prototypes/#response-refit",
-      "test_sealed": true,
-      "semantic_review": "pending",
-      "metrics": {
-        "encoder": {
-          "images": 116,
-          "panoramas": 29,
-          "policy": {
-            "target_fraction": 0.8,
-            "maximum_patch_nmse": 0.5,
-            "minimum_target_energy": 1e-08,
-            "temperature_start": 0.25,
-            "temperature_end": 0.1,
-            "coverage_weight": 5.0,
-            "robust_patch_weight": 0.1
-          },
-          "images_meeting_target": 0,
-          "images_below_target": 116,
-          "image_pass_fraction": 0.0,
-          "all_images_meet_target": false,
-          "mean_image_patch_coverage": 0.4778764954257565,
-          "pooled_patch_coverage": 0.4778764954257565,
-          "coverage_quantiles": {
-            "0": 0.04974489795918367,
-            "0.05": 0.14158163265306123,
-            "0.1": 0.22066326530612246,
-            "0.25": 0.3431122448979592,
-            "0.5": 0.4993622448979592,
-            "0.75": 0.6186224489795918,
-            "0.9": 0.7098214285714286,
-            "1": 0.7665816326530612
-          },
-          "panoramas_all_four_pass": 0,
-          "panorama_all_four_pass_fraction": 0.0,
-          "valid_patches": 90944,
-          "invalid_patches": 0,
-          "images_without_valid_patches": 0,
-          "semantic_coverage": null,
-          "semantic_review": "pending",
-          "meaning": "per-image patch reconstruction criterion, not semantic validation",
-          "mean_image_nmse": 0.5325058654978357
-        },
-        "energy": {
-          "images": 116,
-          "panoramas": 29,
-          "policy": {
-            "target_fraction": 0.8,
-            "maximum_patch_nmse": 0.5,
-            "minimum_target_energy": 1e-08,
-            "temperature_start": 0.25,
-            "temperature_end": 0.1,
-            "coverage_weight": 5.0,
-            "robust_patch_weight": 0.1
-          },
-          "images_meeting_target": 0,
-          "images_below_target": 116,
-          "image_pass_fraction": 0.0,
-          "all_images_meet_target": false,
-          "mean_image_patch_coverage": 0.49100545390570016,
-          "pooled_patch_coverage": 0.4910054539057002,
-          "coverage_quantiles": {
-            "0": 0.05612244897959184,
-            "0.05": 0.16071428571428573,
-            "0.1": 0.24426020408163265,
-            "0.25": 0.35427295918367346,
-            "0.5": 0.5140306122448979,
-            "0.75": 0.6265943877551021,
-            "0.9": 0.7206632653061225,
-            "1": 0.7882653061224489
-          },
-          "panoramas_all_four_pass": 0,
-          "panorama_all_four_pass_fraction": 0.0,
-          "valid_patches": 90944,
-          "invalid_patches": 0,
-          "images_without_valid_patches": 0,
-          "semantic_coverage": null,
-          "semantic_review": "pending",
-          "meaning": "per-image patch reconstruction criterion, not semantic validation",
-          "mean_image_nmse": 0.5242070129205441
-        },
-        "coverage": {
-          "images": 116,
-          "panoramas": 29,
-          "policy": {
-            "target_fraction": 0.8,
-            "maximum_patch_nmse": 0.5,
-            "minimum_target_energy": 1e-08,
-            "temperature_start": 0.25,
-            "temperature_end": 0.1,
-            "coverage_weight": 5.0,
-            "robust_patch_weight": 0.1
-          },
-          "images_meeting_target": 0,
-          "images_below_target": 116,
-          "image_pass_fraction": 0.0,
-          "all_images_meet_target": false,
-          "mean_image_patch_coverage": 0.5043983110485574,
-          "pooled_patch_coverage": 0.5043983110485574,
-          "coverage_quantiles": {
-            "0": 0.06505102040816327,
-            "0.05": 0.18048469387755103,
-            "0.1": 0.26211734693877553,
-            "0.25": 0.3695790816326531,
-            "0.5": 0.5242346938775511,
-            "0.75": 0.6403061224489796,
-            "0.9": 0.7283163265306123,
-            "1": 0.7959183673469388
-          },
-          "panoramas_all_four_pass": 0,
-          "panorama_all_four_pass_fraction": 0.0,
-          "valid_patches": 90944,
-          "invalid_patches": 0,
-          "images_without_valid_patches": 0,
-          "semantic_coverage": null,
-          "semantic_review": "pending",
-          "meaning": "per-image patch reconstruction criterion, not semantic validation",
-          "mean_image_nmse": 0.5265231795352081
-        }
-      }
-    },
-    {
-      "id": "patch_prototype_gallery",
-      "label": "当前原型逐模板实例",
-      "status": "complete",
-      "detail": "51,020开发图检索完成；66个有实例模板，共528组原图、贡献热图、裁剪；30个模板暂无实例。语义一致性待核查。",
-      "link": "prototypes/#prototype-gallery",
-      "semantic_review": "pending",
-      "test_sealed": true,
-      "model_sha256": "f63942ab62d9df726f3b175a9be9449f8d4439290a1b642ffa0e905d8dc2acb8"
-    },
-    {
       "id": "element_hierarchy",
       "label": "维度—要素候选表",
       "status": "complete",
@@ -488,8 +167,8 @@
       "id": "relational_pilot",
       "label": "大范围关系原型小试",
       "status": "partial",
-      "detail": "24,113训练＋5,817开发多要素区域；组成MSE 0.2311、完整布局 0.2121、关系图 0.2166。关系图未超过完整布局；语义、同预算局部模板和跨种子验证待完成。",
-      "link": "elements/",
+      "detail": "24,113训练＋5,817开发多要素区域；组成MSE 0.2311、完整布局 0.2121、关系图 0.2166。关系图未超过完整布局；语义与跨种子验证待完成。",
+      "link": "elements/#relation-examples",
       "training_completed": true,
       "arm_mse": {
         "composition": 0.23107051849365234,
@@ -501,5 +180,5 @@
     }
   ],
   "runtime_terminal": true,
-  "note": "计算完成不等于语义已验证。新关系原型小试已训练32槽位，但未超过完整区域对照；旧局部模板仅作重建参考。"
+  "note": "计算完成不等于语义已验证。新关系原型小试已训练32槽位，每槽位已有4组开发集实例；关系图未超过完整区域对照。"
 }
