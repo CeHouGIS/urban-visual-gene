@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T03:54:48.136018+00:00",
+  "updated_utc": "2026-10-16T03:59:01.884311+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
   "headline": "完成原型模型与打乱对照",
@@ -28,6 +28,7 @@
       {
         "id": "meaning",
         "label": "单元语义核查",
+        "review_status": "partial",
         "question": "哪些维度能形成明确的语义？",
         "criterion": "结合原图证据，区分一致、混合及证据不足的维度；Qwen 名称须核查。",
         "remaining": "核查候选名称与混合维度，形成可解释性结论。",
@@ -53,6 +54,7 @@
       {
         "id": "geography",
         "label": "城市与空间规律",
+        "review_status": "partial",
         "question": "这些单元与组合在哪里共享或分化？",
         "criterion": "区分已有 64 组城市结果与新增原型的地理证据。",
         "remaining": "原型验证后，再判断其城市分布与空间差异。",
@@ -62,6 +64,7 @@
       {
         "id": "writing",
         "label": "论文与成果发布",
+        "review_status": "partial",
         "question": "证据能否支持最终研究叙述？",
         "criterion": "方法、图表、数据范围和结论一致，发布可核查实例。",
         "remaining": "把逐维 masked 解释与原型结果整合进 Chapter 5，再核对图表和结论。",
@@ -112,7 +115,7 @@
       "status": "running",
       "detail": "2/4 组训练完成 · 3×3 / 7×7 / 15×15",
       "progress": {
-        "current": 270444,
+        "current": 286144,
         "total": 297888,
         "unit": "训练步"
       },
@@ -140,9 +143,9 @@
         {
           "label": "空间打乱对照",
           "status": "running",
-          "detail": "第 7/8 轮 · GPU 0",
+          "detail": "第 8/8 轮 · GPU 0",
           "progress": {
-            "current": 60700,
+            "current": 68500,
             "total": 74472,
             "unit": "训练步"
           }
@@ -150,9 +153,9 @@
         {
           "label": "维度对应打乱对照",
           "status": "running",
-          "detail": "第 7/8 轮 · GPU 2",
+          "detail": "第 8/8 轮 · GPU 2",
           "progress": {
-            "current": 60800,
+            "current": 68700,
             "total": 74472,
             "unit": "训练步"
           }
