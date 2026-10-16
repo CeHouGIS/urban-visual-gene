@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T03:59:01.884311+00:00",
+  "updated_utc": "2026-10-16T04:09:10.162539+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "headline": "完成原型模型与打乱对照",
+  "headline": "检验原型是否稳定、有结构意义",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
-    "focus": "完成原型模型与打乱对照",
-    "next_step": "四组模型完成后，自动进入完整验证、稳定性分析和实例图生成。",
+    "focus": "检验原型是否稳定、有结构意义",
+    "next_step": "完成全部验证、种子匹配、NMF 和置换检验，核对真实结构相对对照的表现。",
     "milestones": [
       {
         "id": "data",
@@ -40,16 +40,16 @@
         "label": "局部景观原型",
         "question": "哪些维度组合与布局会反复出现？",
         "criterion": "得到模板组成、空间响应、跨城市实例和原型解释。",
-        "status": "running",
-        "evidence": "2/4 组训练完成 · 3×3 / 7×7 / 15×15；原型图与解释待补齐。"
+        "status": "partial",
+        "evidence": "4/4 组训练完成 · 3×3 / 7×7 / 15×15；原型图与解释待补齐。"
       },
       {
         "id": "validity",
         "label": "原型有效性验证",
         "question": "组合是否依赖真实结构且可重复？",
         "criterion": "完成完整验证、双种子匹配、两类置乱和 NMF 对照。",
-        "status": "pending",
-        "evidence": "完整验证 · 种子稳定性 · NMF · 置换检验"
+        "status": "running",
+        "evidence": "2/4 组完成验证评分；含稳定性与置换检验"
       },
       {
         "id": "geography",
@@ -112,10 +112,10 @@
     {
       "id": "prototypes",
       "label": "多尺度原型训练",
-      "status": "running",
-      "detail": "2/4 组训练完成 · 3×3 / 7×7 / 15×15",
+      "status": "complete",
+      "detail": "4/4 组训练完成 · 3×3 / 7×7 / 15×15",
       "progress": {
-        "current": 286144,
+        "current": 297888,
         "total": 297888,
         "unit": "训练步"
       },
@@ -142,20 +142,20 @@
         },
         {
           "label": "空间打乱对照",
-          "status": "running",
-          "detail": "第 8/8 轮 · GPU 0",
+          "status": "complete",
+          "detail": "8/8 轮",
           "progress": {
-            "current": 68500,
+            "current": 74472,
             "total": 74472,
             "unit": "训练步"
           }
         },
         {
           "label": "维度对应打乱对照",
-          "status": "running",
-          "detail": "第 8/8 轮 · GPU 2",
+          "status": "complete",
+          "detail": "8/8 轮",
           "progress": {
-            "current": 68700,
+            "current": 74472,
             "total": 74472,
             "unit": "训练步"
           }
@@ -165,13 +165,13 @@
     {
       "id": "evaluation",
       "label": "验证与稳定性",
-      "status": "pending",
-      "detail": "完整验证 · 种子稳定性 · NMF · 置换检验"
+      "status": "running",
+      "detail": "2/4 组完成验证评分；含稳定性与置换检验"
     },
     {
       "id": "gallery",
       "label": "原型图像与激活",
-      "status": "pending",
+      "status": "running",
       "detail": "96 个候选模板的原图、响应及组成证据"
     },
     {
