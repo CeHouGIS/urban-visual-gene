@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T07:53:43.360105+00:00",
+  "updated_utc": "2026-10-16T08:20:52.557142+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
   "headline": "定位景观原型覆盖不足的瓶颈",
@@ -41,7 +41,7 @@
         "question": "哪些维度组合与布局会反复出现？",
         "criterion": "得到模板组成、空间响应、跨城市实例和原型解释。",
         "status": "partial",
-        "evidence": "4/4 组训练完成 · 3×3 / 7×7 / 15×15；原型图与解释待补齐。"
+        "evidence": "51,020开发图检索完成；66个有实例模板，共528组原图、贡献热图、裁剪；30个模板暂无实例。语义一致性待核查。"
       },
       {
         "id": "prototype_capacity",
@@ -444,6 +444,16 @@
           "mean_image_nmse": 0.5265231795352081
         }
       }
+    },
+    {
+      "id": "patch_prototype_gallery",
+      "label": "当前原型逐模板实例",
+      "status": "complete",
+      "detail": "51,020开发图检索完成；66个有实例模板，共528组原图、贡献热图、裁剪；30个模板暂无实例。语义一致性待核查。",
+      "link": "prototypes/#prototype-gallery",
+      "semantic_review": "pending",
+      "test_sealed": true,
+      "model_sha256": "f63942ab62d9df726f3b175a9be9449f8d4439290a1b642ffa0e905d8dc2acb8"
     }
   ],
   "runtime_terminal": true,

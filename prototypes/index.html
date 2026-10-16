@@ -1,15 +1,28 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>原型覆盖评估 · Urban Scene Primitives</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>景观原型实例与评估 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/" aria-current=page>原型评估</a></nav><div class="project-layout"><div class="project-main">
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/prototype-gallery.css?v=1"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/" aria-current=page>原型评估</a></nav><div class="project-layout"><div class="project-main">
 <main class="page"><div class="eyebrow">Main SAE · landscape prototype evaluation</div>
-<h1>景观原型：覆盖率与诊断</h1>
+<h1>景观原型：实例与覆盖评估</h1>
 <p class="lead">96个共享局部模板，能否让每张街景至少80%的patch达到重建质量要求？</p>
 <div class="note"><strong>本轮计算已完成，80%目标尚未达到。</strong>完整开发集平均patch覆盖为47.4%，
 仅141/51,020张方向图达标。冻结模板后，116张开发图的平均覆盖从47.8%提高到50.4%，仍为0/116达标。</div>
 <p>本页复用当前DINOv3 ViT-L、panorama-aware、W4096/K32主SAE的完整稀疏激活。
 原型层使用29城市、86,038个全景；Moscow原图映射未核实，暂未纳入。它与语义地图中固定的3,712个验证全景分析范围不同。</p>
-<div class="controls"><a href="#full-evaluation">完整评分</a><a href="#response-refit">冻结模板诊断</a><a href="#examples">原图实例</a><a href="#next">待办</a></div>
+<div class="controls"><a href="#prototype-gallery">逐原型实例</a><a href="#full-evaluation">完整评分</a><a href="#response-refit">冻结模板诊断</a><a href="#examples">覆盖率实例</a><a href="#next">待办</a></div>
+<section class="section" id="prototype-gallery" aria-labelledby="gallery-title">
+<div class="eyebrow">Prototype atlas · real street-view evidence</div>
+<h2 id="gallery-title">逐原型查看真实街景实例</h2>
+<p>当前模型的96个模板中，66个有可展示实例，共528组。
+每个模板最多8个不同全景点位，优先跨城市选取；候选来自开发集全部51,020张方向图。另外30个模板暂无通过核验的实例，目录中保留并标明原因。</p>
+<p class="muted">按模板峰值响应检索，再核验：去掉该位置的模板响应后，重建平方误差必须增大。
+热图显示这个局部模板的贡献强度；裁剪范围对应模板在图中的空间支持，不是物体分割。
+这些是待核查的候选景观组合，尚未赋予已验证的语义名称。</p>
+<div id="prototype-atlas" aria-busy="true"><p role="status">正在载入原型实例…</p></div>
+<noscript>请启用JavaScript，或<a href="../data/prototype-gallery.json">下载完整原型实例索引</a>。</noscript>
+<p class="muted">实例检索没有使用封存测试集。模板身份：<code>f63942ab62d9df72</code>。
+<a href="../data/prototype-gallery.json">下载全部实例与组成维度</a></p>
+</section>
 <section class="section" id="criterion"><h2>什么叫一个patch被覆盖？</h2>
 <p>每个方向是一张28×28×4096的激活图。输入按训练集每维正激活RMS标准化并截断至8，
 在目标激活能量&gt;10<sup>−8</sup>的patch上计算 <code>NMSE = ||重建激活 − 目标激活||² / ||目标激活||²</code>。
@@ -36,7 +49,7 @@
 <p>冻结SAE曾见过部分开发和测试图像，因此本页空间留出仅针对新增原型层。</p>
 <p><a href="../data/prototype-coverage.json">下载结果与数据身份 JSON</a> ·
 <a href="../data/prototype-response-convergence.json">下载响应优化曲线 JSON</a></p></section></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
-发布快照：2026-10-16 15:53 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+发布快照：2026-10-16 16:20 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
 </footer></div><aside class="project-sidebar" aria-label="项目进度">
 <details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
 <div class="project-progress-content"><p id="project-research-goal"></p>
@@ -47,4 +60,4 @@
 <table class="project-progress-table"><caption class="project-sr-only">当前主实验与景观原型的阶段进度</caption><thead class="project-sr-only"><tr><th scope="col">阶段与进度</th><th scope="col">状态</th></tr></thead><tbody id="project-progress-rows"></tbody></table>
 <p id="project-progress-note"></p></details><details class="project-scope"><summary>研究范围与待核查项</summary><div id="project-research-scope"></div></details>
 <div class="project-progress-bottom"><time id="project-progress-time"></time><button type="button" id="project-progress-refresh" aria-label="刷新项目进度">刷新</button></div><p id="project-progress-freshness" role="status">读取发布快照…</p>
-<noscript>启用 JavaScript 后显示进度表，或查看 <a href="../data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="../assets/project-progress.js?v=1" defer></script></body></html>
+<noscript>启用 JavaScript 后显示进度表，或查看 <a href="../data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="../assets/project-progress.js?v=1" defer></script><script src="../assets/prototype-gallery.js?v=1" defer></script></body></html>

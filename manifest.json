@@ -33,7 +33,7 @@
     "interpreted": 3178,
     "unobserved_in_sample": 918
   },
-  "file_count": 22236,
+  "file_count": 24447,
   "bytes_before_manifest": 894983109,
   "panorama_display": {
     "view_order": [
@@ -52,8 +52,30 @@
   "prototype_coverage": {
     "page": "prototypes/",
     "summary": "data/prototype-coverage.json",
-    "published_at": "2026-10-16 15:53 CST",
+    "published_at": "2026-10-16 16:20 CST",
     "target_achieved": false,
     "semantic_review": "pending"
+  },
+  "prototype_gallery": {
+    "identity": {
+      "version": 1,
+      "experiment_identity": "312f772cc12d9369c7daa93038c3845985c7f3cfb961bf0bf53e33a7f2ecf4eb",
+      "model_sha256": "f63942ab62d9df726f3b175a9be9449f8d4439290a1b642ffa0e905d8dc2acb8",
+      "sae_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
+      "split": "dev",
+      "panoramas": 12755,
+      "images": 51020,
+      "examples_per_template": 8,
+      "per_city_candidate_pool": 16,
+      "selection": "peak response per directional view; unique panoramas; prefer <=2 per city; positive float32 single-response removal SSE change",
+      "ranking_precision": "bfloat16 autocast",
+      "evidence_precision": "float32",
+      "test_used": false
+    },
+    "templates": 96,
+    "templates_with_examples": 66,
+    "examples": 528,
+    "semantic_review": "pending",
+    "page": "prototypes/#prototype-gallery"
   }
 }
