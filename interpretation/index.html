@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>维度解释 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/" aria-current=page>维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/">原型评估</a></nav><div class="project-layout"><div class="project-main">
+<link rel="stylesheet" href="../assets/site.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/" aria-current=page>维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/">重建参考</a><a href="../elements/">要素与组合</a></nav><div class="project-layout"><div class="project-main">
 <main class="page"><div class="eyebrow">Masked Top10 · Qwen3-VL-2B</div><h1>逐维语义解释</h1>
 <p>每维选前 10 个不同全景的最强方向，按该方向峰值约 50% 保留高激活 patch，裁到联合包围框，框内其余像素置灰（RGB 127）。Qwen 只看这些 masked 原图拼图。</p>
 <p class="note">名称与模型自述的信心均为待核查候选；patch mask 不是像素级分割。此处是发布时的进度快照。</p><p id="snapshot"></p>

@@ -1,8 +1,8 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>景观原型实例与评估 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/prototype-gallery.css?v=1"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/" aria-current=page>原型评估</a></nav><div class="project-layout"><div class="project-main">
-<main class="page"><div class="eyebrow">Main SAE · landscape prototype evaluation</div>
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/prototype-gallery.css?v=1"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/" aria-current=page>重建参考</a><a href="../elements/">要素与组合</a></nav><div class="project-layout"><div class="project-main">
+<main class="page"><section class="note" id="element-route"><strong>当前路线：从要素关系中寻找景观组合</strong><p>先合并同一对象的部件维度，再比较14×14、21×21、28×28范围的组成与布局。已有局部模板保留为重建参考；新的关系原型尚未训练。</p><a href="../elements/">查看第一步要素表、图像证据与小试计划 →</a></section><div class="eyebrow">Main SAE · landscape prototype evaluation</div>
 <h1>景观原型：实例与覆盖评估</h1>
 <p class="lead">96个共享局部模板，能否让每张街景至少80%的patch达到重建质量要求？</p>
 <div class="note"><strong>本轮计算已完成，80%目标尚未达到。</strong>完整开发集平均patch覆盖为47.4%，

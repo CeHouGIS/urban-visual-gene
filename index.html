@@ -1,8 +1,8 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>主实验 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="assets/site.css"></head><body><link rel="stylesheet" href="assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="./">Urban Scene Primitives</a><a href="./" aria-current=page>主实验</a><a href="semantic/">语义地图</a><a href="instances/">图像实例</a><a href="interpretation/">维度解释</a><a href="combinations/">组合探索</a><a href="prototypes/">原型评估</a></nav><div class="project-layout"><div class="project-main">
-<main class="page"><div class="eyebrow">30-city panorama-aware BatchTopK SAE</div>
+<link rel="stylesheet" href="assets/site.css"></head><body><link rel="stylesheet" href="assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="./">Urban Scene Primitives</a><a href="./" aria-current=page>主实验</a><a href="semantic/">语义地图</a><a href="instances/">图像实例</a><a href="interpretation/">维度解释</a><a href="combinations/">组合探索</a><a href="prototypes/">重建参考</a><a href="elements/">要素与组合</a></nav><div class="project-layout"><div class="project-main">
+<main class="page"><section class="note" id="element-route"><strong>当前路线：从要素关系中寻找景观组合</strong><p>先合并同一对象的部件维度，再比较14×14、21×21、28×28范围的组成与布局。已有局部模板保留为重建参考；新的关系原型尚未训练。</p><a href="elements/">查看第一步要素表、图像证据与小试计划 →</a></section><div class="eyebrow">30-city panorama-aware BatchTopK SAE</div>
 <h1>Urban Scene Primitives</h1><p class="lead">从街景中学习稀疏视觉单元，观察它们响应什么，以及不同单元如何共同出现。</p>
 <div class="stats"><div class="stat"><b>30</b><span>训练与验证城市</span></div><div class="stat"><b>89,031</b><span>完整四方向全景</span></div><div class="stat"><b>4,096</b><span>SAE 字典维度 · K=32</span></div><div class="stat"><b>28 × 28</b><span>每方向 patch 网格</span></div></div>
 <p>四方向图像分别经过冻结的 DINOv3 ViT-L/16（448 × 448 → 28 × 28 × 1024），再进行环形全景邻域 context mixing；逐 patch 输入 BatchTopK SAE，完成 1024 → 4096 → 1024 的稀疏分解。</p>

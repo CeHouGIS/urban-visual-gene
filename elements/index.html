@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>景观要素与组合路线 · Urban Scene Primitives</title>
+<meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="elements.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/">重建参考</a><a href="../elements/" aria-current=page>要素与组合</a></nav><div class="project-layout"><div class="project-main">
+<main class="page"><div class="eyebrow">Landscape compositions · Step 1</div>
+<h1>先识别要素，再寻找景观组合</h1>
+<p class="lead">新路线：SAE维度 → 景观要素父类 → 大范围区域关系 → 可重复的景观组合。</p>
+<p class="note">本页完成的是候选输入整理，图模型尚未训练。父类由现有Qwen解释的明确名称规则整理，仍需核查；它们不代表已经发现的景观原型。</p>
+<div class="element-stages"><section><h2>01 · 要素表已生成</h2><p>4,096维全部保留；3,634维已有解释，1,561维进入暂定候选，涉及15类要素。</p></section>
+<section><h2>02 · 小试名单已固定</h2><p>29城，每城32训练＋8开发全景，共1,160全景、4,640方向图；沿用空间块划分。</p></section>
+<section><h2>03 · 关系输入待构建</h2><p>14×14 / 21×21 / 28×28区域；保留组成、相对位置与布局；四方向按朝向提供上下文。</p></section>
+<section><h2>04 · 三组对照待训练</h2><p>局部重建、大范围重建、要素关系原型；初始32个候选槽位，数量调参保留待办。</p></section></div>
+<section class="section"><h2>这次如何避免“同一对象拆开再组合”？</h2>
+<p>窗户、门、建筑墙面归入“建筑”；树冠、树干归入“乔木”；车窗、车轮归入“车辆”。细标签原样保留，统计要素多样性时按父类计算。依附对象不明的墙面、地面、材料与整体场景保留为待核查或上下文。</p>
+<p>完整区域的组成与空间关系将参与匹配。后续须检验：更换周边环境、移除主要要素、打乱布局时，原型响应如何变化；并检查跨城市与跨种子重复性。</p>
+<p><strong>80%目标仍保留。</strong>全体patch重建覆盖与经过审核的景观组合覆盖分别报告；大框匹配成功不等于框内所有patch已被解释。</p></section>
+<section class="section"><h2>逐维候选与原图证据</h2>
+<p>优先列出426个遮罩/未遮罩解释父类不一致的维度。冲突标记仅表示需要检查，不能单独判断哪种解释正确。模型自述“高信心”不是准确率。</p>
+<p><a href="dimension_elements.csv">下载完整要素表 CSV</a> · <a href="review_queue.csv">下载复核清单 CSV</a> · <a href="hierarchy.json">数据与来源 JSON</a> · <a href="../prototypes/">已有重建对照结果</a></p>
+<div class="controls"><input id="element-search" aria-label="搜索维度或语义" placeholder="编号、窗户、树冠…"><select id="element-family" aria-label="要素父类"><option value="">全部父类</option></select><select id="element-status" aria-label="证据状态"><option value="">全部状态</option></select><label><input type="checkbox" id="element-conflicts">仅看解释冲突</label></div>
+<p id="element-count" role="status">载入候选表…</p>
+<div class="element-layout"><div><div id="element-list" class="element-list" aria-label="维度列表"></div><button id="element-more" type="button">再显示100项</button></div><section id="element-detail" class="element-detail" aria-label="维度证据"></section></div></section>
+<section class="section"><h2>范围与当前结论</h2><p>没有重新提取DINO特征或训练SAE，没有新开测试集图像或激活。现有VLM解释资料曾使用包含新原型层训练、开发和测试图像的语料，因此这些语义先验不独立于测试；后续结果先作为探索性证据。</p>
+<p>1,048维背景/材料，503维待核查，522维证据不足，462维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
+发布快照：2026-10-16 17:15 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+</footer></div><aside class="project-sidebar" aria-label="项目进度">
+<details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
+<div class="project-progress-content"><p id="project-research-goal"></p>
+<div class="project-focus"><span class="project-progress-kicker">当前关键路径</span><strong id="project-research-focus"></strong><p id="project-next-step"></p></div>
+<p class="project-progress-context" id="project-milestone-count"></p><div id="project-milestones"></div>
+<div id="project-blockers"></div>
+<details class="project-runtime"><summary>计算任务明细<span id="project-runtime-count"></span></summary>
+<table class="project-progress-table"><caption class="project-sr-only">当前主实验与景观原型的阶段进度</caption><thead class="project-sr-only"><tr><th scope="col">阶段与进度</th><th scope="col">状态</th></tr></thead><tbody id="project-progress-rows"></tbody></table>
+<p id="project-progress-note"></p></details><details class="project-scope"><summary>研究范围与待核查项</summary><div id="project-research-scope"></div></details>
+<div class="project-progress-bottom"><time id="project-progress-time"></time><button type="button" id="project-progress-refresh" aria-label="刷新项目进度">刷新</button></div><p id="project-progress-freshness" role="status">读取发布快照…</p>
+<noscript>启用 JavaScript 后显示进度表，或查看 <a href="../data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="../assets/project-progress.js?v=1" defer></script><script src="elements.js" defer></script></body></html>

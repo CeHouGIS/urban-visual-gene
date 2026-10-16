@@ -33,7 +33,7 @@
     "interpreted": 3178,
     "unobserved_in_sample": 918
   },
-  "file_count": 24447,
+  "file_count": 25335,
   "bytes_before_manifest": 894983109,
   "panorama_display": {
     "view_order": [
@@ -77,5 +77,13 @@
     "examples": 528,
     "semantic_review": "pending",
     "page": "prototypes/#prototype-gallery"
+  },
+  "element_hierarchy": {
+    "page": "elements/",
+    "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
+    "candidate_dimensions": 1561,
+    "semantic_validation": "pending",
+    "graph_training": "not_started",
+    "published_at": "2026-10-16 17:15 CST"
   }
 }
