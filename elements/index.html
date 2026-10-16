@@ -1,15 +1,24 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>景观要素与组合路线 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="elements.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/">重建参考</a><a href="../elements/" aria-current=page>要素与组合</a></nav><div class="project-layout"><div class="project-main">
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="elements.css"><link rel="stylesheet" href="element-training.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../combinations/">组合探索</a><a href="../prototypes/">重建参考</a><a href="../elements/" aria-current=page>要素与组合</a></nav><div class="project-layout"><div class="project-main">
 <main class="page"><div class="eyebrow">Landscape compositions · Step 1</div>
 <h1>先识别要素，再寻找景观组合</h1>
 <p class="lead">新路线：SAE维度 → 景观要素父类 → 大范围区域关系 → 可重复的景观组合。</p>
-<p class="note">本页完成的是候选输入整理，图模型尚未训练。父类由现有Qwen解释的明确名称规则整理，仍需核查；它们不代表已经发现的景观原型。</p>
+<p class="note">候选要素仍需核查；三组32槽位探索性小试已训练。关系图开发重建误差高于完整区域对照，尚不能把槽位解释为已验证的景观原型。</p>
 <div class="element-stages"><section><h2>01 · 要素表已生成</h2><p>4,096维全部保留；3,634维已有解释，1,561维进入暂定候选，涉及15类要素。</p></section>
 <section><h2>02 · 小试名单已固定</h2><p>29城，每城32训练＋8开发全景，共1,160全景、4,640方向图；沿用空间块划分。</p></section>
-<section><h2>03 · 关系输入待构建</h2><p>14×14 / 21×21 / 28×28区域；保留组成、相对位置与布局；四方向按朝向提供上下文。</p></section>
-<section><h2>04 · 三组对照待训练</h2><p>局部重建、大范围重建、要素关系原型；初始32个候选槽位，数量调参保留待办。</p></section></div>
+<section><h2>03 · 大范围区域已构建</h2><p>64,960个方向内区域已构建；四方向提供按朝向排列的上下文，不跨接缝卷积。</p></section>
+<section><h2>04 · 三组小试已训练</h2><p>24,113训练＋5,817开发多要素区域；组成、完整布局、关系图三组各10轮。原定同预算局部模板尚未重训。</p></section></div>
+<section class="section" id="pilot-training"><h2>大范围关系原型：第一轮训练</h2>
+<p>从29城1,160个全景的四方向激活中构建64,960个14×14、21×21、28×28区域。只有至少两个不同父类都有明显响应的区域进入小试：训练24,113个，开发5,817个。每组32个离散槽位、同一划分、同一初始化种子和10轮训练。</p>
+<table class="element-results"><thead><tr><th>输入编码</th><th>开发集重建MSE ↓</th></tr></thead><tbody>
+<tr><td>仅组成强度＋四方向上下文</td><td>0.2311</td></tr>
+<tr><td>完整区域布局＋四方向上下文</td><td><strong>0.2121</strong></td></tr>
+<tr><td>布局＋要素邻近关系图</td><td>0.2166</td></tr></tbody></table>
+<p>关系图减完整布局的配对MSE差为+0.0046；按218个开发空间块重采样的95%区间为[0.0030, 0.0062]。这轮关系图没有带来重建收益；完整布局比只看组成更好。32个槽位在开发集均有响应，但这不是32种已验证景观。</p>
+<p>这是候选父类的区域布局重建，不是原始4096维激活的重建、全patch的80%覆盖或景观语义准确率。原定同预算局部模板重训尚未完成；下步核查各槽位真实图像、要素删除和位置置乱响应，再做跨种子比较。测试仍封存。</p>
+<p><a href="training-summary.json">下载三组模型评分、空间块区间与32槽位组成</a></p></section>
 <section class="section"><h2>这次如何避免“同一对象拆开再组合”？</h2>
 <p>窗户、门、建筑墙面归入“建筑”；树冠、树干归入“乔木”；车窗、车轮归入“车辆”。细标签原样保留，统计要素多样性时按父类计算。依附对象不明的墙面、地面、材料与整体场景保留为待核查或上下文。</p>
 <p>完整区域的组成与空间关系将参与匹配。后续须检验：更换周边环境、移除主要要素、打乱布局时，原型响应如何变化；并检查跨城市与跨种子重复性。</p>
@@ -22,7 +31,7 @@
 <div class="element-layout"><div><div id="element-list" class="element-list" aria-label="维度列表"></div><button id="element-more" type="button">再显示100项</button></div><section id="element-detail" class="element-detail" aria-label="维度证据"></section></div></section>
 <section class="section"><h2>范围与当前结论</h2><p>没有重新提取DINO特征或训练SAE，没有新开测试集图像或激活。现有VLM解释资料曾使用包含新原型层训练、开发和测试图像的语料，因此这些语义先验不独立于测试；后续结果先作为探索性证据。</p>
 <p>1,048维背景/材料，503维待核查，522维证据不足，462维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
-发布快照：2026-10-16 17:15 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+发布快照：2026-10-16 19:52 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
 </footer></div><aside class="project-sidebar" aria-label="项目进度">
 <details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
 <div class="project-progress-content"><p id="project-research-goal"></p>

@@ -1,0 +1,912 @@
+{
+  "schema_version": 1,
+  "pilot_identity": "152f0ae354a9dc937922dbfb1f630544b019e53aceeedf9f024fbb2b1efcb7b3",
+  "region_identity": "44f60335b2f95fc9cf74186b2dc836cb94f84e37a3761f283c9075723915553b",
+  "checkpoint_identity": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
+  "development_regions": 5817,
+  "development_panoramas": 232,
+  "all_train_regions": 51968,
+  "eligible_train_regions": 24113,
+  "all_dev_regions": 12992,
+  "eligible_dev_regions": 5817,
+  "trained_arms": {
+    "composition": "large-region family strengths only, with four-heading context",
+    "context": "complete four-by-four family layout, no graph messages",
+    "relation": "complete layout plus element-centroid proximity graph messages"
+  },
+  "planned_local_template_refit": "not_started; older frozen 3/7/15-patch template model is descriptive only",
+  "arm_mse": {
+    "composition": 0.23107051849365234,
+    "context": 0.2120543122291565,
+    "relation": 0.21660511195659637
+  },
+  "paired_differences": {
+    "relation_minus_context": {
+      "mean_difference": 0.004550812300294638,
+      "block_bootstrap_95_ci": [
+        0.002986713334718281,
+        0.006188848179277546
+      ],
+      "spatial_blocks": 218,
+      "draws": 2000
+    },
+    "context_minus_composition": {
+      "mean_difference": -0.019016195088624954,
+      "block_bootstrap_95_ci": [
+        -0.021435258920292254,
+        -0.016592500186991717
+      ],
+      "spatial_blocks": 218,
+      "draws": 2000
+    }
+  },
+  "slot_usage": [
+    {
+      "slot": 0,
+      "development_regions": 218,
+      "cities": 28,
+      "mean_element_strengths": [
+        {
+          "family": "pedestrian",
+          "mean": 0.581063449382782
+        },
+        {
+          "family": "road",
+          "mean": 0.4579198658466339
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.4080570936203003
+        },
+        {
+          "family": "barrier",
+          "mean": 0.32520008087158203
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.25752633810043335
+        }
+      ]
+    },
+    {
+      "slot": 1,
+      "development_regions": 81,
+      "cities": 25,
+      "mean_element_strengths": [
+        {
+          "family": "building",
+          "mean": 0.661910891532898
+        },
+        {
+          "family": "sign",
+          "mean": 0.653220534324646
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.3146592378616333
+        },
+        {
+          "family": "barrier",
+          "mean": 0.29114702343940735
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.27294543385505676
+        }
+      ]
+    },
+    {
+      "slot": 2,
+      "development_regions": 89,
+      "cities": 26,
+      "mean_element_strengths": [
+        {
+          "family": "pedestrian",
+          "mean": 0.7196099162101746
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.5718825459480286
+        },
+        {
+          "family": "barrier",
+          "mean": 0.4874449670314789
+        },
+        {
+          "family": "road",
+          "mean": 0.4471234381198883
+        },
+        {
+          "family": "building",
+          "mean": 0.29374244809150696
+        }
+      ]
+    },
+    {
+      "slot": 3,
+      "development_regions": 153,
+      "cities": 25,
+      "mean_element_strengths": [
+        {
+          "family": "low_vegetation",
+          "mean": 0.7353630661964417
+        },
+        {
+          "family": "tree",
+          "mean": 0.41866493225097656
+        },
+        {
+          "family": "barrier",
+          "mean": 0.32790908217430115
+        },
+        {
+          "family": "road",
+          "mean": 0.3274083137512207
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.3050509989261627
+        }
+      ]
+    },
+    {
+      "slot": 4,
+      "development_regions": 203,
+      "cities": 27,
+      "mean_element_strengths": [
+        {
+          "family": "utility",
+          "mean": 0.593647301197052
+        },
+        {
+          "family": "sign",
+          "mean": 0.5682500600814819
+        },
+        {
+          "family": "tree",
+          "mean": 0.35627949237823486
+        },
+        {
+          "family": "building",
+          "mean": 0.31962108612060547
+        },
+        {
+          "family": "road",
+          "mean": 0.2953101396560669
+        }
+      ]
+    },
+    {
+      "slot": 5,
+      "development_regions": 90,
+      "cities": 23,
+      "mean_element_strengths": [
+        {
+          "family": "road",
+          "mean": 0.5626692175865173
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.40011605620384216
+        },
+        {
+          "family": "person",
+          "mean": 0.340023010969162
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.314852237701416
+        },
+        {
+          "family": "tree",
+          "mean": 0.2611124515533447
+        }
+      ]
+    },
+    {
+      "slot": 6,
+      "development_regions": 233,
+      "cities": 28,
+      "mean_element_strengths": [
+        {
+          "family": "barrier",
+          "mean": 0.5665537714958191
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.5341196656227112
+        },
+        {
+          "family": "road",
+          "mean": 0.40977779030799866
+        },
+        {
+          "family": "building",
+          "mean": 0.3809669017791748
+        },
+        {
+          "family": "furniture",
+          "mean": 0.34559667110443115
+        }
+      ]
+    },
+    {
+      "slot": 7,
+      "development_regions": 85,
+      "cities": 20,
+      "mean_element_strengths": [
+        {
+          "family": "person",
+          "mean": 0.6474860906600952
+        },
+        {
+          "family": "road",
+          "mean": 0.5062919855117798
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.43343281745910645
+        },
+        {
+          "family": "tree",
+          "mean": 0.32030245661735535
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.16702036559581757
+        }
+      ]
+    },
+    {
+      "slot": 8,
+      "development_regions": 156,
+      "cities": 27,
+      "mean_element_strengths": [
+        {
+          "family": "road",
+          "mean": 0.6170445680618286
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.5425631403923035
+        },
+        {
+          "family": "barrier",
+          "mean": 0.49207520484924316
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.40723535418510437
+        },
+        {
+          "family": "construction",
+          "mean": 0.3602162301540375
+        }
+      ]
+    },
+    {
+      "slot": 9,
+      "development_regions": 278,
+      "cities": 29,
+      "mean_element_strengths": [
+        {
+          "family": "road",
+          "mean": 0.7084433436393738
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.460495263338089
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.30942502617836
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.2741999328136444
+        },
+        {
+          "family": "person",
+          "mean": 0.17346450686454773
+        }
+      ]
+    },
+    {
+      "slot": 10,
+      "development_regions": 210,
+      "cities": 28,
+      "mean_element_strengths": [
+        {
+          "family": "construction",
+          "mean": 0.8049505352973938
+        },
+        {
+          "family": "building",
+          "mean": 0.6021367907524109
+        },
+        {
+          "family": "barrier",
+          "mean": 0.3486054837703705
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.3351057767868042
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.2959548532962799
+        }
+      ]
+    },
+    {
+      "slot": 11,
+      "development_regions": 175,
+      "cities": 23,
+      "mean_element_strengths": [
+        {
+          "family": "building",
+          "mean": 0.8246934413909912
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.4172361195087433
+        },
+        {
+          "family": "barrier",
+          "mean": 0.410934180021286
+        },
+        {
+          "family": "utility",
+          "mean": 0.3453569710254669
+        },
+        {
+          "family": "sign",
+          "mean": 0.2928959131240845
+        }
+      ]
+    },
+    {
+      "slot": 12,
+      "development_regions": 106,
+      "cities": 23,
+      "mean_element_strengths": [
+        {
+          "family": "building",
+          "mean": 0.5554859042167664
+        },
+        {
+          "family": "person",
+          "mean": 0.5360938310623169
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.3553018271923065
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.3262524902820587
+        },
+        {
+          "family": "road",
+          "mean": 0.3196016252040863
+        }
+      ]
+    },
+    {
+      "slot": 13,
+      "development_regions": 240,
+      "cities": 29,
+      "mean_element_strengths": [
+        {
+          "family": "road",
+          "mean": 0.5934433341026306
+        },
+        {
+          "family": "utility",
+          "mean": 0.335933655500412
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.2760177254676819
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.2534438669681549
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.2505456507205963
+        }
+      ]
+    },
+    {
+      "slot": 14,
+      "development_regions": 231,
+      "cities": 28,
+      "mean_element_strengths": [
+        {
+          "family": "road",
+          "mean": 0.4201389253139496
+        },
+        {
+          "family": "utility",
+          "mean": 0.3719402551651001
+        },
+        {
+          "family": "building",
+          "mean": 0.33656615018844604
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.3286184072494507
+        },
+        {
+          "family": "water",
+          "mean": 0.29541924595832825
+        }
+      ]
+    },
+    {
+      "slot": 15,
+      "development_regions": 120,
+      "cities": 21,
+      "mean_element_strengths": [
+        {
+          "family": "building",
+          "mean": 0.5855414867401123
+        },
+        {
+          "family": "sign",
+          "mean": 0.5546190142631531
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.4677444398403168
+        },
+        {
+          "family": "barrier",
+          "mean": 0.38217687606811523
+        },
+        {
+          "family": "furniture",
+          "mean": 0.3637586236000061
+        }
+      ]
+    },
+    {
+      "slot": 16,
+      "development_regions": 112,
+      "cities": 23,
+      "mean_element_strengths": [
+        {
+          "family": "low_vegetation",
+          "mean": 0.8637229204177856
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.6158355474472046
+        },
+        {
+          "family": "road",
+          "mean": 0.5493147969245911
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.19503989815711975
+        },
+        {
+          "family": "barrier",
+          "mean": 0.1801786869764328
+        }
+      ]
+    },
+    {
+      "slot": 17,
+      "development_regions": 254,
+      "cities": 22,
+      "mean_element_strengths": [
+        {
+          "family": "tree",
+          "mean": 0.6666256785392761
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.6086663603782654
+        },
+        {
+          "family": "road",
+          "mean": 0.3039887547492981
+        },
+        {
+          "family": "barrier",
+          "mean": 0.1560126096010208
+        },
+        {
+          "family": "building",
+          "mean": 0.1507163792848587
+        }
+      ]
+    },
+    {
+      "slot": 18,
+      "development_regions": 40,
+      "cities": 18,
+      "mean_element_strengths": [
+        {
+          "family": "building",
+          "mean": 0.5191449522972107
+        },
+        {
+          "family": "construction",
+          "mean": 0.41865214705467224
+        },
+        {
+          "family": "road",
+          "mean": 0.3347480595111847
+        },
+        {
+          "family": "furniture",
+          "mean": 0.3331855833530426
+        },
+        {
+          "family": "sign",
+          "mean": 0.3044492304325104
+        }
+      ]
+    },
+    {
+      "slot": 19,
+      "development_regions": 227,
+      "cities": 24,
+      "mean_element_strengths": [
+        {
+          "family": "furniture",
+          "mean": 0.6858426332473755
+        },
+        {
+          "family": "sign",
+          "mean": 0.6575013399124146
+        },
+        {
+          "family": "building",
+          "mean": 0.525071918964386
+        },
+        {
+          "family": "person",
+          "mean": 0.4679739475250244
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.3190694749355316
+        }
+      ]
+    },
+    {
+      "slot": 20,
+      "development_regions": 125,
+      "cities": 23,
+      "mean_element_strengths": [
+        {
+          "family": "utility",
+          "mean": 0.4918989837169647
+        },
+        {
+          "family": "road",
+          "mean": 0.46535152196884155
+        },
+        {
+          "family": "terrain",
+          "mean": 0.45013663172721863
+        },
+        {
+          "family": "barrier",
+          "mean": 0.337358683347702
+        },
+        {
+          "family": "sign",
+          "mean": 0.30863386392593384
+        }
+      ]
+    },
+    {
+      "slot": 21,
+      "development_regions": 190,
+      "cities": 26,
+      "mean_element_strengths": [
+        {
+          "family": "tree",
+          "mean": 0.5011011362075806
+        },
+        {
+          "family": "terrain",
+          "mean": 0.45649173855781555
+        },
+        {
+          "family": "water",
+          "mean": 0.3801603317260742
+        },
+        {
+          "family": "sign",
+          "mean": 0.3591715693473816
+        },
+        {
+          "family": "road",
+          "mean": 0.29493552446365356
+        }
+      ]
+    },
+    {
+      "slot": 22,
+      "development_regions": 78,
+      "cities": 23,
+      "mean_element_strengths": [
+        {
+          "family": "water",
+          "mean": 0.6072072982788086
+        },
+        {
+          "family": "tree",
+          "mean": 0.5567928552627563
+        },
+        {
+          "family": "sign",
+          "mean": 0.3588716387748718
+        },
+        {
+          "family": "road",
+          "mean": 0.267674058675766
+        },
+        {
+          "family": "building",
+          "mean": 0.25768905878067017
+        }
+      ]
+    },
+    {
+      "slot": 23,
+      "development_regions": 268,
+      "cities": 26,
+      "mean_element_strengths": [
+        {
+          "family": "transport_structure",
+          "mean": 0.9035979509353638
+        },
+        {
+          "family": "road",
+          "mean": 0.45977887511253357
+        },
+        {
+          "family": "barrier",
+          "mean": 0.34524375200271606
+        },
+        {
+          "family": "utility",
+          "mean": 0.33639073371887207
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.33587682247161865
+        }
+      ]
+    },
+    {
+      "slot": 24,
+      "development_regions": 307,
+      "cities": 27,
+      "mean_element_strengths": [
+        {
+          "family": "utility",
+          "mean": 0.6234151124954224
+        },
+        {
+          "family": "barrier",
+          "mean": 0.5626240372657776
+        },
+        {
+          "family": "building",
+          "mean": 0.4566243886947632
+        },
+        {
+          "family": "tree",
+          "mean": 0.3019236624240875
+        },
+        {
+          "family": "sign",
+          "mean": 0.24653001129627228
+        }
+      ]
+    },
+    {
+      "slot": 25,
+      "development_regions": 161,
+      "cities": 29,
+      "mean_element_strengths": [
+        {
+          "family": "vehicle",
+          "mean": 0.6659359931945801
+        },
+        {
+          "family": "road",
+          "mean": 0.42109471559524536
+        },
+        {
+          "family": "furniture",
+          "mean": 0.29435035586357117
+        },
+        {
+          "family": "building",
+          "mean": 0.2735445499420166
+        },
+        {
+          "family": "sign",
+          "mean": 0.2623854875564575
+        }
+      ]
+    },
+    {
+      "slot": 26,
+      "development_regions": 392,
+      "cities": 29,
+      "mean_element_strengths": [
+        {
+          "family": "person",
+          "mean": 0.8059849739074707
+        },
+        {
+          "family": "road",
+          "mean": 0.556134819984436
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.3952906131744385
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.23789016902446747
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.23729641735553741
+        }
+      ]
+    },
+    {
+      "slot": 27,
+      "development_regions": 234,
+      "cities": 25,
+      "mean_element_strengths": [
+        {
+          "family": "terrain",
+          "mean": 0.7176436185836792
+        },
+        {
+          "family": "road",
+          "mean": 0.4892434775829315
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.4123174548149109
+        },
+        {
+          "family": "tree",
+          "mean": 0.2922169864177704
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.2698978781700134
+        }
+      ]
+    },
+    {
+      "slot": 28,
+      "development_regions": 142,
+      "cities": 26,
+      "mean_element_strengths": [
+        {
+          "family": "water",
+          "mean": 0.5782408714294434
+        },
+        {
+          "family": "road",
+          "mean": 0.42746207118034363
+        },
+        {
+          "family": "barrier",
+          "mean": 0.42555251717567444
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.26896318793296814
+        },
+        {
+          "family": "building",
+          "mean": 0.26429733633995056
+        }
+      ]
+    },
+    {
+      "slot": 29,
+      "development_regions": 321,
+      "cities": 28,
+      "mean_element_strengths": [
+        {
+          "family": "construction",
+          "mean": 0.6709756255149841
+        },
+        {
+          "family": "building",
+          "mean": 0.5257743000984192
+        },
+        {
+          "family": "vehicle",
+          "mean": 0.3924185633659363
+        },
+        {
+          "family": "barrier",
+          "mean": 0.35908156633377075
+        },
+        {
+          "family": "transport_structure",
+          "mean": 0.35416358709335327
+        }
+      ]
+    },
+    {
+      "slot": 30,
+      "development_regions": 185,
+      "cities": 26,
+      "mean_element_strengths": [
+        {
+          "family": "tree",
+          "mean": 0.6440227031707764
+        },
+        {
+          "family": "building",
+          "mean": 0.43633440136909485
+        },
+        {
+          "family": "utility",
+          "mean": 0.3138390779495239
+        },
+        {
+          "family": "road",
+          "mean": 0.21192264556884766
+        },
+        {
+          "family": "sign",
+          "mean": 0.1897299736738205
+        }
+      ]
+    },
+    {
+      "slot": 31,
+      "development_regions": 113,
+      "cities": 25,
+      "mean_element_strengths": [
+        {
+          "family": "road",
+          "mean": 0.6652650237083435
+        },
+        {
+          "family": "pedestrian",
+          "mean": 0.5754453539848328
+        },
+        {
+          "family": "low_vegetation",
+          "mean": 0.44929519295692444
+        },
+        {
+          "family": "furniture",
+          "mean": 0.3051891028881073
+        },
+        {
+          "family": "barrier",
+          "mean": 0.28603309392929077
+        }
+      ]
+    }
+  ],
+  "semantic_validation": "pending",
+  "test_used": false,
+  "interpretation": "Development MSE measures family-layout reconstruction, not semantic landscape coverage. Qwen-derived element groups may be wrong; SAE and prior VLM evidence are not independent of all prototype-layer partitions."
+}
