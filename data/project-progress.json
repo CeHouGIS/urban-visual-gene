@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-16T05:07:07.194440+00:00",
+  "updated_utc": "2026-10-16T05:35:01.143913+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
   "headline": "建立可核查的原型证据库",
@@ -42,6 +42,16 @@
         "criterion": "得到模板组成、空间响应、跨城市实例和原型解释。",
         "status": "partial",
         "evidence": "4/4 组训练完成 · 3×3 / 7×7 / 15×15；原型图与解释待补齐。"
+      },
+      {
+        "id": "prototype_capacity",
+        "label": "模板数量调参",
+        "review_status": "pending",
+        "question": "每个尺度需要多少个候选模板？",
+        "criterion": "在相同数据划分和训练设置下，结合验证集重建、有效模板数量、语义重复程度和跨种子稳定性选择容量。",
+        "remaining": "待办：比较每尺度 16 / 32 / 64 个模板，必要时允许不同尺度采用不同数量；当前每尺度保留 32 个，调参尚未开始。",
+        "status": "pending",
+        "evidence": "当前 3×3、7×7、15×15 三个尺度各设 32 个模板，共 96 个候选槽位；模板数量调参待开始。"
       },
       {
         "id": "validity",
