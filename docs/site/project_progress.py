@@ -51,6 +51,11 @@ def research_progress(rows, corpus):
         states['patterns'] = ('partial', states['patterns'][1])
     milestones = [{**item, 'status': states[item['id']][0], 'evidence': states[item['id']][1]}
                   for item in roadmap['milestones']]
+    for item in milestones:
+        if item.get('review_status'):
+            if item['review_status'] not in {'partial', 'pending', 'running', 'complete'}:
+                raise ValueError(f'Invalid reviewed milestone status: {item["id"]}')
+            item['status'] = item['review_status']
     if tasks['prototypes']['status'] != 'complete':
         focus = '完成原型模型与打乱对照'
         next_step = '四组模型完成后，自动进入完整验证、稳定性分析和实例图生成。'

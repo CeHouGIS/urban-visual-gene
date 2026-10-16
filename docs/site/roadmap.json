@@ -4,11 +4,11 @@
   "milestones": [
     {"id": "data", "label": "数据与全景表征", "question": "是否有可回溯的街景与空间信息？", "criterion": "数据身份、四方向顺序和划分可核查。"},
     {"id": "units", "label": "SAE 候选单元", "question": "能否把视觉表征分解成稀疏单元？", "criterion": "完成 SAE、重建评估及原图激活映射。"},
-    {"id": "meaning", "label": "单元语义核查", "question": "哪些维度能形成明确的语义？", "criterion": "结合原图证据，区分一致、混合及证据不足的维度；Qwen 名称须核查。", "remaining": "核查候选名称与混合维度，形成可解释性结论。"},
+    {"id": "meaning", "label": "单元语义核查", "review_status": "partial", "question": "哪些维度能形成明确的语义？", "criterion": "结合原图证据，区分一致、混合及证据不足的维度；Qwen 名称须核查。", "remaining": "核查候选名称与混合维度，形成可解释性结论。"},
     {"id": "patterns", "label": "局部景观原型", "question": "哪些维度组合与布局会反复出现？", "criterion": "得到模板组成、空间响应、跨城市实例和原型解释。"},
     {"id": "validity", "label": "原型有效性验证", "question": "组合是否依赖真实结构且可重复？", "criterion": "完成完整验证、双种子匹配、两类置乱和 NMF 对照。"},
-    {"id": "geography", "label": "城市与空间规律", "question": "这些单元与组合在哪里共享或分化？", "criterion": "区分已有 64 组城市结果与新增原型的地理证据。", "remaining": "原型验证后，再判断其城市分布与空间差异。"},
-    {"id": "writing", "label": "论文与成果发布", "question": "证据能否支持最终研究叙述？", "criterion": "方法、图表、数据范围和结论一致，发布可核查实例。", "remaining": "把逐维 masked 解释与原型结果整合进 Chapter 5，再核对图表和结论。"}
+    {"id": "geography", "label": "城市与空间规律", "review_status": "partial", "question": "这些单元与组合在哪里共享或分化？", "criterion": "区分已有 64 组城市结果与新增原型的地理证据。", "remaining": "原型验证后，再判断其城市分布与空间差异。"},
+    {"id": "writing", "label": "论文与成果发布", "review_status": "partial", "question": "证据能否支持最终研究叙述？", "criterion": "方法、图表、数据范围和结论一致，发布可核查实例。", "remaining": "把逐维 masked 解释与原型结果整合进 Chapter 5，再核对图表和结论。"}
   ],
   "writing_evidence": "Chapter 5 已有主 SAE 方法和结果图；网站已有语义与组合浏览。",
   "scope_note": "只跟踪当前 ViT-L W4096/K32 主研究线。计算完成与科学结论完成分别记录。",
