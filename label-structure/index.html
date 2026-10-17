@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>标签结构 · Urban Scene Primitives</title>
+<meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="structure.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/">要素标签</a><a href="../label-structure/" aria-current=page>标签结构</a><a href="../quality/">维度复核</a><a href="../relations/">要素关系</a></nav>
+<main class="page"><div class="eyebrow">Qwen label structure</div><h1>标签的并列与上下级关系</h1>
+<p class="lead">区分同层标签、某类的具体类型，以及整体的组成部件。</p>
+<p class="note">依据现有 Qwen 标签做保守的文字关系整理：132 条上下级关系、33 组并列关系。窗户是建筑的部件，不是建筑的一种；屋顶类型之间才是同层并列。父类只用于导航，不自动构成语义上下级。所有关系仍待图像证据和人工核查。</p>
+<div class="structure-controls"><div class="structure-tabs" aria-label="关系视图"><button id="hierarchy-tab" type="button" aria-pressed="true">上下级</button><button id="parallel-tab" type="button" aria-pressed="false">同层并列</button><button id="unlinked-tab" type="button" aria-pressed="false">未判定</button></div><select id="structure-family" aria-label="筛选类别"><option value="">全部类别</option></select><input id="structure-search" aria-label="搜索标签" placeholder="搜索 Qwen 标签"></div>
+<p id="structure-count" class="muted" role="status"></p><div class="structure-layout"><div id="structure-list" class="structure-list" aria-label="关系列表"></div><section id="structure-detail" class="structure-detail" aria-label="关系详情"></section></div>
+<p class="muted">192 个有资格展示的标签尚未指定可靠关系，保留在“未判定”。数字是 SAE 维度数，不是街景物体数量。<a href="hierarchy.csv">下载上下级 CSV</a> · <a href="parallel.csv">下载并列 CSV</a> · <a href="structure.json">完整数据与来源</a></p></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
+发布快照：2026-10-17 复核快照 · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+</footer><script src="structure.js" defer></script></body></html>

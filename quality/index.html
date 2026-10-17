@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>维度质量审阅 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="quality.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/">要素标签</a><a href="../quality/" aria-current=page>维度复核</a><a href="../relations/">要素关系</a></nav>
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="quality.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/">要素标签</a><a href="../label-structure/">标签结构</a><a href="../quality/" aria-current=page>维度复核</a><a href="../relations/">要素关系</a></nav>
 <main class="page"><div class="eyebrow">SAE dimension quality review</div><h1>维度质量审阅</h1>
 <p class="lead">先审阅固定位置响应和疑似模糊响应，再决定从景观单元分析中去掉哪些维度。</p>
 <p class="note">5 维优先复核，另有 58 维位置集中待查；33 维列入模糊审阅。这里的“位置”仅指 Top100 峰值集中，天空与道路的真实位置也会造成这一现象。“模糊”来自旧 Qwen 名称或少量目视检查，并非已验证标签。现在没有删除或屏蔽任何维度。</p>

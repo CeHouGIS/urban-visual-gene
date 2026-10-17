@@ -34,8 +34,8 @@
     "insufficient_evidence": 745,
     "unobserved_in_sample": 462
   },
-  "file_count": 23152,
-  "bytes_before_manifest": 913258756,
+  "file_count": 23158,
+  "bytes_before_manifest": 913360610,
   "element_hierarchy": {
     "page": "elements/",
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
@@ -70,5 +70,17 @@
       "old_qwen_blur_labels": 29
     },
     "status": "candidate_review_only"
+  },
+  "label_structure": {
+    "page": "label-structure/",
+    "counts": {
+      "eligible_labels": 392,
+      "linked_labels": 200,
+      "unlinked_labels": 192,
+      "hierarchy_groups": 40,
+      "hierarchy_edges": 132,
+      "parallel_groups": 33
+    },
+    "validation": "provisional_text_only"
   }
 }

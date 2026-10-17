@@ -1,0 +1,133 @@
+﻿family,parent,child,relation,child_dimension_count,child_features
+building,建筑,房屋,is_a,6,f319 f1182 f1442 f1862 f2731 f3463
+building,建筑,教堂,is_a,5,f443 f2155 f2185 f2305 f2397
+building,建筑,工业建筑,is_a,3,f749 f2748 f3684
+building,建筑,温室,is_a,3,f6 f2943 f3353
+building,建筑,住宅建筑,is_a,1,f1542
+building,建筑,古典建筑,is_a,1,f175
+building,建筑,混凝土建筑,is_a,1,f59
+building,建筑,玻璃幕墙建筑,is_a,1,f1500
+building,建筑,石质建筑,is_a,1,f3009
+building,建筑,红色建筑,is_a,1,f530
+building,建筑,老屋,is_a,1,f1236
+building,建筑,蓝色建筑,is_a,1,f2145
+building,建筑,高楼,is_a,1,f283
+building,建筑,屋顶,part_of,44,f239 f244 f251 f262 f332 f384 f402 f403 f533 f1002 f1037 f1038 f1138 f1189 f1405 f1429 f1434 f1445 f1455 f1456 f1488 f1525 f1540 f1768 f2208 f2277 f2430 f2527 f2533 f2874 f2902 f2926 f3026 f3077 f3310 f3321 f3461 f3557 f3632 f3720 f3779 f3785 f4012 f4037
+building,建筑,建筑墙面,part_of,36,f60 f108 f122 f127 f155 f258 f310 f610 f639 f781 f903 f925 f970 f1026 f1358 f1395 f1577 f1632 f1672 f1705 f2056 f2065 f2123 f2165 f2249 f2336 f2358 f2449 f2486 f3391 f3424 f3607 f3745 f4014 f4039 f4081
+building,建筑,建筑结构,part_of,35,f107 f228 f230 f337 f451 f518 f571 f600 f914 f951 f1041 f1087 f1093 f1141 f1213 f1284 f1412 f1840 f2044 f2047 f2304 f2350 f2416 f2455 f2827 f2951 f2983 f3053 f3101 f3301 f3365 f3498 f3671 f3755 f3866
+building,建筑,门,part_of,22,f3 f543 f553 f742 f1012 f1271 f1314 f1561 f1646 f1659 f1706 f1755 f1980 f2075 f2255 f2405 f2549 f3071 f3517 f3533 f3782 f4027
+building,建筑,建筑立面,part_of,21,f16 f323 f452 f468 f508 f716 f735 f856 f883 f936 f1684 f1843 f1967 f2026 f2218 f2314 f2740 f3267 f3786 f3799 f4053
+building,建筑,窗户,part_of,15,f367 f483 f582 f760 f830 f1409 f1520 f2092 f2451 f3033 f3428 f3853 f3899 f3951 f3979
+building,建筑,建筑屋檐,part_of,5,f330 f873 f1712 f2526 f3007
+building,建筑,建筑入口,part_of,1,f2709
+building,建筑,建筑立柱,part_of,1,f2924
+building,建筑,门廊,part_of,1,f2111
+building,建筑,阳台,part_of,1,f1112
+road,道路,路面,part_of,63,f5 f139 f160 f253 f371 f391 f474 f561 f690 f697 f707 f715 f752 f754 f796 f803 f820 f990 f1067 f1076 f1082 f1208 f1255 f1263 f1320 f1430 f1483 f1627 f1694 f1807 f1889 f1921 f1995 f1997 f2001 f2115 f2238 f2285 f2421 f2497 f2624 f2862 f2885 f2899 f2931 f2987 f3078 f3206 f3226 f3278 f3366 f3390 f3469 f3480 f3505 f3552 f3796 f3848 f3896 f3952 f4075 f4089 f4090
+road,道路,道路边缘,part_of,2,f693 f1215
+road,道路,道路标线,part_of,1,f2017
+tree,树木,棕榈树,is_a,23,f11 f91 f298 f336 f400 f418 f447 f470 f798 f833 f915 f1424 f1904 f1952 f2027 f2589 f2908 f2936 f3130 f3268 f3524 f3695 f4009
+tree,树木,松树,is_a,12,f178 f630 f857 f1009 f1377 f1463 f2380 f2749 f3262 f3455 f3473 f3703
+tree,树木,香蕉树,is_a,5,f189 f698 f1077 f1730 f2338
+tree,树木,柳树,is_a,2,f350 f2723
+tree,树木,紫花风铃木,is_a,2,f2331 f2945
+tree,树木,柏树,is_a,1,f2500
+tree,树木,椰子树,is_a,1,f3188
+tree,树木,樱花树,is_a,1,f2541
+tree,树木,橄榄树,is_a,1,f2686
+tree,树木,行道树,is_a,1,f2063
+tree,树木,龙血树,is_a,1,f1371
+tree,树木,树冠,part_of,25,f96 f313 f362 f378 f714 f1017 f1113 f1170 f1621 f1665 f1674 f1907 f1966 f2352 f2498 f2614 f2691 f2952 f3115 f3161 f3221 f3236 f3359 f3414 f3988
+tree,树木,树干,part_of,19,f79 f354 f649 f1403 f1470 f1908 f1951 f2093 f2435 f2551 f2607 f2634 f3006 f3083 f3263 f3313 f3452 f3677 f3882
+tree,树木,树叶,part_of,12,f26 f221 f1492 f2031 f2057 f2108 f2925 f3495 f3554 f3794 f3891 f3918
+tree,树木,树皮,part_of,1,f3592
+low_vegetation,草地,草坪,is_a,3,f718 f932 f2892
+building,屋顶,建筑屋顶,is_a,12,f216 f528 f652 f741 f1285 f1524 f1869 f2311 f2442 f3025 f3250 f3254
+building,屋顶,瓦片屋顶,is_a,2,f1738 f3031
+building,屋顶,传统中式建筑屋顶,is_a,1,f1945
+building,屋顶,传统建筑屋顶,is_a,1,f1737
+building,屋顶,波纹金属屋顶,is_a,1,f761
+building,屋顶,红色屋顶,is_a,1,f3126
+building,建筑墙面,建筑外墙,is_a,6,f678 f1133 f1518 f1824 f3730 f3807
+building,建筑墙面,建筑墙体,is_a,4,f1475 f2794 f3654 f3867
+person,人,雨天行人,is_a,1,f849
+building,门,卷帘门,is_a,2,f973 f3030
+building,门,木门,is_a,1,f1924
+building,门,铁门,is_a,1,f2579
+transport_structure,桥梁,人行天桥,is_a,1,f1609
+transport_structure,桥梁,石拱桥,is_a,1,f584
+transport_structure,桥梁,桥墩,part_of,6,f1555 f1687 f2751 f3054 f3174 f3191
+transport_structure,桥梁,桥梁结构,part_of,3,f832 f2450 f2846
+transport_structure,桥梁,桥面,part_of,1,f1519
+building,窗户,玻璃窗,is_a,1,f4002
+building,窗户,百叶窗,is_a,1,f2354
+barrier,围栏,栅栏,is_a,12,f540 f559 f636 f1164 f1613 f1765 f2739 f2775 f2912 f3815 f3903 f4005
+barrier,围栏,铁丝网围栏,is_a,2,f2102 f3160
+barrier,围栏,临时围栏,is_a,1,f959
+barrier,围栏,金属围栏,is_a,1,f1304
+vehicle,车辆,公交车,is_a,8,f549 f552 f1148 f1428 f1794 f2012 f3466 f3637
+vehicle,车辆,卡车,is_a,6,f837 f931 f1758 f1781 f2156 f3530
+vehicle,车辆,摩托车,is_a,6,f50 f687 f919 f1431 f3248 f4066
+vehicle,车辆,汽车,is_a,6,f680 f1021 f1396 f2464 f3219 f3939
+vehicle,车辆,自行车,is_a,4,f1207 f2328 f2646 f3919
+vehicle,车辆,白色面包车,is_a,2,f2937 f3555
+vehicle,车辆,三轮车,is_a,1,f1254
+vehicle,车辆,垃圾车,is_a,1,f3155
+vehicle,车辆,房车,is_a,1,f3648
+vehicle,车辆,拖车,is_a,1,f2357
+vehicle,车辆,货车,is_a,1,f3210
+vehicle,车辆,越野车,is_a,1,f1800
+vehicle,车辆,车轮及轮胎,part_of,27,f52 f260 f463 f502 f519 f544 f750 f984 f1351 f1472 f1477 f1715 f1731 f1810 f1918 f2133 f2276 f2343 f2667 f2713 f2778 f3032 f3105 f3276 f3437 f3543 f3713
+vehicle,车辆,车窗,part_of,8,f480 f1055 f2146 f2351 f2586 f2600 f3294 f3378
+vehicle,车辆,车尾,part_of,7,f985 f1671 f2348 f2516 f3787 f3969 f4036
+vehicle,车辆,车顶,part_of,7,f912 f1228 f1313 f1608 f2692 f4023 f4029
+vehicle,车辆,车门,part_of,5,f215 f614 f1803 f2371 f2930
+vehicle,车辆,车头,part_of,3,f1588 f1628 f1898
+vehicle,车辆,车灯,part_of,3,f285 f972 f2161
+vehicle,车辆,车体,part_of,2,f608 f1380
+vehicle,车辆,车身,part_of,2,f722 f3072
+vehicle,车辆,车尾箱,part_of,1,f1378
+vehicle,车辆,轮胎,part_of,1,f1460
+vehicle,车辆,驾驶室,part_of,1,f2222
+barrier,栅栏,木栅栏,is_a,2,f1663 f2668
+barrier,栅栏,铁栅栏,is_a,2,f1185 f2568
+barrier,栅栏,白色栅栏,is_a,1,f1892
+transport_structure,铁路轨道,铁轨,part_of,2,f1852 f2053
+barrier,护栏,混凝土护栏,is_a,2,f413 f1529
+barrier,护栏,交通护栏,is_a,1,f1558
+barrier,护栏,金属护栏,is_a,1,f274
+sign,交通标志,停车标志,is_a,3,f577 f1722 f2679
+sign,交通标志,三角形警示标志,is_a,1,f1232
+sign,交通标志,高速公路指示牌,is_a,1,f2270
+construction,集装箱,蓝色集装箱,is_a,1,f1780
+tree,树林,棕榈树林,is_a,1,f961
+vehicle,卡车,卡车货箱,part_of,1,f1814
+vehicle,卡车,卡车车头,part_of,1,f2220
+vehicle,卡车,卡车驾驶室,part_of,1,f688
+material_unspecified,墙体,砖墙,is_a,22,f105 f129 f229 f365 f591 f729 f933 f1496 f1771 f2028 f2129 f2250 f2530 f2538 f2627 f2693 f3048 f3377 f3578 f3600 f3606 f3984
+material_unspecified,墙体,石墙,is_a,14,f172 f188 f485 f770 f1178 f1778 f2389 f2563 f2756 f2967 f3112 f3180 f3458 f3868
+material_unspecified,墙体,混凝土墙,is_a,4,f148 f1120 f1174 f3116
+material_unspecified,墙体,木板墙,is_a,3,f131 f979 f2746
+material_unspecified,墙体,金属板墙,is_a,1,f617
+material_unspecified,墙体,镂空砖墙,is_a,1,f1325
+scene_context,街景,城市街景,is_a,1,f2732
+tree,香蕉树,香蕉叶,part_of,1,f1575
+material_unspecified,涂鸦,抽象涂鸦,is_a,2,f1473 f3118
+terrain,岩石,岩石表面,part_of,3,f802 f807 f2258
+vehicle,车灯,车尾灯,is_a,4,f592 f997 f1624 f2335
+vehicle,车灯,尾灯,is_a,2,f923 f2342
+vehicle,车灯,车头灯,is_a,1,f3230
+barrier,栏杆,金属栏杆,is_a,2,f2808 f2821
+barrier,栏杆,石质栏杆,is_a,1,f3395
+construction,脚手架,建筑脚手架,is_a,1,f3336
+low_vegetation,花卉,花朵,part_of,1,f1452
+sign,招牌,街道招牌,is_a,2,f342 f2197
+sign,招牌,商店招牌,is_a,1,f3981
+utility,输电塔,高压电线塔,is_a,2,f1592 f2800
+building,阳台,阳台栏杆,part_of,1,f2904
+building,高楼,摩天大楼,is_a,1,f1545
+construction,起重机,塔式起重机,is_a,1,f1639
+construction,起重机,建筑起重机,is_a,1,f2701
+terrain,山,山坡,part_of,1,f2887
+vehicle,货车,白色货车,is_a,3,f2272 f2722 f3029
+vehicle,货车,货车车厢,part_of,1,f2103

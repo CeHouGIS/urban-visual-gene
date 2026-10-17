@@ -172,8 +172,11 @@
     if(!response.ok||!graphResponse.ok)throw Error('要素表或类别图谱载入失败');
     [data,categoryGraph]=await Promise.all([response.json(),graphResponse.json()]);
     if(data.identity!==categoryGraph.identity||data.dimension_screening_identity!==categoryGraph.dimension_screening_identity||data.dimensions.length!==categoryGraph.total)throw Error('类别图谱与维度表不匹配');
-    activeFamily=categoryGraph.families.find(family=>family.id==='building')?.id||categoryGraph.families[0].id;
-    activeLabel=categoryGraph.families.find(family=>family.id===activeFamily).labels[0].label;
+    const query=new URLSearchParams(location.search);
+    const requestedFamily=categoryGraph.families.find(family=>family.id===query.get('family'));
+    activeFamily=requestedFamily?.id||categoryGraph.families.find(family=>family.id==='building')?.id||categoryGraph.families[0].id;
+    const initialFamily=categoryGraph.families.find(family=>family.id===activeFamily);
+    activeLabel=initialFamily.labels.find(label=>label.label===query.get('label'))?.label||initialFamily.labels[0].label;
     renderCategories();
     for(const family of data.families){const option=el('option',family.label_zh);option.value=family.id;$('#element-family').append(option);}
     for(const [value,label] of Object.entries(states)){const option=el('option',label);option.value=value;$('#element-status').append(option);}
