@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>维度解释 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/" aria-current=page>维度解释</a><a href="../elements/">要素标签</a><a href="../relations/">要素关系</a></nav>
+<link rel="stylesheet" href="../assets/site.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/" aria-current=page>维度解释</a><a href="../elements/">要素标签</a><a href="../quality/">维度复核</a><a href="../relations/">要素关系</a></nav>
 <main class="page"><div class="eyebrow">Masked Top10 · Qwen3-VL-2B</div><h1>逐维语义解释</h1>
 <p>每维选前 10 个不同全景的最强方向，按该方向峰值约 50% 保留高激活 patch，裁到联合包围框，框内其余像素置灰（RGB 127）。固定验证样本无响应的维度另从扩大样本检索，来源逐维标出。Qwen 看的是 masked 原图拼图。</p>
 <p class="note">支持度不足 20 个正激活全景的维度暂停命名，旧 Qwen 回答只保留供核对。其他名称与模型自述信心仍是待核查候选；patch mask 不是像素级分割。Top40 四组复核仅试跑 2 维：f0 的组间解释冲突，f165 的四组均指向行人；这批试跑尚未替换原始标签，也不能作为独立语义验证。</p><p id="snapshot"></p>

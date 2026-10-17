@@ -34,8 +34,8 @@
     "insufficient_evidence": 745,
     "unobserved_in_sample": 462
   },
-  "file_count": 23147,
-  "bytes_before_manifest": 913200566,
+  "file_count": 23152,
+  "bytes_before_manifest": 913258756,
   "element_hierarchy": {
     "page": "elements/",
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
@@ -60,5 +60,15 @@
     "page": "interpretation/review-pilot.json",
     "semantic_validation": "pending",
     "dimensions": 2
+  },
+  "quality_review": {
+    "page": "quality/",
+    "counts": {
+      "priority_position_review": 5,
+      "position_review": 63,
+      "blur_review": 33,
+      "old_qwen_blur_labels": 29
+    },
+    "status": "candidate_review_only"
   }
 }
