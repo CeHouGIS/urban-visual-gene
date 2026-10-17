@@ -49,8 +49,12 @@ def install(site, target, graph, reports, source_identities):
     expanded_dir.mkdir(exist_ok=True)
     extra_cache = {}
     stats = defaultdict(int)
+    stats['expanded_examples'] = 0
     for family in graph['families']:
         for label in family['labels']:
+            if not label['eligible']:
+                label['examples'] = []
+                continue
             candidates = []
             for feature in label['features']:
                 for source in REPORT_NAMES:

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import argparse
-from collections import defaultdict
+from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 import hashlib
@@ -19,6 +19,39 @@ EXPERIMENT = ROOT / 'experiments/vitl30_relational_prototypes'
 REPORTS = ROOT / 'experiments/vitl30_panorama_w4096_k32/reports'
 CHECKPOINT = 'fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0'
 TEMPLATES = Path(__file__).with_name('templates')
+SCREENING = ROOT / 'experiments/vitl30_panorama_w4096_k32/results/dimension_screening/screening.json'
+
+
+def public_screened_row(original, screen):
+    """Keep the old Qwen response traceable without publishing a weak label."""
+    row = dict(original)
+    row['raw_qwen_label_zh'] = original.get('label_zh', '')
+    row['raw_qwen_family'] = original['family']
+    row['screening'] = screen
+    if not screen['label_eligible']:
+        row['raw_qwen_interpretation'] = {key: original.get(key) for key in
+            ['label_zh', 'fine_label_zh', 'semantic_type', 'cues_zh', 'caveats_zh', 'consistency',
+             'confidence_self_reported']}
+        row['label_zh'] = ''
+        row['fine_label_zh'] = ''
+        row['semantic_type'] = ''
+        row['cues_zh'] = []
+        row['caveats_zh'] = []
+        row['consistency'] = ''
+        row['confidence_self_reported'] = ''
+        row['family'] = 'unresolved'
+        row['family_zh'] = '未确定语义'
+        row['semantic_role'] = 'unresolved'
+        row['counts_as_element'] = False
+        row['provisional_graph_candidate'] = False
+        row['status'] = ('unobserved' if screen['status'] == 'no_positive_activation'
+                         else 'insufficient_evidence')
+        row['display_label_zh'] = ('无正激活证据' if row['status'] == 'unobserved'
+                                   else '证据不足，暂不命名')
+        row['quality_flags'] = [*row['quality_flags'], 'support_below_screening_minimum']
+    else:
+        row['display_label_zh'] = row.get('label_zh') or '未解释'
+    return row
 
 
 def build_category_graph(hierarchy):
@@ -30,11 +63,12 @@ def build_category_graph(hierarchy):
         if feature in seen:
             raise ValueError(f'Duplicate SAE dimension f{feature}')
         seen.add(feature)
-        groups[row['family']][row.get('label_zh') or '未解释'].append(feature)
+        groups[row['family']][row.get('display_label_zh') or row.get('label_zh') or '未解释'].append(feature)
     families = []
     for family in hierarchy['families']:
         labels = groups.pop(family['id'], {})
-        children = [{'label': label, 'count': len(features), 'features': sorted(features)}
+        children = [{'label': label, 'count': len(features), 'features': sorted(features),
+                     'eligible': label not in {'无正激活证据', '证据不足，暂不命名'}}
                     for label, features in labels.items()]
         children.sort(key=lambda child: (-child['count'], child['label']))
         families.append({'id': family['id'], 'label': family['label_zh'],
@@ -58,6 +92,12 @@ def install(site, render_page, snapshot):
         return None
     obj = json.loads(path.read_text())
     summary = obj['summary']
+    screening = json.loads(SCREENING.read_text())
+    if screening['protocol']['checkpoint_sha256'] != CHECKPOINT:
+        raise ValueError('Dimension screening uses another SAE checkpoint')
+    screens = screening['dimensions']
+    if len(screens) != 4096 or [row['feature'] for row in screens] != list(range(4096)):
+        raise ValueError('Incomplete dimension screening')
     pilot = json.loads((EXPERIMENT / 'results/pilot_manifest_summary.json').read_text())
     if obj['protocol']['checkpoint_sha256'] != CHECKPOINT or pilot['hierarchy_identity'] != obj['identity']:
         raise ValueError('Element hierarchy or pilot uses another SAE/hierarchy')
@@ -70,7 +110,7 @@ def install(site, render_page, snapshot):
     (target / 'inputs').mkdir(exist_ok=True)
     rows, jobs = [], []
     for original in obj['dimensions']:
-        row = dict(original)
+        row = public_screened_row(original, screens[original['feature']])
         feature = row['feature']
         if row['status'] != 'unobserved':
             source = REPORTS / row['source'] / 'inputs' / f'f{feature:04d}_0.png'
@@ -107,15 +147,24 @@ def install(site, render_page, snapshot):
 
     with ThreadPoolExecutor(max_workers=4) as pool:
         list(pool.map(copy, jobs))
+    public_summary = {**summary, 'source_status_counts': summary['status_counts'],
+                      'status_counts': dict(Counter(r['status'] for r in rows)),
+                      'family_counts': dict(Counter(r['family'] for r in rows)),
+                      'graph_candidate_family_counts': dict(Counter(
+                          r['family'] for r in rows if r['provisional_graph_candidate'])),
+                      'dimension_screening_identity': screening['identity'],
+                      'prototype_route': 'local_multi_element_compositions'}
     public = {**obj, 'dimensions': rows, 'pilot': pilot,
-              'summary': {**summary, 'prototype_route': 'local_multi_element_compositions'},
+              'summary': public_summary,
+              'dimension_screening_identity': screening['identity'],
               'snapshot': snapshot}
     (target / 'hierarchy.json').write_text(json.dumps(public, ensure_ascii=False, separators=(',', ':')))
     try:
         from .label_activation_gallery import install as install_label_gallery
     except ImportError:
         from label_activation_gallery import install as install_label_gallery
-    graph = build_category_graph(obj)
+    graph = build_category_graph({**obj, 'dimensions': rows})
+    graph['dimension_screening_identity'] = screening['identity']
     gallery_stats = install_label_gallery(site, target, graph, REPORTS, obj['protocol']['sources'])
     (target / 'category-graph.json').write_text(json.dumps(
         graph, ensure_ascii=False, separators=(',', ':')))
@@ -136,10 +185,12 @@ def install(site, render_page, snapshot):
     for name in ['dimension_elements.csv', 'review_queue.csv']:
         # Normalize CSV line endings for the publishing repo; retain its BOM.
         (target / name).write_text((EXPERIMENT / 'results' / name).read_text())
+    shutil.copyfile(SCREENING, target / 'dimension-screening.json')
+    shutil.copyfile(SCREENING.with_name('screening.csv'), target / 'dimension-screening.csv')
     for suffix in ['css', 'js']:
         shutil.copyfile(TEMPLATES / f'element-hierarchy.{suffix}', target / f'elements.{suffix}')
     shutil.copyfile(TEMPLATES / 'element-training.css', target / 'element-training.css')
-    counts = summary['status_counts']
+    counts = public_summary['status_counts']
     try:
         from .local_composition_gallery import install as install_local_gallery
     except ImportError:
@@ -152,7 +203,7 @@ def install(site, render_page, snapshot):
 <p class="lead">浏览每个 Qwen 细标签对应的 SAE 维度，以及这些维度在四方向街景中的真实响应。</p>
 <p><a href="../relations/#local-results">查看独立的要素关系页面 →</a></p>
 <section class="section" id="qwen-taxonomy"><h2>Qwen 类别图谱</h2>
-<p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。数字表示归入该标签的 SAE 维度数，不表示图像中的地物出现次数。类别尚未经人工语义验证。</p>
+<p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。支持度不足 20 个正激活全景的维度归入“证据不足，暂不命名”，旧 Qwen 猜测只在逐维证据中保留供核查。位置集中只提示复核，不自动判为位置编码。数字是 SAE 维度数，不是地物出现次数；类别尚未经人工语义验证。</p>
 <div class="category-path" aria-label="类别层级">Qwen 逐维解释 <span aria-hidden="true">›</span> <span id="category-path-family">父类</span> <span aria-hidden="true">›</span> <span id="category-path-label">细标签</span></div>
 <div class="category-graph"><div class="category-branch"><h3>父类 <span id="category-family-total"></span></h3><div id="category-families" class="category-families" aria-label="Qwen 类别父类"></div></div>
 <div class="category-branch"><h3 id="category-label-heading">细标签</h3><div id="category-labels" class="category-labels" aria-label="Qwen 细标签"></div></div></div>
@@ -164,12 +215,12 @@ def install(site, render_page, snapshot):
 <dialog id="label-panorama-dialog" class="label-dialog" aria-labelledby="label-dialog-title"><div class="label-dialog-heading"><h2 id="label-dialog-title"></h2><form method="dialog"><button type="submit">关闭</button></form></div><div id="label-dialog-body" class="label-dialog-body"></div></dialog></section>
 <section class="section"><h2>逐维候选与原图证据</h2>
 <p>优先列出{summary['family_disagreements']:,}个遮罩/未遮罩解释父类不一致的维度。冲突标记仅表示需要检查，不能单独判断哪种解释正确。模型自述“高信心”不是准确率。</p>
-<p><a href="dimension_elements.csv">下载完整要素表 CSV</a> · <a href="review_queue.csv">下载复核清单 CSV</a> · <a href="hierarchy.json">数据与来源 JSON</a></p>
+<p><a href="dimension-screening.csv">下载逐维筛查 CSV</a> · <a href="dimension_elements.csv">下载原始要素表 CSV</a> · <a href="review_queue.csv">下载复核清单 CSV</a> · <a href="hierarchy.json">数据与来源 JSON</a></p>
 <div class="controls"><input id="element-search" aria-label="搜索维度或语义" placeholder="编号、窗户、树冠…"><select id="element-family" aria-label="要素父类"><option value="">全部父类</option></select><select id="element-status" aria-label="证据状态"><option value="">全部状态</option></select><label><input type="checkbox" id="element-conflicts">仅看解释冲突</label></div>
 <p id="element-count" role="status">载入候选表…</p>
 <div class="element-layout"><div><div id="element-list" class="element-list" aria-label="维度列表"></div><button id="element-more" type="button">再显示100项</button></div><section id="element-detail" class="element-detail" aria-label="维度证据"></section></div></section>
 <section class="section"><h2>范围与当前结论</h2><p>没有重新提取 DINO 特征或训练 SAE。验证全景优先用于激活实例；扩大样本用于补充稀缺标签，来源逐例标出。扩大样本的既有 Qwen 语义资料可能覆盖原型实验的训练、开发与测试图像，因此不构成独立语义验证。标签与图像的对应仍需人工复核。</p>
-<p>{counts.get('context_or_material', 0):,}维背景/材料，{counts.get('needs_review', 0):,}维待核查，{counts.get('insufficient_evidence', 0):,}维证据不足，{counts.get('unobserved', 0):,}维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section>'''
+<p>{public_summary['status_counts'].get('context_or_material', 0):,}维背景/材料，{public_summary['status_counts'].get('needs_review', 0):,}维待核查，{public_summary['status_counts'].get('insufficient_evidence', 0):,}维证据不足，{public_summary['status_counts'].get('unobserved', 0):,}维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section>'''
     relation_content = f'''<div class="eyebrow">Recurring local scene compositions</div>
 <h1>跨街景重复的要素关系</h1>
 <p class="lead">先在每个方向的28×28 patch 激活中提取形状自适应的区域，再把同一点位四个方向放在一起，寻找不同要素及其相对关系的跨城重复实例。</p>
@@ -231,7 +282,7 @@ def install(site, render_page, snapshot):
         if name == 'combinations/index.html':
             doc = re.sub(r'<div class="note" id="prototype-results-link">.*?</div>', '', doc, flags=re.S)
         document_path.write_text(doc)
-    return {**summary, 'prototype_route': 'local_multi_element_compositions',
+    return {**public_summary, 'prototype_route': 'local_multi_element_compositions',
             'label_gallery': gallery_stats,
             'local_composition_status': 'complete' if (relation_target / 'local-compositions/results.json').exists() else 'pending'}
 

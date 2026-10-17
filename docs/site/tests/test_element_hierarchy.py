@@ -86,3 +86,20 @@ def test_category_graph_covers_every_main_experiment_dimension():
     unresolved = next(family for family in graph['families'] if family['id'] == 'unresolved')
     assert unresolved['count'] == 565
     assert next(label for label in unresolved['labels'] if label['label'] == '未解释')['count'] == 462
+
+
+def test_weak_qwen_guess_is_kept_as_provenance_but_removed_from_taxonomy():
+    row = {'feature': 1662, 'label_zh': '建筑物', 'fine_label_zh': '建筑物',
+           'family': 'building', 'family_zh': '建筑', 'semantic_role': 'element',
+           'counts_as_element': True, 'provisional_graph_candidate': True,
+           'status': 'candidate_ready', 'quality_flags': []}
+    screen = {'feature': 1662, 'label_eligible': False,
+              'status': 'insufficient_support', 'positive_panoramas': 1}
+    public = element_hierarchy.public_screened_row(row, screen)
+    assert public['raw_qwen_label_zh'] == '建筑物'
+    assert public['label_zh'] == ''
+    assert public['semantic_type'] == ''
+    assert public['cues_zh'] == []
+    assert public['display_label_zh'] == '证据不足，暂不命名'
+    assert public['family'] == 'unresolved'
+    assert not public['provisional_graph_candidate']

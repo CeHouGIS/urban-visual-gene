@@ -1,0 +1,49 @@
+{
+  "review_identity": "5a30c81862a945422894b98b953452779eb9cc3eb89ea7736123caf3f6bf3267",
+  "pilot_only": true,
+  "semantic_validation": "pending",
+  "status_counts": {
+    "cross_group_type_conflict": 1,
+    "candidate_needs_independent_validation": 1
+  },
+  "dimensions": [
+    {
+      "feature": 0,
+      "decision": "cross_group_type_conflict",
+      "instance_count": 40,
+      "part_labels": [
+        "太阳",
+        "太阳",
+        "路灯",
+        "路灯"
+      ],
+      "part_types": [
+        "color_light",
+        "color_light",
+        "built_structure",
+        "built_structure"
+      ],
+      "final_label": "路灯",
+      "independently_validated": false
+    },
+    {
+      "feature": 165,
+      "decision": "candidate_needs_independent_validation",
+      "instance_count": 40,
+      "part_labels": [
+        "行人",
+        "行人",
+        "行人",
+        "行人"
+      ],
+      "part_types": [
+        "object",
+        "object",
+        "object",
+        "object"
+      ],
+      "final_label": "行人",
+      "independently_validated": false
+    }
+  ]
+}

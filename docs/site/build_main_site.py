@@ -99,9 +99,12 @@ def overview(out, snapshot, counts):
     for key, (name, caption) in figures.items():
         content = content.replace('@'+key+'@', figure(name, caption))
     interpreted, unobserved = counts.get('interpreted', 0), counts.get('unobserved_in_sample', 0)
-    remaining = 4096 - interpreted - unobserved
-    vlm_status = f'已解释 {interpreted:,} 维；样本内无正激活 {unobserved:,} 维。'
-    vlm_status += f'其余 {remaining:,} 维待补充。' if remaining else '本轮解释计算已完成，语义名称待核查。'
+    insufficient = counts.get('insufficient_evidence', 0)
+    remaining = 4096 - interpreted - unobserved - insufficient
+    vlm_status = (f'待核查候选 {interpreted:,} 维；证据不足、暂停命名 {insufficient:,} 维；'
+                  f'无正激活 {unobserved:,} 维。')
+    if remaining:
+        vlm_status += f'另有 {remaining:,} 维待补充。'
     content = content.replace('@VLM_STATUS@', vlm_status)
     (out/'index.html').write_text(page("主实验", "overview", content, snapshot))
 
@@ -174,32 +177,71 @@ def semantic_pages(out, source, reports):
 
 def interpretation_pages(out, reports, snapshot):
     report = reports/'vlm_dimensions_top10_masked'
+    expanded_report = reports/'vlm_dimensions_top10_expanded'
     # The combined JSON is an atomic, bounded snapshot; derive counts from it.
     records = read_json(report/'dimension_interpretations.json')['dimensions']
+    expanded_records = read_json(expanded_report/'dimension_interpretations.json')['dimensions']
     assert len(records) == 4096 and {r['feature'] for r in records} == set(range(4096))
+    assert len(expanded_records) == len(records) and all(r['feature'] == e['feature'] for r, e in zip(records, expanded_records))
+    for feature, (record, extra) in enumerate(zip(records, expanded_records)):
+        if record['status'] == 'unobserved_in_sample' and extra['status'] == 'interpreted':
+            records[feature] = extra
+            records[feature]['interpretation_source'] = 'expanded_posthoc'
+        else:
+            record['interpretation_source'] = 'fixed_validation'
+    screening = read_json(EXPERIMENT/'results/dimension_screening/screening.json')
+    assert screening['protocol']['checkpoint_sha256'] == CHECKPOINT
+    screens = screening['dimensions']
+    assert len(screens) == len(records) and all(r['feature'] == s['feature'] for r, s in zip(records, screens))
+    for record, screen in zip(records, screens):
+        record['source_status'] = record['status']
+        record['raw_qwen_label_zh'] = record.get('label_zh', '')
+        record['screening'] = screen
+        if not screen['label_eligible']:
+            record['raw_qwen_interpretation'] = {key: record.get(key) for key in
+                ['label_zh', 'semantic_type', 'consistency', 'confidence_self_reported',
+                 'cues_zh', 'alternatives_zh', 'caveats_zh']}
+            record['label_zh'] = ''
+            record['semantic_type'] = ''
+            record['consistency'] = ''
+            record['confidence_self_reported'] = ''
+            record['cues_zh'] = []
+            record['alternatives_zh'] = []
+            record['caveats_zh'] = []
+            record['status'] = ('unobserved_in_sample' if screen['status'] == 'no_positive_activation'
+                                else 'insufficient_evidence')
     counts = dict(Counter(d['status'] for d in records))
     target = out/'interpretation'
-    target.mkdir()
+    target.mkdir(exist_ok=True)
     tasks = []
     for d in records:
         d.pop('original_evidence', None)
         d.pop('record', None)
-        sheet = report/f'inputs/f{d["feature"]:04d}_0.png'
-        if sheet.exists():
+        sheet = (expanded_report if d['interpretation_source'] == 'expanded_posthoc' else report)/f'inputs/f{d["feature"]:04d}_0.png'
+        if sheet.exists() and d['interpretation_source'] == 'expanded_posthoc':
+            d['sheet'] = f'../elements/inputs/f{d["feature"]:04d}.webp'
+        elif sheet.exists():
             d['sheet'] = f'inputs/f{d["feature"]:04d}_0.webp'
             tasks.append((sheet, target/d['sheet'], 'lossless'))
     write_json(target/'dimensions.json', {'snapshot_label': snapshot, 'counts': counts,
-                                        'interpretation_identity': read_json(report/'identity.json'), 'dimensions': records})
+                                        'dimension_screening_identity': screening['identity'],
+                                        'interpretation_identity': read_json(report/'identity.json'),
+                                        'expanded_interpretation_identity': read_json(expanded_report/'identity.json'),
+                                        'dimensions': records})
+    pilot = EXPERIMENT/'results/dimension_screening/review_pilot.json'
+    if pilot.exists():
+        shutil.copyfile(pilot, target/'review-pilot.json')
     with (target/'dimensions.csv').open('w', newline='') as stream:
-        fields = ['feature', 'status', 'crop_count', 'label_zh', 'semantic_type', 'consistency', 'confidence_self_reported']
+        fields = ['feature', 'status', 'crop_count', 'label_zh', 'raw_qwen_label_zh',
+                  'semantic_type', 'consistency', 'confidence_self_reported']
         writer = csv.DictWriter(stream, fields, extrasaction='ignore')
         writer.writeheader()
         writer.writerows(records)
     content = '''<div class="eyebrow">Masked Top10 · Qwen3-VL-2B</div><h1>逐维语义解释</h1>
-<p>每维选前 10 个不同全景的最强方向，按该方向峰值约 50% 保留高激活 patch，裁到联合包围框，框内其余像素置灰（RGB 127）。Qwen 只看这些 masked 原图拼图。</p>
-<p class="note">名称与模型自述的信心均为待核查候选；patch mask 不是像素级分割。此处是发布时的进度快照。</p><p id="snapshot"></p>
-<p><a href="dimensions.csv">解释 CSV</a> · <a href="dimensions.json">全部记录 JSON</a></p>
-<div class="controls"><input id="search" placeholder="搜索编号、候选名称或类型" aria-label="搜索维度"><select id="type" aria-label="语义类型"><option value="">全部类型</option></select><select id="status" aria-label="解释状态"><option value="">全部状态</option><option value="interpreted">已解释</option><option value="pending">待解释</option><option value="unobserved_in_sample">样本内无正激活</option></select></div>
+<p>每维选前 10 个不同全景的最强方向，按该方向峰值约 50% 保留高激活 patch，裁到联合包围框，框内其余像素置灰（RGB 127）。固定验证样本无响应的维度另从扩大样本检索，来源逐维标出。Qwen 看的是 masked 原图拼图。</p>
+<p class="note">支持度不足 20 个正激活全景的维度暂停命名，旧 Qwen 回答只保留供核对。其他名称与模型自述信心仍是待核查候选；patch mask 不是像素级分割。Top40 四组复核仅试跑 2 维：f0 的组间解释冲突，f165 的四组均指向行人；这批试跑尚未替换原始标签，也不能作为独立语义验证。</p><p id="snapshot"></p>
+<p><a href="dimensions.csv">解释 CSV</a> · <a href="dimensions.json">全部记录 JSON</a> · <a href="review-pilot.json">Top40 试跑审计</a></p>
+<div class="controls"><input id="search" placeholder="搜索编号、候选名称或类型" aria-label="搜索维度"><select id="type" aria-label="语义类型"><option value="">全部类型</option></select><select id="status" aria-label="解释状态"><option value="">全部状态</option><option value="interpreted">待核查候选</option><option value="insufficient_evidence">证据不足</option><option value="pending">待解释</option><option value="unobserved_in_sample">无正激活</option></select></div>
 <p class="muted" id="match-count"></p><div class="vlm-layout"><div class="vlm-list" id="listing" aria-label="维度列表"></div><section class="vlm-detail" id="detail"><h2>选择一个维度</h2></section></div>'''
     (target/'index.html').write_text(page('维度解释', 'interpretation', content, snapshot, '<script src="interpretation.js"></script>'))
     shutil.copyfile(TEMPLATES/'interpretation.js', target/'interpretation.js')

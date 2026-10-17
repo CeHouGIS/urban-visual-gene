@@ -2,7 +2,7 @@
   'use strict';
   const $ = s => document.querySelector(s);
   const states = {candidate_ready:'暂定要素候选',needs_review:'待核查',insufficient_evidence:'证据不足',unobserved:'无正激活证据',context_or_material:'背景 / 材料 / 上下文'};
-  const flags = {no_interpretation:'尚无解释',fewer_than_five_examples:'少于5个实例',mixed_or_unclear:'共同语义混合或不明',low_self_reported_confidence:'模型自述信心低',ambiguous_or_unmapped_label:'名称含糊或尚未归类',non_element_or_unclear_response:'非要素或不明确回答',embedding_mixture_flag:'embedding证据提示混合',masked_vs_unmasked_family_disagreement:'遮罩与未遮罩解释的父类不一致'};
+  const flags = {no_interpretation:'尚无解释',fewer_than_five_examples:'少于5个实例',mixed_or_unclear:'共同语义混合或不明',low_self_reported_confidence:'模型自述信心低',ambiguous_or_unmapped_label:'名称含糊或尚未归类',non_element_or_unclear_response:'非要素或不明确回答',embedding_mixture_flag:'embedding证据提示混合',masked_vs_unmasked_family_disagreement:'遮罩与未遮罩解释的父类不一致',support_below_screening_minimum:'正激活全景不足20个，暂停命名'};
   let data, categoryGraph, selected, limit = 100, activeFamily, activeLabel;
   function el(tag, text, className) {const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
   function categoryButton(label, count, maximum, selected) {
@@ -92,6 +92,7 @@
     const box=$('#label-gallery');box.replaceChildren();
     if(!label){box.append(el('p','选择上方细标签查看全景激活实例。'));return;}
     box.append(el('h3',`${family.label} › ${label.label} · ${label.examples.length} / 5 例`));
+    if(!label.eligible){box.append(el('p','这一组按证据状态归档，不是景观语义类别。请在下方逐维查看原始激活。','note'));return;}
     if(!label.examples.length){
       box.append(el('p','现有激活样本中没有该标签对应维度的正激活，无法提供真实高亮图像。','note'));
       return;
@@ -134,12 +135,12 @@
   }
   function filtered() {
     const query=$('#element-search').value.trim().toLowerCase(), family=$('#element-family').value, status=$('#element-status').value, conflict=$('#element-conflicts').checked;
-    return data.dimensions.filter(r=>(!query||[String(r.feature),'f'+r.feature,r.label_zh,r.family_zh,r.reference_label_zh].some(v=>v.toLowerCase().includes(query)))&&(!family||r.family===family)&&(!status||r.status===status)&&(!conflict||r.family_disagreement)).sort((a,b)=>a.review_priority-b.review_priority||a.feature-b.feature);
+    return data.dimensions.filter(r=>(!query||[String(r.feature),'f'+r.feature,r.label_zh,r.raw_qwen_label_zh,r.family_zh,r.reference_label_zh].some(v=>String(v||'').toLowerCase().includes(query)))&&(!family||r.family===family)&&(!status||r.status===status)&&(!conflict||r.family_disagreement)).sort((a,b)=>a.review_priority-b.review_priority||a.feature-b.feature);
   }
   function listing() {
     const rows=filtered(), list=$('#element-list');list.replaceChildren();
     for(const row of rows.slice(0,limit)) {
-      const button=el('button',`f${row.feature} · ${row.label_zh||'未解释'}`);
+      const button=el('button',`f${row.feature} · ${row.display_label_zh||'未解释'}`);
       button.type='button';button.setAttribute('aria-pressed',String(row.feature===selected));
       button.append(el('small',`${row.family_zh} · ${states[row.status]}`));
       button.addEventListener('click',()=>{location.hash='f'+row.feature;});list.append(button);
@@ -153,8 +154,10 @@
     if(!filtered().some(r=>r.feature===selected)){
       $('#element-search').value='';$('#element-family').value='';$('#element-status').value='';$('#element-conflicts').checked=false;limit=100;
     }
-    const detail=$('#element-detail');detail.replaceChildren(el('h3',`f${row.feature} · ${row.label_zh||'无解释证据'}`));
-    detail.append(el('p',`细标签：${row.fine_label_zh||'—'} → 父类：${row.family_zh}`),el('p',`${states[row.status]} · ${row.crop_count}个实例 · ${row.source==='vlm_dimensions_top10_expanded'?'扩大样本补充':'固定验证样本'} · 人工独立验证未完成`));
+    const detail=$('#element-detail');detail.replaceChildren(el('h3',`f${row.feature} · ${row.display_label_zh||'无解释证据'}`));
+    detail.append(el('p',`细标签：${row.fine_label_zh||'—'} → 父类：${row.family_zh}`),el('p',`${states[row.status]} · ${row.crop_count}个 Qwen 输入实例 · ${row.source==='vlm_dimensions_top10_expanded'?'扩大样本补充':'固定验证样本'} · 人工独立验证未完成`));
+    if(row.screening){detail.append(el('p',`正激活：${row.screening.positive_panoramas} / ${row.screening.support_scope==='fixed_validation'?'3,712 个固定验证':'86,038 个扩大样本'}全景；Top 图像涉及 ${row.screening.top_crop_cities} 个城市。${row.screening.position_review?'峰值位置集中，待受控检验；':''}位置编码尚未确认。`));}
+    if(!row.screening.label_eligible&&row.raw_qwen_label_zh){detail.append(el('p',`旧 Qwen 猜测：“${row.raw_qwen_label_zh}”。样本不足，不能作为景观标签。`,'element-flags'));}
     if(row.quality_flags.length)detail.append(el('p',row.quality_flags.map(f=>flags[f]||f).join('；'),'element-flags'));
     detail.append(el('p','共同依据：'+(row.cues_zh.join('；')||'—')),el('p','局限：'+(row.caveats_zh.join('；')||'—')));
     detail.append(el('p',row.provisional_graph_candidate?'可用于探索性关系输入；候选资格不等于语义已验证。':'当前不作为独立景观要素参与组合多样性计数；原始激活保留。'));
@@ -168,7 +171,7 @@
     const [response, graphResponse]=await Promise.all([fetch('hierarchy.json'),fetch('category-graph.json')]);
     if(!response.ok||!graphResponse.ok)throw Error('要素表或类别图谱载入失败');
     [data,categoryGraph]=await Promise.all([response.json(),graphResponse.json()]);
-    if(data.identity!==categoryGraph.identity||data.dimensions.length!==categoryGraph.total)throw Error('类别图谱与维度表不匹配');
+    if(data.identity!==categoryGraph.identity||data.dimension_screening_identity!==categoryGraph.dimension_screening_identity||data.dimensions.length!==categoryGraph.total)throw Error('类别图谱与维度表不匹配');
     activeFamily=categoryGraph.families.find(family=>family.id==='building')?.id||categoryGraph.families[0].id;
     activeLabel=categoryGraph.families.find(family=>family.id===activeFamily).labels[0].label;
     renderCategories();
