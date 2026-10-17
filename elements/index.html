@@ -7,25 +7,25 @@
 <p class="lead">浏览每个 Qwen 细标签对应的 SAE 维度，以及这些维度在四方向街景中的真实响应。</p>
 <p><a href="../relations/#local-results">查看独立的要素关系页面 →</a></p>
 <section class="section" id="qwen-taxonomy"><h2>Qwen 类别图谱</h2>
-<p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。数字表示归入该标签的 SAE 维度数，不表示图像中的地物出现次数。类别尚未经人工语义验证。</p>
+<p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。支持度不足 20 个正激活全景的维度归入“证据不足，暂不命名”，旧 Qwen 猜测只在逐维证据中保留供核查。位置集中只提示复核，不自动判为位置编码。数字是 SAE 维度数，不是地物出现次数；类别尚未经人工语义验证。</p>
 <div class="category-path" aria-label="类别层级">Qwen 逐维解释 <span aria-hidden="true">›</span> <span id="category-path-family">父类</span> <span aria-hidden="true">›</span> <span id="category-path-label">细标签</span></div>
 <div class="category-graph"><div class="category-branch"><h3>父类 <span id="category-family-total"></span></h3><div id="category-families" class="category-families" aria-label="Qwen 类别父类"></div></div>
 <div class="category-branch"><h3 id="category-label-heading">细标签</h3><div id="category-labels" class="category-labels" aria-label="Qwen 细标签"></div></div></div>
 <div id="category-feature-detail" class="category-feature-detail" aria-live="polite"></div></section>
 <section class="section" id="label-activations"><h2>标签的四方向激活实例</h2>
-<p>439 个标签共收录 2,076 个全景实例；401 个标签达到 5 例，38 个不足 5 例（其中 1 个无正激活）。扩大样本补充 98 例。</p>
+<p>392 个标签共收录 1,960 个全景实例；392 个标签达到 5 例，0 个不足 5 例（其中 0 个无正激活）。扩大样本补充 0 例。</p>
 <p>每个标签最多展示 5 个峰值响应较强的全景，优先覆盖不同 SAE 维度和点位。上行为四方向原图，下行为同一全景的激活高亮；颜色仅叠加在被选中维度的响应方向。热图按该方向峰值归一化，属于 patch 级响应，不是物体分割。高亮与标签不符时说明解释需要复核；部分稀缺标签不足 5 例或没有正激活。</p>
 <div id="label-gallery" aria-live="polite"></div>
 <dialog id="label-panorama-dialog" class="label-dialog" aria-labelledby="label-dialog-title"><div class="label-dialog-heading"><h2 id="label-dialog-title"></h2><form method="dialog"><button type="submit">关闭</button></form></div><div id="label-dialog-body" class="label-dialog-body"></div></dialog></section>
 <section class="section"><h2>逐维候选与原图证据</h2>
 <p>优先列出426个遮罩/未遮罩解释父类不一致的维度。冲突标记仅表示需要检查，不能单独判断哪种解释正确。模型自述“高信心”不是准确率。</p>
-<p><a href="dimension_elements.csv">下载完整要素表 CSV</a> · <a href="review_queue.csv">下载复核清单 CSV</a> · <a href="hierarchy.json">数据与来源 JSON</a></p>
+<p><a href="dimension-screening.csv">下载逐维筛查 CSV</a> · <a href="dimension_elements.csv">下载原始要素表 CSV</a> · <a href="review_queue.csv">下载复核清单 CSV</a> · <a href="hierarchy.json">数据与来源 JSON</a></p>
 <div class="controls"><input id="element-search" aria-label="搜索维度或语义" placeholder="编号、窗户、树冠…"><select id="element-family" aria-label="要素父类"><option value="">全部父类</option></select><select id="element-status" aria-label="证据状态"><option value="">全部状态</option></select><label><input type="checkbox" id="element-conflicts">仅看解释冲突</label></div>
 <p id="element-count" role="status">载入候选表…</p>
 <div class="element-layout"><div><div id="element-list" class="element-list" aria-label="维度列表"></div><button id="element-more" type="button">再显示100项</button></div><section id="element-detail" class="element-detail" aria-label="维度证据"></section></div></section>
 <section class="section"><h2>范围与当前结论</h2><p>没有重新提取 DINO 特征或训练 SAE。验证全景优先用于激活实例；扩大样本用于补充稀缺标签，来源逐例标出。扩大样本的既有 Qwen 语义资料可能覆盖原型实验的训练、开发与测试图像，因此不构成独立语义验证。标签与图像的对应仍需人工复核。</p>
-<p>1,048维背景/材料，503维待核查，522维证据不足，462维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
-发布快照：2026-10-17 18:12 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+<p>859维背景/材料，488维待核查，745维证据不足，462维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
+发布快照：2026-10-17 18:48 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
 </footer></div><aside class="project-sidebar" aria-label="项目进度">
 <details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
 <div class="project-progress-content"><p id="project-research-goal"></p>

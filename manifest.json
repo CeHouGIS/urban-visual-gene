@@ -33,25 +33,25 @@
     "interpreted": 3178,
     "unobserved_in_sample": 918
   },
-  "file_count": 23516,
-  "bytes_before_manifest": 917131060,
+  "file_count": 23146,
+  "bytes_before_manifest": 910406108,
   "element_hierarchy": {
     "page": "elements/",
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
-    "candidate_dimensions": 1561,
+    "candidate_dimensions": 1542,
     "semantic_validation": "pending",
     "relation_page": "relations/",
     "label_gallery": {
-      "labels": 439,
-      "examples": 2076,
-      "labels_with_five": 401,
-      "labels_without_examples": 1,
-      "expanded_examples": 98,
-      "expanded_panoramas": 93
+      "expanded_examples": 0,
+      "labels": 392,
+      "examples": 1960,
+      "labels_with_five": 392,
+      "labels_without_examples": 0,
+      "expanded_panoramas": 0
     },
     "prototype_route": "local_multi_element_compositions",
     "local_composition_status": "complete",
-    "published_at": "2026-10-17 18:12 CST"
+    "published_at": "2026-10-17 18:48 CST"
   },
   "packaging": "Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.",
   "source_result_manifest_sha256": "675fbd9694fd53bf1a225203b6740265d56f035f46621cd77520cb7b51e485a1"
