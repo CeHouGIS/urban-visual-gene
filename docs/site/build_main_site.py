@@ -31,7 +31,7 @@ TEMPLATES = Path(__file__).with_name("templates")
 CHECKPOINT = "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0"
 NAV_ITEMS = [("overview", "主实验", ""), ("semantic", "语义地图", "semantic/"),
              ("instances", "图像实例", "instances/"), ("interpretation", "维度解释", "interpretation/"),
-             ("elements", "要素与组合", "elements/")]
+             ("elements", "要素标签", "elements/"), ("relations", "要素关系", "relations/")]
 
 
 def read_json(path):
@@ -84,7 +84,7 @@ def overview(out, snapshot, counts):
 <div class="two">@LOSS@@ACTIVATION@</div><p><a href="data/training/history.csv">训练记录 CSV</a> · <a href="data/training_summary.json">训练设置与数据身份</a></p></section>
 <section class="section"><h2>城市与视觉组成</h2><p>4,096 维 decoder 按余弦距离与 average linkage 归纳为 64 组，用于组成和城市比较；分组颜色与语义地图一致。</p>
 <div class="two">@CITIES@@COMPOSITION@</div><details><summary>展开城市相似性、共现与空间结果</summary><div class="two">@SIMILARITY@@COOCCURRENCE@@SHARED@@SPATIAL@</div></details></section>
-<section class="section"><h2>跨街景的局部要素组合</h2><p>以完整四方向全景为统计单位，在各方向的 SAE 激活中提取自适应要素遮罩，检索重复的多要素关系。当前为探索性抽样，语义仍需核查。</p><a href="elements/#local-results">查看组合遮罩实例与置换对照 →</a></section>
+<section class="section"><h2>跨街景的局部要素组合</h2><p>以完整四方向全景为统计单位，在各方向的 SAE 激活中提取自适应要素遮罩，检索重复的多要素关系。当前为探索性抽样，语义仍需核查。</p><a href="relations/#local-results">查看组合遮罩实例与置换对照 →</a></section>
 <details class="section"><summary>方法与解释范围</summary><p>语义地图使用图像裁剪的 SigLIP embedding，城市、空间坐标、decoder 分组和 VLM 文字均不参与 UMAP 拟合。维度地图中至少 20 个有效实例才进入投影，故 4,096 个模型维度对应 2,863 个散点；图像实例地图则保留 3,178 维的最多 Top10 实例。64 组使用各自唯一颜色，部分组暂无足够实例进入维度投影。</p><p>二维邻近关系供浏览，不证明类别边界或统计显著性。Qwen 名称为待核查的解释；维度可能对应物体、部件、纹理或混合概念。激活图表示 patch 级响应，不是像素分割。</p><p><a href="data/group_interpretations.csv">64 组解释 CSV</a> · <a href="data/feature_semantic_umap_groups.csv">维度坐标与分组 CSV</a> · <a href="data/group_palette.json">64 组色表与许可</a></p></details>'''
     figures = {
         "LOSS": ("Fig_ViTL30_Training_Loss.png", "训练 loss 与抽样验证误差"),
@@ -335,6 +335,8 @@ jobs:
         'element_hierarchy': {'page': 'elements/', 'identity': element_summary['identity'],
                               'candidate_dimensions': element_summary['status_counts']['candidate_ready'],
                               'semantic_validation': 'pending',
+                              'relation_page': 'relations/',
+                              'label_gallery': element_summary['label_gallery'],
                               'prototype_route': element_summary['prototype_route'],
                               'local_composition_status': element_summary['local_composition_status']} if element_summary else None,
         'packaging': 'Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.',

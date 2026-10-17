@@ -23,6 +23,8 @@
       return;
     }
     detail.append(el('h3',`${family.label} › ${label.label} · ${label.count.toLocaleString()} 维`));
+    const galleryLink=el('a',`查看 ${label.examples.length} 个全景激活实例 ↓`);
+    galleryLink.href='#label-activations';detail.append(galleryLink);
     const intro=el('p','点击维度编号查看高激活图像与 Qwen 原始解释。');
     detail.append(intro);
     const links=el('div',undefined,'category-feature-links');
@@ -43,6 +45,71 @@
       more.type='button';more.addEventListener('click',()=>{show(label.count);more.remove();});detail.append(more);
     }
   }
+  function sourceImage(path){return new Promise((resolve,reject)=>{
+    const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(Error(`原图载入失败：${path}`));image.src=path;
+  });}
+  async function drawActivation(canvas,path,heat){
+    const [image,map]=await Promise.all([sourceImage(path),sourceImage(`data:image/png;base64,${heat}`)]);
+    canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;
+    const context=canvas.getContext('2d');context.drawImage(image,0,0);
+    const layer=document.createElement('canvas');layer.width=map.naturalWidth;layer.height=map.naturalHeight;
+    const paint=layer.getContext('2d',{willReadFrequently:true});paint.drawImage(map,0,0);
+    const pixels=paint.getImageData(0,0,layer.width,layer.height);
+    for(let i=0;i<pixels.data.length;i+=4){
+      const value=pixels.data[i]/255;
+      pixels.data[i]=255;pixels.data[i+1]=Math.round(210*Math.min(1,value*1.5));
+      pixels.data[i+2]=30;pixels.data[i+3]=Math.round(225*Math.max(0,(value-.08)/.92));
+    }
+    paint.putImageData(pixels,0,0);context.imageSmoothingEnabled=false;
+    context.drawImage(layer,0,0,canvas.width,canvas.height);
+  }
+  function panoramaRow(example,withHeat){
+    const row=el('div',undefined,'label-panorama');
+    for(let index=0;index<4;index++){
+      const view=el('div',undefined,'label-view');
+      const heading=index*90;
+      if(withHeat&&heading===example.heading){
+        const canvas=el('canvas');canvas.setAttribute('aria-label',`${heading}°方向 SAE 激活叠加图`);
+        view.append(canvas);
+        drawActivation(canvas,example.views[index],example.heat).catch(error=>view.append(el('p',error.message)));
+      }else{
+        const image=el('img');image.src=example.views[index];image.loading='lazy';
+        image.alt=`${example.city}，${heading}°方向原图`;view.append(image);
+      }
+      view.append(el('small',`${heading}°${withHeat&&heading===example.heading?' · 高亮':''}`));
+      row.append(view);
+    }
+    return row;
+  }
+  function openPanorama(example,label){
+    const dialog=$('#label-panorama-dialog'),body=$('#label-dialog-body');body.replaceChildren();
+    $('#label-dialog-title').textContent=`${label} · ${example.city.split('/').pop()} · f${example.feature}`;
+    body.append(el('div','四方向原图','label-row-title'),panoramaRow(example,false));
+    body.append(el('div','激活高亮','label-row-title'),panoramaRow(example,true));
+    dialog.showModal();
+  }
+  function renderActivationGallery(family,label){
+    const box=$('#label-gallery');box.replaceChildren();
+    if(!label){box.append(el('p','选择上方细标签查看全景激活实例。'));return;}
+    box.append(el('h3',`${family.label} › ${label.label} · ${label.examples.length} / 5 例`));
+    if(!label.examples.length){
+      box.append(el('p','现有激活样本中没有该标签对应维度的正激活，无法提供真实高亮图像。','note'));
+      return;
+    }
+    for(const [index,example] of label.examples.entries()){
+      const item=el('article',undefined,'label-example');
+      const header=el('div',undefined,'label-example-heading');
+      const title=el('strong',`${index+1}. ${example.city.split('/').pop()} · f${example.feature}`);
+      const link=el('a','查看逐维证据');link.href=`../semantic/feature.html?f=${example.feature}`;
+      const enlarge=el('button','放大全景');enlarge.type='button';
+      enlarge.addEventListener('click',()=>openPanorama(example,label.label));
+      header.append(title,enlarge,link);item.append(header);
+      item.append(el('p',`pano ${example.pano} · 峰值 ${example.activation.toFixed(4)} · ${example.source==='vlm_dimensions_top10_expanded'?'扩大样本补充':'固定验证样本'}`,'label-example-meta'));
+      item.append(el('div','四方向原图','label-row-title'),panoramaRow(example,false));
+      item.append(el('div','激活高亮 · 黄色越亮响应越强','label-row-title'),panoramaRow(example,true));
+      box.append(item);
+    }
+  }
   function renderCategories() {
     const families=$('#category-families'), labels=$('#category-labels');
     const family=categoryGraph.families.find(item=>item.id===activeFamily);
@@ -53,7 +120,7 @@
     $('#category-label-heading').textContent=`${family.label} · ${family.label_count} 个细标签`;
     for(const item of categoryGraph.families){
       const button=categoryButton(item.label,item.count,categoryGraph.families[0].count,item.id===activeFamily);
-      button.addEventListener('click',()=>{activeFamily=item.id;activeLabel=undefined;renderCategories();});
+      button.addEventListener('click',()=>{activeFamily=item.id;activeLabel=item.labels[0]?.label;renderCategories();});
       families.append(button);
     }
     const maximum=family.labels[0]?.count||1;
@@ -62,7 +129,8 @@
       button.addEventListener('click',()=>{activeLabel=item.label;renderCategories();});
       labels.append(button);
     }
-    renderCategoryDetail(family,family.labels.find(item=>item.label===activeLabel));
+    const label=family.labels.find(item=>item.label===activeLabel);
+    renderCategoryDetail(family,label);renderActivationGallery(family,label);
   }
   function filtered() {
     const query=$('#element-search').value.trim().toLowerCase(), family=$('#element-family').value, status=$('#element-status').value, conflict=$('#element-conflicts').checked;
@@ -102,6 +170,7 @@
     [data,categoryGraph]=await Promise.all([response.json(),graphResponse.json()]);
     if(data.identity!==categoryGraph.identity||data.dimensions.length!==categoryGraph.total)throw Error('类别图谱与维度表不匹配');
     activeFamily=categoryGraph.families.find(family=>family.id==='building')?.id||categoryGraph.families[0].id;
+    activeLabel=categoryGraph.families.find(family=>family.id===activeFamily).labels[0].label;
     renderCategories();
     for(const family of data.families){const option=el('option',family.label_zh);option.value=family.id;$('#element-family').append(option);}
     for(const [value,label] of Object.entries(states)){const option=el('option',label);option.value=value;$('#element-status').append(option);}

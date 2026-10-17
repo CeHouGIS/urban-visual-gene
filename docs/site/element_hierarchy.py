@@ -111,8 +111,14 @@ def install(site, render_page, snapshot):
               'summary': {**summary, 'prototype_route': 'local_multi_element_compositions'},
               'snapshot': snapshot}
     (target / 'hierarchy.json').write_text(json.dumps(public, ensure_ascii=False, separators=(',', ':')))
+    try:
+        from .label_activation_gallery import install as install_label_gallery
+    except ImportError:
+        from label_activation_gallery import install as install_label_gallery
+    graph = build_category_graph(obj)
+    gallery_stats = install_label_gallery(site, target, graph, REPORTS, obj['protocol']['sources'])
     (target / 'category-graph.json').write_text(json.dumps(
-        build_category_graph(obj), ensure_ascii=False, separators=(',', ':')))
+        graph, ensure_ascii=False, separators=(',', ':')))
     for obsolete in ['training-summary.json', 'prototype-examples.json',
                      'relational-gallery.css', 'relational-gallery.js']:
         (target / obsolete).unlink(missing_ok=True)
@@ -120,6 +126,8 @@ def install(site, render_page, snapshot):
         shutil.rmtree(target / 'examples')
     if (target / 'open-panorama').exists():
         shutil.rmtree(target / 'open-panorama')
+    if (target / 'local-compositions').exists():
+        shutil.rmtree(target / 'local-compositions')
     if (site / 'combinations').exists():
         shutil.rmtree(site / 'combinations')
     for obsolete_figure in ['Fig_ViTL30_Landscape_Prototype_Overview.jpg',
@@ -132,21 +140,40 @@ def install(site, render_page, snapshot):
         shutil.copyfile(TEMPLATES / f'element-hierarchy.{suffix}', target / f'elements.{suffix}')
     shutil.copyfile(TEMPLATES / 'element-training.css', target / 'element-training.css')
     counts = summary['status_counts']
-    families = len(summary['graph_candidate_family_counts'])
     try:
         from .local_composition_gallery import install as install_local_gallery
     except ImportError:
         from local_composition_gallery import install as install_local_gallery
-    local_gallery = install_local_gallery(target)
-    content = f'''<div class="eyebrow">Recurring local scene compositions</div>
-<h1>跨街景重复的局部要素组合</h1>
-<p class="lead">先在每个方向的28×28 patch 激活中提取形状自适应的区域，再把同一点位四个方向放在一起，寻找不同要素及其相对关系的跨城重复实例。</p>
+    relation_target = site / 'relations'
+    relation_target.mkdir(exist_ok=True)
+    local_gallery = install_local_gallery(relation_target)
+    content = f'''<div class="eyebrow">Qwen labels · SAE activation evidence</div>
+<h1>街景要素标签与激活</h1>
+<p class="lead">浏览每个 Qwen 细标签对应的 SAE 维度，以及这些维度在四方向街景中的真实响应。</p>
+<p><a href="../relations/#local-results">查看独立的要素关系页面 →</a></p>
 <section class="section" id="qwen-taxonomy"><h2>Qwen 类别图谱</h2>
 <p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。数字表示归入该标签的 SAE 维度数，不表示图像中的地物出现次数。类别尚未经人工语义验证。</p>
 <div class="category-path" aria-label="类别层级">Qwen 逐维解释 <span aria-hidden="true">›</span> <span id="category-path-family">父类</span> <span aria-hidden="true">›</span> <span id="category-path-label">细标签</span></div>
 <div class="category-graph"><div class="category-branch"><h3>父类 <span id="category-family-total"></span></h3><div id="category-families" class="category-families" aria-label="Qwen 类别父类"></div></div>
 <div class="category-branch"><h3 id="category-label-heading">细标签</h3><div id="category-labels" class="category-labels" aria-label="Qwen 细标签"></div></div></div>
 <div id="category-feature-detail" class="category-feature-detail" aria-live="polite"></div></section>
+<section class="section" id="label-activations"><h2>标签的四方向激活实例</h2>
+<p>{gallery_stats['labels']} 个标签共收录 {gallery_stats['examples']:,} 个全景实例；{gallery_stats['labels_with_five']} 个标签达到 5 例，{gallery_stats['labels'] - gallery_stats['labels_with_five']} 个不足 5 例（其中 {gallery_stats['labels_without_examples']} 个无正激活）。扩大样本补充 {gallery_stats['expanded_examples']} 例。</p>
+<p>每个标签最多展示 5 个峰值响应较强的全景，优先覆盖不同 SAE 维度和点位。上行为四方向原图，下行为同一全景的激活高亮；颜色仅叠加在被选中维度的响应方向。热图按该方向峰值归一化，属于 patch 级响应，不是物体分割。高亮与标签不符时说明解释需要复核；部分稀缺标签不足 5 例或没有正激活。</p>
+<div id="label-gallery" aria-live="polite"></div>
+<dialog id="label-panorama-dialog" class="label-dialog" aria-labelledby="label-dialog-title"><div class="label-dialog-heading"><h2 id="label-dialog-title"></h2><form method="dialog"><button type="submit">关闭</button></form></div><div id="label-dialog-body" class="label-dialog-body"></div></dialog></section>
+<section class="section"><h2>逐维候选与原图证据</h2>
+<p>优先列出{summary['family_disagreements']:,}个遮罩/未遮罩解释父类不一致的维度。冲突标记仅表示需要检查，不能单独判断哪种解释正确。模型自述“高信心”不是准确率。</p>
+<p><a href="dimension_elements.csv">下载完整要素表 CSV</a> · <a href="review_queue.csv">下载复核清单 CSV</a> · <a href="hierarchy.json">数据与来源 JSON</a></p>
+<div class="controls"><input id="element-search" aria-label="搜索维度或语义" placeholder="编号、窗户、树冠…"><select id="element-family" aria-label="要素父类"><option value="">全部父类</option></select><select id="element-status" aria-label="证据状态"><option value="">全部状态</option></select><label><input type="checkbox" id="element-conflicts">仅看解释冲突</label></div>
+<p id="element-count" role="status">载入候选表…</p>
+<div class="element-layout"><div><div id="element-list" class="element-list" aria-label="维度列表"></div><button id="element-more" type="button">再显示100项</button></div><section id="element-detail" class="element-detail" aria-label="维度证据"></section></div></section>
+<section class="section"><h2>范围与当前结论</h2><p>没有重新提取 DINO 特征或训练 SAE。验证全景优先用于激活实例；扩大样本用于补充稀缺标签，来源逐例标出。扩大样本的既有 Qwen 语义资料可能覆盖原型实验的训练、开发与测试图像，因此不构成独立语义验证。标签与图像的对应仍需人工复核。</p>
+<p>{counts.get('context_or_material', 0):,}维背景/材料，{counts.get('needs_review', 0):,}维待核查，{counts.get('insufficient_evidence', 0):,}维证据不足，{counts.get('unobserved', 0):,}维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section>'''
+    relation_content = f'''<div class="eyebrow">Recurring local scene compositions</div>
+<h1>跨街景重复的要素关系</h1>
+<p class="lead">先在每个方向的28×28 patch 激活中提取形状自适应的区域，再把同一点位四个方向放在一起，寻找不同要素及其相对关系的跨城重复实例。</p>
+<p><a href="../elements/#qwen-taxonomy">查看组成要素的 Qwen 标签与逐维激活 →</a></p>
 <div class="element-stages"><section><h2>01 · 四方向输入</h2><p>0°、90°、180°、270°同属一个全景，真实朝向和完整图像在实例中保留。</p></section>
 <section><h2>02 · 局部 SAE 要素</h2><p>复用当前 ViT-L W4096/K32 逐 patch 激活，在方向图中产生非矩形区域遮罩。VLM 父类只用于探索性的要素归组。</p></section>
 <section><h2>03 · 重复关系检索</h2><p>每个候选包含三个局部 SAE 要素，允许同一父类重复（例如建筑 + 乔木 + 乔木），检索同方向或跨方向的相对布局；数量由训练样本支持决定，不预设32或96种景观。</p></section>
@@ -155,20 +182,15 @@ def install(site, render_page, snapshot):
 <p>以完整四方向全景为统计单位；每张方向图独立形成要素区域，再用方位、上下左右和分离的 mask 建立关系。关系搜索允许同一父类出现多个独立区域，同时过滤方向边界处的重复观测。探索性样本先看重复与置换对照，不将一个模型模板直接当作景观类别。</p></section>
 {local_gallery}
 <section class="section"><h2>用于解释的景观要素基础</h2>
-<p>窗户、门和建筑墙面归入建筑，树冠和树干归入乔木，车窗和车轮归入车辆。细标签及原始维度仍保留，用于解释当前局部要素组合；父类只是暂定的检索辅助，不是经过独立验证的景观类别。</p></section>
-<section class="section"><h2>逐维候选与原图证据</h2>
-<p>优先列出{summary['family_disagreements']:,}个遮罩/未遮罩解释父类不一致的维度。冲突标记仅表示需要检查，不能单独判断哪种解释正确。模型自述“高信心”不是准确率。</p>
-<p><a href="dimension_elements.csv">下载完整要素表 CSV</a> · <a href="review_queue.csv">下载复核清单 CSV</a> · <a href="hierarchy.json">数据与来源 JSON</a></p>
-<div class="controls"><input id="element-search" aria-label="搜索维度或语义" placeholder="编号、窗户、树冠…"><select id="element-family" aria-label="要素父类"><option value="">全部父类</option></select><select id="element-status" aria-label="证据状态"><option value="">全部状态</option></select><label><input type="checkbox" id="element-conflicts">仅看解释冲突</label></div>
-<p id="element-count" role="status">载入候选表…</p>
-<div class="element-layout"><div><div id="element-list" class="element-list" aria-label="维度列表"></div><button id="element-more" type="button">再显示100项</button></div><section id="element-detail" class="element-detail" aria-label="维度证据"></section></div></section>
-<section class="section"><h2>范围与当前结论</h2><p>没有重新提取DINO特征或训练SAE，没有新开测试集图像或激活。现有VLM解释资料曾使用包含新原型层训练、开发和测试图像的语料，因此这些语义先验不独立于测试；后续结果先作为探索性证据。</p>
-<p>{counts.get('context_or_material', 0):,}维背景/材料，{counts.get('needs_review', 0):,}维待核查，{counts.get('insufficient_evidence', 0):,}维证据不足，{counts.get('unobserved', 0):,}维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section>'''
-    document = render_page('景观要素与组合路线', 'elements', content, snapshot,
+<p>窗户、门和建筑墙面归入建筑，树冠和树干归入乔木，车窗和车轮归入车辆。父类只作为关系检索的辅助，仍需人工核查。要素标签及其激活图见 <a href="../elements/">标签与激活页</a>。</p></section>'''
+    document = render_page('景观要素标签与激活', 'elements', content, snapshot,
         '<script src="elements.js" defer></script>')
     document = document.replace('</head>', '<link rel="stylesheet" href="elements.css">'
                                 '<link rel="stylesheet" href="element-training.css"></head>')
     (target / 'index.html').write_text(document)
+    relation_document = render_page('景观要素关系', 'relations', relation_content, snapshot)
+    relation_document = relation_document.replace('</head>', '<link rel="stylesheet" href="../elements/elements.css"></head>')
+    (relation_target / 'index.html').write_text(relation_document)
     # Keep the current route visible from every main page.
     try:
         from .build_main_site import nav
@@ -189,12 +211,13 @@ def install(site, render_page, snapshot):
                          '<section class="section"><h2>跨街景的局部要素组合</h2>'
                          '<p>在完整四方向全景中提取自适应要素遮罩，检索跨街景重复的组合关系。'
                          '当前结果为探索性抽样，语义仍待核查。</p>'
-                         '<a href="elements/#local-results">查看遮罩实例与置换对照 →</a></section>',
+                         '<a href="relations/#local-results">查看遮罩实例与置换对照 →</a></section>',
                          doc, flags=re.S)
             announcement = ('<section class="note" id="element-route">'
                 '<strong>当前路线：跨街景重复的局部要素组合</strong>'
                 '<p>从四方向图像提取局部区域，检索不同要素及相对关系的重复实例。</p>'
-                f'<a href="{prefix}elements/">查看方法状态与要素证据 →</a></section>')
+                f'<a href="{prefix}relations/">查看关系方法与实例 →</a> · '
+                f'<a href="{prefix}elements/">查看标签激活 →</a></section>')
             if 'id="element-route"' in doc:
                 doc = re.sub(r'<section class="note" id="element-route">.*?</section>',
                              lambda _: announcement, doc, count=1, flags=re.S)
@@ -209,7 +232,8 @@ def install(site, render_page, snapshot):
             doc = re.sub(r'<div class="note" id="prototype-results-link">.*?</div>', '', doc, flags=re.S)
         document_path.write_text(doc)
     return {**summary, 'prototype_route': 'local_multi_element_compositions',
-            'local_composition_status': 'complete' if (target / 'local-compositions/results.json').exists() else 'pending'}
+            'label_gallery': gallery_stats,
+            'local_composition_status': 'complete' if (relation_target / 'local-compositions/results.json').exists() else 'pending'}
 
 
 def update(site):
@@ -223,6 +247,7 @@ def update(site):
     install_progress(site)
     manifest['element_hierarchy'] = {'page': 'elements/', 'identity': result['identity'],
         'candidate_dimensions': result['status_counts']['candidate_ready'], 'semantic_validation': 'pending',
+        'relation_page': 'relations/', 'label_gallery': result['label_gallery'],
         'prototype_route': result['prototype_route'],
         'local_composition_status': result['local_composition_status'],
         'published_at': snapshot}
@@ -230,6 +255,8 @@ def update(site):
     manifest.pop('prototype_gallery', None)
     manifest.pop('panorama_display', None)
     manifest['file_count'] = sum(p.is_file() for p in site.rglob('*') if '.git' not in p.parts)
+    manifest['bytes_before_manifest'] = sum(p.stat().st_size for p in site.rglob('*')
+        if p.is_file() and '.git' not in p.parts and p.name != 'manifest.json')
     (site / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(result, ensure_ascii=False))
 

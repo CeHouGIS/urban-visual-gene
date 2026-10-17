@@ -20,7 +20,7 @@ CHECKPOINT = 'fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0'
 RUNS = [('real_seed42', '真实数据 · seed 42'), ('real_seed43', '真实数据 · seed 43'),
         ('spatial_shuffle_seed42', '空间打乱对照'), ('feature_shuffle_seed42', '维度对应打乱对照')]
 PAGES = ['index.html', 'semantic/index.html', 'instances/index.html',
-         'interpretation/index.html', 'elements/index.html']
+         'interpretation/index.html', 'elements/index.html', 'relations/index.html']
 
 
 def read(path):
@@ -367,7 +367,7 @@ def relational_status(root):
             status = 'complete' if local.get('status') == 'complete' else 'pending'
         rows.append({'id': 'local_compositions', 'label': '全景级多要素关系探索',
                      'status': status, 'detail': detail,
-                     'link': 'elements/#local-results', 'semantic_review': 'pending',
+                     'link': 'relations/#local-results', 'semantic_review': 'pending',
                      'test_sealed': True})
         return rows
     open_status = read(root / 'experiments/vitl30_open_panorama_prototypes/outputs/status.json')
