@@ -1,25 +1,132 @@
-# 四方向局部要素组合：探索性实验
+# Panorama-level landscape relationship mining
 
-本目录复用当前 30 城主实验的 DINOv3 ViT-L/16、W4096/K32 BatchTopK SAE 稀疏激活缓存；本轮从可核对原图的 29 城中抽样，不重新训练 SAE，也不读取封存的原型层测试激活。这里的“组合”是两种暂定要素父类在同一全景中的重复关系，不是已经验证的景观类型。
+This experiment searches for recurring **relationships among local visual
+elements in a complete four-view panorama**. The unit of analysis is one
+panorama with its 0°, 90°, 180°, and 270° views. A candidate can therefore span
+two views and can contain repeated families, such as `building + tree + tree`.
+The output is an exploratory candidate-motif catalogue; it is not an object
+segmentation benchmark and it does not by itself establish a confirmed
+landscape prototype.
 
-## 方法
+## Data and fixed representation
 
-1. 从已有维度解释层级读取 4,096 维中的暂定要素父类；将墙面、窗户等同一对象部件合并。候选标签来自事后 VLM，尚未经人工独立确认。
-2. 对每张方向图的 28×28 patch 激活按训练集正激活 RMS 归一化、聚合到父类、平滑，并用自适应阈值和连通域获得非矩形区域。每个全景保留 0°、90°、180°、270° 四个方向；四张图分别定位区域，之后作为同一全景计算关系。
-3. 检索不同父类的区域对，记录同方向的相对上下左右，或跨方向的朝向差和画面高度关系。相同父类、明显重叠的同方向区域不作为多要素组合。
-4. 每城从 3 个缓存分片抽取最多 48 个训练、16 个开发全景，共 1,392 / 464 个全景、7,424 张方向图。训练样本只负责提出候选：至少出现于 30 个训练全景、8 个城市。开发样本固定候选后，分别与同城同方向置换要素标签、全景内置换区域布局比较；各进行 199 次置换，对全部 298 个原始候选分别做 BH-FDR 校正。
-5. 在网页上按要素对、同方向/跨方向及上下关系合并朝向等价的展示项；此合并不重算检验，也不把方向变体计为新的景观类型。每项展示不同城市的四方向原图和两种区域遮罩。
+The script reuses the frozen ViT-L/BatchTopK SAE sparse-activation cache from
+the 30-city main experiment. It does not extract DINO features again and does
+not retrain the SAE. Each perspective view is represented by a 28×28 patch
+grid. The current run contains 1,856 complete panoramas from 29 cities:
 
-复现实验须有服务器上的稀疏激活缓存、空间划分、原图映射及 VLM 层级：
+- 1,392 training panoramas;
+- 464 development panoramas;
+- 7,424 directional images (four per panorama).
 
-    python -m experiments.vitl30_local_compositions.run --chunks-per-city 3 --train-cap 48 --dev-cap 16 --permutations 199 --max-gallery 12 --seed 20261017
+The sealed test partition is not read. The checkpoint, corpus, split, hierarchy,
+and sample hashes are recorded in `outputs/panorama_motifs/results.json`.
 
-## 本轮结果与边界
+## Panorama construction and relation key
 
-outputs/results.json 记录 298 个训练候选，其中 173 个在开发样本的两种零假设下均达到 q<0.05。展示层从 12 个方向关系中选出 5 个布局，网页发布 30 张四方向遮罩图。结果属于抽样上的探索性关系检索；173 不代表 173 个可解释景观原型。现有 VLM 语义先验可能接触过原型层开发或测试图像，不能据此声明独立语义验证。
+SAE dimensions are first grouped into provisional visual families using the
+existing post-hoc interpretation hierarchy. Family regions are obtained from
+the sparse patch activations and are used as **feature masks**, not as object
+instance masks.
 
-网站使用的精简快照（5 个布局、30 张图像）与 SHA-256 来源清单位于 results/，随 Git 提交，避免依赖服务器被忽略的 outputs/。重新运行并审阅试验后，用 python -m experiments.vitl30_local_compositions.publish_snapshot 刷新快照；网站构建优先读服务器输出，缺失时核对哈希和数据身份后读取已提交快照。快照 JSON 保留原始 298 个候选的检验总数，但只包括展示的 5 个布局；完整的 12 个方向变体在服务器输出。
+For a region centroid at horizontal patch coordinate `x` in a view with heading
+`h`, the experiment uses an explicit 90° field-of-view assumption:
 
-尚需人工检查父类、遮罩及对象边界；再评估跨种子、跨城稳定性、三元关系、完整训练集和逐图 80% 语义覆盖。该试验没有训练连续软匹配原型网络，也没有使用封存测试激活。
+\[
+\theta = h + \left(\frac{x}{27}-\frac12\right)90^\circ \pmod{360^\circ}.
+\]
 
-静态网站生成代码：docs/site/local_composition_gallery.py；线上展示：https://cehougis.github.io/urban-visual-gene/elements/#local-results 。
+This puts all four views on one circular horizontal coordinate, so the 270° and
+0° views can be adjacent. A relation key contains the sorted family names and
+the pairwise descriptors: circular angle bin (`near`, `adjacent`, `wide`,
+`very_wide`, or `opposite`) plus relative vertical position (`up`, `level`, or
+`down`). Family permutations are canonicalized, which makes the two trees in a
+`building + tree + tree` candidate interchangeable. Repeated observations of
+the same family at a view boundary are filtered when their masks or bearings
+indicate a duplicate.
+
+The four-view strip in the gallery is a readable display of four perspective
+images. It is not an equirectangular reprojection or a claim that the source
+images are geometrically rectified.
+
+## Candidate search and statistical check
+
+The search enumerates three-node combinations over all four directions, allowing
+repeated families. A training candidate must occur in at least 30 panoramas and
+8 cities. The frozen candidates are then evaluated on the development split.
+Two exploratory nulls are generated 99 times while preserving city and heading
+marginals:
+
+1. shuffle family labels to test whether the family co-occurrence is above the
+   marginal rate;
+2. shuffle the within-panorama geometry to test whether the layout is above the
+   co-occurrence rate.
+
+P-values are corrected with BH-FDR over all frozen training candidates. With 99
+   permutations, the smallest attainable empirical p-value is 0.01. These
+   tests provide prioritization evidence only; they are not independent semantic
+   validation.
+
+## Current output
+
+The reproducible run is stored under
+`outputs/panorama_motifs/`:
+
+- `results.json` contains the protocol, counts, candidate summaries, p/q-values,
+  limitations, and selected gallery examples;
+- `sample.csv` records the panorama split used by the run;
+- `gallery/` contains four-view strips with provisional family masks;
+- `QUALITATIVE_REVIEW.md` records the manual review of the principal relations.
+
+The run found 58,595 observed relation keys and 1,583 training candidates. The
+gallery contains 16 selected relation layouts. The five priority signatures
+and their training/development support are:
+
+| Relation signature | Train panoramas / cities | Development panoramas / cities |
+| --- | ---: | ---: |
+| `building + tree + tree` | 222 / 29 | 71 / 27 |
+| `building + pedestrian + tree` | 42 / 18 | 19 / 14 |
+| `barrier + road + tree` | 146 / 28 | 52 / 25 |
+| `building + road + utility` | 163 / 26 | 61 / 23 |
+| `low_vegetation + pedestrian + tree` | 42 / 19 | 18 / 13 |
+
+The strongest qualitative example is `building + tree + tree`: the building can
+be in one heading while the two tree regions occur in other headings of the
+same panorama. The masks still need independent inspection because one physical
+tree can be split into multiple feature regions. The other signatures are
+useful search targets but include broad families such as road or pedestrian
+space and should not yet be named as stable landscape prototypes.
+
+## Reproduce
+
+Run from the repository root after the frozen activation cache and its metadata
+are available:
+
+```bash
+PYTHONPATH=. python -u -m experiments.vitl30_local_compositions.panorama_motifs \
+  --out experiments/vitl30_local_compositions/outputs/panorama_motifs \
+  --permutations 99 --max-gallery 16 --examples 6 --seed 20261017
+```
+
+The default sample is the committed experiment sample configured by the
+shared setup code. Do not include the sealed test split. Any change to the
+sample, family hierarchy, checkpoint, FOV, or permutation count must be written
+to `results.json` and reviewed before comparing runs.
+
+## Interpretation and next checks
+
+The current output should be read as a set of candidate panoramic relations.
+Before calling one a landscape prototype, the next checks are:
+
+1. verify that every mask corresponds to a coherent visual element and that
+   repeated family regions are independent instances;
+2. rerun with additional seeds or a larger permutation budget;
+3. hold out cities and spatial blocks for stability testing;
+4. compare each three-way relation with its pairwise components to measure the
+   extra information supplied by the combination;
+5. use an independent VLM or human annotation pass to describe the masks after
+   discovery, without feeding those descriptions back into the SAE search.
+
+The older `complex_motifs.py` script is retained only as a historical,
+single-view comparison. It is not part of the current main experiment and its
+counts must not be merged with the panorama-level results.

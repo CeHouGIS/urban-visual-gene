@@ -1,4 +1,10 @@
-"""Publish only the current masked multi-element composition discovery pilot."""
+"""Publish the current panorama-level multi-element relation results.
+
+The repository contains an older, direction-level two-family pilot for
+backwards-compatible unit tests.  When the panorama motif result exists it is
+the only source used for the public site; the old snapshot is never mixed into
+the published page.
+"""
 from __future__ import annotations
 
 import hashlib
@@ -12,8 +18,25 @@ OUT = ROOT / 'experiments/vitl30_local_compositions/outputs'
 RESULT = ROOT / 'experiments/vitl30_local_compositions/results'
 CHECKPOINT = 'fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0'
 
+FAMILY_LABELS = {
+    'building': '建筑及附属部件',
+    'tree': '乔木及其部件',
+    'low_vegetation': '草灌及低矮植被',
+    'road': '道路及车行路面',
+    'pedestrian': '步行空间及附属部件',
+    'barrier': '围合与防护设施',
+    'utility': '市政杆线设施',
+    'vehicle': '车辆及其部件',
+    'sign': '标识与交通控制设施',
+    'water': '水体',
+    'terrain': '自然地形',
+    'person': '行人及人体部件',
+    'furniture': '街道家具与小设施',
+    'construction': '施工设施与设备',
+}
 
-def install(target):
+
+def _install_legacy(target):
     source = OUT / 'results.json'
     if not source.exists():
         source = RESULT / 'results.json'
@@ -121,3 +144,118 @@ def install(target):
 .local-examples figcaption{{font-size:12px;color:#53665d;overflow-wrap:anywhere}}
 .first-family{{color:#c43830;font-weight:700}}.second-family{{color:#1682c5;font-weight:700}}</style>
 {''.join(cards)}</section>'''
+
+
+def _label(family):
+    return FAMILY_LABELS.get(family, family)
+
+
+def _layout_text(layout):
+    """Make the canonical three-node layout readable on the public page."""
+    angle = {'near': '近邻', 'adjacent': '相邻', 'wide': '较宽间隔',
+             'very_wide': '很宽间隔', 'opposite': '相对方向'}
+    vertical = {'up': '后者更高', 'down': '后者更低', 'level': '高度相近'}
+    parts = []
+    for first, second in layout:
+        parts.append(f'{angle.get(first, first)} / {vertical.get(second, second)}')
+    return '；'.join(parts)
+
+
+def _install_panorama(target, source):
+    """Publish the new three-node, complete-panorama relation catalogue."""
+    data = json.loads(source.read_text())
+    sampling = data.get('sampling', {})
+    method = data.get('method', {})
+    counts = data.get('counts', {})
+    if (data.get('status') != 'exploratory'
+            or data.get('scope') != 'complete four-heading panorama; sealed test partition not accessed'
+            or data.get('checkpoint_sha256') != CHECKPOINT
+            or len(data.get('patterns', [])) == 0
+            or sampling.get('cities') != 29
+            or method.get('motif_size') != 3
+            or method.get('view_order') != [0, 90, 180, 270]):
+        raise ValueError('Panorama motif results have mismatched provenance or are incomplete')
+
+    target = Path(target)
+    destination = target / 'local-compositions'
+    if destination.exists():
+        shutil.rmtree(destination)
+    destination.mkdir(parents=True)
+    gallery = source.parent / 'gallery'
+    patterns = []
+    cards = []
+    copied = set()
+    for index, item in enumerate(data['patterns'], 1):
+        examples = []
+        figures = []
+        for example in item.get('examples', []):
+            image = example.get('image', '')
+            if Path(image).name != image or not image.endswith('.webp'):
+                raise ValueError('Invalid panorama motif image path')
+            source_image = gallery / image
+            if not source_image.exists():
+                raise ValueError(f'Missing panorama motif image: {image}')
+            if image not in copied:
+                shutil.copy2(source_image, destination / image)
+                copied.add(image)
+            city = html.escape(str(example.get('city', '')))
+            panoid = html.escape(str(example.get('panoid', '')))
+            figures.append(
+                f'<figure><a href="local-compositions/{image}" target="_blank" rel="noopener">'
+                f'<img loading="lazy" src="local-compositions/{image}" '
+                f'alt="{city} 的四方向关系遮罩实例"></a>'
+                f'<figcaption>{city}<br>panoid: {panoid}</figcaption></figure>')
+            examples.append(example)
+        public_item = {**item, 'examples': examples}
+        patterns.append(public_item)
+        family_text = ' + '.join(_label(f) for f in item['families'])
+        family_code = ' + '.join(item['families'])
+        layout = _layout_text(item['layout'])
+        q = item.get('q', {})
+        cards.append(
+            f'<details class="local-composition" id="local-m{index}"'
+            f'{" open" if index == 1 else ""}><summary>关系 {index:02d} · '
+            f'<span class="motif-families">{html.escape(family_text)}</span>'
+            f' <small>({html.escape(family_code)})</small></summary>'
+            f'<p><b>全景关系：</b>{html.escape(layout)}。'
+            f'训练集 {item["train_panoramas"]} 个全景 / {item["train_cities"]} 城；'
+            f'开发集 {item["dev_panoramas"]} 个全景 / {item["dev_cities"]} 城。'
+            f'共现置换 q={q.get("cooccurrence", float("nan")):.3f}，'
+            f'布局置换 q={q.get("layout", float("nan")):.3f}。</p>'
+            f'<div class="local-examples">{"".join(figures)}</div></details>')
+
+    public = {**data, 'patterns': patterns,
+              'presentation': {
+                  'source': 'outputs/panorama_motifs/results.json',
+                  'gallery_patterns': len(patterns),
+                  'gallery_images': len(copied),
+                  'legacy_direction_level_results_published': False,
+              }}
+    (destination / 'results.json').write_text(
+        json.dumps(public, ensure_ascii=False, separators=(',', ':')))
+
+    cities = int(sampling.get('cities', 0))
+    panoramas = int(sampling.get('panoramas', 0))
+    train = int(sampling.get('train_panoramas', 0))
+    dev = int(sampling.get('dev_panoramas', 0))
+    directional = int(sampling.get('directional_images', 0))
+    observed = int(counts.get('all_observed_keys', 0))
+    candidates = int(counts.get('train_candidates', 0))
+    significant = int(counts.get('both_nulls_q_below_005', 0))
+    fov = method.get('fov_deg', 90)
+    return f'''<section class="section" id="local-results"><h2>全景级多要素关系 · 探索性结果</h2>
+<p>当前网页只发布全新的全景级关系结果：以 {cities} 城的完整四方向全景为统计单位，使用 {panoramas:,} 个全景（{train:,} train、{dev:,} dev）和 {directional:,} 张方向图像。每个候选由三个局部 SAE 要素组成，允许同一父类重复，例如“建筑 + 乔木 + 乔木”；旧的单方向二元组合快照已从网页和发布目录删除。</p>
+<p>每个方向保留 28×28 patch 激活区域，并用 {fov}° 视场假设映射到同一条环形水平坐标，再跨 0°、90°、180°、270° 查找关系。下方每张图都是同一点位的四方向条带，颜色遮罩表示候选 SAE family 区域。条带用于阅读和对照，不是经过球面校正的全景投影。</p>
+<div class="motif-stats"><span><b>{observed:,}</b> 个观测关系 key</span><span><b>{candidates:,}</b> 个训练候选</span><span><b>{len(patterns)}</b> 个展示布局</span><span><b>{significant:,}</b> 个候选的两个置换 q&lt;0.05</span></div>
+<p class="note">置换检验和 BH-FDR 只提供探索性优先级，不能把 {significant:,} 个候选直接称为已确认原型。SAE family mask 是特征归因区域，不是物体分割；同一物体可能被拆成多个区域，需人工复核。测试集未读取，80% 覆盖目标也未在此结果中验证。</p>
+<p><a href="local-compositions/results.json">查看完整候选、协议、p/q 值与实例 JSON</a></p>
+<style>.motif-stats{{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}}.motif-stats span{{padding:12px;border:1px solid #d4ddd8;border-radius:8px;background:#f5f8f6}}.motif-stats b{{display:block;font-size:1.25rem}}.local-composition{{margin:16px 0;padding:16px;border:1px solid #d4ddd8;border-radius:10px}}.local-composition summary{{cursor:pointer;font-weight:700}}.local-composition small{{font-weight:400;color:#53665d}}.local-examples{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,540px),1fr));gap:16px}}.local-examples figure{{margin:0}}.local-examples img{{width:100%;height:auto;border-radius:6px}}.local-examples figcaption{{font-size:12px;color:#53665d;overflow-wrap:anywhere}}.motif-families{{color:#1f5b4b}}</style>
+{''.join(cards)}</section>'''
+
+
+def install(target):
+    """Install the newest panorama result, falling back only for old tests."""
+    panorama = OUT / 'panorama_motifs' / 'results.json'
+    if panorama.exists():
+        return _install_panorama(target, panorama)
+    return _install_legacy(target)

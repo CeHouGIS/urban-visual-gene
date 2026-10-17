@@ -340,7 +340,12 @@ def relational_status(root):
                         f'{len(summary["graph_candidate_family_counts"])}类要素；'
                         f'{summary["family_disagreements"]}维解释父类冲突待核查。人工验证未完成。'),
              'link': 'elements/', 'semantic_review': summary['semantic_validation']}]
-    local_file = root / 'experiments/vitl30_local_compositions/outputs/results.json'
+    # The published source is the complete-panorama three-node result.  Keep
+    # the old path only as a compatibility fallback for isolated snapshot
+    # tests; it must never win when the new result is present.
+    local_file = root / 'experiments/vitl30_local_compositions/outputs/panorama_motifs/results.json'
+    if not local_file.exists():
+        local_file = root / 'experiments/vitl30_local_compositions/outputs/results.json'
     if not local_file.exists():
         local_file = root / 'experiments/vitl30_local_compositions/results/results.json'
     local = read(local_file)
@@ -348,12 +353,20 @@ def relational_status(root):
         if (local.get('checkpoint_sha256') != CHECKPOINT or
                 local.get('hierarchy_identity') != summary['identity']):
             raise ValueError('Local-composition result uses another SAE or hierarchy')
-        rows.append({'id': 'local_compositions', 'label': '局部要素组合探索',
-                     'status': 'complete' if local.get('status') == 'complete' else 'pending',
-                     'detail': (f"{local['sampling']['cities']}城，{local['sampling']['train_panoramas']:,}训练 / "
-                                f"{local['sampling']['dev_panoramas']:,}开发全景；"
-                                f"{local['findings']['all_candidates']}个原始关系候选，"
-                                '遮罩和语义仍待人工核查。'),
+        if 'counts' in local:
+            detail = (f"{local['sampling']['cities']}城，{local['sampling']['train_panoramas']:,}训练 / "
+                      f"{local['sampling']['dev_panoramas']:,}开发全景；"
+                      f"{local['counts']['all_observed_keys']:,}个观测关系key，"
+                      f"{local['counts']['train_candidates']:,}个三节点候选，"
+                      f"网页展示{local['counts']['gallery_patterns']}个布局；遮罩和语义仍待人工核查。")
+            status = 'complete' if local.get('status') == 'exploratory' else local.get('status', 'pending')
+        else:
+            detail = (f"{local['sampling']['cities']}城，{local['sampling']['train_panoramas']:,}训练 / "
+                      f"{local['sampling']['dev_panoramas']:,}开发全景；"
+                      f"{local['findings']['all_candidates']}个原始关系候选，遮罩和语义仍待人工核查。")
+            status = 'complete' if local.get('status') == 'complete' else 'pending'
+        rows.append({'id': 'local_compositions', 'label': '全景级多要素关系探索',
+                     'status': status, 'detail': detail,
                      'link': 'elements/#local-results', 'semantic_review': 'pending',
                      'test_sealed': True})
         return rows
