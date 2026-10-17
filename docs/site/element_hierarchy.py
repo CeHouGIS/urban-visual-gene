@@ -201,7 +201,7 @@ def install(site, render_page, snapshot):
     content = f'''<div class="eyebrow">Qwen labels · SAE activation evidence</div>
 <h1>街景要素标签与激活</h1>
 <p class="lead">浏览每个 Qwen 细标签对应的 SAE 维度，以及这些维度在四方向街景中的真实响应。</p>
-<p><a href="../relations/#local-results">查看独立的要素关系页面 →</a></p>
+<p><a href="../label-structure/">查看 Qwen 标签的并列与上下级结构 →</a> · <a href="../relations/#local-results">查看独立的要素空间关系 →</a></p>
 <section class="section" id="qwen-taxonomy"><h2>Qwen 类别图谱</h2>
 <p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。支持度不足 20 个正激活全景的维度归入“证据不足，暂不命名”，旧 Qwen 猜测只在逐维证据中保留供核查。位置集中只提示复核，不自动判为位置编码。数字是 SAE 维度数，不是地物出现次数；类别尚未经人工语义验证。</p>
 <div class="category-path" aria-label="类别层级">Qwen 逐维解释 <span aria-hidden="true">›</span> <span id="category-path-family">父类</span> <span aria-hidden="true">›</span> <span id="category-path-label">细标签</span></div>
@@ -289,12 +289,14 @@ def install(site, render_page, snapshot):
 
 def update(site):
     from build_main_site import page
+    from label_structure import install as install_label_structure
     from project_progress import install as install_progress
     manifest = json.loads((site / 'manifest.json').read_text())
     if manifest['checkpoint_sha256'] != CHECKPOINT:
         raise ValueError('Publishing site uses another SAE checkpoint')
     snapshot = datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M %Z')
     result = install(site, page, snapshot)
+    label_counts = install_label_structure(site, page, snapshot)
     install_progress(site)
     manifest['element_hierarchy'] = {'page': 'elements/', 'identity': result['identity'],
         'candidate_dimensions': result['status_counts']['candidate_ready'], 'semantic_validation': 'pending',
@@ -302,6 +304,8 @@ def update(site):
         'prototype_route': result['prototype_route'],
         'local_composition_status': result['local_composition_status'],
         'published_at': snapshot}
+    manifest['label_structure'] = {'page': 'label-structure/', 'counts': label_counts,
+                                   'validation': 'provisional_text_only'}
     manifest.pop('prototype_coverage', None)
     manifest.pop('prototype_gallery', None)
     manifest.pop('panorama_display', None)
