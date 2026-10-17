@@ -24,6 +24,7 @@ from zoneinfo import ZoneInfo
 from PIL import Image
 from project_progress import install as install_progress
 from element_hierarchy import install as install_element_hierarchy
+from feature_quality_review import install as install_quality_review
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPERIMENT = ROOT / "experiments/vitl30_panorama_w4096_k32"
@@ -31,7 +32,8 @@ TEMPLATES = Path(__file__).with_name("templates")
 CHECKPOINT = "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0"
 NAV_ITEMS = [("overview", "主实验", ""), ("semantic", "语义地图", "semantic/"),
              ("instances", "图像实例", "instances/"), ("interpretation", "维度解释", "interpretation/"),
-             ("elements", "要素标签", "elements/"), ("relations", "要素关系", "relations/")]
+             ("elements", "要素标签", "elements/"), ("quality", "维度复核", "quality/"),
+             ("relations", "要素关系", "relations/")]
 
 
 def read_json(path):
@@ -329,6 +331,7 @@ def build(out, workers):
             assert a.convert('RGB').tobytes() == b.convert('RGB').tobytes(), 'Lossless Qwen sheet check failed'
     # Share the primary masked sheets after the image queue has materialized.
     element_summary = install_element_hierarchy(out, page, snapshot)
+    quality_counts = install_quality_review(out, page, snapshot)
     install_progress(out)
     (out/'.nojekyll').touch()
     # A compatibility entry contains only a redirect to the current homepage.
@@ -373,7 +376,8 @@ jobs:
         'snapshot_label': snapshot, 'model': {'backbone': 'DINOv3 ViT-L/16', 'image_size': 448, 'grid': [28,28], 'input_dimension': 1024, 'dictionary_width': 4096, 'batchtopk_k': 32, 'panorama_context_mixing': True},
         'training': {'cities': 30, 'panoramas': 89031, 'train': 85191, 'validation': 3840},
         'image_semantics': {'cities': 29, 'panoramas': 3712, 'images': len(image_rows), 'dimensions': dimensions, 'projected_dimensions': 2863, 'top100_instances': examples, 'top10_umap_points': 29934},
-        'vlm_status_counts': counts, 'file_count': len(files)+1, 'bytes_before_manifest': size,
+        'vlm_status_counts': counts, 'quality_review': {'page': 'quality/', 'counts': quality_counts,
+            'status': 'candidate_review_only'}, 'file_count': len(files)+1, 'bytes_before_manifest': size,
         'element_hierarchy': {'page': 'elements/', 'identity': element_summary['identity'],
                               'candidate_dimensions': element_summary['status_counts']['candidate_ready'],
                               'semantic_validation': 'pending',
