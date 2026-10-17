@@ -253,8 +253,73 @@ def _install_panorama(target, source):
 {''.join(cards)}</section>'''
 
 
+def _install_structured(target, source):
+    data = json.loads(source.read_text())
+    sampling, method = data.get('sampling', {}), data.get('method', {})
+    rules = Path(__file__).with_name('label_structure_rules.json')
+    if (data.get('status') != 'exploratory' or data.get('checkpoint_sha256') != CHECKPOINT
+            or data.get('rules_sha256') != hashlib.sha256(rules.read_bytes()).hexdigest()
+            or sampling.get('cities') != 29 or sampling.get('train') != 1392
+            or sampling.get('dev') != 464 or method.get('unit') != 'complete four-heading panorama'
+            or method.get('motif_size') != 3 or not data.get('patterns')):
+        raise ValueError('Structured motif results have mismatched provenance or are incomplete')
+    destination = Path(target) / 'local-compositions'
+    if destination.exists():
+        shutil.rmtree(destination)
+    destination.mkdir(parents=True)
+    cards = []
+    for index, item in enumerate(data['patterns'], 1):
+        figures = []
+        for example in item['examples']:
+            name = example['image']
+            if Path(name).name != name or not name.endswith('.webp'):
+                raise ValueError('Invalid structured motif image path')
+            image = source.parent / 'gallery' / name
+            if not image.exists():
+                raise ValueError(f'Missing structured motif image: {name}')
+            shutil.copy2(image, destination / name)
+            roles = ' · '.join(
+                f'{node["observed_label"]} → {node["entity_label"]}'
+                for node in example['nodes'])
+            city = html.escape(str(example['city']))
+            figures.append(
+                f'<figure><a href="local-compositions/{name}" target="_blank" rel="noopener">'
+                f'<img loading="lazy" src="local-compositions/{name}" alt="{city} 的四方向关系遮罩实例"></a>'
+                f'<figcaption>{city} · {html.escape(roles)}<br>'
+                f'panoid: {html.escape(str(example["panoid"]))}</figcaption></figure>')
+        fine = item.get('fine_compositions', [])[:5]
+        fine_text = ''.join('<li>' + html.escape(' + '.join(role[1] for role in row['roles']))
+                            + f'：训练 {row["train_panoramas"]} / 开发 {row["dev_panoramas"]} 全景</li>'
+                            for row in fine)
+        family_text = ' + '.join(_label(f) for f in item['families'])
+        support = item['support']
+        cards.append(
+            f'<details class="local-composition" id="local-m{index}"'
+            f'{" open" if index == 1 else ""}><summary>关系 {index:02d} · '
+            f'{html.escape(family_text)}</summary>'
+            f'<p>四方向相对布局：{html.escape(_layout_text(item["layout"]))}。'
+            f'训练 {support["train"]["panoramas"]} 全景 / {support["train"]["cities"]} 城；'
+            f'开发 {support["dev"]["panoramas"]} 全景 / {support["dev"]["cities"]} 城。'
+            f'共现置换 q={item["q"]["cooccurrence"]:.3f}，'
+            f'布局置换 q={item["q"]["layout"]:.3f}。</p>'
+            f'{"<h3>重复的细标签组合</h3><ul>" + fine_text + "</ul>" if fine_text else ""}'
+            f'<div class="local-examples">{"".join(figures)}</div></details>')
+    (destination / 'results.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')))
+    counts = data['counts']
+    return f'''<section class="section" id="local-results"><h2>标签结构约束的全景组成 · 探索性结果</h2>
+<p>复用 29 城、{sampling['panoramas']:,} 个四方向全景和原有 SAE 稀疏激活。从每个候选区域贡献最大的合格 SAE 维度读取 Qwen 细标签；只将标签结构中明确连接的标签用于本轮关系检索。<code>is_a</code> 保留类型差异，<code>part_of</code> 部件归回所属对象。建筑的窗户与墙面不会算成两个建筑要素；相隔足够远的两个树区域仍只是待复核的两棵树候选。</p>
+<p>训练集提出 {counts['train_candidates']:,} 个三要素布局 key，开发集进行同城方向内的标签置换与全景内的布局置换；其中 {counts['both_nulls_q_below_005']:,} 个 key 的两种探索性 BH q 值均低于 0.05。本页展示 {len(data['patterns'])} 个组合及四方向遮罩实例。细标签组合的频数是描述统计，q 值仅适用于对应的宽类布局 key。</p>
+<p class="note">Qwen 标签和 SAE 遮罩尚未经过对象实例验证。候选跨城重复不意味着对象数量、语义或景观原型已经确认；测试集激活保持封存。实例中的箭头表示标签归并，不代表视觉识别出的对象边界。</p>
+<p><a href="../label-structure/">核查标签上下级与并列结构</a> · <a href="local-compositions/results.json">下载全部候选和实验协议 JSON</a></p>
+<style>.local-composition{{margin:16px 0;padding:16px;border:1px solid #d4ddd8;border-radius:8px}}.local-composition summary{{cursor:pointer;font-weight:700}}.local-examples{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,540px),1fr));gap:16px}}.local-examples figure{{margin:0}}.local-examples img{{width:100%;height:auto;border-radius:6px}}.local-examples figcaption{{font-size:12px;color:#53665d;overflow-wrap:anywhere}}</style>
+{''.join(cards)}</section>'''
+
+
 def install(target):
     """Install the newest panorama result, falling back only for old tests."""
+    structured = OUT / 'structured_motifs' / 'results.json'
+    if structured.exists():
+        return _install_structured(target, structured)
     panorama = OUT / 'panorama_motifs' / 'results.json'
     if panorama.exists():
         return _install_panorama(target, panorama)

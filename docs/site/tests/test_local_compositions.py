@@ -79,3 +79,41 @@ def test_snapshot_builds_without_server_outputs(tmp_path, monkeypatch):
     import pytest
     with pytest.raises(ValueError, match='image changed'):
         local_composition_gallery.install(tmp_path / 'site')
+
+
+def test_structured_motifs_replace_broad_family_gallery(tmp_path, monkeypatch):
+    output = tmp_path / 'outputs'
+    old = output / 'panorama_motifs'
+    new = output / 'structured_motifs'
+    (old / 'gallery').mkdir(parents=True)
+    (new / 'gallery').mkdir(parents=True)
+    (old / 'gallery' / 'old.webp').write_bytes(b'old')
+    (new / 'gallery' / 'example.webp').write_bytes(b'new')
+    (old / 'results.json').write_text('{}')
+    rules = local_composition_gallery.Path(local_composition_gallery.__file__).with_name(
+        'label_structure_rules.json')
+    payload = {
+        'status': 'exploratory',
+        'checkpoint_sha256': local_composition_gallery.CHECKPOINT,
+        'rules_sha256': hashlib.sha256(rules.read_bytes()).hexdigest(),
+        'sampling': {'cities': 29, 'panoramas': 1856, 'train': 1392, 'dev': 464},
+        'method': {'unit': 'complete four-heading panorama', 'motif_size': 3},
+        'counts': {'train_candidates': 1, 'both_nulls_q_below_005': 0},
+        'patterns': [{'families': ['building', 'tree', 'tree'],
+            'layout': [['adjacent', 'level'], ['wide', 'up'], ['near', 'level']],
+            'support': {'train': {'panoramas': 20, 'cities': 7},
+                        'dev': {'panoramas': 5, 'cities': 3}},
+            'q': {'cooccurrence': .2, 'layout': .3},
+            'fine_compositions': [{'roles': [['building', '建筑'], ['tree', '松树'],
+                                            ['tree', '树木']], 'train_panoramas': 4,
+                                   'dev_panoramas': 2}],
+            'examples': [{'city': 'A/B', 'panoid': 'p', 'image': 'example.webp',
+                          'nodes': [{'observed_label': '窗户', 'entity_label': '建筑'},
+                                    {'observed_label': '松树', 'entity_label': '松树'},
+                                    {'observed_label': '树冠', 'entity_label': '树木'}]}]}]}
+    (new / 'results.json').write_text(json.dumps(payload))
+    monkeypatch.setattr(local_composition_gallery, 'OUT', output)
+    body = local_composition_gallery.install(tmp_path / 'site')
+    assert '窗户 → 建筑' in body
+    assert (tmp_path / 'site/local-compositions/example.webp').read_bytes() == b'new'
+    assert not (tmp_path / 'site/local-compositions/old.webp').exists()

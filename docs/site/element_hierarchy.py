@@ -223,14 +223,14 @@ def install(site, render_page, snapshot):
 <p>{public_summary['status_counts'].get('context_or_material', 0):,}维背景/材料，{public_summary['status_counts'].get('needs_review', 0):,}维待核查，{public_summary['status_counts'].get('insufficient_evidence', 0):,}维证据不足，{public_summary['status_counts'].get('unobserved', 0):,}维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section>'''
     relation_content = f'''<div class="eyebrow">Recurring local scene compositions</div>
 <h1>跨街景重复的要素关系</h1>
-<p class="lead">先在每个方向的28×28 patch 激活中提取形状自适应的区域，再把同一点位四个方向放在一起，寻找不同要素及其相对关系的跨城重复实例。</p>
+<p class="lead">从每个方向的28×28 patch 激活中提取区域，利用 Qwen 细标签的类型与部件关系整理要素，再在完整四方向全景中检索跨城重复的布局。</p>
 <p><a href="../elements/#qwen-taxonomy">查看组成要素的 Qwen 标签与逐维激活 →</a></p>
 <div class="element-stages"><section><h2>01 · 四方向输入</h2><p>0°、90°、180°、270°同属一个全景，真实朝向和完整图像在实例中保留。</p></section>
-<section><h2>02 · 局部 SAE 要素</h2><p>复用当前 ViT-L W4096/K32 逐 patch 激活，在方向图中产生非矩形区域遮罩。VLM 父类只用于探索性的要素归组。</p></section>
-<section><h2>03 · 重复关系检索</h2><p>每个候选包含三个局部 SAE 要素，允许同一父类重复（例如建筑 + 乔木 + 乔木），检索同方向或跨方向的相对布局；数量由训练样本支持决定，不预设32或96种景观。</p></section>
+<section><h2>02 · 局部 SAE 要素</h2><p>复用当前 ViT-L W4096/K32 逐 patch 激活，在方向图中产生非矩形区域遮罩。Qwen 细标签只作待复核的语义归组，部件归回所属对象。</p></section>
+<section><h2>03 · 重复关系检索</h2><p>每个候选包含三个局部 SAE 要素，可跨越四个方向。同一建筑的窗户和墙面只算一个对象；两个相隔较远的乔木区域可作为待复核的双树候选。数量由训练样本支持决定。</p></section>
 <section><h2>04 · 留出样本核查</h2><p>开发集比较训练候选与同城要素及布局置换对照；测试集封存。语义仍需人工复核。</p></section></div>
 <section class="section" id="local-method"><h2>当前实验如何找组合？</h2>
-<p>以完整四方向全景为统计单位；每张方向图独立形成要素区域，再用方位、上下左右和分离的 mask 建立关系。关系搜索允许同一父类出现多个独立区域，同时过滤方向边界处的重复观测。探索性样本先看重复与置换对照，不将一个模型模板直接当作景观类别。</p></section>
+<p>以完整四方向全景为统计单位；每张方向图独立形成要素区域，再用环形方位、上下相对位置和分离的 mask 建立关系。只有明确的标签关系进入结构约束搜索；同一对象的部件不重复计数，方向边界处的重复观测也被过滤。探索性样本先看跨城重复与置换对照。</p></section>
 {local_gallery}
 <section class="section"><h2>用于解释的景观要素基础</h2>
 <p>窗户、门和建筑墙面归入建筑，树冠和树干归入乔木，车窗和车轮归入车辆。父类只作为关系检索的辅助，仍需人工核查。要素标签及其激活图见 <a href="../elements/">标签与激活页</a>。</p></section>'''

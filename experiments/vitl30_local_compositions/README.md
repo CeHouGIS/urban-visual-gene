@@ -69,6 +69,35 @@ P-values are corrected with BH-FDR over all frozen training candidates. With 99
 
 ## Current output
 
+### Structured-label rerun
+
+`structured_motifs.py` reuses the same 1,856-panorama train/dev sample and
+four-view sparse activations. It assigns each candidate region the first
+eligible Qwen fine label among its strongest contributing SAE dimensions.
+Only labels explicitly linked in `docs/site/label_structure_rules.json` enter
+this audit. An `is_a` subtype keeps its name; a `part_of` component is mapped
+to the containing entity for the displayed fine composition. Regions from the
+same building, vehicle, road, or other non-tree family cannot count as separate
+objects. Two tree regions can contribute separately only if their bearings are
+at least 30 degrees apart, and still require manual instance review.
+
+The search retains the old rotation-invariant three-region layout key,
+city-balanced sample, train-selected candidates, development-set co-occurrence
+and layout permutations, and BH correction. Fine-label composition counts are
+descriptive and are **not** individually tested by the broad-layout q-values.
+No sealed test activations are read. The output is in `outputs/structured_motifs/`
+and replaces the broad-family gallery on the current site when present.
+
+```bash
+PYTHONPATH=. python -u -m experiments.vitl30_local_compositions.structured_motifs \
+  --permutations 99
+```
+
+The Qwen taxonomy is provisional. A component mapping is a textual guard
+against double counting, not an instance segmentation result. A separate
+building and its wall may also be incorrectly merged by this conservative
+rule; manual review is needed before calling any layout a landscape prototype.
+
 The reproducible run is stored under
 `outputs/panorama_motifs/`:
 
