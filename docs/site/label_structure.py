@@ -95,14 +95,14 @@ def install(site, render_page, snapshot):
     target.mkdir(exist_ok=True)
     (target / 'structure.json').write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':')))
     with (target / 'hierarchy.csv').open('w', newline='', encoding='utf-8-sig') as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator='\n')
         writer.writerow(['family', 'parent', 'child', 'relation', 'child_dimension_count', 'child_features'])
         for group in result['hierarchy']:
             for child in group['children']:
                 writer.writerow([group['family'], group['parent']['label'], child['label'], group['relation'],
                                  child['count'], ' '.join('f' + str(feature) for feature in child['features'])])
     with (target / 'parallel.csv').open('w', newline='', encoding='utf-8-sig') as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator='\n')
         writer.writerow(['family', 'peer_group', 'basis', 'label', 'dimension_count', 'features'])
         for group in result['parallel']:
             for label in group['labels']:
