@@ -26,7 +26,7 @@ from .panorama_vitl30_dimension_review import (
 from .panorama_vitl30_dimension_vlm import mask_native, parse_response
 
 BASE = EXPERIMENT / 'reports/vlm_dimensions_top40_context_v2'
-REPORT = EXPERIMENT / 'reports/vlm_dimensions_top40_masked_only_v5'
+REPORT = EXPERIMENT / 'reports/vlm_dimensions_top40_masked_only_v6'
 MODULE = 'experiments.vitl30_panorama_w4096_k32.code.panorama_vitl30_dimension_review_v3'
 PART_PROMPT = '''这一张拼图展示同一个街景 SAE 维度在最多10个不同全景中的实例。每个编号中，左边是高激活区域，其他像素已变灰；右边是该区域未遮罩的裁剪。灰色和矩形边界是人工处理，不是景观。只根据左边保留下来的彩色区域判断，右边仅用于辨认该区域内的内容，不要根据其他背景推断整条街的类别。寻找反复出现的具体内容；位置、角度、形状与光照变化不等于语义混合。允许物体、部件、纹理、材质、强光、场景上下文。若确有多种互不相关的主要内容才用mixed；看不清写unclear。只输出JSON，恰好7个字段：label、type、cues、alternatives、consistency、confidence、caveats。type限object, object_part, vegetation, built_structure, surface_texture, color_light, scene_context, camera_artifact, mixed, unclear；consistency限mostly_consistent, mixed, unclear；confidence限low, medium, high。后三个列表各最多2条短句。label要是具体中文候选含义，不要写英文类型名；不能判断写“未确定”。'''
 FINAL_PROMPT = '''下面四段JSON分别概括同一个SAE维度的四组不同图像（每组约10个全景）。现在比较四组观察，找跨组重复的真实视觉概念。把同一概念在颜色、形态、位置、角度、天气上的变化视为一致；不要因为原图背景不同就写mixed。若有两个以上互不相关的主要视觉概念，type=mixed；无法确认时type=unclear、label=“未确定”。灰色遮罩与裁剪边界是人工处理，不能成为标签或共同依据。不要编造四组没有观察到的细节。只输出JSON，恰好7个字段：label、type、cues、alternatives、consistency、confidence、caveats；type限object, object_part, vegetation, built_structure, surface_texture, color_light, scene_context, camera_artifact, mixed, unclear；consistency限mostly_consistent, mixed, unclear；confidence限low, medium, high。后三个列表各最多2条短句；label须为中文，不能写英文类型名。以下是四组观察：\n'''
@@ -94,6 +94,9 @@ def review_quality(parts, final):
         return 'incomplete_visual_evidence'
     if any(part['interpretation']['consistency'] != 'mostly_consistent' for part in parts):
         return 'mixed_or_unclear'
+    types = {part['interpretation']['type'] for part in parts}
+    if len(types) != 1 or final is None or final['type'] not in types:
+        return 'cross_group_type_conflict'
     return label_quality(final)
 
 

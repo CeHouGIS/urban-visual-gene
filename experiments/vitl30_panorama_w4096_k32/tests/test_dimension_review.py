@@ -27,6 +27,8 @@ def test_review_requires_four_valid_visual_groups():
     assert review_quality(groups, value) == 'candidate_needs_validation'
     groups[2] = {'interpretation': None}
     assert review_quality(groups, value) == 'incomplete_visual_evidence'
+    groups[2] = {'interpretation': {**value, 'type': 'object'}}
+    assert review_quality(groups, value) == 'cross_group_type_conflict'
 
 
 def test_review_audit_rejects_cross_group_semantic_type_conflict():
