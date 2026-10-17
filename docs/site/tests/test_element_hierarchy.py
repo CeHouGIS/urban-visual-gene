@@ -72,3 +72,17 @@ def test_publication_rejects_changed_vlm_records_before_copying_images(tmp_path,
     with pytest.raises(ValueError, match='VLM evidence changed'):
         element_hierarchy.install(tmp_path / 'site', None, 'today')
     assert not (tmp_path / 'site').exists()
+
+
+def test_category_graph_covers_every_main_experiment_dimension():
+    path = element_hierarchy.EXPERIMENT / 'results/hierarchy.json'
+    source = json.loads(path.read_text())
+    graph = element_hierarchy.build_category_graph(source)
+    assert graph['total'] == 4096
+    assert graph['family_count'] == 21
+    assert graph['label_count'] == 439
+    assert sorted(feature for family in graph['families']
+                  for label in family['labels'] for feature in label['features']) == list(range(4096))
+    unresolved = next(family for family in graph['families'] if family['id'] == 'unresolved')
+    assert unresolved['count'] == 565
+    assert next(label for label in unresolved['labels'] if label['label'] == '未解释')['count'] == 462

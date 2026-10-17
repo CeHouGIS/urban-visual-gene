@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 import hashlib
@@ -18,6 +19,37 @@ EXPERIMENT = ROOT / 'experiments/vitl30_relational_prototypes'
 REPORTS = ROOT / 'experiments/vitl30_panorama_w4096_k32/reports'
 CHECKPOINT = 'fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0'
 TEMPLATES = Path(__file__).with_name('templates')
+
+
+def build_category_graph(hierarchy):
+    """Count Qwen labels within the provisional hierarchy without dropping dimensions."""
+    groups = defaultdict(lambda: defaultdict(list))
+    seen = set()
+    for row in hierarchy['dimensions']:
+        feature = row['feature']
+        if feature in seen:
+            raise ValueError(f'Duplicate SAE dimension f{feature}')
+        seen.add(feature)
+        groups[row['family']][row.get('label_zh') or '未解释'].append(feature)
+    families = []
+    for family in hierarchy['families']:
+        labels = groups.pop(family['id'], {})
+        children = [{'label': label, 'count': len(features), 'features': sorted(features)}
+                    for label, features in labels.items()]
+        children.sort(key=lambda child: (-child['count'], child['label']))
+        families.append({'id': family['id'], 'label': family['label_zh'],
+                         'role': family['role'], 'count': sum(child['count'] for child in children),
+                         'label_count': len(children), 'labels': children})
+    if groups:
+        raise ValueError(f'Unknown category families: {sorted(groups)}')
+    families.sort(key=lambda family: (-family['count'], family['label']))
+    total = sum(family['count'] for family in families)
+    if total != len(hierarchy['dimensions']):
+        raise ValueError('Category graph does not cover all SAE dimensions')
+    return {'identity': hierarchy['identity'], 'total': total,
+            'family_count': len(families),
+            'label_count': sum(family['label_count'] for family in families),
+            'families': families}
 
 
 def install(site, render_page, snapshot):
@@ -79,6 +111,8 @@ def install(site, render_page, snapshot):
               'summary': {**summary, 'prototype_route': 'local_multi_element_compositions'},
               'snapshot': snapshot}
     (target / 'hierarchy.json').write_text(json.dumps(public, ensure_ascii=False, separators=(',', ':')))
+    (target / 'category-graph.json').write_text(json.dumps(
+        build_category_graph(obj), ensure_ascii=False, separators=(',', ':')))
     for obsolete in ['training-summary.json', 'prototype-examples.json',
                      'relational-gallery.css', 'relational-gallery.js']:
         (target / obsolete).unlink(missing_ok=True)
@@ -107,6 +141,12 @@ def install(site, render_page, snapshot):
     content = f'''<div class="eyebrow">Recurring local scene compositions</div>
 <h1>跨街景重复的局部要素组合</h1>
 <p class="lead">先在每个方向的28×28 patch 激活中提取形状自适应的区域，再把同一点位四个方向放在一起，寻找不同要素及其相对关系的跨城重复实例。</p>
+<section class="section" id="qwen-taxonomy"><h2>Qwen 类别图谱</h2>
+<p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。数字表示归入该标签的 SAE 维度数，不表示图像中的地物出现次数。类别尚未经人工语义验证。</p>
+<div class="category-path" aria-label="类别层级">Qwen 逐维解释 <span aria-hidden="true">›</span> <span id="category-path-family">父类</span> <span aria-hidden="true">›</span> <span id="category-path-label">细标签</span></div>
+<div class="category-graph"><div class="category-branch"><h3>父类 <span id="category-family-total"></span></h3><div id="category-families" class="category-families" aria-label="Qwen 类别父类"></div></div>
+<div class="category-branch"><h3 id="category-label-heading">细标签</h3><div id="category-labels" class="category-labels" aria-label="Qwen 细标签"></div></div></div>
+<div id="category-feature-detail" class="category-feature-detail" aria-live="polite"></div></section>
 <div class="element-stages"><section><h2>01 · 四方向输入</h2><p>0°、90°、180°、270°同属一个全景，真实朝向和完整图像在实例中保留。</p></section>
 <section><h2>02 · 局部 SAE 要素</h2><p>复用当前 ViT-L W4096/K32 逐 patch 激活，在方向图中产生非矩形区域遮罩。VLM 父类只用于探索性的要素归组。</p></section>
 <section><h2>03 · 重复关系检索</h2><p>每个候选包含三个局部 SAE 要素，允许同一父类重复（例如建筑 + 乔木 + 乔木），检索同方向或跨方向的相对布局；数量由训练样本支持决定，不预设32或96种景观。</p></section>

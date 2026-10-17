@@ -3,8 +3,67 @@
   const $ = s => document.querySelector(s);
   const states = {candidate_ready:'暂定要素候选',needs_review:'待核查',insufficient_evidence:'证据不足',unobserved:'无正激活证据',context_or_material:'背景 / 材料 / 上下文'};
   const flags = {no_interpretation:'尚无解释',fewer_than_five_examples:'少于5个实例',mixed_or_unclear:'共同语义混合或不明',low_self_reported_confidence:'模型自述信心低',ambiguous_or_unmapped_label:'名称含糊或尚未归类',non_element_or_unclear_response:'非要素或不明确回答',embedding_mixture_flag:'embedding证据提示混合',masked_vs_unmasked_family_disagreement:'遮罩与未遮罩解释的父类不一致'};
-  let data, selected, limit = 100;
+  let data, categoryGraph, selected, limit = 100, activeFamily, activeLabel;
   function el(tag, text, className) {const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
+  function categoryButton(label, count, maximum, selected) {
+    const button=el('button',undefined,'category-item');
+    button.type='button';button.setAttribute('aria-pressed',String(selected));
+    const title=el('span',undefined,'category-item-title');
+    title.append(el('span',label),el('strong',count.toLocaleString()));
+    const track=el('span',undefined,'category-track');
+    const fill=el('span',undefined,'category-fill');
+    fill.style.width=`${100*count/maximum}%`;
+    track.append(fill);button.append(title,track);
+    return button;
+  }
+  function renderCategoryDetail(family, label) {
+    const detail=$('#category-feature-detail');detail.replaceChildren();
+    if(!label){
+      detail.append(el('p',`${family.label}包含 ${family.label_count} 个细标签；选择细标签查看其 SAE 维度。`));
+      return;
+    }
+    detail.append(el('h3',`${family.label} › ${label.label} · ${label.count.toLocaleString()} 维`));
+    const intro=el('p','点击维度编号查看高激活图像与 Qwen 原始解释。');
+    detail.append(intro);
+    const links=el('div',undefined,'category-feature-links');
+    function show(count) {
+      links.replaceChildren();
+      for(const feature of label.features.slice(0,count)){
+        const link=el('a',`f${feature}`);link.href=`#f${feature}`;
+        link.addEventListener('click',()=>{
+          if(location.hash===link.getAttribute('href'))select();
+          requestAnimationFrame(()=>$('#element-detail').scrollIntoView({behavior:'smooth',block:'start'}));
+        });
+        links.append(link);
+      }
+    }
+    show(Math.min(label.count,24));detail.append(links);
+    if(label.count>24){
+      const more=el('button',`显示全部 ${label.count.toLocaleString()} 维`,'category-feature-more');
+      more.type='button';more.addEventListener('click',()=>{show(label.count);more.remove();});detail.append(more);
+    }
+  }
+  function renderCategories() {
+    const families=$('#category-families'), labels=$('#category-labels');
+    const family=categoryGraph.families.find(item=>item.id===activeFamily);
+    families.replaceChildren();labels.replaceChildren();
+    $('#category-family-total').textContent=`${categoryGraph.family_count} 类 · ${categoryGraph.total.toLocaleString()} 维`;
+    $('#category-path-family').textContent=family.label;
+    $('#category-path-label').textContent=activeLabel||'选择细标签';
+    $('#category-label-heading').textContent=`${family.label} · ${family.label_count} 个细标签`;
+    for(const item of categoryGraph.families){
+      const button=categoryButton(item.label,item.count,categoryGraph.families[0].count,item.id===activeFamily);
+      button.addEventListener('click',()=>{activeFamily=item.id;activeLabel=undefined;renderCategories();});
+      families.append(button);
+    }
+    const maximum=family.labels[0]?.count||1;
+    for(const item of family.labels){
+      const button=categoryButton(item.label,item.count,maximum,item.label===activeLabel);
+      button.addEventListener('click',()=>{activeLabel=item.label;renderCategories();});
+      labels.append(button);
+    }
+    renderCategoryDetail(family,family.labels.find(item=>item.label===activeLabel));
+  }
   function filtered() {
     const query=$('#element-search').value.trim().toLowerCase(), family=$('#element-family').value, status=$('#element-status').value, conflict=$('#element-conflicts').checked;
     return data.dimensions.filter(r=>(!query||[String(r.feature),'f'+r.feature,r.label_zh,r.family_zh,r.reference_label_zh].some(v=>v.toLowerCase().includes(query)))&&(!family||r.family===family)&&(!status||r.status===status)&&(!conflict||r.family_disagreement)).sort((a,b)=>a.review_priority-b.review_priority||a.feature-b.feature);
@@ -38,7 +97,12 @@
     listing();
   }
   async function main(){
-    const response=await fetch('hierarchy.json');if(!response.ok)throw Error('要素表载入失败');data=await response.json();
+    const [response, graphResponse]=await Promise.all([fetch('hierarchy.json'),fetch('category-graph.json')]);
+    if(!response.ok||!graphResponse.ok)throw Error('要素表或类别图谱载入失败');
+    [data,categoryGraph]=await Promise.all([response.json(),graphResponse.json()]);
+    if(data.identity!==categoryGraph.identity||data.dimensions.length!==categoryGraph.total)throw Error('类别图谱与维度表不匹配');
+    activeFamily=categoryGraph.families.find(family=>family.id==='building')?.id||categoryGraph.families[0].id;
+    renderCategories();
     for(const family of data.families){const option=el('option',family.label_zh);option.value=family.id;$('#element-family').append(option);}
     for(const [value,label] of Object.entries(states)){const option=el('option',label);option.value=value;$('#element-status').append(option);}
     for(const id of ['#element-search','#element-family','#element-status','#element-conflicts'])$(id).addEventListener(id==='#element-search'?'input':'change',()=>{
