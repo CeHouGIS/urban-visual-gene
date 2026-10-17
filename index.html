@@ -1,8 +1,8 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>主实验 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="assets/site.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="./">Urban Scene Primitives</a><a href="./" aria-current=page>主实验</a><a href="semantic/">语义地图</a><a href="instances/">图像实例</a><a href="interpretation/">维度解释</a><a href="elements/">要素标签</a><a href="label-structure/">标签结构</a><a href="quality/">维度复核</a><a href="relations/">要素关系</a></nav>
-<main class="page"><div class="eyebrow">30-city panorama-aware BatchTopK SAE</div>
+<link rel="stylesheet" href="assets/site.css"></head><body><link rel="stylesheet" href="assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="./">Urban Scene Primitives</a><a href="./" aria-current=page>主实验</a><a href="semantic/">语义地图</a><a href="instances/">图像实例</a><a href="interpretation/">维度解释</a><a href="elements/">要素标签</a><a href="label-structure/">标签结构</a><a href="quality/">维度复核</a><a href="relations/">要素关系</a></nav><div class="project-layout"><div class="project-main">
+<main class="page"><section class="note" id="element-route"><strong>当前路线：跨街景重复的局部要素组合</strong><p>从四方向图像提取局部区域，检索不同要素及相对关系的重复实例。</p><a href="relations/">查看关系方法与实例 →</a> · <a href="elements/">查看标签激活 →</a></section><div class="eyebrow">30-city panorama-aware BatchTopK SAE</div>
 <h1>Urban Scene Primitives</h1><p class="lead">从街景中学习稀疏视觉单元，观察它们响应什么，以及不同单元如何共同出现。</p>
 <div class="stats"><div class="stat"><b>30</b><span>训练与验证城市</span></div><div class="stat"><b>89,031</b><span>完整四方向全景</span></div><div class="stat"><b>4,096</b><span>SAE 字典维度 · K=32</span></div><div class="stat"><b>28 × 28</b><span>每方向 patch 网格</span></div></div>
 <p>四方向图像分别经过冻结的 DINOv3 ViT-L/16（448 × 448 → 28 × 28 × 1024），再进行环形全景邻域 context mixing；逐 patch 输入 BatchTopK SAE，完成 1024 → 4096 → 1024 的稀疏分解。</p>
@@ -17,4 +17,14 @@
 <section class="section"><h2>跨街景的局部要素组合</h2><p>以完整四方向全景为统计单位，在各方向的 SAE 激活中提取自适应要素遮罩，检索重复的多要素关系。当前为探索性抽样，语义仍需核查。</p><a href="relations/#local-results">查看组合遮罩实例与置换对照 →</a></section>
 <details class="section"><summary>方法与解释范围</summary><p>语义地图使用图像裁剪的 SigLIP embedding，城市、空间坐标、decoder 分组和 VLM 文字均不参与 UMAP 拟合。维度地图中至少 20 个有效实例才进入投影，故 4,096 个模型维度对应 2,863 个散点；图像实例地图则保留 3,178 维的最多 Top10 实例。64 组使用各自唯一颜色，部分组暂无足够实例进入维度投影。</p><p>二维邻近关系供浏览，不证明类别边界或统计显著性。Qwen 名称为待核查的解释；维度可能对应物体、部件、纹理或混合概念。激活图表示 patch 级响应，不是像素分割。</p><p><a href="data/group_interpretations.csv">64 组解释 CSV</a> · <a href="data/feature_semantic_umap_groups.csv">维度坐标与分组 CSV</a> · <a href="data/group_palette.json">64 组色表与许可</a></p></details></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
 发布快照：2026-10-17 复核快照 · <a href="manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
-</footer></body></html>
+</footer></div><aside class="project-sidebar" aria-label="项目进度">
+<details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
+<div class="project-progress-content"><p id="project-research-goal"></p>
+<div class="project-focus"><span class="project-progress-kicker">当前关键路径</span><strong id="project-research-focus"></strong><p id="project-next-step"></p></div>
+<p class="project-progress-context" id="project-milestone-count"></p><div id="project-milestones"></div>
+<div id="project-blockers"></div>
+<details class="project-runtime"><summary>计算任务明细<span id="project-runtime-count"></span></summary>
+<table class="project-progress-table"><caption class="project-sr-only">当前主实验与景观原型的阶段进度</caption><thead class="project-sr-only"><tr><th scope="col">阶段与进度</th><th scope="col">状态</th></tr></thead><tbody id="project-progress-rows"></tbody></table>
+<p id="project-progress-note"></p></details><details class="project-scope"><summary>研究范围与待核查项</summary><div id="project-research-scope"></div></details>
+<div class="project-progress-bottom"><time id="project-progress-time"></time><button type="button" id="project-progress-refresh" aria-label="刷新项目进度">刷新</button></div><p id="project-progress-freshness" role="status">读取发布快照…</p>
+<noscript>启用 JavaScript 后显示进度表，或查看 <a href="data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="assets/project-progress.js?v=1" defer></script></body></html>

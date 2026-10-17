@@ -34,8 +34,8 @@
     "insufficient_evidence": 745,
     "unobserved_in_sample": 462
   },
-  "file_count": 23158,
-  "bytes_before_manifest": 913360610,
+  "file_count": 23142,
+  "bytes_before_manifest": 911776591,
   "element_hierarchy": {
     "page": "elements/",
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
@@ -52,7 +52,7 @@
     },
     "prototype_route": "local_multi_element_compositions",
     "local_composition_status": "complete",
-    "published_at": "2026-10-17 18:48 CST"
+    "published_at": "2026-10-18 00:38 CST"
   },
   "packaging": "Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.",
   "source_result_manifest_sha256": "675fbd9694fd53bf1a225203b6740265d56f035f46621cd77520cb7b51e485a1",

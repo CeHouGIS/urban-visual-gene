@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>景观要素标签与激活 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="elements.css"><link rel="stylesheet" href="element-training.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/" aria-current=page>要素标签</a><a href="../label-structure/">标签结构</a><a href="../quality/">维度复核</a><a href="../relations/">要素关系</a></nav>
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="elements.css"><link rel="stylesheet" href="element-training.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/" aria-current=page>要素标签</a><a href="../label-structure/">标签结构</a><a href="../quality/">维度复核</a><a href="../relations/">要素关系</a></nav><div class="project-layout"><div class="project-main">
 <main class="page"><div class="eyebrow">Qwen labels · SAE activation evidence</div>
 <h1>街景要素标签与激活</h1>
 <p class="lead">浏览每个 Qwen 细标签对应的 SAE 维度，以及这些维度在四方向街景中的真实响应。</p>
@@ -25,5 +25,15 @@
 <div class="element-layout"><div><div id="element-list" class="element-list" aria-label="维度列表"></div><button id="element-more" type="button">再显示100项</button></div><section id="element-detail" class="element-detail" aria-label="维度证据"></section></div></section>
 <section class="section"><h2>范围与当前结论</h2><p>没有重新提取 DINO 特征或训练 SAE。验证全景优先用于激活实例；扩大样本用于补充稀缺标签，来源逐例标出。扩大样本的既有 Qwen 语义资料可能覆盖原型实验的训练、开发与测试图像，因此不构成独立语义验证。标签与图像的对应仍需人工复核。</p>
 <p>859维背景/材料，488维待核查，745维证据不足，462维仍无正激活证据。待核查项没有被删除，也没有被算作已验证的语义。</p></section></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
-发布快照：2026-10-17 复核快照 · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
-</footer><script src="elements.js" defer></script></body></html>
+发布快照：2026-10-18 00:38 CST · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+</footer></div><aside class="project-sidebar" aria-label="项目进度">
+<details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
+<div class="project-progress-content"><p id="project-research-goal"></p>
+<div class="project-focus"><span class="project-progress-kicker">当前关键路径</span><strong id="project-research-focus"></strong><p id="project-next-step"></p></div>
+<p class="project-progress-context" id="project-milestone-count"></p><div id="project-milestones"></div>
+<div id="project-blockers"></div>
+<details class="project-runtime"><summary>计算任务明细<span id="project-runtime-count"></span></summary>
+<table class="project-progress-table"><caption class="project-sr-only">当前主实验与景观原型的阶段进度</caption><thead class="project-sr-only"><tr><th scope="col">阶段与进度</th><th scope="col">状态</th></tr></thead><tbody id="project-progress-rows"></tbody></table>
+<p id="project-progress-note"></p></details><details class="project-scope"><summary>研究范围与待核查项</summary><div id="project-research-scope"></div></details>
+<div class="project-progress-bottom"><time id="project-progress-time"></time><button type="button" id="project-progress-refresh" aria-label="刷新项目进度">刷新</button></div><p id="project-progress-freshness" role="status">读取发布快照…</p>
+<noscript>启用 JavaScript 后显示进度表，或查看 <a href="../data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="../assets/project-progress.js?v=1" defer></script><script src="elements.js" defer></script></body></html>
