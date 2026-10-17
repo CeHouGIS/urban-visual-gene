@@ -234,7 +234,7 @@ def interpretation_pages(out, reports, snapshot):
     with (target/'dimensions.csv').open('w', newline='') as stream:
         fields = ['feature', 'status', 'crop_count', 'label_zh', 'raw_qwen_label_zh',
                   'semantic_type', 'consistency', 'confidence_self_reported']
-        writer = csv.DictWriter(stream, fields, extrasaction='ignore')
+        writer = csv.DictWriter(stream, fields, extrasaction='ignore', lineterminator='\n')
         writer.writeheader()
         writer.writerows(records)
     content = '''<div class="eyebrow">Masked Top10 · Qwen3-VL-2B</div><h1>逐维语义解释</h1>
