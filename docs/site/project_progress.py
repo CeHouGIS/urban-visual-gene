@@ -387,10 +387,30 @@ def city_pattern_progress(followup):
     if done('chapter5_figures'):
         milestones['figure_refresh'] = {'status': 'complete', 'evidence': '受影响城市图表已重绘，原训练与语义证据保留来源身份；论文编译通过。语义与道路侧别后续需人工核查。'}
         milestones['writing'] = {'status': 'partial', 'evidence': '方法、分母与图注已按新30城空间样本更新并编译；最终原型结论等待语义与道路核查。'}
+    revision = read(followup / 'stages/composition_patterns/summary.json')
+    revision_complete = read(followup / 'stages/composition_patterns/complete.json')
+    if revision and revision_complete:
+        if revision.get('run_identity') != queue['run_identity'] or revision_complete.get('run_identity') != queue['run_identity']:
+            raise ValueError('Composition progress extraction identity mismatch')
+        detail = (f'{revision["canonical_units"]}个归并响应单元，{revision["recurrent_patterns"]}个2—4类重复组合；'
+                  '全部30城格网分布完成。相对高响应不等于物体存在；语义、布局与独立验证待完成。')
+        if revision.get('landscape_filter_applied'):
+            detail += f' 已排除人物、车辆、集装箱等{revision["excluded_units"]}个活动或临时对象单元。'
+        rows.append({'id': 'city_composition_patterns', 'label': '细分组成算法修订与全城分布',
+                     'status': 'complete', 'detail': detail, 'link': 'city-patterns/', 'semantic_review': 'pending'})
+        evidence = read(followup / 'stages/composition_patterns/evidence_complete.json')
+        if evidence:
+            rows.append({'id': 'city_composition_evidence', 'label': '新组合四方向激活证据',
+                         'status': 'complete', 'detail': f'{evidence["patterns"]}组、{evidence["examples"]}个跨城实例；mask为归因图，人工核查待完成。',
+                         'link': 'city-patterns/#compositions', 'semantic_review': 'pending'})
+        for key in ('patterns', 'local_compositions', 'geography'):
+            milestones[key] = {'status': 'partial', 'evidence': detail}
+        milestones['figure_refresh'] = {'status': 'partial', 'evidence': '原7组统计结果的论文图表及编译已完成；新细分组成图谱已发布，人工校准与确认后再替换论文结论。'}
     pending = next((r for r in rows if r['status'] != 'complete'), None)
     return {'rows': rows, 'milestones': milestones, 'terminal': queue.get('phase') == 'complete',
             'focus': pending['label'] if pending else '核查30城组合的语义与道路布局',
-            'next_step': '本地脚本按队列自动衔接；候选分布和论文图表完成后发布。人工确认语义、mask与标定后才统计道路同侧／两侧。'}
+            'next_step': ('核查新组合四方向实例，人工校准细标签和最低响应；完成新空间验证，再更新论文结论。道路同侧／两侧需确认mask与标定。'
+                          if revision else '本地脚本按队列自动衔接；候选分布和论文图表完成后发布。人工确认语义、mask与标定后才统计道路同侧／两侧。')}
 
 
 def relational_status(root):

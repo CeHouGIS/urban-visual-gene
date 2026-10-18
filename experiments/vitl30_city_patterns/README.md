@@ -32,6 +32,74 @@ The procedures below document the completed computation and the remaining
 semantic, calibration and roadside review. A completed compute queue does not
 mark these scientific reviews complete or validate a landscape prototype.
 
+## Composition revision: recurrent patterns rather than excess pairs
+
+The current web atlas uses `code/composition_patterns.py`. The earlier seven
+significant pairs answer a different question and remain in the thesis and
+downloadable reference; they are not the entire landscape composition catalogue.
+
+The revision merges 236 provisional Qwen fine labels into 103 raw canonical
+response units, merging parts of the same object and retaining whole-object
+subtypes. A declared landscape scope retains 78 units and excludes 25: people,
+all vehicles and their parts, containers, construction machinery/scaffolds/cranes,
+and listed movable or temporary objects. Fixed buildings, vegetation, road and
+pedestrian space, barriers, water/terrain and fixed infrastructure remain.
+Storage tanks remain as fixed industrial structures. This reversible analysis
+filter does not delete SAE dimensions. Excluded dimensions cannot contribute
+through a parent fallback; the all-4096 mass denominator is unchanged.
+Each parent family contributes at most one subtype per panorama. Positive-share
+60th-percentile thresholds are fitted on the 22 discovery cities, with cities,
+observed cells and panoramas within cells balanced. Parent mass must be at least
+0.5% of all-4096 activation mass; subtype mass must be at least 0.1%. Thresholds
+are frozen for all cities. They measure relative response, not semantic presence.
+An initial permissive 0.01% floor admitted widespread weak water/container
+responses and was rejected; its diagnostic outputs remain server-side under
+`composition_patterns_permissive_probe`, outside the published atlas.
+
+Apriori mines cross-parent combinations of order 2–4 with at least 0.5% weighted
+support, 30 panoramas, eight cells and three cities in both city partitions.
+Near-redundant subsets are pruned if a discovered extension retains 90% support.
+The final 185 combinations contain 131 pairs and 54 triples; no quadruple passes
+the complete recurrence and redundancy rules.
+All 30 cities and 72,625 observed cells are mapped, including sampled zero-match
+cells. Counts retain the actual cell denominator (one to ten panoramas).
+
+Raw panorama retrieval coverage is 78.5%; equal-city/equal-cell coverage is 81.3%.
+These are not patch explanation rates or validated object recall. At quantiles
+50/60/70, freezing the same 185 patterns yields weighted coverages 90.2/81.3/64.4%;
+182/185/118 patterns repeat in the evaluation cities. This sensitivity is
+published rather than choosing the threshold that maximizes category counts.
+Evaluation cities have already been inspected, so this is an exploratory
+revision. Descriptive spatial-block lift is not a fresh significance claim.
+
+```bash
+python -u -m experiments.vitl30_city_patterns.code.composition_patterns \
+  --run-identity 6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617
+python -u -m experiments.vitl30_city_patterns.code.composition_evidence \
+  --run-identity 6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617 \
+  --device cuda:0
+```
+
+The second command recomputes four-view patch attribution on GPU for 14
+representative combinations, three distinct-city retrieval examples each. The
+deterministic hash selection is not a prevalence audit. Masks are SAE attribution,
+not object segmentations. No API calls, new SAE training or CPU inference are used.
+
+The previous mobile-object draft is archived server-side under
+`composition_patterns_with_mobile_objects_*`; its categories and images are
+replaced on the public composition page. Raw score cache identity is independent
+of the eligibility filter, but still checks the exact hierarchy, unit dimensions,
+corpus and scoring version. The current mining protocol includes all exclusions.
+Visual spot checks found some water responses on sky and bridge responses on
+sign gantries. The site flags these examples and their compositions rather than
+treating the response maps as actual object distributions. The small spot check
+does not estimate accuracy or justify dropping entire SAE dimensions.
+
+Remaining scientific tasks: review the labels and masks; calibrate response
+thresholds against manually labeled positives and negatives; evaluate on new
+spatial blocks or external data; then establish object counts, layout and road
+sides before replacing confirmatory thesis claims. See the website progress panel.
+
 ## Select panoramas
 
 ```bash

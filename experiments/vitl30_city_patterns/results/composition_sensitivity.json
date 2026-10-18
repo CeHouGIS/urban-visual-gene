@@ -1,0 +1,23 @@
+[
+  {
+    "quantile": 0.5,
+    "frozen_patterns": 185,
+    "patterns_repeated_evaluation": 182,
+    "equal_city_cell_coverage": 0.9022537070481875,
+    "panorama_coverage": 0.8721313880392286
+  },
+  {
+    "quantile": 0.6,
+    "frozen_patterns": 185,
+    "patterns_repeated_evaluation": 185,
+    "equal_city_cell_coverage": 0.813459010041541,
+    "panorama_coverage": 0.7850156606444704
+  },
+  {
+    "quantile": 0.7,
+    "frozen_patterns": 185,
+    "patterns_repeated_evaluation": 118,
+    "equal_city_cell_coverage": 0.6438743777557898,
+    "panorama_coverage": 0.6178010548012528
+  }
+]

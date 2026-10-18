@@ -204,6 +204,12 @@ def install(site, page, snapshot, followup=FOLLOWUP):
         value['bytes_before_manifest'] = sum(p.stat().st_size for p in files if p != root_manifest)
         value['snapshot_label'] = snapshot
         root_manifest.write_text(json.dumps(value, ensure_ascii=False, indent=2))
+    # Install the current composition revision after retaining the earlier
+    # statistical protocol as a reference. A subsequent full build must not
+    # silently restore the seven-pair atlas as the main result.
+    if (followup / 'stages/composition_patterns/complete.json').exists():
+        from composition_patterns import install as install_compositions
+        return install_compositions(site, page, snapshot, followup)
     return manifest
 
 
