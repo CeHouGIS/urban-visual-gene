@@ -64,7 +64,7 @@ def test_waits_for_completed_queue_even_after_screening_marker(tmp_path, monkeyp
     queue = json.loads(queue_file.read_text())
     queue['phase'] = 'waiting'
     write_json(queue_file, queue)
-    monkeypatch.setattr(auto_continue, 'run_agent', lambda *unused: pytest.fail('started early'))
+    monkeypatch.setattr(auto_continue, 'run_script', lambda *unused: pytest.fail('started early'))
     auto_continue.run(args)
     status = json.loads((args.followup / 'auto_continue_status.json').read_text())
     assert status['status'] == 'waiting'
@@ -79,7 +79,7 @@ def test_runs_each_stage_once_and_resumes_verified_results(tmp_path, monkeypatch
         make_artifacts(stage, stage_dir)
         return 0
 
-    monkeypatch.setattr(auto_continue, 'run_agent', agent)
+    monkeypatch.setattr(auto_continue, 'run_script', agent)
     auto_continue.run(args)
     assert called == [task['id'] for task in followup.NEXT_TASKS]
     queue = json.loads((args.followup / 'task_queue.json').read_text())
@@ -98,7 +98,7 @@ def test_stops_on_failed_stage_without_running_successors(tmp_path, monkeypatch)
         called.append(stage)
         return 1
 
-    monkeypatch.setattr(auto_continue, 'run_agent', failing_agent)
+    monkeypatch.setattr(auto_continue, 'run_script', failing_agent)
     with pytest.raises(RuntimeError, match='candidate_combinations'):
         auto_continue.run(args)
     assert called == ['candidate_combinations', 'candidate_combinations']
@@ -114,7 +114,7 @@ def test_stops_on_failed_stage_without_running_successors(tmp_path, monkeypatch)
         make_artifacts(stage, stage_dir)
         return 0
 
-    monkeypatch.setattr(auto_continue, 'run_agent', succeeding_agent)
+    monkeypatch.setattr(auto_continue, 'run_script', succeeding_agent)
     auto_continue.run(args)
     assert called == [task['id'] for task in followup.NEXT_TASKS]
 
@@ -131,7 +131,7 @@ def test_agent_runtime_exception_is_recorded_and_retried(tmp_path, monkeypatch):
         make_artifacts(stage, stage_dir)
         return 0
 
-    monkeypatch.setattr(auto_continue, 'run_agent', agent)
+    monkeypatch.setattr(auto_continue, 'run_script', agent)
     auto_continue.run(args)
     assert called[:2] == ['candidate_combinations'] * 2
     assert len(called) == len(followup.NEXT_TASKS) + 1
@@ -168,7 +168,7 @@ def test_service_failures_do_not_exhaust_research_attempts_and_logs_survive(
     monkeypatch.setattr(auto_continue, 'wait_before_retry', waits.append)
     monkeypatch.setattr(auto_continue.random, 'uniform', lambda *unused: 1)
 
-    def agent(stage, output, identity, screening, attempt):
+    def agent(stage, output, identity, screening, attempt, extraction):
         if stage == 'candidate_combinations':
             attempts.append(attempt)
             if len(attempts) <= 3:
@@ -178,7 +178,7 @@ def test_service_failures_do_not_exhaust_research_attempts_and_logs_survive(
         make_artifacts(stage, output)
         return 0
 
-    monkeypatch.setattr(auto_continue, 'run_agent', agent)
+    monkeypatch.setattr(auto_continue, 'run_script', agent)
     auto_continue.run(args)
     assert attempts == [4, 5, 6, 7]
     assert waits == expected_waits
@@ -194,6 +194,7 @@ def test_restart_preserves_fifteen_minute_rate_limit_wait(tmp_path, monkeypatch)
     old_log.write_text('ERROR: last status: 429 Too Many Requests\n')
     write_json(args.followup / 'auto_continue_status.json', {
         'status': 'retrying', 'stage': 'candidate_combinations', 'attempt': 5,
+        'execution': 'direct_script',
         'detail': 'ERROR: last status: 429 Too Many Requests',
         'next_retry_utc': datetime.now(timezone.utc).isoformat()})
     waits = []
@@ -203,28 +204,55 @@ def test_restart_preserves_fifteen_minute_rate_limit_wait(tmp_path, monkeypatch)
         make_artifacts(stage, output)
         return 0
 
-    monkeypatch.setattr(auto_continue, 'run_agent', agent)
+    monkeypatch.setattr(auto_continue, 'run_script', agent)
     auto_continue.run(args)
     assert len(waits) == 1
     assert 895 < waits[0] <= 900
 
 
-def test_resumes_explicit_saved_session_without_overwriting_log(tmp_path, monkeypatch):
-    session = '01a14d0e-fba3-7912-8917-58e1c3f5c06e'
-    old_log = tmp_path / 'attempt_3.log'
-    old_log.write_text(f'CLI header\nsession id: {session}\nuser\n' + 'x' * 5000 +
-                       '\nsession id: 00000000-0000-0000-0000-000000000000\n')
+def test_executes_python_script_without_codex_or_api(tmp_path, monkeypatch):
+    import sys
     calls = []
-
     def execute(command, **kwargs):
-        calls.append((command, kwargs['input']))
+        calls.append((command, kwargs))
         return SimpleNamespace(returncode=0)
-
     monkeypatch.setattr(auto_continue.subprocess, 'run', execute)
-    assert auto_continue.run_agent('candidate_combinations', tmp_path, RUN_ID, 'screening.json', 4) == 0
-    command, prompt = calls[0]
-    assert command[command.index('resume') + 1] == session
-    assert 'Resume this interrupted stage' in prompt
-    assert old_log.read_text().startswith(f'CLI header\nsession id: {session}')
+    assert auto_continue.run_script('candidate_combinations', tmp_path, RUN_ID,
+                                   tmp_path / 'complete.json', 4, tmp_path / 'input') == 0
+    command, kwargs = calls[0]
+    assert command[:3] == [sys.executable, '-u', '-m']
+    assert command[3] == 'experiments.vitl30_city_patterns.code.candidate_combinations'
+    assert command[command.index('--extraction') + 1] == str(tmp_path / 'input')
+    assert 'codex' not in command
+    assert 'input' not in kwargs
     with pytest.raises(FileExistsError):
-        auto_continue.run_agent('candidate_combinations', tmp_path, RUN_ID, 'screening.json', 4)
+        auto_continue.run_script('candidate_combinations', tmp_path, RUN_ID,
+                                 tmp_path / 'complete.json', 4, tmp_path / 'input')
+
+
+def test_missing_script_waits_without_calling_codex_or_completing_stage(tmp_path, monkeypatch):
+    args = ready_run(tmp_path)
+    make_artifacts('candidate_combinations', args.followup / 'stages/candidate_combinations')
+    monkeypatch.setattr(auto_continue.subprocess, 'run',
+                        lambda *a, **kw: pytest.fail('must not invoke an AI fallback'))
+    auto_continue.run(args)
+    status = json.loads((args.followup / 'auto_continue_status.json').read_text())
+    assert status['stage'] == 'road_sides'
+    assert status['status'] == 'awaiting_script'
+    queue = json.loads((args.followup / 'task_queue.json').read_text())
+    assert next(t for t in queue['tasks'] if t['id'] == 'road_sides')['status'] == 'awaiting_script'
+
+
+def test_local_script_ignores_legacy_codex_rate_limit_wait(tmp_path, monkeypatch):
+    args = ready_run(tmp_path)
+    write_json(args.followup / 'auto_continue_status.json', {
+        'status': 'retrying', 'stage': 'candidate_combinations',
+        'detail': 'ERROR: 429 Too Many Requests',
+        'next_retry_utc': '2099-01-01T00:00:00+00:00'})
+    monkeypatch.setattr(auto_continue, 'wait_before_retry',
+                        lambda *unused: pytest.fail('local work must not wait for Codex API'))
+    def execute(stage, output, *unused):
+        make_artifacts(stage, output)
+        return 0
+    monkeypatch.setattr(auto_continue, 'run_script', execute)
+    auto_continue.run(args)

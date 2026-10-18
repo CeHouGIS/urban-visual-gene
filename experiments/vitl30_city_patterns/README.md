@@ -90,19 +90,35 @@ bash experiments/vitl30_city_patterns/code/launch_auto_continue.sh
 
 The detached runner waits for `followup/status.json`, `complete.json` and the
 queue to agree that screening finished. It then executes the four remaining
-stages in dependency order using one noninteractive Codex run per stage. Each
-stage writes its code, results, evidence and completion marker under
+stages in dependency order by running the local Python module for each stage.
+There is no Codex subprocess or model API in the queue supervisor. Each
+stage writes its results, evidence and completion marker under
 `followup/stages/<stage>/`. The runner checks the extraction identity and
 required products before marking a stage complete and starting the next one.
 An interrupted runner can be relaunched; verified completed stages are skipped.
 Research or artifact-check failures are retried at most three times and then
-left as `error`. API rate limits (HTTP 429) retry every 15 minutes, including
-when the runner resumes an existing wait. Temporary server failures and
+left as `error`. If a stage itself needs a remote service, API rate limits
+(HTTP 429) retry every 15 minutes, including when the runner resumes an
+existing wait. Pure local stages do not wait for the former Codex rate limit.
+Temporary server failures and
 connection interruptions use exponential backoff and jitter, capped at 30
 minutes. Service interruptions do not consume the three research attempts. The
-saved Codex session is resumed, and attempt numbers continue across restarts
-so prior logs are preserved. The active status includes the next retry time
+attempt numbers continue across restarts so prior logs are preserved.
+The active status includes the next retry time
 while a service outage persists. It does not skip a failed dependency.
+
+The implemented `candidate_combinations.py` reads the existing 4,096-dimensional
+panorama means, caches eligible family mass by city, and tests family pairs in
+held-out cities against marginal-preserving city and 5-km-block nulls. It does
+not extract images, retrain models, call Qwen, or establish roadside geometry.
+Qwen family labels remain provisional. Its completion means the co-presence
+screen finished, not that landscape prototypes were validated.
+
+The remaining `road_sides.py`, `prototype_city_distribution.py`, and
+`chapter5_figures.py` scripts still need implementation. A missing script is
+reported as `awaiting_script`; the supervisor checks again every five minutes
+and starts it once available. It never calls an AI coding service as fallback
+and never marks a missing analysis as complete.
 
 Read `followup/task_queue.json` for task states and
 `followup/auto_continue_status.json` for the active stage. Logs are in

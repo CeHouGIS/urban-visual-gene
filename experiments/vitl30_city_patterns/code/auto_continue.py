@@ -11,6 +11,7 @@ from pathlib import Path
 import random
 import re
 import subprocess
+import sys
 import time
 from datetime import datetime, timedelta, timezone
 
@@ -19,7 +20,6 @@ from .followup import FOLLOWUP, NEXT_TASKS
 
 ROOT = Path(__file__).resolve().parents[3]
 THESIS = Path('/root/code/HKUST-Thesis')
-PROMPTS = Path(__file__).with_name('prompts')
 RATE_LIMIT_RETRY_SECONDS = 15 * 60
 ARTIFACTS = {
     'candidate_combinations': ('protocol.json', 'summary.json', 'candidates.csv'),
@@ -78,7 +78,7 @@ def update_queue(queue_file, stage, status, detail):
         if task['id'] == stage:
             task['status'] = status
             task['detail'] = detail
-            task['execution'] = 'automatic sequential runner'
+            task['execution'] = 'direct local script'
             found = True
         elif task['status'] == 'blocked' and all(
                 any(previous['id'] == required and previous['status'] == 'complete'
@@ -92,30 +92,8 @@ def update_queue(queue_file, stage, status, detail):
     write_json(queue_file, queue)
 
 
-def make_prompt(stage, stage_dir, run_identity, screening):
-    instructions = (PROMPTS / f'{stage}.md').read_text()
-    contract = f'''\n\nExecution contract:\n- Main repository: {ROOT}\n- Thesis repository: {THESIS}\n- Frozen extraction identity: {run_identity}\n- Completed city-cell screening: {screening}\n- Write all stage result artifacts beneath: {stage_dir}\n- Do not overwrite unrelated user files or silently use an earlier experiment.\n- Only after all inputs, computation, evidence, and tests are verified, write\n  {stage_dir / 'complete.json'} as JSON with schema_version=1, stage="{stage}",\n  run_identity="{run_identity}", status="complete", and a concise evidence field.\n- The required artifacts are: {', '.join(ARTIFACTS[stage])}.\n- If a requirement cannot be completed, do not write complete.json. Report\n  the exact blocker in your final message; the supervisor will retain your log.\n'''
-    continuation = '''
-- Continue existing stage code and intermediate artifacts rather than restarting discovery.
-- Keep tool output concise. Do not recursively read attempt logs, session files,
-  credentials or unrelated caches; inspect only inputs needed for this stage.
-- Finish and verify computations before writing complete.json; a background PID
-  alone is not a completed research result.
-'''
-    return instructions + contract + continuation
-
-
-def saved_session(stage_dir):
-    """Read only the CLI header, never prior tool output embedded in the log."""
-    logs = sorted(stage_dir.glob('attempt_*.log'),
-                  key=lambda path: int(path.stem.split('_')[-1]), reverse=True)
-    for path in logs:
-        with path.open(errors='replace') as stream:
-            header = stream.read(4096)
-        match = re.search(r'^session id: ([0-9a-f-]{36})$', header, re.MULTILINE)
-        if match:
-            return match[1]
-    return None
+class MissingStageScript(RuntimeError):
+    """A future stage is specified, but its executable is not implemented yet."""
 
 
 def transient_error(log_file):
@@ -150,19 +128,20 @@ def is_rate_limit(error):
     return bool(re.search(r'\b429\b|Too Many Requests', error, re.IGNORECASE))
 
 
-def run_agent(stage, stage_dir, run_identity, screening, attempt):
+def run_script(stage, stage_dir, run_identity, screening, attempt, extraction):
+    script = Path(__file__).with_name(f'{stage}.py')
+    if not script.is_file():
+        raise MissingStageScript(f'Waiting for implementation: {script}')
     stage_dir.mkdir(parents=True, exist_ok=True)
-    prompt = make_prompt(stage, stage_dir, run_identity, screening)
-    session = saved_session(stage_dir)
-    command = ['codex', 'exec', '-C', str(ROOT), '-s', 'danger-full-access',
-               '-c', 'model_reasoning_effort="medium"']
-    if session:
-        command += ['resume', session]
-        prompt = 'Resume this interrupted stage from its existing work.\n\n' + prompt
-    command += ['--output-last-message', str(stage_dir / f'attempt_{attempt}.txt'), '-']
+    screening = Path(screening)
+    command = [sys.executable, '-u', '-m',
+               f'experiments.vitl30_city_patterns.code.{stage}',
+               '--extraction', str(extraction),
+               '--followup', str(screening.parent), '--output', str(stage_dir),
+               '--run-identity', run_identity]
     with (stage_dir / f'attempt_{attempt}.log').open('x') as log:
-        return subprocess.run(command, input=prompt, text=True, stdout=log,
-                              stderr=subprocess.STDOUT, check=False).returncode
+        return subprocess.run(command, cwd=ROOT, stdin=subprocess.DEVNULL,
+                              stdout=log, stderr=subprocess.STDOUT, check=False).returncode
 
 
 def run(args):
@@ -215,7 +194,8 @@ def run(args):
                        for path in stage_dir.glob('attempt_*.log')), default=0)
         status_file = args.followup / 'auto_continue_status.json'
         prior = json.loads(status_file.read_text()) if status_file.exists() else {}
-        if prior.get('status') == 'retrying' and prior.get('stage') == stage:
+        if (prior.get('status') == 'retrying' and prior.get('stage') == stage
+                and prior.get('execution') == 'direct_script'):
             last_log = stage_dir / f'attempt_{attempt}.log'
             if is_rate_limit(prior.get('detail', '')) and last_log.exists():
                 retry_at = datetime.fromtimestamp(last_log.stat().st_mtime, timezone.utc) + timedelta(
@@ -232,11 +212,22 @@ def run(args):
             update_queue(queue_file, stage, 'running', f'Attempt {attempt}')
             write_json(args.followup / 'auto_continue_status.json',
                        {'status': 'running', 'stage': stage, 'attempt': attempt,
-                        'pid': os.getpid(), 'updated_utc': datetime.now(timezone.utc).isoformat()})
+                        'pid': os.getpid(), 'execution': 'direct_script',
+                        'updated_utc': datetime.now(timezone.utc).isoformat()})
             try:
-                code = run_agent(stage, stage_dir, run_identity,
-                                 args.followup / 'complete.json', attempt)
+                code = run_script(stage, stage_dir, run_identity,
+                                  args.followup / 'complete.json', attempt, args.extraction)
                 verified = stage_manifest(stage_dir, stage, run_identity)
+            except MissingStageScript as exc:
+                attempt -= 1
+                update_queue(queue_file, stage, 'awaiting_script', str(exc))
+                write_json(status_file, {'status': 'awaiting_script', 'stage': stage,
+                                        'detail': str(exc), 'execution': 'direct_script',
+                                        'pid': os.getpid()})
+                if args.once:
+                    return
+                wait_before_retry(args.interval)
+                continue
             except Exception as exc:
                 code = -1
                 verified = None
@@ -256,13 +247,13 @@ def run(args):
                 update_queue(queue_file, stage, 'retrying', detail)
                 write_json(args.followup / 'auto_continue_status.json', {
                     'status': 'retrying', 'stage': stage, 'attempt': attempt,
-                    'detail': service_error, 'pid': os.getpid(),
+                    'detail': service_error, 'pid': os.getpid(), 'execution': 'direct_script',
                     'next_retry_utc': (datetime.now(timezone.utc) + timedelta(seconds=delay)).isoformat()})
                 wait_before_retry(delay)
                 continue
             failures += 1
             update_queue(queue_file, stage, 'retrying' if failures < args.attempts else 'error',
-                         f'Agent exit {code}; {reason}; see attempt_{attempt}.log')
+                         f'Script exit {code}; {reason}; see attempt_{attempt}.log')
             if failures >= args.attempts:
                 write_json(args.followup / 'auto_continue_status.json',
                            {'status': 'error', 'stage': stage, 'detail': reason})
