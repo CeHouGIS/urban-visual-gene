@@ -55,6 +55,32 @@ After all shards complete, city-pattern analysis must account for the grid
 sampling design and compare cities using per-cell summaries rather than raw
 panorama totals. A completed shard alone is not a complete city sample.
 
+## Automatic handoff after extraction
+
+```bash
+bash experiments/vitl30_city_patterns/code/launch_followup.sh
+```
+
+This detached monitor checks the four shard status files every five minutes.
+It starts the next stage only after all four report `complete`, the selected
+count matches, every expected chunk has a matching run identity and accounting,
+and each processed panoid/grid pair matches its selection record. The monitor
+is idempotent and writes `followup/status.json` and `followup/followup.log`.
+It also writes `followup/task_queue.json` immediately, showing completed,
+running, waiting and blocked stages with their dependencies and selected-point
+progress.
+After validation it creates `followup/cells.parquet`, `followup/cities.csv`,
+`followup/city_group_mass_preview.png` and `followup/next_tasks.json`.
+The city/cell shares are normalized **group activation mass**, not dominant
+patch prevalence or semantically validated landscape prototypes. They are a
+screening product and must not replace thesis figures without re-analysis.
+
+The task manifest records later candidate-combination search, roadside
+classification, prototype distributions, and Chapter 5 figure replacement as
+dependencies. Those stages require additional patch-level evidence, road-axis
+validation, and scientific review; the monitor does not mark or publish them
+as complete automatically.
+
 ## Analysis to do after extraction
 
 1. Audit every shard against the selection manifest. Report retained and
