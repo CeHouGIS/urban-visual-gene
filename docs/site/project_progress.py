@@ -50,12 +50,14 @@ def research_progress(rows, corpus):
                                local_compositions.get('detail', '待提取四方向局部要素关系。')),
         'patterns': ('partial' if local_compositions.get('status') == 'complete' else 'pending',
                      local_compositions.get('detail', '尚无跨街景组合候选。')),
+        'road_sides': ('pending', '现有组合未按经核查的道路轴线划分同侧和两侧；须补算patch激活与道路几何。'),
         'prototype_capacity': ('pending', '不预设最终原型数；生成、合并、淘汰阈值和容量上限待校准。'),
         'prototype_coverage': ('partial' if coverage.get('status') == 'complete' else coverage.get('status', 'pending'),
                                coverage.get('detail', '待开始逐图patch覆盖试验；语义解释质量另行核查。')),
         'validity': ('partial' if local_compositions.get('status') == 'complete' else 'pending',
                      '已有探索性开发集置换检验；跨种子、人工语义核查和封存测试未完成。'),
         'geography': ('partial', '已有 64 组的城市组成、共现和空间图；新原型的地理归纳尚未完成。'),
+        'figure_refresh': ('pending', 'Chapter 5全图重绘及新增原型跨城、同侧/两侧分布图待30城分析完成。'),
         'writing': ('partial', roadmap['writing_evidence'])
     }
     milestones = [{**item, 'status': states[item['id']][0], 'evidence': states[item['id']][1]}
