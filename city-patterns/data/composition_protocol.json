@@ -1,0 +1,654 @@
+{
+  "version": 2,
+  "run_identity": "6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617",
+  "hierarchy_sha256": "2de7b5fd9840baa99ed9d4db949c47e3041424decc9599eda595e2d95f58ade8",
+  "calibration": {
+    "quantile": 0.6,
+    "absolute_mass_floor": 0.001,
+    "parent_mass_floor": 0.005,
+    "unit_thresholds": [
+      0.001,
+      0.001137890969403088,
+      0.004785888362675905,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.0774446353316307,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.001,
+      0.001,
+      0.001,
+      1.0,
+      1.0,
+      0.001,
+      0.001,
+      1.0,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.027887118980288506,
+      0.001,
+      0.001,
+      0.002138253068551421,
+      0.0012770338216796517,
+      0.001,
+      1.0,
+      0.236944779753685,
+      0.001,
+      0.0015291450545191765,
+      1.0,
+      0.001,
+      0.001,
+      1.0,
+      1.0,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.11642679572105408,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.004829030483961105,
+      0.001,
+      0.001,
+      0.002818378387019038,
+      0.0025386696215718985,
+      0.001,
+      0.0023079176899045706,
+      0.001,
+      0.001,
+      0.001,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.001
+    ],
+    "family_thresholds": {
+      "building": 0.07958877086639404,
+      "tree": 0.12736669182777405,
+      "low_vegetation": 0.030215255916118622,
+      "road": 0.236944779753685,
+      "pedestrian": 0.005,
+      "barrier": 0.009544516913592815,
+      "vehicle": 1.0,
+      "person": 1.0,
+      "water": 0.005,
+      "terrain": 0.005,
+      "transport_structure": 0.005,
+      "utility": 0.008389717899262905,
+      "sign": 0.005,
+      "furniture": 0.005,
+      "construction": 0.005
+    },
+    "fit_cities": [
+      "Argentina/BuenosAires",
+      "Australia/Melbourne",
+      "Australia/Perth",
+      "Australia/Sydney",
+      "Austria/Vienna",
+      "Bangladesh/Dhaka",
+      "Brazil/Brasília",
+      "Brazil/RiodeJaneiro",
+      "China/Taipei",
+      "France/Paris",
+      "Indonesia/Yogyakarta",
+      "Italy/Naples",
+      "Korea/Seoul",
+      "Mexico/Monterrey",
+      "Nigeria/Lagos",
+      "Russia/Moscow",
+      "Singapore/Singapore",
+      "SouthAfrica/CapeTown",
+      "SouthAfrica/Johannesburg",
+      "Sweden/Stockholm",
+      "US/Chicago",
+      "US/NewYork"
+    ],
+    "evaluation_cities": [
+      "Belgium/Antwerp",
+      "Belgium/Brussels",
+      "Brazil/SaoPaulo",
+      "Germany/Hamburg",
+      "Portugal/Lisbon",
+      "Spain/Barcelona",
+      "UAE/Dubai",
+      "US/Phoenix"
+    ],
+    "city_specific_thresholds": false
+  },
+  "weighting": "equal cities; equal observed 1-km cells per city; equal panoramas per cell",
+  "ontology": {
+    "building": {
+      "建筑": "建筑物 房屋 建筑群 建筑结构 建筑立面 建筑墙面 建筑墙体 建筑外墙 建筑表面 建筑入口 建筑屋檐 建筑屋顶 屋顶 屋檐 屋顶结构 门 木门 铁门 卷帘门 门框 门廊 拱门 建筑拱门 窗户 玻璃窗 百叶窗 窗帘 阳台 阳台栏杆 建筑立柱 柱廊 空调外机 卫星天线 太阳能电池板 烟囱 水塔 遮阳篷",
+      "高层建筑": "摩天大楼 高楼 高层住宅建筑群",
+      "传统建筑": "传统中式建筑屋顶 传统建筑屋顶 古典建筑",
+      "瓦顶建筑": "瓦片屋顶 红色屋顶",
+      "金属屋顶建筑": "波纹金属屋顶"
+    },
+    "tree": {
+      "乔木": "树 树木 树冠 树干 树叶 树皮 树皮纹理 树林 森林 林地 行道树",
+      "棕榈类乔木": "棕榈树 棕榈树林 椰子树",
+      "香蕉树": "香蕉叶",
+      "针叶树": "松树 柏树"
+    },
+    "low_vegetation": {
+      "草地": "草 草坪 草丛 地面植被",
+      "灌木": "灌木丛",
+      "花卉": "花丛 花朵 橙色花朵 红色花朵 白色花朵"
+    },
+    "road": {
+      "道路": "路面 道路标线 道路边缘"
+    },
+    "pedestrian": {
+      "台阶与楼梯": "台阶 楼梯",
+      "路缘石": "混凝土路缘石"
+    },
+    "barrier": {
+      "围栏": "栅栏 栏杆 铁栅栏 金属围栏 金属栏杆",
+      "护栏": "交通护栏 金属护栏",
+      "铁丝网围栏": "铁丝网",
+      "木栅栏": "白色栅栏"
+    },
+    "vehicle": {
+      "车辆": "车 汽车 车轮及轮胎 轮胎 车窗 车门 车顶 车头 车头灯 车尾 车尾灯 车尾箱 尾灯 车灯 车身 车身侧面 车体 车体表面 车辆后部 车辆尾部 驾驶室",
+      "卡车与货车": "卡车 卡车拖车 卡车车头 卡车货箱 卡车驾驶室 货车 白色货车 白色面包车 货车车厢 平板拖车 拖车"
+    },
+    "person": {
+      "行人": "人 人物 人群 人脸 手 皮肤纹理 雨天行人"
+    },
+    "water": {
+      "水体": "水面"
+    },
+    "terrain": {
+      "山地": "山 山丘 山体 山坡 山脉",
+      "岩石": "岩石表面 石块",
+      "沙地": "沙土"
+    },
+    "transport_structure": {
+      "桥梁": "桥 桥墩 桥面 桥梁结构 石拱桥",
+      "铁路": "铁路轨道 轨道 铁轨",
+      "隧道": "隧道入口 隧道内壁"
+    },
+    "utility": {
+      "输电塔": "铁塔 高压电线塔"
+    },
+    "sign": {
+      "交通标志": "路牌 路标 停车标志 禁止停车 禁止驶入 三角形警示标志 高速公路指示牌",
+      "商业招牌": "招牌 街道招牌 商店招牌"
+    },
+    "furniture": {
+      "垃圾桶": "垃圾箱",
+      "座椅": "长椅 椅子"
+    },
+    "construction": {
+      "脚手架": "建筑脚手架",
+      "起重机": "建筑起重机 塔式起重机",
+      "集装箱": "蓝色集装箱"
+    }
+  },
+  "composition": "one winning normalized subtype per responsive parent; at most one unit per parent",
+  "landscape_scope": "Stable landscape fabric and fixed streetscape infrastructure; no people, vehicles, containers, construction machinery or listed temporary objects.",
+  "excluded_families": {
+    "person": "活动人物不作为景观构成",
+    "vehicle": "车辆及其部件不作为景观构成"
+  },
+  "excluded_labels": {
+    "construction": [
+      "压路机",
+      "工业设备",
+      "拖拉机",
+      "挖掘机",
+      "施工机械",
+      "水泥搅拌机",
+      "脚手架",
+      "起重机",
+      "集装箱"
+    ],
+    "furniture": [
+      "桌子",
+      "移动厕所",
+      "遮阳伞"
+    ],
+    "sign": [
+      "交通锥",
+      "旗帜",
+      "横幅"
+    ]
+  },
+  "excluded_units": [
+    {
+      "id": 26,
+      "key": "construction:压路机",
+      "dimensions": [
+        3010
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 27,
+      "key": "construction:工业设备",
+      "dimensions": [
+        3256
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 28,
+      "key": "construction:拖拉机",
+      "dimensions": [
+        2928
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 29,
+      "key": "construction:挖掘机",
+      "dimensions": [
+        3966
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 30,
+      "key": "construction:施工机械",
+      "dimensions": [
+        1792
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 31,
+      "key": "construction:水泥搅拌机",
+      "dimensions": [
+        2617
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 32,
+      "key": "construction:脚手架",
+      "dimensions": [
+        2494,
+        3336,
+        4085
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 33,
+      "key": "construction:起重机",
+      "dimensions": [
+        1081,
+        1639,
+        2701
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 34,
+      "key": "construction:集装箱",
+      "dimensions": [
+        1709,
+        1780,
+        1906,
+        2402,
+        2507,
+        2919,
+        3501,
+        3946
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 38,
+      "key": "furniture:桌子",
+      "dimensions": [
+        2766
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 39,
+      "key": "furniture:移动厕所",
+      "dimensions": [
+        1717
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 42,
+      "key": "furniture:遮阳伞",
+      "dimensions": [
+        1611,
+        2293,
+        3039
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 56,
+      "key": "person:行人",
+      "dimensions": [
+        71,
+        112,
+        165,
+        492,
+        500,
+        604,
+        740,
+        849,
+        909,
+        1175,
+        1399,
+        1741,
+        1876,
+        1926,
+        1946,
+        2080,
+        2157,
+        2193,
+        2210,
+        2369,
+        2436,
+        2559,
+        2578,
+        2750,
+        2860,
+        2989,
+        3002,
+        3070,
+        3104,
+        3355,
+        3369,
+        3457,
+        3471,
+        3598,
+        3619,
+        3701,
+        3876
+      ],
+      "exclusion_reason": "活动人物不作为景观构成"
+    },
+    {
+      "id": 60,
+      "key": "sign:交通锥",
+      "dimensions": [
+        3837
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 63,
+      "key": "sign:旗帜",
+      "dimensions": [
+        293,
+        412,
+        2373,
+        2844,
+        4019
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 64,
+      "key": "sign:横幅",
+      "dimensions": [
+        3768
+      ],
+      "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+    },
+    {
+      "id": 93,
+      "key": "vehicle:三轮车",
+      "dimensions": [
+        1254
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    },
+    {
+      "id": 94,
+      "key": "vehicle:公交车",
+      "dimensions": [
+        549,
+        552,
+        1148,
+        1428,
+        1794,
+        2012,
+        3466,
+        3637
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    },
+    {
+      "id": 95,
+      "key": "vehicle:卡车与货车",
+      "dimensions": [
+        1758,
+        1781,
+        1814,
+        2103,
+        2156,
+        2220,
+        2272,
+        2357,
+        2722,
+        2937,
+        3029,
+        3119,
+        3199,
+        3210,
+        3530,
+        3555,
+        3971
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    },
+    {
+      "id": 96,
+      "key": "vehicle:垃圾车",
+      "dimensions": [
+        3155
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    },
+    {
+      "id": 97,
+      "key": "vehicle:房车",
+      "dimensions": [
+        3648
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    },
+    {
+      "id": 98,
+      "key": "vehicle:摩托车",
+      "dimensions": [
+        50,
+        687,
+        919,
+        3248,
+        4066
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    },
+    {
+      "id": 99,
+      "key": "vehicle:自行车",
+      "dimensions": [
+        1207,
+        2328,
+        2646,
+        3919
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    },
+    {
+      "id": 100,
+      "key": "vehicle:越野车",
+      "dimensions": [
+        1800
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    },
+    {
+      "id": 101,
+      "key": "vehicle:车辆",
+      "dimensions": [
+        52,
+        215,
+        480,
+        502,
+        544,
+        592,
+        608,
+        614,
+        680,
+        912,
+        923,
+        997,
+        1021,
+        1055,
+        1228,
+        1264,
+        1313,
+        1351,
+        1378,
+        1380,
+        1460,
+        1578,
+        1588,
+        1608,
+        1617,
+        1624,
+        1628,
+        1671,
+        1715,
+        1731,
+        1803,
+        1810,
+        1898,
+        1918,
+        1929,
+        2133,
+        2146,
+        2161,
+        2222,
+        2276,
+        2298,
+        2335,
+        2342,
+        2343,
+        2348,
+        2351,
+        2371,
+        2464,
+        2516,
+        2586,
+        2600,
+        2657,
+        2667,
+        2692,
+        2713,
+        2778,
+        2855,
+        2918,
+        2930,
+        3032,
+        3072,
+        3105,
+        3197,
+        3219,
+        3230,
+        3276,
+        3294,
+        3339,
+        3371,
+        3378,
+        3437,
+        3543,
+        3679,
+        3713,
+        3724,
+        3787,
+        3861,
+        3939,
+        3955,
+        3969,
+        3983,
+        4023,
+        4029,
+        4036
+      ],
+      "exclusion_reason": "车辆及其部件不作为景观构成"
+    }
+  ],
+  "parent_fallback": "Only eligible child dimensions contribute; excluded responses cannot re-enter through a parent fallback. All-4096 denominator is unchanged.",
+  "winning_score": "child all-4096 mass share divided by its discovery-city threshold; winner must exceed one",
+  "search": "Apriori orders 2..4; weighted support >= 0.005 in discovery; same evaluation support rule",
+  "support_minima": {
+    "panoramas": 30,
+    "cells": 8,
+    "cities": 3
+  },
+  "near_closed_tolerance": 0.9,
+  "significance": "Not a significance filter. Block-independent marginal null mean and lift are descriptive only.",
+  "evaluation_reused": true,
+  "status": "exploratory_algorithm_revision",
+  "limitations": [
+    "Relative response is not an object detection or a presence threshold.",
+    "Quantile calibration does not establish false-positive or false-negative rates.",
+    "Original Qwen labels remain provisional; parts are merged but semantic errors can persist.",
+    "Four directions are pooled, so object counts and layout/roadside relations are not established.",
+    "Evaluation cities have been examined before; fresh spatial or external validation remains necessary.",
+    "Coverage is panorama retrieval coverage, not the 80% patch explanation target."
+  ]
+}

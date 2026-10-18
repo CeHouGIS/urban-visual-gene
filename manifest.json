@@ -1,7 +1,7 @@
 {
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "snapshot_label": "2026-10-18T16:21:14.057334+00:00",
+  "snapshot_label": "2026-10-18T17:16:22.822751+00:00",
   "model": {
     "backbone": "DINOv3 ViT-L/16",
     "image_size": 448,
@@ -34,8 +34,8 @@
     "insufficient_evidence": 745,
     "unobserved_in_sample": 462
   },
-  "file_count": 23274,
-  "bytes_before_manifest": 938832140,
+  "file_count": 23375,
+  "bytes_before_manifest": 949713905,
   "element_hierarchy": {
     "page": "elements/",
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
@@ -84,32 +84,37 @@
     "validation": "provisional_text_only"
   },
   "city_patterns": {
-    "page": "city-patterns/",
+    "version": 2,
     "run_identity": "6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617",
+    "score_identity": "e31fe51e7ae5343235517b9848a0fa488f1360eae5a7035554766e0f8782ed06",
     "cities": 30,
     "panoramas": 681645,
     "cells": 72625,
-    "candidates": 7,
-    "audit": {
-      "same_side": 0,
-      "opposite_side": 0,
-      "undetermined": 84,
-      "examples": 84,
-      "candidates": 7,
-      "tentative": {
-        "undetermined": 79,
-        "opposite_side": 3,
-        "same_side": 2
-      },
-      "cities": 25,
-      "cells": 84,
-      "human_validated": false,
-      "calibration_verified": false,
-      "corpus_prevalence_estimable": false,
-      "status": "audit_complete_review_required"
+    "fine_source_labels": 236,
+    "raw_canonical_units": 103,
+    "canonical_units": 78,
+    "excluded_units": 25,
+    "landscape_filter_applied": true,
+    "discovered_patterns": 258,
+    "recurrent_patterns": 185,
+    "orders": {
+      "2": 131,
+      "3": 54,
+      "4": 0
     },
-    "validated_prototypes": 0,
-    "roadside_prevalence_available": false,
+    "panorama_coverage": 0.7850156606444704,
+    "equal_city_cell_coverage": 0.813459010041541,
+    "old_seven_panorama_coverage": 0.04029516830608308,
+    "old_seven_equal_city_cell_coverage": 0.06187215084471456,
+    "coverage_unit": "panoramas matching at least one composition; NOT patch coverage or semantic object recall",
+    "labels_human_validated": false,
+    "layout_verified": false,
+    "statistical_confirmation": false,
+    "interpretation": "Exploratory recurrent relative-response compositions, not object prevalence or validated prototypes.",
+    "page": "city-patterns/",
+    "method": "fine_grained_relative_response_compositions",
+    "previous_excess_candidates": 7,
+    "examples": 42,
     "scientific_review": "pending"
   }
 }

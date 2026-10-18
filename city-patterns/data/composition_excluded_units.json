@@ -1,0 +1,580 @@
+[
+  {
+    "id": 26,
+    "key": "construction:压路机",
+    "family": "construction",
+    "label": "压路机",
+    "dimensions": [
+      3010
+    ],
+    "source_labels": [
+      "压路机"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 27,
+    "key": "construction:工业设备",
+    "family": "construction",
+    "label": "工业设备",
+    "dimensions": [
+      3256
+    ],
+    "source_labels": [
+      "工业设备"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 28,
+    "key": "construction:拖拉机",
+    "family": "construction",
+    "label": "拖拉机",
+    "dimensions": [
+      2928
+    ],
+    "source_labels": [
+      "拖拉机"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 29,
+    "key": "construction:挖掘机",
+    "family": "construction",
+    "label": "挖掘机",
+    "dimensions": [
+      3966
+    ],
+    "source_labels": [
+      "挖掘机"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 30,
+    "key": "construction:施工机械",
+    "family": "construction",
+    "label": "施工机械",
+    "dimensions": [
+      1792
+    ],
+    "source_labels": [
+      "施工机械"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 31,
+    "key": "construction:水泥搅拌机",
+    "family": "construction",
+    "label": "水泥搅拌机",
+    "dimensions": [
+      2617
+    ],
+    "source_labels": [
+      "水泥搅拌机"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 32,
+    "key": "construction:脚手架",
+    "family": "construction",
+    "label": "脚手架",
+    "dimensions": [
+      2494,
+      3336,
+      4085
+    ],
+    "source_labels": [
+      "建筑脚手架",
+      "脚手架"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 33,
+    "key": "construction:起重机",
+    "family": "construction",
+    "label": "起重机",
+    "dimensions": [
+      1081,
+      1639,
+      2701
+    ],
+    "source_labels": [
+      "塔式起重机",
+      "建筑起重机",
+      "起重机"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 34,
+    "key": "construction:集装箱",
+    "family": "construction",
+    "label": "集装箱",
+    "dimensions": [
+      1709,
+      1780,
+      1906,
+      2402,
+      2507,
+      2919,
+      3501,
+      3946
+    ],
+    "source_labels": [
+      "蓝色集装箱",
+      "集装箱"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 38,
+    "key": "furniture:桌子",
+    "family": "furniture",
+    "label": "桌子",
+    "dimensions": [
+      2766
+    ],
+    "source_labels": [
+      "桌子"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 39,
+    "key": "furniture:移动厕所",
+    "family": "furniture",
+    "label": "移动厕所",
+    "dimensions": [
+      1717
+    ],
+    "source_labels": [
+      "移动厕所"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 42,
+    "key": "furniture:遮阳伞",
+    "family": "furniture",
+    "label": "遮阳伞",
+    "dimensions": [
+      1611,
+      2293,
+      3039
+    ],
+    "source_labels": [
+      "遮阳伞"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 56,
+    "key": "person:行人",
+    "family": "person",
+    "label": "行人",
+    "dimensions": [
+      71,
+      112,
+      165,
+      492,
+      500,
+      604,
+      740,
+      849,
+      909,
+      1175,
+      1399,
+      1741,
+      1876,
+      1926,
+      1946,
+      2080,
+      2157,
+      2193,
+      2210,
+      2369,
+      2436,
+      2559,
+      2578,
+      2750,
+      2860,
+      2989,
+      3002,
+      3070,
+      3104,
+      3355,
+      3369,
+      3457,
+      3471,
+      3598,
+      3619,
+      3701,
+      3876
+    ],
+    "source_labels": [
+      "人",
+      "人物",
+      "人群",
+      "皮肤纹理",
+      "雨天行人"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "活动人物不作为景观构成"
+  },
+  {
+    "id": 60,
+    "key": "sign:交通锥",
+    "family": "sign",
+    "label": "交通锥",
+    "dimensions": [
+      3837
+    ],
+    "source_labels": [
+      "交通锥"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 63,
+    "key": "sign:旗帜",
+    "family": "sign",
+    "label": "旗帜",
+    "dimensions": [
+      293,
+      412,
+      2373,
+      2844,
+      4019
+    ],
+    "source_labels": [
+      "旗帜"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 64,
+    "key": "sign:横幅",
+    "family": "sign",
+    "label": "横幅",
+    "dimensions": [
+      3768
+    ],
+    "source_labels": [
+      "横幅"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "移动、临时或未能确认固定性的对象不作为本轮景观构成"
+  },
+  {
+    "id": 93,
+    "key": "vehicle:三轮车",
+    "family": "vehicle",
+    "label": "三轮车",
+    "dimensions": [
+      1254
+    ],
+    "source_labels": [
+      "三轮车"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  },
+  {
+    "id": 94,
+    "key": "vehicle:公交车",
+    "family": "vehicle",
+    "label": "公交车",
+    "dimensions": [
+      549,
+      552,
+      1148,
+      1428,
+      1794,
+      2012,
+      3466,
+      3637
+    ],
+    "source_labels": [
+      "公交车"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  },
+  {
+    "id": 95,
+    "key": "vehicle:卡车与货车",
+    "family": "vehicle",
+    "label": "卡车与货车",
+    "dimensions": [
+      1758,
+      1781,
+      1814,
+      2103,
+      2156,
+      2220,
+      2272,
+      2357,
+      2722,
+      2937,
+      3029,
+      3119,
+      3199,
+      3210,
+      3530,
+      3555,
+      3971
+    ],
+    "source_labels": [
+      "卡车",
+      "卡车拖车",
+      "卡车货箱",
+      "卡车车头",
+      "平板拖车",
+      "拖车",
+      "白色货车",
+      "白色面包车",
+      "货车",
+      "货车车厢"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  },
+  {
+    "id": 96,
+    "key": "vehicle:垃圾车",
+    "family": "vehicle",
+    "label": "垃圾车",
+    "dimensions": [
+      3155
+    ],
+    "source_labels": [
+      "垃圾车"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  },
+  {
+    "id": 97,
+    "key": "vehicle:房车",
+    "family": "vehicle",
+    "label": "房车",
+    "dimensions": [
+      3648
+    ],
+    "source_labels": [
+      "房车"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  },
+  {
+    "id": 98,
+    "key": "vehicle:摩托车",
+    "family": "vehicle",
+    "label": "摩托车",
+    "dimensions": [
+      50,
+      687,
+      919,
+      3248,
+      4066
+    ],
+    "source_labels": [
+      "摩托车"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  },
+  {
+    "id": 99,
+    "key": "vehicle:自行车",
+    "family": "vehicle",
+    "label": "自行车",
+    "dimensions": [
+      1207,
+      2328,
+      2646,
+      3919
+    ],
+    "source_labels": [
+      "自行车"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  },
+  {
+    "id": 100,
+    "key": "vehicle:越野车",
+    "family": "vehicle",
+    "label": "越野车",
+    "dimensions": [
+      1800
+    ],
+    "source_labels": [
+      "越野车"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  },
+  {
+    "id": 101,
+    "key": "vehicle:车辆",
+    "family": "vehicle",
+    "label": "车辆",
+    "dimensions": [
+      52,
+      215,
+      480,
+      502,
+      544,
+      592,
+      608,
+      614,
+      680,
+      912,
+      923,
+      997,
+      1021,
+      1055,
+      1228,
+      1264,
+      1313,
+      1351,
+      1378,
+      1380,
+      1460,
+      1578,
+      1588,
+      1608,
+      1617,
+      1624,
+      1628,
+      1671,
+      1715,
+      1731,
+      1803,
+      1810,
+      1898,
+      1918,
+      1929,
+      2133,
+      2146,
+      2161,
+      2222,
+      2276,
+      2298,
+      2335,
+      2342,
+      2343,
+      2348,
+      2351,
+      2371,
+      2464,
+      2516,
+      2586,
+      2600,
+      2657,
+      2667,
+      2692,
+      2713,
+      2778,
+      2855,
+      2918,
+      2930,
+      3032,
+      3072,
+      3105,
+      3197,
+      3219,
+      3230,
+      3276,
+      3294,
+      3339,
+      3371,
+      3378,
+      3437,
+      3543,
+      3679,
+      3713,
+      3724,
+      3787,
+      3861,
+      3939,
+      3955,
+      3969,
+      3983,
+      4023,
+      4029,
+      4036
+    ],
+    "source_labels": [
+      "尾灯",
+      "汽车",
+      "车",
+      "车体",
+      "车体表面",
+      "车头",
+      "车头灯",
+      "车尾",
+      "车尾灯",
+      "车尾箱",
+      "车灯",
+      "车窗",
+      "车身",
+      "车身侧面",
+      "车轮及轮胎",
+      "车辆",
+      "车辆后部",
+      "车门",
+      "车顶",
+      "轮胎",
+      "驾驶室"
+    ],
+    "fallback": false,
+    "landscape_eligible": false,
+    "exclusion_reason": "车辆及其部件不作为景观构成"
+  }
+]
