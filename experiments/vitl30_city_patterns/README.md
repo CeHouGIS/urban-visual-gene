@@ -95,8 +95,13 @@ stage writes its code, results, evidence and completion marker under
 `followup/stages/<stage>/`. The runner checks the extraction identity and
 required products before marking a stage complete and starting the next one.
 An interrupted runner can be relaunched; verified completed stages are skipped.
-Failures are retried at most three times and then left as `error`, with the
-stage log retained for diagnosis. It does not skip a failed dependency.
+Research or artifact-check failures are retried at most three times and then
+left as `error`. Temporary API rate limits, server failures and connection
+interruptions instead retry automatically with exponential backoff and jitter,
+capped at 30 minutes; these do not consume the three research attempts. The
+saved Codex session is resumed, and attempt numbers continue across restarts
+so prior logs are preserved. The active status includes the next retry time
+while a service outage persists. It does not skip a failed dependency.
 
 Read `followup/task_queue.json` for task states and
 `followup/auto_continue_status.json` for the active stage. Logs are in

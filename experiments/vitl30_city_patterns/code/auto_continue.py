@@ -8,9 +8,11 @@ import fcntl
 import json
 import os
 from pathlib import Path
+import random
+import re
 import subprocess
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from .extract import DEFAULT_OUT, write_json
 from .followup import FOLLOWUP, NEXT_TASKS
@@ -84,6 +86,7 @@ def update_queue(queue_file, stage, status, detail):
     if not found:
         raise ValueError(f'Missing queue task: {stage}')
     queue['phase'] = 'complete' if all(task['status'] == 'complete' for task in queue['tasks']) else 'research_running'
+    queue['detail'] = f'{stage}: {status}; {detail}'
     queue['updated_utc'] = datetime.now(timezone.utc).isoformat()
     write_json(queue_file, queue)
 
@@ -91,16 +94,68 @@ def update_queue(queue_file, stage, status, detail):
 def make_prompt(stage, stage_dir, run_identity, screening):
     instructions = (PROMPTS / f'{stage}.md').read_text()
     contract = f'''\n\nExecution contract:\n- Main repository: {ROOT}\n- Thesis repository: {THESIS}\n- Frozen extraction identity: {run_identity}\n- Completed city-cell screening: {screening}\n- Write all stage result artifacts beneath: {stage_dir}\n- Do not overwrite unrelated user files or silently use an earlier experiment.\n- Only after all inputs, computation, evidence, and tests are verified, write\n  {stage_dir / 'complete.json'} as JSON with schema_version=1, stage="{stage}",\n  run_identity="{run_identity}", status="complete", and a concise evidence field.\n- The required artifacts are: {', '.join(ARTIFACTS[stage])}.\n- If a requirement cannot be completed, do not write complete.json. Report\n  the exact blocker in your final message; the supervisor will retain your log.\n'''
-    return instructions + contract
+    continuation = '''
+- Continue existing stage code and intermediate artifacts rather than restarting discovery.
+- Keep tool output concise. Do not recursively read attempt logs, session files,
+  credentials or unrelated caches; inspect only inputs needed for this stage.
+- Finish and verify computations before writing complete.json; a background PID
+  alone is not a completed research result.
+'''
+    return instructions + contract + continuation
+
+
+def saved_session(stage_dir):
+    """Read only the CLI header, never prior tool output embedded in the log."""
+    logs = sorted(stage_dir.glob('attempt_*.log'),
+                  key=lambda path: int(path.stem.split('_')[-1]), reverse=True)
+    for path in logs:
+        with path.open(errors='replace') as stream:
+            header = stream.read(4096)
+        match = re.search(r'^session id: ([0-9a-f-]{36})$', header, re.MULTILINE)
+        if match:
+            return match[1]
+    return None
+
+
+def transient_error(log_file):
+    """Distinguish terminal service/network errors from research failures."""
+    if not log_file.is_file():
+        return None
+    with log_file.open('rb') as stream:
+        stream.seek(max(0, log_file.stat().st_size - 8192))
+        tail = stream.read().decode(errors='replace')
+    errors = [line for line in tail.splitlines() if line.startswith('ERROR:')]
+    if not errors:
+        return None
+    last_error = errors[-1]
+    if re.search(r'insufficient_quota|billing|invalid.api.key|unauthorized|401|403',
+                 last_error, re.IGNORECASE):
+        return None
+    if re.search(r'\b(?:429|500|502|503|504)\b|Too Many Requests|timed? out|'
+                 r'connection (?:reset|refused)|stream disconnected|error sending request',
+                 last_error, re.IGNORECASE):
+        return last_error[:500]
+    return None
+
+
+def wait_before_retry(seconds):
+    while seconds > 0:
+        pause = min(seconds, 30)
+        time.sleep(pause)
+        seconds -= pause
 
 
 def run_agent(stage, stage_dir, run_identity, screening, attempt):
     stage_dir.mkdir(parents=True, exist_ok=True)
     prompt = make_prompt(stage, stage_dir, run_identity, screening)
+    session = saved_session(stage_dir)
     command = ['codex', 'exec', '-C', str(ROOT), '-s', 'danger-full-access',
-               '-c', 'model_reasoning_effort="medium"',
-               '--output-last-message', str(stage_dir / f'attempt_{attempt}.txt'), '-']
-    with (stage_dir / f'attempt_{attempt}.log').open('w') as log:
+               '-c', 'model_reasoning_effort="medium"']
+    if session:
+        command += ['resume', session]
+        prompt = 'Resume this interrupted stage from its existing work.\n\n' + prompt
+    command += ['--output-last-message', str(stage_dir / f'attempt_{attempt}.txt'), '-']
+    with (stage_dir / f'attempt_{attempt}.log').open('x') as log:
         return subprocess.run(command, input=prompt, text=True, stdout=log,
                               stderr=subprocess.STDOUT, check=False).returncode
 
@@ -150,10 +205,16 @@ def run(args):
                 continue
         except ValueError:
             raise
-        for attempt in range(1, args.attempts + 1):
-            update_queue(queue_file, stage, 'running', f'Attempt {attempt} / {args.attempts}')
+        stage_dir.mkdir(parents=True, exist_ok=True)
+        attempt = max((int(path.stem.split('_')[-1])
+                       for path in stage_dir.glob('attempt_*.log')), default=0)
+        failures = transient_failures = 0
+        while True:
+            attempt += 1
+            update_queue(queue_file, stage, 'running', f'Attempt {attempt}')
             write_json(args.followup / 'auto_continue_status.json',
-                       {'status': 'running', 'stage': stage, 'attempt': attempt})
+                       {'status': 'running', 'stage': stage, 'attempt': attempt,
+                        'pid': os.getpid(), 'updated_utc': datetime.now(timezone.utc).isoformat()})
             try:
                 code = run_agent(stage, stage_dir, run_identity,
                                  args.followup / 'complete.json', attempt)
@@ -167,13 +228,27 @@ def run(args):
             if code == 0 and verified is not None:
                 update_queue(queue_file, stage, 'complete', reason)
                 break
-            update_queue(queue_file, stage, 'retrying' if attempt < args.attempts else 'error',
+            service_error = transient_error(stage_dir / f'attempt_{attempt}.log') if code != 0 else None
+            if service_error:
+                transient_failures += 1
+                delay = min(getattr(args, 'max_retry_delay', 1800), args.retry_delay *
+                            2 ** min(transient_failures - 1, 12) * random.uniform(.8, 1.2))
+                detail = f'{service_error}; automatic retry in {round(delay)}s; see attempt_{attempt}.log'
+                update_queue(queue_file, stage, 'retrying', detail)
+                write_json(args.followup / 'auto_continue_status.json', {
+                    'status': 'retrying', 'stage': stage, 'attempt': attempt,
+                    'detail': service_error, 'pid': os.getpid(),
+                    'next_retry_utc': (datetime.now(timezone.utc) + timedelta(seconds=delay)).isoformat()})
+                wait_before_retry(delay)
+                continue
+            failures += 1
+            update_queue(queue_file, stage, 'retrying' if failures < args.attempts else 'error',
                          f'Agent exit {code}; {reason}; see attempt_{attempt}.log')
-            if attempt == args.attempts:
+            if failures >= args.attempts:
                 write_json(args.followup / 'auto_continue_status.json',
                            {'status': 'error', 'stage': stage, 'detail': reason})
                 raise RuntimeError(f'{stage} did not pass completion checks: {reason}')
-            time.sleep(args.retry_delay)
+            wait_before_retry(args.retry_delay)
     write_json(args.followup / 'auto_continue_status.json',
                {'status': 'complete', 'detail': 'All queued research stages passed their artifact gates'})
 
@@ -184,9 +259,11 @@ if __name__ == '__main__':
     parser.add_argument('--extraction', type=Path, default=DEFAULT_OUT)
     parser.add_argument('--interval', type=int, default=300)
     parser.add_argument('--retry-delay', type=int, default=120)
+    parser.add_argument('--max-retry-delay', type=int, default=1800)
     parser.add_argument('--attempts', type=int, default=3)
     parser.add_argument('--once', action='store_true')
     args = parser.parse_args()
-    if args.interval < 10 or args.retry_delay < 10 or args.attempts < 1:
-        parser.error('interval and retry delay must be >=10; attempts >=1')
+    if (args.interval < 10 or args.retry_delay < 10 or args.attempts < 1
+            or args.max_retry_delay < args.retry_delay):
+        parser.error('interval and retry delay must be >=10; attempts >=1; max retry delay >= retry delay')
     run(args)

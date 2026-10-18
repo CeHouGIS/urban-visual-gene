@@ -1,5 +1,6 @@
 import argparse
 import json
+from types import SimpleNamespace
 
 import pytest
 
@@ -133,3 +134,68 @@ def test_agent_runtime_exception_is_recorded_and_retried(tmp_path, monkeypatch):
     auto_continue.run(args)
     assert called[:2] == ['candidate_combinations'] * 2
     assert len(called) == len(followup.NEXT_TASKS) + 1
+
+
+@pytest.mark.parametrize('message,retryable', [
+    ('ERROR: exceeded retry limit, last status: 429 Too Many Requests', True),
+    ('ERROR: last status: 503 Service Unavailable', True),
+    ('ERROR: stream disconnected before completion', True),
+    ('ERROR: last status: 429 insufficient_quota', False),
+    ('ERROR: 401 Unauthorized', False),
+    ('ERROR: experiment shape mismatch', False),
+])
+def test_classifies_service_errors_without_masking_permanent_errors(tmp_path, message, retryable):
+    log = tmp_path / 'attempt_1.log'
+    log.write_text('tool output mentioning 429 is not a terminal error\n' + message + '\n')
+    assert bool(auto_continue.transient_error(log)) is retryable
+
+
+def test_rate_limits_do_not_exhaust_research_attempts_and_logs_survive(tmp_path, monkeypatch):
+    args = ready_run(tmp_path)
+    args.max_retry_delay = 25
+    stage_dir = args.followup / 'stages/candidate_combinations'
+    stage_dir.mkdir(parents=True)
+    original = stage_dir / 'attempt_3.log'
+    original.write_text('previous interrupted invocation\n')
+    attempts = []
+    waits = []
+    monkeypatch.setattr(auto_continue, 'wait_before_retry', waits.append)
+    monkeypatch.setattr(auto_continue.random, 'uniform', lambda *unused: 1)
+
+    def agent(stage, output, identity, screening, attempt):
+        if stage == 'candidate_combinations':
+            attempts.append(attempt)
+            if len(attempts) <= 3:
+                (output / f'attempt_{attempt}.log').write_text(
+                    'ERROR: exceeded retry limit, last status: 429 Too Many Requests\n')
+                return 1
+        make_artifacts(stage, output)
+        return 0
+
+    monkeypatch.setattr(auto_continue, 'run_agent', agent)
+    auto_continue.run(args)
+    assert attempts == [4, 5, 6, 7]
+    assert waits == [10, 20, 25]
+    assert original.read_text() == 'previous interrupted invocation\n'
+    assert json.loads((args.followup / 'auto_continue_status.json').read_text())['status'] == 'complete'
+
+
+def test_resumes_explicit_saved_session_without_overwriting_log(tmp_path, monkeypatch):
+    session = '01a14d0e-fba3-7912-8917-58e1c3f5c06e'
+    old_log = tmp_path / 'attempt_3.log'
+    old_log.write_text(f'CLI header\nsession id: {session}\nuser\n' + 'x' * 5000 +
+                       '\nsession id: 00000000-0000-0000-0000-000000000000\n')
+    calls = []
+
+    def execute(command, **kwargs):
+        calls.append((command, kwargs['input']))
+        return SimpleNamespace(returncode=0)
+
+    monkeypatch.setattr(auto_continue.subprocess, 'run', execute)
+    assert auto_continue.run_agent('candidate_combinations', tmp_path, RUN_ID, 'screening.json', 4) == 0
+    command, prompt = calls[0]
+    assert command[command.index('resume') + 1] == session
+    assert 'Resume this interrupted stage' in prompt
+    assert old_log.read_text().startswith(f'CLI header\nsession id: {session}')
+    with pytest.raises(FileExistsError):
+        auto_continue.run_agent('candidate_combinations', tmp_path, RUN_ID, 'screening.json', 4)
