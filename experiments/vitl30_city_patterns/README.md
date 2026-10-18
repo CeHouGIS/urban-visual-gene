@@ -77,9 +77,30 @@ screening product and must not replace thesis figures without re-analysis.
 
 The task manifest records later candidate-combination search, roadside
 classification, prototype distributions, and Chapter 5 figure replacement as
-dependencies. Those stages require additional patch-level evidence, road-axis
-validation, and scientific review; the monitor does not mark or publish them
-as complete automatically.
+dependencies. The separate sequential runner starts these stages only after
+city-cell screening has completed. Its artifact checks provide a reproducible
+handoff, but semantic labels, roadside decisions and scientific claims still
+need evidence review.
+
+## Automatic research task queue
+
+```bash
+bash experiments/vitl30_city_patterns/code/launch_auto_continue.sh
+```
+
+The detached runner waits for `followup/status.json`, `complete.json` and the
+queue to agree that screening finished. It then executes the four remaining
+stages in dependency order using one noninteractive Codex run per stage. Each
+stage writes its code, results, evidence and completion marker under
+`followup/stages/<stage>/`. The runner checks the extraction identity and
+required products before marking a stage complete and starting the next one.
+An interrupted runner can be relaunched; verified completed stages are skipped.
+Failures are retried at most three times and then left as `error`, with the
+stage log retained for diagnosis. It does not skip a failed dependency.
+
+Read `followup/task_queue.json` for task states and
+`followup/auto_continue_status.json` for the active stage. Logs are in
+`followup/auto_continue.log` and `followup/stages/<stage>/attempt_N.log`.
 
 ## Analysis to do after extraction
 

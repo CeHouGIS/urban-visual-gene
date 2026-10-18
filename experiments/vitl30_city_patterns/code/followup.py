@@ -154,7 +154,7 @@ def queue_snapshot(extraction, selection, phase, detail):
     ]
     for item in NEXT_TASKS:
         tasks.append({**item, 'status': 'pending' if phase == 'complete' else 'blocked',
-                      'execution': 'requires new analysis and review'})
+                      'execution': 'automatic sequential runner; evidence review required'})
     if phase == 'error':
         tasks[1]['status'] = 'error'
     return {'version': 1, 'updated_utc': datetime.now(timezone.utc).isoformat(),
