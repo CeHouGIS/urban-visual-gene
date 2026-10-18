@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "run_identity": "6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617",
+  "candidate_protocol_sha256": "d26192ad52f6cd17d10432409de6e5dc81b5cafb66ec11bf8f475d6a13fb5fdc",
+  "candidates_sha256": "7f6c2266838a335bfc4c889f5c6af479a8ec2de1926a5dbe275d86ad1d085507",
+  "detector": "both provisional family mass shares >=0.02 of all 4096 activation mass",
+  "detector_frozen_before_distribution": true,
+  "unit": "complete four-direction panorama",
+  "city_weighting": "mean of within-1km-cell positive fractions; each observed cell equal weight",
+  "uncertainty": "95% percentile bootstrap over city-specific 5x5km blocks, ratio of resampled cell-rate sums to cell counts",
+  "bootstrap_draws": 999,
+  "null_geometry": "same/opposite prevalence missing; unmeasured does not mean absent",
+  "limitations": [
+    "Describes selected candidate co-presence, not validated landscape prototypes.",
+    "Inference is conditional on observed cells and the sampled, quality-screened corpus.",
+    "Confidence intervals do not account for semantic mislabelling or candidate selection.",
+    "Road audit is purposive and cannot support roadside prevalence.",
+    "Acquisition density and city boundaries differ; rates are not city land-area estimates."
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "snapshot_label": "2026-10-17 复核快照",
+  "snapshot_label": "2026-10-18T16:21:14.057334+00:00",
   "model": {
     "backbone": "DINOv3 ViT-L/16",
     "image_size": 448,
@@ -34,14 +34,14 @@
     "insufficient_evidence": 745,
     "unobserved_in_sample": 462
   },
-  "file_count": 23142,
-  "bytes_before_manifest": 911776591,
+  "file_count": 23274,
+  "bytes_before_manifest": 938832140,
   "element_hierarchy": {
     "page": "elements/",
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
     "candidate_dimensions": 1542,
     "semantic_validation": "pending",
-    "relation_page": "relations/",
+    "relation_page": "city-patterns/",
     "label_gallery": {
       "expanded_examples": 0,
       "labels": 392,
@@ -50,8 +50,8 @@
       "labels_without_examples": 0,
       "expanded_panoramas": 0
     },
-    "prototype_route": "local_multi_element_compositions",
-    "local_composition_status": "complete",
+    "prototype_route": "spatial_family_co_presence",
+    "local_composition_status": "retired_pilot",
     "published_at": "2026-10-18 00:38 CST"
   },
   "packaging": "Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.",
@@ -82,5 +82,34 @@
       "parallel_groups": 33
     },
     "validation": "provisional_text_only"
+  },
+  "city_patterns": {
+    "page": "city-patterns/",
+    "run_identity": "6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617",
+    "cities": 30,
+    "panoramas": 681645,
+    "cells": 72625,
+    "candidates": 7,
+    "audit": {
+      "same_side": 0,
+      "opposite_side": 0,
+      "undetermined": 84,
+      "examples": 84,
+      "candidates": 7,
+      "tentative": {
+        "undetermined": 79,
+        "opposite_side": 3,
+        "same_side": 2
+      },
+      "cities": 25,
+      "cells": 84,
+      "human_validated": false,
+      "calibration_verified": false,
+      "corpus_prevalence_estimable": false,
+      "status": "audit_complete_review_required"
+    },
+    "validated_prototypes": 0,
+    "roadside_prevalence_available": false,
+    "scientific_review": "pending"
   }
 }

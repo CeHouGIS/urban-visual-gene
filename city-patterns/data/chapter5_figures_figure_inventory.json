@@ -1,0 +1,146 @@
+{
+  "run_identity": "6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617",
+  "figures": [
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Candidate_Cities.pdf",
+      "sha256": "b81811bf5ea43027ff7486512522f471c70ee4bdef93506d087df1978039fb5a",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Candidate_Uncertainty.pdf",
+      "sha256": "290f4a709b16ae9e1b964628aeaf43a026e2db48bdb410bbc5558acf9a181352",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Map_barrier_construction.pdf",
+      "sha256": "0862173fef7c49998f81f5d0666ba78e7abe4b6532cad264c98cc2c3eeae3276",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Map_barrier_transport_structure.pdf",
+      "sha256": "fbb26d952c39070a46a59648e431d2cb147f363cb02896f32486507f5488f0dd",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Map_barrier_utility.pdf",
+      "sha256": "6c320ab91f6d8a8a7abf26c8686a758852e1c8ae48637f8b545925d61684c474",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Map_barrier_water.pdf",
+      "sha256": "043df9c2cbc5f26c5c1e7316bc96fd4f70948470a1a6fc9c5e41bf8f11aa1296",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Map_low_vegetation_terrain.pdf",
+      "sha256": "18dbed7d0cb0083a643a71542e6a31f55407df31b36c26b16de2854d44b36425",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Map_vehicle_construction.pdf",
+      "sha256": "2efe0a6cc737c37adc5481528df667ace82404001131157a345061169e8ea1f8",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_CityPatterns_Map_vehicle_utility.pdf",
+      "sha256": "8f0cab69232aaefc54cd0fbc4ded64b2f66d4610063c0f5e06924bc5659366ee",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_Activation_Examples.pdf",
+      "sha256": "509aef4676423d9aaa2d30d3854b802b3299392a8b3557c7a7f2c3ec3c57d2bf",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_City_Composition.pdf",
+      "sha256": "b89d8dcc8fac8626cdc4dd1e86c1e6495273f9ea018e7a58037e6b572aaa70af",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_City_Similarity.pdf",
+      "sha256": "af23eec93f49bf63fae0e95443d2d0421d0b4a3cd19c5fcefbaf17acc78edf63",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_Cooccurrence.pdf",
+      "sha256": "1ce9cb6c10bd26a12c0ce8f4380f354e38f844b0ebf39380ecc7c173e9e29000",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_Decoder_Hierarchy.pdf",
+      "sha256": "11eb0d43c6a0e901b5748d4c3eeb2bfd83e34d800396140701305ee5f2a6c558",
+      "provenance": "original_training_cohort",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_Panorama_UMAP.pdf",
+      "sha256": "484bfecd2bdc8e7af3620781107148bc5d47f7b9efa472f34fd6b2c5daf82e36",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_Shared_Distinctive.pdf",
+      "sha256": "385c19c04a14abfb01c450fe2c92d251245adce9e7f556176d809f1180baa81d",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_Spatial_Structure.pdf",
+      "sha256": "3966c17cc710977d3d672ce92c7a3d55065b5c846a780423e1fc9862df836b05",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_Study_Cities.pdf",
+      "sha256": "29d4546f5f1928d1ffdc872515bd0a3bed0eb61658c9a6655e35d29fc11fbe76",
+      "provenance": "new_spatial_sample",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_Training_Loss.pdf",
+      "sha256": "b4b30c205f3960a9b050722f2cb2e8a20529e47ee165707a9498582a7246fd32",
+      "provenance": "original_training_cohort",
+      "action": "regenerated"
+    },
+    {
+      "file": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/chapter5_figures/figures/Fig_ViTL30_VLM_Interpretation.pdf",
+      "sha256": "f8c889488848bb6a51a1b49bb38fcce0aa312652569dab2c1eb84e9e8f0f3e3d",
+      "provenance": "original_29city_semantic_evidence",
+      "action": "retained_unchanged"
+    },
+    {
+      "file": "/root/code/HKUST-Thesis/figure/pipeline.jpg",
+      "sha256": "0555ee578904262bf99a4eba515c92a51ecbaf8fa16f29847fc6dc920f2bade1",
+      "provenance": "original_frozen_representation_or_semantic_evidence",
+      "action": "retained_unchanged_input_identity"
+    },
+    {
+      "file": "/root/code/HKUST-Thesis/figure/panorama-aware.jpg",
+      "sha256": "cada890e69bf6ff9ea997a94455ecc7ff28c19f986ca18fe3e9b28f4a5ed43e8",
+      "provenance": "original_frozen_representation_or_semantic_evidence",
+      "action": "retained_unchanged_input_identity"
+    }
+  ],
+  "metrics": {
+    "shared_groups": 24,
+    "shared_mass": 0.8897449374198914,
+    "top_four_mass": 0.4376794099807739,
+    "spatial_plot_cities": 30,
+    "cities": 30,
+    "cells": 72625
+  },
+  "note": "Activation-mass statistics replace dominant-patch statistics together with captions."
+}

@@ -1,11 +1,11 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>景观要素标签与激活 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="elements.css"><link rel="stylesheet" href="element-training.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/" aria-current=page>要素标签</a><a href="../label-structure/">标签结构</a><a href="../quality/">维度复核</a><a href="../relations/">要素关系</a></nav><div class="project-layout"><div class="project-main">
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="elements.css"><link rel="stylesheet" href="element-training.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/" aria-current=page>要素标签</a><a href="../label-structure/">标签结构</a><a href="../quality/">维度复核</a><a href="../city-patterns/">城市景观组成</a></nav><div class="project-layout"><div class="project-main">
 <main class="page"><div class="eyebrow">Qwen labels · SAE activation evidence</div>
 <h1>街景要素标签与激活</h1>
 <p class="lead">浏览每个 Qwen 细标签对应的 SAE 维度，以及这些维度在四方向街景中的真实响应。</p>
-<p><a href="../label-structure/">查看 Qwen 标签的并列与上下级结构 →</a> · <a href="../relations/#local-results">查看独立的要素空间关系 →</a></p>
+<p><a href="../label-structure/">查看 Qwen 标签的并列与上下级结构 →</a> · <a href="../city-patterns/">查看城市组成与四方向审阅实例 →</a></p>
 <section class="section" id="qwen-taxonomy"><h2>Qwen 类别图谱</h2>
 <p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。支持度不足 20 个正激活全景的维度归入“证据不足，暂不命名”，旧 Qwen 猜测只在逐维证据中保留供核查。位置集中只提示复核，不自动判为位置编码。数字是 SAE 维度数，不是地物出现次数；类别尚未经人工语义验证。</p>
 <div class="category-path" aria-label="类别层级">Qwen 逐维解释 <span aria-hidden="true">›</span> <span id="category-path-family">父类</span> <span aria-hidden="true">›</span> <span id="category-path-label">细标签</span></div>

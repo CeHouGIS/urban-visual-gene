@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>维度质量审阅 · Urban Scene Primitives</title>
 <meta name="description" content="30 城市 DINOv3 ViT-L panorama-aware BatchTopK SAE，W4096 / K32 主实验结果。">
-<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="quality.css"></head><body><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/">要素标签</a><a href="../label-structure/">标签结构</a><a href="../quality/" aria-current=page>维度复核</a><a href="../relations/">要素关系</a></nav>
+<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="quality.css"></head><body><link rel="stylesheet" href="../assets/project-progress.css?v=1"><nav class="site-nav" aria-label="主导航"><a class="brand" href="../">Urban Scene Primitives</a><a href=".././">主实验</a><a href="../semantic/">语义地图</a><a href="../instances/">图像实例</a><a href="../interpretation/">维度解释</a><a href="../elements/">要素标签</a><a href="../label-structure/">标签结构</a><a href="../quality/" aria-current=page>维度复核</a><a href="../city-patterns/">城市景观组成</a></nav><div class="project-layout"><div class="project-main">
 <main class="page"><div class="eyebrow">SAE dimension quality review</div><h1>维度质量审阅</h1>
 <p class="lead">先审阅固定位置响应和疑似模糊响应，再决定从景观单元分析中去掉哪些维度。</p>
 <p class="note">5 维优先复核，另有 58 维位置集中待查；33 维列入模糊审阅。这里的“位置”仅指 Top100 峰值集中，天空与道路的真实位置也会造成这一现象。“模糊”来自旧 Qwen 名称或少量目视检查，并非已验证标签。现在没有删除或屏蔽任何维度。</p>
@@ -9,4 +9,14 @@
 <p id="quality-count" class="muted"></p><div class="quality-layout"><div id="quality-list" class="quality-list" aria-label="候选维度"></div><section id="quality-detail" class="quality-detail" aria-label="维度证据"></section></div>
 <p class="muted">“待 drop”勾选只保存在当前浏览器；可导出 CSV 后确定最终名单。<a href="candidates.csv">下载全部候选与统计</a> · <a href="candidates.json">方法及来源 JSON</a></p></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
 发布快照：2026-10-17 复核快照 · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
-</footer><script src="quality.js" defer></script></body></html>
+</footer></div><aside class="project-sidebar" aria-label="项目进度">
+<details id="project-progress" open><summary><span class="project-progress-kicker">PROJECT STATUS</span><span class="project-progress-heading">项目进度<span class="project-progress-pulse" aria-hidden="true"></span></span><span id="project-progress-headline">读取最新进度…</span></summary>
+<div class="project-progress-content"><p id="project-research-goal"></p>
+<div class="project-focus"><span class="project-progress-kicker">当前关键路径</span><strong id="project-research-focus"></strong><p id="project-next-step"></p></div>
+<p class="project-progress-context" id="project-milestone-count"></p><div id="project-milestones"></div>
+<div id="project-blockers"></div>
+<details class="project-runtime"><summary>计算任务明细<span id="project-runtime-count"></span></summary>
+<table class="project-progress-table"><caption class="project-sr-only">当前主实验与景观原型的阶段进度</caption><thead class="project-sr-only"><tr><th scope="col">阶段与进度</th><th scope="col">状态</th></tr></thead><tbody id="project-progress-rows"></tbody></table>
+<p id="project-progress-note"></p></details><details class="project-scope"><summary>研究范围与待核查项</summary><div id="project-research-scope"></div></details>
+<div class="project-progress-bottom"><time id="project-progress-time"></time><button type="button" id="project-progress-refresh" aria-label="刷新项目进度">刷新</button></div><p id="project-progress-freshness" role="status">读取发布快照…</p>
+<noscript>启用 JavaScript 后显示进度表，或查看 <a href="../data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="../assets/project-progress.js?v=1" defer></script><script src="quality.js" defer></script></body></html>

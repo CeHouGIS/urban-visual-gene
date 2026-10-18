@@ -1,0 +1,12 @@
+{
+  "cities": 30,
+  "panoramas": 681645,
+  "cells": 72625,
+  "candidate_count": 7,
+  "validated_prototypes": 0,
+  "distribution_rows": 210,
+  "cell_rows": 508375,
+  "detection_kind": "provisional_co_presence",
+  "roadside_prevalence_available": false,
+  "status": "descriptive_distribution_complete_validation_pending"
+}

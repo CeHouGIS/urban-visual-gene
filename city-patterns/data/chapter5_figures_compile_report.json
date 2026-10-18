@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "returncode": 0,
+  "command": [
+    "latexmk",
+    "-xelatex",
+    "-interaction=nonstopmode",
+    "-halt-on-error",
+    "-file-line-error",
+    "-outdir=build",
+    "000_thesis.tex"
+  ],
+  "thesis": "/root/code/HKUST-Thesis",
+  "independent_semantic_validation": false,
+  "chapter5_sha256": "562b1b9e0f143dca3ca03f278ff3eeaa7fe4afa5d99a65a7e50322dab7d8b261"
+}

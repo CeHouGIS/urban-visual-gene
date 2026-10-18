@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-18T01:49:35.195232+00:00",
+  "updated_utc": "2026-10-18T16:21:14.959469+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "headline": "核查跨街景重复的局部要素组合",
+  "headline": "核查30城组合的语义与道路布局",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
-    "focus": "核查跨街景重复的局部要素组合",
-    "next_step": "人工审阅要素遮罩与对象完整性；合并等价关系，检验跨种子稳定性、三元组合以及完整样本上的语义覆盖。",
+    "focus": "核查30城组合的语义与道路布局",
+    "next_step": "本地脚本按队列自动衔接；候选分布和论文图表完成后发布。人工确认语义、mask与标定后才统计道路同侧／两侧。",
     "milestones": [
       {
         "id": "data",
@@ -15,7 +15,7 @@
         "question": "是否有可回溯的街景与空间信息？",
         "criterion": "数据身份、四方向顺序和划分可核查。",
         "status": "complete",
-        "evidence": "主 SAE：30 城市、89,031 全景；原型层：29 城市、86,038 全景。"
+        "evidence": "30城空间分析：681,645全景，72,625格网，每格最多10点；SAE原训练样本89,031全景。"
       },
       {
         "id": "units",
@@ -53,16 +53,16 @@
         "criterion": "在完整四方向全景上提取自适应区域，发现不同要素关系；报告开发空间块、城市支持和置换对照。",
         "remaining": "探索性抽样和双零假设置换已完成；人工审阅区域边界、跨种子稳定性、三元组合与完整训练集验证尚待完成，测试封存。",
         "status": "partial",
-        "evidence": "29城，1,392训练 / 464开发全景；58,595个观测关系key，1,583个三节点候选，网页展示16个布局；遮罩和语义仍待人工核查。"
+        "evidence": "30城共现筛查得到7个候选；22城发现、8城确认，999次双零假设及FDR。要素语义和具体布局未验证。"
       },
       {
         "id": "patterns",
         "label": "多要素景观组合",
         "question": "哪些不同要素的组合与布局会反复出现？",
         "criterion": "得到跨城市重复的多要素结构及四方向实例，区分对象部件、纹理重建与景观组合。",
-        "remaining": "完成30城每格最多10点的特征提取后，用格网平衡的样本检索组合，再以patch激活核查真实布局。",
+        "remaining": "30城共现筛选完成；以四方向mask核查7个候选的对象完整性、语义和具体布局。",
         "status": "partial",
-        "evidence": "29城，1,392训练 / 464开发全景；58,595个观测关系key，1,583个三节点候选，网页展示16个布局；遮罩和语义仍待人工核查。"
+        "evidence": "30城共现筛查得到7个候选；22城发现、8城确认，999次双零假设及FDR。要素语义和具体布局未验证。"
       },
       {
         "id": "road_sides",
@@ -70,9 +70,9 @@
         "review_status": "pending",
         "question": "景观要素位于道路同侧，还是分布在道路两侧？",
         "criterion": "在四方向全景中验证道路轴线和要素mask，将同侧、两侧及无法判定分开；按空间格网和城市验证组合重复性，并展示原图证据。",
-        "remaining": "现有全景汇总向量没有道路侧别和patch布局；对候选全景补算patch响应与道路几何，交叉口、弯道及遮挡场景单独审阅。",
-        "status": "pending",
-        "evidence": "现有组合未按经核查的道路轴线划分同侧和两侧；须补算patch激活与道路几何。"
+        "remaining": "已补算84例独立道路分割和冻结SAE激活；标定未证实，最终侧别仍为无法确认，等待人工审阅。",
+        "status": "partial",
+        "evidence": "独立道路分割与冻结SAE补算四方向patch遮罩；计算候选不等于确认道路侧别，标定和人工审阅待完成。"
       },
       {
         "id": "prototype_capacity",
@@ -82,7 +82,7 @@
         "criterion": "不预设最终组合数；先按训练集重复和跨城支持提出关系，再结合开发集和人工审阅筛选。",
         "remaining": "候选搜索没有固定原型槽位；还需校准停止规则、相似组合合并和人工语义验证。",
         "status": "pending",
-        "evidence": "候选搜索没有固定槽位；合并等价关系和停止规则仍需校准。"
+        "evidence": "不预设最终原型数；生成、合并、淘汰阈值和容量上限待校准。"
       },
       {
         "id": "prototype_coverage",
@@ -91,8 +91,8 @@
         "criterion": "逐图判定覆盖率≥80%，报告达标图像比例、最差与低分位覆盖、无效patch数量及全景四方向全部达标比例；同时核查语义一致性。第一轮固定patch NMSE≤0.5作为探索性重建判据，不能直接当作语义解释。",
         "remaining": "旧64组池化重建覆盖不适用于新的局部要素组合；新方法的原4096维语义覆盖尚未评估，最终测试封存。",
         "review_status": "partial",
-        "status": "pending",
-        "evidence": "局部要素组合尚未评估逐图80%语义patch覆盖；既有重建试验不适用于当前路线。"
+        "status": "partial",
+        "evidence": "目标：每张方向图≥80%有效patch达标；固定patch NMSE≤0.5（重建判据，语义待核查）。 240,932训练图 / 51,020开发图；52,200测试图封存。 第8轮固定开发监控：达标图0.0%，平均patch覆盖47.8%，最差图2.3%。 完整开发集：平均patch覆盖47.4%，达标图0.276%，四方向全部达标全景0.0%。 完整训练集：平均patch覆盖47.3%，达标图0.282%，四方向全部达标全景0.0%。 29城各1开发全景，116张方向图；冻结96模板，平均patch覆盖47.8%→50.4%，0/116张达到80%。150步响应优化，约50步后趋稳；有限步诊断不是理论上限，语义待核查。"
       },
       {
         "id": "validity",
@@ -108,9 +108,9 @@
         "review_status": "partial",
         "question": "这些单元与组合在哪里共享或分化？",
         "criterion": "区分已有 64 组城市结果与新增原型的地理证据；以1 km格网平衡抽样计算城市出现率及城内分布。",
-        "remaining": "完成30城格网抽样特征提取、质量核对及同侧/两侧原型验证后，绘制每种原型的跨城频率与城内格网分布。",
+        "remaining": "7个共现候选的全样本格网平衡城市发生率和空间块区间已实现；经验证的侧别原型分布等待语义和几何确认。",
         "status": "partial",
-        "evidence": "已有 64 组的城市组成、共现和空间图；新原型的地理归纳尚未完成。"
+        "evidence": "7个共现候选的全样本格网平衡城市发生率、5km块bootstrap区间和1km格网地图完成；侧别发生率未测量。"
       },
       {
         "id": "figure_refresh",
@@ -118,9 +118,9 @@
         "review_status": "pending",
         "question": "全部论文图像是否与新的样本、原型和城市分布一致？",
         "criterion": "逐图核对并重绘受影响的研究城市、组成、相似性、共现、空间、UMAP、激活、语义及新增原型跨城分布图；模型训练图保留正确训练数据身份，更新图注并重新编译论文。",
-        "remaining": "30城格网分析和道路两侧原型结果完成后，按实验说明中的Chapter 5图表清单逐项替换并核查。",
-        "status": "pending",
-        "evidence": "Chapter 5全图重绘及新增原型跨城、同侧/两侧分布图待30城分析完成。"
+        "remaining": "重绘扩大的30城空间样本图表；训练、语义证据沿用原输入身份。以编译和逐图核对为完成条件。",
+        "status": "complete",
+        "evidence": "受影响城市图表已重绘，原训练与语义证据保留来源身份；论文编译通过。语义与道路侧别后续需人工核查。"
       },
       {
         "id": "writing",
@@ -128,19 +128,20 @@
         "review_status": "partial",
         "question": "证据能否支持最终研究叙述？",
         "criterion": "方法、图表、数据范围和结论一致，发布可核查实例。",
-        "remaining": "把逐维 masked 解释、道路同侧/两侧原型及30城空间分布整合进 Chapter 5；完成全图重绘后核对图注、分母和结论。",
+        "remaining": "按新样本更新方法、分母、图注与结论，区分共现、几何假设和已验证景观原型。",
         "status": "partial",
-        "evidence": "Chapter 5 已有主 SAE 方法和结果图；网站已有语义与组合浏览。"
+        "evidence": "方法、分母与图注已按新30城空间样本更新并编译；最终原型结论等待语义与道路核查。"
       }
     ],
-    "completed": 2,
+    "completed": 3,
     "scope_note": "只跟踪当前 ViT-L W4096/K32 主研究线。计算完成与科学结论完成分别记录。",
     "caveats": [
-      "Moscow 原图映射待核实；原型层当前使用其余 29 城市。",
+      "新空间样本覆盖全部30城（含Moscow）；历史语义图像证据仍保留29城范围。",
       "局部组合的置换验证针对抽样开发集；冻结 SAE 已见过部分验证图像。",
       "沿用的VLM语义解释资料含原型层测试图像；语义先验不独立于封存测试，后续先作为探索性证据。",
       "patch重建覆盖与经核查的景观组合覆盖分别报告，原型响应不等于对应区域已经获得可靠语义解释。",
-      "四方向汇总响应不能单独证明道路同侧或两侧；道路轴线不清的点位需标为无法判定。"
+      "四方向汇总响应不能单独证明道路同侧或两侧；道路轴线不清的点位需标为无法判定。",
+      "30城7个候选是暂定要素的共现，尚未验证空间原型；相机标定及人工道路复核未完成。"
     ],
     "blockers": [],
     "reviewed_on": "2026-10-18"
@@ -187,13 +188,60 @@
       "semantic_review": "pending"
     },
     {
-      "id": "local_compositions",
-      "label": "全景级多要素关系探索",
+      "id": "city_extract",
+      "label": "30城格网样本冻结推理",
       "status": "complete",
-      "detail": "29城，1,392训练 / 464开发全景；58,595个观测关系key，1,583个三节点候选，网页展示16个布局；遮罩和语义仍待人工核查。",
-      "link": "relations/#local-results",
-      "semantic_review": "pending",
-      "test_sealed": true
+      "detail": "681,645有效全景 · 72,625观测格网 · 30城；原SAE保持冻结。",
+      "link": "city-patterns/",
+      "semantic_review": "pending"
+    },
+    {
+      "id": "city_validate_chunks",
+      "label": "分块质量与身份核对",
+      "status": "complete",
+      "detail": "",
+      "link": "city-patterns/",
+      "semantic_review": "pending"
+    },
+    {
+      "id": "city_city_cell_screening",
+      "label": "格网平衡城市汇总",
+      "status": "complete",
+      "detail": "",
+      "link": "city-patterns/",
+      "semantic_review": "pending"
+    },
+    {
+      "id": "city_candidate_combinations",
+      "label": "跨城共现候选筛选",
+      "status": "complete",
+      "detail": "Verified existing completion marker",
+      "link": "city-patterns/",
+      "semantic_review": "pending"
+    },
+    {
+      "id": "city_road_sides",
+      "label": "四方向激活与道路审阅证据",
+      "status": "complete",
+      "detail": "84例证据完成；最终同侧0、两侧0、未确认84。相机标定与人工复核待完成。",
+      "link": "city-patterns/",
+      "semantic_review": "pending"
+    },
+    {
+      "id": "city_prototype_city_distribution",
+      "label": "候选格网与城市分布",
+      "status": "complete",
+      "detail": "Verified existing completion marker",
+      "link": "city-patterns/",
+      "semantic_review": "pending"
+    },
+    {
+      "id": "city_chapter5_figures",
+      "label": "论文全图更新与编译",
+      "status": "complete",
+      "detail": "Verified existing completion marker",
+      "link": "city-patterns/",
+      "semantic_review": "pending"
     }
   ],
   "runtime_terminal": true,

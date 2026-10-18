@@ -1,0 +1,18 @@
+{
+  "same_side": 0,
+  "opposite_side": 0,
+  "undetermined": 84,
+  "examples": 84,
+  "candidates": 7,
+  "tentative": {
+    "undetermined": 79,
+    "opposite_side": 3,
+    "same_side": 2
+  },
+  "cities": 25,
+  "cells": 84,
+  "human_validated": false,
+  "calibration_verified": false,
+  "corpus_prevalence_estimable": false,
+  "status": "audit_complete_review_required"
+}

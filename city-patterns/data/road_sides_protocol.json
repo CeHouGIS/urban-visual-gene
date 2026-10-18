@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "run_identity": "6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617",
+  "candidate_protocol_sha256": "d26192ad52f6cd17d10432409de6e5dc81b5cafb66ec11bf8f475d6a13fb5fdc",
+  "hierarchy_sha256": "2de7b5fd9840baa99ed9d4db949c47e3041424decc9599eda595e2d95f58ade8",
+  "segmenter_sha256": "027ed78d8ff9c535df5a66361c92b9673cca3cb923cbeb8c5802385b6b93194c",
+  "per_candidate": 12,
+  "identity": "dc37b3fabdd2d43916daf27a76c73c4627e449b09fc9c4b68dde08ba1dae5c29",
+  "segmenter": "nvidia/segformer-b0-finetuned-cityscapes-1024-1024; road class 0",
+  "road_mask_source": "independent pretrained semantic segmentation, not SAE",
+  "selection": "hash order; maximum 3 panoramas/city/candidate; distinct cells",
+  "family_mask": "positive SAE family mass >=35% of panorama family maximum; attribution, not object segmentation",
+  "camera_geometry": "perspective atan projection; 75/90/105 degree sensitivity; nominal cardinal headings",
+  "axis": "second circular moment of near-horizon road probabilities, concentration>=0.6; antipodal mass>=0.2",
+  "side": ">=85% non-road element mass on one signed half-plane; exclude +/-15 degrees around axis",
+  "final_decision": "undetermined pending acquisition calibration and human mask/road verification",
+  "limitations": [
+    "No metric object distance or object counts.",
+    "Intersections, curves, occlusions and segmentation domain shift can invalidate hypotheses.",
+    "Purposive audit sample is not a prevalence sample.",
+    "Qwen family names are provisional; geometry hypotheses are not verified prototypes."
+  ]
+}

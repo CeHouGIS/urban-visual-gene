@@ -1,0 +1,3970 @@
+[
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "SouthAfrica/CapeTown",
+    "panoid": "v-GIXFUnGNYBn23b6h-jMw",
+    "grid_x": 273,
+    "grid_y": 6225,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8179153377695982,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 79.87523851396318,
+        "confidence": 0.8742481888010495,
+        "forward_mass_fraction": 0.42863411244461425,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6540465549161729,
+        "confidence_b": 0.5715455652926003
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 77.06490075888928,
+        "confidence": 0.851334109802367,
+        "forward_mass_fraction": 0.42863411244461425,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6603043463598801,
+        "confidence_b": 0.5827503563488764
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 73.63027188445392,
+        "confidence": 0.8179153377695982,
+        "forward_mass_fraction": 0.42863411244461425,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6603043463598801,
+        "confidence_b": 0.5869572470319504
+      }
+    ],
+    "original": "examples/000-original.webp",
+    "overlay": "examples/000-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "SouthAfrica/CapeTown",
+    "panoid": "drjsNH2NgK0risT1GXYkjw",
+    "grid_x": 285,
+    "grid_y": 6227,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.6732684103830421,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 100.30888981127127,
+        "confidence": 0.815778959092387,
+        "forward_mass_fraction": 0.3495466527913151,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6861292716277625,
+        "confidence_b": 0.6271557985375832
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 103.45912488261378,
+        "confidence": 0.7525650033267053,
+        "forward_mass_fraction": 0.3495466527913151,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6911743492631895,
+        "confidence_b": 0.6349623499725591
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 107.67077968726682,
+        "confidence": 0.6732684103830421,
+        "forward_mass_fraction": 0.3495466527913151,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6911743492631895,
+        "confidence_b": 0.6500945665765687
+      }
+    ],
+    "original": "examples/001-original.webp",
+    "overlay": "examples/001-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Australia/Sydney",
+    "panoid": "0XmwwOn_od8eySc97TDFXw",
+    "grid_x": 314,
+    "grid_y": 6301,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9771039507611821,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 117.43213089234118,
+        "confidence": 0.9847533821745675,
+        "forward_mass_fraction": 0.1489495039611658,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 123.95822646511613,
+        "confidence": 0.9802593744716477,
+        "forward_mass_fraction": 0.1489495039611658,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 131.11699066909472,
+        "confidence": 0.9771039507611821,
+        "forward_mass_fraction": 0.1489495039611658,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/002-original.webp",
+    "overlay": "examples/002-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "3XD7usC33ZH2ZzVa8ut_tA",
+    "grid_x": 679,
+    "grid_y": 7455,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.7838007063358585,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 101.12286530867674,
+        "confidence": 0.8996896592622149,
+        "forward_mass_fraction": 0.4654132361978223,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.8776939663353214,
+        "confidence_b": 0.8042657143115527
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 103.87991153569898,
+        "confidence": 0.8494269325720402,
+        "forward_mass_fraction": 0.4654132361978223,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.9361159887158567,
+        "confidence_b": 0.8369303781344595
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 107.12163410250493,
+        "confidence": 0.7838007063358585,
+        "forward_mass_fraction": 0.4654132361978223,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 0.9577194947239476,
+        "confidence_b": 0.8711122511616053
+      }
+    ],
+    "original": "examples/003-original.webp",
+    "overlay": "examples/003-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Brazil/Brasília",
+    "panoid": "Q9y2SAMfOaYMMOdkt0xM3g",
+    "grid_x": 160,
+    "grid_y": 8280,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.4099443757271696,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 58.70954504646669,
+        "confidence": 0.4099443757271696,
+        "forward_mass_fraction": 0.127702226075008,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 53.372807418362015,
+        "confidence": 0.4435727718002903,
+        "forward_mass_fraction": 0.127702226075008,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 48.507145586362014,
+        "confidence": 0.4798388770117821,
+        "forward_mass_fraction": 0.133790239148298,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/004-original.webp",
+    "overlay": "examples/004-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Italy/Naples",
+    "panoid": "xK-azYPnhQZL75mCLYledg",
+    "grid_x": 471,
+    "grid_y": 4516,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.6419092885147916,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 85.29276099483245,
+        "confidence": 0.7247436771920097,
+        "forward_mass_fraction": 0.5716287575438933,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.8746095221110456,
+        "confidence_b": 0.524926242215338
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 84.16119518241166,
+        "confidence": 0.6904169547582201,
+        "forward_mass_fraction": 0.5616218095572921,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.9194698733545034,
+        "confidence_b": 0.5344239431230411
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 82.846756501999,
+        "confidence": 0.6419092885147916,
+        "forward_mass_fraction": 0.5616218095572921,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.9359569767427114,
+        "confidence_b": 0.5482242649202246
+      }
+    ],
+    "original": "examples/005-original.webp",
+    "overlay": "examples/005-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Indonesia/Yogyakarta",
+    "panoid": "Oh2lYnm1zjPze_SWWJcIKA",
+    "grid_x": 448,
+    "grid_y": 9137,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9232660554463109,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 175.86719884953234,
+        "confidence": 0.9699438887856391,
+        "forward_mass_fraction": 0.07990784750394993,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 174.7418848973504,
+        "confidence": 0.9513781398983636,
+        "forward_mass_fraction": 0.07990784750394993,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 173.38702768672024,
+        "confidence": 0.9232660554463109,
+        "forward_mass_fraction": 0.07990784750394993,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/006-original.webp",
+    "overlay": "examples/006-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Australia/Sydney",
+    "panoid": "zuFdWCrGZ_IpXolkzwHz7Q",
+    "grid_x": 320,
+    "grid_y": 6295,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.3804519517414855,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 81.27229205694515,
+        "confidence": 0.6274245465720566,
+        "forward_mass_fraction": 0.3363358111910215,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7236559030870079,
+        "confidence_b": 0.7012922540868319
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 81.30774502087678,
+        "confidence": 0.520169247823013,
+        "forward_mass_fraction": 0.3363358111910215,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 83.44382195299362,
+        "confidence": 0.3804519517414855,
+        "forward_mass_fraction": 0.3363358111910215,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/007-original.webp",
+    "overlay": "examples/007-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Sweden/Stockholm",
+    "panoid": "8Mgp5GL0Oi0euvJNJFwsZw",
+    "grid_x": 317,
+    "grid_y": 6597,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.3165340978796065,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 131.19512237807257,
+        "confidence": 0.3165340978796065,
+        "forward_mass_fraction": 0.6048162136367151,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 134.58728181867386,
+        "confidence": 0.3593618116661299,
+        "forward_mass_fraction": 0.6048162136367151,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 137.5986108648204,
+        "confidence": 0.39277408871475294,
+        "forward_mass_fraction": 0.5179351660135332,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/008-original.webp",
+    "overlay": "examples/008-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Australia/Perth",
+    "panoid": "T-PxVsluY3wEOcL2sNUsyw",
+    "grid_x": 381,
+    "grid_y": 6443,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.0,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      }
+    ],
+    "original": "examples/009-original.webp",
+    "overlay": "examples/009-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "US/NewYork",
+    "panoid": "01a3w3pgi1EMXbVeFaDxMA",
+    "grid_x": 610,
+    "grid_y": 4595,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8758668353498892,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 110.61571802930264,
+        "confidence": 0.9362606774016085,
+        "forward_mass_fraction": 0.5475885560672206,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6645274566909615,
+        "confidence_b": 0.8528286538237595
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 115.80363136082617,
+        "confidence": 0.9081449310098406,
+        "forward_mass_fraction": 0.5475885560672206,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6645274566909615,
+        "confidence_b": 0.8542825229376385
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 121.76687204278187,
+        "confidence": 0.8758668353498892,
+        "forward_mass_fraction": 0.5475885560672206,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6645274566909615,
+        "confidence_b": 0.8529363699044974
+      }
+    ],
+    "original": "examples/010-original.webp",
+    "overlay": "examples/010-overlay.webp"
+  },
+  {
+    "candidate": "low_vegetation+terrain",
+    "city": "Australia/Sydney",
+    "panoid": "nZnvbqhSzwNWeycFVtwnog",
+    "grid_x": 309,
+    "grid_y": 6299,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8890326930597738,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 22.238332083003563,
+        "confidence": 0.9423566430515027,
+        "forward_mass_fraction": 0.5714835676882776,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.5996070544486836,
+        "confidence_b": 0.8625489658870327
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 27.761733115023965,
+        "confidence": 0.9173151127005184,
+        "forward_mass_fraction": 0.5714835676882776,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.5996070544486836,
+        "confidence_b": 0.8625489658870327
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 34.024209226467676,
+        "confidence": 0.8890326930597738,
+        "forward_mass_fraction": 0.5714835676882776,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.5878463135864593,
+        "confidence_b": 0.8625489658870327
+      }
+    ],
+    "original": "examples/011-original.webp",
+    "overlay": "examples/011-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "kESZQuk3Vyqvk5-ek7PXIg",
+    "grid_x": 830,
+    "grid_y": 2626,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.3449261416474122,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 70.96354846691426,
+        "confidence": 0.3449261416474122,
+        "forward_mass_fraction": 0.733917876157339,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 70.84256176476622,
+        "confidence": 0.36105617621688996,
+        "forward_mass_fraction": 0.733917876157339,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 71.80405952857353,
+        "confidence": 0.36113213522909005,
+        "forward_mass_fraction": 0.733917876157339,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/012-original.webp",
+    "overlay": "examples/012-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "DAxdDI1fyTR3u7SgApe4hw",
+    "grid_x": 871,
+    "grid_y": 2641,
+    "side_label": "undetermined",
+    "tentative_side": "opposite_side",
+    "reason": "camera_calibration_unverified",
+    "road_axis_confidence": 0.9485090156044661,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 58.87302249496669,
+        "confidence": 0.9485090156044661,
+        "forward_mass_fraction": 0.3891856804686109,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 0.9876490193768795,
+        "confidence_b": 0.9959486366444
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 52.751630680830864,
+        "confidence": 0.973238353576798,
+        "forward_mass_fraction": 0.3891856804686109,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 0.9699712862211427,
+        "confidence_b": 0.9701791116304335
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 46.41885529173436,
+        "confidence": 0.9875261522860028,
+        "forward_mass_fraction": 0.3891856804686109,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 0.9354413223785342,
+        "confidence_b": 0.9215313534865164
+      }
+    ],
+    "original": "examples/013-original.webp",
+    "overlay": "examples/013-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "US/NewYork",
+    "panoid": "uFr9uNe1jyAPj4IRBiyVXg",
+    "grid_x": 680,
+    "grid_y": 4511,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.20986762849594578,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 31.81649780328868,
+        "confidence": 0.21328846810271876,
+        "forward_mass_fraction": 0.6798430529467042,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 36.53293545656726,
+        "confidence": 0.2158553343430506,
+        "forward_mass_fraction": 0.6830941607582245,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 41.68257922829567,
+        "confidence": 0.20986762849594578,
+        "forward_mass_fraction": 0.6721009952082351,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/014-original.webp",
+    "overlay": "examples/014-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Germany/Hamburg",
+    "panoid": "zmZItory-oAn_RWYxBQwvw",
+    "grid_x": 565,
+    "grid_y": 5931,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.6154882202077923,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 13.050702380746586,
+        "confidence": 0.6154882202077923,
+        "forward_mass_fraction": 0.47439016256717664,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6429567502539828,
+        "confidence_b": 0.6437189934690772
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 16.720035762480453,
+        "confidence": 0.6194849340423519,
+        "forward_mass_fraction": 0.47439016256717664,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6429567502539828,
+        "confidence_b": 0.6437189934690772
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 21.192759793724306,
+        "confidence": 0.6254680411703832,
+        "forward_mass_fraction": 0.47439016256717664,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6429567502539828,
+        "confidence_b": 0.6437189934690772
+      }
+    ],
+    "original": "examples/015-original.webp",
+    "overlay": "examples/015-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "EX_XFLnVChcFy45Hc5F-RA",
+    "grid_x": 826,
+    "grid_y": 2656,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.20046242843608922,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 60.40907610413653,
+        "confidence": 0.20046242843608922,
+        "forward_mass_fraction": 0.5869603179143084,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 59.96041652057098,
+        "confidence": 0.21803073519973162,
+        "forward_mass_fraction": 0.5869603179143084,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 60.181010983250424,
+        "confidence": 0.2234326519499599,
+        "forward_mass_fraction": 0.5869603179143084,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/016-original.webp",
+    "overlay": "examples/016-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "US/NewYork",
+    "panoid": "_iUT2Tae9hiYvh5NdcOw7w",
+    "grid_x": 594,
+    "grid_y": 4491,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.023266803182219926,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 9.945270934870324,
+        "confidence": 0.08205145569321318,
+        "forward_mass_fraction": 0.6765436331311551,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 16.467056020269155,
+        "confidence": 0.050296278207973825,
+        "forward_mass_fraction": 0.6902925193647441,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 42.86350001383239,
+        "confidence": 0.023266803182219926,
+        "forward_mass_fraction": 0.7702566948673851,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/017-original.webp",
+    "overlay": "examples/017-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "US/NewYork",
+    "panoid": "O8i_zSytm5_4pN69bA5WJw",
+    "grid_x": 577,
+    "grid_y": 4422,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.1614927406828282,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 61.59645985037873,
+        "confidence": 0.1614927406828282,
+        "forward_mass_fraction": 0.3799916231544492,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 58.62554138286938,
+        "confidence": 0.16952710061226955,
+        "forward_mass_fraction": 0.3915371820282478,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 55.966865568231874,
+        "confidence": 0.17182273789436786,
+        "forward_mass_fraction": 0.4175383711929968,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/018-original.webp",
+    "overlay": "examples/018-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Australia/Melbourne",
+    "panoid": "BC9KM2c_1wfas0-YzZDI0g",
+    "grid_x": 306,
+    "grid_y": 5805,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.6043986157492557,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 101.00439982841898,
+        "confidence": 0.6043986157492557,
+        "forward_mass_fraction": 0.568891815703918,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6114238001999481,
+        "confidence_b": 0.7030736497870701
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 102.71888183641529,
+        "confidence": 0.6161612339433337,
+        "forward_mass_fraction": 0.568891815703918,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6200368836087345,
+        "confidence_b": 0.706920770620194
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 104.40359062831676,
+        "confidence": 0.6172170947596956,
+        "forward_mass_fraction": 0.568891815703918,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6239364053640845,
+        "confidence_b": 0.706920770620194
+      }
+    ],
+    "original": "examples/019-original.webp",
+    "overlay": "examples/019-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Portugal/Lisbon",
+    "panoid": "PkHO9BJOZdSxTr-kl48q2A",
+    "grid_x": 496,
+    "grid_y": 4290,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.05238481334146897,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 76.94122044918736,
+        "confidence": 0.05238481334146897,
+        "forward_mass_fraction": 0.4935324267748051,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 75.66091914560072,
+        "confidence": 0.05956710372241192,
+        "forward_mass_fraction": 0.4935324267748051,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 74.3448439677708,
+        "confidence": 0.0666765150693521,
+        "forward_mass_fraction": 0.4907634891291298,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/020-original.webp",
+    "overlay": "examples/020-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Belgium/Antwerp",
+    "panoid": "gekS30LlPCJ5er0-IC8eEA",
+    "grid_x": 596,
+    "grid_y": 5678,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.31751973494208124,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 101.39340130165036,
+        "confidence": 0.3681602565230414,
+        "forward_mass_fraction": 0.5336480885242618,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 104.08368072706222,
+        "confidence": 0.34754397630145095,
+        "forward_mass_fraction": 0.5336480885242618,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 107.32041507689482,
+        "confidence": 0.31751973494208124,
+        "forward_mass_fraction": 0.5199225860359467,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/021-original.webp",
+    "overlay": "examples/021-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Sweden/Stockholm",
+    "panoid": "tqXHPkntDL6p1-wIOUFeig",
+    "grid_x": 329,
+    "grid_y": 6567,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.3647845572438641,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 66.45358889604118,
+        "confidence": 0.3647845572438641,
+        "forward_mass_fraction": 0.20737717818554935,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 63.7523403257572,
+        "confidence": 0.3745024391561873,
+        "forward_mass_fraction": 0.20737717818554935,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 61.26667915521912,
+        "confidence": 0.37072777436302123,
+        "forward_mass_fraction": 0.20737717818554935,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/022-original.webp",
+    "overlay": "examples/022-overlay.webp"
+  },
+  {
+    "candidate": "barrier+water",
+    "city": "Portugal/Lisbon",
+    "panoid": "k1s2FtOn8m0_aDro5FH_qQ",
+    "grid_x": 495,
+    "grid_y": 4291,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.06287706768438002,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 57.20476546384389,
+        "confidence": 0.06287706768438002,
+        "forward_mass_fraction": 0.5501617961028527,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 62.79284584877641,
+        "confidence": 0.07666931992322112,
+        "forward_mass_fraction": 0.5329111195036914,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 67.83713240229655,
+        "confidence": 0.09161919824806056,
+        "forward_mass_fraction": 0.5327620917470647,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/023-original.webp",
+    "overlay": "examples/023-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Argentina/BuenosAires",
+    "panoid": "T--m8etcUjZkgZupuHlohg",
+    "grid_x": 357,
+    "grid_y": 6175,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9216417426896283,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 21.878599687654045,
+        "confidence": 0.9579761605339759,
+        "forward_mass_fraction": 0.2738029966239231,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.5061472132419423,
+        "confidence_b": 0.8153855374507595
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 27.367175612003038,
+        "confidence": 0.9404786709587893,
+        "forward_mass_fraction": 0.2738029966239231,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.5132808833735201,
+        "confidence_b": 0.8210226961490292
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 33.62499726774663,
+        "confidence": 0.9216417426896283,
+        "forward_mass_fraction": 0.2738029966239231,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.4515884646154658,
+        "confidence_b": 0.8281481221246
+      }
+    ],
+    "original": "examples/024-original.webp",
+    "overlay": "examples/024-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "eVV508gjyyyMufungtztYw",
+    "grid_x": 328,
+    "grid_y": 7386,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.5588360784892192,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 130.85077272666865,
+        "confidence": 0.5588360784892192,
+        "forward_mass_fraction": 0.6078625622929759,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 132.4318181714597,
+        "confidence": 0.6299457347859674,
+        "forward_mass_fraction": 0.6078625622929759,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.9591035615592037,
+        "confidence_b": 0.5306508380469641
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 133.72536940085797,
+        "confidence": 0.67864731757501,
+        "forward_mass_fraction": 0.6078625622929759,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.949458539856701,
+        "confidence_b": 0.4685600733102157
+      }
+    ],
+    "original": "examples/025-original.webp",
+    "overlay": "examples/025-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "QhD0Ynz2LbXe_iXgoNE-kQ",
+    "grid_x": 325,
+    "grid_y": 7386,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.47240368253280013,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 69.50756519026162,
+        "confidence": 0.4753794410489985,
+        "forward_mass_fraction": 0.542043733698623,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 66.22936567752963,
+        "confidence": 0.48072192960276305,
+        "forward_mass_fraction": 0.5502705364879653,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 62.86971808961555,
+        "confidence": 0.47240368253280013,
+        "forward_mass_fraction": 0.5502705364879653,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/026-original.webp",
+    "overlay": "examples/026-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "US/NewYork",
+    "panoid": "7oJzEBhs_mH6lzaOLb0nxQ",
+    "grid_x": 584,
+    "grid_y": 4503,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8928297055205103,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 148.10156547371727,
+        "confidence": 0.8928297055205103,
+        "forward_mass_fraction": 0.66728412816246,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.9404078329411191,
+        "confidence_b": 0.4145889534915281
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 143.50184824297224,
+        "confidence": 0.9427525803232109,
+        "forward_mass_fraction": 0.66728412816246,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.9333695371424854,
+        "confidence_b": 0.4145889534915281
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 138.86649327060368,
+        "confidence": 0.9685259333122511,
+        "forward_mass_fraction": 0.66728412816246,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.8911932696606812,
+        "confidence_b": 0.403678862517135
+      }
+    ],
+    "original": "examples/027-original.webp",
+    "overlay": "examples/027-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Australia/Sydney",
+    "panoid": "mX_WsqdtRDski_n523KVrg",
+    "grid_x": 329,
+    "grid_y": 6251,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.2654674152602956,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 149.51969290582934,
+        "confidence": 0.2654674152602956,
+        "forward_mass_fraction": 0.4716422785586092,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 144.17741260372,
+        "confidence": 0.2838469459395473,
+        "forward_mass_fraction": 0.4979872543957211,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 139.07166325291203,
+        "confidence": 0.30310805534818186,
+        "forward_mass_fraction": 0.46346528019451355,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/028-original.webp",
+    "overlay": "examples/028-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "China/Taipei",
+    "panoid": "7etPr5lnONX5NtI-sF3t3Q",
+    "grid_x": 356,
+    "grid_y": 2767,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.0,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      }
+    ],
+    "original": "examples/029-original.webp",
+    "overlay": "examples/029-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "SouthAfrica/Johannesburg",
+    "panoid": "myFCPOxKl_Nno1UidjB-LQ",
+    "grid_x": 610,
+    "grid_y": 7114,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8015897762171195,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 106.33055185011747,
+        "confidence": 0.8824695338369402,
+        "forward_mass_fraction": 0.5034368855516441,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.4811415359253597,
+        "confidence_b": 0.4954040965845595
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 110.26126471365072,
+        "confidence": 0.8491210014056585,
+        "forward_mass_fraction": 0.5034368855516441,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.4869602101427483,
+        "confidence_b": 0.524927733573177
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 114.85723463646916,
+        "confidence": 0.8015897762171195,
+        "forward_mass_fraction": 0.5034368855516441,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.4912175288143897,
+        "confidence_b": 0.5450558575414669
+      }
+    ],
+    "original": "examples/030-original.webp",
+    "overlay": "examples/030-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Australia/Sydney",
+    "panoid": "dGxuHPaic2r561mCUZwJFQ",
+    "grid_x": 322,
+    "grid_y": 6241,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.24922170809561953,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 81.25400470289897,
+        "confidence": 0.24922170809561953,
+        "forward_mass_fraction": 0.5459794204435084,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 77.34941307184505,
+        "confidence": 0.2572381762308607,
+        "forward_mass_fraction": 0.5459794204435084,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 72.31765105572107,
+        "confidence": 0.2665880025730105,
+        "forward_mass_fraction": 0.5459794204435084,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/031-original.webp",
+    "overlay": "examples/031-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Russia/Moscow",
+    "panoid": "RI7cXM_cX6Ojp9BZMihdvA",
+    "grid_x": 425,
+    "grid_y": 6199,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.24154854743390447,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 150.2801164219114,
+        "confidence": 0.24154854743390447,
+        "forward_mass_fraction": 0.49874949182144795,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 145.62046621808312,
+        "confidence": 0.25341250199726145,
+        "forward_mass_fraction": 0.49874949182144795,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 140.868762292304,
+        "confidence": 0.2608519359952461,
+        "forward_mass_fraction": 0.49552077845557935,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/032-original.webp",
+    "overlay": "examples/032-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "tzXEGFV8qSYP3m0UfD8PxQ",
+    "grid_x": 832,
+    "grid_y": 2629,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.0,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      }
+    ],
+    "original": "examples/033-original.webp",
+    "overlay": "examples/033-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "NJbnBk9SOjcdQsE82eaqDA",
+    "grid_x": 842,
+    "grid_y": 2638,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8762259728308746,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 168.46173280983768,
+        "confidence": 0.9459770146287724,
+        "forward_mass_fraction": 0.7606659548587436,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.8029172925564062,
+        "confidence_b": 0.46700176075123795
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 165.3315765429949,
+        "confidence": 0.9167111590806925,
+        "forward_mass_fraction": 0.7606659548587436,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.814877223206885,
+        "confidence_b": 0.5064812995263759
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 161.5212646958428,
+        "confidence": 0.8762259728308746,
+        "forward_mass_fraction": 0.7606659548587436,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.8207569133037855,
+        "confidence_b": 0.5466565342952261
+      }
+    ],
+    "original": "examples/034-original.webp",
+    "overlay": "examples/034-overlay.webp"
+  },
+  {
+    "candidate": "barrier+transport_structure",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "TZNFmjVwPdcLHQKSHOS05g",
+    "grid_x": 334,
+    "grid_y": 7395,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8333535824195939,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 67.81144072521514,
+        "confidence": 0.8966039419817224,
+        "forward_mass_fraction": 0.3613560653926505,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.9953540750070377,
+        "confidence_b": 0.6060790570070367
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 62.4553101603131,
+        "confidence": 0.8683238198622367,
+        "forward_mass_fraction": 0.3613560653926505,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 1.0,
+        "confidence_b": 0.6878712943319273
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 56.41085750710172,
+        "confidence": 0.8333535824195939,
+        "forward_mass_fraction": 0.3613560653926505,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.9920185061956391,
+        "confidence_b": 0.5506896877119838
+      }
+    ],
+    "original": "examples/035-original.webp",
+    "overlay": "examples/035-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Nigeria/Lagos",
+    "panoid": "qbuB7ZyTdF0azf0Q9g1hUw",
+    "grid_x": 538,
+    "grid_y": 725,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8231157942986228,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 88.99171418362988,
+        "confidence": 0.9288969479314281,
+        "forward_mass_fraction": 0.37290356192244556,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7021510954415121,
+        "confidence_b": 0.6230860197411076
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 88.61084456508769,
+        "confidence": 0.886194945805559,
+        "forward_mass_fraction": 0.37290356192244556,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7021510954415121,
+        "confidence_b": 0.6230860197411076
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 88.05923403954196,
+        "confidence": 0.8231157942986228,
+        "forward_mass_fraction": 0.37290356192244556,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7021510954415121,
+        "confidence_b": 0.6230860197411076
+      }
+    ],
+    "original": "examples/036-original.webp",
+    "overlay": "examples/036-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Korea/Seoul",
+    "panoid": "LktsgZ8IX02oonj_Zzzwkg",
+    "grid_x": 332,
+    "grid_y": 4157,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.7211056773362952,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 107.14534877742867,
+        "confidence": 0.7211056773362952,
+        "forward_mass_fraction": 0.3287025981040419,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.9693046315781192,
+        "confidence_b": 0.4720855680519992
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 111.26190938998806,
+        "confidence": 0.7420546126400388,
+        "forward_mass_fraction": 0.3287025981040419,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.9720077385089093,
+        "confidence_b": 0.5363782101267505
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 115.80610378519796,
+        "confidence": 0.7688215663170083,
+        "forward_mass_fraction": 0.3287025981040419,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.9679237241039416,
+        "confidence_b": 0.5393634240002672
+      }
+    ],
+    "original": "examples/037-original.webp",
+    "overlay": "examples/037-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "US/NewYork",
+    "panoid": "gfeNUDcYnCkgivpMHN3s2w",
+    "grid_x": 600,
+    "grid_y": 4495,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.6507729259489033,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 74.90219533850316,
+        "confidence": 0.675645763528062,
+        "forward_mass_fraction": 0.7252810913592972,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7078141093028559,
+        "confidence_b": 0.8098180652010529
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 72.59295905763416,
+        "confidence": 0.671522937065783,
+        "forward_mass_fraction": 0.7252810913592972,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7078141093028559,
+        "confidence_b": 0.8098180652010529
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 70.42612867930976,
+        "confidence": 0.6507729259489033,
+        "forward_mass_fraction": 0.7252810913592972,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7226861415923335,
+        "confidence_b": 0.8098180652010529
+      }
+    ],
+    "original": "examples/038-original.webp",
+    "overlay": "examples/038-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "u-oBsKveugXvFnMQ-B3LHQ",
+    "grid_x": 662,
+    "grid_y": 7465,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.979870823947869,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 21.00240835700579,
+        "confidence": 0.9894498853003031,
+        "forward_mass_fraction": 0.4639538712423325,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.5343485806179569,
+        "confidence_b": 0.7665397031802699
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 26.507966463832744,
+        "confidence": 0.9848206400576278,
+        "forward_mass_fraction": 0.4639538712423325,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.5343485806179569,
+        "confidence_b": 0.7801647332251275
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 32.91052039723701,
+        "confidence": 0.979870823947869,
+        "forward_mass_fraction": 0.4639538712423325,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.46565141938204313,
+        "confidence_b": 0.7801647332251275
+      }
+    ],
+    "original": "examples/039-original.webp",
+    "overlay": "examples/039-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "US/NewYork",
+    "panoid": "lqQpsP_lrmPpOWMGGsgBaQ",
+    "grid_x": 552,
+    "grid_y": 4523,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.5038492433267385,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 89.78741452612616,
+        "confidence": 0.6692598986356729,
+        "forward_mass_fraction": 0.682539650049401,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.965462483140292,
+        "confidence_b": 0.41727319056839346
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 90.16978124137886,
+        "confidence": 0.5977642180644145,
+        "forward_mass_fraction": 0.682539650049401,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 90.99110741071172,
+        "confidence": 0.5038492433267385,
+        "forward_mass_fraction": 0.682539650049401,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/040-original.webp",
+    "overlay": "examples/040-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "zgWgTiDV9BqypQ-3vyMCZg",
+    "grid_x": 664,
+    "grid_y": 7464,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.848401883578323,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 32.447760833514906,
+        "confidence": 0.848401883578323,
+        "forward_mass_fraction": 0.6395563601107116,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.648804440266488,
+        "confidence_b": 0.8314236883310492
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 35.631785155843026,
+        "confidence": 0.9045937149811994,
+        "forward_mass_fraction": 0.6395563601107116,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.648804440266488,
+        "confidence_b": 0.8164470911502374
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 38.703016522349564,
+        "confidence": 0.9262852319242122,
+        "forward_mass_fraction": 0.6395563601107116,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6404170029363945,
+        "confidence_b": 0.7309342413166421
+      }
+    ],
+    "original": "examples/041-original.webp",
+    "overlay": "examples/041-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "CDZ4sMTK3Eo2obypr8FoHA",
+    "grid_x": 320,
+    "grid_y": 7398,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8450784217179714,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 174.25294655207313,
+        "confidence": 0.9385068781034047,
+        "forward_mass_fraction": 0.8408982822067272,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 172.60220541308252,
+        "confidence": 0.9009803292029188,
+        "forward_mass_fraction": 0.8408982822067272,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 170.5120887416656,
+        "confidence": 0.8450784217179714,
+        "forward_mass_fraction": 0.8408982822067272,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/042-original.webp",
+    "overlay": "examples/042-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Brazil/Brasília",
+    "panoid": "qN911Fq5mB6dHv0ODiZBcg",
+    "grid_x": 171,
+    "grid_y": 8228,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.4521439768042177,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 44.43719299783055,
+        "confidence": 0.4521439768042177,
+        "forward_mass_fraction": 0.7243913258072951,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 49.844584406668936,
+        "confidence": 0.5163767369321159,
+        "forward_mass_fraction": 0.7243913258072951,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 55.02567768816748,
+        "confidence": 0.5756105803074186,
+        "forward_mass_fraction": 0.7243913258072951,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/043-original.webp",
+    "overlay": "examples/043-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "DwREiBN8MNUHYUYrXoEKkg",
+    "grid_x": 340,
+    "grid_y": 7389,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8889926858223441,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 111.81652568951715,
+        "confidence": 0.9055573645500624,
+        "forward_mass_fraction": 0.6381255166646894,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.4498191104085433,
+        "confidence_b": 0.6692010122951774
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 116.78788563609244,
+        "confidence": 0.9007705404993944,
+        "forward_mass_fraction": 0.6381255166646894,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.471106443152578,
+        "confidence_b": 0.7090684333960903
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 122.29795050149787,
+        "confidence": 0.8889926858223441,
+        "forward_mass_fraction": 0.6381255166646894,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.4932734969906619,
+        "confidence_b": 0.7458175909101511
+      }
+    ],
+    "original": "examples/044-original.webp",
+    "overlay": "examples/044-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "Lgq7kov_Cr1XqNYv341siw",
+    "grid_x": 333,
+    "grid_y": 7386,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9091894743462556,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 99.22599167621925,
+        "confidence": 0.9634116365720831,
+        "forward_mass_fraction": 0.2882042963100194,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6883581816828298,
+        "confidence_b": 0.7535797870535312
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 101.82473587557136,
+        "confidence": 0.94145835716538,
+        "forward_mass_fraction": 0.2882042963100194,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6883581816828298,
+        "confidence_b": 0.7814828283728347
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 105.03325288073391,
+        "confidence": 0.9091894743462556,
+        "forward_mass_fraction": 0.2882042963100194,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6883581816828298,
+        "confidence_b": 0.8416440530315996
+      }
+    ],
+    "original": "examples/045-original.webp",
+    "overlay": "examples/045-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Korea/Seoul",
+    "panoid": "XJjifssRVGpPJdyO6UDfMg",
+    "grid_x": 306,
+    "grid_y": 4151,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.1881923942431044,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 141.6990985628275,
+        "confidence": 0.1881923942431044,
+        "forward_mass_fraction": 0.20888147114623296,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 144.4202071363744,
+        "confidence": 0.22411355288268456,
+        "forward_mass_fraction": 0.2024960537187744,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 147.31094172593478,
+        "confidence": 0.25781038530211536,
+        "forward_mass_fraction": 0.2024960537187744,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/046-original.webp",
+    "overlay": "examples/046-overlay.webp"
+  },
+  {
+    "candidate": "barrier+utility",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "B0_-fHZzWbBIQGCIuGxRTg",
+    "grid_x": 669,
+    "grid_y": 7470,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.22796548181433496,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 19.58091286849148,
+        "confidence": 0.22796548181433496,
+        "forward_mass_fraction": 0.31065270298403586,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 21.42343414927012,
+        "confidence": 0.24408185546737673,
+        "forward_mass_fraction": 0.33485232694889633,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 22.739762575747125,
+        "confidence": 0.25646400290221993,
+        "forward_mass_fraction": 0.33485232694889633,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/047-original.webp",
+    "overlay": "examples/047-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "France/Paris",
+    "panoid": "EV1yEzn5kVWbH1Ke8dKhzA",
+    "grid_x": 455,
+    "grid_y": 5409,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9850571887847555,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 152.56890827723552,
+        "confidence": 0.9901797588083567,
+        "forward_mass_fraction": 0.3440426816233728,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 0.9616671348155886,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 145.99996931148985,
+        "confidence": 0.9872000003469683,
+        "forward_mass_fraction": 0.3440426816233728,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 0.9366359875720851,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 138.7833535113466,
+        "confidence": 0.9850571887847555,
+        "forward_mass_fraction": 0.3440426816233728,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.8244741420016299,
+        "confidence_b": 0.9867257513119755
+      }
+    ],
+    "original": "examples/048-original.webp",
+    "overlay": "examples/048-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "aAZHQ6-jt9AcJ-tZK42tcw",
+    "grid_x": 328,
+    "grid_y": 7377,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.7453388599208216,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 14.724961275647077,
+        "confidence": 0.7495610294531438,
+        "forward_mass_fraction": 0.4830227108677819,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6682687352375231,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 17.833903463251076,
+        "confidence": 0.7515516732080963,
+        "forward_mass_fraction": 0.4830227108677819,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6794939747824773,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 21.23843022361186,
+        "confidence": 0.7453388599208216,
+        "forward_mass_fraction": 0.4830227108677819,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6911938743021372,
+        "confidence_b": 1.0
+      }
+    ],
+    "original": "examples/049-original.webp",
+    "overlay": "examples/049-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Portugal/Lisbon",
+    "panoid": "sfLqI4gHx97KQ23ukJ5yJQ",
+    "grid_x": 488,
+    "grid_y": 4284,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.31207312713273744,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 158.63977694685656,
+        "confidence": 0.31207312713273744,
+        "forward_mass_fraction": 0.5357473444767085,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 153.3197550838402,
+        "confidence": 0.32202789353938255,
+        "forward_mass_fraction": 0.5357473444767085,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 147.3446705517345,
+        "confidence": 0.33574113528713545,
+        "forward_mass_fraction": 0.5357473444767085,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/050-original.webp",
+    "overlay": "examples/050-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Russia/Moscow",
+    "panoid": "ONAaZX60NtjNnshGjFPBWg",
+    "grid_x": 404,
+    "grid_y": 6186,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9107498995166424,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 18.256844445379386,
+        "confidence": 0.9107498995166424,
+        "forward_mass_fraction": 0.5408597357007537,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6504176330869752,
+        "confidence_b": 0.9870691278098781
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 22.3643932659617,
+        "confidence": 0.9166502720594827,
+        "forward_mass_fraction": 0.5408597357007537,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6504176330869752,
+        "confidence_b": 0.9870691278098781
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 26.991688083766668,
+        "confidence": 0.9134219140702751,
+        "forward_mass_fraction": 0.5408597357007537,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6251598931772149,
+        "confidence_b": 0.9870691278098781
+      }
+    ],
+    "original": "examples/051-original.webp",
+    "overlay": "examples/051-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "US/NewYork",
+    "panoid": "8m1-CLKeUB9vvS9ksTKAfg",
+    "grid_x": 560,
+    "grid_y": 4541,
+    "side_label": "undetermined",
+    "tentative_side": "opposite_side",
+    "reason": "camera_calibration_unverified",
+    "road_axis_confidence": 0.8785243353918221,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 76.51790639420727,
+        "confidence": 0.9444032025693541,
+        "forward_mass_fraction": 0.5976283847038896,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 0.8968074671193877,
+        "confidence_b": 0.9899100709586686
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 72.92894044081577,
+        "confidence": 0.9159120039420061,
+        "forward_mass_fraction": 0.5976283847038896,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 0.932522654390098,
+        "confidence_b": 0.9988961139371944
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 68.62328036838095,
+        "confidence": 0.8785243353918221,
+        "forward_mass_fraction": 0.5976283847038896,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 0.947036712452875,
+        "confidence_b": 1.0
+      }
+    ],
+    "original": "examples/052-original.webp",
+    "overlay": "examples/052-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "WzHFRlLfGkE6u1GD88CSdA",
+    "grid_x": 321,
+    "grid_y": 7389,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8377207741051322,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 50.698261918379785,
+        "confidence": 0.8377207741051322,
+        "forward_mass_fraction": 0.5335293820815181,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.7130483648746344,
+        "confidence_b": 0.9739981594792085
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 49.78299840372149,
+        "confidence": 0.9181232864828928,
+        "forward_mass_fraction": 0.5335293820815181,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.7130483648746344,
+        "confidence_b": 0.9739981594792085
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 48.96322385349923,
+        "confidence": 0.9514754476019017,
+        "forward_mass_fraction": 0.5335293820815181,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.7130483648746344,
+        "confidence_b": 0.9644674068083618
+      }
+    ],
+    "original": "examples/053-original.webp",
+    "overlay": "examples/053-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "US/Chicago",
+    "panoid": "8M7JzbYx2X6MxtZNkCYMXg",
+    "grid_x": 456,
+    "grid_y": 4603,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.0779542668586394,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 9.207326716134457,
+        "confidence": 0.15623978577917572,
+        "forward_mass_fraction": 0.17426836490987077,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 12.673896766663741,
+        "confidence": 0.11942328085635405,
+        "forward_mass_fraction": 0.17426836490987077,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 19.00606942503246,
+        "confidence": 0.0779542668586394,
+        "forward_mass_fraction": 0.1873605315035366,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/054-original.webp",
+    "overlay": "examples/054-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Austria/Vienna",
+    "panoid": "Q-lgvLr7phNKHvllcWXXUw",
+    "grid_x": 603,
+    "grid_y": 5343,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8387507175074181,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 153.24331385024738,
+        "confidence": 0.8649327268326549,
+        "forward_mass_fraction": 0.5485164968898203,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.8120879006893496,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 146.87860357346176,
+        "confidence": 0.8519482256995787,
+        "forward_mass_fraction": 0.5485164968898203,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.7969486287665628,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 139.8938197289716,
+        "confidence": 0.8387507175074181,
+        "forward_mass_fraction": 0.5485164968898203,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6852267422746211,
+        "confidence_b": 0.9313725199134314
+      }
+    ],
+    "original": "examples/055-original.webp",
+    "overlay": "examples/055-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Belgium/Antwerp",
+    "panoid": "XXZU1FGJEASetddsPwlx7Q",
+    "grid_x": 596,
+    "grid_y": 5681,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8778730933629977,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 15.797524860383042,
+        "confidence": 0.9219983392817639,
+        "forward_mass_fraction": 0.4590118358471208,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6163745482865339,
+        "confidence_b": 0.9839695341854081
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 19.993736750129234,
+        "confidence": 0.903001595319963,
+        "forward_mass_fraction": 0.4590118358471208,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6163745482865339,
+        "confidence_b": 0.9972444363536133
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 24.977834905792047,
+        "confidence": 0.8778730933629977,
+        "forward_mass_fraction": 0.4590118358471208,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6137876752450165,
+        "confidence_b": 0.9814736533093814
+      }
+    ],
+    "original": "examples/056-original.webp",
+    "overlay": "examples/056-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "nY-Q8s5hpbfAjV5wwCRAdw",
+    "grid_x": 323,
+    "grid_y": 7410,
+    "side_label": "undetermined",
+    "tentative_side": "opposite_side",
+    "reason": "camera_calibration_unverified",
+    "road_axis_confidence": 0.815160388276265,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 83.01853995920717,
+        "confidence": 0.9220989072963239,
+        "forward_mass_fraction": 0.7231929141248776,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 1.0,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 81.19550580903405,
+        "confidence": 0.8779383189317659,
+        "forward_mass_fraction": 0.7231929141248776,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 1.0,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 79.00696952830134,
+        "confidence": 0.815160388276265,
+        "forward_mass_fraction": 0.7231929141248776,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 1,
+        "confidence_a": 1.0,
+        "confidence_b": 1.0
+      }
+    ],
+    "original": "examples/057-original.webp",
+    "overlay": "examples/057-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "Cn3UxXR7XSzQ63m9HdW3gQ",
+    "grid_x": 680,
+    "grid_y": 7462,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9527329866181119,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 159.81610748798374,
+        "confidence": 0.9756293803849542,
+        "forward_mass_fraction": 0.567187588110363,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.5833033097998946,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 154.55504955386496,
+        "confidence": 0.9648366882689039,
+        "forward_mass_fraction": 0.567187588110363,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.5833033097998946,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 148.43279416185507,
+        "confidence": 0.9527329866181119,
+        "forward_mass_fraction": 0.567187588110363,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.5833033097998946,
+        "confidence_b": 1.0
+      }
+    ],
+    "original": "examples/058-original.webp",
+    "overlay": "examples/058-overlay.webp"
+  },
+  {
+    "candidate": "barrier+construction",
+    "city": "Italy/Naples",
+    "panoid": "3009ip0DEE-jx8QEv8FD2w",
+    "grid_x": 455,
+    "grid_y": 4536,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.748774332068097,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 0.22359901102293736,
+        "confidence": 0.8428033554689999,
+        "forward_mass_fraction": 0.6302631668306438,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6715530202071428,
+        "confidence_b": 0.9138580004325308
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 0.26595953932654487,
+        "confidence": 0.8052315813343747,
+        "forward_mass_fraction": 0.6302631668306438,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6851659857277325,
+        "confidence_b": 0.9528474892468107
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 0.27551295408932774,
+        "confidence": 0.748774332068097,
+        "forward_mass_fraction": 0.6302631668306438,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.6901785446711615,
+        "confidence_b": 0.9733619441177243
+      }
+    ],
+    "original": "examples/059-original.webp",
+    "overlay": "examples/059-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "US/NewYork",
+    "panoid": "fKV14GD11dECnOHQja0WHA",
+    "grid_x": 598,
+    "grid_y": 4505,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.45196231082484745,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 159.55751248149335,
+        "confidence": 0.46213499138975134,
+        "forward_mass_fraction": 0.5053586740056077,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 155.82334150653244,
+        "confidence": 0.46189603225851433,
+        "forward_mass_fraction": 0.4999211001590488,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 151.90237114165637,
+        "confidence": 0.45196231082484745,
+        "forward_mass_fraction": 0.4999211001590488,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/060-original.webp",
+    "overlay": "examples/060-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "Korea/Seoul",
+    "panoid": "xJl2DCKKMExCVUXQcbpVgg",
+    "grid_x": 327,
+    "grid_y": 4165,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.37793042669779137,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 26.71584258480434,
+        "confidence": 0.37793042669779137,
+        "forward_mass_fraction": 0.42786376952801974,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 29.73878555478895,
+        "confidence": 0.40357171235817324,
+        "forward_mass_fraction": 0.43286421321637847,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 32.50030584298693,
+        "confidence": 0.4192467289988079,
+        "forward_mass_fraction": 0.43789026577914963,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/061-original.webp",
+    "overlay": "examples/061-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "WHqfHlG8ZAfnUO32Cw7I1Q",
+    "grid_x": 671,
+    "grid_y": 7466,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9683971418465831,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 61.50140588429728,
+        "confidence": 0.9683971418465831,
+        "forward_mass_fraction": 0.36385358065446866,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.5995716416757287,
+        "confidence_b": 0.929331837958228
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 55.32866937160156,
+        "confidence": 0.9727315297478245,
+        "forward_mass_fraction": 0.36385358065446866,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.5995716416757287,
+        "confidence_b": 0.921717506555297
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 48.67020423265474,
+        "confidence": 0.9714280775179648,
+        "forward_mass_fraction": 0.36385358065446866,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.5857766292316792,
+        "confidence_b": 0.6264381614142766
+      }
+    ],
+    "original": "examples/062-original.webp",
+    "overlay": "examples/062-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "China/Taipei",
+    "panoid": "zbnuQ1eNHRwTnMmLO2wgLw",
+    "grid_x": 357,
+    "grid_y": 2764,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.0,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "reason": "insufficient_visible_road",
+        "confidence": 0.0
+      }
+    ],
+    "original": "examples/063-original.webp",
+    "overlay": "examples/063-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "l-yKa0OlNKU8b_Byntk0jA",
+    "grid_x": 325,
+    "grid_y": 7379,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.738630148971595,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 81.93843012633509,
+        "confidence": 0.8616405914222384,
+        "forward_mass_fraction": 0.6066941319222366,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6996519371474217,
+        "confidence_b": 0.766227411854574
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 79.7806686208929,
+        "confidence": 0.80976024030966,
+        "forward_mass_fraction": 0.6066941319222366,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6996519371474217,
+        "confidence_b": 0.7768869312607727
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 77.01977502866434,
+        "confidence": 0.738630148971595,
+        "forward_mass_fraction": 0.6066941319222366,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6996519371474217,
+        "confidence_b": 0.8321620667317992
+      }
+    ],
+    "original": "examples/064-original.webp",
+    "overlay": "examples/064-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "bHPAnV6xLz3zjQsQGrIYRg",
+    "grid_x": 640,
+    "grid_y": 7470,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9521711431801662,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 77.04941116542219,
+        "confidence": 0.979669340902144,
+        "forward_mass_fraction": 0.4618441686839972,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.5247948636365413,
+        "confidence_b": 0.7697266689217903
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 73.41780537109805,
+        "confidence": 0.9681468540655,
+        "forward_mass_fraction": 0.4618441686839972,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.5300033368486636,
+        "confidence_b": 0.8324155177465653
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 68.97095307567012,
+        "confidence": 0.9521711431801662,
+        "forward_mass_fraction": 0.4618441686839972,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.5406415383453804,
+        "confidence_b": 0.9030665510846803
+      }
+    ],
+    "original": "examples/065-original.webp",
+    "overlay": "examples/065-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "Australia/Sydney",
+    "panoid": "jGazDf9SFT9u5sBlUpDAUQ",
+    "grid_x": 341,
+    "grid_y": 6260,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.7418526536941514,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 103.35126132411587,
+        "confidence": 0.8692914398160521,
+        "forward_mass_fraction": 0.7004020248650925,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6221568678153494,
+        "confidence_b": 0.6217410786976132
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 107.61360502136196,
+        "confidence": 0.8099833305387006,
+        "forward_mass_fraction": 0.7004020248650925,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6348116760302066,
+        "confidence_b": 0.6217410786976132
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 113.23455324567765,
+        "confidence": 0.7418526536941514,
+        "forward_mass_fraction": 0.7004020248650925,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.6348116760302066,
+        "confidence_b": 0.647492196472801
+      }
+    ],
+    "original": "examples/066-original.webp",
+    "overlay": "examples/066-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "US/NewYork",
+    "panoid": "sWnXuCf1OvEc2LYlWkfJUw",
+    "grid_x": 615,
+    "grid_y": 4523,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8695139532551224,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 2.9200205584904855,
+        "confidence": 0.9466905939400106,
+        "forward_mass_fraction": 0.6163752383509704,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7706819694395791,
+        "confidence_b": 0.47792170547430074
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 3.586528662655308,
+        "confidence": 0.9153827966083956,
+        "forward_mass_fraction": 0.6163752383509704,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7992865254075403,
+        "confidence_b": 0.49506983154955986
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 4.294068956764588,
+        "confidence": 0.8695139532551224,
+        "forward_mass_fraction": 0.6163752383509704,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.8335404716804304,
+        "confidence_b": 0.5134150784255224
+      }
+    ],
+    "original": "examples/067-original.webp",
+    "overlay": "examples/067-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "8sxd5nK7hHohTjnIZoxDKA",
+    "grid_x": 335,
+    "grid_y": 7395,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.897958219718583,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 146.35365693056121,
+        "confidence": 0.897958219718583,
+        "forward_mass_fraction": 0.5570529259728264,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.956175164374737,
+        "confidence_b": 0.48570567505265105
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 142.1775117044598,
+        "confidence": 0.9490636205651355,
+        "forward_mass_fraction": 0.5570529259728264,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.9444095100883817,
+        "confidence_b": 0.48570567505265105
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 138.01807613634193,
+        "confidence": 0.9680014404804125,
+        "forward_mass_fraction": 0.5570529259728264,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.8331838939361708,
+        "confidence_b": 0.448171561755081
+      }
+    ],
+    "original": "examples/068-original.webp",
+    "overlay": "examples/068-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "UAE/Dubai",
+    "panoid": "01bKbeOe1Yt8d7cw27NhrQ",
+    "grid_x": 308,
+    "grid_y": 2769,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.07879049780616572,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 4.01687698250966,
+        "confidence": 0.13177124044967584,
+        "forward_mass_fraction": 0.5950465748630263,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 7.5246907674663,
+        "confidence": 0.10624874453242826,
+        "forward_mass_fraction": 0.5975364540658252,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 15.074951578637084,
+        "confidence": 0.07879049780616572,
+        "forward_mass_fraction": 0.597307845445364,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/069-original.webp",
+    "overlay": "examples/069-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "QpzgIbvHyvYUuI4SkfT_2g",
+    "grid_x": 318,
+    "grid_y": 7382,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8310283378582417,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 76.46680314365689,
+        "confidence": 0.9129355871712157,
+        "forward_mass_fraction": 0.9636461686657162,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 72.4787800897883,
+        "confidence": 0.874831218800693,
+        "forward_mass_fraction": 0.9636461686657162,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 67.54612883543228,
+        "confidence": 0.8310283378582417,
+        "forward_mass_fraction": 0.9636461686657162,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/070-original.webp",
+    "overlay": "examples/070-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+utility",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "cAd8P7lNJ1NXXURQYzfB9Q",
+    "grid_x": 856,
+    "grid_y": 2595,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.9340431236730165,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 179.86596995198275,
+        "confidence": 0.9754654497309525,
+        "forward_mass_fraction": 0.4939668060242973,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.9060749974199077,
+        "confidence_b": 0.3530939037576108
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 179.87648161304034,
+        "confidence": 0.9594501406440151,
+        "forward_mass_fraction": 0.4939668060242973,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.9096568920533927,
+        "confidence_b": 0.36346427465633613
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 179.94052183572845,
+        "confidence": 0.9340431236730165,
+        "forward_mass_fraction": 0.4939668060242973,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": 0,
+        "confidence_a": 0.913032716601978,
+        "confidence_b": 0.3882795471491676
+      }
+    ],
+    "original": "examples/071-original.webp",
+    "overlay": "examples/071-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "US/Chicago",
+    "panoid": "hsmnd8yyxbY4SaYdY568Rg",
+    "grid_x": 390,
+    "grid_y": 4590,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.38375809680360157,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 50.13176150626714,
+        "confidence": 0.38375809680360157,
+        "forward_mass_fraction": 0.6885288469349584,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 47.34082030010587,
+        "confidence": 0.43063051614661546,
+        "forward_mass_fraction": 0.6824389321964272,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 44.8755657159813,
+        "confidence": 0.4641456154196775,
+        "forward_mass_fraction": 0.6556788118857607,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/072-original.webp",
+    "overlay": "examples/072-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "US/Chicago",
+    "panoid": "mqB3reYr9yUzhcwNquPE_w",
+    "grid_x": 424,
+    "grid_y": 4625,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.4356604755971191,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 179.67444996365256,
+        "confidence": 0.4356604755971191,
+        "forward_mass_fraction": 0.5704942974625438,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 179.65396961131881,
+        "confidence": 0.44691127983591833,
+        "forward_mass_fraction": 0.5704942974625438,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 179.62598955483844,
+        "confidence": 0.4526911601458427,
+        "forward_mass_fraction": 0.5704942974625438,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/073-original.webp",
+    "overlay": "examples/073-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "3gjTA5se53lPrukhBo2MDw",
+    "grid_x": 861,
+    "grid_y": 2624,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.5478995256036373,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 134.5711131845969,
+        "confidence": 0.5478995256036373,
+        "forward_mass_fraction": 0.5193975455642592,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 135.77109513619666,
+        "confidence": 0.6284495430419221,
+        "forward_mass_fraction": 0.5193975455642592,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.5112078850890912,
+        "confidence_b": 0.9478414779015097
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 136.83016298426392,
+        "confidence": 0.6872653370307167,
+        "forward_mass_fraction": 0.5343426951199821,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": -1,
+        "confidence_a": 0.4973165353758656,
+        "confidence_b": 0.9478414779015097
+      }
+    ],
+    "original": "examples/074-original.webp",
+    "overlay": "examples/074-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "Nigeria/Lagos",
+    "panoid": "I78w3BTUP02IC6soHOui8A",
+    "grid_x": 539,
+    "grid_y": 713,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.344747123400179,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 77.43012104088277,
+        "confidence": 0.35923130050389424,
+        "forward_mass_fraction": 0.5337074623780153,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 74.85573459484054,
+        "confidence": 0.35564029260206126,
+        "forward_mass_fraction": 0.5337074623780153,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 71.95374486765517,
+        "confidence": 0.344747123400179,
+        "forward_mass_fraction": 0.5337074623780153,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/075-original.webp",
+    "overlay": "examples/075-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "Russia/Moscow",
+    "panoid": "hRslLAUlXLH3LM0OeGQ3Nw",
+    "grid_x": 411,
+    "grid_y": 6182,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.07929390183914391,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 127.69277273110501,
+        "confidence": 0.07929390183914391,
+        "forward_mass_fraction": 0.5697843110170989,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 133.11774292704507,
+        "confidence": 0.08397334903899185,
+        "forward_mass_fraction": 0.5570654276866481,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 138.8871877148953,
+        "confidence": 0.08559531509518778,
+        "forward_mass_fraction": 0.6136159657989184,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/076-original.webp",
+    "overlay": "examples/076-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "US/NewYork",
+    "panoid": "OyY0WQVKBbye_PDqN_SGog",
+    "grid_x": 582,
+    "grid_y": 4499,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.7713133948948828,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 123.51128702334097,
+        "confidence": 0.7713133948948828,
+        "forward_mass_fraction": 0.5195238197496146,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6540542394553593,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 126.65057221973066,
+        "confidence": 0.8354005334793685,
+        "forward_mass_fraction": 0.5195238197496146,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6540542394553593,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 129.65087648004817,
+        "confidence": 0.8713439162186556,
+        "forward_mass_fraction": 0.5195238197496146,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 1,
+        "confidence_a": 0.6540542394553593,
+        "confidence_b": 1.0
+      }
+    ],
+    "original": "examples/077-original.webp",
+    "overlay": "examples/077-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "Australia/Perth",
+    "panoid": "sPn00UeuxSOkCufHL1rRvg",
+    "grid_x": 390,
+    "grid_y": 6427,
+    "side_label": "undetermined",
+    "tentative_side": "same_side",
+    "reason": "camera_calibration_unverified",
+    "road_axis_confidence": 0.7988797206865119,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 5.43919632944452,
+        "confidence": 0.9172309013342358,
+        "forward_mass_fraction": 0.5963510319649661,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 0.9651938843837368,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 6.9985414303890785,
+        "confidence": 0.8687900018862309,
+        "forward_mass_fraction": 0.5963510319649661,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 0.9720017675470898,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 8.99400186988725,
+        "confidence": 0.7988797206865119,
+        "forward_mass_fraction": 0.5963510319649661,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 0.9878582636651045,
+        "confidence_b": 1.0
+      }
+    ],
+    "original": "examples/078-original.webp",
+    "overlay": "examples/078-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "Nigeria/Lagos",
+    "panoid": "VXY7KNUrB2kjr6idjtZD_Q",
+    "grid_x": 541,
+    "grid_y": 711,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.8888448769994255,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 60.833558645634895,
+        "confidence": 0.8888448769994255,
+        "forward_mass_fraction": 0.5796580905994738,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 1,
+        "confidence_a": 0.9163946162410264,
+        "confidence_b": 0.9352722103172484
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 56.055510182182175,
+        "confidence": 0.9214665236139183,
+        "forward_mass_fraction": 0.5796580905994738,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 1,
+        "confidence_a": 0.9117614785628368,
+        "confidence_b": 0.9228062153025112
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 51.16485082628322,
+        "confidence": 0.9361444235448263,
+        "forward_mass_fraction": 0.5796580905994738,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 0,
+        "confidence_a": 0.8794867850008543,
+        "confidence_b": 0.8315068470108258
+      }
+    ],
+    "original": "examples/079-original.webp",
+    "overlay": "examples/079-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "US/NewYork",
+    "panoid": "R-XmaWEqvhkHnwhDOOjQtg",
+    "grid_x": 567,
+    "grid_y": 4505,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.4051691380823205,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": false,
+        "axis_degrees": 22.32044697966738,
+        "confidence": 0.4073349002207688,
+        "forward_mass_fraction": 0.5092608349463066,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 90.0,
+        "valid": false,
+        "axis_degrees": 26.217365067515658,
+        "confidence": 0.4111714505796234,
+        "forward_mass_fraction": 0.5092608349463066,
+        "reason": "ambiguous_or_non_antipodal_road"
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 30.342633582739555,
+        "confidence": 0.4051691380823205,
+        "forward_mass_fraction": 0.4992886048531787,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/080-original.webp",
+    "overlay": "examples/080-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "Nigeria/Lagos",
+    "panoid": "ab27PEG-Fw3-vIKOBpz9RQ",
+    "grid_x": 536,
+    "grid_y": 711,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.6143545388736055,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 109.26498327581074,
+        "confidence": 0.6693818627575437,
+        "forward_mass_fraction": 0.4941205590914016,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7154495874694689,
+        "confidence_b": 0.8143368068038525
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 113.40339886049578,
+        "confidence": 0.6485823921288542,
+        "forward_mass_fraction": 0.4941205590914016,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7239075695731716,
+        "confidence_b": 0.8195570070429887
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 118.04150872826219,
+        "confidence": 0.6143545388736055,
+        "forward_mass_fraction": 0.4941205590914016,
+        "reason": "provisional_straight_axis",
+        "side_a": 0,
+        "side_b": 0,
+        "confidence_a": 0.7239075695731716,
+        "confidence_b": 0.8195570070429887
+      }
+    ],
+    "original": "examples/081-original.webp",
+    "overlay": "examples/081-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "Australia/Sydney",
+    "panoid": "2ZIT49XdMPPfIHVuWm9kZA",
+    "grid_x": 327,
+    "grid_y": 6250,
+    "side_label": "undetermined",
+    "tentative_side": "undetermined",
+    "reason": "ambiguous_road_or_element_masks",
+    "road_axis_confidence": 0.5564863326000559,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 15.630645230000196,
+        "confidence": 0.6521232655728694,
+        "forward_mass_fraction": 0.35746166938863316,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 1,
+        "confidence_a": 0.8552760820729609,
+        "confidence_b": 0.995451547832012
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 19.01044428109911,
+        "confidence": 0.6134161689057869,
+        "forward_mass_fraction": 0.35746166938863316,
+        "reason": "provisional_straight_axis",
+        "side_a": 1,
+        "side_b": 1,
+        "confidence_a": 0.9040020099774204,
+        "confidence_b": 1.0
+      },
+      {
+        "fov": 105.0,
+        "valid": false,
+        "axis_degrees": 22.94135190343061,
+        "confidence": 0.5564863326000559,
+        "forward_mass_fraction": 0.35746166938863316,
+        "reason": "ambiguous_or_non_antipodal_road"
+      }
+    ],
+    "original": "examples/082-original.webp",
+    "overlay": "examples/082-overlay.webp"
+  },
+  {
+    "candidate": "vehicle+construction",
+    "city": "US/NewYork",
+    "panoid": "2fQMwOUJZeA7QlO5rmHrEQ",
+    "grid_x": 576,
+    "grid_y": 4512,
+    "side_label": "undetermined",
+    "tentative_side": "same_side",
+    "reason": "camera_calibration_unverified",
+    "road_axis_confidence": 0.968353516684734,
+    "calibration_verified": false,
+    "human_validated": false,
+    "diagnostics": [
+      {
+        "fov": 75.0,
+        "valid": true,
+        "axis_degrees": 80.57387253853422,
+        "confidence": 0.9875352106164097,
+        "forward_mass_fraction": 0.3451766874926216,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 0.9015862939790573,
+        "confidence_b": 0.9853470489835565
+      },
+      {
+        "fov": 90.0,
+        "valid": true,
+        "axis_degrees": 77.84530113041095,
+        "confidence": 0.9798508445606099,
+        "forward_mass_fraction": 0.3451766874926216,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 0.9790654752198634,
+        "confidence_b": 0.9940604893109374
+      },
+      {
+        "fov": 105.0,
+        "valid": true,
+        "axis_degrees": 74.42479725767501,
+        "confidence": 0.968353516684734,
+        "forward_mass_fraction": 0.3451766874926216,
+        "reason": "provisional_straight_axis",
+        "side_a": -1,
+        "side_b": -1,
+        "confidence_a": 1.0,
+        "confidence_b": 1.0
+      }
+    ],
+    "original": "examples/083-original.webp",
+    "overlay": "examples/083-overlay.webp"
+  }
+]
