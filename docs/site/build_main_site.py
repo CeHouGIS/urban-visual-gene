@@ -35,7 +35,7 @@ NAV_ITEMS = [("overview", "主实验", ""), ("semantic", "语义地图", "semant
              ("instances", "图像实例", "instances/"), ("interpretation", "维度解释", "interpretation/"),
              ("elements", "要素标签", "elements/"), ("label-structure", "标签结构", "label-structure/"),
              ("quality", "维度复核", "quality/"),
-             ("relations", "要素关系", "relations/")]
+             ("city-patterns", "城市景观组成", "city-patterns/")]
 
 
 def read_json(path):
@@ -335,6 +335,10 @@ def build(out, workers):
     element_summary = install_element_hierarchy(out, page, snapshot)
     label_structure_counts = install_label_structure(out, page, snapshot)
     quality_counts = install_quality_review(out, page, snapshot)
+    from city_patterns import FOLLOWUP as city_followup, install as install_city_patterns
+    city_summary = None
+    if (city_followup / 'stages/chapter5_figures/complete.json').is_file():
+        city_summary = install_city_patterns(out, page, snapshot)
     install_progress(out)
     (out/'.nojekyll').touch()
     # A compatibility entry contains only a redirect to the current homepage.
@@ -379,17 +383,19 @@ jobs:
         'snapshot_label': snapshot, 'model': {'backbone': 'DINOv3 ViT-L/16', 'image_size': 448, 'grid': [28,28], 'input_dimension': 1024, 'dictionary_width': 4096, 'batchtopk_k': 32, 'panorama_context_mixing': True},
         'training': {'cities': 30, 'panoramas': 89031, 'train': 85191, 'validation': 3840},
         'image_semantics': {'cities': 29, 'panoramas': 3712, 'images': len(image_rows), 'dimensions': dimensions, 'projected_dimensions': 2863, 'top100_instances': examples, 'top10_umap_points': 29934},
-        'vlm_status_counts': counts, 'label_structure': {'page': 'label-structure/',
+        'vlm_status_counts': counts,
+        'city_patterns': {'page': 'city-patterns/', **city_summary} if city_summary else None,
+        'label_structure': {'page': 'label-structure/',
             'counts': label_structure_counts, 'validation': 'provisional_text_only'},
         'quality_review': {'page': 'quality/', 'counts': quality_counts,
             'status': 'candidate_review_only'}, 'file_count': len(files)+1, 'bytes_before_manifest': size,
         'element_hierarchy': {'page': 'elements/', 'identity': element_summary['identity'],
                               'candidate_dimensions': element_summary['status_counts']['candidate_ready'],
                               'semantic_validation': 'pending',
-                              'relation_page': 'relations/',
+                              'relation_page': 'city-patterns/' if city_summary else 'relations/',
                               'label_gallery': element_summary['label_gallery'],
-                              'prototype_route': element_summary['prototype_route'],
-                              'local_composition_status': element_summary['local_composition_status']} if element_summary else None,
+                              'prototype_route': 'spatial_family_co_presence' if city_summary else element_summary['prototype_route'],
+                              'local_composition_status': 'retired_pilot' if city_summary else element_summary['local_composition_status']} if element_summary else None,
         'packaging': 'Original directional JPEGs copied unchanged; Top100 crops and previews reconstructed on demand using saved boxes; feature JSON compressed with gzip; Qwen masked input sheets encoded as pixel-exact lossless WebP.',
         'source_result_manifest_sha256': hashlib.sha256((EXPERIMENT/'results/manifest.json').read_bytes()).hexdigest()})
     print(json.dumps({'output': str(out), 'files': len(files)+1, 'MB': round(size/1e6,1), 'vlm': counts}, ensure_ascii=False), flush=True)

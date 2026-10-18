@@ -235,6 +235,9 @@ def test_missing_script_waits_without_calling_codex_or_completing_stage(tmp_path
     make_artifacts('candidate_combinations', args.followup / 'stages/candidate_combinations')
     monkeypatch.setattr(auto_continue.subprocess, 'run',
                         lambda *a, **kw: pytest.fail('must not invoke an AI fallback'))
+    def missing_script(*unused):
+        raise auto_continue.MissingStageScript('Simulated unimplemented road stage')
+    monkeypatch.setattr(auto_continue, 'run_script', missing_script)
     auto_continue.run(args)
     status = json.loads((args.followup / 'auto_continue_status.json').read_text())
     assert status['stage'] == 'road_sides'

@@ -20,7 +20,9 @@ CHECKPOINT = 'fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0'
 RUNS = [('real_seed42', '真实数据 · seed 42'), ('real_seed43', '真实数据 · seed 43'),
         ('spatial_shuffle_seed42', '空间打乱对照'), ('feature_shuffle_seed42', '维度对应打乱对照')]
 PAGES = ['index.html', 'semantic/index.html', 'instances/index.html',
-         'interpretation/index.html', 'elements/index.html', 'relations/index.html']
+         'interpretation/index.html', 'elements/index.html', 'label-structure/index.html',
+         'quality/index.html', 'city-patterns/index.html']
+CITY_FOLLOWUP = Path('/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup')
 
 
 def read(path):
@@ -39,6 +41,7 @@ def research_progress(rows, corpus):
     refit = tasks.get('patch_response_refit', {})
     hierarchy = tasks.get('element_hierarchy', {})
     local_compositions = tasks.get('local_compositions', {})
+    open_panorama = tasks.get('open_panorama', {})
     coverage = patch_coverage or tasks.get('coverage_trial', {})
     states = {
         'data': ('complete' if tasks['activations']['status'] == 'complete' else 'partial',
@@ -67,6 +70,8 @@ def research_progress(rows, corpus):
             if item['review_status'] not in {'partial', 'pending', 'running', 'complete'}:
                 raise ValueError(f'Invalid reviewed milestone status: {item["id"]}')
             item['status'] = item['review_status']
+        if item['id'] == 'local_compositions' and not local_compositions:
+            item['status'] = 'pending'
     focus = '核查跨街景重复的局部要素组合'
     next_step = ('逐例核查遮罩与对象父类，合并方向等价关系；再比较跨种子稳定性、'
                  '三元关系和新组合对完整样本的覆盖。')
@@ -310,8 +315,18 @@ def snapshot(root=ROOT):
     if any(row['id'] == 'local_compositions' for row in rows):
         rows = [row for row in rows if row['id'] != 'open_panorama']
     research = research_progress(rows, corpus)
+    city = city_pattern_progress(CITY_FOLLOWUP) if root == ROOT else None
+    if city:
+        rows.extend(city['rows'])
+        for milestone in research['milestones']:
+            if milestone['id'] in city['milestones']:
+                milestone.update(city['milestones'][milestone['id']])
+        research.update(focus=city['focus'], next_step=city['next_step'])
+        research['completed'] = sum(m['status'] == 'complete' for m in research['milestones'])
     legacy = {'prototypes', 'evaluation', 'gallery', 'prototype_vlm', 'coverage_trial',
               'patch_coverage', 'patch_response_refit', 'patch_prototype_gallery'}
+    if city:
+        legacy.add('local_compositions')
     rows = [row for row in rows if row['id'] not in legacy]
     research['blockers'] = [row['label'] for row in rows if row['status'] in {'error', 'paused', 'waiting'}]
     return {'schema_version': 1, 'updated_utc': datetime.now(timezone.utc).isoformat(),
@@ -320,9 +335,62 @@ def snapshot(root=ROOT):
             'runtime_terminal': (pipeline.get('status') in {'complete', 'failed', 'stopped'} or (bool(pipeline) and not alive))
                 and (not expansion or expansion.get('status') in {'complete', 'failed', 'stopped'} or not expansion_alive)
                 and (not coverage or coverage['status'] in {'complete', 'error', 'paused', 'pending'})
-                and (not patch_coverage or patch_coverage['status'] in {'complete', 'error', 'paused', 'pending'}),
+                and (not patch_coverage or patch_coverage['status'] in {'complete', 'error', 'paused', 'pending'})
+                and (not city or city['terminal']),
             'note': ('当前路线从四方向全景中的局部要素遮罩检索开放数量的重复组合。'
                      '计算完成仍不等于语义已验证。')}
+
+
+def city_pattern_progress(followup):
+    """Read bounded queue/artifact summaries; never scan image or feature data."""
+    queue = read(followup / 'task_queue.json')
+    if not queue:
+        return None
+    complete = read(followup / 'complete.json')
+    if complete and complete['identity']['extract_run_identity'] != queue['run_identity']:
+        raise ValueError('City progress extraction identity mismatch')
+    labels = {'extract': '30城格网样本冻结推理', 'validate_chunks': '分块质量与身份核对',
+              'city_cell_screening': '格网平衡城市汇总', 'candidate_combinations': '跨城共现候选筛选',
+              'road_sides': '四方向激活与道路审阅证据',
+              'prototype_city_distribution': '候选格网与城市分布', 'chapter5_figures': '论文全图更新与编译'}
+    rows = []
+    for task in queue['tasks']:
+        state = task['status']
+        row = {'id': 'city_' + task['id'], 'label': labels.get(task['id'], task['id']),
+               'status': {'blocked': 'pending', 'retrying': 'waiting', 'awaiting_script': 'pending'}.get(state, state),
+               'detail': task.get('detail', ''), 'link': 'city-patterns/', 'semantic_review': 'pending'}
+        if task['id'] == 'extract' and complete:
+            row['detail'] = f'{complete["processed"]:,}有效全景 · {complete["valid_cells"]:,}观测格网 · 30城；原SAE保持冻结。'
+        if task['id'] == 'road_sides':
+            progress = read(followup / 'stages/road_sides/progress.json')
+            if 'total' in progress:
+                row['progress'] = ratio(progress['processed'], progress['total'], '四方向审阅实例')
+            summary = read(followup / 'stages/road_sides/summary.json')
+            if summary:
+                row['detail'] = f'{summary["examples"]}例证据完成；最终同侧{summary["same_side"]}、两侧{summary["opposite_side"]}、未确认{summary["undetermined"]}。相机标定与人工复核待完成。'
+        rows.append(row)
+    states = {task['id']: task['status'] for task in queue['tasks']}
+    def done(stage):
+        return states.get(stage) == 'complete'
+    milestones = {}
+    if complete:
+        milestones['data'] = {'status': 'complete', 'evidence': f'30城空间分析：{complete["processed"]:,}全景，{complete["valid_cells"]:,}格网，每格最多10点；SAE原训练样本89,031全景。'}
+    if done('candidate_combinations'):
+        summary = read(followup / 'stages/candidate_combinations/summary.json')
+        evidence = f'30城共现筛查得到{summary.get("candidate_count", 0)}个候选；22城发现、8城确认，999次双零假设及FDR。要素语义和具体布局未验证。'
+        milestones['patterns'] = {'status': 'partial', 'evidence': evidence}
+        milestones['local_compositions'] = {'status': 'partial', 'evidence': evidence}
+    milestones['road_sides'] = {'status': 'partial' if done('road_sides') else 'running' if states.get('road_sides') == 'running' else 'pending',
+        'evidence': '独立道路分割与冻结SAE补算四方向patch遮罩；计算候选不等于确认道路侧别，标定和人工审阅待完成。'}
+    if done('prototype_city_distribution'):
+        milestones['geography'] = {'status': 'partial', 'evidence': '7个共现候选的全样本格网平衡城市发生率、5km块bootstrap区间和1km格网地图完成；侧别发生率未测量。'}
+    if done('chapter5_figures'):
+        milestones['figure_refresh'] = {'status': 'complete', 'evidence': '受影响城市图表已重绘，原训练与语义证据保留来源身份；论文编译通过。语义与道路侧别后续需人工核查。'}
+        milestones['writing'] = {'status': 'partial', 'evidence': '方法、分母与图注已按新30城空间样本更新并编译；最终原型结论等待语义与道路核查。'}
+    pending = next((r for r in rows if r['status'] != 'complete'), None)
+    return {'rows': rows, 'milestones': milestones, 'terminal': queue.get('phase') == 'complete',
+            'focus': pending['label'] if pending else '核查30城组合的语义与道路布局',
+            'next_step': '本地脚本按队列自动衔接；候选分布和论文图表完成后发布。人工确认语义、mask与标定后才统计道路同侧／两侧。'}
 
 
 def relational_status(root):

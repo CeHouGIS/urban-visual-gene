@@ -17,6 +17,21 @@ coordinates, 1-km grid cell, 4,096-dimensional mean positive SAE activation,
 and four 64-group heading vectors. It does not store dense patch activations,
 so later local mask inspection needs another frozen-model pass.
 
+## Completed computational outputs
+
+All seven queue entries, including extraction and downstream stages, have
+passed their artifact gates. The usable sample contains 681,645 panoramas in
+72,625 observed cells. The pair screen tested 76 candidates and retained seven
+provisional family co-presence candidates. City rates cover 210 candidate/city
+combinations. An 84-example four-view audit has frozen-SAE masks and independent
+road probabilities; all final side labels remain undetermined. Chapter 5 figures
+and captions have been refreshed and the complete thesis compiles successfully.
+The public page is `https://cehougis.github.io/urban-visual-gene/city-patterns/`.
+
+The procedures below document the completed computation and the remaining
+semantic, calibration and roadside review. A completed compute queue does not
+mark these scientific reviews complete or validate a landscape prototype.
+
 ## Select panoramas
 
 ```bash
@@ -114,17 +129,33 @@ not extract images, retrain models, call Qwen, or establish roadside geometry.
 Qwen family labels remain provisional. Its completion means the co-presence
 screen finished, not that landscape prototypes were validated.
 
-The remaining `road_sides.py`, `prototype_city_distribution.py`, and
-`chapter5_figures.py` scripts still need implementation. A missing script is
-reported as `awaiting_script`; the supervisor checks again every five minutes
-and starts it once available. It never calls an AI coding service as fallback
-and never marks a missing analysis as complete.
+All four scripts are implemented and run as local modules:
+
+- `road_sides.py`: on GPU, recompute frozen panorama-aware SAE attribution and
+  independent SegFormer road probabilities for 12 distinct-cell examples per
+  retained pair, with at most three per city. Preserve original and overlaid
+  four-view images. Perspective bearings and three assumed fields of view give
+  tentative geometry only. Final side labels remain undetermined until source
+  camera calibration and human mask/road review are available.
+- `prototype_city_distribution.py`: apply the frozen provisional family
+  co-presence rule to all 681,645 retained panoramas. Average within-cell
+  positive fractions equally across cells, with 999 five-kilometre-block
+  bootstrap draws. This is a distribution of co-presence candidates, not
+  validated prototypes. Corpus-wide roadside rates remain missing.
+- `chapter5_figures.py`: regenerate city composition, similarity, cell PPMI,
+  spatial structure, a cell UMAP, candidate maps/intervals and four-view
+  evidence. Retain original training and semantic provenance. Update captions
+  and methods together, inventory inputs, and compile the complete thesis.
+
+The computational queue can finish while scientific review remains pending.
+No script trains a new SAE, calls Qwen or invokes a model API. GPU inference
+has no CPU fallback; statistical aggregation and plotting use the CPU.
 
 Read `followup/task_queue.json` for task states and
 `followup/auto_continue_status.json` for the active stage. Logs are in
 `followup/auto_continue.log` and `followup/stages/<stage>/attempt_N.log`.
 
-## Analysis to do after extraction
+## Analysis protocol and remaining scientific review
 
 1. Audit every shard against the selection manifest. Report retained and
    rejected panoramas by city and cell, and check that four headings belong to
@@ -158,7 +189,7 @@ Read `followup/task_queue.json` for task states and
    prototype. Re-apply validated detectors to the complete sampled corpus for
    city distributions; a gallery of retrieved examples alone is insufficient.
 
-## Chapter 5 figure and writing checklist
+## Chapter 5 figure and writing audit
 
 - Reconcile the methods, sample table and study-city map with the 30-city
   selection, actual quality-screened counts and Moscow's verified source-image
@@ -180,7 +211,7 @@ Read `followup/task_queue.json` for task states and
   `chapter5_vitl30_figures.tex` and `chapter5_vitl30_semantics.tex`; replace
   superseded assets only after checking each against the new run identity.
   Compile the thesis and compare its figures and captions with the published
-  site. These are pending tasks, not outputs of the current extraction job.
+  site. These are downstream tasks, separate from feature extraction; completion is recorded in the verified stage artifacts.
 
 Current Chapter 5 asset inventory for that audit:
 

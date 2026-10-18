@@ -79,6 +79,11 @@ def update_queue(queue_file, stage, status, detail):
             task['status'] = status
             task['detail'] = detail
             task['execution'] = 'direct local script'
+            definition = next(item for item in NEXT_TASKS if item['id'] == stage)
+            task['label'] = definition['label']
+            task['criterion'] = definition['criterion']
+            if stage in {'road_sides', 'prototype_city_distribution', 'chapter5_figures'}:
+                task['scientific_review'] = 'pending'
             found = True
         elif task['status'] == 'blocked' and all(
                 any(previous['id'] == required and previous['status'] == 'complete'
@@ -87,6 +92,7 @@ def update_queue(queue_file, stage, status, detail):
     if not found:
         raise ValueError(f'Missing queue task: {stage}')
     queue['phase'] = 'complete' if all(task['status'] == 'complete' for task in queue['tasks']) else 'research_running'
+    queue['scientific_review'] = 'pending'
     queue['detail'] = f'{stage}: {status}; {detail}'
     queue['updated_utc'] = datetime.now(timezone.utc).isoformat()
     write_json(queue_file, queue)
@@ -260,7 +266,9 @@ def run(args):
                 raise RuntimeError(f'{stage} did not pass completion checks: {reason}')
             wait_before_retry(args.retry_delay)
     write_json(args.followup / 'auto_continue_status.json',
-               {'status': 'complete', 'detail': 'All queued research stages passed their artifact gates'})
+               {'status': 'complete', 'execution': 'direct_script', 'scientific_review': 'pending',
+                'detail': 'Computational outputs complete; semantic and roadside review pending',
+                'updated_utc': datetime.now(timezone.utc).isoformat()})
 
 
 if __name__ == '__main__':
