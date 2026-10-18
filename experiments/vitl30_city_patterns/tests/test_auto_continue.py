@@ -1,5 +1,6 @@
 import argparse
 import json
+from datetime import datetime, timezone
 from types import SimpleNamespace
 
 import pytest
@@ -150,7 +151,12 @@ def test_classifies_service_errors_without_masking_permanent_errors(tmp_path, me
     assert bool(auto_continue.transient_error(log)) is retryable
 
 
-def test_rate_limits_do_not_exhaust_research_attempts_and_logs_survive(tmp_path, monkeypatch):
+@pytest.mark.parametrize('error,expected_waits', [
+    ('429 Too Many Requests', [900, 900, 900]),
+    ('503 Service Unavailable', [10, 20, 25]),
+])
+def test_service_failures_do_not_exhaust_research_attempts_and_logs_survive(
+        tmp_path, monkeypatch, error, expected_waits):
     args = ready_run(tmp_path)
     args.max_retry_delay = 25
     stage_dir = args.followup / 'stages/candidate_combinations'
@@ -167,7 +173,7 @@ def test_rate_limits_do_not_exhaust_research_attempts_and_logs_survive(tmp_path,
             attempts.append(attempt)
             if len(attempts) <= 3:
                 (output / f'attempt_{attempt}.log').write_text(
-                    'ERROR: exceeded retry limit, last status: 429 Too Many Requests\n')
+                    f'ERROR: exceeded retry limit, last status: {error}\n')
                 return 1
         make_artifacts(stage, output)
         return 0
@@ -175,9 +181,32 @@ def test_rate_limits_do_not_exhaust_research_attempts_and_logs_survive(tmp_path,
     monkeypatch.setattr(auto_continue, 'run_agent', agent)
     auto_continue.run(args)
     assert attempts == [4, 5, 6, 7]
-    assert waits == [10, 20, 25]
+    assert waits == expected_waits
     assert original.read_text() == 'previous interrupted invocation\n'
     assert json.loads((args.followup / 'auto_continue_status.json').read_text())['status'] == 'complete'
+
+
+def test_restart_preserves_fifteen_minute_rate_limit_wait(tmp_path, monkeypatch):
+    args = ready_run(tmp_path)
+    stage_dir = args.followup / 'stages/candidate_combinations'
+    stage_dir.mkdir(parents=True)
+    old_log = stage_dir / 'attempt_5.log'
+    old_log.write_text('ERROR: last status: 429 Too Many Requests\n')
+    write_json(args.followup / 'auto_continue_status.json', {
+        'status': 'retrying', 'stage': 'candidate_combinations', 'attempt': 5,
+        'detail': 'ERROR: last status: 429 Too Many Requests',
+        'next_retry_utc': datetime.now(timezone.utc).isoformat()})
+    waits = []
+    monkeypatch.setattr(auto_continue, 'wait_before_retry', waits.append)
+
+    def agent(stage, output, *unused):
+        make_artifacts(stage, output)
+        return 0
+
+    monkeypatch.setattr(auto_continue, 'run_agent', agent)
+    auto_continue.run(args)
+    assert len(waits) == 1
+    assert 895 < waits[0] <= 900
 
 
 def test_resumes_explicit_saved_session_without_overwriting_log(tmp_path, monkeypatch):

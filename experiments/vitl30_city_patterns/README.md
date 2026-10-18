@@ -96,9 +96,10 @@ stage writes its code, results, evidence and completion marker under
 required products before marking a stage complete and starting the next one.
 An interrupted runner can be relaunched; verified completed stages are skipped.
 Research or artifact-check failures are retried at most three times and then
-left as `error`. Temporary API rate limits, server failures and connection
-interruptions instead retry automatically with exponential backoff and jitter,
-capped at 30 minutes; these do not consume the three research attempts. The
+left as `error`. API rate limits (HTTP 429) retry every 15 minutes, including
+when the runner resumes an existing wait. Temporary server failures and
+connection interruptions use exponential backoff and jitter, capped at 30
+minutes. Service interruptions do not consume the three research attempts. The
 saved Codex session is resumed, and attempt numbers continue across restarts
 so prior logs are preserved. The active status includes the next retry time
 while a service outage persists. It does not skip a failed dependency.

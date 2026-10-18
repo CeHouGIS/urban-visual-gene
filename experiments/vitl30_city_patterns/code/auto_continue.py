@@ -20,6 +20,7 @@ from .followup import FOLLOWUP, NEXT_TASKS
 ROOT = Path(__file__).resolve().parents[3]
 THESIS = Path('/root/code/HKUST-Thesis')
 PROMPTS = Path(__file__).with_name('prompts')
+RATE_LIMIT_RETRY_SECONDS = 15 * 60
 ARTIFACTS = {
     'candidate_combinations': ('protocol.json', 'summary.json', 'candidates.csv'),
     'road_sides': ('protocol.json', 'summary.json', 'side_examples.csv'),
@@ -145,6 +146,10 @@ def wait_before_retry(seconds):
         seconds -= pause
 
 
+def is_rate_limit(error):
+    return bool(re.search(r'\b429\b|Too Many Requests', error, re.IGNORECASE))
+
+
 def run_agent(stage, stage_dir, run_identity, screening, attempt):
     stage_dir.mkdir(parents=True, exist_ok=True)
     prompt = make_prompt(stage, stage_dir, run_identity, screening)
@@ -208,6 +213,19 @@ def run(args):
         stage_dir.mkdir(parents=True, exist_ok=True)
         attempt = max((int(path.stem.split('_')[-1])
                        for path in stage_dir.glob('attempt_*.log')), default=0)
+        status_file = args.followup / 'auto_continue_status.json'
+        prior = json.loads(status_file.read_text()) if status_file.exists() else {}
+        if prior.get('status') == 'retrying' and prior.get('stage') == stage:
+            last_log = stage_dir / f'attempt_{attempt}.log'
+            if is_rate_limit(prior.get('detail', '')) and last_log.exists():
+                retry_at = datetime.fromtimestamp(last_log.stat().st_mtime, timezone.utc) + timedelta(
+                    seconds=RATE_LIMIT_RETRY_SECONDS)
+            else:
+                retry_at = datetime.fromisoformat(prior['next_retry_utc'])
+            prior.update(pid=os.getpid(), next_retry_utc=retry_at.isoformat())
+            write_json(status_file, prior)
+            update_queue(queue_file, stage, 'retrying', f'Resume waiting until {retry_at.isoformat()}')
+            wait_before_retry(max(0, (retry_at - datetime.now(timezone.utc)).total_seconds()))
         failures = transient_failures = 0
         while True:
             attempt += 1
@@ -231,8 +249,9 @@ def run(args):
             service_error = transient_error(stage_dir / f'attempt_{attempt}.log') if code != 0 else None
             if service_error:
                 transient_failures += 1
-                delay = min(getattr(args, 'max_retry_delay', 1800), args.retry_delay *
-                            2 ** min(transient_failures - 1, 12) * random.uniform(.8, 1.2))
+                delay = RATE_LIMIT_RETRY_SECONDS if is_rate_limit(service_error) else min(
+                    getattr(args, 'max_retry_delay', 1800), args.retry_delay *
+                    2 ** min(transient_failures - 1, 12) * random.uniform(.8, 1.2))
                 detail = f'{service_error}; automatic retry in {round(delay)}s; see attempt_{attempt}.log'
                 update_queue(queue_file, stage, 'retrying', detail)
                 write_json(args.followup / 'auto_continue_status.json', {
