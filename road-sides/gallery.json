@@ -1,0 +1,702 @@
+[
+  {
+    "pattern_id": "b819e8cb5e58",
+    "city": "Argentina/BuenosAires",
+    "panoid": "hR1E2UyRIFSvCTMKMTEAxg",
+    "lateral_labels": [
+      "围墙",
+      "建筑"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/000-original.webp",
+    "overlay": "evidence/000-overlay.webp",
+    "road_overlay": "evidence/000-road_overlay.webp"
+  },
+  {
+    "pattern_id": "6fbf71823bea",
+    "city": "Portugal/Lisbon",
+    "panoid": "K7YIXOtN5YIvFFIkIjqBAg",
+    "lateral_labels": [
+      "建筑",
+      "台阶与楼梯"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/001-original.webp",
+    "overlay": "evidence/001-overlay.webp",
+    "road_overlay": "evidence/001-road_overlay.webp"
+  },
+  {
+    "pattern_id": "599e0787e419",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "jOqFkqCh4ywJv9ebHUK_fQ",
+    "lateral_labels": [
+      "人行道",
+      "路灯"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/002-original.webp",
+    "overlay": "evidence/002-overlay.webp",
+    "road_overlay": "evidence/002-road_overlay.webp"
+  },
+  {
+    "pattern_id": "89e692e66741",
+    "city": "US/NewYork",
+    "panoid": "dmSspz2eB6S4v3IyffzWRQ",
+    "lateral_labels": [
+      "围栏",
+      "台阶与楼梯"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/003-original.webp",
+    "overlay": "evidence/003-overlay.webp",
+    "road_overlay": "evidence/003-road_overlay.webp"
+  },
+  {
+    "pattern_id": "89e692e66741",
+    "city": "Australia/Sydney",
+    "panoid": "VpWyVBygveJghk4mwRc6Mw",
+    "lateral_labels": [
+      "围栏",
+      "台阶与楼梯"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/004-original.webp",
+    "overlay": "evidence/004-overlay.webp",
+    "road_overlay": "evidence/004-road_overlay.webp"
+  },
+  {
+    "pattern_id": "fc75a92f5583",
+    "city": "Australia/Melbourne",
+    "panoid": "NqGvxF-RRGUydacBETBrsg",
+    "lateral_labels": [
+      "围栏",
+      "建筑"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/005-original.webp",
+    "overlay": "evidence/005-overlay.webp",
+    "road_overlay": "evidence/005-road_overlay.webp"
+  },
+  {
+    "pattern_id": "542599b037d7",
+    "city": "US/Chicago",
+    "panoid": "R0awzYFnfnHRB70GISnWbw",
+    "lateral_labels": [
+      "护栏",
+      "输电塔"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/006-original.webp",
+    "overlay": "evidence/006-overlay.webp",
+    "road_overlay": "evidence/006-road_overlay.webp"
+  },
+  {
+    "pattern_id": "08328a8e4296",
+    "city": "Argentina/BuenosAires",
+    "panoid": "-SLCp8YdQthTGUN1kyDdHQ",
+    "lateral_labels": [
+      "围栏",
+      "人行道"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/007-original.webp",
+    "overlay": "evidence/007-overlay.webp",
+    "road_overlay": "evidence/007-road_overlay.webp"
+  },
+  {
+    "pattern_id": "fffea6946bc6",
+    "city": "Sweden/Stockholm",
+    "panoid": "X9Qcs3p_dMW_PuZhFnWOpQ",
+    "lateral_labels": [
+      "人行道",
+      "针叶树"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/008-original.webp",
+    "overlay": "evidence/008-overlay.webp",
+    "road_overlay": "evidence/008-road_overlay.webp"
+  },
+  {
+    "pattern_id": "fffea6946bc6",
+    "city": "Australia/Sydney",
+    "panoid": "oZGj2MY1vQA_xiEHMf24kw",
+    "lateral_labels": [
+      "人行道",
+      "针叶树"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/009-original.webp",
+    "overlay": "evidence/009-overlay.webp",
+    "road_overlay": "evidence/009-road_overlay.webp"
+  },
+  {
+    "pattern_id": "f502fbbf2b87",
+    "city": "Australia/Perth",
+    "panoid": "prrGhht7SYQ7y-LHxbJ9EA",
+    "lateral_labels": [
+      "围栏",
+      "人行道"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/010-original.webp",
+    "overlay": "evidence/010-overlay.webp",
+    "road_overlay": "evidence/010-road_overlay.webp"
+  },
+  {
+    "pattern_id": "7cad473cdc87",
+    "city": "Brazil/Brasília",
+    "panoid": "mToBeufBsOXcShQvh17GWQ",
+    "lateral_labels": [
+      "草地",
+      "人行道"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/011-original.webp",
+    "overlay": "evidence/011-overlay.webp",
+    "road_overlay": "evidence/011-road_overlay.webp"
+  },
+  {
+    "pattern_id": "6c7e01de9fd1",
+    "city": "Nigeria/Lagos",
+    "panoid": "xWAGc9jZ43JJDL8xlFGN8A",
+    "lateral_labels": [
+      "灌木",
+      "人行道"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/012-original.webp",
+    "overlay": "evidence/012-overlay.webp",
+    "road_overlay": "evidence/012-road_overlay.webp"
+  },
+  {
+    "pattern_id": "ba9eb5c0a558",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "tVLXQX-aXVhD9OehAxUn8w",
+    "lateral_labels": [
+      "围栏",
+      "台阶与楼梯"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/013-original.webp",
+    "overlay": "evidence/013-overlay.webp",
+    "road_overlay": "evidence/013-road_overlay.webp"
+  },
+  {
+    "pattern_id": "4dd4582962cc",
+    "city": "Australia/Sydney",
+    "panoid": "mUfRi8ZVW67lNdNtDdLpbQ",
+    "lateral_labels": [
+      "人行道",
+      "针叶树"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/014-original.webp",
+    "overlay": "evidence/014-overlay.webp",
+    "road_overlay": "evidence/014-road_overlay.webp"
+  },
+  {
+    "pattern_id": "4dd4582962cc",
+    "city": "Australia/Perth",
+    "panoid": "DrB20OdaiEjxe_eoDRI8HQ",
+    "lateral_labels": [
+      "人行道",
+      "针叶树"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/015-original.webp",
+    "overlay": "evidence/015-overlay.webp",
+    "road_overlay": "evidence/015-road_overlay.webp"
+  },
+  {
+    "pattern_id": "472a8780fbab",
+    "city": "Indonesia/Yogyakarta",
+    "panoid": "3zLQNpI8kPdIXJRQQUQUww",
+    "lateral_labels": [
+      "瓦顶建筑",
+      "人行道"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/016-original.webp",
+    "overlay": "evidence/016-overlay.webp",
+    "road_overlay": "evidence/016-road_overlay.webp"
+  },
+  {
+    "pattern_id": "472a8780fbab",
+    "city": "Mexico/Monterrey",
+    "panoid": "ZEdkBLi9JnUIO9tcYmvwEw",
+    "lateral_labels": [
+      "瓦顶建筑",
+      "人行道"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/017-original.webp",
+    "overlay": "evidence/017-overlay.webp",
+    "road_overlay": "evidence/017-road_overlay.webp"
+  },
+  {
+    "pattern_id": "375e2fcd328f",
+    "city": "Brazil/Brasília",
+    "panoid": "i4bvAJyIG97OHmHvb5MXqw",
+    "lateral_labels": [
+      "围栏",
+      "草地"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/018-original.webp",
+    "overlay": "evidence/018-overlay.webp",
+    "road_overlay": "evidence/018-road_overlay.webp"
+  },
+  {
+    "pattern_id": "bb205062d693",
+    "city": "Indonesia/Yogyakarta",
+    "panoid": "QbgaQEZ3i1qqlrLLDvmDyQ",
+    "lateral_labels": [
+      "围墙",
+      "针叶树"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/019-original.webp",
+    "overlay": "evidence/019-overlay.webp",
+    "road_overlay": "evidence/019-road_overlay.webp"
+  },
+  {
+    "pattern_id": "524cfdae84b4",
+    "city": "US/NewYork",
+    "panoid": "XsfAt8baiDLSkZMWjHcMbA",
+    "lateral_labels": [
+      "草地",
+      "路灯"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/020-original.webp",
+    "overlay": "evidence/020-overlay.webp",
+    "road_overlay": "evidence/020-road_overlay.webp"
+  },
+  {
+    "pattern_id": "524cfdae84b4",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "bPLyTAuXiNt4YH-Rw1nRKw",
+    "lateral_labels": [
+      "草地",
+      "路灯"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/021-original.webp",
+    "overlay": "evidence/021-overlay.webp",
+    "road_overlay": "evidence/021-road_overlay.webp"
+  },
+  {
+    "pattern_id": "062d5ddc008e",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "ClsnjvsOCZv5r_gR6AobCg",
+    "lateral_labels": [
+      "护栏",
+      "路缘石"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/022-original.webp",
+    "overlay": "evidence/022-overlay.webp",
+    "road_overlay": "evidence/022-road_overlay.webp"
+  },
+  {
+    "pattern_id": "097d289e4aa2",
+    "city": "Italy/Naples",
+    "panoid": "64Orvgv4Qjk1q9h_5HSxnw",
+    "lateral_labels": [
+      "围墙",
+      "路灯"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/023-original.webp",
+    "overlay": "evidence/023-overlay.webp",
+    "road_overlay": "evidence/023-road_overlay.webp"
+  },
+  {
+    "pattern_id": "aac8a1ac5f00",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "pC2CWEqNC7r7SDNY9sC5LA",
+    "lateral_labels": [
+      "围墙",
+      "路缘石"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/024-original.webp",
+    "overlay": "evidence/024-overlay.webp",
+    "road_overlay": "evidence/024-road_overlay.webp"
+  },
+  {
+    "pattern_id": "255a4a2410d4",
+    "city": "Austria/Vienna",
+    "panoid": "famMcHo6adLL9KVOAe5_Tg",
+    "lateral_labels": [
+      "围栏",
+      "路灯"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/025-original.webp",
+    "overlay": "evidence/025-overlay.webp",
+    "road_overlay": "evidence/025-road_overlay.webp"
+  },
+  {
+    "pattern_id": "255a4a2410d4",
+    "city": "Portugal/Lisbon",
+    "panoid": "JQjMODzeMd_YlOxx0rIqEg",
+    "lateral_labels": [
+      "围栏",
+      "路灯"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/026-original.webp",
+    "overlay": "evidence/026-overlay.webp",
+    "road_overlay": "evidence/026-road_overlay.webp"
+  },
+  {
+    "pattern_id": "ceba1fd4a5ac",
+    "city": "US/NewYork",
+    "panoid": "M2hBFGNsj7Upv4IrF-xQcg",
+    "lateral_labels": [
+      "围栏",
+      "针叶树"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/027-original.webp",
+    "overlay": "evidence/027-overlay.webp",
+    "road_overlay": "evidence/027-road_overlay.webp"
+  },
+  {
+    "pattern_id": "68a9cbc3d341",
+    "city": "SouthAfrica/Johannesburg",
+    "panoid": "EHvFdGMduGP6juJnnQiRNw",
+    "lateral_labels": [
+      "围墙",
+      "棕榈类乔木"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/028-original.webp",
+    "overlay": "evidence/028-overlay.webp",
+    "road_overlay": "evidence/028-road_overlay.webp"
+  },
+  {
+    "pattern_id": "35d9c12eec0f",
+    "city": "Mexico/Monterrey",
+    "panoid": "zz6Bx06yvHnvfGAwW2GWHw",
+    "lateral_labels": [
+      "围栏",
+      "灌木"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/029-original.webp",
+    "overlay": "evidence/029-overlay.webp",
+    "road_overlay": "evidence/029-road_overlay.webp"
+  },
+  {
+    "pattern_id": "8c83e9bea8dc",
+    "city": "Indonesia/Yogyakarta",
+    "panoid": "UE5SzQOKFV7HapCOEPSUew",
+    "lateral_labels": [
+      "围栏",
+      "瓦顶建筑"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/030-original.webp",
+    "overlay": "evidence/030-overlay.webp",
+    "road_overlay": "evidence/030-road_overlay.webp"
+  },
+  {
+    "pattern_id": "8c83e9bea8dc",
+    "city": "Sweden/Stockholm",
+    "panoid": "TsWSWFE9-BJWdnAL9i2fkQ",
+    "lateral_labels": [
+      "围栏",
+      "瓦顶建筑"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/031-original.webp",
+    "overlay": "evidence/031-overlay.webp",
+    "road_overlay": "evidence/031-road_overlay.webp"
+  },
+  {
+    "pattern_id": "8806d1ac1bf8",
+    "city": "Argentina/BuenosAires",
+    "panoid": "bZYUjxsJh19XK5qtWCEvnw",
+    "lateral_labels": [
+      "工业建筑",
+      "人行道"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/032-original.webp",
+    "overlay": "evidence/032-overlay.webp",
+    "road_overlay": "evidence/032-road_overlay.webp"
+  },
+  {
+    "pattern_id": "8806d1ac1bf8",
+    "city": "Spain/Barcelona",
+    "panoid": "uHIM_Rpy-BH09cKyZeDEWg",
+    "lateral_labels": [
+      "工业建筑",
+      "人行道"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/033-original.webp",
+    "overlay": "evidence/033-overlay.webp",
+    "road_overlay": "evidence/033-road_overlay.webp"
+  },
+  {
+    "pattern_id": "8e62b6068168",
+    "city": "Russia/Moscow",
+    "panoid": "D6FDoveskd94pq84I6Px_g",
+    "lateral_labels": [
+      "护栏",
+      "路灯"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/034-original.webp",
+    "overlay": "evidence/034-overlay.webp",
+    "road_overlay": "evidence/034-road_overlay.webp"
+  },
+  {
+    "pattern_id": "8e62b6068168",
+    "city": "Italy/Naples",
+    "panoid": "UF15QBpgwMHOOeP00xwm4Q",
+    "lateral_labels": [
+      "护栏",
+      "路灯"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/035-original.webp",
+    "overlay": "evidence/035-overlay.webp",
+    "road_overlay": "evidence/035-road_overlay.webp"
+  },
+  {
+    "pattern_id": "6081a0b30d18",
+    "city": "Austria/Vienna",
+    "panoid": "ENS5QqDCfI4Lh2X7hPzoWg",
+    "lateral_labels": [
+      "木栅栏",
+      "建筑"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/036-original.webp",
+    "overlay": "evidence/036-overlay.webp",
+    "road_overlay": "evidence/036-road_overlay.webp"
+  },
+  {
+    "pattern_id": "4041f5dd6bcd",
+    "city": "SouthAfrica/CapeTown",
+    "panoid": "OGDjoRHc8xLE7Rlh--_RwA",
+    "lateral_labels": [
+      "围墙",
+      "工业建筑"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/037-original.webp",
+    "overlay": "evidence/037-overlay.webp",
+    "road_overlay": "evidence/037-road_overlay.webp"
+  },
+  {
+    "pattern_id": "bba7cd759aff",
+    "city": "Bangladesh/Dhaka",
+    "panoid": "40a7zTf-nl3pentCbqGLUg",
+    "lateral_labels": [
+      "围墙",
+      "草地"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/038-original.webp",
+    "overlay": "evidence/038-overlay.webp",
+    "road_overlay": "evidence/038-road_overlay.webp"
+  },
+  {
+    "pattern_id": "9c4b94619e5a",
+    "city": "Austria/Vienna",
+    "panoid": "BkyVZ5pgfUZsBfRX2zU10Q",
+    "lateral_labels": [
+      "围栏",
+      "广告牌"
+    ],
+    "tentative_side": "opposite_sides",
+    "final_side": "undetermined",
+    "original": "evidence/039-original.webp",
+    "overlay": "evidence/039-overlay.webp",
+    "road_overlay": "evidence/039-road_overlay.webp"
+  },
+  {
+    "pattern_id": "79c897493483",
+    "city": "Australia/Sydney",
+    "panoid": "fBr_LS5YZdPlj-YI1a0aBA",
+    "lateral_labels": [
+      "护栏",
+      "水体"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/040-original.webp",
+    "overlay": "evidence/040-overlay.webp",
+    "road_overlay": "evidence/040-road_overlay.webp"
+  },
+  {
+    "pattern_id": "54a950937279",
+    "city": "US/NewYork",
+    "panoid": "bUYdZJftKBg--9fryKgrKw",
+    "lateral_labels": [
+      "工业建筑",
+      "广告牌"
+    ],
+    "tentative_side": "same_side",
+    "final_side": "undetermined",
+    "original": "evidence/041-original.webp",
+    "overlay": "evidence/041-overlay.webp",
+    "road_overlay": "evidence/041-road_overlay.webp"
+  },
+  {
+    "pattern_id": "b819e8cb5e58",
+    "city": "SouthAfrica/CapeTown",
+    "panoid": "DUU403Aycpo67t99fIpjrw",
+    "lateral_labels": [
+      "围墙",
+      "建筑"
+    ],
+    "tentative_side": "undetermined",
+    "final_side": "undetermined",
+    "original": "evidence/042-original.webp",
+    "overlay": "evidence/042-overlay.webp",
+    "road_overlay": "evidence/042-road_overlay.webp"
+  },
+  {
+    "pattern_id": "b819e8cb5e58",
+    "city": "Brazil/RiodeJaneiro",
+    "panoid": "_xpoWBx_SP_EaxGpnd3IQA",
+    "lateral_labels": [
+      "围墙",
+      "建筑"
+    ],
+    "tentative_side": "undetermined",
+    "final_side": "undetermined",
+    "original": "evidence/043-original.webp",
+    "overlay": "evidence/043-overlay.webp",
+    "road_overlay": "evidence/043-road_overlay.webp"
+  },
+  {
+    "pattern_id": "b819e8cb5e58",
+    "city": "Mexico/Monterrey",
+    "panoid": "iF2rPwuYGi5VdXVzmxMIDg",
+    "lateral_labels": [
+      "围墙",
+      "建筑"
+    ],
+    "tentative_side": "undetermined",
+    "final_side": "undetermined",
+    "original": "evidence/044-original.webp",
+    "overlay": "evidence/044-overlay.webp",
+    "road_overlay": "evidence/044-road_overlay.webp"
+  },
+  {
+    "pattern_id": "b819e8cb5e58",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "X9QizTDvTYnLYxDyeWW3Hg",
+    "lateral_labels": [
+      "围墙",
+      "建筑"
+    ],
+    "tentative_side": "undetermined",
+    "final_side": "undetermined",
+    "original": "evidence/045-original.webp",
+    "overlay": "evidence/045-overlay.webp",
+    "road_overlay": "evidence/045-road_overlay.webp"
+  },
+  {
+    "pattern_id": "b819e8cb5e58",
+    "city": "Portugal/Lisbon",
+    "panoid": "jYWY_o_ySEG5dgVxEzhwaQ",
+    "lateral_labels": [
+      "围墙",
+      "建筑"
+    ],
+    "tentative_side": "undetermined",
+    "final_side": "undetermined",
+    "original": "evidence/046-original.webp",
+    "overlay": "evidence/046-overlay.webp",
+    "road_overlay": "evidence/046-road_overlay.webp"
+  },
+  {
+    "pattern_id": "61b4ea924225",
+    "city": "Korea/Seoul",
+    "panoid": "zJbaOJ_NUn59lahSeibpOQ",
+    "lateral_labels": [
+      "围栏",
+      "建筑"
+    ],
+    "tentative_side": "undetermined",
+    "final_side": "undetermined",
+    "original": "evidence/047-original.webp",
+    "overlay": "evidence/047-overlay.webp",
+    "road_overlay": "evidence/047-road_overlay.webp"
+  },
+  {
+    "pattern_id": "61b4ea924225",
+    "city": "Indonesia/Yogyakarta",
+    "panoid": "La1cqSnD2gsGjCg8cjr-9g",
+    "lateral_labels": [
+      "围栏",
+      "建筑"
+    ],
+    "tentative_side": "undetermined",
+    "final_side": "undetermined",
+    "original": "evidence/048-original.webp",
+    "overlay": "evidence/048-overlay.webp",
+    "road_overlay": "evidence/048-road_overlay.webp"
+  },
+  {
+    "pattern_id": "61b4ea924225",
+    "city": "Brazil/SaoPaulo",
+    "panoid": "GCm1jesXdSYfQta-BroJYA",
+    "lateral_labels": [
+      "围栏",
+      "建筑"
+    ],
+    "tentative_side": "undetermined",
+    "final_side": "undetermined",
+    "original": "evidence/049-original.webp",
+    "overlay": "evidence/049-overlay.webp",
+    "road_overlay": "evidence/049-road_overlay.webp"
+  }
+]

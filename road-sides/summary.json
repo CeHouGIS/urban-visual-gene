@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "patterns_total": 185,
+  "patterns_side_eligible": 118,
+  "patterns_not_side_eligible": 67,
+  "per_pattern_requested": 6,
+  "sampled_pattern_instances": 708,
+  "unique_panoramas": 707,
+  "sampled_cities": 30,
+  "tentative": {
+    "same_side": 21,
+    "opposite_sides": 21,
+    "undetermined": 666
+  },
+  "final": {
+    "same_side": 0,
+    "opposite_sides": 0,
+    "undetermined": 708
+  },
+  "human_validated": false,
+  "calibration_verified": false,
+  "corpus_roadside_prevalence_estimable": false,
+  "interpretation": "Stratified retrieval audit; hypotheses cannot be extrapolated to 681,645 panoramas.",
+  "run_identity": "6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617",
+  "protocol_identity": "770bb4f357ee6f937688188ad0b076141ab10442cbb7a1ecbb251a0529bc40ab"
+}

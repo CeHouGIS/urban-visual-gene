@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-10-18T17:17:09.255199+00:00",
+  "updated_utc": "2026-10-19T00:34:20.628245+00:00",
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "headline": "核查30城组合的语义与道路布局",
+  "headline": "景观组合道路侧别抽样审阅",
   "research": {
     "goal": "从街景中识别可解释的视觉单元，发现反复出现、具有稳定结构的景观组合。",
-    "focus": "核查30城组合的语义与道路布局",
+    "focus": "景观组合道路侧别抽样审阅",
     "next_step": "核查新组合四方向实例，人工校准细标签和最低响应；完成新空间验证，再更新论文结论。道路同侧／两侧需确认mask与标定。",
     "milestones": [
       {
@@ -67,12 +67,12 @@
       {
         "id": "road_sides",
         "label": "道路同侧与两侧的组合",
-        "review_status": "pending",
+        "review_status": "partial",
         "question": "景观要素位于道路同侧，还是分布在道路两侧？",
         "criterion": "在四方向全景中验证道路轴线和要素mask，将同侧、两侧及无法判定分开；按空间格网和城市验证组合重复性，并展示原图证据。",
-        "remaining": "已补算84例独立道路分割和冻结SAE激活；标定未证实，最终侧别仍为无法确认，等待人工审阅。",
+        "remaining": "当前185组中118组适合侧别审阅；708个抽样实例有同侧几何假设21例、两侧21例、无法判定666例。全部最终侧别仍未确认；需核查朝向、道路分割和要素语义，之后才能估计全样本发生率。",
         "status": "partial",
-        "evidence": "独立道路分割与冻结SAE补算四方向patch遮罩；计算候选不等于确认道路侧别，标定和人工审阅待完成。"
+        "evidence": "118组可审阅，708个抽样实例：同侧假设21、两侧假设21、无法判定666；最终均未确认，不能外推全样本。"
       },
       {
         "id": "prototype_capacity",
@@ -258,6 +258,14 @@
       "status": "complete",
       "detail": "14组、42个跨城实例；mask为归因图，人工核查待完成。",
       "link": "city-patterns/#compositions",
+      "semantic_review": "pending"
+    },
+    {
+      "id": "composition_roadside_audit",
+      "label": "景观组合道路侧别抽样审阅",
+      "status": "partial",
+      "detail": "118组可审阅，708个抽样实例：同侧假设21、两侧假设21、无法判定666；最终均未确认，不能外推全样本。",
+      "link": "road-sides/",
       "semantic_review": "pending"
     }
   ],

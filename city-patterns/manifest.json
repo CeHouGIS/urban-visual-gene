@@ -30,5 +30,11 @@
   "method": "fine_grained_relative_response_compositions",
   "previous_excess_candidates": 7,
   "examples": 42,
-  "scientific_review": "pending"
+  "scientific_review": "pending",
+  "roadside_audit": {
+    "page": "road-sides/",
+    "patterns_side_eligible": 118,
+    "sampled_pattern_instances": 708,
+    "final_validation": "pending"
+  }
 }
