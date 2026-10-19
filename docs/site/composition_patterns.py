@@ -133,6 +133,15 @@ def install(site, page, snapshot, followup=FOLLOWUP):
     for name in ('composition-atlas.css', 'composition-atlas.js'):
         shutil.copy2(TEMPLATES / name, target / name)
     s = summary
+    roadside = None
+    if (followup / 'stages/composition_roadside_audit/complete.json').exists():
+        if __package__:
+            from .composition_roadside import install as install_roadside
+        else:
+            from composition_roadside import install as install_roadside
+        roadside = install_roadside(site, page, snapshot, followup)
+    roadside_link = ('<p><a href="../road-sides/">查看当前组合的道路同侧／两侧抽样审阅 →</a></p>'
+                     if roadside else '')
     content = f'''<link rel="stylesheet" href="composition-atlas.css">
 <div class="eyebrow">30-city spatial sample · exploratory composition atlas</div>
 <h1>城市景观组成</h1><p class="lead">从细分要素中挖掘反复出现的 2—4 类组合，查看它们在 30 城的响应分布。</p>
@@ -149,6 +158,7 @@ def install(site, page, snapshot, followup=FOLLOWUP):
 <p class="note">图像抽查已发现部分“水体”响应落在天空、“桥梁”响应落在标志支架等语义疑点。
 相关组合和实例已单独标记，请先核查高亮，再解释其城市分布。
 <a href="composition-evidence-review.json">查看抽查记录</a>（局部抽查，不估计整体准确率）。</p>
+{roadside_link}
 <section class="section"><h2>算法怎样调整</h2>
 <p>原来的 7 组来自“显著超额共现”筛选。新图谱改为先描述反复出现的构成：保留细标签与树种、设施类型，
 将墙、窗、屋顶等同对象部件归并，每个对象父类每张全景只贡献一个响应单元。</p>
@@ -207,6 +217,11 @@ def install(site, page, snapshot, followup=FOLLOWUP):
         home.write_text(text)
     manifest = {**summary, 'page': 'city-patterns/', 'method': 'fine_grained_relative_response_compositions',
                 'previous_excess_candidates': 7, 'examples': len(examples), 'scientific_review': 'pending'}
+    if roadside:
+        manifest['roadside_audit'] = {'page': roadside['page'],
+            'patterns_side_eligible': roadside['summary']['patterns_side_eligible'],
+            'sampled_pattern_instances': roadside['summary']['sampled_pattern_instances'],
+            'final_validation': 'pending'}
     (target / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
     root_manifest = site / 'manifest.json'
     if root_manifest.exists():

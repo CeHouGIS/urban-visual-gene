@@ -100,6 +100,38 @@ thresholds against manually labeled positives and negatives; evaluate on new
 spatial blocks or external data; then establish object counts, layout and road
 sides before replacing confirmatory thesis claims. See the website progress panel.
 
+## Roadside composition audit
+
+`code/composition_roadside_audit.py` samples up to six distinct-city panoramas
+for each current composition with at least two side-eligible units. Road surfaces,
+crosswalks, bridges/rail/tunnels and crossing power lines are not treated as
+objects confined to a single side. Frozen DINOv3/SAE responses and an independent
+Cityscapes road segmenter are recomputed on GPU; each panorama is processed only
+once. A provisional same-side or opposite-sides label requires stable road-axis
+and unit-side decisions over 75, 90 and 105 degree FOV assumptions. It cannot
+establish object instances or citywide roadside prevalence. All final labels
+remain undetermined pending acquisition calibration and semantic mask review.
+
+```bash
+python -u -m experiments.vitl30_city_patterns.code.composition_roadside_audit \
+  --device cuda:0 --per-pattern 6
+```
+
+The stage writes a source identity, per-pattern audit CSV, summary, selected
+four-view images and activation/road segmentation masks. The website publishes
+the statistics and bounded evidence at `road-sides/`, leaving the whole sampled
+image corpus on the analysis server.
+
+Completed audit: 118 of 185 compositions have at least two side-eligible units;
+67 are not applicable. Six distinct-city retrievals per eligible composition
+produce 708 pattern instances (707 distinct panoramas across 30 cities). The
+automatic geometry yields 21 same-side hypotheses, 21 opposite-sides hypotheses
+and 666 undetermined cases. At the composition level, 17 have at least one
+same-side hypothesis, 18 have at least one opposite-sides hypothesis, two have
+both, and 85 have no side hypothesis in the six-example audit. All 708 final
+labels remain undetermined until calibration and semantic review. Do not divide
+21 by 708 and present it as a citywide roadside rate.
+
 ## Select panoramas
 
 ```bash

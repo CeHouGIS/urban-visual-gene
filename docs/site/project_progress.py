@@ -403,6 +403,20 @@ def city_pattern_progress(followup):
             rows.append({'id': 'city_composition_evidence', 'label': '新组合四方向激活证据',
                          'status': 'complete', 'detail': f'{evidence["patterns"]}组、{evidence["examples"]}个跨城实例；mask为归因图，人工核查待完成。',
                          'link': 'city-patterns/#compositions', 'semantic_review': 'pending'})
+        roadside = read(followup / 'stages/composition_roadside_audit/summary.json')
+        roadside_complete = read(followup / 'stages/composition_roadside_audit/complete.json')
+        if roadside and roadside_complete:
+            if roadside['run_identity'] != queue['run_identity'] or roadside_complete['identity'] != roadside['protocol_identity']:
+                raise ValueError('Roadside audit identity mismatch')
+            counts = roadside['tentative']
+            rows.append({'id': 'composition_roadside_audit', 'label': '景观组合道路侧别抽样审阅',
+                'status': 'partial',
+                'detail': (f'{roadside["patterns_side_eligible"]}组可审阅，'
+                    f'{roadside["sampled_pattern_instances"]}个抽样实例：'
+                    f'同侧假设{counts["same_side"]}、两侧假设{counts["opposite_sides"]}、'
+                    f'无法判定{counts["undetermined"]}；最终均未确认，不能外推全样本。'),
+                'link': 'road-sides/', 'semantic_review': 'pending'})
+            milestones['road_sides'] = {'status': 'partial', 'evidence': rows[-1]['detail']}
         for key in ('patterns', 'local_compositions', 'geography'):
             milestones[key] = {'status': 'partial', 'evidence': detail}
         milestones['figure_refresh'] = {'status': 'partial', 'evidence': '原7组统计结果的论文图表及编译已完成；新细分组成图谱已发布，人工校准与确认后再替换论文结论。'}
