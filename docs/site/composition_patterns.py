@@ -42,6 +42,46 @@ def checked_compositions(followup):
     return folder, summary
 
 
+def checked_roadside_rows(followup, patterns):
+    if __package__:
+        from .composition_roadside import checked_audit
+    else:
+        from composition_roadside import checked_audit
+    folder, summary = checked_audit(followup)
+    rows = csv_rows(folder / 'pattern_side_audit.csv')
+    pattern_ids = {p['pattern_id'] for p in patterns}
+    ids = [r['pattern_id'] for r in rows]
+    if len(ids) != len(pattern_ids) or set(ids) != pattern_ids:
+        raise ValueError('Roadside audit does not match the current composition catalogue')
+    counts = {'same_side': 0, 'opposite_sides': 0, 'undetermined': 0}
+    eligible = 0
+    result = {}
+    for row in rows:
+        sampled = int(row['sampled_panoramas'])
+        tentative = {key: int(row[field]) for key, field in (
+            ('same_side', 'same_side_hypotheses'),
+            ('opposite_sides', 'opposite_sides_hypotheses'),
+            ('undetermined', 'undetermined_hypotheses'))}
+        is_eligible = row['eligible_for_side_audit'] == 'True'
+        if row['eligible_for_side_audit'] not in ('True', 'False'):
+            raise ValueError('Invalid roadside eligibility')
+        if sampled != sum(tentative.values()) or (not is_eligible and sampled):
+            raise ValueError('Roadside sample counts disagree')
+        if (int(row['final_same_side']) or int(row['final_opposite_sides'])
+                or int(row['final_undetermined']) != sampled):
+            raise ValueError('Roadside audit contains unverified final labels')
+        eligible += is_eligible
+        for key in counts:
+            counts[key] += tentative[key]
+        result[row['pattern_id']] = {'eligible': is_eligible, 'sampled': sampled,
+                                     'tentative': tentative}
+    if (eligible != summary['patterns_side_eligible']
+            or counts != summary['tentative']
+            or sum(r['sampled'] for r in result.values()) != summary['sampled_pattern_instances']):
+        raise ValueError('Roadside audit totals disagree with its summary')
+    return summary, result
+
+
 def install(site, page, snapshot, followup=FOLLOWUP):
     folder, summary = checked_compositions(followup)
     target = site / 'city-patterns'
@@ -70,10 +110,14 @@ def install(site, page, snapshot, followup=FOLLOWUP):
     for pattern in patterns:
         pattern['rates'] = [rates_by_pattern[pattern['pattern_id']][c] for c in cities]
         pattern['family_ids'] = [units[i]['family'] for i in pattern['units']]
+    roadside_summary = None
+    if (followup / 'stages/composition_roadside_audit/complete.json').exists():
+        roadside_summary, roadside_rows = checked_roadside_rows(followup, patterns)
+        for pattern in patterns:
+            pattern['roadside_audit'] = roadside_rows[pattern['pattern_id']]
     payload = {'summary': summary, 'patterns': patterns, 'cities': cities,
                'coverage': csv_rows(folder / 'coverage_by_city.csv'),
                'sensitivity': read(folder / 'sensitivity.json')}
-    (data / 'compositions.json').write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')))
     cells = csv_rows(folder / 'observed_cells.csv')
     if len(cells) != summary['cells'] or any(not 1 <= int(r['sampled_panoramas']) <= 10 for r in cells):
         raise ValueError('Invalid observed cell sample counts')
@@ -134,14 +178,22 @@ def install(site, page, snapshot, followup=FOLLOWUP):
         shutil.copy2(TEMPLATES / name, target / name)
     s = summary
     roadside = None
-    if (followup / 'stages/composition_roadside_audit/complete.json').exists():
+    if roadside_summary:
         if __package__:
             from .composition_roadside import install as install_roadside
         else:
             from composition_roadside import install as install_roadside
         roadside = install_roadside(site, page, snapshot, followup)
-    roadside_link = ('<p><a href="../road-sides/">查看当前组合的道路同侧／两侧抽样审阅 →</a></p>'
-                     if roadside else '')
+    roadside_section = (f'''<section class="section" id="roadside-summary"><h2>道路同侧与两侧：抽样核查</h2>
+<div class="stats"><div class="stat"><b>{roadside_summary['patterns_side_eligible']}</b><span>可定义侧别的组合／{roadside_summary['patterns_total']} 组</span></div>
+<div class="stat"><b>{roadside_summary['tentative']['same_side']}</b><span>同侧几何假设 · 抽样实例</span></div>
+<div class="stat"><b>{roadside_summary['tentative']['opposite_sides']}</b><span>两侧几何假设 · 抽样实例</span></div>
+<div class="stat"><b>{roadside_summary['tentative']['undetermined']}</b><span>抽样实例无法判定</span></div></div>
+<p>从 {roadside_summary['patterns_side_eligible']} 组可审阅组合各抽取最多 {roadside_summary['per_pattern_requested']} 个不同城市的实例，共 {roadside_summary['sampled_pattern_instances']} 个组合实例、
+{roadside_summary['unique_panoramas']} 个不同全景；另有 {roadside_summary['patterns_not_side_eligible']} 组不适用。
+以下是假设性几何判断，全部实例均未完成人工确认，不能外推为 30 城侧别比例。</p>
+<p><a href="../road-sides/">查看四方向原图、道路分割与逐组合审阅 →</a></p></section>'''
+                        if roadside_summary else '')
     content = f'''<link rel="stylesheet" href="composition-atlas.css">
 <div class="eyebrow">30-city spatial sample · exploratory composition atlas</div>
 <h1>城市景观组成</h1><p class="lead">从细分要素中挖掘反复出现的 2—4 类组合，查看它们在 30 城的响应分布。</p>
@@ -158,7 +210,7 @@ def install(site, page, snapshot, followup=FOLLOWUP):
 <p class="note">图像抽查已发现部分“水体”响应落在天空、“桥梁”响应落在标志支架等语义疑点。
 相关组合和实例已单独标记，请先核查高亮，再解释其城市分布。
 <a href="composition-evidence-review.json">查看抽查记录</a>（局部抽查，不估计整体准确率）。</p>
-{roadside_link}
+{roadside_section}
 <section class="section"><h2>算法怎样调整</h2>
 <p>原来的 7 组来自“显著超额共现”筛选。新图谱改为先描述反复出现的构成：保留细标签与树种、设施类型，
 将墙、窗、屋顶等同对象部件归并，每个对象父类每张全景只贡献一个响应单元。</p>
@@ -177,7 +229,7 @@ def install(site, page, snapshot, followup=FOLLOWUP):
 <p id="pattern-count" aria-live="polite">正在读取组合…</p><div id="pattern-cards" class="pattern-cards"></div>
 <div class="atlas-controls"><button id="prev-patterns">上一页</button><span id="pattern-page"></span><button id="next-patterns">下一页</button></div></section>
 <section class="section" id="distribution"><h2 id="selected-title">城市分布</h2>
-<p id="selected-detail"></p><div id="city-rates" class="city-rates"></div>
+<p id="selected-detail"></p><p id="selected-roadside" class="note"></p><div id="city-rates" class="city-rates"></div>
 <h3>全部 30 城的观测格网</h3><p>每个小格的颜色表示格内匹配全景比例；灰色为有样本但未匹配，空白为未采样。
 统一色标：0%—100%。鼠标停在格网上可查看实际匹配数与样本数；坐标为当地 UTM 公里。</p>
 <div class="atlas-legend"><span>0%</span><i></i><span>100%</span></div><p id="map-status" aria-live="polite"></p>

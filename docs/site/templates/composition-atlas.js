@@ -77,6 +77,10 @@
       byId('selected-title').textContent=p.label;
       byId('selected-detail').textContent=`${p.order} 类组合 · ${p.positive_panoramas.toLocaleString()} 个全景匹配 · ${p.positive_cells.toLocaleString()} 个格网 / ${p.positive_cities} 城有匹配。空间块边际零假设 lift ${p.block_lift.toFixed(2)}（描述值，未作本轮显著性确认）。`;
       if(p.audit_flags.length)byId('selected-detail').textContent+=' 抽查存在语义疑点：'+[...new Set(p.audit_flags)].join(' ');
+      const roadside=p.roadside_audit;
+      byId('selected-roadside').textContent=!roadside?'道路侧别审阅数据尚未发布。':
+        roadside.eligible?`道路侧别抽样：${roadside.sampled} 个组合实例中，同侧几何假设 ${roadside.tentative.same_side}、两侧几何假设 ${roadside.tentative.opposite_sides}、无法判定 ${roadside.tentative.undetermined}。全部未经人工确认，不能代表该组合在 30 城的侧别比例。`:
+        '道路侧别抽样不适用：该组合不足两个可定义道路侧别的要素。';
       byId('city-rates').replaceChildren();
       for(let i=0;i<cities.length;i++){
         const line=document.createElement('div');line.className='city-rate';

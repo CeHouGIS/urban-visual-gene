@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from docs.site.composition_patterns import checked_compositions
+from docs.site.composition_patterns import checked_compositions, checked_roadside_rows
 from docs.site.project_progress import city_pattern_progress
 
 
@@ -44,3 +44,29 @@ def test_revision_compute_completion_leaves_semantics_geometry_and_writing_pendi
     assert value['milestones']['road_sides']['status'] == 'pending'
     assert value['milestones']['figure_refresh']['status'] == 'partial'
     assert '人工校准' in value['next_step']
+
+
+def test_roadside_catalogue_counts_are_complete_and_tentative(tmp_path, monkeypatch):
+    from docs.site import composition_roadside
+
+    folder = tmp_path / 'stages/composition_roadside_audit'
+    folder.mkdir(parents=True)
+    summary = {'patterns_side_eligible': 1, 'sampled_pattern_instances': 2,
+               'tentative': {'same_side': 1, 'opposite_sides': 0, 'undetermined': 1}}
+    monkeypatch.setattr(composition_roadside, 'checked_audit', lambda _: (folder, summary))
+    csv_file = folder / 'pattern_side_audit.csv'
+    csv_file.write_text('pattern_id,eligible_for_side_audit,sampled_panoramas,same_side_hypotheses,'
+                        'opposite_sides_hypotheses,undetermined_hypotheses,final_same_side,'
+                        'final_opposite_sides,final_undetermined\n'
+                        'a,True,2,1,0,1,0,0,2\n'
+                        'b,False,0,0,0,0,0,0,0\n')
+    checked_summary, rows = checked_roadside_rows(tmp_path, [{'pattern_id': 'a'}, {'pattern_id': 'b'}])
+    assert checked_summary == summary
+    assert rows['a'] == {'eligible': True, 'sampled': 2,
+                         'tentative': {'same_side': 1, 'opposite_sides': 0, 'undetermined': 1}}
+    with pytest.raises(ValueError, match='catalogue'):
+        checked_roadside_rows(tmp_path, [{'pattern_id': 'a'}])
+    csv_file.write_text(csv_file.read_text().replace('a,True,2,1,0,1,0,0,2',
+                                                      'a,True,2,1,0,1,1,0,1'))
+    with pytest.raises(ValueError, match='unverified'):
+        checked_roadside_rows(tmp_path, [{'pattern_id': 'a'}, {'pattern_id': 'b'}])
