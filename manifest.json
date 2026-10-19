@@ -1,7 +1,7 @@
 {
   "experiment": "vitl30_panorama_w4096_k32",
   "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
-  "snapshot_label": "2026-10-19T00:33:59.878132+00:00",
+  "snapshot_label": "2026-10-19T00:42:02.655556+00:00",
   "model": {
     "backbone": "DINOv3 ViT-L/16",
     "image_size": 448,
@@ -35,7 +35,7 @@
     "unobserved_in_sample": 462
   },
   "file_count": 23532,
-  "bytes_before_manifest": 963742721,
+  "bytes_before_manifest": 963764634,
   "element_hierarchy": {
     "page": "elements/",
     "identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",

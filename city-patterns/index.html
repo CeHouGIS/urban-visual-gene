@@ -18,7 +18,15 @@
 <p class="note">图像抽查已发现部分“水体”响应落在天空、“桥梁”响应落在标志支架等语义疑点。
 相关组合和实例已单独标记，请先核查高亮，再解释其城市分布。
 <a href="composition-evidence-review.json">查看抽查记录</a>（局部抽查，不估计整体准确率）。</p>
-<p><a href="../road-sides/">查看当前组合的道路同侧／两侧抽样审阅 →</a></p>
+<section class="section" id="roadside-summary"><h2>道路同侧与两侧：抽样核查</h2>
+<div class="stats"><div class="stat"><b>118</b><span>可定义侧别的组合／185 组</span></div>
+<div class="stat"><b>21</b><span>同侧几何假设 · 抽样实例</span></div>
+<div class="stat"><b>21</b><span>两侧几何假设 · 抽样实例</span></div>
+<div class="stat"><b>666</b><span>抽样实例无法判定</span></div></div>
+<p>从 118 组可审阅组合各抽取最多 6 个不同城市的实例，共 708 个组合实例、
+707 个不同全景；另有 67 组不适用。
+以下是假设性几何判断，全部实例均未完成人工确认，不能外推为 30 城侧别比例。</p>
+<p><a href="../road-sides/">查看四方向原图、道路分割与逐组合审阅 →</a></p></section>
 <section class="section"><h2>算法怎样调整</h2>
 <p>原来的 7 组来自“显著超额共现”筛选。新图谱改为先描述反复出现的构成：保留细标签与树种、设施类型，
 将墙、窗、屋顶等同对象部件归并，每个对象父类每张全景只贡献一个响应单元。</p>
@@ -37,7 +45,7 @@
 <p id="pattern-count" aria-live="polite">正在读取组合…</p><div id="pattern-cards" class="pattern-cards"></div>
 <div class="atlas-controls"><button id="prev-patterns">上一页</button><span id="pattern-page"></span><button id="next-patterns">下一页</button></div></section>
 <section class="section" id="distribution"><h2 id="selected-title">城市分布</h2>
-<p id="selected-detail"></p><div id="city-rates" class="city-rates"></div>
+<p id="selected-detail"></p><p id="selected-roadside" class="note"></p><div id="city-rates" class="city-rates"></div>
 <h3>全部 30 城的观测格网</h3><p>每个小格的颜色表示格内匹配全景比例；灰色为有样本但未匹配，空白为未采样。
 统一色标：0%—100%。鼠标停在格网上可查看实际匹配数与样本数；坐标为当地 UTM 公里。</p>
 <div class="atlas-legend"><span>0%</span><i></i><span>100%</span></div><p id="map-status" aria-live="polite"></p>
@@ -70,5 +78,5 @@
 <p id="project-progress-note"></p></details><details class="project-scope"><summary>研究范围与待核查项</summary><div id="project-research-scope"></div></details>
 <div class="project-progress-bottom"><time id="project-progress-time"></time><button type="button" id="project-progress-refresh" aria-label="刷新项目进度">刷新</button></div><p id="project-progress-freshness" role="status">读取发布快照…</p>
 <noscript>启用 JavaScript 后显示进度表，或查看 <a href="../data/project-progress.json">进度数据</a>。</noscript></div></details></aside></div><script src="../assets/project-progress.js?v=1" defer></script><script src="composition-atlas.js" defer></script></main><footer>30 城市 · DINOv3 ViT-L/16 · panorama-aware · W4096 / K32<br>
-发布快照：2026-10-19T00:33:59.878132+00:00 · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
+发布快照：2026-10-19T00:42:02.655556+00:00 · <a href="../manifest.json">数据与模型来源</a> · <a href="https://github.com/CeHouGIS/urban-visual-gene/tree/main/experiments/vitl30_panorama_w4096_k32">实验代码</a>
 </footer></body></html>
