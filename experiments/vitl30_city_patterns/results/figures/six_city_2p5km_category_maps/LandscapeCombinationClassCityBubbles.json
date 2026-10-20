@@ -1,0 +1,906 @@
+{
+  "pdf": "LandscapeCombinationClassCityBubbles.pdf",
+  "cells_csv": "LandscapeCombinationClassCityCells.csv",
+  "cities": [
+    "Argentina/BuenosAires",
+    "Australia/Melbourne",
+    "Bangladesh/Dhaka",
+    "Portugal/Lisbon",
+    "SouthAfrica/CapeTown",
+    "US/Chicago"
+  ],
+  "grid_shape_per_city": [
+    30,
+    30
+  ],
+  "grid_definition": "Each city extent is independently divided into 30 equal-width bins on each axis from the observed 1-km source-cell centroids; physical bin widths differ by city and no fixed-km grid is used.",
+  "class_count": 20,
+  "selection": "Twenty semantic parent-family signatures ranked by mean city-level cell-balanced panorama rate.",
+  "circle_area": "Proportional to the within-bin share of sampled panoramas matching the class; a fixed 0-100% area scale is shared across all six cities and all class pages.",
+  "circle_color": "One stable unique darkened tab20 color per combination class; class labels and matching size legends are repeated on each page.",
+  "proportion_definition": "Matching sampled panorama count divided by all sampled panoramas in the normalized bin.",
+  "counts_are": "SAE-response shares, not physical object prevalence or validated landscape prevalence.",
+  "classes": [
+    {
+      "class_id": "C01",
+      "class_label": "Pedestrian space + Roads",
+      "families": [
+        "pedestrian",
+        "road"
+      ],
+      "fine_pattern_count": 4,
+      "mean_city_cell_rate": 0.1852796037171108,
+      "color": "#1f77b4",
+      "png": "Fig_LandscapeCombination_C01_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 403,
+          "mean_class_share_across_observed_bins": 0.18886644389011298
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 317,
+          "mean_class_share_across_observed_bins": 0.17875776170993155
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 268,
+          "mean_class_share_across_observed_bins": 0.03812274393015197
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 462,
+          "mean_class_share_across_observed_bins": 0.35266801924932883
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 385,
+          "mean_class_share_across_observed_bins": 0.22624911232724793
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 380,
+          "mean_class_share_across_observed_bins": 0.3884827924672873
+        }
+      }
+    },
+    {
+      "class_id": "C02",
+      "class_label": "Barriers + Buildings",
+      "families": [
+        "barrier",
+        "building"
+      ],
+      "fine_pattern_count": 9,
+      "mean_city_cell_rate": 0.18006472115684957,
+      "color": "#718197",
+      "png": "Fig_LandscapeCombination_C02_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 491,
+          "mean_class_share_across_observed_bins": 0.3553624327347771
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 190,
+          "mean_class_share_across_observed_bins": 0.05257062519035182
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 376,
+          "mean_class_share_across_observed_bins": 0.0671158722843479
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 454,
+          "mean_class_share_across_observed_bins": 0.30543358263392434
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 418,
+          "mean_class_share_across_observed_bins": 0.3481319518721355
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 217,
+          "mean_class_share_across_observed_bins": 0.032864225742311376
+        }
+      }
+    },
+    {
+      "class_id": "C03",
+      "class_label": "Buildings + Pedestrian space",
+      "families": [
+        "building",
+        "pedestrian"
+      ],
+      "fine_pattern_count": 8,
+      "mean_city_cell_rate": 0.17717154377046287,
+      "color": "#a65309",
+      "png": "Fig_LandscapeCombination_C03_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 495,
+          "mean_class_share_across_observed_bins": 0.38149046371178386
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 223,
+          "mean_class_share_across_observed_bins": 0.10114212963961262
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 255,
+          "mean_class_share_across_observed_bins": 0.032668912849022874
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 427,
+          "mean_class_share_across_observed_bins": 0.25598529587488844
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 360,
+          "mean_class_share_across_observed_bins": 0.2551238942251718
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 326,
+          "mean_class_share_across_observed_bins": 0.13603329057183347
+        }
+      }
+    },
+    {
+      "class_id": "C04",
+      "class_label": "Low vegetation + Trees",
+      "families": [
+        "low_vegetation",
+        "tree"
+      ],
+      "fine_pattern_count": 2,
+      "mean_city_cell_rate": 0.165421787903735,
+      "color": "#a67a4e",
+      "png": "Fig_LandscapeCombination_C04_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 325,
+          "mean_class_share_across_observed_bins": 0.22075837438237236
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 491,
+          "mean_class_share_across_observed_bins": 0.4006374120043402
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 474,
+          "mean_class_share_across_observed_bins": 0.20637110910632975
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 151,
+          "mean_class_share_across_observed_bins": 0.17106003259151514
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 187,
+          "mean_class_share_across_observed_bins": 0.24000519119456976
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 371,
+          "mean_class_share_across_observed_bins": 0.37307710093942587
+        }
+      }
+    },
+    {
+      "class_id": "C05",
+      "class_label": "Barriers + Pedestrian space",
+      "families": [
+        "barrier",
+        "pedestrian"
+      ],
+      "fine_pattern_count": 11,
+      "mean_city_cell_rate": 0.1649760072297903,
+      "color": "#2ca02c",
+      "png": "Fig_LandscapeCombination_C05_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 513,
+          "mean_class_share_across_observed_bins": 0.30477893254994104
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 291,
+          "mean_class_share_across_observed_bins": 0.07917555772110749
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 411,
+          "mean_class_share_across_observed_bins": 0.050310544073705485
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 479,
+          "mean_class_share_across_observed_bins": 0.3051291852525719
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 407,
+          "mean_class_share_across_observed_bins": 0.27422439439427104
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 327,
+          "mean_class_share_across_observed_bins": 0.07506181521962478
+        }
+      }
+    },
+    {
+      "class_id": "C06",
+      "class_label": "Barriers + Utilities",
+      "families": [
+        "barrier",
+        "utility"
+      ],
+      "fine_pattern_count": 8,
+      "mean_city_cell_rate": 0.1639361522407482,
+      "color": "#63915a",
+      "png": "Fig_LandscapeCombination_C06_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 512,
+          "mean_class_share_across_observed_bins": 0.4181500585444694
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 305,
+          "mean_class_share_across_observed_bins": 0.09596987309067599
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 469,
+          "mean_class_share_across_observed_bins": 0.141848847901064
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 458,
+          "mean_class_share_across_observed_bins": 0.3373547747469564
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 282,
+          "mean_class_share_across_observed_bins": 0.26916262753111614
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 322,
+          "mean_class_share_across_observed_bins": 0.03992132249769677
+        }
+      }
+    },
+    {
+      "class_id": "C07",
+      "class_label": "Buildings + Utilities",
+      "families": [
+        "building",
+        "utility"
+      ],
+      "fine_pattern_count": 6,
+      "mean_city_cell_rate": 0.1581394470064646,
+      "color": "#d62728",
+      "png": "Fig_LandscapeCombination_C07_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 498,
+          "mean_class_share_across_observed_bins": 0.5132204922848135
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 147,
+          "mean_class_share_across_observed_bins": 0.07271281412917227
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 389,
+          "mean_class_share_across_observed_bins": 0.07350272558326615
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 413,
+          "mean_class_share_across_observed_bins": 0.30996311703007406
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 210,
+          "mean_class_share_across_observed_bins": 0.2529386094015912
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 231,
+          "mean_class_share_across_observed_bins": 0.042641173678325844
+        }
+      }
+    },
+    {
+      "class_id": "C08",
+      "class_label": "Barriers + Roads",
+      "families": [
+        "barrier",
+        "road"
+      ],
+      "fine_pattern_count": 4,
+      "mean_city_cell_rate": 0.14676531305518575,
+      "color": "#a66362",
+      "png": "Fig_LandscapeCombination_C08_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 292,
+          "mean_class_share_across_observed_bins": 0.18939014452629455
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 368,
+          "mean_class_share_across_observed_bins": 0.11768938439248391
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 294,
+          "mean_class_share_across_observed_bins": 0.06369003110378774
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 437,
+          "mean_class_share_across_observed_bins": 0.3295434630381779
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 465,
+          "mean_class_share_across_observed_bins": 0.28618278039285905
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 357,
+          "mean_class_share_across_observed_bins": 0.08567989072532242
+        }
+      }
+    },
+    {
+      "class_id": "C09",
+      "class_label": "Roads + Utilities",
+      "families": [
+        "road",
+        "utility"
+      ],
+      "fine_pattern_count": 3,
+      "mean_city_cell_rate": 0.14404523953080897,
+      "color": "#9467bd",
+      "png": "Fig_LandscapeCombination_C09_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 441,
+          "mean_class_share_across_observed_bins": 0.183220455853889
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 382,
+          "mean_class_share_across_observed_bins": 0.1985130530063317
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 314,
+          "mean_class_share_across_observed_bins": 0.10715186366186985
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 427,
+          "mean_class_share_across_observed_bins": 0.28455725457587033
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 296,
+          "mean_class_share_across_observed_bins": 0.23461552994232593
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 381,
+          "mean_class_share_across_observed_bins": 0.2476296740804553
+        }
+      }
+    },
+    {
+      "class_id": "C10",
+      "class_label": "Pedestrian space + Utilities",
+      "families": [
+        "pedestrian",
+        "utility"
+      ],
+      "fine_pattern_count": 8,
+      "mean_city_cell_rate": 0.13526555284751646,
+      "color": "#80728a",
+      "png": "Fig_LandscapeCombination_C10_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 519,
+          "mean_class_share_across_observed_bins": 0.42693545974710123
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 278,
+          "mean_class_share_across_observed_bins": 0.10896388204014129
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 374,
+          "mean_class_share_across_observed_bins": 0.047251420678786016
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 420,
+          "mean_class_share_across_observed_bins": 0.28025801668520595
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 189,
+          "mean_class_share_across_observed_bins": 0.16062599323877522
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 361,
+          "mean_class_share_across_observed_bins": 0.10983745913438721
+        }
+      }
+    },
+    {
+      "class_id": "C11",
+      "class_label": "Low vegetation + Roads",
+      "families": [
+        "low_vegetation",
+        "road"
+      ],
+      "fine_pattern_count": 2,
+      "mean_city_cell_rate": 0.13365827079314843,
+      "color": "#8c564b",
+      "png": "Fig_LandscapeCombination_C11_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 213,
+          "mean_class_share_across_observed_bins": 0.16624219914337204
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 452,
+          "mean_class_share_across_observed_bins": 0.3173959184204078
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 218,
+          "mean_class_share_across_observed_bins": 0.042986019289984675
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 279,
+          "mean_class_share_across_observed_bins": 0.2110608480802229
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 403,
+          "mean_class_share_across_observed_bins": 0.256570468000887
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 388,
+          "mean_class_share_across_observed_bins": 0.5289963118992548
+        }
+      }
+    },
+    {
+      "class_id": "C12",
+      "class_label": "Buildings + Roads",
+      "families": [
+        "building",
+        "road"
+      ],
+      "fine_pattern_count": 4,
+      "mean_city_cell_rate": 0.1127096595637835,
+      "color": "#7f6560",
+      "png": "Fig_LandscapeCombination_C12_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 357,
+          "mean_class_share_across_observed_bins": 0.14682919162537636
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 223,
+          "mean_class_share_across_observed_bins": 0.09039845034825356
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 202,
+          "mean_class_share_across_observed_bins": 0.03216987171065828
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 386,
+          "mean_class_share_across_observed_bins": 0.26209673682323226
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 372,
+          "mean_class_share_across_observed_bins": 0.22462899148192103
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 327,
+          "mean_class_share_across_observed_bins": 0.12844711094825245
+        }
+      }
+    },
+    {
+      "class_id": "C13",
+      "class_label": "Roads + Trees",
+      "families": [
+        "road",
+        "tree"
+      ],
+      "fine_pattern_count": 1,
+      "mean_city_cell_rate": 0.09708035812575669,
+      "color": "#944d7e",
+      "png": "Fig_LandscapeCombination_C13_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 160,
+          "mean_class_share_across_observed_bins": 0.1388917576270122
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 444,
+          "mean_class_share_across_observed_bins": 0.16498575380147912
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 279,
+          "mean_class_share_across_observed_bins": 0.05495777620270742
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 139,
+          "mean_class_share_across_observed_bins": 0.14429783954752215
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 148,
+          "mean_class_share_across_observed_bins": 0.15385579907638733
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 364,
+          "mean_class_share_across_observed_bins": 0.21629105059074222
+        }
+      }
+    },
+    {
+      "class_id": "C14",
+      "class_label": "Barriers + Trees",
+      "families": [
+        "barrier",
+        "tree"
+      ],
+      "fine_pattern_count": 3,
+      "mean_city_cell_rate": 0.08973096756610517,
+      "color": "#a17688",
+      "png": "Fig_LandscapeCombination_C14_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 448,
+          "mean_class_share_across_observed_bins": 0.2021622121513622
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 392,
+          "mean_class_share_across_observed_bins": 0.06352170457109504
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 477,
+          "mean_class_share_across_observed_bins": 0.23879111548506507
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 184,
+          "mean_class_share_across_observed_bins": 0.1677098340497267
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 195,
+          "mean_class_share_across_observed_bins": 0.19216826122739683
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 308,
+          "mean_class_share_across_observed_bins": 0.03335497057596789
+        }
+      }
+    },
+    {
+      "class_id": "C15",
+      "class_label": "Pedestrian space + Trees",
+      "families": [
+        "pedestrian",
+        "tree"
+      ],
+      "fine_pattern_count": 4,
+      "mean_city_cell_rate": 0.07988181205061197,
+      "color": "#7f7f7f",
+      "png": "Fig_LandscapeCombination_C15_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 444,
+          "mean_class_share_across_observed_bins": 0.17042618367981344
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 289,
+          "mean_class_share_across_observed_bins": 0.057549300797252054
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 388,
+          "mean_class_share_across_observed_bins": 0.026639096992528342
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 163,
+          "mean_class_share_across_observed_bins": 0.1584624612141754
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 65,
+          "mean_class_share_across_observed_bins": 0.10245382822305898
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 355,
+          "mean_class_share_across_observed_bins": 0.1895301536468577
+        }
+      }
+    },
+    {
+      "class_id": "C16",
+      "class_label": "Trees + Utilities",
+      "families": [
+        "tree",
+        "utility"
+      ],
+      "fine_pattern_count": 3,
+      "mean_city_cell_rate": 0.07550046272618015,
+      "color": "#818181",
+      "png": "Fig_LandscapeCombination_C16_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 481,
+          "mean_class_share_across_observed_bins": 0.26308909858573826
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 357,
+          "mean_class_share_across_observed_bins": 0.08758449277014717
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 480,
+          "mean_class_share_across_observed_bins": 0.23903066861225064
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 128,
+          "mean_class_share_across_observed_bins": 0.14974318523987157
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 72,
+          "mean_class_share_across_observed_bins": 0.14076745014245015
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 347,
+          "mean_class_share_across_observed_bins": 0.06656475149585457
+        }
+      }
+    },
+    {
+      "class_id": "C17",
+      "class_label": "Low vegetation + Pedestrian space",
+      "families": [
+        "low_vegetation",
+        "pedestrian"
+      ],
+      "fine_pattern_count": 3,
+      "mean_city_cell_rate": 0.06810735677176391,
+      "color": "#7a7b16",
+      "png": "Fig_LandscapeCombination_C17_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 375,
+          "mean_class_share_across_observed_bins": 0.20561305545532138
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 355,
+          "mean_class_share_across_observed_bins": 0.15183905713050475
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 207,
+          "mean_class_share_across_observed_bins": 0.01732147956333779
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 150,
+          "mean_class_share_across_observed_bins": 0.14317931835965894
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 204,
+          "mean_class_share_across_observed_bins": 0.13065476391173142
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 380,
+          "mean_class_share_across_observed_bins": 0.3653014485823712
+        }
+      }
+    },
+    {
+      "class_id": "C18",
+      "class_label": "Low vegetation + Utilities",
+      "families": [
+        "low_vegetation",
+        "utility"
+      ],
+      "fine_pattern_count": 3,
+      "mean_city_cell_rate": 0.06710992725313628,
+      "color": "#8e8e5c",
+      "png": "Fig_LandscapeCombination_C18_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 380,
+          "mean_class_share_across_observed_bins": 0.21922537296826708
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 392,
+          "mean_class_share_across_observed_bins": 0.11680557446195838
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 435,
+          "mean_class_share_across_observed_bins": 0.08008880834394064
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 219,
+          "mean_class_share_across_observed_bins": 0.20317686950919916
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 182,
+          "mean_class_share_across_observed_bins": 0.18325162059531142
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 380,
+          "mean_class_share_across_observed_bins": 0.19732126579210854
+        }
+      }
+    },
+    {
+      "class_id": "C19",
+      "class_label": "Barriers + Buildings + Utilities",
+      "families": [
+        "barrier",
+        "building",
+        "utility"
+      ],
+      "fine_pattern_count": 3,
+      "mean_city_cell_rate": 0.06303020351144567,
+      "color": "#0f7c87",
+      "png": "Fig_LandscapeCombination_C19_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 409,
+          "mean_class_share_across_observed_bins": 0.23525957020890653
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 91,
+          "mean_class_share_across_observed_bins": 0.04082756116931712
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 242,
+          "mean_class_share_across_observed_bins": 0.03959447991779396
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 286,
+          "mean_class_share_across_observed_bins": 0.20573822787526266
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 167,
+          "mean_class_share_across_observed_bins": 0.1767727415182505
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 60,
+          "mean_class_share_across_observed_bins": 0.010222744112339142
+        }
+      }
+    },
+    {
+      "class_id": "C20",
+      "class_label": "Buildings + Trees",
+      "families": [
+        "building",
+        "tree"
+      ],
+      "fine_pattern_count": 2,
+      "mean_city_cell_rate": 0.05817681801783638,
+      "color": "#678e95",
+      "png": "Fig_LandscapeCombination_C20_SixCity_Bubbles.png",
+      "city_statistics": {
+        "Argentina/BuenosAires": {
+          "observed_grid_bins": 579,
+          "bins_with_class": 385,
+          "mean_class_share_across_observed_bins": 0.19928986174928873
+        },
+        "Australia/Melbourne": {
+          "observed_grid_bins": 510,
+          "bins_with_class": 89,
+          "mean_class_share_across_observed_bins": 0.02588123868982625
+        },
+        "Bangladesh/Dhaka": {
+          "observed_grid_bins": 487,
+          "bins_with_class": 349,
+          "mean_class_share_across_observed_bins": 0.03191685255592892
+        },
+        "Portugal/Lisbon": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 144,
+          "mean_class_share_across_observed_bins": 0.1261382988598546
+        },
+        "SouthAfrica/CapeTown": {
+          "observed_grid_bins": 621,
+          "bins_with_class": 83,
+          "mean_class_share_across_observed_bins": 0.10381085470408277
+        },
+        "US/Chicago": {
+          "observed_grid_bins": 394,
+          "bins_with_class": 241,
+          "mean_class_share_across_observed_bins": 0.06674476507856014
+        }
+      }
+    }
+  ]
+}
