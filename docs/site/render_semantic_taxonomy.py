@@ -60,7 +60,7 @@ def render(site, output_dir=DEFAULT_OUTPUT):
                          'ps.fonttype': 42, 'savefig.facecolor': 'white'})
     fig = plt.figure(figsize=(13.8, 9.4), facecolor='white')
     row_bottom, row_height = .10, .795
-    bars = fig.add_axes([.19, row_bottom, .25, row_height])
+    bars = fig.add_axes([.245, row_bottom, .20, row_height])
     dots = fig.add_axes([.50, row_bottom, .28, row_height], sharey=bars)
     positions = np.arange(len(families))
 
@@ -70,26 +70,26 @@ def render(site, output_dir=DEFAULT_OUTPUT):
     bars.set_ylim(len(families) - .5, -.5)
     bars.set_yticks(positions)
     bars.set_yticklabels([f"{index + 1:02d}  {family['label_en']}"
-                          for index, family in enumerate(families)], fontsize=8.8,
+                          for index, family in enumerate(families)], fontsize=13,
                          color='#23282b')
     bars.tick_params(axis='y', length=0, pad=8)
     bars.set_xticks([0, 500, 1000])
     bars.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x:,.0f}'))
-    bars.tick_params(axis='x', labelsize=8, length=2.5, colors='#4d5559')
-    bars.set_xlabel('SAE dimensions', fontsize=8.6,
+    bars.tick_params(axis='x', labelsize=12, length=2.5, colors='#4d5559')
+    bars.set_xlabel('SAE dimensions', fontsize=13,
                     color='#343b3f', labelpad=7)
     for y, family in enumerate(families):
         bars.text(family['count'] + 22, y, f"{family['count']:,}",
-                  va='center', fontsize=8, color='#343b3f')
+                  va='center', fontsize=12.5, color='#343b3f')
 
     dots.set_xscale('log')
     dots.set_xlim(.72, 1650)
     dots.xaxis.set_major_locator(FixedLocator([1, 10, 100, 1000]))
     dots.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x:,.0f}'))
     dots.minorticks_off()
-    dots.tick_params(axis='x', labelsize=8, length=2.5, colors='#4d5559')
+    dots.tick_params(axis='x', labelsize=12, length=2.5, colors='#4d5559')
     dots.tick_params(axis='y', left=False, labelleft=False)
-    dots.set_xlabel('Dimensions per subclass (log scale)', fontsize=8.6,
+    dots.set_xlabel('Dimensions per subclass (log scale)', fontsize=13,
                     color='#343b3f', labelpad=7)
     image_height = row_height / len(families) * .87
     image_width = image_height * fig.get_figheight() / fig.get_figwidth()
@@ -100,7 +100,7 @@ def render(site, output_dir=DEFAULT_OUTPUT):
                      zorder=3, rasterized=False)
         row_center = row_bottom + row_height * (1 - (y + .5) / len(families))
         fig.text(.813, row_center, str(len(points)), ha='center', va='center',
-                 fontsize=8, color='#343b3f')
+                 fontsize=12.5, color='#343b3f')
         for index, example in enumerate(figure_examples(site, family)):
             image_ax = fig.add_axes([image_left + index * image_step,
                                      row_center - image_height / 2,
@@ -122,14 +122,14 @@ def render(site, output_dir=DEFAULT_OUTPUT):
         axis.spines['bottom'].set_color('#81898d')
         axis.spines['bottom'].set_linewidth(.55)
 
-    fig.text(.19, .948, 'a', fontsize=12, weight='bold', color='#1f2528')
-    fig.text(.215, .948, 'Parent-class size', fontsize=10, color='#1f2528')
-    fig.text(.50, .948, 'b', fontsize=12, weight='bold', color='#1f2528')
-    fig.text(.525, .948, 'Subclass sizes', fontsize=10, color='#1f2528')
-    fig.text(.849, .948, 'c', fontsize=12, weight='bold', color='#1f2528')
-    fig.text(.874, .948, 'Activation examples', fontsize=10, color='#1f2528')
-    fig.text(.813, .917, 'No.', fontsize=7.8, ha='center', color='#596267')
-    fig.text(.905, .917, 'Four per parent class', fontsize=7.8,
+    fig.text(.245, .948, 'a', fontsize=15, weight='bold', color='#1f2528')
+    fig.text(.269, .948, 'Parent-class size', fontsize=14, color='#1f2528')
+    fig.text(.50, .948, 'b', fontsize=15, weight='bold', color='#1f2528')
+    fig.text(.525, .948, 'Subclass sizes', fontsize=14, color='#1f2528')
+    fig.text(.849, .948, 'c', fontsize=15, weight='bold', color='#1f2528')
+    fig.text(.874, .948, 'Activation examples', fontsize=14, color='#1f2528')
+    fig.text(.813, .917, 'No.', fontsize=12, ha='center', color='#596267')
+    fig.text(.905, .917, 'Four per parent class', fontsize=12,
              ha='center', color='#596267')
     output_dir.mkdir(parents=True, exist_ok=True)
     png = output_dir / f'{STEM}.png'

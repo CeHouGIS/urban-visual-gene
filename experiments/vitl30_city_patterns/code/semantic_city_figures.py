@@ -112,6 +112,8 @@ def cell_composition(frame, scores, units):
 
 
 def pipeline(output):
+    plt.rcParams.update({'font.family': 'Liberation Sans', 'pdf.fonttype': 42,
+                         'ps.fonttype': 42})
     fig, ax = plt.subplots(figsize=(12.8, 3.5))
     ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis('off')
     stages = [
@@ -126,16 +128,16 @@ def pipeline(output):
         x = .008 + i * (width + gap)
         ax.add_patch(FancyBboxPatch((x, .39), width, .27, boxstyle='round,pad=0.012',
                                     facecolor=color, edgecolor='#65716e', linewidth=.8))
-        ax.text(x + width / 2, .565, title, ha='center', va='center', fontsize=10, weight='bold')
-        ax.text(x + width / 2, .465, subtitle, ha='center', va='center', fontsize=8.2)
+        ax.text(x + width / 2, .565, title, ha='center', va='center', fontsize=12, weight='bold')
+        ax.text(x + width / 2, .465, subtitle, ha='center', va='center', fontsize=10.5)
         if i < 4:
             ax.add_patch(FancyArrowPatch((x + width + .006, .525),
                                          (x + width + gap - .003, .525),
                                          arrowstyle='-|>', mutation_scale=12, color='#424b4a'))
     ax.text(.5, .22, 'Frozen model inference across 681,645 complete panoramas in 30 cities',
-            ha='center', fontsize=9, color='#475653')
+            ha='center', fontsize=12, color='#475653')
     ax.text(.5, .11, 'Activation evidence and Qwen labels remain provisional; city summaries weight observed 1-km cells equally.',
-            ha='center', fontsize=8.3, color='#5f6b68')
+            ha='center', fontsize=10.5, color='#5f6b68')
     save(fig, output, 'Fig_ViTL30_Pipeline_Current')
 
 
