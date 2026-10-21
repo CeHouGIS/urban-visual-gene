@@ -10,11 +10,10 @@ from experiments.vitl30_city_patterns.code.composition_patterns import (
 from experiments.vitl30_city_patterns.code.candidate_combinations import ELEMENTS
 
 
-def test_object_parts_merge_and_tree_species_stays_specific():
+def test_object_parts_and_tree_related_labels_merge():
     assert canonical('building', '窗户') == canonical('building', '建筑墙面') == '建筑'
-    assert canonical('tree', '树冠') == canonical('tree', '树干') == '乔木'
-    assert canonical('tree', '棕榈树') == canonical('tree', '椰子树') == '棕榈类乔木'
-    assert canonical('tree', '竹林') != canonical('tree', '树冠')
+    assert len({canonical('tree', label) for label in
+                ['树', '树木', '树冠', '树干', '棕榈树', '椰子树', '松树', '竹林']}) == 1
 
 
 def test_landscape_scope_excludes_mobile_objects_but_keeps_fixed_fabric():

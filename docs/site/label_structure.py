@@ -110,7 +110,7 @@ def install(site, render_page, snapshot):
                                  label['count'], ' '.join('f' + str(feature) for feature in label['features'])])
     content = f'''<div class="eyebrow">Qwen label structure</div><h1>标签的并列与上下级关系</h1>
 <p class="lead">区分同层标签、某类的具体类型，以及整体的组成部件。</p>
-<p class="note">依据现有 Qwen 标签做保守的文字关系整理：{result['counts']['hierarchy_edges']} 条上下级关系、{result['counts']['parallel_groups']} 组并列关系。窗户是建筑的部件，不是建筑的一种；屋顶类型之间才是同层并列。父类只用于导航，不自动构成语义上下级。所有关系仍待图像证据和人工核查。</p>
+<p class="note">依据当前保留的 Qwen 标签做保守的文字关系整理：{result['counts']['hierarchy_edges']} 条上下级关系、{result['counts']['parallel_groups']} 组并列关系。同一对象的细部标签已归并时，原部件关系不再作为独立边展示。父类只用于导航，不自动构成语义上下级。所有关系仍待图像证据和人工核查。</p>
 <div class="structure-controls"><div class="structure-tabs" aria-label="关系视图"><button id="hierarchy-tab" type="button" aria-pressed="true">上下级</button><button id="parallel-tab" type="button" aria-pressed="false">同层并列</button><button id="unlinked-tab" type="button" aria-pressed="false">未判定</button></div><select id="structure-family" aria-label="筛选类别"><option value="">全部类别</option></select><input id="structure-search" aria-label="搜索标签" placeholder="搜索 Qwen 标签"></div>
 <p id="structure-count" class="muted" role="status"></p><div class="structure-layout"><div id="structure-list" class="structure-list" aria-label="关系列表"></div><section id="structure-detail" class="structure-detail" aria-label="关系详情"></section></div>
 <p class="muted">{result['counts']['unlinked_labels']} 个有资格展示的标签尚未指定可靠关系，保留在“未判定”。数字是 SAE 维度数，不是街景物体数量。<a href="hierarchy.csv">下载上下级 CSV</a> · <a href="parallel.csv">下载并列 CSV</a> · <a href="structure.json">完整数据与来源</a></p>'''

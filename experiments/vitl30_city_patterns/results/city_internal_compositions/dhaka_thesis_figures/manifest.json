@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "city": "Bangladesh/Dhaka",
+  "sampled_panoramas": 93400,
+  "observed_cells": 9587,
+  "local_combination": {
+    "pattern_id": "cd8d335c382b",
+    "label": "older structures + signs/posters + trees",
+    "panoramas": 3792,
+    "cells": 2583,
+    "cell_balanced_rate": 0.0404939890493243,
+    "instances": [
+      "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/examples/Dhaka_cd8d335c382b_3.png",
+      "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/examples/Dhaka_cd8d335c382b_1.png",
+      "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/examples/Dhaka_cd8d335c382b_2.png",
+      "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/examples/Dhaka_cd8d335c382b_4.png",
+      "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/examples/Dhaka_cd8d335c382b_5.png"
+    ],
+    "figure": "Fig_ViTL30_Dhaka_Local_Composition_Examples.pdf"
+  },
+  "scope_comparison": {
+    "source": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_three_scopes/Fig_Dhaka_Three_Scopes.pdf",
+    "figure": "Fig_ViTL30_Dhaka_Three_Scopes.pdf"
+  },
+  "inference_rerun": false,
+  "interpretation": "Existing frozen-SAE response overlays are relative attribution, not segmentation. Dhaka-only recurrence does not establish geographic exclusivity."
+}

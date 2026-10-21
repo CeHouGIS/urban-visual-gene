@@ -17,90 +17,113 @@ coordinates, 1-km grid cell, 4,096-dimensional mean positive SAE activation,
 and four 64-group heading vectors. It does not store dense patch activations,
 so later local mask inspection needs another frozen-model pass.
 
-## Completed computational outputs
+## Current Chapter 5 results: screened semantic analysis
 
-All seven queue entries, including extraction and downstream stages, have
-passed their artifact gates. The usable sample contains 681,645 panoramas in
-72,625 observed cells. The pair screen tested 76 candidates and retained seven
-provisional family co-presence candidates. City rates cover 210 candidate/city
-combinations. An 84-example four-view audit has frozen-SAE masks and independent
-road probabilities; all final side labels remain undetermined. Chapter 5 figures
-and captions have been refreshed and the complete thesis compiles successfully.
-The public page is `https://cehougis.github.io/urban-visual-gene/city-patterns/`.
+The current thesis figures use the frozen DINOv3-L/SAE responses of **681,645
+complete panoramas, 72,625 observed 1-km cells, and all 30 cities**. The previous
+decoder-based 64-group vocabulary and seven-pair figures have been retired from
+the thesis. Their server-side caches are historical products, not current
+semantic results. No backbone or SAE is retrained for this revision.
 
-The procedures below document the completed computation and the remaining
-semantic, calibration and roadside review. A completed compute queue does not
-mark these scientific reviews complete or validate a landscape prototype.
+`results/current_semantic_hierarchy.json` freezes the current dimension screening
+and 17 spatial-encoding candidate overrides. It corrects an older city-analysis
+snapshot that still admitted 18 unsupported and seven spatially flagged
+dimensions. The complete displayed taxonomy accounts for all 4,096 dimensions
+in 22 parents and 190 subclasses, including uncertainty. The narrower landscape
+analysis retains **1,345 eligible dimensions in 69 semantic units and 13 families**.
+Synonyms and same-object parts are consolidated before combination mining.
+People, vehicles, containers, mobile machinery and the explicitly listed
+temporary categories are excluded; the complete exclusion list is in the run
+protocol. Exclusions do not delete SAE dimensions. They cannot re-enter through
+parent fallbacks, and all 4,096 positive responses remain in the denominator.
 
-## Composition revision: recurrent patterns rather than excess pairs
-
-The current web atlas uses `code/composition_patterns.py`. The earlier seven
-significant pairs answer a different question and remain in the thesis and
-downloadable reference; they are not the entire landscape composition catalogue.
-
-The revision merges 236 provisional Qwen fine labels into 103 raw canonical
-response units, merging parts of the same object and retaining whole-object
-subtypes. A declared landscape scope retains 78 units and excludes 25: people,
-all vehicles and their parts, containers, construction machinery/scaffolds/cranes,
-and listed movable or temporary objects. Fixed buildings, vegetation, road and
-pedestrian space, barriers, water/terrain and fixed infrastructure remain.
-Storage tanks remain as fixed industrial structures. This reversible analysis
-filter does not delete SAE dimensions. Excluded dimensions cannot contribute
-through a parent fallback; the all-4096 mass denominator is unchanged.
-Each parent family contributes at most one subtype per panorama. Positive-share
-60th-percentile thresholds are fitted on the 22 discovery cities, with cities,
-observed cells and panoramas within cells balanced. Parent mass must be at least
-0.5% of all-4096 activation mass; subtype mass must be at least 0.1%. Thresholds
-are frozen for all cities. They measure relative response, not semantic presence.
-An initial permissive 0.01% floor admitted widespread weak water/container
-responses and was rejected; its diagnostic outputs remain server-side under
-`composition_patterns_permissive_probe`, outside the published atlas.
-
-Apriori mines cross-parent combinations of order 2–4 with at least 0.5% weighted
+The screened stage is `followup/stages/composition_patterns_screened/` under the
+NAS experiment root. Saved dimension-level means are re-aggregated there,
+without repeating full-corpus image inference. Relative-response thresholds use
+positive 60th percentiles in 22 discovery cities, balancing cities, observed
+cells and within-cell panoramas. Child/parent mass floors are 0.1%/0.5%.
+A responsive parent contributes at most one normalized winning child or an
+eligible fallback. Apriori searches orders 2–4, requiring at least 0.5% weighted
 support, 30 panoramas, eight cells and three cities in both city partitions.
-Near-redundant subsets are pruned if a discovered extension retains 90% support.
-The final 185 combinations contain 131 pairs and 54 triples; no quadruple passes
-the complete recurrence and redundancy rules.
-All 30 cities and 72,625 observed cells are mapped, including sampled zero-match
-cells. Counts retain the actual cell denominator (one to ten panoramas).
+An extension retaining 90% of support prunes a near-redundant subset.
 
-Raw panorama retrieval coverage is 78.5%; equal-city/equal-cell coverage is 81.3%.
-These are not patch explanation rates or validated object recall. At quantiles
-50/60/70, freezing the same 185 patterns yields weighted coverages 90.2/81.3/64.4%;
-182/185/118 patterns repeat in the evaluation cities. This sensitivity is
-published rather than choosing the threshold that maximizes category counts.
-Evaluation cities have already been inspected, so this is an exploratory
-revision. Descriptive spatial-block lift is not a fresh significance claim.
+The screened run retains **184 combinations: 125 pairs and 59 triples**.
+At least one matches **85.03%** of panoramas, or **85.69%** with cities and
+observed cells weighted equally. These are panorama retrieval rates, not patch
+explanation, object area, object recall, or the 80% patch-coverage target.
+At quantiles 50/60/70 the same frozen patterns yield weighted coverage
+93.64/85.69/68.54%; 181/184/119 patterns repeat in evaluation cities. Those
+cities were examined during previous revisions, so these are exploratory
+response patterns, not new confirmatory results or validated landscape
+prototypes. Object counts, spatial relations and road sides remain unverified.
+
+### Reproduce the current figures
 
 ```bash
-python -u -m experiments.vitl30_city_patterns.code.composition_patterns \
+python -m experiments.vitl30_city_patterns.code.composition_patterns \
+  --hierarchy experiments/vitl30_city_patterns/results/current_semantic_hierarchy.json \
+  --output /host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened \
   --run-identity 6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617
-python -u -m experiments.vitl30_city_patterns.code.composition_evidence \
-  --run-identity 6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617 \
-  --device cuda:0
+python -m experiments.vitl30_city_patterns.code.semantic_city_evidence --device cuda:3
+# Inspect the refreshed maps and record their statuses in stage/evidence_review.json.
+# Re-running evidence generation resets its review; no unchecked image is plotted.
+python -m experiments.vitl30_city_patterns.code.semantic_city_figures
 ```
 
-The second command recomputes four-view patch attribution on GPU for 14
-representative combinations, three distinct-city retrieval examples each. The
-deterministic hash selection is not a prevalence audit. Masks are SAE attribution,
-not object segmentations. No API calls, new SAE training or CPU inference are used.
+Evidence inference is GPU-only and refreshes the actual screened unit membership.
+Fourteen candidate panoramas were visually inspected by the assistant; two with
+semantic mismatches were excluded from illustration selection. This bounded
+inspection is not independent human validation or an accuracy estimate. The
+record is `results/semantic_city_evidence_review.json`. No Qwen/API calls are
+needed by these commands, and there is no CPU model-inference fallback.
 
-The previous mobile-object draft is archived server-side under
-`composition_patterns_with_mobile_objects_*`; its categories and images are
-replaced on the public composition page. Raw score cache identity is independent
-of the eligibility filter, but still checks the exact hierarchy, unit dimensions,
-corpus and scoring version. The current mining protocol includes all exclusions.
-Visual spot checks found some water responses on sky and bridge responses on
-sign gantries. The site flags these examples and their compositions rather than
-treating the response maps as actual object distributions. The small spot check
-does not estimate accuracy or justify dropping entire SAE dimensions.
+`results/figures/` provides PDF/PNG replacements for the pipeline, city shares
+and excess, city similarity, cell PPMI, adjacent-cell structure, a 3,000-cell
+UMAP, composition heatmap/intervals and refreshed four-view response examples.
+The 12 selected combinations have full 30-city 1-km distribution maps, including
+zero-match cells. Each city also has its own response-share and top-eight
+composition chart in `figures/cities/`; all 30 pages are collected in
+`Fig_ViTL30_City_Composition_Atlas.pdf`. Composition matches may overlap.
+`semantic_city_composition.csv`, `all_composition_key.csv`,
+`selected_composition_key.csv` and `selected_composition_city_intervals.csv`
+retain values and stable pattern identities. `semantic_figure_manifest.json`
+records input/output hashes, weighting and plotting parameters.
 
-Remaining scientific tasks: review the labels and masks; calibrate response
-thresholds against manually labeled positives and negatives; evaluate on new
-spatial blocks or external data; then establish object counts, layout and road
-sides before replacing confirmatory thesis claims. See the website progress panel.
+The current thesis source is `/root/code/HKUST-Thesis/05_research3.tex` plus its
+three Chapter 5 figure includes and `A_appendix_results.tex`. Original SAE
+training diagnostics are retained. The old `code/chapter5_figures.py` installer
+is guarded against overwriting this semantic revision with 64-group results.
+The original queue completion and all audits documented below refer to their
+historical input snapshots; their numerical results have not been recomputed
+with the screened vocabulary and must not be presented as current findings.
 
-## Roadside composition audit
+## Historical local composition audit (older semantic snapshot)
+
+`code/local_composition_audit.py` retrieves the 185 compositions from the
+681,645-panorama assignment and inspects six distinct-city matching panoramas
+per composition. The full-corpus vectors contain panorama-level activation
+summaries, not patch positions. The audit therefore uses saved roadside patch
+maps where complete and recomputes frozen DINOv3-L/SAE maps on GPU for the
+remaining 55 pairs and 49 triplets. It does not repeat full-corpus inference.
+
+```bash
+python -m experiments.vitl30_city_patterns.code.local_composition_audit \
+  --augment-pairs --augment-triplets --device cuda:0
+```
+
+A provisional local match requires all two or three units to have connected
+responses of at least eight patches in one heading, each at least 35% of that
+unit's panorama peak, with component gaps no greater than five patches and a
+joint box covering no more than half of one 28x28 view. Results and four-view
+highlights are under the follow-up stage `local_composition_audit/` on NAS.
+Of 1,110 selected combination instances, 531 pass this geometric rule: 446/786
+pairs and 85/324 triplets. At least two sampled cities pass for 113/131 pairs
+and 23/54 triplets. These are conditional retrieval-audit counts, not local
+prevalence estimates for the full corpus. Inspect the images before assigning
+landscape meaning: some Qwen labels and broad sky/road responses are visibly
+incorrect or too coarse, and compact SAE regions are not object boundaries.
+
+## Historical roadside composition audit (older semantic snapshot)
 
 `code/composition_roadside_audit.py` samples up to six distinct-city panoramas
 for each current composition with at least two side-eligible units. Road surfaces,
@@ -197,7 +220,7 @@ city-cell screening has completed. Its artifact checks provide a reproducible
 handoff, but semantic labels, roadside decisions and scientific claims still
 need evidence review.
 
-## Automatic research task queue
+## Historical automatic research task queue
 
 ```bash
 bash experiments/vitl30_city_patterns/code/launch_auto_continue.sh
@@ -242,10 +265,9 @@ All four scripts are implemented and run as local modules:
   positive fractions equally across cells, with 999 five-kilometre-block
   bootstrap draws. This is a distribution of co-presence candidates, not
   validated prototypes. Corpus-wide roadside rates remain missing.
-- `chapter5_figures.py`: regenerate city composition, similarity, cell PPMI,
-  spatial structure, a cell UMAP, candidate maps/intervals and four-view
-  evidence. Retain original training and semantic provenance. Update captions
-  and methods together, inventory inputs, and compile the complete thesis.
+- `chapter5_figures.py`: the completed historical export stage. Its installer
+  now refuses to overwrite the thesis when the current semantic snapshot is
+  present. Use `semantic_city_figures.py` for the current revision.
 
 The computational queue can finish while scientific review remains pending.
 No script trains a new SAE, calls Qwen or invokes a model API. GPU inference
@@ -289,7 +311,7 @@ Read `followup/task_queue.json` for task states and
    prototype. Re-apply validated detectors to the complete sampled corpus for
    city distributions; a gallery of retrieved examples alone is insufficient.
 
-## Chapter 5 figure and writing audit
+## Historical Chapter 5 audit plan (superseded by current semantic revision)
 
 - Reconcile the methods, sample table and study-city map with the 30-city
   selection, actual quality-screened counts and Moscow's verified source-image

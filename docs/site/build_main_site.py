@@ -392,6 +392,7 @@ jobs:
         'element_hierarchy': {'page': 'elements/', 'identity': element_summary['identity'],
                               'candidate_dimensions': element_summary['status_counts']['candidate_ready'],
                               'semantic_validation': 'pending',
+                              'semantic_map': element_summary['semantic_map'],
                               'relation_page': 'city-patterns/' if city_summary else 'relations/',
                               'label_gallery': element_summary['label_gallery'],
                               'prototype_route': 'spatial_family_co_presence' if city_summary else element_summary['prototype_route'],

@@ -287,6 +287,12 @@ def revise_writing(thesis, metrics, summary):
 
 
 def run(args):
+    if (Path(__file__).resolve().parents[1] / 'results/current_semantic_hierarchy.json').exists():
+        raise RuntimeError(
+            'The 64-group thesis exporter is retired. Use '
+            'experiments.vitl30_city_patterns.code.semantic_city_figures with '
+            'the screened semantic snapshot; legacy installation would overwrite current results.'
+        )
     for stage in ('road_sides', 'prototype_city_distribution'):
         completed = json.loads((args.followup / 'stages' / stage / 'complete.json').read_text())
         if completed.get('status') != 'complete' or completed.get('run_identity') != args.run_identity:

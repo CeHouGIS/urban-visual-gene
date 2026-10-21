@@ -1,0 +1,253 @@
+{
+  "identity": "0e03358f60dd484ef865c4c5b8f8ea72397506c5b7281d4f73ed6268398ffdb2",
+  "source": "old inspection selects candidates; current matching and screened masks require fresh inspection",
+  "human_validated": false,
+  "examples": [
+    {
+      "pattern_id": "e522fdef23e3",
+      "city": "Argentina/BuenosAires",
+      "panoid": "FSAnUvy_TXFfXFMkDm1Ggw",
+      "grid_x": 358,
+      "grid_y": 6187,
+      "units": [
+        1,
+        77
+      ],
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0000bdd6651f56e6288b/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0000bdd6651f56e6288b/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Wall response falls mainly on boundary walls; overhead-wire response includes surrounding sky and is not an object boundary."
+    },
+    {
+      "pattern_id": "17f7c1f2d0f2",
+      "city": "Australia/Melbourne",
+      "panoid": "X-YrL_RMVSWYtwpTt6pdxQ",
+      "grid_x": 332,
+      "grid_y": 5834,
+      "units": [
+        12,
+        53
+      ],
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0003b3198a2f8fa84c82/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0003b3198a2f8fa84c82/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "suspected_semantic_mismatch",
+      "note": "Sidewalk response includes a road-surface region; omit from illustrative gallery pending semantic review."
+    },
+    {
+      "pattern_id": "b819e8cb5e58",
+      "city": "SouthAfrica/CapeTown",
+      "panoid": "DUU403Aycpo67t99fIpjrw",
+      "grid_x": 285,
+      "grid_y": 6234,
+      "units": [
+        1,
+        12,
+        77
+      ],
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0000650b9b1f668767f7/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0000650b9b1f668767f7/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Wall/building responses broadly match built surfaces; wire attribution includes broad adjacent sky."
+    },
+    {
+      "pattern_id": "b819e8cb5e58",
+      "city": "Argentina/BuenosAires",
+      "panoid": "hR1E2UyRIFSvCTMKMTEAxg",
+      "grid_x": 355,
+      "grid_y": 6167,
+      "units": [
+        1,
+        12,
+        77
+      ],
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/000398b5d20218ef6c9a/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/000398b5d20218ef6c9a/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Wall/building responses broadly match corresponding structures; wire attribution includes surrounding sky."
+    },
+    {
+      "pattern_id": "b819e8cb5e58",
+      "city": "Brazil/RiodeJaneiro",
+      "panoid": "_xpoWBx_SP_EaxGpnd3IQA",
+      "grid_x": 681,
+      "grid_y": 7465,
+      "units": [
+        1,
+        12,
+        77
+      ],
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/000569b79bcc6de70713/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/000569b79bcc6de70713/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "suspected_semantic_mismatch",
+      "note": "Building response covers vehicles and other non-building regions; omit from illustrative gallery."
+    },
+    {
+      "pattern_id": "393678bf433b",
+      "units": [
+        12,
+        57
+      ],
+      "city": "US/NewYork",
+      "panoid": "thRTgQtQ7uhvfj5J8uVZqw",
+      "grid_x": 561,
+      "grid_y": 4486,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0003ee72c4d493e07584/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0003ee72c4d493e07584/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Building and road responses broadly align with the house and paved roadway."
+    },
+    {
+      "pattern_id": "393678bf433b",
+      "units": [
+        12,
+        57
+      ],
+      "city": "Korea/Seoul",
+      "panoid": "6wp1sNdbXNtdTiZHqABoYg",
+      "grid_x": 326,
+      "grid_y": 4164,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0004a09c501e1d1e4e6c/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0004a09c501e1d1e4e6c/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Building and road responses broadly align with visible facades, towers and roadway."
+    },
+    {
+      "pattern_id": "393678bf433b",
+      "units": [
+        12,
+        57
+      ],
+      "city": "Italy/Naples",
+      "panoid": "ef6D7NhomChQtAe6mYHZzA",
+      "grid_x": 448,
+      "grid_y": 4513,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0009abb6db0fc3380c86/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0009abb6db0fc3380c86/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Building and road responses broadly align with visible buildings and paved surfaces."
+    },
+    {
+      "pattern_id": "d8393482e056",
+      "units": [
+        57,
+        75
+      ],
+      "city": "Indonesia/Yogyakarta",
+      "panoid": "WHm_88JYc56vCtcplYMGZA",
+      "grid_x": 469,
+      "grid_y": 9169,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0000060939f9f054c34c/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0000060939f9f054c34c/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Tree and road responses broadly align with tree crowns and paved roadway."
+    },
+    {
+      "pattern_id": "d8393482e056",
+      "units": [
+        57,
+        75
+      ],
+      "city": "US/Chicago",
+      "panoid": "QCQjMWlYO8Jxuuq_0GycCA",
+      "grid_x": 388,
+      "grid_y": 4671,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0000357f26077b13012b/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/0000357f26077b13012b/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Tree and road responses broadly align with tree crowns and paved roadway; sparse outlying responses remain."
+    },
+    {
+      "pattern_id": "d8393482e056",
+      "units": [
+        57,
+        75
+      ],
+      "city": "SouthAfrica/Johannesburg",
+      "panoid": "gwwciKgRvR7MXpEKLGBvOw",
+      "grid_x": 611,
+      "grid_y": 7105,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/00006ac903900967dedd/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/00006ac903900967dedd/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Tree and road responses broadly align with trees and paved roadway; attribution is coarse."
+    },
+    {
+      "pattern_id": "0e2b0e1fe2f1",
+      "units": [
+        50,
+        57
+      ],
+      "city": "US/NewYork",
+      "panoid": "mL1HI_OVSs-Hjvdm94ECVQ",
+      "grid_x": 550,
+      "grid_y": 4523,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/00001d79678a8ec98983/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/00001d79678a8ec98983/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Grass and road responses broadly align with vegetated embankment and paved roadway."
+    },
+    {
+      "pattern_id": "0e2b0e1fe2f1",
+      "units": [
+        50,
+        57
+      ],
+      "city": "US/Chicago",
+      "panoid": "3Hqgnls5Ywld2pID-Q1HpA",
+      "grid_x": 421,
+      "grid_y": 4607,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/00016446620273b639da/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/00016446620273b639da/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Grass response includes some unpaved roadside surface; broad grass/road distinction is plausible."
+    },
+    {
+      "pattern_id": "0e2b0e1fe2f1",
+      "units": [
+        50,
+        57
+      ],
+      "city": "Brazil/Brasília",
+      "panoid": "LCiabLVWQlkFUdU0UXcxJw",
+      "grid_x": 202,
+      "grid_y": 8259,
+      "original": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/000375b30f9ccb371528/original.webp",
+      "overlay": "/host/root/mnt/nas/huangyj/GoogleSV/urban_visual_gene/vitl30_city_patterns_1km10/followup/stages/composition_patterns_screened/evidence/0e03358f60dd/000375b30f9ccb371528/overlay.webp",
+      "mask_is_object_segmentation": false,
+      "semantic_review": "pending refreshed visual inspection; no independent human validation",
+      "status": "plausible_spot_check",
+      "note": "Grass response covers mixed dry low vegetation and bare roadside ground; label remains provisional."
+    }
+  ],
+  "reviewer": "assistant_visual_spot_check",
+  "reviewed_at": "2026-10-19T13:29:04.950256+00:00",
+  "reviewed": 14,
+  "flagged": 2,
+  "scope": "Fourteen deterministic retrieval candidates using current screened dimensions; selected illustrations only, not an accuracy or prevalence estimate."
+}

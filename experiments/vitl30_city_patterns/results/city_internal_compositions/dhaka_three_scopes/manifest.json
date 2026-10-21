@@ -1,0 +1,125 @@
+{
+  "city": "Bangladesh/Dhaka",
+  "corpus_panoramas": 681645,
+  "sampled_city_panoramas": 93400,
+  "scope_rule": "Most-city example has >15 confirmed cities; region/city labels are descriptive candidates.",
+  "selection": "Strength-ranked panorama-level matches with all four image files; chosen rank recorded per pattern.",
+  "map": "Observed 1-km cells; a cell is colored if at least one sampled panorama matches.",
+  "evidence": "Frozen DINOv3-L and BatchTopK SAE; response overlay is not segmentation.",
+  "patterns": [
+    {
+      "pattern_id": "d8393482e056",
+      "scope": "Broadly shared",
+      "label": "Road + trees",
+      "unit_ids": [
+        57,
+        75
+      ],
+      "unit_labels": [
+        "道路",
+        "树木"
+      ],
+      "confirming_cities": [
+        "Argentina/BuenosAires",
+        "Australia/Melbourne",
+        "Australia/Perth",
+        "Australia/Sydney",
+        "Austria/Vienna",
+        "Bangladesh/Dhaka",
+        "Belgium/Antwerp",
+        "Belgium/Brussels",
+        "Brazil/Brasília",
+        "Brazil/RiodeJaneiro",
+        "Brazil/SaoPaulo",
+        "China/Taipei",
+        "France/Paris",
+        "Germany/Hamburg",
+        "Indonesia/Yogyakarta",
+        "Italy/Naples",
+        "Korea/Seoul",
+        "Mexico/Monterrey",
+        "Portugal/Lisbon",
+        "Russia/Moscow",
+        "Singapore/Singapore",
+        "SouthAfrica/CapeTown",
+        "SouthAfrica/Johannesburg",
+        "Spain/Barcelona",
+        "Sweden/Stockholm",
+        "UAE/Dubai",
+        "US/Chicago",
+        "US/NewYork",
+        "US/Phoenix"
+      ],
+      "city_support": 29,
+      "city_matching_panoramas": 2938,
+      "city_matching_cells": 1119,
+      "city_cell_balanced_rate": 0.0311731660433026,
+      "panoid": "fdSg1I2Z0PrXfpyFagm7eA",
+      "grid_x": 833,
+      "grid_y": 2643,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 1.4010293056574254,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_three_scopes/d8393482e056/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_three_scopes/d8393482e056/overlay.webp"
+    },
+    {
+      "pattern_id": "6c4c7543befd",
+      "scope": "Two-city shared candidate",
+      "label": "Fence + older structures + trees",
+      "unit_ids": [
+        2,
+        20,
+        75
+      ],
+      "unit_labels": [
+        "围栏",
+        "老屋",
+        "树木"
+      ],
+      "confirming_cities": [
+        "Bangladesh/Dhaka",
+        "Indonesia/Yogyakarta"
+      ],
+      "city_support": 2,
+      "city_matching_panoramas": 5971,
+      "city_matching_cells": 3488,
+      "city_cell_balanced_rate": 0.0640823966316821,
+      "panoid": "JkMovMN8SY013qlWYX8Uug",
+      "grid_x": 859,
+      "grid_y": 2597,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.9027753321849543,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_three_scopes/6c4c7543befd/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_three_scopes/6c4c7543befd/overlay.webp"
+    },
+    {
+      "pattern_id": "cd8d335c382b",
+      "scope": "Dhaka-enriched candidate",
+      "label": "Older structures + signs/posters + trees",
+      "unit_ids": [
+        20,
+        62,
+        75
+      ],
+      "unit_labels": [
+        "老屋",
+        "广告牌",
+        "树木"
+      ],
+      "confirming_cities": [
+        "Bangladesh/Dhaka"
+      ],
+      "city_support": 1,
+      "city_matching_panoramas": 3792,
+      "city_matching_cells": 2583,
+      "city_cell_balanced_rate": 0.0404939890493243,
+      "panoid": "_tzkJuQywTcT6qM9ViGNAw",
+      "grid_x": 846,
+      "grid_y": 2599,
+      "strength_rank": 3,
+      "minimum_unit_score_ratio": 2.7517651850254605,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_three_scopes/cd8d335c382b/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_three_scopes/cd8d335c382b/overlay.webp"
+    }
+  ]
+}

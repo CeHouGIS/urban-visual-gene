@@ -13,17 +13,14 @@ def test_main_experiment_label_structure():
     graph = build_category_graph({**source, 'dimensions': rows})
     structure = build_structure(graph, json.loads(RULES.read_text()))
     counts = structure['counts']
-    assert counts == {'eligible_labels': 392, 'linked_labels': 200, 'unlinked_labels': 192,
-                      'hierarchy_groups': 40, 'hierarchy_edges': 132, 'parallel_groups': 33}
+    assert counts == {'eligible_labels': 242, 'linked_labels': 80, 'unlinked_labels': 162,
+                      'hierarchy_groups': 8, 'hierarchy_edges': 29, 'parallel_groups': 14}
     edges = {(group['parent']['label'], child['label'], group['relation'])
              for group in structure['hierarchy'] for child in group['children']}
     assert ('建筑', '教堂', 'is_a') in edges
-    assert ('建筑', '窗户', 'part_of') in edges
-    assert ('树木', '棕榈树', 'is_a') in edges
-    assert ('树木', '树冠', 'part_of') in edges
-    assert ('车辆', '车窗', 'part_of') in edges
-    assert ('建筑', '窗户', 'is_a') not in edges
-    assert ('树木', '树冠', 'is_a') not in edges
+    assert ('建筑', '窗户', 'part_of') not in edges
+    assert ('车辆', '公交车', 'is_a') in edges
+    assert not any(relation == 'part_of' for _, _, relation in edges)
     assert any(group['parent'] == '建筑' and group['relation'] == 'is_a' and
                {'教堂', '工业建筑'} <= {item['label'] for item in group['labels']}
                for group in structure['parallel'])

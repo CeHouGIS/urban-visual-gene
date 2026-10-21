@@ -1,0 +1,1560 @@
+{
+  "status": "complete",
+  "city": "Bangladesh/Dhaka",
+  "sampled_panoramas": 93400,
+  "observed_cells": 9587,
+  "candidate_count": 55,
+  "candidate_definition": "Replicated within Dhaka and no other study city passing the same within-city cutoff; not exclusive presence.",
+  "grid_definition": "Observed 1-km cells; counts are matching sampled panoramas and candidate types can overlap within a cell.",
+  "example_selection": "Highest minimum normalized unit response with four images and distinct panoid; cd8d335c382b starts at rank 3 after visual review.",
+  "checkpoint_sha256": "fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0",
+  "panoramas_with_any_candidate": 21561,
+  "cells_with_any_candidate": 7458,
+  "contact_sheets": [
+    "Dhaka_Local_Examples_P01.png",
+    "Dhaka_Local_Examples_P02.png",
+    "Dhaka_Local_Examples_P03.png",
+    "Dhaka_Local_Examples_P04.png",
+    "Dhaka_Local_Examples_P05.png"
+  ],
+  "patterns": [
+    {
+      "index": 1,
+      "pattern_id": "7b5aa1792959",
+      "label": "围栏 ＋ 老屋 ＋ 广告牌 ＋ 树木",
+      "english": "fence + older structures + signs/posters + trees",
+      "unit_ids": [
+        2,
+        20,
+        62,
+        75
+      ],
+      "unit_labels": [
+        "围栏",
+        "老屋",
+        "广告牌",
+        "树木"
+      ],
+      "order": 4,
+      "panoramas": 1228,
+      "cells": 1009,
+      "city_rate": 0.0130882842341067,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.6715945638303236,
+      "panoid": "g4ZNkLPv9JCJRwkmB_U7zQ",
+      "grid_x": 876,
+      "grid_y": 2630,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7b5aa1792959/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7b5aa1792959/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7b5aa1792959/map_and_example.png"
+    },
+    {
+      "index": 2,
+      "pattern_id": "7ece522c5e25",
+      "label": "围栏 ＋ 老屋 ＋ 树木 ＋ 电线杆",
+      "english": "fence + older structures + trees + utility pole",
+      "unit_ids": [
+        2,
+        20,
+        75,
+        78
+      ],
+      "unit_labels": [
+        "围栏",
+        "老屋",
+        "树木",
+        "电线杆"
+      ],
+      "order": 4,
+      "panoramas": 1021,
+      "cells": 874,
+      "city_rate": 0.010989211581159,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.3583585630763855,
+      "panoid": "fxB2J7_d1cXuFiGKqSPo7Q",
+      "grid_x": 802,
+      "grid_y": 2596,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7ece522c5e25/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7ece522c5e25/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7ece522c5e25/map_and_example.png"
+    },
+    {
+      "index": 3,
+      "pattern_id": "69a26b49b57f",
+      "label": "围栏 ＋ 金属屋顶建筑 ＋ 广告牌 ＋ 电线",
+      "english": "fence + metal-roof building + signs/posters + wires",
+      "unit_ids": [
+        2,
+        23,
+        62,
+        77
+      ],
+      "unit_labels": [
+        "围栏",
+        "金属屋顶建筑",
+        "广告牌",
+        "电线"
+      ],
+      "order": 4,
+      "panoramas": 981,
+      "cells": 759,
+      "city_rate": 0.0104299638564789,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 5.45554568530959,
+      "panoid": "8-usUuup-9Zykx4Nn0rM8w",
+      "grid_x": 844,
+      "grid_y": 2649,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/69a26b49b57f/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/69a26b49b57f/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/69a26b49b57f/map_and_example.png"
+    },
+    {
+      "index": 4,
+      "pattern_id": "0d39dd8d0454",
+      "label": "老屋 ＋ 广告牌 ＋ 树木 ＋ 电线",
+      "english": "older structures + signs/posters + trees + wires",
+      "unit_ids": [
+        20,
+        62,
+        75,
+        77
+      ],
+      "unit_labels": [
+        "老屋",
+        "广告牌",
+        "树木",
+        "电线"
+      ],
+      "order": 4,
+      "panoramas": 879,
+      "cells": 744,
+      "city_rate": 0.0092970225884589,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 1.9843603477709044,
+      "panoid": "c8ODmnSNeUeXnkh4kwHJQg",
+      "grid_x": 792,
+      "grid_y": 2579,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0d39dd8d0454/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0d39dd8d0454/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0d39dd8d0454/map_and_example.png"
+    },
+    {
+      "index": 5,
+      "pattern_id": "71b92f9782f1",
+      "label": "围栏 ＋ 老屋 ＋ 树木 ＋ 电线",
+      "english": "fence + older structures + trees + wires",
+      "unit_ids": [
+        2,
+        20,
+        75,
+        77
+      ],
+      "unit_labels": [
+        "围栏",
+        "老屋",
+        "树木",
+        "电线"
+      ],
+      "order": 4,
+      "panoramas": 838,
+      "cells": 715,
+      "city_rate": 0.0088970100052816,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.090639643454211,
+      "panoid": "HKzTuK3PdDdHsQG037EYqQ",
+      "grid_x": 835,
+      "grid_y": 2649,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/71b92f9782f1/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/71b92f9782f1/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/71b92f9782f1/map_and_example.png"
+    },
+    {
+      "index": 6,
+      "pattern_id": "0f1277cbebf9",
+      "label": "围墙 ＋ 老屋 ＋ 广告牌 ＋ 树木",
+      "english": "wall + older structures + signs/posters + trees",
+      "unit_ids": [
+        1,
+        20,
+        62,
+        75
+      ],
+      "unit_labels": [
+        "围墙",
+        "老屋",
+        "广告牌",
+        "树木"
+      ],
+      "order": 4,
+      "panoramas": 802,
+      "cells": 702,
+      "city_rate": 0.0086849172407741,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.6467688944616556,
+      "panoid": "c5wO1QAy6cLETZ7bAV95bw",
+      "grid_x": 814,
+      "grid_y": 2594,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f1277cbebf9/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f1277cbebf9/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f1277cbebf9/map_and_example.png"
+    },
+    {
+      "index": 7,
+      "pattern_id": "7e6d817fd416",
+      "label": "老屋 ＋ 广告牌 ＋ 树木 ＋ 电线杆",
+      "english": "older structures + signs/posters + trees + utility pole",
+      "unit_ids": [
+        20,
+        62,
+        75,
+        78
+      ],
+      "unit_labels": [
+        "老屋",
+        "广告牌",
+        "树木",
+        "电线杆"
+      ],
+      "order": 4,
+      "panoramas": 738,
+      "cells": 659,
+      "city_rate": 0.0080341103445307,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.248260905631265,
+      "panoid": "av0w2jlfucK6u6jGm_-MYw",
+      "grid_x": 804,
+      "grid_y": 2641,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7e6d817fd416/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7e6d817fd416/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7e6d817fd416/map_and_example.png"
+    },
+    {
+      "index": 8,
+      "pattern_id": "b3bec1fedc8f",
+      "label": "围墙 ＋ 老屋 ＋ 树木 ＋ 电线杆",
+      "english": "wall + older structures + trees + utility pole",
+      "unit_ids": [
+        1,
+        20,
+        75,
+        78
+      ],
+      "unit_labels": [
+        "围墙",
+        "老屋",
+        "树木",
+        "电线杆"
+      ],
+      "order": 4,
+      "panoramas": 647,
+      "cells": 564,
+      "city_rate": 0.0070098645487192,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.4862065119732746,
+      "panoid": "np02RjFGxwz8-P8dkHSgsQ",
+      "grid_x": 859,
+      "grid_y": 2656,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b3bec1fedc8f/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b3bec1fedc8f/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b3bec1fedc8f/map_and_example.png"
+    },
+    {
+      "index": 9,
+      "pattern_id": "292b52334f91",
+      "label": "围墙 ＋ 广告牌 ＋ 树木 ＋ 电线",
+      "english": "wall + signs/posters + trees + wires",
+      "unit_ids": [
+        1,
+        62,
+        75,
+        77
+      ],
+      "unit_labels": [
+        "围墙",
+        "广告牌",
+        "树木",
+        "电线"
+      ],
+      "order": 4,
+      "panoramas": 541,
+      "cells": 460,
+      "city_rate": 0.0058010930807426,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.1057352528412783,
+      "panoid": "m8IjPnnZ88GSAAWQcIBSKA",
+      "grid_x": 867,
+      "grid_y": 2623,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/292b52334f91/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/292b52334f91/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/292b52334f91/map_and_example.png"
+    },
+    {
+      "index": 10,
+      "pattern_id": "ed9575733d38",
+      "label": "围栏 ＋ 广告牌 ＋ 树木 ＋ 电线",
+      "english": "fence + signs/posters + trees + wires",
+      "unit_ids": [
+        2,
+        62,
+        75,
+        77
+      ],
+      "unit_labels": [
+        "围栏",
+        "广告牌",
+        "树木",
+        "电线"
+      ],
+      "order": 4,
+      "panoramas": 523,
+      "cells": 462,
+      "city_rate": 0.0055329141148479,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 1.969286266100597,
+      "panoid": "CJ70EmECaFWgN-yrmNofiA",
+      "grid_x": 836,
+      "grid_y": 2624,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/ed9575733d38/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/ed9575733d38/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/ed9575733d38/map_and_example.png"
+    },
+    {
+      "index": 11,
+      "pattern_id": "b7d27550e9f6",
+      "label": "围栏 ＋ 老屋 ＋ 广告牌 ＋ 电线",
+      "english": "fence + older structures + signs/posters + wires",
+      "unit_ids": [
+        2,
+        20,
+        62,
+        77
+      ],
+      "unit_labels": [
+        "围栏",
+        "老屋",
+        "广告牌",
+        "电线"
+      ],
+      "order": 4,
+      "panoramas": 508,
+      "cells": 448,
+      "city_rate": 0.0053679254810995,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 4.1080040246683645,
+      "panoid": "0XtWLWIEuHVimPsKBb-NRg",
+      "grid_x": 796,
+      "grid_y": 2568,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b7d27550e9f6/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b7d27550e9f6/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b7d27550e9f6/map_and_example.png"
+    },
+    {
+      "index": 12,
+      "pattern_id": "cd8d335c382b",
+      "label": "老屋 ＋ 广告牌 ＋ 树木",
+      "english": "older structures + signs/posters + trees",
+      "unit_ids": [
+        20,
+        62,
+        75
+      ],
+      "unit_labels": [
+        "老屋",
+        "广告牌",
+        "树木"
+      ],
+      "order": 3,
+      "panoramas": 3792,
+      "cells": 2583,
+      "city_rate": 0.0404939890493243,
+      "strength_rank": 3,
+      "minimum_unit_score_ratio": 2.7517651850254605,
+      "panoid": "_tzkJuQywTcT6qM9ViGNAw",
+      "grid_x": 846,
+      "grid_y": 2599,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/cd8d335c382b/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/cd8d335c382b/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/cd8d335c382b/map_and_example.png"
+    },
+    {
+      "index": 13,
+      "pattern_id": "4bfd8a0e1f71",
+      "label": "老屋 ＋ 树木 ＋ 电线杆",
+      "english": "older structures + trees + utility pole",
+      "unit_ids": [
+        20,
+        75,
+        78
+      ],
+      "unit_labels": [
+        "老屋",
+        "树木",
+        "电线杆"
+      ],
+      "order": 3,
+      "panoramas": 2789,
+      "cells": 2069,
+      "city_rate": 0.0301062036719698,
+      "strength_rank": 2,
+      "minimum_unit_score_ratio": 2.4688734853412546,
+      "panoid": "Sf-vcKRHrs4PT7fze6GXtg",
+      "grid_x": 820,
+      "grid_y": 2613,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/4bfd8a0e1f71/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/4bfd8a0e1f71/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/4bfd8a0e1f71/map_and_example.png"
+    },
+    {
+      "index": 14,
+      "pattern_id": "72c7831b9fde",
+      "label": "围墙 ＋ 广告牌 ＋ 树木",
+      "english": "wall + signs/posters + trees",
+      "unit_ids": [
+        1,
+        62,
+        75
+      ],
+      "unit_labels": [
+        "围墙",
+        "广告牌",
+        "树木"
+      ],
+      "order": 3,
+      "panoramas": 2045,
+      "cells": 1504,
+      "city_rate": 0.0219923722766113,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.815921056926654,
+      "panoid": "zopdBnYFGIJSO0oAyCf4Mg",
+      "grid_x": 859,
+      "grid_y": 2601,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/72c7831b9fde/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/72c7831b9fde/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/72c7831b9fde/map_and_example.png"
+    },
+    {
+      "index": 15,
+      "pattern_id": "76ccc542968c",
+      "label": "围栏 ＋ 广告牌 ＋ 树木",
+      "english": "fence + signs/posters + trees",
+      "unit_ids": [
+        2,
+        62,
+        75
+      ],
+      "unit_labels": [
+        "围栏",
+        "广告牌",
+        "树木"
+      ],
+      "order": 3,
+      "panoramas": 1960,
+      "cells": 1525,
+      "city_rate": 0.0209985496232497,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.8900662573982516,
+      "panoid": "wKg5PhB3OwMD5-YkBpQ_UA",
+      "grid_x": 873,
+      "grid_y": 2626,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/76ccc542968c/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/76ccc542968c/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/76ccc542968c/map_and_example.png"
+    },
+    {
+      "index": 16,
+      "pattern_id": "af10c0f6ad69",
+      "label": "金属屋顶建筑 ＋ 广告牌 ＋ 电线",
+      "english": "metal-roof building + signs/posters + wires",
+      "unit_ids": [
+        23,
+        62,
+        77
+      ],
+      "unit_labels": [
+        "金属屋顶建筑",
+        "广告牌",
+        "电线"
+      ],
+      "order": 3,
+      "panoramas": 1751,
+      "cells": 1207,
+      "city_rate": 0.018630511555827,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 7.1921152994036674,
+      "panoid": "yjqPFo_9tgSZwRp668879Q",
+      "grid_x": 783,
+      "grid_y": 2630,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/af10c0f6ad69/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/af10c0f6ad69/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/af10c0f6ad69/map_and_example.png"
+    },
+    {
+      "index": 17,
+      "pattern_id": "f5d922102089",
+      "label": "老屋 ＋ 广告牌 ＋ 电线",
+      "english": "older structures + signs/posters + wires",
+      "unit_ids": [
+        20,
+        62,
+        77
+      ],
+      "unit_labels": [
+        "老屋",
+        "广告牌",
+        "电线"
+      ],
+      "order": 3,
+      "panoramas": 1602,
+      "cells": 1200,
+      "city_rate": 0.016996230013858,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 6.420223046263384,
+      "panoid": "u86GZ4mH0xO7xpdQDzhc2g",
+      "grid_x": 749,
+      "grid_y": 2635,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f5d922102089/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f5d922102089/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f5d922102089/map_and_example.png"
+    },
+    {
+      "index": 18,
+      "pattern_id": "dc226d126159",
+      "label": "围栏 ＋ 老屋 ＋ 广告牌",
+      "english": "fence + older structures + signs/posters",
+      "unit_ids": [
+        2,
+        20,
+        62
+      ],
+      "unit_labels": [
+        "围栏",
+        "老屋",
+        "广告牌"
+      ],
+      "order": 3,
+      "panoramas": 1530,
+      "cells": 1222,
+      "city_rate": 0.016296911657817,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 6.721512194898876,
+      "panoid": "SBlb53LEncZkK3WzflTvKw",
+      "grid_x": 807,
+      "grid_y": 2653,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/dc226d126159/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/dc226d126159/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/dc226d126159/map_and_example.png"
+    },
+    {
+      "index": 19,
+      "pattern_id": "8cb26010d5c4",
+      "label": "围栏 ＋ 金属屋顶建筑 ＋ 广告牌",
+      "english": "fence + metal-roof building + signs/posters",
+      "unit_ids": [
+        2,
+        23,
+        62
+      ],
+      "unit_labels": [
+        "围栏",
+        "金属屋顶建筑",
+        "广告牌"
+      ],
+      "order": 3,
+      "panoramas": 1494,
+      "cells": 1117,
+      "city_rate": 0.0160435924308877,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 7.724734488874674,
+      "panoid": "3L0owfPC4MCOQuz0hO_zXw",
+      "grid_x": 898,
+      "grid_y": 2695,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/8cb26010d5c4/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/8cb26010d5c4/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/8cb26010d5c4/map_and_example.png"
+    },
+    {
+      "index": 20,
+      "pattern_id": "46c985bb5706",
+      "label": "草地 ＋ 树木 ＋ 水体",
+      "english": "grass + trees + water",
+      "unit_ids": [
+        50,
+        75,
+        93
+      ],
+      "unit_labels": [
+        "草地",
+        "树木",
+        "水体"
+      ],
+      "order": 3,
+      "panoramas": 1445,
+      "cells": 1054,
+      "city_rate": 0.0154765630044653,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.0864438446583358,
+      "panoid": "z6aMV1YUSfJRganGhEYuJA",
+      "grid_x": 829,
+      "grid_y": 2647,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/46c985bb5706/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/46c985bb5706/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/46c985bb5706/map_and_example.png"
+    },
+    {
+      "index": 21,
+      "pattern_id": "0f739a6ae5ec",
+      "label": "广告牌 ＋ 树木 ＋ 电线杆",
+      "english": "signs/posters + trees + utility pole",
+      "unit_ids": [
+        62,
+        75,
+        78
+      ],
+      "unit_labels": [
+        "广告牌",
+        "树木",
+        "电线杆"
+      ],
+      "order": 3,
+      "panoramas": 1418,
+      "cells": 1165,
+      "city_rate": 0.0153905503649949,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.300509505722951,
+      "panoid": "ZO7paINrq14KKCpNnIZBVA",
+      "grid_x": 886,
+      "grid_y": 2652,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f739a6ae5ec/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f739a6ae5ec/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f739a6ae5ec/map_and_example.png"
+    },
+    {
+      "index": 22,
+      "pattern_id": "d794105b9762",
+      "label": "围栏 ＋ 金属屋顶建筑 ＋ 电线",
+      "english": "fence + metal-roof building + wires",
+      "unit_ids": [
+        2,
+        23,
+        77
+      ],
+      "unit_labels": [
+        "围栏",
+        "金属屋顶建筑",
+        "电线"
+      ],
+      "order": 3,
+      "panoramas": 1395,
+      "cells": 1019,
+      "city_rate": 0.0150235272301612,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 5.672787329831539,
+      "panoid": "2jF7s11i7S6g5BGQXNd0xA",
+      "grid_x": 847,
+      "grid_y": 2648,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/d794105b9762/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/d794105b9762/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/d794105b9762/map_and_example.png"
+    },
+    {
+      "index": 23,
+      "pattern_id": "af7f95769a62",
+      "label": "围栏 ＋ 金属屋顶建筑 ＋ 树木",
+      "english": "fence + metal-roof building + trees",
+      "unit_ids": [
+        2,
+        23,
+        75
+      ],
+      "unit_labels": [
+        "围栏",
+        "金属屋顶建筑",
+        "树木"
+      ],
+      "order": 3,
+      "panoramas": 1301,
+      "cells": 1075,
+      "city_rate": 0.014377687377583,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.8197745182266636,
+      "panoid": "pUksx2Dqej8XKaZt7Hickg",
+      "grid_x": 851,
+      "grid_y": 2577,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/af7f95769a62/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/af7f95769a62/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/af7f95769a62/map_and_example.png"
+    },
+    {
+      "index": 24,
+      "pattern_id": "6f2591d85c9b",
+      "label": "围栏 ＋ 老屋 ＋ 电线",
+      "english": "fence + older structures + wires",
+      "unit_ids": [
+        2,
+        20,
+        77
+      ],
+      "unit_labels": [
+        "围栏",
+        "老屋",
+        "电线"
+      ],
+      "order": 3,
+      "panoramas": 1259,
+      "cells": 998,
+      "city_rate": 0.0133413965008833,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 4.275106087703905,
+      "panoid": "oexfUtEySsCBf2MpUDwGyQ",
+      "grid_x": 877,
+      "grid_y": 2631,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/6f2591d85c9b/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/6f2591d85c9b/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/6f2591d85c9b/map_and_example.png"
+    },
+    {
+      "index": 25,
+      "pattern_id": "f355d309393b",
+      "label": "围墙 ＋ 金属屋顶建筑 ＋ 树木",
+      "english": "wall + metal-roof building + trees",
+      "unit_ids": [
+        1,
+        23,
+        75
+      ],
+      "unit_labels": [
+        "围墙",
+        "金属屋顶建筑",
+        "树木"
+      ],
+      "order": 3,
+      "panoramas": 1119,
+      "cells": 902,
+      "city_rate": 0.0119310458441573,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.838173228154837,
+      "panoid": "2RckfOahsOO-eyaVW3u1Tw",
+      "grid_x": 868,
+      "grid_y": 2641,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f355d309393b/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f355d309393b/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f355d309393b/map_and_example.png"
+    },
+    {
+      "index": 26,
+      "pattern_id": "2b4e56d5c9a7",
+      "label": "围栏 ＋ 老屋 ＋ 电线杆",
+      "english": "fence + older structures + utility pole",
+      "unit_ids": [
+        2,
+        20,
+        78
+      ],
+      "unit_labels": [
+        "围栏",
+        "老屋",
+        "电线杆"
+      ],
+      "order": 3,
+      "panoramas": 1073,
+      "cells": 921,
+      "city_rate": 0.0115759436141203,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 3.624505875201181,
+      "panoid": "ctYhPgJthSh27I2bpkeCCA",
+      "grid_x": 872,
+      "grid_y": 2641,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/2b4e56d5c9a7/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/2b4e56d5c9a7/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/2b4e56d5c9a7/map_and_example.png"
+    },
+    {
+      "index": 27,
+      "pattern_id": "a39f543db218",
+      "label": "老屋 ＋ 草地 ＋ 树木",
+      "english": "older structures + grass + trees",
+      "unit_ids": [
+        20,
+        50,
+        75
+      ],
+      "unit_labels": [
+        "老屋",
+        "草地",
+        "树木"
+      ],
+      "order": 3,
+      "panoramas": 986,
+      "cells": 818,
+      "city_rate": 0.0106276108023265,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.2351261703432383,
+      "panoid": "ka1Q4rm6tz4s7S2EKoAwVw",
+      "grid_x": 790,
+      "grid_y": 2724,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/a39f543db218/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/a39f543db218/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/a39f543db218/map_and_example.png"
+    },
+    {
+      "index": 28,
+      "pattern_id": "5434bb2c5072",
+      "label": "老屋 ＋ 树木 ＋ 路灯",
+      "english": "older structures + trees + streetlight",
+      "unit_ids": [
+        20,
+        75,
+        80
+      ],
+      "unit_labels": [
+        "老屋",
+        "树木",
+        "路灯"
+      ],
+      "order": 3,
+      "panoramas": 986,
+      "cells": 869,
+      "city_rate": 0.0104596419423789,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.389798155425669,
+      "panoid": "TjTRfbTcjkR0hixMlyW1Yg",
+      "grid_x": 854,
+      "grid_y": 2607,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/5434bb2c5072/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/5434bb2c5072/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/5434bb2c5072/map_and_example.png"
+    },
+    {
+      "index": 29,
+      "pattern_id": "209055bea04e",
+      "label": "树木 ＋ 电线 ＋ 水体",
+      "english": "trees + wires + water",
+      "unit_ids": [
+        75,
+        77,
+        93
+      ],
+      "unit_labels": [
+        "树木",
+        "电线",
+        "水体"
+      ],
+      "order": 3,
+      "panoramas": 968,
+      "cells": 740,
+      "city_rate": 0.0103132383303448,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.464127457084739,
+      "panoid": "lw67vNoeYO0sgnonAYWoHg",
+      "grid_x": 844,
+      "grid_y": 2572,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/209055bea04e/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/209055bea04e/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/209055bea04e/map_and_example.png"
+    },
+    {
+      "index": 30,
+      "pattern_id": "c7abad7ab2f3",
+      "label": "金属屋顶建筑 ＋ 广告牌 ＋ 树木",
+      "english": "metal-roof building + signs/posters + trees",
+      "unit_ids": [
+        23,
+        62,
+        75
+      ],
+      "unit_labels": [
+        "金属屋顶建筑",
+        "广告牌",
+        "树木"
+      ],
+      "order": 3,
+      "panoramas": 944,
+      "cells": 782,
+      "city_rate": 0.0102732950208698,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.5715101026415796,
+      "panoid": "eLM0CqUODIKKZo6S9PAKXA",
+      "grid_x": 868,
+      "grid_y": 2632,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/c7abad7ab2f3/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/c7abad7ab2f3/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/c7abad7ab2f3/map_and_example.png"
+    },
+    {
+      "index": 31,
+      "pattern_id": "798addbb31b0",
+      "label": "围墙 ＋ 老屋 ＋ 广告牌",
+      "english": "wall + older structures + signs/posters",
+      "unit_ids": [
+        1,
+        20,
+        62
+      ],
+      "unit_labels": [
+        "围墙",
+        "老屋",
+        "广告牌"
+      ],
+      "order": 3,
+      "panoramas": 905,
+      "cells": 778,
+      "city_rate": 0.009805068371356,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 7.47115770354867,
+      "panoid": "xjPpffdogSK6FoPUkj0h0w",
+      "grid_x": 846,
+      "grid_y": 2611,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/798addbb31b0/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/798addbb31b0/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/798addbb31b0/map_and_example.png"
+    },
+    {
+      "index": 32,
+      "pattern_id": "038db1e02989",
+      "label": "老屋 ＋ 广告牌 ＋ 电线杆",
+      "english": "older structures + signs/posters + utility pole",
+      "unit_ids": [
+        20,
+        62,
+        78
+      ],
+      "unit_labels": [
+        "老屋",
+        "广告牌",
+        "电线杆"
+      ],
+      "order": 3,
+      "panoramas": 825,
+      "cells": 728,
+      "city_rate": 0.0089957713901596,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 3.7110988050699234,
+      "panoid": "AjoDK4aQH7wd85nZWl0PgQ",
+      "grid_x": 855,
+      "grid_y": 2671,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/038db1e02989/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/038db1e02989/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/038db1e02989/map_and_example.png"
+    },
+    {
+      "index": 33,
+      "pattern_id": "79dbd6d47158",
+      "label": "老屋 ＋ 树木 ＋ 水体",
+      "english": "older structures + trees + water",
+      "unit_ids": [
+        20,
+        75,
+        93
+      ],
+      "unit_labels": [
+        "老屋",
+        "树木",
+        "水体"
+      ],
+      "order": 3,
+      "panoramas": 817,
+      "cells": 653,
+      "city_rate": 0.008686738490118,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 3.0452158100955864,
+      "panoid": "npj_b9Fgy5OFraIE1_TWXA",
+      "grid_x": 812,
+      "grid_y": 2553,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/79dbd6d47158/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/79dbd6d47158/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/79dbd6d47158/map_and_example.png"
+    },
+    {
+      "index": 34,
+      "pattern_id": "0f52a57fcada",
+      "label": "围墙 ＋ 老屋 ＋ 电线杆",
+      "english": "wall + older structures + utility pole",
+      "unit_ids": [
+        1,
+        20,
+        78
+      ],
+      "unit_labels": [
+        "围墙",
+        "老屋",
+        "电线杆"
+      ],
+      "order": 3,
+      "panoramas": 671,
+      "cells": 584,
+      "city_rate": 0.0072868600171197,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 3.5877821501344442,
+      "panoid": "AjBiOKM4Is3XIXZWCgFrfg",
+      "grid_x": 843,
+      "grid_y": 2668,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f52a57fcada/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f52a57fcada/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/0f52a57fcada/map_and_example.png"
+    },
+    {
+      "index": 35,
+      "pattern_id": "7393a1df03ee",
+      "label": "草地 ＋ 电线 ＋ 水体",
+      "english": "grass + wires + water",
+      "unit_ids": [
+        50,
+        77,
+        93
+      ],
+      "unit_labels": [
+        "草地",
+        "电线",
+        "水体"
+      ],
+      "order": 3,
+      "panoramas": 673,
+      "cells": 460,
+      "city_rate": 0.0072366514840698,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.692862433285334,
+      "panoid": "nQnb_JDEe08RdIY8fWSvXg",
+      "grid_x": 900,
+      "grid_y": 2724,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7393a1df03ee/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7393a1df03ee/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/7393a1df03ee/map_and_example.png"
+    },
+    {
+      "index": 36,
+      "pattern_id": "b11144396704",
+      "label": "广告牌 ＋ 树木 ＋ 路灯",
+      "english": "signs/posters + trees + streetlight",
+      "unit_ids": [
+        62,
+        75,
+        80
+      ],
+      "unit_labels": [
+        "广告牌",
+        "树木",
+        "路灯"
+      ],
+      "order": 3,
+      "panoramas": 672,
+      "cells": 604,
+      "city_rate": 0.0071511355489659,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.2934323578141425,
+      "panoid": "c_eoYhzVlh3vkguEEAW0Zw",
+      "grid_x": 799,
+      "grid_y": 2690,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b11144396704/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b11144396704/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b11144396704/map_and_example.png"
+    },
+    {
+      "index": 37,
+      "pattern_id": "f44f3c7377db",
+      "label": "围栏 ＋ 广告牌 ＋ 电线杆",
+      "english": "fence + signs/posters + utility pole",
+      "unit_ids": [
+        2,
+        62,
+        78
+      ],
+      "unit_labels": [
+        "围栏",
+        "广告牌",
+        "电线杆"
+      ],
+      "order": 3,
+      "panoramas": 625,
+      "cells": 552,
+      "city_rate": 0.0068270359498063,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 6.945243910089556,
+      "panoid": "NpdxHquys-D7UMbLsOkv3A",
+      "grid_x": 842,
+      "grid_y": 2635,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f44f3c7377db/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f44f3c7377db/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f44f3c7377db/map_and_example.png"
+    },
+    {
+      "index": 38,
+      "pattern_id": "a7755d0e3010",
+      "label": "金属屋顶建筑 ＋ 树木 ＋ 电线",
+      "english": "metal-roof building + trees + wires",
+      "unit_ids": [
+        23,
+        75,
+        77
+      ],
+      "unit_labels": [
+        "金属屋顶建筑",
+        "树木",
+        "电线"
+      ],
+      "order": 3,
+      "panoramas": 623,
+      "cells": 549,
+      "city_rate": 0.0067929703086686,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 1.9518713962280398,
+      "panoid": "xNCpWmwNQhxKGhmUOVJbMw",
+      "grid_x": 802,
+      "grid_y": 2593,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/a7755d0e3010/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/a7755d0e3010/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/a7755d0e3010/map_and_example.png"
+    },
+    {
+      "index": 39,
+      "pattern_id": "808a667c022b",
+      "label": "围墙 ＋ 广告牌 ＋ 电线杆",
+      "english": "wall + signs/posters + utility pole",
+      "unit_ids": [
+        1,
+        62,
+        78
+      ],
+      "unit_labels": [
+        "围墙",
+        "广告牌",
+        "电线杆"
+      ],
+      "order": 3,
+      "panoramas": 607,
+      "cells": 525,
+      "city_rate": 0.006528061313187,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 6.74527391985924,
+      "panoid": "c6DtTwTD1XP_UtiO9Ez7FQ",
+      "grid_x": 846,
+      "grid_y": 2680,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/808a667c022b/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/808a667c022b/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/808a667c022b/map_and_example.png"
+    },
+    {
+      "index": 40,
+      "pattern_id": "97e7a7e816a1",
+      "label": "围墙 ＋ 金属屋顶建筑 ＋ 广告牌",
+      "english": "wall + metal-roof building + signs/posters",
+      "unit_ids": [
+        1,
+        23,
+        62
+      ],
+      "unit_labels": [
+        "围墙",
+        "金属屋顶建筑",
+        "广告牌"
+      ],
+      "order": 3,
+      "panoramas": 549,
+      "cells": 476,
+      "city_rate": 0.0059374384293545,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 9.27746668457985,
+      "panoid": "oKMt-h9N_lXXXj_Asx3F-A",
+      "grid_x": 901,
+      "grid_y": 2659,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/97e7a7e816a1/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/97e7a7e816a1/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/97e7a7e816a1/map_and_example.png"
+    },
+    {
+      "index": 41,
+      "pattern_id": "f1534c77021e",
+      "label": "老屋 ＋ 沙地 ＋ 树木",
+      "english": "older structures + sandy ground + trees",
+      "unit_ids": [
+        20,
+        67,
+        75
+      ],
+      "unit_labels": [
+        "老屋",
+        "沙地",
+        "树木"
+      ],
+      "order": 3,
+      "panoramas": 544,
+      "cells": 493,
+      "city_rate": 0.0058852430788385,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.755220851559256,
+      "panoid": "IfD8sl5_CsSq2icX4kc97A",
+      "grid_x": 852,
+      "grid_y": 2558,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f1534c77021e/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f1534c77021e/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f1534c77021e/map_and_example.png"
+    },
+    {
+      "index": 42,
+      "pattern_id": "4b213f108f13",
+      "label": "金属屋顶建筑 ＋ 树木 ＋ 电线杆",
+      "english": "metal-roof building + trees + utility pole",
+      "unit_ids": [
+        23,
+        75,
+        78
+      ],
+      "unit_labels": [
+        "金属屋顶建筑",
+        "树木",
+        "电线杆"
+      ],
+      "order": 3,
+      "panoramas": 527,
+      "cells": 463,
+      "city_rate": 0.0057549823587165,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.1371668892952376,
+      "panoid": "AYutSJAaOEbS5rNBFXuO7A",
+      "grid_x": 843,
+      "grid_y": 2572,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/4b213f108f13/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/4b213f108f13/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/4b213f108f13/map_and_example.png"
+    },
+    {
+      "index": 43,
+      "pattern_id": "069a669dddbe",
+      "label": "围栏 ＋ 树木 ＋ 水体",
+      "english": "fence + trees + water",
+      "unit_ids": [
+        2,
+        75,
+        93
+      ],
+      "unit_labels": [
+        "围栏",
+        "树木",
+        "水体"
+      ],
+      "order": 3,
+      "panoramas": 537,
+      "cells": 450,
+      "city_rate": 0.0057452966235692,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 2.7848488397438156,
+      "panoid": "TQPGo_ooqY7Jwe7SlRrv0Q",
+      "grid_x": 871,
+      "grid_y": 2632,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/069a669dddbe/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/069a669dddbe/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/069a669dddbe/map_and_example.png"
+    },
+    {
+      "index": 44,
+      "pattern_id": "da5924e4d07d",
+      "label": "老屋 ＋ 广告牌",
+      "english": "older structures + signs/posters",
+      "unit_ids": [
+        20,
+        62
+      ],
+      "unit_labels": [
+        "老屋",
+        "广告牌"
+      ],
+      "order": 2,
+      "panoramas": 4734,
+      "cells": 3007,
+      "city_rate": 0.0505635938878872,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 13.11348658055067,
+      "panoid": "l2Z1L51KAd35uuj1qOKSgQ",
+      "grid_x": 797,
+      "grid_y": 2719,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/da5924e4d07d/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/da5924e4d07d/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/da5924e4d07d/map_and_example.png"
+    },
+    {
+      "index": 45,
+      "pattern_id": "17bf69614e59",
+      "label": "老屋 ＋ 电线杆",
+      "english": "older structures + utility pole",
+      "unit_ids": [
+        20,
+        78
+      ],
+      "unit_labels": [
+        "老屋",
+        "电线杆"
+      ],
+      "order": 2,
+      "panoramas": 2945,
+      "cells": 2173,
+      "city_rate": 0.0318245110359431,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 5.247120181056498,
+      "panoid": "ILYlEAm5lAxyunWP4YzQGw",
+      "grid_x": 817,
+      "grid_y": 2620,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/17bf69614e59/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/17bf69614e59/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/17bf69614e59/map_and_example.png"
+    },
+    {
+      "index": 46,
+      "pattern_id": "060434ced4ff",
+      "label": "金属屋顶建筑 ＋ 广告牌",
+      "english": "metal-roof building + signs/posters",
+      "unit_ids": [
+        23,
+        62
+      ],
+      "unit_labels": [
+        "金属屋顶建筑",
+        "广告牌"
+      ],
+      "order": 2,
+      "panoramas": 2767,
+      "cells": 1777,
+      "city_rate": 0.0297134760861682,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 15.275629237294197,
+      "panoid": "anQiKJX0R6VPrh4jL54IyA",
+      "grid_x": 749,
+      "grid_y": 2621,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/060434ced4ff/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/060434ced4ff/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/060434ced4ff/map_and_example.png"
+    },
+    {
+      "index": 47,
+      "pattern_id": "359b044058b2",
+      "label": "沙地 ＋ 树木",
+      "english": "sandy ground + trees",
+      "unit_ids": [
+        67,
+        75
+      ],
+      "unit_labels": [
+        "沙地",
+        "树木"
+      ],
+      "order": 2,
+      "panoramas": 1827,
+      "cells": 1364,
+      "city_rate": 0.0197047589245357,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 3.11775602568397,
+      "panoid": "cDL329WY34S_jg7hOQuZIA",
+      "grid_x": 801,
+      "grid_y": 2603,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/359b044058b2/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/359b044058b2/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/359b044058b2/map_and_example.png"
+    },
+    {
+      "index": 48,
+      "pattern_id": "9b7b55dff384",
+      "label": "老屋 ＋ 路灯",
+      "english": "older structures + streetlight",
+      "unit_ids": [
+        20,
+        80
+      ],
+      "unit_labels": [
+        "老屋",
+        "路灯"
+      ],
+      "order": 2,
+      "panoramas": 1067,
+      "cells": 925,
+      "city_rate": 0.011341043840783,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 4.630405195254323,
+      "panoid": "4qELZ2vbyv7IlfRP6bO-HA",
+      "grid_x": 867,
+      "grid_y": 2709,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/9b7b55dff384/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/9b7b55dff384/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/9b7b55dff384/map_and_example.png"
+    },
+    {
+      "index": 49,
+      "pattern_id": "b6a41a0fb66a",
+      "label": "老屋 ＋ 水体",
+      "english": "older structures + water",
+      "unit_ids": [
+        20,
+        93
+      ],
+      "unit_labels": [
+        "老屋",
+        "水体"
+      ],
+      "order": 2,
+      "panoramas": 890,
+      "cells": 707,
+      "city_rate": 0.009455140145137,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 12.990791350603104,
+      "panoid": "HEg4Teb4qC1WO8Y2BRC1Zw",
+      "grid_x": 799,
+      "grid_y": 2735,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b6a41a0fb66a/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b6a41a0fb66a/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/b6a41a0fb66a/map_and_example.png"
+    },
+    {
+      "index": 50,
+      "pattern_id": "97bd1691abff",
+      "label": "金属屋顶建筑 ＋ 电线杆",
+      "english": "metal-roof building + utility pole",
+      "unit_ids": [
+        23,
+        78
+      ],
+      "unit_labels": [
+        "金属屋顶建筑",
+        "电线杆"
+      ],
+      "order": 2,
+      "panoramas": 764,
+      "cells": 652,
+      "city_rate": 0.0082800203979926,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 4.532028455287218,
+      "panoid": "Ns9Q2k_z30rTvB3qxT9fGw",
+      "grid_x": 841,
+      "grid_y": 2599,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/97bd1691abff/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/97bd1691abff/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/97bd1691abff/map_and_example.png"
+    },
+    {
+      "index": 51,
+      "pattern_id": "56d5a3a911e7",
+      "label": "老屋 ＋ 沙地",
+      "english": "older structures + sandy ground",
+      "unit_ids": [
+        20,
+        67
+      ],
+      "unit_labels": [
+        "老屋",
+        "沙地"
+      ],
+      "order": 2,
+      "panoramas": 649,
+      "cells": 567,
+      "city_rate": 0.007011603014002,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 9.411241859197617,
+      "panoid": "g0GutKgufroICvgl4aX82A",
+      "grid_x": 786,
+      "grid_y": 2610,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/56d5a3a911e7/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/56d5a3a911e7/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/56d5a3a911e7/map_and_example.png"
+    },
+    {
+      "index": 52,
+      "pattern_id": "f35f361d7e1f",
+      "label": "围栏 ＋ 水体",
+      "english": "fence + water",
+      "unit_ids": [
+        2,
+        93
+      ],
+      "unit_labels": [
+        "围栏",
+        "水体"
+      ],
+      "order": 2,
+      "panoramas": 657,
+      "cells": 545,
+      "city_rate": 0.0070062634420619,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 5.6362287094372165,
+      "panoid": "ztEtORdqpsWCFzOpjeS7OQ",
+      "grid_x": 815,
+      "grid_y": 2642,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f35f361d7e1f/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f35f361d7e1f/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/f35f361d7e1f/map_and_example.png"
+    },
+    {
+      "index": 53,
+      "pattern_id": "d23212f376ca",
+      "label": "灌木 ＋ 水体",
+      "english": "shrubs + water",
+      "unit_ids": [
+        46,
+        93
+      ],
+      "unit_labels": [
+        "灌木",
+        "水体"
+      ],
+      "order": 2,
+      "panoramas": 577,
+      "cells": 456,
+      "city_rate": 0.0061703099931951,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 20.39986103773117,
+      "panoid": "c57TCFz1E-MsHb9mRoQU2Q",
+      "grid_x": 880,
+      "grid_y": 2702,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/d23212f376ca/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/d23212f376ca/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/d23212f376ca/map_and_example.png"
+    },
+    {
+      "index": 54,
+      "pattern_id": "5792c99dc803",
+      "label": "树木 ＋ 管道",
+      "english": "trees + pipes",
+      "unit_ids": [
+        75,
+        79
+      ],
+      "unit_labels": [
+        "树木",
+        "管道"
+      ],
+      "order": 2,
+      "panoramas": 525,
+      "cells": 456,
+      "city_rate": 0.0055541896185476,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 3.0497932578701064,
+      "panoid": "k7lbpJBExlOOG43kTbcR7g",
+      "grid_x": 787,
+      "grid_y": 2587,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/5792c99dc803/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/5792c99dc803/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/5792c99dc803/map_and_example.png"
+    },
+    {
+      "index": 55,
+      "pattern_id": "58ab475af25a",
+      "label": "围墙 ＋ 水体",
+      "english": "wall + water",
+      "unit_ids": [
+        1,
+        93
+      ],
+      "unit_labels": [
+        "围墙",
+        "水体"
+      ],
+      "order": 2,
+      "panoramas": 508,
+      "cells": 421,
+      "city_rate": 0.0054106006645904,
+      "strength_rank": 1,
+      "minimum_unit_score_ratio": 12.231790177800008,
+      "panoid": "sJ9PSU65e_Ny9qFZ1Q1yZQ",
+      "grid_x": 853,
+      "grid_y": 2623,
+      "original": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/58ab475af25a/original.webp",
+      "overlay": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/58ab475af25a/overlay.webp",
+      "figure": "/root/code/urban-visual-gene/experiments/vitl30_city_patterns/results/city_internal_compositions/dhaka_local_atlas/patterns/58ab475af25a/map_and_example.png"
+    }
+  ]
+}

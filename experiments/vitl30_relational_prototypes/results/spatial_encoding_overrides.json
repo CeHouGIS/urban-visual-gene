@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "hierarchy_identity": "69ea0aa414a229236ed6656b6f5dfc949fecc4339f7a608a7fb00f082a26d75a",
+  "screening_identity": "c7b82bf4c0aa7babf336da1271a462ef5bd3ad91647fe4489e9c4cf9fe1c3749",
+  "status": "provisional_spatial_encoding_candidates",
+  "reviewed_evidence": "spatial_encoding_audit/review_1.png and review_2.png; four original-image activation overlays per dimension, Top10 heatmap morphology and across-city x-position stability",
+  "rule": "At least 8 of Top10 maps contain a >=17-patch vertical band; band center SD <=1 patch, positive response in >=2000 fixed-validation panoramas and examples from >=6 cities. Visual review excludes moving object-aligned stripes.",
+  "features": [81, 868, 942, 1071, 1191, 1468, 1513, 2200, 2336, 2618, 3107, 3387, 3431, 3685, 3745, 3860, 3885],
+  "interpretation": "Response is dominated by a stable vertical image-coordinate band across diverse visual content. This is a positional-artifact candidate, not a demonstrated internal positional-embedding mechanism. SAE activations and raw Qwen labels are retained."
+}

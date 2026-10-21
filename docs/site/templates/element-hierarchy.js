@@ -2,7 +2,7 @@
   'use strict';
   const $ = s => document.querySelector(s);
   const states = {candidate_ready:'暂定要素候选',needs_review:'待核查',insufficient_evidence:'证据不足',unobserved:'无正激活证据',context_or_material:'背景 / 材料 / 上下文'};
-  const flags = {no_interpretation:'尚无解释',fewer_than_five_examples:'少于5个实例',mixed_or_unclear:'共同语义混合或不明',low_self_reported_confidence:'模型自述信心低',ambiguous_or_unmapped_label:'名称含糊或尚未归类',non_element_or_unclear_response:'非要素或不明确回答',embedding_mixture_flag:'embedding证据提示混合',masked_vs_unmasked_family_disagreement:'遮罩与未遮罩解释的父类不一致',support_below_screening_minimum:'正激活全景不足20个，暂停命名'};
+  const flags = {no_interpretation:'尚无解释',fewer_than_five_examples:'少于5个实例',mixed_or_unclear:'共同语义混合或不明',low_self_reported_confidence:'模型自述信心低',ambiguous_or_unmapped_label:'名称含糊或尚未归类',non_element_or_unclear_response:'非要素或不明确回答',embedding_mixture_flag:'embedding证据提示混合',masked_vs_unmasked_family_disagreement:'遮罩与未遮罩解释的父类不一致',support_below_screening_minimum:'正激活全景不足20个，暂停命名',fixed_vertical_band_review:'跨图固定竖向响应带；空间编码候选，待受控验证'};
   let data, categoryGraph, selected, limit = 100, activeFamily, activeLabel;
   function el(tag, text, className) {const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
   function categoryButton(label, count, maximum, selected) {

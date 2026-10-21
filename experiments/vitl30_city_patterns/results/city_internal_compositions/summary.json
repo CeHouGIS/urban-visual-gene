@@ -1,0 +1,32 @@
+{
+  "source_run_identity": "6d6519a1cb0b78d2fbc384722030a3a3fb929764724630c016cf2ddb3c34e617",
+  "cities": 30,
+  "sampled_panoramas": 681645,
+  "discovered_city_pattern_occurrences": 6340,
+  "replicated_city_pattern_occurrences": 5321,
+  "distinct_replicated_patterns": 1232,
+  "shared_in_2plus_cities": 702,
+  "single_city_detected": 530,
+  "single_city_with_no_response_elsewhere": 1,
+  "parent_signatures": 253,
+  "min_rate_per_split": 0.005,
+  "max_order": 4,
+  "minimum_discovery_panoramas": 20,
+  "minimum_discovery_cells": 8,
+  "minimum_holdout_panoramas": 10,
+  "minimum_holdout_cells": 4,
+  "spatial_holdout": "Hash of city and 5-km grid block modulo 3; one third held out",
+  "interpretation": "Exploratory panorama-level SAE co-response. Globally calibrated semantic units; one subtype per family. No verified spatial arrangement, object count, or significance claim. Single-city means only this sample and rule.",
+  "files": [
+    "city_patterns.csv",
+    "city_overlap_jaccard.csv",
+    "city_parent_overlap_jaccard.csv",
+    "city_sampling.csv",
+    "city_summary.csv",
+    "pattern_city_support.csv",
+    "all_city_pattern_rates.csv",
+    "single_city_candidates.csv",
+    "city_pattern_overlap.png",
+    "city_pattern_overlap.pdf"
+  ]
+}

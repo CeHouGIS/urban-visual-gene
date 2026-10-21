@@ -20,6 +20,8 @@ REPORTS = ROOT / 'experiments/vitl30_panorama_w4096_k32/reports'
 CHECKPOINT = 'fccf7c29fea802341802e365f07fa3bdb4077203ba784b03f046ac89823113e0'
 TEMPLATES = Path(__file__).with_name('templates')
 SCREENING = ROOT / 'experiments/vitl30_panorama_w4096_k32/results/dimension_screening/screening.json'
+SPATIAL_OVERRIDES = EXPERIMENT / 'results/spatial_encoding_overrides.json'
+SPATIAL_FEATURES = frozenset(json.loads(SPATIAL_OVERRIDES.read_text())['features']) if SPATIAL_OVERRIDES.exists() else frozenset()
 
 
 def public_screened_row(original, screen):
@@ -51,25 +53,47 @@ def public_screened_row(original, screen):
         row['quality_flags'] = [*row['quality_flags'], 'support_below_screening_minimum']
     else:
         row['display_label_zh'] = row.get('label_zh') or '未解释'
+    if row['feature'] in SPATIAL_FEATURES:
+        if not screen['label_eligible']:
+            raise ValueError('Spatial encoding override lacks positive-activation support')
+        row.update({'family': 'spatial_encoding', 'family_zh': '空间编码候选',
+                    'semantic_role': 'artifact', 'counts_as_element': False,
+                    'provisional_graph_candidate': False, 'status': 'needs_review',
+                    'label_zh': '空间编码候选', 'fine_label_zh': '空间编码候选',
+                    'display_label_zh': '空间编码候选'})
+        row['quality_flags'] = [*row['quality_flags'], 'fixed_vertical_band_review']
     return row
 
 
 def build_category_graph(hierarchy):
-    """Count Qwen labels within the provisional hierarchy without dropping dimensions."""
-    groups = defaultdict(lambda: defaultdict(list))
+    """Group close Qwen descriptions while retaining every dimension and source name."""
+    from experiments.vitl30_city_patterns.code.composition_patterns import canonical
+
+    groups = defaultdict(lambda: defaultdict(lambda: {'features': [], 'source_labels': set()}))
     seen = set()
     for row in hierarchy['dimensions']:
         feature = row['feature']
         if feature in seen:
             raise ValueError(f'Duplicate SAE dimension f{feature}')
         seen.add(feature)
-        groups[row['family']][row.get('display_label_zh') or row.get('label_zh') or '未解释'].append(feature)
+        source_label = row.get('display_label_zh') or row.get('label_zh') or '未解释'
+        label = canonical(row['family'], source_label)
+        group = groups[row['family']][label]
+        group['features'].append(feature)
+        group['source_labels'].add(source_label)
     families = []
-    for family in hierarchy['families']:
+    family_descriptors = list(hierarchy['families'])
+    if 'spatial_encoding' in groups and not any(
+            family['id'] == 'spatial_encoding' for family in family_descriptors):
+        family_descriptors.append({'id': 'spatial_encoding', 'label_zh': '空间编码候选',
+                                   'role': 'artifact'})
+    for family in family_descriptors:
         labels = groups.pop(family['id'], {})
-        children = [{'label': label, 'count': len(features), 'features': sorted(features),
+        children = [{'label': label, 'count': len(group['features']),
+                     'features': sorted(group['features']),
+                     'source_labels': sorted(group['source_labels']),
                      'eligible': label not in {'无正激活证据', '证据不足，暂不命名'}}
-                    for label, features in labels.items()]
+                    for label, group in labels.items()]
         children.sort(key=lambda child: (-child['count'], child['label']))
         families.append({'id': family['id'], 'label': family['label_zh'],
                          'role': family['role'], 'count': sum(child['count'] for child in children),
@@ -95,6 +119,10 @@ def install(site, render_page, snapshot):
     screening = json.loads(SCREENING.read_text())
     if screening['protocol']['checkpoint_sha256'] != CHECKPOINT:
         raise ValueError('Dimension screening uses another SAE checkpoint')
+    if SPATIAL_FEATURES:
+        overrides = json.loads(SPATIAL_OVERRIDES.read_text())
+        if overrides['hierarchy_identity'] != obj['identity'] or overrides['screening_identity'] != screening['identity']:
+            raise ValueError('Spatial encoding review uses another hierarchy or screening')
     screens = screening['dimensions']
     if len(screens) != 4096 or [row['feature'] for row in screens] != list(range(4096)):
         raise ValueError('Incomplete dimension screening')
@@ -154,7 +182,11 @@ def install(site, render_page, snapshot):
                           r['family'] for r in rows if r['provisional_graph_candidate'])),
                       'dimension_screening_identity': screening['identity'],
                       'prototype_route': 'local_multi_element_compositions'}
-    public = {**obj, 'dimensions': rows, 'pilot': pilot,
+    public_families = list(obj['families'])
+    if SPATIAL_FEATURES:
+        public_families.append({'id': 'spatial_encoding', 'label_zh': '空间编码候选',
+                                'role': 'artifact', 'counts_as_element': False, 'aliases': []})
+    public = {**obj, 'families': public_families, 'dimensions': rows, 'pilot': pilot,
               'summary': public_summary,
               'dimension_screening_identity': screening['identity'],
               'snapshot': snapshot}
@@ -168,6 +200,11 @@ def install(site, render_page, snapshot):
     gallery_stats = install_label_gallery(site, target, graph, REPORTS, obj['protocol']['sources'])
     (target / 'category-graph.json').write_text(json.dumps(
         graph, ensure_ascii=False, separators=(',', ':')))
+    try:
+        from .semantic_hierarchy_map import install as install_semantic_map
+    except ImportError:
+        from semantic_hierarchy_map import install as install_semantic_map
+    semantic_map = install_semantic_map(site, render_page, snapshot, graph, rows, REPORTS)
     for obsolete in ['training-summary.json', 'prototype-examples.json',
                      'relational-gallery.css', 'relational-gallery.js']:
         (target / obsolete).unlink(missing_ok=True)
@@ -201,9 +238,9 @@ def install(site, render_page, snapshot):
     content = f'''<div class="eyebrow">Qwen labels · SAE activation evidence</div>
 <h1>街景要素标签与激活</h1>
 <p class="lead">浏览每个 Qwen 细标签对应的 SAE 维度，以及这些维度在四方向街景中的真实响应。</p>
-<p><a href="../label-structure/">查看 Qwen 标签的并列与上下级结构 →</a> · <a href="../relations/#local-results">查看独立的要素空间关系 →</a></p>
+<p><a href="../semantic-map/">查看 {graph['family_count']} 类逐维解释树状图与激活实例 →</a> · <a href="../label-structure/">查看 Qwen 标签的并列与上下级结构 →</a> · <a href="../relations/#local-results">查看独立的要素空间关系 →</a></p>
 <section class="section" id="qwen-taxonomy"><h2>Qwen 类别图谱</h2>
-<p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。支持度不足 20 个正激活全景的维度归入“证据不足，暂不命名”，旧 Qwen 猜测只在逐维证据中保留供核查。位置集中只提示复核，不自动判为位置编码。数字是 SAE 维度数，不是地物出现次数；类别尚未经人工语义验证。</p>
+<p>左侧为暂定父类，右侧为 Qwen 对 SAE 维度高激活图像给出的细标签。支持度不足 20 个正激活全景的维度归入“证据不足，暂不命名”，旧 Qwen 猜测只在逐维证据中保留供核查。17 个跨城市固定竖向响应带归入“空间编码候选”，原 Qwen 名称保留作溯源；这不证明模型内部机制。其余位置集中维度仍仅提示复核。数字是 SAE 维度数，不是地物出现次数；类别尚未经人工语义验证。</p>
 <div class="category-path" aria-label="类别层级">Qwen 逐维解释 <span aria-hidden="true">›</span> <span id="category-path-family">父类</span> <span aria-hidden="true">›</span> <span id="category-path-label">细标签</span></div>
 <div class="category-graph"><div class="category-branch"><h3>父类 <span id="category-family-total"></span></h3><div id="category-families" class="category-families" aria-label="Qwen 类别父类"></div></div>
 <div class="category-branch"><h3 id="category-label-heading">细标签</h3><div id="category-labels" class="category-labels" aria-label="Qwen 细标签"></div></div></div>
@@ -284,6 +321,7 @@ def install(site, render_page, snapshot):
         document_path.write_text(doc)
     return {**public_summary, 'prototype_route': 'local_multi_element_compositions',
             'label_gallery': gallery_stats,
+            'semantic_map': semantic_map,
             'local_composition_status': 'complete' if (relation_target / 'local-compositions/results.json').exists() else 'pending'}
 
 
@@ -300,6 +338,7 @@ def update(site):
     install_progress(site)
     manifest['element_hierarchy'] = {'page': 'elements/', 'identity': result['identity'],
         'candidate_dimensions': result['status_counts']['candidate_ready'], 'semantic_validation': 'pending',
+        'semantic_map': result['semantic_map'],
         'relation_page': 'relations/', 'label_gallery': result['label_gallery'],
         'prototype_route': result['prototype_route'],
         'local_composition_status': result['local_composition_status'],

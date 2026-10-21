@@ -1,0 +1,1233 @@
+pattern_id,label,family_signature,order,cities,panoramas,city_names
+d8393482e056,道路 ＋ 树木,road+tree,2,29,97022,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Belgium/Brussels | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+0d703d538bbc,灌木 ＋ 树木,low_vegetation+tree,2,29,51099,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Belgium/Brussels | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+393678bf433b,建筑 ＋ 道路,building+road,2,29,44337,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+17f7c1f2d0f2,建筑 ＋ 人行道,building+pedestrian,2,28,27397,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+21290d6f552d,台阶与楼梯 ＋ 道路,pedestrian+road,2,28,26903,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+7d65e8c4cb6c,人行道 ＋ 道路,pedestrian+road,2,27,81237,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Belgium/Brussels | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+93a623346013,护栏 ＋ 道路,barrier+road,2,27,31287,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+3595b2fc2993,道路 ＋ 广告牌,road+sign,2,27,16234,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+300adc5802cf,草地 ＋ 树木,low_vegetation+tree,2,26,128588,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+0e2b0e1fe2f1,草地 ＋ 道路,low_vegetation+road,2,26,106306,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+d9dd27014b2e,围墙 ＋ 道路,barrier+road,2,26,20414,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+9d6b6c83302f,道路 ＋ 输电塔,road+utility,2,26,19065,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Germany/Hamburg | Italy/Naples | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+09f82872c946,围栏 ＋ 道路,barrier+road,2,26,18106,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+aebb8f72c991,道路 ＋ 路灯,road+utility,2,26,16814,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+a3d29e0576ef,围墙 ＋ 树木,barrier+tree,2,25,29111,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+c7967bff6f25,围栏 ＋ 树木,barrier+tree,2,25,26454,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork
+4363f7de483f,建筑 ＋ 台阶与楼梯,building+pedestrian,2,25,14663,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork
+7cad473cdc87,草地 ＋ 人行道,low_vegetation+pedestrian,2,24,45103,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+5cac3262f67d,人行道 ＋ 树木,pedestrian+tree,2,24,38239,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+772140298cc2,建筑 ＋ 树木,building+tree,2,24,25554,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork
+063f4c338f9e,围墙 ＋ 建筑,barrier+building,2,24,25360,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai | US/NewYork | US/Phoenix
+f502fbbf2b87,围栏 ＋ 人行道,barrier+pedestrian,2,24,12305,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+3377565b1394,道路 ＋ 桥梁,road+transport_structure,2,24,10295,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+8897b5670df7,混凝土护栏 ＋ 道路,barrier+road,2,24,10256,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+f14d6432fa31,道路 ＋ 电线,road+utility,2,23,82478,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | US/Chicago | US/NewYork | US/Phoenix
+3398462e5a05,建筑 ＋ 电线,building+utility,2,23,43751,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork | US/Phoenix
+4b3fdc307e27,人行道 ＋ 电线,pedestrian+utility,2,23,36129,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | US/Chicago | US/NewYork | US/Phoenix
+e522fdef23e3,围墙 ＋ 电线,barrier+utility,2,23,33826,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | US/Chicago | US/NewYork | US/Phoenix
+9826e94bbde2,灌木 ＋ 道路,low_vegetation+road,2,23,29981,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Belgium/Brussels | Brazil/Brasília | Brazil/RiodeJaneiro | Germany/Hamburg | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+0a0f4d29cdd1,围栏 ＋ 建筑,barrier+building,2,23,16174,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | UAE/Dubai | US/NewYork
+c475a6495cd8,围墙 ＋ 人行道,barrier+pedestrian,2,23,14755,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+ea6404361ee2,道路 ＋ 铁路,road+transport_structure,2,23,6521,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+e7147268293b,围栏 ＋ 电线,barrier+utility,2,22,26143,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork | US/Phoenix
+d87a84c3baaf,建筑 ＋ 广告牌,building+sign,2,22,12981,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai | US/NewYork
+8b315f407146,工业建筑 ＋ 道路,building+road,2,22,6762,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+b80157e0ec33,树木 ＋ 电线,tree+utility,2,21,49796,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | US/Chicago | US/NewYork
+f0f51da24293,混凝土护栏 ＋ 台阶与楼梯,barrier+pedestrian,2,21,7790,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+3126a722d8dd,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路,barrier+pedestrian+road,3,21,7321,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+a4980b339213,建筑 ＋ 道路 ＋ 电线,building+road+utility,3,20,15881,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork | US/Phoenix
+e8328c4ab62e,台阶与楼梯 ＋ 电线,pedestrian+utility,2,20,15051,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | US/Chicago | US/NewYork | US/Phoenix
+ae5f893e3d29,建筑 ＋ 人行道 ＋ 道路,building+pedestrian+road,3,20,13919,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+375e2fcd328f,围栏 ＋ 草地,barrier+low_vegetation,2,20,12809,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+7dfcab075060,建筑 ＋ 草地,building+low_vegetation,2,20,11346,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | US/Chicago | US/NewYork
+3956cb3a5b29,护栏 ＋ 树木,barrier+tree,2,20,10748,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork
+1465615c3dc3,人行横道 ＋ 道路,pedestrian+road,2,20,7918,Argentina/BuenosAires | Austria/Vienna | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork
+56a3b2a0b01d,人行道 ＋ 路灯,pedestrian+utility,2,20,6197,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | France/Paris | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+0132abd21ee9,草地 ＋ 电线,low_vegetation+utility,2,19,45801,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork | US/Phoenix
+bba7cd759aff,围墙 ＋ 草地,barrier+low_vegetation,2,19,11961,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork
+b9f75e242f4e,树木 ＋ 路灯,tree+utility,2,19,8958,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork
+ba9eb5c0a558,围栏 ＋ 台阶与楼梯,barrier+pedestrian,2,19,7029,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | US/NewYork
+e6695a6c5ebd,护栏 ＋ 草地,barrier+low_vegetation,2,19,7007,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/Brasília | Brazil/SaoPaulo | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork
+8c9bef184c0d,建筑 ＋ 路灯,building+utility,2,19,5519,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai | US/Chicago | US/NewYork
+0e27b4829426,道路 ＋ 交通标志,road+sign,2,19,5422,Australia/Perth | Australia/Sydney | Austria/Vienna | China/Taipei | Germany/Hamburg | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+04ae1a605ccc,路缘石 ＋ 道路,pedestrian+road,2,19,5338,Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | Spain/Barcelona | US/Phoenix
+1adffe749a7e,护栏 ＋ 建筑,barrier+building,2,19,5323,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | UAE/Dubai | US/NewYork
+9531d79d4b2f,草地 ＋ 人行道 ＋ 道路,low_vegetation+pedestrian+road,3,18,28063,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/Brasília | Brazil/RiodeJaneiro | Mexico/Monterrey | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+19501920ba69,围墙 ＋ 瓦顶建筑,barrier+building,2,18,8939,Argentina/BuenosAires | Australia/Perth | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | US/Phoenix
+8770161a6b73,草地 ＋ 道路 ＋ 电线,low_vegetation+road+utility,3,17,24874,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork | US/Phoenix
+8cfa92aea79f,草地 ＋ 输电塔,low_vegetation+utility,2,17,9581,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/Brasília | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/Phoenix
+111450954d45,道路 ＋ 水体,road+water,2,17,8520,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Italy/Naples | Korea/Seoul | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+46b00dcdb338,围墙 ＋ 台阶与楼梯,barrier+pedestrian,2,17,7905,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai
+524cfdae84b4,草地 ＋ 路灯,low_vegetation+utility,2,17,6019,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork
+472a8780fbab,瓦顶建筑 ＋ 人行道,building+pedestrian,2,17,5477,Argentina/BuenosAires | Australia/Perth | Austria/Vienna | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Phoenix
+e1b8d1909f8f,台阶与楼梯 ＋ 树木,pedestrian+tree,2,17,5248,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Singapore/Singapore | SouthAfrica/Johannesburg | Sweden/Stockholm | US/NewYork
+6fbf71823bea,建筑 ＋ 台阶与楼梯 ＋ 道路,building+pedestrian+road,3,17,4224,Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | UAE/Dubai | US/NewYork
+6870fa09746a,台阶与楼梯 ＋ 桥梁,pedestrian+transport_structure,2,17,3868,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+40dd96108d2f,人行道 ＋ 广告牌,pedestrian+sign,2,17,3841,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Spain/Barcelona | UAE/Dubai | US/Chicago | US/Phoenix
+a72972dca8eb,树木 ＋ 电线杆,tree+utility,2,16,23021,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Korea/Seoul | Russia/Moscow | Sweden/Stockholm | US/Chicago | US/NewYork
+6c7e01de9fd1,灌木 ＋ 人行道,low_vegetation+pedestrian,2,16,16319,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Belgium/Antwerp | Brazil/RiodeJaneiro | Germany/Hamburg | Indonesia/Yogyakarta | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+b819e8cb5e58,围墙 ＋ 建筑 ＋ 电线,barrier+building+utility,3,16,13228,Argentina/BuenosAires | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+2f74ab1ff578,建筑 ＋ 人行道 ＋ 电线,building+pedestrian+utility,3,16,11153,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Austria/Vienna | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | US/Chicago | US/NewYork
+2d7d13808c54,瓦顶建筑 ＋ 电线,building+utility,2,16,10623,Argentina/BuenosAires | Australia/Perth | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona
+b18d63270734,围墙 ＋ 人行道 ＋ 电线,barrier+pedestrian+utility,3,16,6403,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Phoenix
+f85940f281b6,护栏 ＋ 台阶与楼梯,barrier+pedestrian,2,16,4843,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork
+a16ab357c255,建筑 ＋ 道路 ＋ 广告牌,building+road+sign,3,16,4803,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | UAE/Dubai | US/NewYork
+fcadee886a01,围墙 ＋ 建筑 ＋ 人行道,barrier+building+pedestrian,3,16,4254,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | US/Phoenix
+5ca974b38d8a,瓦顶建筑 ＋ 道路,building+road,2,16,4155,Australia/Perth | Belgium/Antwerp | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Phoenix
+47fc6c5e6897,围墙 ＋ 建筑 ＋ 道路,barrier+building+road,3,16,4031,Australia/Melbourne | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | UAE/Dubai | US/Phoenix
+41b3c4de302f,护栏 ＋ 桥梁,barrier+transport_structure,2,16,3536,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Germany/Hamburg | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/NewYork
+b36999fe707f,围栏 ＋ 工业建筑,barrier+building,2,16,2651,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm
+97ab0ca657df,人行道 ＋ 道路 ＋ 电线,pedestrian+road+utility,3,15,19887,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Russia/Moscow | SouthAfrica/CapeTown | US/Chicago | US/NewYork | US/Phoenix
+4ab48b4c116f,人行道 ＋ 道路 ＋ 树木,pedestrian+road+tree,3,15,18843,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Germany/Hamburg | Indonesia/Yogyakarta | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+c6cdbb7be74e,广告牌 ＋ 电线,sign+utility,2,15,17547,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | US/NewYork
+61b4ea924225,围栏 ＋ 建筑 ＋ 电线,barrier+building+utility,3,15,9428,Argentina/BuenosAires | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Singapore/Singapore | SouthAfrica/CapeTown | US/NewYork
+1d0ade7c4e8f,护栏 ＋ 电线,barrier+utility,2,15,8758,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | US/NewYork
+31f3b0bc5895,围栏 ＋ 道路 ＋ 电线,barrier+road+utility,3,15,8000,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | US/Chicago | US/NewYork | US/Phoenix
+f0497f7a06cc,围墙 ＋ 道路 ＋ 电线,barrier+road+utility,3,15,6703,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/NewYork | US/Phoenix
+a43d000eb425,围墙 ＋ 建筑 ＋ 树木,barrier+building+tree,3,15,4725,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona
+8ff3bbb794b6,建筑 ＋ 人行横道,building+pedestrian,2,15,4611,Argentina/BuenosAires | Austria/Vienna | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | US/NewYork
+4b7ebd5e000d,护栏 ＋ 草地 ＋ 道路,barrier+low_vegetation+road,3,15,4610,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Belgium/Antwerp | Brazil/Brasília | Italy/Naples | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | Sweden/Stockholm | US/Chicago | US/NewYork
+097d289e4aa2,围墙 ＋ 路灯,barrier+utility,2,15,2610,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona
+00d732bcb41b,草地 ＋ 道路 ＋ 树木,low_vegetation+road+tree,3,14,41687,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/Brasília | Germany/Hamburg | Indonesia/Yogyakarta | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | US/Chicago | US/NewYork
+3099b560ce0b,灌木 ＋ 电线,low_vegetation+utility,2,14,15511,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | US/Chicago | US/NewYork
+de0313e13b67,围墙 ＋ 灌木,barrier+low_vegetation,2,14,3776,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+249a549d0e34,台阶与楼梯 ＋ 广告牌,pedestrian+sign,2,14,3706,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/Johannesburg | UAE/Dubai
+0b56a17f20ff,建筑 ＋ 桥梁,building+transport_structure,2,14,2956,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Sweden/Stockholm | UAE/Dubai
+9015f9f92ad6,台阶与楼梯 ＋ 道路 ＋ 桥梁,pedestrian+road+transport_structure,3,14,2637,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | UAE/Dubai | US/NewYork | US/Phoenix
+8f9ace3670d7,台阶与楼梯 ＋ 路灯,pedestrian+utility,2,14,2086,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai
+b9a0c86e4fdf,建筑 ＋ 灌木,building+low_vegetation,2,13,7465,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Austria/Vienna | Germany/Hamburg | Italy/Naples | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | US/Chicago | US/NewYork
+f0457d98f97a,围墙 ＋ 树木 ＋ 电线,barrier+tree+utility,3,13,7020,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | US/NewYork
+30267e7c3020,围墙 ＋ 人行道 ＋ 道路,barrier+pedestrian+road,3,13,5253,Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Mexico/Monterrey | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | UAE/Dubai | US/Chicago | US/Phoenix
+fc75a92f5583,围栏 ＋ 建筑 ＋ 道路,barrier+building+road,3,13,3792,Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Nigeria/Lagos | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | UAE/Dubai | US/NewYork
+8408b75ec16b,山地 ＋ 树木,terrain+tree,2,13,3652,Australia/Melbourne | Australia/Sydney | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | SouthAfrica/CapeTown | Spain/Barcelona
+34fd68cac420,围墙 ＋ 草地 ＋ 电线,barrier+low_vegetation+utility,3,13,3490,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+8c83e9bea8dc,围栏 ＋ 瓦顶建筑,barrier+building,2,13,3280,Argentina/BuenosAires | Austria/Vienna | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Singapore/Singapore | SouthAfrica/CapeTown | Sweden/Stockholm
+caf87487e54e,建筑 ＋ 人行横道 ＋ 道路,building+pedestrian+road,3,13,2650,Argentina/BuenosAires | Austria/Vienna | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | US/NewYork
+b08129bdfd24,道路 ＋ 树木 ＋ 电线,road+tree+utility,3,12,19160,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Russia/Moscow | US/Chicago | US/NewYork
+99c7128449fa,草地 ＋ 人行道 ＋ 树木,low_vegetation+pedestrian+tree,3,12,16892,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Russia/Moscow | Singapore/Singapore | Sweden/Stockholm | US/Chicago | US/NewYork
+74804678b644,草地 ＋ 树木 ＋ 电线,low_vegetation+tree+utility,3,12,16558,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Russia/Moscow | US/Chicago | US/NewYork
+486e1b305910,草地 ＋ 人行道 ＋ 电线,low_vegetation+pedestrian+utility,3,12,9138,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/Brasília | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Russia/Moscow | US/Chicago | US/NewYork
+9c4b94619e5a,围栏 ＋ 广告牌,barrier+sign,2,12,6640,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | SouthAfrica/Johannesburg
+c6c8e7178059,建筑 ＋ 台阶与楼梯 ＋ 电线,building+pedestrian+utility,3,12,6329,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown | US/NewYork
+603a79470742,围栏 ＋ 草地 ＋ 树木,barrier+low_vegetation+tree,3,12,6295,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/SaoPaulo | Italy/Naples | Singapore/Singapore | SouthAfrica/Johannesburg | Sweden/Stockholm | US/Chicago | US/NewYork
+ca73f0af148a,建筑 ＋ 人行道 ＋ 树木,building+pedestrian+tree,3,12,6125,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Mexico/Monterrey | Singapore/Singapore | Spain/Barcelona | US/Chicago | US/NewYork
+938a84960f8b,围墙 ＋ 广告牌,barrier+sign,2,12,5875,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | SouthAfrica/Johannesburg
+f5b34627407e,草地 ＋ 道路 ＋ 输电塔,low_vegetation+road+utility,3,12,5859,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Belgium/Antwerp | Brazil/Brasília | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/Phoenix
+a9e858f0cc24,台阶与楼梯 ＋ 道路 ＋ 电线,pedestrian+road+utility,3,12,5352,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | US/Chicago | US/NewYork | US/Phoenix
+93764a335d2d,路缘石 ＋ 树木,pedestrian+tree,2,12,5274,Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Singapore/Singapore
+e6e7ac69393f,围栏 ＋ 人行道 ＋ 道路,barrier+pedestrian+road,3,12,4744,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Germany/Hamburg | Mexico/Monterrey | Singapore/Singapore | Spain/Barcelona | US/Chicago | US/NewYork | US/Phoenix
+9d52ba4ae60d,建筑 ＋ 电线杆,building+utility,2,12,4307,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Nigeria/Lagos | SouthAfrica/CapeTown | US/NewYork
+4ea8c36779db,建筑 ＋ 路缘石,building+pedestrian,2,12,4088,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore
+77dfe4fa944b,围墙 ＋ 电线杆,barrier+utility,2,12,3986,Argentina/BuenosAires | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Nigeria/Lagos | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+0d0ef0cace60,围墙 ＋ 草地 ＋ 树木,barrier+low_vegetation+tree,3,12,3974,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/NewYork
+3ef13e60ee80,瓦顶建筑 ＋ 树木,building+tree,2,12,3428,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Korea/Seoul | Portugal/Lisbon | Spain/Barcelona | Sweden/Stockholm
+ea7429fea97a,瓦顶建筑 ＋ 台阶与楼梯,building+pedestrian,2,12,3338,Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona
+02a0ccac4ae8,护栏 ＋ 台阶与楼梯 ＋ 道路,barrier+pedestrian+road,3,12,3027,Austria/Vienna | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/Chicago | US/NewYork
+a71c0e1c3802,草地 ＋ 台阶与楼梯,low_vegetation+pedestrian,2,12,2580,Australia/Sydney | Austria/Vienna | Brazil/Brasília | Brazil/RiodeJaneiro | Italy/Naples | Nigeria/Lagos | Portugal/Lisbon | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | US/Chicago
+6081a0b30d18,木栅栏 ＋ 建筑,barrier+building,2,12,2098,Argentina/BuenosAires | Austria/Vienna | Brazil/SaoPaulo | China/Taipei | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Sweden/Stockholm | US/NewYork
+28aee8506534,桥梁 ＋ 路灯,transport_structure+utility,2,12,1571,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Spain/Barcelona | UAE/Dubai
+95d454aeba85,草地 ＋ 电线杆,low_vegetation+utility,2,11,9793,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Russia/Moscow | US/Chicago | US/NewYork
+1a40af1b4ac4,建筑 ＋ 道路 ＋ 树木,building+road+tree,3,11,7779,Austria/Vienna | Brazil/RiodeJaneiro | China/Taipei | Germany/Hamburg | Indonesia/Yogyakarta | Korea/Seoul | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | US/Chicago | US/NewYork
+0682745b8e0e,灌木 ＋ 人行道 ＋ 树木,low_vegetation+pedestrian+tree,3,11,7668,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Germany/Hamburg | Indonesia/Yogyakarta | Singapore/Singapore | Sweden/Stockholm | US/Chicago | US/NewYork
+19ce70cfeef0,道路 ＋ 山地,road+terrain,2,11,6502,Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | SouthAfrica/CapeTown | Spain/Barcelona | US/Phoenix
+f3567baef70f,工业建筑 ＋ 电线,building+utility,2,11,5763,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | US/NewYork
+08328a8e4296,围栏 ＋ 人行道 ＋ 电线,barrier+pedestrian+utility,3,11,5569,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Singapore/Singapore | US/NewYork
+618b00dec5ae,围墙 ＋ 瓦顶建筑 ＋ 电线,barrier+building+utility,3,11,5152,Argentina/BuenosAires | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona
+599e0787e419,人行道 ＋ 道路 ＋ 路灯,pedestrian+road+utility,3,11,4080,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Russia/Moscow | Spain/Barcelona | UAE/Dubai | US/Chicago | US/NewYork | US/Phoenix
+cba88de2c79d,围墙 ＋ 台阶与楼梯 ＋ 电线,barrier+pedestrian+utility,3,11,3902,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona
+8806d1ac1bf8,工业建筑 ＋ 人行道,building+pedestrian,2,11,3070,Argentina/BuenosAires | Austria/Vienna | Belgium/Antwerp | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Mexico/Monterrey | Spain/Barcelona | US/Chicago | US/NewYork
+c06bd5899547,护栏 ＋ 输电塔,barrier+utility,2,11,3027,Argentina/BuenosAires | Belgium/Antwerp | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | UAE/Dubai | US/Chicago
+bb1bf2d495ff,护栏 ＋ 道路 ＋ 桥梁,barrier+road+transport_structure,3,11,2622,Austria/Vienna | China/Taipei | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | UAE/Dubai | US/NewYork
+fb5903bb91eb,围栏 ＋ 建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,11,2472,Argentina/BuenosAires | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown
+1eafc4abe345,铁路 ＋ 电线,transport_structure+utility,2,11,1987,Argentina/BuenosAires | Australia/Melbourne | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Russia/Moscow
+84b56bdd7537,建筑 ＋ 道路 ＋ 路灯,building+road+utility,3,11,1846,Austria/Vienna | Brazil/RiodeJaneiro | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | UAE/Dubai | US/Chicago
+4041f5dd6bcd,围墙 ＋ 工业建筑,barrier+building,2,11,1733,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+00ee1f270bdb,人行横道 ＋ 树木,pedestrian+tree,2,11,1545,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm
+48eca8d4d9ad,混凝土护栏 ＋ 桥梁,barrier+transport_structure,2,11,1434,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Singapore/Singapore | Spain/Barcelona | UAE/Dubai
+8fdc34e33670,灌木 ＋ 道路 ＋ 树木,low_vegetation+road+tree,3,10,16025,Australia/Melbourne | Australia/Perth | Australia/Sydney | Germany/Hamburg | Russia/Moscow | Singapore/Singapore | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+98fee214835c,建筑 ＋ 广告牌 ＋ 电线,building+sign+utility,3,10,6922,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos
+ef3118da42f5,人行道 ＋ 树木 ＋ 电线,pedestrian+tree+utility,3,10,6361,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | US/Chicago | US/NewYork
+dfb84c789467,护栏 ＋ 道路 ＋ 电线,barrier+road+utility,3,10,4888,Australia/Melbourne | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | US/NewYork
+d425911a66f1,建筑 ＋ 草地 ＋ 人行道,building+low_vegetation+pedestrian,3,10,4600,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Nigeria/Lagos | Singapore/Singapore | SouthAfrica/CapeTown | US/Chicago | US/NewYork
+5ca139e510c7,人行道 ＋ 电线杆,pedestrian+utility,2,10,4244,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | US/Chicago | US/NewYork
+b6aa69609138,路缘石 ＋ 电线,pedestrian+utility,2,10,3959,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon
+4f7b07be655a,道路 ＋ 交通信号灯,road+sign,2,10,3822,Australia/Melbourne | Australia/Perth | Australia/Sydney | Germany/Hamburg | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork | US/Phoenix
+afbf69cd2d49,围栏 ＋ 建筑 ＋ 人行道,barrier+building+pedestrian,3,10,3588,Argentina/BuenosAires | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Singapore/Singapore | US/NewYork
+3af9b49f27c2,围墙 ＋ 建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,10,3467,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+542599b037d7,护栏 ＋ 道路 ＋ 输电塔,barrier+road+utility,3,10,2796,Argentina/BuenosAires | Belgium/Antwerp | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | SouthAfrica/CapeTown | Spain/Barcelona | UAE/Dubai | US/Chicago
+abc25db4c88a,围栏 ＋ 建筑 ＋ 树木,barrier+building+tree,3,10,2741,Argentina/BuenosAires | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Germany/Hamburg | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Singapore/Singapore | US/NewYork
+89e692e66741,围栏 ＋ 台阶与楼梯 ＋ 电线,barrier+pedestrian+utility,3,10,2416,Argentina/BuenosAires | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon
+c129e724914a,护栏 ＋ 人行道,barrier+pedestrian,2,10,2265,Argentina/BuenosAires | Austria/Vienna | Brazil/RiodeJaneiro | Germany/Hamburg | Korea/Seoul | Mexico/Monterrey | Singapore/Singapore | Spain/Barcelona | US/Chicago | US/NewYork
+2f120f69cf66,护栏 ＋ 铁路,barrier+transport_structure,2,10,2226,Austria/Vienna | Bangladesh/Dhaka | Belgium/Antwerp | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm
+5ca0939e7217,护栏 ＋ 广告牌,barrier+sign,2,10,2131,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Russia/Moscow | Singapore/Singapore | UAE/Dubai
+4615dd0b5ab7,广告牌 ＋ 路灯,sign+utility,2,10,2051,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Russia/Moscow
+39e247dddf45,建筑 ＋ 道路 ＋ 桥梁,building+road+transport_structure,3,10,1489,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Russia/Moscow | Singapore/Singapore | UAE/Dubai
+b12e28055984,路缘石 ＋ 桥梁,pedestrian+transport_structure,2,10,1321,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon | Singapore/Singapore | Spain/Barcelona
+c2e0535698b9,台阶与楼梯 ＋ 道路 ＋ 路灯,pedestrian+road+utility,3,10,992,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | Spain/Barcelona | UAE/Dubai
+829e8c313f90,车库 ＋ 人行道,building+pedestrian,2,9,13504,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Mexico/Monterrey | SouthAfrica/CapeTown | US/Chicago | US/NewYork | US/Phoenix
+2f7298d5a6b2,灌木 ＋ 人行道 ＋ 道路,low_vegetation+pedestrian+road,3,9,8950,Australia/Melbourne | Australia/Perth | Australia/Sydney | Germany/Hamburg | Singapore/Singapore | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+e0912555d4f0,广告牌 ＋ 树木,sign+tree,2,9,8851,Argentina/BuenosAires | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Korea/Seoul | Singapore/Singapore
+f3934198f23b,建筑 ＋ 树木 ＋ 电线,building+tree+utility,3,9,6384,Argentina/BuenosAires | Australia/Sydney | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | US/NewYork
+a0b3b5cc884a,道路 ＋ 广告牌 ＋ 电线,road+sign+utility,3,9,5956,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Russia/Moscow | US/NewYork
+c8fbe7d81ded,围栏 ＋ 树木 ＋ 电线,barrier+tree+utility,3,9,5451,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | US/NewYork
+a5b2c02ad98b,草地 ＋ 山地,low_vegetation+terrain,2,9,4749,Australia/Melbourne | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | SouthAfrica/CapeTown
+e9384d7311c8,围栏 ＋ 电线杆,barrier+utility,2,9,4315,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Korea/Seoul | US/NewYork
+bd9959b8e0d1,围栏 ＋ 草地 ＋ 道路,barrier+low_vegetation+road,3,9,4104,Australia/Melbourne | Australia/Perth | Australia/Sydney | Mexico/Monterrey | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago | US/NewYork
+e417993dc036,围墙 ＋ 道路 ＋ 树木,barrier+road+tree,3,9,3195,Australia/Melbourne | Australia/Sydney | Brazil/RiodeJaneiro | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/NewYork | US/Phoenix
+8bdfbce64669,山地 ＋ 电线,terrain+utility,2,9,2697,Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | US/Phoenix
+3b634fcd4708,木栅栏 ＋ 电线,barrier+utility,2,9,2607,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | US/NewYork
+6edb3a1ee85b,围墙 ＋ 建筑 ＋ 广告牌,barrier+building+sign,3,9,2400,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos
+255a4a2410d4,围栏 ＋ 路灯,barrier+utility,2,9,2147,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Korea/Seoul | Portugal/Lisbon
+2b15ad9c2407,围墙 ＋ 草地 ＋ 人行道,barrier+low_vegetation+pedestrian,3,9,2085,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/RiodeJaneiro | Nigeria/Lagos | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+424580ded26a,围墙 ＋ 人行道 ＋ 树木,barrier+pedestrian+tree,3,9,1932,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Russia/Moscow | Spain/Barcelona
+45a75a630113,围栏 ＋ 路缘石,barrier+pedestrian,2,9,1926,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Portugal/Lisbon
+8433ec943121,广告牌 ＋ 桥梁,sign+transport_structure,2,9,1750,Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Mexico/Monterrey | UAE/Dubai
+8e62b6068168,护栏 ＋ 路灯,barrier+utility,2,9,1408,Argentina/BuenosAires | Austria/Vienna | China/Taipei | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Spain/Barcelona | UAE/Dubai
+8ee8dc2d1d62,混凝土护栏 ＋ 道路 ＋ 桥梁,barrier+road+transport_structure,3,9,1118,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Mexico/Monterrey | Singapore/Singapore | Spain/Barcelona | UAE/Dubai
+cefe6466a9d0,道路 ＋ 桥梁 ＋ 路灯,road+transport_structure+utility,3,9,1044,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Mexico/Monterrey | Russia/Moscow | Spain/Barcelona | UAE/Dubai
+b311abfd7ab0,车库 ＋ 道路,building+road,2,8,11350,Australia/Melbourne | Australia/Perth | Australia/Sydney | SouthAfrica/CapeTown | Sweden/Stockholm | US/Chicago | US/NewYork | US/Phoenix
+c1faaa40b6ea,灌木 ＋ 树木 ＋ 电线,low_vegetation+tree+utility,3,8,7419,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | US/NewYork
+24ffc3cc8bf6,护栏 ＋ 道路 ＋ 树木,barrier+road+tree,3,8,4435,Australia/Melbourne | Australia/Sydney | Korea/Seoul | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | US/NewYork
+83daa8d39f2a,草地 ＋ 水体,low_vegetation+water,2,8,4417,Australia/Melbourne | Australia/Perth | Bangladesh/Dhaka | Brazil/Brasília | Indonesia/Yogyakarta | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+32193d6ed926,人行横道 ＋ 电线,pedestrian+utility,2,8,3498,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Russia/Moscow | US/NewYork
+f63f3d0bf7bc,车库 ＋ 电线,building+utility,2,8,3218,Argentina/BuenosAires | Australia/Sydney | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey | SouthAfrica/CapeTown | US/Chicago | US/NewYork
+340c1193fc86,围墙 ＋ 广告牌 ＋ 电线,barrier+sign+utility,3,8,3196,Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos
+aac8a1ac5f00,围墙 ＋ 路缘石,barrier+pedestrian,2,8,3016,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon
+35d9c12eec0f,围栏 ＋ 灌木,barrier+low_vegetation,2,8,2800,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Germany/Hamburg | Italy/Naples | Singapore/Singapore | Sweden/Stockholm | US/NewYork
+ac433f1cb36e,建筑 ＋ 草地 ＋ 电线,building+low_vegetation+utility,3,8,2773,Argentina/BuenosAires | Australia/Sydney | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey | Nigeria/Lagos | Russia/Moscow | US/NewYork
+477fa3243e17,围墙 ＋ 建筑 ＋ 台阶与楼梯 ＋ 电线,barrier+building+pedestrian+utility,4,8,2079,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown
+54a950937279,工业建筑 ＋ 广告牌,building+sign,2,8,1715,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey | SouthAfrica/Johannesburg
+3ff7a82fe472,草地 ＋ 广告牌,low_vegetation+sign,2,8,1563,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/Brasília | Brazil/RiodeJaneiro | Mexico/Monterrey | Russia/Moscow | Singapore/Singapore | SouthAfrica/Johannesburg
+d14ace009f64,人行道 ＋ 道路 ＋ 广告牌,pedestrian+road+sign,3,8,1554,Argentina/BuenosAires | Austria/Vienna | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Mexico/Monterrey | UAE/Dubai | US/Chicago | US/Phoenix
+f57c63677c8a,护栏 ＋ 山地,barrier+terrain,2,8,1535,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | SouthAfrica/CapeTown | Spain/Barcelona
+0dcb919d7051,围墙 ＋ 灌木 ＋ 树木,barrier+low_vegetation+tree,3,8,1532,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+062d5ddc008e,护栏 ＋ 路缘石,barrier+pedestrian,2,8,1493,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore
+1b04395d1e58,围墙 ＋ 建筑 ＋ 路缘石,barrier+building+pedestrian,3,8,1492,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon
+80acb7cffbfe,围墙 ＋ 瓦顶建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,8,1473,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona
+224403b6ceed,围墙 ＋ 瓦顶建筑 ＋ 人行道,barrier+building+pedestrian,3,8,1466,Australia/Perth | Brazil/Brasília | Brazil/RiodeJaneiro | Nigeria/Lagos | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Spain/Barcelona | US/Phoenix
+6990650ec67b,护栏 ＋ 道路 ＋ 铁路,barrier+road+transport_structure,3,8,1113,Austria/Vienna | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm
+d3a53acfba50,建筑 ＋ 铁路,building+transport_structure,2,8,992,Austria/Vienna | Brazil/RiodeJaneiro | France/Paris | Italy/Naples | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon | Russia/Moscow
+486f9ecb3014,混凝土护栏 ＋ 路缘石,barrier+pedestrian,2,8,914,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon
+9470484dc6ef,建筑 ＋ 台阶与楼梯 ＋ 桥梁,building+pedestrian+transport_structure,3,8,714,Austria/Vienna | Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Singapore/Singapore | UAE/Dubai
+154e0a18a876,道路 ＋ 电线杆,road+utility,2,7,9838,Australia/Melbourne | Australia/Perth | Australia/Sydney | Korea/Seoul | US/Chicago | US/NewYork | US/Phoenix
+eb42e865cd77,草地 ＋ 树木 ＋ 电线杆,low_vegetation+tree+utility,3,7,7312,Australia/Melbourne | Australia/Perth | Australia/Sydney | Bangladesh/Dhaka | Brazil/SaoPaulo | US/Chicago | US/NewYork
+87219aab5cb7,建筑 ＋ 人行道 ＋ 道路 ＋ 电线,building+pedestrian+road+utility,4,7,4363,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Mexico/Monterrey | US/NewYork
+3be8cdf9b694,围栏 ＋ 广告牌 ＋ 电线,barrier+sign+utility,3,7,4029,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey
+10002a86292d,建筑 ＋ 灌木 ＋ 树木,building+low_vegetation+tree,3,7,3698,Australia/Sydney | Austria/Vienna | Germany/Hamburg | Singapore/Singapore | Sweden/Stockholm | US/Chicago | US/NewYork
+9397ff798a93,苔藓 ＋ 树木,low_vegetation+tree,2,7,3339,Australia/Melbourne | Australia/Sydney | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta | Italy/Naples | Sweden/Stockholm
+246e018aef02,围栏 ＋ 道路 ＋ 树木,barrier+road+tree,3,7,3298,Australia/Melbourne | Australia/Sydney | Germany/Hamburg | Russia/Moscow | Singapore/Singapore | Sweden/Stockholm | US/NewYork
+0f5582811a82,草地 ＋ 道路 ＋ 路灯,low_vegetation+road+utility,3,7,3096,Australia/Perth | Australia/Sydney | Brazil/Brasília | Brazil/RiodeJaneiro | Russia/Moscow | US/Chicago | US/NewYork
+9ef43066baed,围栏 ＋ 草地 ＋ 电线,barrier+low_vegetation+utility,3,7,2968,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Brazil/Brasília | Brazil/SaoPaulo | US/NewYork
+c3ca7a1e5a31,建筑 ＋ 灌木 ＋ 人行道,building+low_vegetation+pedestrian,3,7,2964,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Germany/Hamburg | Sweden/Stockholm | US/Chicago | US/NewYork
+c9557bcb33fd,围墙 ＋ 草地 ＋ 道路,barrier+low_vegetation+road,3,7,2466,Australia/Melbourne | Australia/Sydney | Russia/Moscow | Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Chicago
+15f1e80b517d,围栏 ＋ 瓦顶建筑 ＋ 电线,barrier+building+utility,3,7,2140,Argentina/BuenosAires | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Portugal/Lisbon
+935109348360,瓦顶建筑 ＋ 人行道 ＋ 电线,building+pedestrian+utility,3,7,1821,Argentina/BuenosAires | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos
+d56a1faf0b88,围栏 ＋ 建筑 ＋ 广告牌,barrier+building+sign,3,7,1697,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey
+92a5ce891c27,人行道 ＋ 广告牌 ＋ 电线,pedestrian+sign+utility,3,7,1591,Argentina/BuenosAires | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey
+5dd7acc4d039,建筑 ＋ 管道,building+utility,2,7,1517,Austria/Vienna | China/Taipei | Italy/Naples | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon | Spain/Barcelona
+8acb3d7088f9,围墙 ＋ 车库,barrier+building,2,7,1504,Australia/Perth | Australia/Sydney | Brazil/SaoPaulo | Mexico/Monterrey | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | US/Phoenix
+53198bfcc04f,建筑 ＋ 台阶与楼梯 ＋ 广告牌,building+pedestrian+sign,3,7,1464,Bangladesh/Dhaka | Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos
+623fd7b05e33,围栏 ＋ 人行道 ＋ 树木,barrier+pedestrian+tree,3,7,1441,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Austria/Vienna | Brazil/RiodeJaneiro | Germany/Hamburg | Indonesia/Yogyakarta
+ee21fc8752da,围墙 ＋ 建筑 ＋ 草地,barrier+building+low_vegetation,3,7,1391,Argentina/BuenosAires | Australia/Sydney | Brazil/RiodeJaneiro | Nigeria/Lagos | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+8c60fc0608eb,人行横道 ＋ 广告牌,pedestrian+sign,2,7,1327,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Korea/Seoul | Spain/Barcelona
+b22b07091138,围墙 ＋ 山地,barrier+terrain,2,7,1187,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | SouthAfrica/CapeTown | Spain/Barcelona
+dbe3ac15c05f,围栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 电线,barrier+building+pedestrian+utility,4,7,936,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos
+e2daad238033,围墙 ＋ 台阶与楼梯 ＋ 道路,barrier+pedestrian+road,3,7,923,Brazil/RiodeJaneiro | Italy/Naples | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | UAE/Dubai
+2439c62ced0b,人行横道 ＋ 路灯,pedestrian+utility,2,7,756,Austria/Vienna | Brazil/SaoPaulo | China/Taipei | France/Paris | Korea/Seoul | Portugal/Lisbon | Russia/Moscow
+1d6448fb8d42,混凝土护栏 ＋ 建筑,barrier+building,2,7,748,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Korea/Seoul | Mexico/Monterrey | UAE/Dubai
+d93ee46bdb15,路缘石 ＋ 道路 ＋ 桥梁,pedestrian+road+transport_structure,3,7,633,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Singapore/Singapore
+2e42c743e88f,混凝土护栏 ＋ 路灯,barrier+utility,2,7,624,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Spain/Barcelona | UAE/Dubai
+5ec1c5fb1818,车库 ＋ 人行道 ＋ 道路,building+pedestrian+road,3,6,9369,Australia/Melbourne | Australia/Perth | Australia/Sydney | US/Chicago | US/NewYork | US/Phoenix
+bfab760a376c,车库 ＋ 草地,building+low_vegetation,2,6,6055,Australia/Melbourne | Australia/Perth | Australia/Sydney | SouthAfrica/CapeTown | US/Chicago | US/NewYork
+b77766e046b1,建筑 ＋ 草地 ＋ 道路,building+low_vegetation+road,3,6,5360,Australia/Melbourne | Australia/Sydney | Russia/Moscow | Singapore/Singapore | US/Chicago | US/NewYork
+941906b8db16,车库 ＋ 树木,building+tree,2,6,4448,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Brazil/SaoPaulo | US/Chicago | US/NewYork
+e99a4c1d3e1c,灌木 ＋ 人行道 ＋ 电线,low_vegetation+pedestrian+utility,3,6,4217,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | US/Chicago | US/NewYork
+2286af271f80,建筑 ＋ 灌木 ＋ 道路,building+low_vegetation+road,3,6,3712,Australia/Sydney | Germany/Hamburg | Singapore/Singapore | Sweden/Stockholm | US/Chicago | US/NewYork
+e01b14c8d621,围栏 ＋ 树木 ＋ 电线杆,barrier+tree+utility,3,6,2547,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo
+c5fd15966047,建筑 ＋ 道路 ＋ 广告牌 ＋ 电线,building+road+sign+utility,4,6,2205,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey
+6bda31229d5d,人行道 ＋ 树木 ＋ 电线杆,pedestrian+tree+utility,3,6,2096,Argentina/BuenosAires | Australia/Perth | Australia/Sydney | Brazil/RiodeJaneiro | US/Chicago | US/NewYork
+79c897493483,护栏 ＋ 水体,barrier+water,2,6,2054,Bangladesh/Dhaka | Italy/Naples | Korea/Seoul | Portugal/Lisbon | SouthAfrica/CapeTown | UAE/Dubai
+04b9dbb9b1e6,围栏 ＋ 草地 ＋ 人行道,barrier+low_vegetation+pedestrian,3,6,1948,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney | Austria/Vienna | US/Chicago
+5f3ab8c1b7fd,围墙 ＋ 建筑 ＋ 人行道 ＋ 电线,barrier+building+pedestrian+utility,4,6,1937,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos
+a2860b1acccd,人行横道 ＋ 道路 ＋ 电线,pedestrian+road+utility,3,6,1898,Argentina/BuenosAires | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey | Russia/Moscow | US/NewYork
+c3fd39a60443,瓦顶建筑 ＋ 台阶与楼梯 ＋ 电线,building+pedestrian+utility,3,6,1866,Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Nigeria/Lagos | Portugal/Lisbon
+e8713e744672,台阶与楼梯 ＋ 广告牌 ＋ 电线,pedestrian+sign+utility,3,6,1856,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos
+eb0ab06b6a7d,桥梁 ＋ 电线,transport_structure+utility,2,6,1802,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Mexico/Monterrey
+1647cff2115c,围栏 ＋ 灌木 ＋ 树木,barrier+low_vegetation+tree,3,6,1639,Australia/Sydney | Austria/Vienna | Germany/Hamburg | Italy/Naples | Sweden/Stockholm | US/NewYork
+71fd906043c9,护栏 ＋ 灌木,barrier+low_vegetation,2,6,1565,Germany/Hamburg | Italy/Naples | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm | US/NewYork
+95ae2e1c0e35,工业建筑 ＋ 道路 ＋ 电线,building+road+utility,3,6,1539,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey | US/NewYork
+51640797622f,瓦顶建筑 ＋ 广告牌,building+sign,2,6,1501,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Mexico/Monterrey
+c709d53cc73e,台阶与楼梯 ＋ 输电塔,pedestrian+utility,2,6,1391,Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/Johannesburg | US/Chicago | US/Phoenix
+e5cbe1ffbbc6,围墙 ＋ 建筑 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,6,1360,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos
+84c9703ede63,建筑 ＋ 路缘石 ＋ 电线,building+pedestrian+utility,3,6,1315,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon
+ab39607aab1b,工业建筑 ＋ 树木,building+tree,2,6,1310,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/SaoPaulo | Germany/Hamburg | Singapore/Singapore | Spain/Barcelona
+6ed4a1985004,草地 ＋ 山地 ＋ 树木,low_vegetation+terrain+tree,3,6,1202,Australia/Melbourne | Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples
+a8c5d43340d4,混凝土护栏 ＋ 电线,barrier+utility,2,6,1136,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey | Nigeria/Lagos
+ecef46a03f22,草地 ＋ 路缘石,low_vegetation+pedestrian,2,6,1105,Brazil/SaoPaulo | Indonesia/Yogyakarta | Italy/Naples | Nigeria/Lagos | Portugal/Lisbon | Singapore/Singapore
+1df9b8151a5d,草地 ＋ 道路 ＋ 山地,low_vegetation+road+terrain,3,6,1072,Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey | Portugal/Lisbon | SouthAfrica/CapeTown
+fbba0e892bae,护栏 ＋ 道路 ＋ 山地,barrier+road+terrain,3,6,1061,China/Taipei | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Portugal/Lisbon | Spain/Barcelona
+1787498861c1,路缘石 ＋ 路灯,pedestrian+utility,2,6,1052,Brazil/RiodeJaneiro | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul | Portugal/Lisbon
+b0c9e8108d74,瓦顶建筑 ＋ 路缘石,building+pedestrian,2,6,1025,Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon
+507b78e5cd26,护栏 ＋ 建筑 ＋ 道路,barrier+building+road,3,6,1010,Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore | UAE/Dubai
+b9093a50538e,台阶与楼梯 ＋ 山地,pedestrian+terrain,2,6,998,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Spain/Barcelona
+ee3eda5c4065,护栏 ＋ 道路 ＋ 路灯,barrier+road+utility,3,6,997,Austria/Vienna | Italy/Naples | Korea/Seoul | Russia/Moscow | Spain/Barcelona | UAE/Dubai
+25b90b763694,围墙 ＋ 建筑 ＋ 道路 ＋ 电线,barrier+building+road+utility,4,6,936,Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown
+dd529e93e42e,护栏 ＋ 路缘石 ＋ 道路,barrier+pedestrian+road,3,6,931,China/Taipei | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Russia/Moscow | Singapore/Singapore
+ac0f9656715f,人行道 ＋ 铁路,pedestrian+transport_structure,2,6,919,Argentina/BuenosAires | Austria/Vienna | Belgium/Antwerp | France/Paris | Spain/Barcelona | US/Chicago
+7e67de0666ae,瓦顶建筑 ＋ 草地,building+low_vegetation,2,6,904,Australia/Perth | Brazil/Brasília | Brazil/RiodeJaneiro | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/Johannesburg
+87f6cc0302a7,护栏 ＋ 道路 ＋ 广告牌,barrier+road+sign,3,6,854,Italy/Naples | Korea/Seoul | Mexico/Monterrey | Russia/Moscow | Singapore/Singapore | UAE/Dubai
+8b6cf9b9eabb,台阶与楼梯 ＋ 道路 ＋ 广告牌,pedestrian+road+sign,3,6,704,Brazil/RiodeJaneiro | Italy/Naples | Korea/Seoul | Mexico/Monterrey | SouthAfrica/Johannesburg | UAE/Dubai
+2b8bb89c64f4,围栏 ＋ 山地,barrier+terrain,2,6,701,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | SouthAfrica/CapeTown
+1f77ad09f518,混凝土护栏 ＋ 台阶与楼梯 ＋ 桥梁,barrier+pedestrian+transport_structure,3,6,660,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey | UAE/Dubai
+c2ec5091adc9,道路 ＋ 广告牌 ＋ 路灯,road+sign+utility,3,6,630,Austria/Vienna | Brazil/RiodeJaneiro | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Russia/Moscow
+a52e13ba1ccb,山地 ＋ 路灯,terrain+utility,2,6,626,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Spain/Barcelona
+2859567ed83e,台阶与楼梯 ＋ 道路 ＋ 山地,pedestrian+road+terrain,3,6,622,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Mexico/Monterrey | Portugal/Lisbon | Spain/Barcelona
+9a8768979949,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 桥梁,barrier+pedestrian+road+transport_structure,4,6,594,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey | UAE/Dubai
+f86b878ca5be,护栏 ＋ 交通标志,barrier+sign,2,6,519,Austria/Vienna | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Spain/Barcelona | UAE/Dubai
+137ebdfd0436,台阶与楼梯 ＋ 铁路,pedestrian+transport_structure,2,6,475,Austria/Vienna | Italy/Naples | Korea/Seoul | Mexico/Monterrey | Singapore/Singapore | Spain/Barcelona
+b45f9eb6f895,建筑 ＋ 人行横道 ＋ 树木,building+pedestrian+tree,3,6,375,Argentina/BuenosAires | Brazil/SaoPaulo | China/Taipei | France/Paris | Korea/Seoul | Spain/Barcelona
+eb2cd3a75024,草地 ＋ 人行道 ＋ 道路 ＋ 树木,low_vegetation+pedestrian+road+tree,4,5,9004,Australia/Melbourne | Australia/Perth | Singapore/Singapore | US/Chicago | US/NewYork
+f588c861c9be,灌木 ＋ 道路 ＋ 电线,low_vegetation+road+utility,3,5,7650,Australia/Melbourne | Australia/Perth | Australia/Sydney | US/Chicago | US/NewYork
+b8b03a53245f,草地 ＋ 道路 ＋ 树木 ＋ 电线,low_vegetation+road+tree+utility,4,5,7063,Australia/Melbourne | Australia/Perth | Australia/Sydney | US/Chicago | US/NewYork
+2d28f9046232,道路 ＋ 树木 ＋ 电线杆,road+tree+utility,3,5,6129,Australia/Melbourne | Australia/Perth | Australia/Sydney | US/Chicago | US/NewYork
+8c468d4f4902,草地 ＋ 人行道 ＋ 道路 ＋ 电线,low_vegetation+pedestrian+road+utility,4,5,5130,Australia/Melbourne | Australia/Perth | Australia/Sydney | US/Chicago | US/NewYork
+cdd86f2011ce,车库 ＋ 草地 ＋ 人行道,building+low_vegetation+pedestrian,3,5,4807,Australia/Melbourne | Australia/Perth | Australia/Sydney | US/Chicago | US/NewYork
+6f531f9087e7,建筑 ＋ 草地 ＋ 树木,building+low_vegetation+tree,3,5,3651,Argentina/BuenosAires | Russia/Moscow | Singapore/Singapore | US/Chicago | US/NewYork
+ad6cd341cdb4,灌木 ＋ 人行道 ＋ 道路 ＋ 树木,low_vegetation+pedestrian+road+tree,4,5,3451,Australia/Melbourne | Germany/Hamburg | Singapore/Singapore | US/Chicago | US/NewYork
+7278584dadf1,车库 ＋ 灌木,building+low_vegetation,2,5,3071,Australia/Melbourne | Australia/Perth | Australia/Sydney | US/Chicago | US/NewYork
+bee62920af7d,人行道 ＋ 输电塔,pedestrian+utility,2,5,2634,Mexico/Monterrey | Russia/Moscow | Spain/Barcelona | US/Chicago | US/Phoenix
+6f78d53ae1ca,围墙 ＋ 树木 ＋ 电线杆,barrier+tree+utility,3,5,2468,Argentina/BuenosAires | Australia/Sydney | Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo
+012aa83a9f52,人行道 ＋ 道路 ＋ 输电塔,pedestrian+road+utility,3,5,2330,Mexico/Monterrey | Russia/Moscow | Spain/Barcelona | US/Chicago | US/Phoenix
+b558c701a6c9,道路 ＋ 树木 ＋ 路灯,road+tree+utility,3,5,2283,Australia/Sydney | Brazil/RiodeJaneiro | Korea/Seoul | US/Chicago | US/NewYork
+fd513a4300fc,围栏 ＋ 建筑 ＋ 人行道 ＋ 电线,barrier+building+pedestrian+utility,4,5,2202,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey | US/NewYork
+6726c93cc5cf,树木 ＋ 输电塔,tree+utility,2,5,2110,Australia/Melbourne | Australia/Sydney | Bangladesh/Dhaka | Russia/Moscow | US/Chicago
+30d1b61a1ca4,岩石 ＋ 树木,terrain+tree,2,5,1699,Australia/Sydney | Indonesia/Yogyakarta | Italy/Naples | Spain/Barcelona | Sweden/Stockholm
+1e2cccb89fbd,芦苇 ＋ 道路,low_vegetation+road,2,5,1600,Brazil/Brasília | Portugal/Lisbon | SouthAfrica/Johannesburg | Spain/Barcelona | US/Chicago
+8de77b9031df,木栅栏 ＋ 树木,barrier+tree,2,5,1572,Austria/Vienna | Germany/Hamburg | Indonesia/Yogyakarta | Sweden/Stockholm | US/NewYork
+c07ca17a6c5a,台阶与楼梯 ＋ 道路 ＋ 树木,pedestrian+road+tree,3,5,1527,Australia/Sydney | Germany/Hamburg | Singapore/Singapore | Sweden/Stockholm | US/NewYork
+02b36156ffac,建筑 ＋ 树木 ＋ 电线杆,building+tree+utility,3,5,1493,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | US/NewYork
+c9a763a7419a,芦苇 ＋ 树木,low_vegetation+tree,2,5,1398,Brazil/Brasília | Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Indonesia/Yogyakarta
+3fd4f19a4b41,围墙 ＋ 路缘石 ＋ 电线,barrier+pedestrian+utility,3,5,1364,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Nigeria/Lagos | Portugal/Lisbon
+1a357fc17f0b,围墙 ＋ 人行道 ＋ 道路 ＋ 电线,barrier+pedestrian+road+utility,4,5,1316,Australia/Melbourne | Australia/Perth | Brazil/RiodeJaneiro | Mexico/Monterrey | US/Phoenix
+4213c06d2cae,护栏 ＋ 道路 ＋ 水体,barrier+road+water,3,5,1273,Italy/Naples | Korea/Seoul | Portugal/Lisbon | SouthAfrica/CapeTown | UAE/Dubai
+c31f20f5d2a1,建筑 ＋ 台阶与楼梯 ＋ 道路 ＋ 电线,building+pedestrian+road+utility,4,5,1237,Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Mexico/Monterrey | Nigeria/Lagos | US/NewYork
+42d9b9d51f9d,围墙 ＋ 建筑 ＋ 树木 ＋ 电线,barrier+building+tree+utility,4,5,1235,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Mexico/Monterrey
+23828a6958a7,台阶与楼梯 ＋ 道路 ＋ 输电塔,pedestrian+road+utility,3,5,1201,Mexico/Monterrey | Portugal/Lisbon | SouthAfrica/Johannesburg | US/Chicago | US/Phoenix
+c012a3662058,草地 ＋ 台阶与楼梯 ＋ 道路,low_vegetation+pedestrian+road,3,5,1193,Singapore/Singapore | SouthAfrica/CapeTown | SouthAfrica/Johannesburg | Sweden/Stockholm | US/Chicago
+2dba76fe85a3,围墙 ＋ 灌木 ＋ 电线,barrier+low_vegetation+utility,3,5,1104,Argentina/BuenosAires | Australia/Melbourne | Australia/Sydney | Brazil/Brasília | Russia/Moscow
+0f833306925e,建筑 ＋ 山地,building+terrain,2,5,1007,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Mexico/Monterrey | SouthAfrica/CapeTown
+c8442d2e2a68,护栏 ＋ 建筑 ＋ 电线,barrier+building+utility,3,5,943,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey
+dac99aa72e05,建筑 ＋ 人行横道 ＋ 广告牌,building+pedestrian+sign,3,5,788,Argentina/BuenosAires | Brazil/SaoPaulo | China/Taipei | France/Paris | Korea/Seoul
+ea658d7ed6f7,围栏 ＋ 台阶与楼梯 ＋ 道路,barrier+pedestrian+road,3,5,637,Italy/Naples | Nigeria/Lagos | Portugal/Lisbon | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+aa3b65b01dad,建筑 ＋ 人行道 ＋ 广告牌,building+pedestrian+sign,3,5,616,Argentina/BuenosAires | Austria/Vienna | Brazil/RiodeJaneiro | Korea/Seoul | Mexico/Monterrey
+7904e119161a,建筑 ＋ 路缘石 ＋ 道路,building+pedestrian+road,3,5,595,China/Taipei | Italy/Naples | Korea/Seoul | Portugal/Lisbon | Singapore/Singapore
+367d09a8bd6e,人行横道 ＋ 道路 ＋ 树木,pedestrian+road+tree,3,5,588,Korea/Seoul | Russia/Moscow | Singapore/Singapore | Spain/Barcelona | Sweden/Stockholm
+9755147b5025,围墙 ＋ 输电塔,barrier+utility,2,5,542,Mexico/Monterrey | Nigeria/Lagos | Russia/Moscow | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+d942da49ef50,木栅栏 ＋ 人行道,barrier+pedestrian,2,5,522,Argentina/BuenosAires | Austria/Vienna | Germany/Hamburg | Indonesia/Yogyakarta | Sweden/Stockholm
+fea557589e01,混凝土护栏 ＋ 山地,barrier+terrain,2,5,477,Brazil/RiodeJaneiro | China/Taipei | Mexico/Monterrey | Portugal/Lisbon | Spain/Barcelona
+062ca9882c64,路缘石 ＋ 广告牌,pedestrian+sign,2,5,465,Brazil/RiodeJaneiro | China/Taipei | France/Paris | Italy/Naples | Korea/Seoul
+d5f368534348,交通标志 ＋ 树木,sign+tree,2,5,465,Australia/Sydney | Austria/Vienna | China/Taipei | Korea/Seoul | Singapore/Singapore
+67329cd73f7e,混凝土护栏 ＋ 路缘石 ＋ 道路,barrier+pedestrian+road,3,5,446,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Portugal/Lisbon
+f01bee0f1d76,混凝土护栏 ＋ 道路 ＋ 路灯,barrier+road+utility,3,5,445,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Spain/Barcelona | UAE/Dubai
+74548eff7887,护栏 ＋ 道路 ＋ 交通标志,barrier+road+sign,3,5,433,Italy/Naples | Korea/Seoul | Portugal/Lisbon | Spain/Barcelona | UAE/Dubai
+8b0f6848e557,台阶与楼梯 ＋ 电线杆,pedestrian+utility,2,5,424,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples | Korea/Seoul
+6afad0b6b8c5,灌木 ＋ 山地,low_vegetation+terrain,2,5,423,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Portugal/Lisbon | SouthAfrica/CapeTown
+006100d49c69,交通标志 ＋ 路灯,sign+utility,2,5,360,Austria/Vienna | China/Taipei | Korea/Seoul | Russia/Moscow | Spain/Barcelona
+cc63dca3e9a5,建筑 ＋ 交通标志,building+sign,2,5,350,Austria/Vienna | China/Taipei | Italy/Naples | Korea/Seoul | Portugal/Lisbon
+e69d41be30d5,人行道 ＋ 道路 ＋ 树木 ＋ 电线,pedestrian+road+tree+utility,4,4,2694,Australia/Melbourne | Australia/Perth | US/Chicago | US/NewYork
+f71b0236b104,灌木 ＋ 人行道 ＋ 道路 ＋ 电线,low_vegetation+pedestrian+road+utility,4,4,2535,Australia/Melbourne | Australia/Perth | US/Chicago | US/NewYork
+4ad2ef48769a,广告牌 ＋ 树木 ＋ 电线,sign+tree+utility,3,4,2453,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta
+32532cc2b217,草地 ＋ 沙地,low_vegetation+terrain,2,4,1741,Bangladesh/Dhaka | Brazil/Brasília | Nigeria/Lagos | US/Phoenix
+ed7947655f36,车库 ＋ 人行道 ＋ 电线,building+pedestrian+utility,3,4,1324,Argentina/BuenosAires | Australia/Sydney | Mexico/Monterrey | US/NewYork
+6f7efaf84678,围栏 ＋ 建筑 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,4,1226,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul
+6dc0788ad717,木栅栏 ＋ 道路,barrier+road,2,4,1221,Germany/Hamburg | SouthAfrica/CapeTown | Sweden/Stockholm | US/NewYork
+863d97e74a46,建筑 ＋ 人行横道 ＋ 电线,building+pedestrian+utility,3,4,1130,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul
+c59cae4eba4f,道路 ＋ 山地 ＋ 电线,road+terrain+utility,3,4,1032,Brazil/RiodeJaneiro | Mexico/Monterrey | Portugal/Lisbon | US/Phoenix
+b11ff12e68f7,路缘石 ＋ 山地,pedestrian+terrain,2,4,1015,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Portugal/Lisbon
+387df7c9ba7c,人行道 ＋ 山地,pedestrian+terrain,2,4,960,Brazil/RiodeJaneiro | Mexico/Monterrey | Portugal/Lisbon | US/Phoenix
+d98b1d4b25e0,草地 ＋ 人行道 ＋ 路灯,low_vegetation+pedestrian+utility,3,4,917,Argentina/BuenosAires | Austria/Vienna | Brazil/RiodeJaneiro | US/Chicago
+8dcf01299b08,围墙 ＋ 瓦顶建筑 ＋ 台阶与楼梯 ＋ 电线,barrier+building+pedestrian+utility,4,4,899,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Nigeria/Lagos | Portugal/Lisbon
+c860733a82ff,建筑 ＋ 台阶与楼梯 ＋ 广告牌 ＋ 电线,building+pedestrian+sign+utility,4,4,898,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Korea/Seoul | Mexico/Monterrey
+043a1825f49a,工业建筑 ＋ 人行道 ＋ 电线,building+pedestrian+utility,3,4,854,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey
+a3940075764e,瓦顶建筑 ＋ 树木 ＋ 电线,building+tree+utility,3,4,853,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta
+b930e74e4b01,围栏 ＋ 工业建筑 ＋ 电线,barrier+building+utility,3,4,843,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey
+376966b36cc6,围墙 ＋ 工业建筑 ＋ 电线,barrier+building+utility,3,4,842,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey
+7d395bedf197,草地 ＋ 道路 ＋ 水体,low_vegetation+road+water,3,4,832,Australia/Melbourne | Brazil/Brasília | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+a17a4be2fd86,围墙 ＋ 灌木 ＋ 人行道,barrier+low_vegetation+pedestrian,3,4,796,Argentina/BuenosAires | Australia/Melbourne | Australia/Perth | Australia/Sydney
+fa2dcc5c301b,围墙 ＋ 树木 ＋ 路灯,barrier+tree+utility,3,4,760,Argentina/BuenosAires | Bangladesh/Dhaka | Brazil/SaoPaulo | Spain/Barcelona
+7bf4b0461fb8,围墙 ＋ 人行横道,barrier+pedestrian,2,4,693,Brazil/SaoPaulo | Korea/Seoul | Portugal/Lisbon | Spain/Barcelona
+60dcebe389c9,瓦顶建筑 ＋ 广告牌 ＋ 电线,building+sign+utility,3,4,645,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta | Korea/Seoul
+b710265e66a8,建筑 ＋ 路缘石 ＋ 树木,building+pedestrian+tree,3,4,642,Austria/Vienna | Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Korea/Seoul
+6ed1a989607f,围栏 ＋ 瓦顶建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,4,636,Brazil/Brasília | Brazil/SaoPaulo | Italy/Naples | Portugal/Lisbon
+f37c80b6f204,路缘石 ＋ 道路 ＋ 电线,pedestrian+road+utility,3,4,541,Indonesia/Yogyakarta | Korea/Seoul | Nigeria/Lagos | Portugal/Lisbon
+9864d9f688f3,工业建筑 ＋ 广告牌 ＋ 电线,building+sign+utility,3,4,529,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey
+4541fece9702,围栏 ＋ 建筑 ＋ 树木 ＋ 电线,barrier+building+tree+utility,4,4,528,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Mexico/Monterrey
+3d77345b6373,桥梁 ＋ 树木,transport_structure+tree,2,4,523,Brazil/SaoPaulo | China/Taipei | Korea/Seoul | Singapore/Singapore
+7219b7cdcef3,围墙 ＋ 桥梁,barrier+transport_structure,2,4,521,Brazil/RiodeJaneiro | Brazil/SaoPaulo | China/Taipei | Korea/Seoul
+fe550278fee2,草地 ＋ 道路 ＋ 广告牌,low_vegetation+road+sign,3,4,509,Argentina/BuenosAires | Brazil/Brasília | Mexico/Monterrey | Russia/Moscow
+53271fd10675,瓦顶建筑 ＋ 人行横道,building+pedestrian,2,4,505,Brazil/SaoPaulo | Korea/Seoul | Portugal/Lisbon | Spain/Barcelona
+84811237ed41,围墙 ＋ 建筑 ＋ 电线杆,barrier+building+utility,3,4,494,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Nigeria/Lagos
+b529fbad9231,道路 ＋ 广告牌 ＋ 桥梁,road+sign+transport_structure,3,4,485,China/Taipei | Korea/Seoul | Mexico/Monterrey | UAE/Dubai
+052d740ec081,灌木 ＋ 路灯,low_vegetation+utility,2,4,481,Argentina/BuenosAires | Australia/Sydney | Austria/Vienna | Italy/Naples
+87c014865fae,护栏 ＋ 广告牌 ＋ 电线,barrier+sign+utility,3,4,473,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey
+777fc46c6d59,路缘石 ＋ 道路 ＋ 山地,pedestrian+road+terrain,3,4,467,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Portugal/Lisbon
+1a1bb33cf8e8,围栏 ＋ 人行横道,barrier+pedestrian,2,4,466,Brazil/SaoPaulo | Korea/Seoul | Portugal/Lisbon | Spain/Barcelona
+8dc03b4dd344,围墙 ＋ 管道,barrier+utility,2,4,452,China/Taipei | Italy/Naples | Korea/Seoul | Nigeria/Lagos
+061d7f6b18a6,建筑 ＋ 广告牌 ＋ 桥梁,building+sign+transport_structure,3,4,437,Brazil/RiodeJaneiro | China/Taipei | Korea/Seoul | Mexico/Monterrey
+b93ae7aaa3d5,护栏 ＋ 人行横道,barrier+pedestrian,2,4,427,Brazil/SaoPaulo | Italy/Naples | Korea/Seoul | Singapore/Singapore
+78484ce53f77,工业建筑 ＋ 台阶与楼梯,building+pedestrian,2,4,425,Argentina/BuenosAires | Brazil/RiodeJaneiro | Brazil/SaoPaulo | Italy/Naples
+db188e64d91c,人行横道 ＋ 道路 ＋ 路灯,pedestrian+road+utility,3,4,418,Austria/Vienna | China/Taipei | Korea/Seoul | Russia/Moscow
+c387a4c98b60,人行道 ＋ 桥梁,pedestrian+transport_structure,2,4,407,Austria/Vienna | Brazil/RiodeJaneiro | Korea/Seoul | Singapore/Singapore
+4709217049d2,路缘石 ＋ 道路 ＋ 路灯,pedestrian+road+utility,3,4,401,Brazil/RiodeJaneiro | Italy/Naples | Korea/Seoul | Portugal/Lisbon
+94272503a621,围墙 ＋ 瓦顶建筑 ＋ 草地,barrier+building+low_vegetation,3,4,401,Brazil/Brasília | Brazil/RiodeJaneiro | Nigeria/Lagos | SouthAfrica/Johannesburg
+80c9e76f34c2,建筑 ＋ 人行道 ＋ 广告牌 ＋ 电线,building+pedestrian+sign+utility,4,4,394,Argentina/BuenosAires | Brazil/RiodeJaneiro | Korea/Seoul | Mexico/Monterrey
+a05648543b6c,围墙 ＋ 建筑 ＋ 路灯,barrier+building+utility,3,4,385,Austria/Vienna | Italy/Naples | Portugal/Lisbon | SouthAfrica/CapeTown
+08eea7f18045,混凝土护栏 ＋ 建筑 ＋ 道路,barrier+building+road,3,4,373,China/Taipei | Korea/Seoul | Mexico/Monterrey | UAE/Dubai
+52b40c435d6f,瓦顶建筑 ＋ 路灯,building+utility,2,4,371,Brazil/RiodeJaneiro | Italy/Naples | Portugal/Lisbon | Spain/Barcelona
+40dddbf1a344,混凝土护栏 ＋ 道路 ＋ 山地,barrier+road+terrain,3,4,369,Brazil/RiodeJaneiro | China/Taipei | Mexico/Monterrey | Spain/Barcelona
+6025917009c1,路缘石 ＋ 道路 ＋ 树木,pedestrian+road+tree,3,4,356,Brazil/RiodeJaneiro | China/Taipei | Korea/Seoul | Singapore/Singapore
+397bbe5a72f5,灌木 ＋ 台阶与楼梯,low_vegetation+pedestrian,2,4,353,Austria/Vienna | Italy/Naples | Singapore/Singapore | Sweden/Stockholm
+f3e5d142fe3e,围栏 ＋ 建筑 ＋ 电线杆,barrier+building+utility,3,4,345,Argentina/BuenosAires | Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo
+2e37f031a89e,建筑 ＋ 广告牌 ＋ 路灯,building+sign+utility,3,4,322,Austria/Vienna | China/Taipei | Italy/Naples | Korea/Seoul
+350bddc01623,路缘石 ＋ 铁路,pedestrian+transport_structure,2,4,300,China/Taipei | Italy/Naples | Korea/Seoul | Portugal/Lisbon
+c0f113887775,山地 ＋ 桥梁,terrain+transport_structure,2,4,292,Brazil/RiodeJaneiro | China/Taipei | Italy/Naples | Mexico/Monterrey
+d90b0fbbe8f9,建筑 ＋ 路缘石 ＋ 桥梁,building+pedestrian+transport_structure,3,4,283,Brazil/RiodeJaneiro | China/Taipei | France/Paris | Korea/Seoul
+f858c37b1baf,人行横道 ＋ 交通标志,pedestrian+sign,2,4,205,Austria/Vienna | Korea/Seoul | Portugal/Lisbon | Spain/Barcelona
+03b9b07d8326,路缘石 ＋ 桥梁 ＋ 路灯,pedestrian+transport_structure+utility,3,4,181,Brazil/RiodeJaneiro | China/Taipei | France/Paris | Korea/Seoul
+b6195edf28e1,道路 ＋ 沙地,road+terrain,2,3,5920,SouthAfrica/CapeTown | UAE/Dubai | US/Phoenix
+a2a7a5c142e8,老屋 ＋ 电线,building+utility,2,3,5431,Bangladesh/Dhaka | Indonesia/Yogyakarta | Nigeria/Lagos
+00b07c806ab8,围墙 ＋ 老屋,barrier+building,2,3,4866,Bangladesh/Dhaka | Indonesia/Yogyakarta | Nigeria/Lagos
+a1bf65548451,草地 ＋ 道路 ＋ 电线杆,low_vegetation+road+utility,3,3,3769,Australia/Sydney | US/Chicago | US/NewYork
+04ca8b9f9c11,金属屋顶建筑 ＋ 电线,building+utility,2,3,3472,Bangladesh/Dhaka | Indonesia/Yogyakarta | Nigeria/Lagos
+08c8e0c8223c,灌木 ＋ 道路 ＋ 树木 ＋ 电线,low_vegetation+road+tree+utility,4,3,3087,Australia/Melbourne | Australia/Sydney | US/NewYork
+890de85e325b,灌木 ＋ 电线杆,low_vegetation+utility,2,3,3085,Australia/Perth | Australia/Sydney | US/NewYork
+c893ba324113,草地 ＋ 道路 ＋ 树木 ＋ 电线杆,low_vegetation+road+tree+utility,4,3,2660,Australia/Sydney | US/Chicago | US/NewYork
+798c3c15bb9d,车库 ＋ 人行道 ＋ 树木,building+pedestrian+tree,3,3,2472,Australia/Sydney | US/Chicago | US/NewYork
+48a113ff9294,建筑 ＋ 人行道 ＋ 道路 ＋ 树木,building+pedestrian+road+tree,4,3,2442,Germany/Hamburg | US/Chicago | US/NewYork
+d0edb4e11344,广告牌 ＋ 电线杆,sign+utility,2,3,2289,Bangladesh/Dhaka | China/Taipei | Korea/Seoul
+741e1f938c9d,人行道 ＋ 道路 ＋ 电线杆,pedestrian+road+utility,3,3,2236,Australia/Perth | US/Chicago | US/NewYork
+5da267336b6b,电线 ＋ 水体,utility+water,2,3,2161,Bangladesh/Dhaka | Brazil/RiodeJaneiro | Portugal/Lisbon
+e693efd7a853,建筑 ＋ 灌木 ＋ 电线,building+low_vegetation+utility,3,3,2116,Argentina/BuenosAires | Australia/Sydney | US/NewYork
+67069aca0029,建筑 ＋ 草地 ＋ 道路 ＋ 树木,building+low_vegetation+road+tree,4,3,2050,Singapore/Singapore | US/Chicago | US/NewYork
+dc045a9f59c9,瓦顶建筑 ＋ 人行道 ＋ 道路,building+pedestrian+road,3,3,1862,Australia/Perth | Germany/Hamburg | US/Phoenix
+32b1d8dc1cd6,围栏 ＋ 建筑 ＋ 道路 ＋ 电线,barrier+building+road+utility,4,3,1803,Indonesia/Yogyakarta | Mexico/Monterrey | US/NewYork
+b4cd075ffead,沙地 ＋ 电线,terrain+utility,2,3,1732,Bangladesh/Dhaka | Nigeria/Lagos | US/Phoenix
+62489cd9d735,建筑 ＋ 灌木 ＋ 道路 ＋ 树木,building+low_vegetation+road+tree,4,3,1728,Singapore/Singapore | US/Chicago | US/NewYork
+f8960bb13a60,建筑 ＋ 灌木 ＋ 人行道 ＋ 道路,building+low_vegetation+pedestrian+road,4,3,1711,Germany/Hamburg | US/Chicago | US/NewYork
+6dd40a03266d,高层建筑 ＋ 道路,building+road,2,3,1555,Korea/Seoul | Russia/Moscow | Singapore/Singapore
+37c06e815bdf,老屋 ＋ 草地,building+low_vegetation,2,3,1526,Bangladesh/Dhaka | Indonesia/Yogyakarta | Nigeria/Lagos
+5e42092fde81,围栏 ＋ 人行道 ＋ 道路 ＋ 电线,barrier+pedestrian+road+utility,4,3,1515,Australia/Melbourne | Mexico/Monterrey | US/NewYork
+93fbb43b0051,车库 ＋ 灌木 ＋ 人行道,building+low_vegetation+pedestrian,3,3,1362,Australia/Perth | Australia/Sydney | US/Chicago
+ea44921eb8bf,草地 ＋ 人行道 ＋ 树木 ＋ 电线,low_vegetation+pedestrian+tree+utility,4,3,1347,Argentina/BuenosAires | US/Chicago | US/NewYork
+ea62a63e9837,护栏 ＋ 人行道 ＋ 道路,barrier+pedestrian+road,3,3,1264,Spain/Barcelona | US/Chicago | US/NewYork
+f8d0cdc99e1d,建筑 ＋ 灌木 ＋ 人行道 ＋ 树木,building+low_vegetation+pedestrian+tree,4,3,1245,Austria/Vienna | US/Chicago | US/NewYork
+25605df200a4,建筑 ＋ 人行道 ＋ 树木 ＋ 电线,building+pedestrian+tree+utility,4,3,1213,Argentina/BuenosAires | Brazil/RiodeJaneiro | US/NewYork
+1103728a94b7,草地 ＋ 树木 ＋ 路灯,low_vegetation+tree+utility,3,3,1210,Argentina/BuenosAires | Australia/Sydney | US/NewYork
+8b5a434d9277,围墙 ＋ 瓦顶建筑 ＋ 树木,barrier+building+tree,3,3,824,Brazil/RiodeJaneiro | Brazil/SaoPaulo | Indonesia/Yogyakarta
+d139f11a2b59,建筑 ＋ 广告牌 ＋ 树木,building+sign+tree,3,3,813,Bangladesh/Dhaka | China/Taipei | Korea/Seoul
+45f01d577b1f,铁路 ＋ 树木,transport_structure+tree,2,3,795,Austria/Vienna | Bangladesh/Dhaka | Russia/Moscow
+753a3d660e25,工业建筑 ＋ 人行道 ＋ 道路,building+pedestrian+road,3,3,771,Argentina/BuenosAires | Spain/Barcelona | US/Chicago
+c165c887bd4c,草地 ＋ 铁路,low_vegetation+transport_structure,2,3,767,Austria/Vienna | Belgium/Antwerp | US/Chicago
+acedf74a074d,围墙 ＋ 路缘石 ＋ 树木,barrier+pedestrian+tree,3,3,699,Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Portugal/Lisbon
+1c7ef57a671d,瓦顶建筑 ＋ 道路 ＋ 电线,building+road+utility,3,3,652,Indonesia/Yogyakarta | Mexico/Monterrey | Portugal/Lisbon
+f012d1ecc2a6,人行横道 ＋ 广告牌 ＋ 电线,pedestrian+sign+utility,3,3,611,Argentina/BuenosAires | Brazil/SaoPaulo | Korea/Seoul
+adce46ca64e4,围墙 ＋ 山地 ＋ 电线,barrier+terrain+utility,3,3,596,Brazil/RiodeJaneiro | Mexico/Monterrey | Portugal/Lisbon
+29c5b3e3956b,围墙 ＋ 瓦顶建筑 ＋ 道路,barrier+building+road,3,3,560,Portugal/Lisbon | SouthAfrica/Johannesburg | US/Phoenix
+65e1067f0ee4,台阶与楼梯 ＋ 管道,pedestrian+utility,2,3,520,Italy/Naples | Korea/Seoul | Nigeria/Lagos
+f27e16460b22,温室 ＋ 电线,building+utility,2,3,514,Indonesia/Yogyakarta | Italy/Naples | Korea/Seoul
+c8d217f4ec69,围墙 ＋ 建筑 ＋ 草地 ＋ 电线,barrier+building+low_vegetation+utility,4,3,509,Argentina/BuenosAires | Brazil/RiodeJaneiro | Nigeria/Lagos
+2fa5bd957147,围栏 ＋ 管道,barrier+utility,2,3,505,China/Taipei | Italy/Naples | Korea/Seoul
+246d574c6e72,人行道 ＋ 道路 ＋ 广告牌 ＋ 电线,pedestrian+road+sign+utility,4,3,501,Brazil/RiodeJaneiro | Indonesia/Yogyakarta | Mexico/Monterrey
+9a276d960eed,围墙 ＋ 车库 ＋ 人行道,barrier+building+pedestrian,3,3,501,Australia/Perth | SouthAfrica/CapeTown | US/Phoenix
+d255400218a8,围栏 ＋ 道路 ＋ 广告牌,barrier+road+sign,3,3,497,Indonesia/Yogyakarta | Italy/Naples | Mexico/Monterrey
+903c85227e74,围栏 ＋ 桥梁,barrier+transport_structure,2,3,442,China/Taipei | Italy/Naples | Korea/Seoul
+6099eeaba99e,建筑 ＋ 桥梁 ＋ 电线,building+transport_structure+utility,3,3,439,Brazil/RiodeJaneiro | Korea/Seoul | Mexico/Monterrey
+fc053c07a0b6,玻璃幕墙建筑 ＋ 道路,building+road,2,3,433,Korea/Seoul | Singapore/Singapore | UAE/Dubai
+e1bf875df99f,围栏 ＋ 瓦顶建筑 ＋ 人行道,barrier+building+pedestrian,3,3,418,Argentina/BuenosAires | Brazil/Brasília | Brazil/SaoPaulo
+372f5545b4f2,瓦顶建筑 ＋ 草地 ＋ 电线,building+low_vegetation+utility,3,3,416,Brazil/Brasília | Brazil/RiodeJaneiro | Nigeria/Lagos
+15ebfa57e917,道路 ＋ 广告牌 ＋ 树木,road+sign+tree,3,3,411,Indonesia/Yogyakarta | Korea/Seoul | Singapore/Singapore
+6f8f6c5abd58,垃圾桶 ＋ 树木,furniture+tree,2,3,410,Australia/Sydney | Austria/Vienna | Sweden/Stockholm
+7bb46636652c,山地 ＋ 输电塔,terrain+utility,2,3,407,Mexico/Monterrey | Portugal/Lisbon | Spain/Barcelona
+8f8b960f6cb1,芦苇 ＋ 电线,low_vegetation+utility,2,3,393,Brazil/Brasília | Brazil/RiodeJaneiro | Portugal/Lisbon
+ce803e9175ea,围栏 ＋ 瓦顶建筑 ＋ 人行道 ＋ 电线,barrier+building+pedestrian+utility,4,3,388,Argentina/BuenosAires | Brazil/Brasília | Brazil/SaoPaulo
+8c86ce66a3b5,混凝土护栏 ＋ 道路 ＋ 电线,barrier+road+utility,3,3,380,Brazil/SaoPaulo | Mexico/Monterrey | Nigeria/Lagos
+1661e4ca62bd,人行横道 ＋ 道路 ＋ 广告牌,pedestrian+road+sign,3,3,372,Argentina/BuenosAires | China/Taipei | Korea/Seoul
+c10f19a2a01f,高层建筑 ＋ 电线,building+utility,2,3,367,Brazil/SaoPaulo | Korea/Seoul | Russia/Moscow
+ed0e1ee06e69,围栏 ＋ 建筑 ＋ 管道,barrier+building+utility,3,3,360,China/Taipei | Italy/Naples | Korea/Seoul
+6e02ae9f5464,道路 ＋ 山地 ＋ 输电塔,road+terrain+utility,3,3,344,Mexico/Monterrey | Portugal/Lisbon | Spain/Barcelona
+cbe4a2aec84e,围栏 ＋ 输电塔,barrier+utility,2,3,330,Australia/Sydney | Mexico/Monterrey | SouthAfrica/Johannesburg
+d2e5a89bde45,混凝土建筑 ＋ 道路,building+road,2,3,322,Korea/Seoul | Portugal/Lisbon | UAE/Dubai
+c93ba4d54aa8,建筑 ＋ 人行横道 ＋ 道路 ＋ 电线,building+pedestrian+road+utility,4,3,316,Argentina/BuenosAires | Brazil/SaoPaulo | Korea/Seoul
+4623993a7337,围栏 ＋ 工业建筑 ＋ 人行道,barrier+building+pedestrian,3,3,310,Argentina/BuenosAires | Brazil/SaoPaulo | Spain/Barcelona
+79a34e191695,道路 ＋ 桥梁 ＋ 电线,road+transport_structure+utility,3,3,294,Brazil/SaoPaulo | Korea/Seoul | Mexico/Monterrey
+196e91a42ea2,护栏 ＋ 建筑 ＋ 广告牌,barrier+building+sign,3,3,287,Brazil/RiodeJaneiro | Korea/Seoul | Mexico/Monterrey
+bbc8d6762779,围墙 ＋ 建筑 ＋ 管道,barrier+building+utility,3,3,285,Italy/Naples | Korea/Seoul | Nigeria/Lagos
+78017e391a8d,围墙 ＋ 草地 ＋ 台阶与楼梯,barrier+low_vegetation+pedestrian,3,3,281,Nigeria/Lagos | SouthAfrica/CapeTown | SouthAfrica/Johannesburg
+2db00586aca1,瓦顶建筑 ＋ 路缘石 ＋ 电线,building+pedestrian+utility,3,3,277,Brazil/RiodeJaneiro | Nigeria/Lagos | Portugal/Lisbon
+f8185d8c5390,草地 ＋ 山地 ＋ 电线,low_vegetation+terrain+utility,3,3,277,Brazil/RiodeJaneiro | Mexico/Monterrey | Portugal/Lisbon
+6c6c0ad2cfcc,建筑 ＋ 垃圾桶,building+furniture,2,3,275,Argentina/BuenosAires | Austria/Vienna | Singapore/Singapore
+23fab26b5623,护栏 ＋ 人行道 ＋ 电线,barrier+pedestrian+utility,3,3,273,Argentina/BuenosAires | Brazil/RiodeJaneiro | Mexico/Monterrey
+a2e4f6e02005,建筑 ＋ 台阶与楼梯 ＋ 树木,building+pedestrian+tree,3,3,272,Austria/Vienna | Brazil/RiodeJaneiro | Brazil/SaoPaulo
+528cdf96b843,混凝土护栏 ＋ 台阶与楼梯 ＋ 山地,barrier+pedestrian+terrain,3,3,271,Brazil/RiodeJaneiro | Mexico/Monterrey | Spain/Barcelona
+185c42a96674,台阶与楼梯 ＋ 道路 ＋ 铁路,pedestrian+road+transport_structure,3,3,268,Mexico/Monterrey | Singapore/Singapore | Spain/Barcelona
+eb8909e84139,围栏 ＋ 台阶与楼梯 ＋ 树木,barrier+pedestrian+tree,3,3,267,Austria/Vienna | Brazil/SaoPaulo | Italy/Naples
+fc3b50ca9577,铁路 ＋ 路灯,transport_structure+utility,2,3,256,Austria/Vienna | Belgium/Antwerp | Korea/Seoul
+a8da8a9ca45d,草地 ＋ 桥梁,low_vegetation+transport_structure,2,3,253,Brazil/SaoPaulo | Italy/Naples | Singapore/Singapore
+948fc25b9bcc,建筑 ＋ 台阶与楼梯 ＋ 道路 ＋ 桥梁,building+pedestrian+road+transport_structure,4,3,252,Austria/Vienna | Mexico/Monterrey | UAE/Dubai
+1b1b6becb278,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 山地,barrier+pedestrian+road+terrain,4,3,251,Brazil/RiodeJaneiro | Mexico/Monterrey | Spain/Barcelona
+eed697316e96,木栅栏 ＋ 建筑 ＋ 电线,barrier+building+utility,3,3,250,Argentina/BuenosAires | Korea/Seoul | Nigeria/Lagos
+692d14f9e4cf,护栏 ＋ 管道,barrier+utility,2,3,247,Italy/Naples | Korea/Seoul | Spain/Barcelona
+b88655624dcd,混凝土护栏 ＋ 台阶与楼梯 ＋ 路灯,barrier+pedestrian+utility,3,3,244,Brazil/RiodeJaneiro | Spain/Barcelona | UAE/Dubai
+e06aad03873e,围栏 ＋ 路缘石 ＋ 电线,barrier+pedestrian+utility,3,3,242,Brazil/RiodeJaneiro | Italy/Naples | Portugal/Lisbon
+9f0ecddc4a31,广告牌 ＋ 管道,sign+utility,2,3,240,China/Taipei | Italy/Naples | Korea/Seoul
+0ff6c51c51a8,桥梁 ＋ 水体,transport_structure+water,2,3,238,Brazil/RiodeJaneiro | Korea/Seoul | UAE/Dubai
+49ed3b4113bd,护栏 ＋ 建筑 ＋ 树木,barrier+building+tree,3,3,235,Argentina/BuenosAires | Korea/Seoul | Singapore/Singapore
+610f886433ca,木栅栏 ＋ 台阶与楼梯,barrier+pedestrian,2,3,233,Italy/Naples | Korea/Seoul | Sweden/Stockholm
+d18e0981ecca,山地 ＋ 水体,terrain+water,2,3,232,Brazil/RiodeJaneiro | Portugal/Lisbon | SouthAfrica/CapeTown
+ecd3deea5d49,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 路灯,barrier+pedestrian+road+utility,4,3,230,Brazil/RiodeJaneiro | Spain/Barcelona | UAE/Dubai
+640c67cfbe67,围墙 ＋ 瓦顶建筑 ＋ 路缘石,barrier+building+pedestrian,3,3,226,Brazil/RiodeJaneiro | Nigeria/Lagos | Portugal/Lisbon
+9027f9b5a666,围墙 ＋ 道路 ＋ 广告牌,barrier+road+sign,3,3,221,Brazil/RiodeJaneiro | Italy/Naples | Mexico/Monterrey
+f9865665e9df,护栏 ＋ 台阶与楼梯 ＋ 桥梁,barrier+pedestrian+transport_structure,3,3,214,Korea/Seoul | Portugal/Lisbon | Singapore/Singapore
+93ba03d1e1a8,建筑 ＋ 桥梁 ＋ 路灯,building+transport_structure+utility,3,3,207,Austria/Vienna | China/Taipei | Korea/Seoul
+48d067911493,人行道 ＋ 管道,pedestrian+utility,2,3,202,Italy/Naples | Korea/Seoul | Spain/Barcelona
+960ee32fe217,围栏 ＋ 工业建筑 ＋ 道路,barrier+building+road,3,3,202,Singapore/Singapore | SouthAfrica/Johannesburg | Spain/Barcelona
+b6ea5a28888a,护栏 ＋ 路缘石 ＋ 山地,barrier+pedestrian+terrain,3,3,202,China/Taipei | Italy/Naples | Portugal/Lisbon
+c7bf056152b6,芦苇 ＋ 山地,low_vegetation+terrain,2,3,201,Brazil/RiodeJaneiro | China/Taipei | Portugal/Lisbon
+afa46d8e17dc,混凝土护栏 ＋ 路缘石 ＋ 桥梁,barrier+pedestrian+transport_structure,3,3,197,Brazil/RiodeJaneiro | China/Taipei | Korea/Seoul
+16962d3e5584,围墙 ＋ 道路 ＋ 路灯,barrier+road+utility,3,3,195,Italy/Naples | Portugal/Lisbon | SouthAfrica/Johannesburg
+cf6ff509ba81,道路 ＋ 铁路 ＋ 路灯,road+transport_structure+utility,3,3,181,Austria/Vienna | Belgium/Antwerp | Korea/Seoul
+8d072e0fc75b,山地 ＋ 铁路,terrain+transport_structure,2,3,179,China/Taipei | Italy/Naples | Spain/Barcelona
+8d3d57e358e3,建筑 ＋ 台阶与楼梯 ＋ 电线杆,building+pedestrian+utility,3,3,173,Austria/Vienna | Brazil/SaoPaulo | Korea/Seoul
+6969791a189a,建筑 ＋ 人行横道 ＋ 路灯,building+pedestrian+utility,3,3,169,China/Taipei | France/Paris | Korea/Seoul
+53f6ad10ef9f,路缘石 ＋ 电线杆,pedestrian+utility,2,3,166,China/Taipei | Italy/Naples | Korea/Seoul
+ff879fc6c3c3,路缘石 ＋ 道路 ＋ 铁路,pedestrian+road+transport_structure,3,3,158,China/Taipei | Korea/Seoul | Portugal/Lisbon
+2aadea8760f2,道路 ＋ 交通标志 ＋ 路灯,road+sign+utility,3,3,138,Austria/Vienna | Korea/Seoul | Spain/Barcelona
+8c00ef8b6714,老屋 ＋ 树木,building+tree,2,2,21859,Bangladesh/Dhaka | Indonesia/Yogyakarta
+c017b5544e7b,围栏 ＋ 老屋,barrier+building,2,2,7088,Bangladesh/Dhaka | Indonesia/Yogyakarta
+1633f511e2fe,树木 ＋ 水体,tree+water,2,2,7063,Bangladesh/Dhaka | Indonesia/Yogyakarta
+6c4c7543befd,围栏 ＋ 老屋 ＋ 树木,barrier+building+tree,3,2,6418,Bangladesh/Dhaka | Indonesia/Yogyakarta
+0f6a9bd3673a,围墙 ＋ 老屋 ＋ 树木,barrier+building+tree,3,2,4440,Bangladesh/Dhaka | Indonesia/Yogyakarta
+c77c4d5b399c,车库 ＋ 草地 ＋ 道路,building+low_vegetation+road,3,2,3894,US/Chicago | US/NewYork
+1082d0e14ba0,老屋 ＋ 树木 ＋ 电线,building+tree+utility,3,2,3195,Bangladesh/Dhaka | Indonesia/Yogyakarta
+6f81b24edea8,车库 ＋ 草地 ＋ 人行道 ＋ 道路,building+low_vegetation+pedestrian+road,4,2,3156,US/Chicago | US/NewYork
+5dcb953b60aa,金属屋顶建筑 ＋ 树木,building+tree,2,2,3057,Bangladesh/Dhaka | Indonesia/Yogyakarta
+e839245776e5,围栏 ＋ 金属屋顶建筑,barrier+building,2,2,2805,Bangladesh/Dhaka | Nigeria/Lagos
+7d8ff30bd0ef,灌木 ＋ 树木 ＋ 电线杆,low_vegetation+tree+utility,3,2,2575,Australia/Sydney | US/NewYork
+8ead3feaa6ad,建筑 ＋ 草地 ＋ 人行道 ＋ 道路,building+low_vegetation+pedestrian+road,4,2,2343,US/Chicago | US/NewYork
+65f59959c8fc,车库 ＋ 道路 ＋ 树木,building+road+tree,3,2,2320,US/Chicago | US/NewYork
+0bfd9bee7b84,车库 ＋ 草地 ＋ 树木,building+low_vegetation+tree,3,2,2020,US/Chicago | US/NewYork
+dc0a764f4a95,围墙 ＋ 金属屋顶建筑,barrier+building,2,2,1879,Bangladesh/Dhaka | Nigeria/Lagos
+74516bf4cdaf,老屋 ＋ 人行道,building+pedestrian,2,2,1408,Indonesia/Yogyakarta | Nigeria/Lagos
+ddde311967a2,灌木 ＋ 道路 ＋ 电线杆,low_vegetation+road+utility,3,2,1382,Australia/Sydney | US/NewYork
+e042a7d7d234,护栏 ＋ 草地 ＋ 树木,barrier+low_vegetation+tree,3,2,1256,Australia/Sydney | US/NewYork
+2b36117029db,车库 ＋ 灌木 ＋ 道路,building+low_vegetation+road,3,2,1153,US/Chicago | US/NewYork
+ecc37099fb0f,围栏 ＋ 草地 ＋ 道路 ＋ 树木,barrier+low_vegetation+road+tree,4,2,1099,Australia/Sydney | US/NewYork
+29fe4cc12dd3,草地 ＋ 人行道 ＋ 输电塔,low_vegetation+pedestrian+utility,3,2,1091,Mexico/Monterrey | US/Chicago
+064085ba497e,老屋 ＋ 道路,building+road,2,2,990,Bangladesh/Dhaka | Indonesia/Yogyakarta
+042d0e2cb76b,建筑 ＋ 道路 ＋ 电线杆,building+road+utility,3,2,989,Korea/Seoul | US/NewYork
+d1dbb598e7e8,围栏 ＋ 草地 ＋ 道路 ＋ 电线,barrier+low_vegetation+road+utility,4,2,984,Australia/Sydney | US/NewYork
+b3f35d25a375,护栏 ＋ 灌木 ＋ 道路,barrier+low_vegetation+road,3,2,979,Singapore/Singapore | US/NewYork
+f01292923e16,沙地 ＋ 输电塔,terrain+utility,2,2,933,UAE/Dubai | US/Phoenix
+498f12b772e0,人行道 ＋ 沙地,pedestrian+terrain,2,2,915,Nigeria/Lagos | US/Phoenix
+6c760fd6736f,道路 ＋ 沙地 ＋ 输电塔,road+terrain+utility,3,2,902,UAE/Dubai | US/Phoenix
+50698d167c0a,围栏 ＋ 灌木 ＋ 道路,barrier+low_vegetation+road,3,2,870,Australia/Sydney | US/NewYork
+05e79c2df0dc,灌木 ＋ 人行道 ＋ 树木 ＋ 电线,low_vegetation+pedestrian+tree+utility,4,2,867,Australia/Sydney | US/NewYork
+ba0e1a5e9606,木栅栏 ＋ 老屋,barrier+building,2,2,853,Bangladesh/Dhaka | Indonesia/Yogyakarta
+d74c2acc9230,护栏 ＋ 树木 ＋ 电线,barrier+tree+utility,3,2,789,Argentina/BuenosAires | US/NewYork
+d4a855a2ab62,围墙 ＋ 金属屋顶建筑 ＋ 电线,barrier+building+utility,3,2,776,Bangladesh/Dhaka | Nigeria/Lagos
+b5bb9b8e7e25,护栏 ＋ 灌木 ＋ 树木,barrier+low_vegetation+tree,3,2,754,Singapore/Singapore | US/NewYork
+436f1c0be09a,木栅栏 ＋ 广告牌,barrier+sign,2,2,742,Bangladesh/Dhaka | Korea/Seoul
+c90d92e24dce,人行道 ＋ 交通信号灯,pedestrian+sign,2,2,730,US/Chicago | US/Phoenix
+23c23b1f6f39,人行道 ＋ 道路 ＋ 交通信号灯,pedestrian+road+sign,3,2,726,US/Chicago | US/Phoenix
+5a5190e42abe,围墙 ＋ 老屋 ＋ 电线,barrier+building+utility,3,2,687,Bangladesh/Dhaka | Nigeria/Lagos
+013bd44d510a,垃圾桶 ＋ 人行道,furniture+pedestrian,2,2,624,Australia/Perth | US/Chicago
+ec57f37a1aab,围墙 ＋ 瓦顶建筑 ＋ 人行道 ＋ 电线,barrier+building+pedestrian+utility,4,2,598,Brazil/Brasília | Brazil/RiodeJaneiro
+df3160cb1a2c,人行道 ＋ 道路 ＋ 山地,pedestrian+road+terrain,3,2,581,Mexico/Monterrey | US/Phoenix
+f38b09bad7db,路缘石 ＋ 树木 ＋ 电线,pedestrian+tree+utility,3,2,580,Brazil/RiodeJaneiro | Indonesia/Yogyakarta
+43745d21d92f,草地 ＋ 道路 ＋ 铁路,low_vegetation+road+transport_structure,3,2,567,Belgium/Antwerp | US/Chicago
+500809520a27,工业建筑 ＋ 草地,building+low_vegetation,2,2,548,Argentina/BuenosAires | US/Chicago
+197f8fedda5b,围墙 ＋ 草地 ＋ 道路 ＋ 电线,barrier+low_vegetation+road+utility,4,2,498,Australia/Melbourne | Russia/Moscow
+777419f843b9,路障 ＋ 道路,barrier+road,2,2,494,Singapore/Singapore | UAE/Dubai
+865831c57125,围墙 ＋ 灌木 ＋ 道路,barrier+low_vegetation+road,3,2,492,Australia/Melbourne | Singapore/Singapore
+46726160d9f5,建筑 ＋ 山地 ＋ 电线,building+terrain+utility,3,2,468,Brazil/RiodeJaneiro | Mexico/Monterrey
+c10ad95faeb7,围栏 ＋ 建筑 ＋ 路灯,barrier+building+utility,3,2,468,Austria/Vienna | Italy/Naples
+e90115abf384,围墙 ＋ 建筑 ＋ 路缘石 ＋ 电线,barrier+building+pedestrian+utility,4,2,441,Brazil/RiodeJaneiro | Nigeria/Lagos
+f44da0ebd1ac,建筑 ＋ 台阶与楼梯 ＋ 路灯,building+pedestrian+utility,3,2,435,Austria/Vienna | Italy/Naples
+173d0fccfa00,围墙 ＋ 人行横道 ＋ 电线,barrier+pedestrian+utility,3,2,433,Brazil/SaoPaulo | Korea/Seoul
+120c8e6fbcfd,老屋 ＋ 人行道 ＋ 电线,building+pedestrian+utility,3,2,429,Indonesia/Yogyakarta | Nigeria/Lagos
+98062345884f,围栏 ＋ 建筑 ＋ 路缘石,barrier+building+pedestrian,3,2,427,Austria/Vienna | Italy/Naples
+607bffd4ec47,围栏 ＋ 台阶与楼梯 ＋ 路灯,barrier+pedestrian+utility,3,2,406,Austria/Vienna | Italy/Naples
+a5d6ac2f9abc,围墙 ＋ 建筑 ＋ 人行道 ＋ 道路,barrier+building+pedestrian+road,4,2,394,SouthAfrica/CapeTown | US/Phoenix
+2be91372996e,围栏 ＋ 灌木 ＋ 电线,barrier+low_vegetation+utility,3,2,384,Argentina/BuenosAires | Australia/Sydney
+79007f560ad9,道路 ＋ 铁路 ＋ 电线,road+transport_structure+utility,3,2,383,Austria/Vienna | Russia/Moscow
+801763c35e4b,建筑 ＋ 草地 ＋ 人行道 ＋ 电线,building+low_vegetation+pedestrian+utility,4,2,377,Argentina/BuenosAires | Nigeria/Lagos
+089cf8e97a75,瓦顶建筑 ＋ 人行道 ＋ 树木,building+pedestrian+tree,3,2,363,Brazil/RiodeJaneiro | Indonesia/Yogyakarta
+22f94928d2d8,围栏 ＋ 温室,barrier+building,2,2,353,Italy/Naples | Korea/Seoul
+abadc8b408c7,围墙 ＋ 瓦顶建筑 ＋ 树木 ＋ 电线,barrier+building+tree+utility,4,2,344,Brazil/RiodeJaneiro | Brazil/SaoPaulo
+61b3c30470f7,瓦顶建筑 ＋ 灌木,building+low_vegetation,2,2,333,Australia/Perth | Sweden/Stockholm
+c44fe5e1d80e,建筑 ＋ 人行横道 ＋ 广告牌 ＋ 电线,building+pedestrian+sign+utility,4,2,333,Brazil/SaoPaulo | Korea/Seoul
+b2a9c42086f2,围墙 ＋ 草地 ＋ 人行道 ＋ 电线,barrier+low_vegetation+pedestrian+utility,4,2,332,Argentina/BuenosAires | Nigeria/Lagos
+7e3a78a44051,人行道 ＋ 山地 ＋ 电线,pedestrian+terrain+utility,3,2,320,Brazil/RiodeJaneiro | Mexico/Monterrey
+50c08c9d0d15,建筑 ＋ 台阶与楼梯 ＋ 管道,building+pedestrian+utility,3,2,318,Italy/Naples | Korea/Seoul
+bf0e396e40dd,围栏 ＋ 人行横道 ＋ 电线,barrier+pedestrian+utility,3,2,305,Brazil/SaoPaulo | Korea/Seoul
+50d0c7430420,围墙 ＋ 人行道 ＋ 树木 ＋ 电线,barrier+pedestrian+tree+utility,4,2,304,Argentina/BuenosAires | Brazil/RiodeJaneiro
+3188d526fc9b,围栏 ＋ 车库,barrier+building,2,2,300,Argentina/BuenosAires | Brazil/SaoPaulo
+f5a55e9cbff3,路障 ＋ 台阶与楼梯,barrier+pedestrian,2,2,298,Singapore/Singapore | UAE/Dubai
+419847e94e99,道路 ＋ 桥梁 ＋ 树木,road+transport_structure+tree,3,2,296,China/Taipei | Singapore/Singapore
+cea80afeef8e,台阶与楼梯 ＋ 水体,pedestrian+water,2,2,292,Portugal/Lisbon | UAE/Dubai
+0d51f5ded817,道路 ＋ 管道,road+utility,2,2,290,Nigeria/Lagos | UAE/Dubai
+27f9482a9938,道路 ＋ 公交站台,road+transport_structure,2,2,289,Korea/Seoul | Singapore/Singapore
+82c4a6e6d2ad,台阶与楼梯 ＋ 道路 ＋ 水体,pedestrian+road+water,3,2,288,Portugal/Lisbon | UAE/Dubai
+73c74715a9c9,混凝土护栏 ＋ 广告牌,barrier+sign,2,2,283,Mexico/Monterrey | UAE/Dubai
+4b606c796dfe,广告牌 ＋ 桥梁 ＋ 电线,sign+transport_structure+utility,3,2,280,Korea/Seoul | Mexico/Monterrey
+cf710d36b1dc,围栏 ＋ 车库 ＋ 电线,barrier+building+utility,3,2,278,Argentina/BuenosAires | Brazil/SaoPaulo
+364e158deb92,路障 ＋ 台阶与楼梯 ＋ 道路,barrier+pedestrian+road,3,2,277,Singapore/Singapore | UAE/Dubai
+0ae51445a462,混凝土护栏 ＋ 道路 ＋ 广告牌,barrier+road+sign,3,2,275,Mexico/Monterrey | UAE/Dubai
+61766126f902,混凝土护栏 ＋ 台阶与楼梯 ＋ 电线,barrier+pedestrian+utility,3,2,275,Mexico/Monterrey | Nigeria/Lagos
+c46ec471d8cb,围墙 ＋ 建筑 ＋ 人行横道,barrier+building+pedestrian,3,2,275,Brazil/SaoPaulo | Korea/Seoul
+c5e3678e4f7d,围栏 ＋ 路缘石 ＋ 道路,barrier+pedestrian+road,3,2,272,Italy/Naples | Portugal/Lisbon
+de44702c435c,围墙 ＋ 建筑 ＋ 山地,barrier+building+terrain,3,2,272,Brazil/RiodeJaneiro | Mexico/Monterrey
+05ca6c306356,瓦顶建筑 ＋ 人行横道 ＋ 电线,building+pedestrian+utility,3,2,266,Brazil/SaoPaulo | Korea/Seoul
+069579bf169a,台阶与楼梯 ＋ 桥梁 ＋ 电线,pedestrian+transport_structure+utility,3,2,264,Korea/Seoul | Mexico/Monterrey
+012985b8a7e6,垃圾桶 ＋ 道路,furniture+road,2,2,262,Portugal/Lisbon | US/Phoenix
+1381c3cf890d,高层建筑 ＋ 道路 ＋ 电线,building+road+utility,3,2,261,Korea/Seoul | Russia/Moscow
+7d9d99965f40,围栏 ＋ 工业建筑 ＋ 人行道 ＋ 电线,barrier+building+pedestrian+utility,4,2,248,Argentina/BuenosAires | Brazil/SaoPaulo
+da0b4e9d727b,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 电线,barrier+pedestrian+road+utility,4,2,246,Mexico/Monterrey | Nigeria/Lagos
+2dc531d97729,瓦顶建筑 ＋ 山地,building+terrain,2,2,240,Brazil/RiodeJaneiro | Portugal/Lisbon
+96a9d796a0c0,建筑 ＋ 路缘石 ＋ 路灯,building+pedestrian+utility,3,2,239,Italy/Naples | Korea/Seoul
+9b386c8e5ab1,工业建筑 ＋ 树木 ＋ 电线,building+tree+utility,3,2,239,Argentina/BuenosAires | Brazil/SaoPaulo
+8ceacf17b29e,台阶与楼梯 ＋ 树木 ＋ 电线,pedestrian+tree+utility,3,2,238,Brazil/RiodeJaneiro | Brazil/SaoPaulo
+604af0050865,山地 ＋ 树木 ＋ 电线,terrain+tree+utility,3,2,234,Brazil/RiodeJaneiro | China/Taipei
+f6eadec3820b,混凝土护栏 ＋ 建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,2,233,Mexico/Monterrey | UAE/Dubai
+65b219a94794,建筑 ＋ 沙地,building+terrain,2,2,229,Nigeria/Lagos | UAE/Dubai
+9b178ea49e6d,人行横道 ＋ 桥梁,pedestrian+transport_structure,2,2,227,China/Taipei | Korea/Seoul
+e9928c667cc7,围栏 ＋ 瓦顶建筑 ＋ 台阶与楼梯 ＋ 电线,barrier+building+pedestrian+utility,4,2,226,Brazil/SaoPaulo | Portugal/Lisbon
+69f5d9744eb9,护栏 ＋ 建筑 ＋ 桥梁,barrier+building+transport_structure,3,2,224,Korea/Seoul | Singapore/Singapore
+994b4680df0b,混凝土护栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 道路,barrier+building+pedestrian+road,4,2,224,Mexico/Monterrey | UAE/Dubai
+b6fefa1aeba7,围墙 ＋ 建筑 ＋ 山地 ＋ 电线,barrier+building+terrain+utility,4,2,222,Brazil/RiodeJaneiro | Mexico/Monterrey
+194bcd6ea54a,混凝土建筑 ＋ 台阶与楼梯,building+pedestrian,2,2,219,Italy/Naples | Korea/Seoul
+a4a4037a48f7,台阶与楼梯 ＋ 山地 ＋ 电线,pedestrian+terrain+utility,3,2,219,Brazil/RiodeJaneiro | Mexico/Monterrey
+eb70a98c0f92,工业建筑 ＋ 台阶与楼梯 ＋ 电线,building+pedestrian+utility,3,2,219,Brazil/RiodeJaneiro | Brazil/SaoPaulo
+bbf9097460f0,围墙 ＋ 路缘石 ＋ 道路,barrier+pedestrian+road,3,2,218,Italy/Naples | Portugal/Lisbon
+1b17296cac6a,围墙 ＋ 建筑 ＋ 草地 ＋ 人行道,barrier+building+low_vegetation+pedestrian,4,2,215,Argentina/BuenosAires | Nigeria/Lagos
+c16bee89b27f,护栏 ＋ 建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,2,215,Italy/Naples | Korea/Seoul
+062071999c54,围墙 ＋ 建筑 ＋ 树木 ＋ 电线杆,barrier+building+tree+utility,4,2,214,Brazil/RiodeJaneiro | Brazil/SaoPaulo
+55e9b4eb97b3,围墙 ＋ 建筑 ＋ 桥梁,barrier+building+transport_structure,3,2,210,China/Taipei | Korea/Seoul
+a6ffa5017576,围栏 ＋ 建筑 ＋ 人行道 ＋ 树木,barrier+building+pedestrian+tree,4,2,210,Argentina/BuenosAires | Austria/Vienna
+aa3851f3d292,温室 ＋ 路缘石,building+pedestrian,2,2,210,Italy/Naples | Korea/Seoul
+b7f6a9cca65e,工业建筑 ＋ 人行横道,building+pedestrian,2,2,210,Brazil/SaoPaulo | Spain/Barcelona
+84b43637ba50,建筑 ＋ 人行道 ＋ 路灯,building+pedestrian+utility,3,2,209,Argentina/BuenosAires | Austria/Vienna
+e6eb5f974842,护栏 ＋ 建筑 ＋ 路缘石,barrier+building+pedestrian,3,2,207,Italy/Naples | Korea/Seoul
+d35603563914,工业建筑 ＋ 道路 ＋ 树木,building+road+tree,3,2,204,Germany/Hamburg | Singapore/Singapore
+2b4e37e9f6e8,混凝土护栏 ＋ 输电塔,barrier+utility,2,2,202,Mexico/Monterrey | Nigeria/Lagos
+16aee3f11329,围栏 ＋ 路缘石 ＋ 树木,barrier+pedestrian+tree,3,2,199,Austria/Vienna | Italy/Naples
+22215bb9a00d,桥梁 ＋ 管道,transport_structure+utility,2,2,198,China/Taipei | Korea/Seoul
+f90a375a30f7,灌木 ＋ 路缘石,low_vegetation+pedestrian,2,2,192,Italy/Naples | Singapore/Singapore
+5aff579c8b60,高层建筑 ＋ 树木,building+tree,2,2,188,Korea/Seoul | Singapore/Singapore
+88cb10aa213f,建筑 ＋ 人行横道 ＋ 道路 ＋ 广告牌,building+pedestrian+road+sign,4,2,188,China/Taipei | Korea/Seoul
+c27bc7041c32,瓦顶建筑 ＋ 山地 ＋ 电线,building+terrain+utility,3,2,187,Brazil/RiodeJaneiro | Portugal/Lisbon
+ddad4f98cc2e,围墙 ＋ 建筑 ＋ 台阶与楼梯 ＋ 道路,barrier+building+pedestrian+road,4,2,186,Italy/Naples | SouthAfrica/CapeTown
+ba69ddc1ca3e,混凝土护栏 ＋ 铁路,barrier+transport_structure,2,2,184,Mexico/Monterrey | Singapore/Singapore
+2be67707d721,护栏 ＋ 工业建筑,barrier+building,2,2,183,Argentina/BuenosAires | Brazil/SaoPaulo
+3e0fdfc62dd0,建筑 ＋ 树木 ＋ 路灯,building+tree+utility,3,2,183,Argentina/BuenosAires | Austria/Vienna
+90feb8453bf2,围墙 ＋ 建筑 ＋ 人行道 ＋ 树木,barrier+building+pedestrian+tree,4,2,181,Argentina/BuenosAires | Brazil/RiodeJaneiro
+f2fd387ed02c,台阶与楼梯 ＋ 广告牌 ＋ 桥梁,pedestrian+sign+transport_structure,3,2,180,Korea/Seoul | Mexico/Monterrey
+23b4e48c8af8,围墙 ＋ 草地 ＋ 树木 ＋ 电线,barrier+low_vegetation+tree+utility,4,2,179,Argentina/BuenosAires | Brazil/RiodeJaneiro
+15a1ae423a66,混凝土护栏 ＋ 道路 ＋ 铁路,barrier+road+transport_structure,3,2,178,Mexico/Monterrey | Singapore/Singapore
+27d9f9961211,瓦顶建筑 ＋ 电线杆,building+utility,2,2,176,Brazil/RiodeJaneiro | Brazil/SaoPaulo
+b08713683832,建筑 ＋ 人行道 ＋ 山地,building+pedestrian+terrain,3,2,175,Brazil/RiodeJaneiro | Mexico/Monterrey
+2ffa6a4edad4,围墙 ＋ 工业建筑 ＋ 人行道,barrier+building+pedestrian,3,2,174,Argentina/BuenosAires | Brazil/RiodeJaneiro
+665eb6cb90ac,护栏 ＋ 高层建筑,barrier+building,2,2,174,Korea/Seoul | Singapore/Singapore
+01093bef1456,道路 ＋ 桥梁 ＋ 水体,road+transport_structure+water,3,2,171,Korea/Seoul | UAE/Dubai
+ec4ada0c1a59,混凝土护栏 ＋ 建筑 ＋ 桥梁,barrier+building+transport_structure,3,2,170,China/Taipei | UAE/Dubai
+7383967ee6d4,围墙 ＋ 人行道 ＋ 山地,barrier+pedestrian+terrain,3,2,168,Brazil/RiodeJaneiro | Mexico/Monterrey
+16698ee654ec,铁路 ＋ 输电塔,transport_structure+utility,2,2,167,Belgium/Antwerp | Mexico/Monterrey
+b93be87c0669,围墙 ＋ 车库 ＋ 电线,barrier+building+utility,3,2,167,Brazil/SaoPaulo | SouthAfrica/CapeTown
+9dc8c118634b,围墙 ＋ 路缘石 ＋ 路灯,barrier+pedestrian+utility,3,2,166,Italy/Naples | Portugal/Lisbon
+cd940ed280f8,高层建筑 ＋ 桥梁,building+transport_structure,2,2,166,Korea/Seoul | Singapore/Singapore
+319f288643f8,草地 ＋ 路缘石 ＋ 道路,low_vegetation+pedestrian+road,3,2,165,Portugal/Lisbon | Singapore/Singapore
+5d3d4392e684,围栏 ＋ 台阶与楼梯 ＋ 广告牌,barrier+pedestrian+sign,3,2,164,Italy/Naples | Korea/Seoul
+5dfc9fc82553,建筑 ＋ 广告牌 ＋ 电线杆,building+sign+utility,3,2,164,China/Taipei | Korea/Seoul
+8d664f8b13d2,温室 ＋ 台阶与楼梯,building+pedestrian,2,2,163,Italy/Naples | Korea/Seoul
+1f1b66de3ae5,混凝土护栏 ＋ 台阶与楼梯 ＋ 铁路,barrier+pedestrian+transport_structure,3,2,159,Mexico/Monterrey | Singapore/Singapore
+586ff50ce594,围墙 ＋ 工业建筑 ＋ 人行道 ＋ 电线,barrier+building+pedestrian+utility,4,2,158,Argentina/BuenosAires | Brazil/RiodeJaneiro
+1ca9c0330c12,护栏 ＋ 人行横道 ＋ 电线,barrier+pedestrian+utility,3,2,157,Brazil/SaoPaulo | Korea/Seoul
+a03651c9fd68,广告牌 ＋ 铁路,sign+transport_structure,2,2,157,Austria/Vienna | Korea/Seoul
+ba27759ee1e1,工业建筑 ＋ 路缘石,building+pedestrian,2,2,157,Italy/Naples | Portugal/Lisbon
+f656e0ae1cc9,人行道 ＋ 树木 ＋ 路灯,pedestrian+tree+utility,3,2,156,Argentina/BuenosAires | Austria/Vienna
+49168b6ef7b6,护栏 ＋ 建筑 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,2,153,Brazil/RiodeJaneiro | Korea/Seoul
+db806edb850e,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 铁路,barrier+pedestrian+road+transport_structure,4,2,153,Mexico/Monterrey | Singapore/Singapore
+e186f06e452a,路缘石 ＋ 山地 ＋ 树木,pedestrian+terrain+tree,3,2,153,China/Taipei | Italy/Naples
+caffb9784be9,护栏 ＋ 高层建筑 ＋ 道路,barrier+building+road,3,2,148,Korea/Seoul | Singapore/Singapore
+f83bd29e1873,围栏 ＋ 铁路,barrier+transport_structure,2,2,148,Austria/Vienna | Italy/Naples
+2d450b188edb,高层建筑 ＋ 道路 ＋ 桥梁,building+road+transport_structure,3,2,145,Korea/Seoul | Singapore/Singapore
+adccff29bdbe,护栏 ＋ 台阶与楼梯 ＋ 电线,barrier+pedestrian+utility,3,2,144,Korea/Seoul | Mexico/Monterrey
+089c46cc329a,护栏 ＋ 建筑 ＋ 路灯,barrier+building+utility,3,2,141,Italy/Naples | Korea/Seoul
+a92c8d38ae78,道路 ＋ 铁路 ＋ 输电塔,road+transport_structure+utility,3,2,141,Belgium/Antwerp | Mexico/Monterrey
+a4f5c6a2816f,围栏 ＋ 建筑 ＋ 桥梁,barrier+building+transport_structure,3,2,139,China/Taipei | Korea/Seoul
+b47e75a61642,围栏 ＋ 树木 ＋ 路灯,barrier+tree+utility,3,2,138,Austria/Vienna | Italy/Naples
+c16b11655476,建筑 ＋ 桥梁 ＋ 管道,building+transport_structure+utility,3,2,137,China/Taipei | Korea/Seoul
+580fa3ea9adb,护栏 ＋ 建筑 ＋ 道路 ＋ 桥梁,barrier+building+road+transport_structure,4,2,136,Korea/Seoul | Singapore/Singapore
+d92e4319a274,围墙 ＋ 人行横道 ＋ 树木,barrier+pedestrian+tree,3,2,135,Brazil/SaoPaulo | Spain/Barcelona
+083e3ccf3c41,建筑 ＋ 人行横道 ＋ 桥梁,building+pedestrian+transport_structure,3,2,132,China/Taipei | Korea/Seoul
+3a979556fc7c,人行横道 ＋ 广告牌 ＋ 路灯,pedestrian+sign+utility,3,2,132,China/Taipei | Korea/Seoul
+9fbb388f9026,车库 ＋ 树木 ＋ 电线,building+tree+utility,3,2,131,Argentina/BuenosAires | Brazil/SaoPaulo
+4070205e4b63,护栏 ＋ 人行横道 ＋ 道路,barrier+pedestrian+road,3,2,128,Korea/Seoul | Singapore/Singapore
+23d2679f123f,人行道 ＋ 道路 ＋ 铁路,pedestrian+road+transport_structure,3,2,126,Austria/Vienna | Belgium/Antwerp
+e0f6949dee25,护栏 ＋ 桥梁 ＋ 路灯,barrier+transport_structure+utility,3,2,126,Austria/Vienna | Korea/Seoul
+4f292e6da481,人行道 ＋ 交通标志,pedestrian+sign,2,2,123,Austria/Vienna | Spain/Barcelona
+1af445a69d42,围墙 ＋ 台阶与楼梯 ＋ 广告牌,barrier+pedestrian+sign,3,2,117,Brazil/RiodeJaneiro | Korea/Seoul
+76d6c889ad35,护栏 ＋ 山地 ＋ 树木,barrier+terrain+tree,3,2,117,China/Taipei | Italy/Naples
+228956ea484f,人行横道 ＋ 道路 ＋ 桥梁,pedestrian+road+transport_structure,3,2,116,China/Taipei | Korea/Seoul
+c24b5b7af382,道路 ＋ 山地 ＋ 路灯,road+terrain+utility,3,2,115,Brazil/RiodeJaneiro | China/Taipei
+e1c65a51f00f,建筑 ＋ 路缘石 ＋ 广告牌,building+pedestrian+sign,3,2,108,China/Taipei | Korea/Seoul
+046960650322,灌木 ＋ 山地 ＋ 树木,low_vegetation+terrain+tree,3,2,107,China/Taipei | Italy/Naples
+3ac2bbc5853e,人行横道 ＋ 电线杆,pedestrian+utility,2,2,107,China/Taipei | Korea/Seoul
+57e066107ddf,建筑 ＋ 道路 ＋ 铁路,building+road+transport_structure,3,2,107,Austria/Vienna | Korea/Seoul
+114af878f53c,瓦顶建筑 ＋ 桥梁,building+transport_structure,2,2,105,Korea/Seoul | Mexico/Monterrey
+cd4e3fca703e,人行横道 ＋ 铁路,pedestrian+transport_structure,2,2,103,Austria/Vienna | Belgium/Antwerp
+4da0d47b5268,人行横道 ＋ 广告牌 ＋ 桥梁,pedestrian+sign+transport_structure,3,2,101,China/Taipei | Korea/Seoul
+b1468f2e5108,建筑 ＋ 广告牌 ＋ 管道,building+sign+utility,3,2,100,China/Taipei | Korea/Seoul
+34fa9816f2b8,围墙 ＋ 瓦顶建筑 ＋ 路灯,barrier+building+utility,3,2,97,Portugal/Lisbon | Spain/Barcelona
+667bddd51dfc,混凝土护栏 ＋ 路缘石 ＋ 道路 ＋ 桥梁,barrier+pedestrian+road+transport_structure,4,2,96,China/Taipei | Korea/Seoul
+8a56cd74fe5d,建筑 ＋ 道路 ＋ 广告牌 ＋ 桥梁,building+road+sign+transport_structure,4,2,96,China/Taipei | Mexico/Monterrey
+bf31835860ba,围墙 ＋ 台阶与楼梯 ＋ 广告牌 ＋ 电线,barrier+pedestrian+sign+utility,4,2,95,Brazil/RiodeJaneiro | Korea/Seoul
+9705bdd56040,建筑 ＋ 道路 ＋ 桥梁 ＋ 路灯,building+road+transport_structure+utility,4,2,93,Austria/Vienna | Korea/Seoul
+e1c136018bb1,台阶与楼梯 ＋ 桥梁 ＋ 路灯,pedestrian+transport_structure+utility,3,2,92,Austria/Vienna | Korea/Seoul
+ae0f7a2e0c62,混凝土建筑 ＋ 路缘石,building+pedestrian,2,2,91,France/Paris | Korea/Seoul
+99fd4142ba9e,建筑 ＋ 人行横道 ＋ 广告牌 ＋ 路灯,building+pedestrian+sign+utility,4,2,81,China/Taipei | Korea/Seoul
+955a120f8479,交通标志 ＋ 桥梁,sign+transport_structure,2,2,75,China/Taipei | Korea/Seoul
+54435c066d79,瓦顶建筑 ＋ 人行横道 ＋ 道路,building+pedestrian+road,3,2,71,Korea/Seoul | Spain/Barcelona
+4d4dbaae6f31,人行道 ＋ 道路 ＋ 交通标志,pedestrian+road+sign,3,2,70,Austria/Vienna | Spain/Barcelona
+da5924e4d07d,老屋 ＋ 广告牌,building+sign,2,1,4734,Bangladesh/Dhaka
+cd8d335c382b,老屋 ＋ 广告牌 ＋ 树木,building+sign+tree,3,1,3792,Bangladesh/Dhaka
+17bf69614e59,老屋 ＋ 电线杆,building+utility,2,1,2945,Bangladesh/Dhaka
+4bfd8a0e1f71,老屋 ＋ 树木 ＋ 电线杆,building+tree+utility,3,1,2789,Bangladesh/Dhaka
+060434ced4ff,金属屋顶建筑 ＋ 广告牌,building+sign,2,1,2767,Bangladesh/Dhaka
+72c7831b9fde,围墙 ＋ 广告牌 ＋ 树木,barrier+sign+tree,3,1,2045,Bangladesh/Dhaka
+76ccc542968c,围栏 ＋ 广告牌 ＋ 树木,barrier+sign+tree,3,1,1960,Bangladesh/Dhaka
+359b044058b2,沙地 ＋ 树木,terrain+tree,2,1,1827,Bangladesh/Dhaka
+af10c0f6ad69,金属屋顶建筑 ＋ 广告牌 ＋ 电线,building+sign+utility,3,1,1751,Bangladesh/Dhaka
+f5d922102089,老屋 ＋ 广告牌 ＋ 电线,building+sign+utility,3,1,1602,Bangladesh/Dhaka
+dc226d126159,围栏 ＋ 老屋 ＋ 广告牌,barrier+building+sign,3,1,1530,Bangladesh/Dhaka
+8cb26010d5c4,围栏 ＋ 金属屋顶建筑 ＋ 广告牌,barrier+building+sign,3,1,1494,Bangladesh/Dhaka
+46c985bb5706,草地 ＋ 树木 ＋ 水体,low_vegetation+tree+water,3,1,1445,Bangladesh/Dhaka
+ff68ee07e8e6,建筑 ＋ 道路 ＋ 树木 ＋ 电线,building+road+tree+utility,4,1,1433,US/NewYork
+0f739a6ae5ec,广告牌 ＋ 树木 ＋ 电线杆,sign+tree+utility,3,1,1418,Bangladesh/Dhaka
+d794105b9762,围栏 ＋ 金属屋顶建筑 ＋ 电线,barrier+building+utility,3,1,1395,Bangladesh/Dhaka
+af7f95769a62,围栏 ＋ 金属屋顶建筑 ＋ 树木,barrier+building+tree,3,1,1301,Bangladesh/Dhaka
+6f2591d85c9b,围栏 ＋ 老屋 ＋ 电线,barrier+building+utility,3,1,1259,Bangladesh/Dhaka
+45abaad12c28,建筑 ＋ 灌木 ＋ 道路 ＋ 电线,building+low_vegetation+road+utility,4,1,1248,US/NewYork
+7b5aa1792959,围栏 ＋ 老屋 ＋ 广告牌 ＋ 树木,barrier+building+sign+tree,4,1,1228,Bangladesh/Dhaka
+d56081b25cd6,车库 ＋ 道路 ＋ 电线,building+road+utility,3,1,1155,US/NewYork
+8bdc8510e74e,建筑 ＋ 草地 ＋ 人行道 ＋ 树木,building+low_vegetation+pedestrian+tree,4,1,1119,US/Chicago
+f355d309393b,围墙 ＋ 金属屋顶建筑 ＋ 树木,barrier+building+tree,3,1,1119,Bangladesh/Dhaka
+7bf85dcb5644,建筑 ＋ 草地 ＋ 道路 ＋ 电线,building+low_vegetation+road+utility,4,1,1092,US/NewYork
+2b4e56d5c9a7,围栏 ＋ 老屋 ＋ 电线杆,barrier+building+utility,3,1,1073,Bangladesh/Dhaka
+9b7b55dff384,老屋 ＋ 路灯,building+utility,2,1,1067,Bangladesh/Dhaka
+8cde7f13e09e,车库 ＋ 草地 ＋ 人行道 ＋ 树木,building+low_vegetation+pedestrian+tree,4,1,1056,US/Chicago
+7ece522c5e25,围栏 ＋ 老屋 ＋ 树木 ＋ 电线杆,barrier+building+tree+utility,4,1,1021,Bangladesh/Dhaka
+ecf74ccdc014,灌木 ＋ 道路 ＋ 树木 ＋ 电线杆,low_vegetation+road+tree+utility,4,1,990,US/NewYork
+5434bb2c5072,老屋 ＋ 树木 ＋ 路灯,building+tree+utility,3,1,986,Bangladesh/Dhaka
+a39f543db218,老屋 ＋ 草地 ＋ 树木,building+low_vegetation+tree,3,1,986,Bangladesh/Dhaka
+e9d9381b5b98,车库 ＋ 人行道 ＋ 道路 ＋ 树木,building+pedestrian+road+tree,4,1,985,US/Chicago
+69a26b49b57f,围栏 ＋ 金属屋顶建筑 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,1,981,Bangladesh/Dhaka
+209055bea04e,树木 ＋ 电线 ＋ 水体,tree+utility+water,3,1,968,Bangladesh/Dhaka
+c7abad7ab2f3,金属屋顶建筑 ＋ 广告牌 ＋ 树木,building+sign+tree,3,1,944,Bangladesh/Dhaka
+3861f3bfb801,老屋 ＋ 人行道 ＋ 树木,building+pedestrian+tree,3,1,922,Indonesia/Yogyakarta
+798addbb31b0,围墙 ＋ 老屋 ＋ 广告牌,barrier+building+sign,3,1,905,Bangladesh/Dhaka
+6ef88c5f794e,围栏 ＋ 建筑 ＋ 人行道 ＋ 道路,barrier+building+pedestrian+road,4,1,894,US/NewYork
+b6a41a0fb66a,老屋 ＋ 水体,building+water,2,1,890,Bangladesh/Dhaka
+9e3dd4037bd4,龙舌兰 ＋ 树木,low_vegetation+tree,2,1,883,Australia/Perth
+0d39dd8d0454,老屋 ＋ 广告牌 ＋ 树木 ＋ 电线,building+sign+tree+utility,4,1,879,Bangladesh/Dhaka
+bb1731e4cdbb,车库 ＋ 草地 ＋ 道路 ＋ 树木,building+low_vegetation+road+tree,4,1,865,US/Chicago
+9bb8f91c7aee,草地 ＋ 人行道 ＋ 道路 ＋ 输电塔,low_vegetation+pedestrian+road+utility,4,1,860,US/Chicago
+e938ca62801c,人行道 ＋ 道路 ＋ 沙地,pedestrian+road+terrain,3,1,840,US/Phoenix
+71b92f9782f1,围栏 ＋ 老屋 ＋ 树木 ＋ 电线,barrier+building+tree+utility,4,1,838,Bangladesh/Dhaka
+038db1e02989,老屋 ＋ 广告牌 ＋ 电线杆,building+sign+utility,3,1,825,Bangladesh/Dhaka
+9c4bea9c09f8,建筑 ＋ 灌木 ＋ 人行道 ＋ 电线,building+low_vegetation+pedestrian+utility,4,1,821,US/NewYork
+79dbd6d47158,老屋 ＋ 树木 ＋ 水体,building+tree+water,3,1,817,Bangladesh/Dhaka
+0f1277cbebf9,围墙 ＋ 老屋 ＋ 广告牌 ＋ 树木,barrier+building+sign+tree,4,1,802,Bangladesh/Dhaka
+a56bf2d34108,围栏 ＋ 道路 ＋ 树木 ＋ 电线,barrier+road+tree+utility,4,1,786,US/NewYork
+701230cd6612,草地 ＋ 人行道 ＋ 电线杆,low_vegetation+pedestrian+utility,3,1,776,US/Chicago
+97bd1691abff,金属屋顶建筑 ＋ 电线杆,building+utility,2,1,764,Bangladesh/Dhaka
+543667c39149,沙地 ＋ 水体,terrain+water,2,1,760,UAE/Dubai
+b70e539483ec,老屋 ＋ 路缘石,building+pedestrian,2,1,757,Indonesia/Yogyakarta
+867d8c3032f1,道路 ＋ 沙地 ＋ 水体,road+terrain+water,3,1,741,UAE/Dubai
+7e6d817fd416,老屋 ＋ 广告牌 ＋ 树木 ＋ 电线杆,building+sign+tree+utility,4,1,738,Bangladesh/Dhaka
+9be03512b5ef,建筑 ＋ 灌木 ＋ 树木 ＋ 电线,building+low_vegetation+tree+utility,4,1,721,US/NewYork
+0afbefb20990,车库 ＋ 人行道 ＋ 道路 ＋ 电线,building+pedestrian+road+utility,4,1,702,US/NewYork
+7393a1df03ee,草地 ＋ 电线 ＋ 水体,low_vegetation+utility+water,3,1,673,Bangladesh/Dhaka
+b11144396704,广告牌 ＋ 树木 ＋ 路灯,sign+tree+utility,3,1,672,Bangladesh/Dhaka
+0f52a57fcada,围墙 ＋ 老屋 ＋ 电线杆,barrier+building+utility,3,1,671,Bangladesh/Dhaka
+49932a20c8bf,草地 ＋ 人行道 ＋ 道路 ＋ 路灯,low_vegetation+pedestrian+road+utility,4,1,669,US/Chicago
+f35f361d7e1f,围栏 ＋ 水体,barrier+water,2,1,657,Bangladesh/Dhaka
+56d5a3a911e7,老屋 ＋ 沙地,building+terrain,2,1,649,Bangladesh/Dhaka
+b3bec1fedc8f,围墙 ＋ 老屋 ＋ 树木 ＋ 电线杆,barrier+building+tree+utility,4,1,647,Bangladesh/Dhaka
+f44f3c7377db,围栏 ＋ 广告牌 ＋ 电线杆,barrier+sign+utility,3,1,625,Bangladesh/Dhaka
+a7755d0e3010,金属屋顶建筑 ＋ 树木 ＋ 电线,building+tree+utility,3,1,623,Bangladesh/Dhaka
+808a667c022b,围墙 ＋ 广告牌 ＋ 电线杆,barrier+sign+utility,3,1,607,Bangladesh/Dhaka
+2b9311c77f7a,输电塔 ＋ 水体,utility+water,2,1,596,UAE/Dubai
+9e5f5db1b840,道路 ＋ 输电塔 ＋ 水体,road+utility+water,3,1,595,UAE/Dubai
+c7e9deb7bb26,草地 ＋ 人行道 ＋ 道路 ＋ 电线杆,low_vegetation+pedestrian+road+utility,4,1,588,US/Chicago
+160cca29a58e,老屋 ＋ 路缘石 ＋ 树木,building+pedestrian+tree,3,1,581,Indonesia/Yogyakarta
+d23212f376ca,灌木 ＋ 水体,low_vegetation+water,2,1,577,Bangladesh/Dhaka
+97e7a7e816a1,围墙 ＋ 金属屋顶建筑 ＋ 广告牌,barrier+building+sign,3,1,549,Bangladesh/Dhaka
+f1534c77021e,老屋 ＋ 沙地 ＋ 树木,building+terrain+tree,3,1,544,Bangladesh/Dhaka
+292b52334f91,围墙 ＋ 广告牌 ＋ 树木 ＋ 电线,barrier+sign+tree+utility,4,1,541,Bangladesh/Dhaka
+4b9362aa761a,交通信号灯 ＋ 路灯,sign+utility,2,1,540,US/Chicago
+069a669dddbe,围栏 ＋ 树木 ＋ 水体,barrier+tree+water,3,1,537,Bangladesh/Dhaka
+13512d241f8e,道路 ＋ 交通信号灯 ＋ 路灯,road+sign+utility,3,1,537,US/Chicago
+4b213f108f13,金属屋顶建筑 ＋ 树木 ＋ 电线杆,building+tree+utility,3,1,527,Bangladesh/Dhaka
+5792c99dc803,树木 ＋ 管道,tree+utility,2,1,525,Bangladesh/Dhaka
+ed9575733d38,围栏 ＋ 广告牌 ＋ 树木 ＋ 电线,barrier+sign+tree+utility,4,1,523,Bangladesh/Dhaka
+58ab475af25a,围墙 ＋ 水体,barrier+water,2,1,508,Bangladesh/Dhaka
+b7d27550e9f6,围栏 ＋ 老屋 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,1,508,Bangladesh/Dhaka
+760151d6722e,人行道 ＋ 道路 ＋ 树木 ＋ 电线杆,pedestrian+road+tree+utility,4,1,488,US/Chicago
+c78a140dbbe8,围栏 ＋ 草地 ＋ 电线杆,barrier+low_vegetation+utility,3,1,451,Australia/Sydney
+2133e2137876,道路 ＋ 沙地 ＋ 电线,road+terrain+utility,3,1,448,US/Phoenix
+3a8a982e17f8,围栏 ＋ 草地 ＋ 人行道 ＋ 道路,barrier+low_vegetation+pedestrian+road,4,1,445,US/Chicago
+9f91139dee8d,草地 ＋ 道路 ＋ 沙地,low_vegetation+road+terrain,3,1,429,US/Phoenix
+cf5f9c525365,护栏 ＋ 沙地,barrier+terrain,2,1,423,UAE/Dubai
+49e38964ca3b,护栏 ＋ 道路 ＋ 沙地,barrier+road+terrain,3,1,411,UAE/Dubai
+99929d84c910,老屋 ＋ 灌木,building+low_vegetation,2,1,402,Indonesia/Yogyakarta
+f92903dc6c48,围栏 ＋ 草地 ＋ 树木 ＋ 电线,barrier+low_vegetation+tree+utility,4,1,402,Australia/Sydney
+f59ea316e32a,温室 ＋ 树木,building+tree,2,1,388,Indonesia/Yogyakarta
+8dad87153ceb,混凝土建筑 ＋ 电线,building+utility,2,1,384,Korea/Seoul
+b972badb694e,围栏 ＋ 草地 ＋ 树木 ＋ 电线杆,barrier+low_vegetation+tree+utility,4,1,368,Australia/Sydney
+9466fa1daa01,教堂 ＋ 道路,building+road,2,1,355,UAE/Dubai
+79e22d928168,老屋 ＋ 灌木 ＋ 树木,building+low_vegetation+tree,3,1,350,Indonesia/Yogyakarta
+8a90e159ca1a,木栅栏 ＋ 瓦顶建筑,barrier+building,2,1,329,Indonesia/Yogyakarta
+101297864516,护栏 ＋ 输电塔 ＋ 水体,barrier+utility+water,3,1,318,UAE/Dubai
+275a5f200247,混凝土建筑 ＋ 桥梁,building+transport_structure,2,1,318,Korea/Seoul
+af3263b9cbc4,护栏 ＋ 道路 ＋ 输电塔 ＋ 水体,barrier+road+utility+water,4,1,318,UAE/Dubai
+71d9502921c3,草地 ＋ 树木 ＋ 输电塔,low_vegetation+tree+utility,3,1,309,Australia/Sydney
+c8cd04cc56d8,围墙 ＋ 瓦顶建筑 ＋ 人行道 ＋ 道路,barrier+building+pedestrian+road,4,1,297,US/Phoenix
+af7c0eba914c,混凝土建筑 ＋ 广告牌,building+sign,2,1,278,Korea/Seoul
+f6cc041c2710,老屋 ＋ 台阶与楼梯,building+pedestrian,2,1,273,Indonesia/Yogyakarta
+f72a1f3b52b6,道路 ＋ 岩石,road+terrain,2,1,264,Sweden/Stockholm
+259fba5db840,围栏 ＋ 路缘石 ＋ 路灯,barrier+pedestrian+utility,3,1,246,Italy/Naples
+1a3979e2407c,围栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 路灯,barrier+building+pedestrian+utility,4,1,225,Italy/Naples
+67d60fe84a21,草地 ＋ 岩石,low_vegetation+terrain,2,1,221,Sweden/Stockholm
+99a28f773552,混凝土建筑 ＋ 桥梁 ＋ 电线,building+transport_structure+utility,3,1,212,Korea/Seoul
+0dc381db3bd1,围栏 ＋ 草地 ＋ 人行道 ＋ 电线,barrier+low_vegetation+pedestrian+utility,4,1,211,Argentina/BuenosAires
+b8f45b5a47c7,垃圾桶 ＋ 灌木,furniture+low_vegetation,2,1,205,Australia/Sydney
+858b8f1447a1,护栏 ＋ 沙地 ＋ 输电塔,barrier+terrain+utility,3,1,203,UAE/Dubai
+8d7fdd4d1016,广告牌 ＋ 山地,sign+terrain,2,1,203,Mexico/Monterrey
+b596c287fd74,灌木 ＋ 桥梁,low_vegetation+transport_structure,2,1,202,Singapore/Singapore
+9ebd9375d65a,围栏 ＋ 人行道 ＋ 树木 ＋ 电线,barrier+pedestrian+tree+utility,4,1,201,Argentina/BuenosAires
+da7e04935344,围墙 ＋ 建筑 ＋ 人行横道 ＋ 电线,barrier+building+pedestrian+utility,4,1,198,Brazil/SaoPaulo
+9116cffde2c5,围栏 ＋ 台阶与楼梯 ＋ 管道,barrier+pedestrian+utility,3,1,195,Italy/Naples
+fdbe1e97dfde,灌木 ＋ 道路 ＋ 桥梁,low_vegetation+road+transport_structure,3,1,195,Singapore/Singapore
+a0b71c8820e1,人行道 ＋ 水体,pedestrian+water,2,1,192,Australia/Perth
+85b58f7048ba,护栏 ＋ 道路 ＋ 沙地 ＋ 输电塔,barrier+road+terrain+utility,4,1,191,UAE/Dubai
+3d87b65a3978,灌木 ＋ 树木 ＋ 路灯,low_vegetation+tree+utility,3,1,190,Australia/Sydney
+286d9497a354,围栏 ＋ 道路 ＋ 电线杆,barrier+road+utility,3,1,184,Australia/Sydney
+a9e43f224ca2,草地 ＋ 岩石 ＋ 树木,low_vegetation+terrain+tree,3,1,184,Sweden/Stockholm
+40e4ac4aa574,建筑 ＋ 道路 ＋ 山地,building+road+terrain,3,1,183,Mexico/Monterrey
+b976f8274cb9,草地 ＋ 交通标志,low_vegetation+sign,2,1,182,Brazil/Brasília
+f3a20291710e,雪地 ＋ 树木,terrain+tree,2,1,182,Sweden/Stockholm
+e32cd6d37bde,人行横道 ＋ 树木 ＋ 电线,pedestrian+tree+utility,3,1,181,Brazil/SaoPaulo
+267e255b7037,温室 ＋ 路灯,building+utility,2,1,176,Italy/Naples
+e1f72a8a5ad8,混凝土护栏 ＋ 水体,barrier+water,2,1,176,UAE/Dubai
+ea38b77cd7ee,混凝土护栏 ＋ 道路 ＋ 水体,barrier+road+water,3,1,176,UAE/Dubai
+d30011de8ef4,混凝土建筑 ＋ 广告牌 ＋ 电线,building+sign+utility,3,1,175,Korea/Seoul
+043e8b364250,木栅栏 ＋ 灌木,barrier+low_vegetation,2,1,174,Sweden/Stockholm
+f1061ad19d34,金属屋顶建筑 ＋ 台阶与楼梯,building+pedestrian,2,1,169,Nigeria/Lagos
+75f9bd708c42,工业建筑 ＋ 人行横道 ＋ 电线,building+pedestrian+utility,3,1,164,Brazil/SaoPaulo
+9b0525c9aea0,围栏 ＋ 建筑 ＋ 人行横道,barrier+building+pedestrian,3,1,164,Brazil/SaoPaulo
+0a22bdce372a,围墙 ＋ 沙地,barrier+terrain,2,1,162,Nigeria/Lagos
+78b8ca72ee58,围栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 道路,barrier+building+pedestrian+road,4,1,162,Italy/Naples
+b28d78f0e2df,道路 ＋ 广告牌 ＋ 山地,road+sign+terrain,3,1,161,Mexico/Monterrey
+f76615ce8f2b,路灯 ＋ 水体,utility+water,2,1,158,UAE/Dubai
+304053c6d025,围栏 ＋ 混凝土建筑,barrier+building,2,1,157,Korea/Seoul
+c2d303b916e9,道路 ＋ 路灯 ＋ 水体,road+utility+water,3,1,157,UAE/Dubai
+8f22ddfab332,围栏 ＋ 道路 ＋ 路灯,barrier+road+utility,3,1,156,Italy/Naples
+0abb85370b0d,围墙 ＋ 台阶与楼梯 ＋ 树木,barrier+pedestrian+tree,3,1,155,Brazil/RiodeJaneiro
+9e9dde8dce22,台阶与楼梯 ＋ 道路 ＋ 广告牌 ＋ 电线,pedestrian+road+sign+utility,4,1,155,Mexico/Monterrey
+2da57e162d50,护栏 ＋ 沙地 ＋ 水体,barrier+terrain+water,3,1,153,UAE/Dubai
+f4e8968023d3,护栏 ＋ 道路 ＋ 沙地 ＋ 水体,barrier+road+terrain+water,4,1,153,UAE/Dubai
+d076d5b817d3,围墙 ＋ 道路 ＋ 输电塔,barrier+road+utility,3,1,152,Russia/Moscow
+22fd10295d2f,围墙 ＋ 台阶与楼梯 ＋ 路灯,barrier+pedestrian+utility,3,1,149,Italy/Naples
+627c338c01db,围墙 ＋ 瓦顶建筑 ＋ 山地,barrier+building+terrain,3,1,149,Brazil/RiodeJaneiro
+ecaf4b735dcd,围栏 ＋ 建筑 ＋ 人行横道 ＋ 电线,barrier+building+pedestrian+utility,4,1,149,Brazil/SaoPaulo
+f014c882cb1b,围栏 ＋ 路缘石 ＋ 山地,barrier+pedestrian+terrain,3,1,148,Italy/Naples
+49a16a0dcfe9,混凝土护栏 ＋ 台阶与楼梯 ＋ 水体,barrier+pedestrian+water,3,1,147,UAE/Dubai
+e76fc13cdfb6,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 水体,barrier+pedestrian+road+water,4,1,147,UAE/Dubai
+de4828b5f913,围栏 ＋ 建筑 ＋ 草地,barrier+building+low_vegetation,3,1,146,Argentina/BuenosAires
+b291904713ed,瓦顶建筑 ＋ 管道,building+utility,2,1,145,Italy/Naples
+1fe24c27a1ef,围栏 ＋ 桥梁 ＋ 电线,barrier+transport_structure+utility,3,1,144,Korea/Seoul
+2127c18181a7,围墙 ＋ 山地 ＋ 树木,barrier+terrain+tree,3,1,144,Brazil/RiodeJaneiro
+7e72eac5091f,护栏 ＋ 建筑 ＋ 管道,barrier+building+utility,3,1,144,Italy/Naples
+fd4ed1a2c3aa,草地 ＋ 台阶与楼梯 ＋ 电线,low_vegetation+pedestrian+utility,3,1,142,Nigeria/Lagos
+265005e44e57,围栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 管道,barrier+building+pedestrian+utility,4,1,139,Italy/Naples
+0a10b3055143,金属屋顶建筑 ＋ 台阶与楼梯 ＋ 电线,building+pedestrian+utility,3,1,138,Nigeria/Lagos
+fb7bad97d745,瓦顶建筑 ＋ 灌木 ＋ 人行道,building+low_vegetation+pedestrian,3,1,135,Australia/Perth
+30db260217f4,道路 ＋ 岩石 ＋ 树木,road+terrain+tree,3,1,131,Sweden/Stockholm
+fae6c0b41e0e,围墙 ＋ 桥梁 ＋ 电线,barrier+transport_structure+utility,3,1,131,Korea/Seoul
+447737c50e84,围栏 ＋ 建筑 ＋ 草地 ＋ 电线,barrier+building+low_vegetation+utility,4,1,130,Argentina/BuenosAires
+7e1e7614b299,广告牌 ＋ 山地 ＋ 电线,sign+terrain+utility,3,1,130,Mexico/Monterrey
+27e79571fe2c,高层建筑 ＋ 道路 ＋ 树木,building+road+tree,3,1,129,Singapore/Singapore
+bda202459c11,道路 ＋ 雪地,road+terrain,2,1,129,Sweden/Stockholm
+05a75fc2c1fe,围墙 ＋ 道路 ＋ 山地,barrier+road+terrain,3,1,124,Mexico/Monterrey
+993878b0bfbf,混凝土护栏 ＋ 建筑 ＋ 道路 ＋ 桥梁,barrier+building+road+transport_structure,4,1,124,UAE/Dubai
+4b734694c6c3,围墙 ＋ 瓦顶建筑 ＋ 山地 ＋ 电线,barrier+building+terrain+utility,4,1,123,Brazil/RiodeJaneiro
+057120e21e91,护栏 ＋ 桥梁 ＋ 电线,barrier+transport_structure+utility,3,1,122,Korea/Seoul
+56e5b1ea0882,广告牌 ＋ 输电塔,sign+utility,2,1,122,Mexico/Monterrey
+ae305996a2f1,围墙 ＋ 人行道 ＋ 广告牌,barrier+pedestrian+sign,3,1,121,Brazil/RiodeJaneiro
+c0f5daf29475,公交站台 ＋ 树木,transport_structure+tree,2,1,121,Singapore/Singapore
+dd4735564330,温室 ＋ 道路,building+road,2,1,121,Korea/Seoul
+6c1d4d606c67,建筑 ＋ 人行道 ＋ 铁路,building+pedestrian+transport_structure,3,1,120,Austria/Vienna
+1a56a1404645,建筑 ＋ 草地 ＋ 台阶与楼梯,building+low_vegetation+pedestrian,3,1,119,Nigeria/Lagos
+2c922345e2d4,沙地 ＋ 输电塔 ＋ 水体,terrain+utility+water,3,1,119,UAE/Dubai
+4b0feb70812f,温室 ＋ 山地,building+terrain,2,1,119,Italy/Naples
+53d99279be08,混凝土建筑 ＋ 人行道,building+pedestrian,2,1,118,Korea/Seoul
+d418dd58b3a9,围墙 ＋ 沙地 ＋ 电线,barrier+terrain+utility,3,1,118,Nigeria/Lagos
+e20d6ceb8da9,道路 ＋ 沙地 ＋ 输电塔 ＋ 水体,road+terrain+utility+water,4,1,118,UAE/Dubai
+3978130136b0,高层建筑 ＋ 人行横道,building+pedestrian,2,1,117,Korea/Seoul
+ab02202e1aa2,混凝土护栏 ＋ 道路 ＋ 输电塔,barrier+road+utility,3,1,117,Mexico/Monterrey
+c23ef8380a18,护栏 ＋ 灌木 ＋ 道路 ＋ 树木,barrier+low_vegetation+road+tree,4,1,117,Singapore/Singapore
+0a2bf5e75308,道路 ＋ 广告牌 ＋ 输电塔,road+sign+utility,3,1,116,Mexico/Monterrey
+2967e3197475,混凝土护栏 ＋ 台阶与楼梯 ＋ 广告牌,barrier+pedestrian+sign,3,1,116,Mexico/Monterrey
+e9e63114d0bf,建筑 ＋ 道路 ＋ 山地 ＋ 电线,building+road+terrain+utility,4,1,116,Mexico/Monterrey
+11912395d708,围栏 ＋ 温室 ＋ 路灯,barrier+building+utility,3,1,115,Italy/Naples
+26288e14d0f8,路缘石 ＋ 山地 ＋ 路灯,pedestrian+terrain+utility,3,1,115,Italy/Naples
+e7207aab0e3b,围栏 ＋ 混凝土建筑 ＋ 电线,barrier+building+utility,3,1,115,Korea/Seoul
+4d6621aa5a59,建筑 ＋ 输电塔,building+utility,2,1,114,Nigeria/Lagos
+79be440dab2e,围墙 ＋ 人行道 ＋ 广告牌 ＋ 电线,barrier+pedestrian+sign+utility,4,1,114,Brazil/RiodeJaneiro
+dc2d59fb2e99,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 广告牌,barrier+pedestrian+road+sign,4,1,113,Mexico/Monterrey
+12fe614b12a7,道路 ＋ 公交站台 ＋ 树木,road+transport_structure+tree,3,1,112,Singapore/Singapore
+f267fc5df7fd,围墙 ＋ 混凝土建筑,barrier+building,2,1,112,Korea/Seoul
+6a2a59b9df70,围栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 电线,barrier+pedestrian+road+utility,4,1,111,Nigeria/Lagos
+da68a935cbad,木栅栏 ＋ 金属屋顶建筑,barrier+building,2,1,111,Nigeria/Lagos
+0a7d970e9a48,灌木 ＋ 桥梁 ＋ 树木,low_vegetation+transport_structure+tree,3,1,110,Singapore/Singapore
+bde37d9ef995,桥梁 ＋ 电线杆,transport_structure+utility,2,1,110,Korea/Seoul
+4f34860cd4c3,围栏 ＋ 山地 ＋ 路灯,barrier+terrain+utility,3,1,109,Italy/Naples
+d7d9b447e254,灌木 ＋ 道路 ＋ 桥梁 ＋ 树木,low_vegetation+road+transport_structure+tree,4,1,107,Singapore/Singapore
+d5b715e68b49,护栏 ＋ 混凝土建筑,barrier+building,2,1,106,Korea/Seoul
+eee08ef911d5,围墙 ＋ 台阶与楼梯 ＋ 树木 ＋ 电线,barrier+pedestrian+tree+utility,4,1,106,Brazil/RiodeJaneiro
+10c4fbfd811c,围栏 ＋ 建筑 ＋ 草地 ＋ 人行道,barrier+building+low_vegetation+pedestrian,4,1,105,Argentina/BuenosAires
+f907287f465b,围墙 ＋ 建筑 ＋ 沙地,barrier+building+terrain,3,1,105,Nigeria/Lagos
+9923e5e8dfe1,人行横道 ＋ 道路 ＋ 广告牌 ＋ 电线,pedestrian+road+sign+utility,4,1,104,Korea/Seoul
+b97555a7541e,混凝土护栏 ＋ 台阶与楼梯 ＋ 输电塔,barrier+pedestrian+utility,3,1,104,Mexico/Monterrey
+b9c755921cd4,灌木 ＋ 台阶与楼梯 ＋ 道路,low_vegetation+pedestrian+road,3,1,104,Singapore/Singapore
+717cffc0af3d,围墙 ＋ 建筑 ＋ 草地 ＋ 台阶与楼梯,barrier+building+low_vegetation+pedestrian,4,1,103,Nigeria/Lagos
+cc0b357b7911,围栏 ＋ 温室 ＋ 路缘石,barrier+building+pedestrian,3,1,103,Italy/Naples
+0ec8ecfe9334,护栏 ＋ 工业建筑 ＋ 电线,barrier+building+utility,3,1,102,Brazil/SaoPaulo
+4a327b7d4375,人行道 ＋ 桥梁 ＋ 电线,pedestrian+transport_structure+utility,3,1,102,Korea/Seoul
+c32150485474,混凝土护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 输电塔,barrier+pedestrian+road+utility,4,1,102,Mexico/Monterrey
+180c28505a52,围栏 ＋ 混凝土建筑 ＋ 桥梁,barrier+building+transport_structure,3,1,101,Korea/Seoul
+526a29d2b16e,混凝土建筑 ＋ 台阶与楼梯 ＋ 电线,building+pedestrian+utility,3,1,101,Korea/Seoul
+529e9f814dde,围墙 ＋ 瓦顶建筑 ＋ 人行横道,barrier+building+pedestrian,3,1,101,Brazil/SaoPaulo
+1415d73c537f,人行道 ＋ 道路 ＋ 山地 ＋ 电线,pedestrian+road+terrain+utility,4,1,100,Mexico/Monterrey
+609afcff8f28,住宅建筑 ＋ 人行道,building+pedestrian,2,1,100,Belgium/Antwerp
+8c8d489abca1,混凝土建筑 ＋ 台阶与楼梯 ＋ 桥梁,building+pedestrian+transport_structure,3,1,99,Korea/Seoul
+85ffa00dd800,围墙 ＋ 草地 ＋ 台阶与楼梯 ＋ 电线,barrier+low_vegetation+pedestrian+utility,4,1,98,Nigeria/Lagos
+d5cdbd6c9025,道路 ＋ 广告牌 ＋ 山地 ＋ 电线,road+sign+terrain+utility,4,1,98,Mexico/Monterrey
+49eb24afff6b,木栅栏 ＋ 金属屋顶建筑 ＋ 电线,barrier+building+utility,3,1,96,Nigeria/Lagos
+7f9a8ec23f78,围墙 ＋ 建筑 ＋ 台阶与楼梯 ＋ 路灯,barrier+building+pedestrian+utility,4,1,95,Italy/Naples
+f06fc01e9c63,混凝土护栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 桥梁,barrier+building+pedestrian+transport_structure,4,1,95,UAE/Dubai
+1c8f837de039,混凝土建筑 ＋ 广告牌 ＋ 桥梁,building+sign+transport_structure,3,1,94,Korea/Seoul
+1e1041457de3,沙地 ＋ 路灯,terrain+utility,2,1,94,UAE/Dubai
+30281bedb969,教堂 ＋ 台阶与楼梯 ＋ 道路,building+pedestrian+road,3,1,94,UAE/Dubai
+b69802097740,教堂 ＋ 台阶与楼梯,building+pedestrian,2,1,94,UAE/Dubai
+bb0bd5a9297a,台阶与楼梯 ＋ 交通标志,pedestrian+sign,2,1,94,UAE/Dubai
+db820ba6dc67,围栏 ＋ 建筑 ＋ 路缘石 ＋ 路灯,barrier+building+pedestrian+utility,4,1,94,Italy/Naples
+e014de7af899,道路 ＋ 沙地 ＋ 路灯,road+terrain+utility,3,1,94,UAE/Dubai
+5870565b2547,道路 ＋ 交通标志 ＋ 树木,road+sign+tree,3,1,93,Singapore/Singapore
+9d346a56680b,台阶与楼梯 ＋ 道路 ＋ 交通标志,pedestrian+road+sign,3,1,93,UAE/Dubai
+21b082ebc3a2,建筑 ＋ 台阶与楼梯 ＋ 桥梁 ＋ 电线,building+pedestrian+transport_structure+utility,4,1,92,Korea/Seoul
+3acb206ae310,高层建筑 ＋ 灌木,building+low_vegetation,2,1,92,Singapore/Singapore
+2658048f72a5,玻璃幕墙建筑 ＋ 广告牌,building+sign,2,1,91,Korea/Seoul
+4b004de4a4fb,草地 ＋ 道路 ＋ 桥梁,low_vegetation+road+transport_structure,3,1,91,Singapore/Singapore
+90818961b5bb,围栏 ＋ 垃圾桶,barrier+furniture,2,1,91,Singapore/Singapore
+9e3e460bf8f9,高层建筑 ＋ 人行横道 ＋ 道路,building+pedestrian+road,3,1,91,Korea/Seoul
+ace51d456b55,护栏 ＋ 路缘石 ＋ 树木,barrier+pedestrian+tree,3,1,91,Korea/Seoul
+00bac833049e,建筑 ＋ 沙地 ＋ 电线,building+terrain+utility,3,1,90,Nigeria/Lagos
+52313af58da3,混凝土建筑 ＋ 人行横道,building+pedestrian,2,1,90,Korea/Seoul
+716c5355760e,路缘石 ＋ 水体,pedestrian+water,2,1,90,Brazil/RiodeJaneiro
+be298832261e,高层建筑 ＋ 灌木 ＋ 道路,building+low_vegetation+road,3,1,90,Singapore/Singapore
+d590334d5727,护栏 ＋ 路缘石 ＋ 桥梁,barrier+pedestrian+transport_structure,3,1,90,Korea/Seoul
+d7ca76106d54,木栅栏 ＋ 管道,barrier+utility,2,1,90,Italy/Naples
+fb7debf8591f,围墙 ＋ 瓦顶建筑 ＋ 人行横道 ＋ 电线,barrier+building+pedestrian+utility,4,1,90,Brazil/SaoPaulo
+691527ff1e5e,路缘石 ＋ 管道,pedestrian+utility,2,1,89,Italy/Naples
+8c4e4f7a1e46,围栏 ＋ 建筑 ＋ 山地,barrier+building+terrain,3,1,89,Italy/Naples
+d64dc53ecf58,草地 ＋ 山地 ＋ 输电塔,low_vegetation+terrain+utility,3,1,89,Mexico/Monterrey
+e72896c18b08,高层建筑 ＋ 路灯,building+utility,2,1,89,Korea/Seoul
+1ee295b36f7d,围栏 ＋ 山地 ＋ 电线,barrier+terrain+utility,3,1,88,Mexico/Monterrey
+332488c07b3b,围墙 ＋ 工业建筑 ＋ 道路,barrier+building+road,3,1,88,Singapore/Singapore
+5d2deecb8b90,围栏 ＋ 建筑 ＋ 路缘石 ＋ 道路,barrier+building+pedestrian+road,4,1,88,Italy/Naples
+8ee7a648effd,围墙 ＋ 瓦顶建筑 ＋ 道路 ＋ 电线,barrier+building+road+utility,4,1,88,Portugal/Lisbon
+b9e2efdbc926,混凝土护栏 ＋ 广告牌 ＋ 电线,barrier+sign+utility,3,1,88,Mexico/Monterrey
+cb0c0790b666,道路 ＋ 广告牌 ＋ 桥梁 ＋ 电线,road+sign+transport_structure+utility,4,1,88,Mexico/Monterrey
+d901bd448872,高层建筑 ＋ 人行道,building+pedestrian,2,1,88,Singapore/Singapore
+41445ba32f6a,灌木 ＋ 人行横道,low_vegetation+pedestrian,2,1,87,Singapore/Singapore
+4ef518039744,温室 ＋ 桥梁,building+transport_structure,2,1,87,Korea/Seoul
+ba729c0877bd,护栏 ＋ 建筑 ＋ 人行道,barrier+building+pedestrian,3,1,87,Argentina/BuenosAires
+0384e0d6bf89,建筑 ＋ 广告牌 ＋ 桥梁 ＋ 电线,building+sign+transport_structure+utility,4,1,86,Korea/Seoul
+b3859bd2496a,护栏 ＋ 电线杆,barrier+utility,2,1,86,Korea/Seoul
+ea2fbd9d5f19,高层建筑 ＋ 人行道 ＋ 道路,building+pedestrian+road,3,1,86,Singapore/Singapore
+eab8510cad72,台阶与楼梯 ＋ 道路 ＋ 广告牌 ＋ 桥梁,pedestrian+road+sign+transport_structure,4,1,86,Mexico/Monterrey
+a462c9160d33,围墙 ＋ 山地 ＋ 树木 ＋ 电线,barrier+terrain+tree+utility,4,1,85,Brazil/RiodeJaneiro
+b895928e1e75,围墙 ＋ 瓦顶建筑 ＋ 广告牌,barrier+building+sign,3,1,85,Brazil/RiodeJaneiro
+f74bf0567760,木栅栏 ＋ 灌木 ＋ 树木,barrier+low_vegetation+tree,3,1,85,Sweden/Stockholm
+218fb531065a,混凝土护栏 ＋ 道路 ＋ 广告牌 ＋ 电线,barrier+road+sign+utility,4,1,84,Mexico/Monterrey
+426524384d15,围墙 ＋ 工业建筑 ＋ 树木,barrier+building+tree,3,1,84,Brazil/SaoPaulo
+0ca524e6d841,建筑 ＋ 路缘石 ＋ 山地,building+pedestrian+terrain,3,1,83,Italy/Naples
+2196fdc28d57,台阶与楼梯 ＋ 道路 ＋ 山地 ＋ 电线,pedestrian+road+terrain+utility,4,1,83,Mexico/Monterrey
+400890eaefd7,围栏 ＋ 温室 ＋ 台阶与楼梯,barrier+building+pedestrian,3,1,83,Italy/Naples
+5b8df62cc334,建筑 ＋ 公交站台,building+transport_structure,2,1,83,Singapore/Singapore
+61ded2aeb57e,铁路 ＋ 管道,transport_structure+utility,2,1,83,Italy/Naples
+9af3bc3df6aa,草地 ＋ 道路 ＋ 岩石,low_vegetation+road+terrain,3,1,83,Sweden/Stockholm
+c22195a30343,围墙 ＋ 道路 ＋ 山地 ＋ 电线,barrier+road+terrain+utility,4,1,83,Mexico/Monterrey
+db44519b7e03,建筑 ＋ 人行道 ＋ 山地 ＋ 电线,building+pedestrian+terrain+utility,4,1,83,Mexico/Monterrey
+22c43d382224,围墙 ＋ 台阶与楼梯 ＋ 桥梁,barrier+pedestrian+transport_structure,3,1,82,Korea/Seoul
+34b3a98f0c14,围栏 ＋ 工业建筑 ＋ 广告牌,barrier+building+sign,3,1,82,Brazil/SaoPaulo
+442b0644888d,高层建筑 ＋ 广告牌,building+sign,2,1,82,Korea/Seoul
+62576de4bbc1,围墙 ＋ 金属屋顶建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,1,82,Nigeria/Lagos
+33c9c4bd5996,围墙 ＋ 建筑 ＋ 道路 ＋ 树木,barrier+building+road+tree,4,1,81,Singapore/Singapore
+f7760df62e04,木栅栏 ＋ 广告牌 ＋ 电线,barrier+sign+utility,3,1,81,Korea/Seoul
+1c6eda746eed,桥梁 ＋ 输电塔,transport_structure+utility,2,1,80,Mexico/Monterrey
+2f703076eb68,护栏 ＋ 广告牌 ＋ 桥梁,barrier+sign+transport_structure,3,1,79,Korea/Seoul
+49ef48f93868,建筑 ＋ 草地 ＋ 台阶与楼梯 ＋ 电线,building+low_vegetation+pedestrian+utility,4,1,79,Nigeria/Lagos
+547cec109c18,道路 ＋ 山地 ＋ 水体,road+terrain+water,3,1,79,SouthAfrica/CapeTown
+5a8fd1c21d16,围墙 ＋ 瓦顶建筑 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,1,79,Brazil/RiodeJaneiro
+872c2897720c,混凝土建筑 ＋ 电线杆,building+utility,2,1,79,Korea/Seoul
+b837cb6b1c3f,车库 ＋ 台阶与楼梯,building+pedestrian,2,1,79,SouthAfrica/CapeTown
+b865bbfe49ab,建筑 ＋ 道路 ＋ 公交站台,building+road+transport_structure,3,1,79,Singapore/Singapore
+bfb8c401f199,建筑 ＋ 台阶与楼梯 ＋ 道路 ＋ 路灯,building+pedestrian+road+utility,4,1,79,Italy/Naples
+402f061c6208,木栅栏 ＋ 建筑 ＋ 广告牌,barrier+building+sign,3,1,78,Korea/Seoul
+6a184d29b9b8,围栏 ＋ 工业建筑 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,1,78,Brazil/SaoPaulo
+a2f18fae5c43,围栏 ＋ 混凝土建筑 ＋ 桥梁 ＋ 电线,barrier+building+transport_structure+utility,4,1,78,Korea/Seoul
+dd39077344a0,草地 ＋ 人行横道,low_vegetation+pedestrian,2,1,78,Singapore/Singapore
+1199878a875a,护栏 ＋ 路缘石 ＋ 广告牌,barrier+pedestrian+sign,3,1,77,Korea/Seoul
+1827ebf00ee5,高层建筑 ＋ 台阶与楼梯,building+pedestrian,2,1,77,Singapore/Singapore
+25cbdac25604,围墙 ＋ 人行道 ＋ 山地 ＋ 电线,barrier+pedestrian+terrain+utility,4,1,77,Brazil/RiodeJaneiro
+8fe96e3d4016,围栏 ＋ 工业建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,1,77,Brazil/SaoPaulo
+b3467aabd252,建筑 ＋ 台阶与楼梯 ＋ 道路 ＋ 广告牌,building+pedestrian+road+sign,4,1,77,Mexico/Monterrey
+65aa20a9ea14,人行道 ＋ 道路 ＋ 桥梁,pedestrian+road+transport_structure,3,1,76,Singapore/Singapore
+cc9ae59f21a6,混凝土护栏 ＋ 桥梁 ＋ 路灯,barrier+transport_structure+utility,3,1,76,Brazil/RiodeJaneiro
+e55afbf80f4c,建筑 ＋ 人行道 ＋ 桥梁,building+pedestrian+transport_structure,3,1,76,Korea/Seoul
+ea9c027cd99c,建筑 ＋ 广告牌 ＋ 铁路,building+sign+transport_structure,3,1,76,Austria/Vienna
+f45b0b964a00,高层建筑 ＋ 台阶与楼梯 ＋ 道路,building+pedestrian+road,3,1,76,Singapore/Singapore
+237c89cae9cb,围栏 ＋ 建筑 ＋ 灌木,barrier+building+low_vegetation,3,1,75,Austria/Vienna
+7632fb74349e,山地 ＋ 电线杆,terrain+utility,2,1,74,Brazil/RiodeJaneiro
+f2c289bcbfd9,道路 ＋ 桥梁 ＋ 输电塔,road+transport_structure+utility,3,1,74,Mexico/Monterrey
+3134b391505a,工业建筑 ＋ 人行道 ＋ 树木,building+pedestrian+tree,3,1,73,Argentina/BuenosAires
+3496d9b59f77,围墙 ＋ 建筑 ＋ 沙地 ＋ 电线,barrier+building+terrain+utility,4,1,73,Nigeria/Lagos
+4f729528fcbe,工业建筑 ＋ 草地 ＋ 电线,building+low_vegetation+utility,3,1,73,Argentina/BuenosAires
+e8ac929a5342,围墙 ＋ 建筑 ＋ 桥梁 ＋ 电线,barrier+building+transport_structure+utility,4,1,73,Korea/Seoul
+ff6a48d5baa0,高层建筑 ＋ 道路 ＋ 路灯,building+road+utility,3,1,73,Korea/Seoul
+0265f875bf47,建筑 ＋ 铁路 ＋ 电线,building+transport_structure+utility,3,1,72,Austria/Vienna
+8b64fb4158ad,混凝土建筑 ＋ 台阶与楼梯 ＋ 桥梁 ＋ 电线,building+pedestrian+transport_structure+utility,4,1,72,Korea/Seoul
+9a91d3cddb82,围栏 ＋ 山地 ＋ 树木,barrier+terrain+tree,3,1,72,Italy/Naples
+aa12c232dd8a,混凝土护栏 ＋ 台阶与楼梯 ＋ 广告牌 ＋ 电线,barrier+pedestrian+sign+utility,4,1,72,Mexico/Monterrey
+e24206bd3f05,木栅栏 ＋ 人行道 ＋ 电线,barrier+pedestrian+utility,3,1,72,Argentina/BuenosAires
+e2d36d7be9c2,围墙 ＋ 台阶与楼梯 ＋ 山地,barrier+pedestrian+terrain,3,1,72,Brazil/RiodeJaneiro
+e35dfe94006d,人行横道 ＋ 道路 ＋ 交通标志,pedestrian+road+sign,3,1,72,Portugal/Lisbon
+14f6592f75e7,护栏 ＋ 道路 ＋ 广告牌 ＋ 电线,barrier+road+sign+utility,4,1,71,Mexico/Monterrey
+6710ac00aeb6,围栏 ＋ 人行道 ＋ 广告牌,barrier+pedestrian+sign,3,1,71,Brazil/RiodeJaneiro
+8bcc90feb268,建筑 ＋ 水体,building+water,2,1,71,Brazil/RiodeJaneiro
+9b0ecf55fd4f,高层建筑 ＋ 路缘石,building+pedestrian,2,1,71,Korea/Seoul
+9f4fe2742b66,护栏 ＋ 道路 ＋ 桥梁 ＋ 路灯,barrier+road+transport_structure+utility,4,1,71,Korea/Seoul
+06e68132ed92,建筑 ＋ 人行道 ＋ 电线杆,building+pedestrian+utility,3,1,70,Argentina/BuenosAires
+958bfc8944da,护栏 ＋ 台阶与楼梯 ＋ 道路 ＋ 桥梁,barrier+pedestrian+road+transport_structure,4,1,70,Singapore/Singapore
+b54582f3dca8,围墙 ＋ 垃圾桶,barrier+furniture,2,1,70,Singapore/Singapore
+d42b5884b3c8,混凝土建筑 ＋ 人行道 ＋ 桥梁,building+pedestrian+transport_structure,3,1,70,Korea/Seoul
+54ab0467d853,围墙 ＋ 瓦顶建筑 ＋ 电线杆,barrier+building+utility,3,1,69,Brazil/RiodeJaneiro
+a962e5998ed9,护栏 ＋ 建筑 ＋ 人行道 ＋ 电线,barrier+building+pedestrian+utility,4,1,69,Argentina/BuenosAires
+b280e5c06f8c,草地 ＋ 人行横道 ＋ 道路,low_vegetation+pedestrian+road,3,1,69,Singapore/Singapore
+b655c72cbb09,围栏 ＋ 混凝土建筑 ＋ 广告牌,barrier+building+sign,3,1,69,Korea/Seoul
+f68c88d719b8,金属屋顶建筑 ＋ 路缘石,building+pedestrian,2,1,69,Nigeria/Lagos
+0dfcfd616424,混凝土建筑 ＋ 人行道 ＋ 电线,building+pedestrian+utility,3,1,68,Korea/Seoul
+27d0fdf349c5,围墙 ＋ 混凝土建筑 ＋ 电线,barrier+building+utility,3,1,68,Korea/Seoul
+62db3660f608,护栏 ＋ 路缘石 ＋ 电线,barrier+pedestrian+utility,3,1,68,Korea/Seoul
+742737ef9642,护栏 ＋ 建筑 ＋ 人行横道,barrier+building+pedestrian,3,1,68,Korea/Seoul
+29d0f08bad4f,建筑 ＋ 人行道 ＋ 管道,building+pedestrian+utility,3,1,67,Italy/Naples
+660259aa81ec,混凝土建筑 ＋ 广告牌 ＋ 桥梁 ＋ 电线,building+sign+transport_structure+utility,4,1,67,Korea/Seoul
+b554686d2f83,草地 ＋ 道路 ＋ 山地 ＋ 输电塔,low_vegetation+road+terrain+utility,4,1,67,Mexico/Monterrey
+e9a7d6ecdbdd,混凝土护栏 ＋ 路缘石 ＋ 山地,barrier+pedestrian+terrain,3,1,67,China/Taipei
+36dc10183de7,围墙 ＋ 混凝土建筑 ＋ 桥梁,barrier+building+transport_structure,3,1,66,Korea/Seoul
+612a6341f87f,瓦顶建筑 ＋ 台阶与楼梯 ＋ 道路,building+pedestrian+road,3,1,66,Portugal/Lisbon
+0ed5ccee1154,人行道 ＋ 公交站台,pedestrian+transport_structure,2,1,65,Singapore/Singapore
+5d70c5095678,建筑 ＋ 隧道,building+transport_structure,2,1,65,China/Taipei
+8b9b8a2cd044,围墙 ＋ 道路 ＋ 广告牌 ＋ 电线,barrier+road+sign+utility,4,1,65,Brazil/RiodeJaneiro
+d5a498dc9324,建筑 ＋ 台阶与楼梯 ＋ 山地,building+pedestrian+terrain,3,1,65,Mexico/Monterrey
+d653bf93b9b3,建筑 ＋ 隧道 ＋ 路灯,building+transport_structure+utility,3,1,65,China/Taipei
+e46c8e8fe0c1,隧道 ＋ 路灯,transport_structure+utility,2,1,65,China/Taipei
+087b307b6c54,护栏 ＋ 混凝土建筑 ＋ 桥梁,barrier+building+transport_structure,3,1,64,Korea/Seoul
+1d1f974c33cc,围栏 ＋ 台阶与楼梯 ＋ 桥梁,barrier+pedestrian+transport_structure,3,1,64,Korea/Seoul
+6ab8bb66c71f,路缘石 ＋ 道路 ＋ 广告牌,pedestrian+road+sign,3,1,64,Korea/Seoul
+b73dc22493b7,木栅栏 ＋ 建筑 ＋ 人行道,barrier+building+pedestrian,3,1,64,Argentina/BuenosAires
+e03cc53fddb2,围墙 ＋ 建筑 ＋ 台阶与楼梯 ＋ 树木,barrier+building+pedestrian+tree,4,1,64,Brazil/RiodeJaneiro
+061bab8139cf,围栏 ＋ 广告牌 ＋ 桥梁,barrier+sign+transport_structure,3,1,63,Korea/Seoul
+07a0a99838ce,建筑 ＋ 台阶与楼梯 ＋ 树木 ＋ 电线,building+pedestrian+tree+utility,4,1,63,Brazil/RiodeJaneiro
+2445ffb48273,混凝土护栏 ＋ 道路 ＋ 桥梁 ＋ 路灯,barrier+road+transport_structure+utility,4,1,63,Brazil/RiodeJaneiro
+87817e841c91,围墙 ＋ 灌木 ＋ 人行道 ＋ 电线,barrier+low_vegetation+pedestrian+utility,4,1,63,Argentina/BuenosAires
+bef75afc5c3a,护栏 ＋ 人行横道 ＋ 广告牌,barrier+pedestrian+sign,3,1,63,Korea/Seoul
+cbf66a1a4e3f,围墙 ＋ 建筑 ＋ 人行道 ＋ 广告牌,barrier+building+pedestrian+sign,4,1,62,Brazil/RiodeJaneiro
+d24cf6e970e8,瓦顶建筑 ＋ 人行道 ＋ 树木 ＋ 电线,building+pedestrian+tree+utility,4,1,62,Brazil/RiodeJaneiro
+219a2d49cd38,木栅栏 ＋ 草地,barrier+low_vegetation,2,1,61,Sweden/Stockholm
+2308c538c46c,护栏 ＋ 路缘石 ＋ 路灯,barrier+pedestrian+utility,3,1,61,Korea/Seoul
+1bf265024a5b,围墙 ＋ 瓦顶建筑 ＋ 人行道 ＋ 树木,barrier+building+pedestrian+tree,4,1,60,Brazil/RiodeJaneiro
+7925d99c220d,护栏 ＋ 瓦顶建筑,barrier+building,2,1,60,Korea/Seoul
+95c7ea6560c7,建筑 ＋ 山地 ＋ 树木,building+terrain+tree,3,1,60,Brazil/RiodeJaneiro
+d3877050e768,围墙 ＋ 芦苇,barrier+low_vegetation,2,1,60,Brazil/RiodeJaneiro
+f7e5bcbb64ff,护栏 ＋ 混凝土建筑 ＋ 电线,barrier+building+utility,3,1,59,Korea/Seoul
+1ce8824780e4,护栏 ＋ 建筑 ＋ 桥梁 ＋ 电线,barrier+building+transport_structure+utility,4,1,58,Korea/Seoul
+1f0c1cc60278,草地 ＋ 铁路 ＋ 输电塔,low_vegetation+transport_structure+utility,3,1,58,Belgium/Antwerp
+22a4a1d19237,建筑 ＋ 雪地,building+terrain,2,1,58,Sweden/Stockholm
+2be492aa3804,护栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 电线,barrier+building+pedestrian+utility,4,1,58,Korea/Seoul
+5c6dffbe2f12,高层建筑 ＋ 道路 ＋ 广告牌,building+road+sign,3,1,58,Korea/Seoul
+6a5aebb185b3,护栏 ＋ 路缘石 ＋ 道路 ＋ 山地,barrier+pedestrian+road+terrain,4,1,58,Portugal/Lisbon
+bdb2539f1b69,围墙 ＋ 草地 ＋ 山地,barrier+low_vegetation+terrain,3,1,58,Brazil/RiodeJaneiro
+d0631fda25c5,瓦顶建筑 ＋ 道路 ＋ 桥梁,building+road+transport_structure,3,1,58,Mexico/Monterrey
+f3c8477e2b17,围墙 ＋ 瓦顶建筑 ＋ 路缘石 ＋ 电线,barrier+building+pedestrian+utility,4,1,58,Portugal/Lisbon
+3bb2478c29ac,人行道 ＋ 广告牌 ＋ 铁路,pedestrian+sign+transport_structure,3,1,57,Austria/Vienna
+7a61d5552a50,混凝土护栏 ＋ 广告牌 ＋ 桥梁,barrier+sign+transport_structure,3,1,57,Mexico/Monterrey
+a036937b72b0,围墙 ＋ 台阶与楼梯 ＋ 山地 ＋ 电线,barrier+pedestrian+terrain+utility,4,1,57,Brazil/RiodeJaneiro
+dcc445f573df,玻璃幕墙建筑 ＋ 人行横道,building+pedestrian,2,1,57,Korea/Seoul
+eadb470f3b9b,工业建筑 ＋ 草地 ＋ 人行道,building+low_vegetation+pedestrian,3,1,57,Argentina/BuenosAires
+fbe3aaeac33e,围栏 ＋ 瓦顶建筑 ＋ 树木,barrier+building+tree,3,1,57,Argentina/BuenosAires
+0e96f4988a2b,围墙 ＋ 台阶与楼梯 ＋ 道路 ＋ 电线,barrier+pedestrian+road+utility,4,1,56,Portugal/Lisbon
+489adc697950,护栏 ＋ 桥梁 ＋ 水体,barrier+transport_structure+water,3,1,56,Korea/Seoul
+658589ac75fb,草地 ＋ 道路 ＋ 铁路 ＋ 输电塔,low_vegetation+road+transport_structure+utility,4,1,56,Belgium/Antwerp
+892b9b047e09,围墙 ＋ 瓦顶建筑 ＋ 草地 ＋ 电线,barrier+building+low_vegetation+utility,4,1,56,Brazil/RiodeJaneiro
+8c09074d380c,人行横道 ＋ 桥梁 ＋ 电线,pedestrian+transport_structure+utility,3,1,56,Korea/Seoul
+901115434d65,混凝土建筑 ＋ 人行横道 ＋ 电线,building+pedestrian+utility,3,1,56,Korea/Seoul
+b196c4b88f84,混凝土建筑 ＋ 人行横道 ＋ 广告牌,building+pedestrian+sign,3,1,56,Korea/Seoul
+3bff29cfaea4,混凝土护栏 ＋ 温室,barrier+building,2,1,55,Korea/Seoul
+3cece34352d8,围墙 ＋ 车库 ＋ 台阶与楼梯,barrier+building+pedestrian,3,1,55,SouthAfrica/CapeTown
+6c3a66ca76c8,围墙 ＋ 车库 ＋ 道路,barrier+building+road,3,1,55,SouthAfrica/CapeTown
+b00ce826f939,围墙 ＋ 人行道 ＋ 路灯,barrier+pedestrian+utility,3,1,55,Spain/Barcelona
+35600aa39580,围墙 ＋ 草地 ＋ 输电塔,barrier+low_vegetation+utility,3,1,54,SouthAfrica/Johannesburg
+3c30369c815e,建筑 ＋ 道路 ＋ 桥梁 ＋ 电线,building+road+transport_structure+utility,4,1,54,Mexico/Monterrey
+595c2329aa4f,瓦顶建筑 ＋ 路缘石 ＋ 道路,building+pedestrian+road,3,1,54,Portugal/Lisbon
+691ddd78162e,人行横道 ＋ 道路 ＋ 广告牌 ＋ 路灯,pedestrian+road+sign+utility,4,1,54,Korea/Seoul
+6de417211ba1,道路 ＋ 山地 ＋ 树木,road+terrain+tree,3,1,54,China/Taipei
+866a5042fc56,温室 ＋ 道路 ＋ 桥梁,building+road+transport_structure,3,1,54,Korea/Seoul
+9b018bf43426,道路 ＋ 山地 ＋ 桥梁,road+terrain+transport_structure,3,1,54,China/Taipei
+cdccfefeff76,建筑 ＋ 桥梁 ＋ 电线杆,building+transport_structure+utility,3,1,54,Korea/Seoul
+1e39faba7d4b,围栏 ＋ 混凝土建筑 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,1,53,Korea/Seoul
+3bb1775f0a94,工业建筑 ＋ 灌木,building+low_vegetation,2,1,53,Germany/Hamburg
+5652ee72848f,台阶与楼梯 ＋ 山地 ＋ 输电塔,pedestrian+terrain+utility,3,1,53,Mexico/Monterrey
+8b4bff841e15,护栏 ＋ 建筑 ＋ 路缘石 ＋ 道路,barrier+building+pedestrian+road,4,1,53,Korea/Seoul
+048bb43f942c,木栅栏 ＋ 建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,1,52,Korea/Seoul
+4e3684c59772,混凝土护栏 ＋ 路缘石 ＋ 道路 ＋ 山地,barrier+pedestrian+road+terrain,4,1,52,China/Taipei
+db9134010a9f,木栅栏 ＋ 桥梁,barrier+transport_structure,2,1,52,Korea/Seoul
+4a80e4b50860,人行道 ＋ 铁路 ＋ 电线,pedestrian+transport_structure+utility,3,1,51,Austria/Vienna
+4be3078a364a,混凝土护栏 ＋ 树木,barrier+tree,2,1,51,China/Taipei
+540ff5b6f725,路缘石 ＋ 广告牌 ＋ 电线,pedestrian+sign+utility,3,1,51,Korea/Seoul
+f1c9118daad6,护栏 ＋ 道路 ＋ 桥梁 ＋ 水体,barrier+road+transport_structure+water,4,1,51,Korea/Seoul
+0a40916218da,围墙 ＋ 建筑 ＋ 台阶与楼梯 ＋ 桥梁,barrier+building+pedestrian+transport_structure,4,1,50,Korea/Seoul
+39909c1b3015,围墙 ＋ 台阶与楼梯 ＋ 桥梁 ＋ 电线,barrier+pedestrian+transport_structure+utility,4,1,50,Korea/Seoul
+977ebf3bca72,瓦顶建筑 ＋ 人行横道 ＋ 广告牌,building+pedestrian+sign,3,1,50,Korea/Seoul
+cd2df32728ef,木栅栏 ＋ 台阶与楼梯 ＋ 电线,barrier+pedestrian+utility,3,1,50,Korea/Seoul
+7c925a2092aa,台阶与楼梯 ＋ 广告牌 ＋ 桥梁 ＋ 电线,pedestrian+sign+transport_structure+utility,4,1,49,Korea/Seoul
+9bbf7158e353,护栏 ＋ 路缘石 ＋ 道路 ＋ 桥梁,barrier+pedestrian+road+transport_structure,4,1,49,Korea/Seoul
+9cd9975965ca,玻璃幕墙建筑 ＋ 道路 ＋ 广告牌,building+road+sign,3,1,49,Korea/Seoul
+d58b99aeba39,护栏 ＋ 建筑 ＋ 道路 ＋ 广告牌,barrier+building+road+sign,4,1,49,Korea/Seoul
+d819ef239d2c,护栏 ＋ 路缘石 ＋ 铁路,barrier+pedestrian+transport_structure,3,1,49,Korea/Seoul
+f20cd2b2f415,混凝土建筑 ＋ 道路 ＋ 广告牌,building+road+sign,3,1,49,Korea/Seoul
+01978d54a596,混凝土护栏 ＋ 建筑 ＋ 路缘石,barrier+building+pedestrian,3,1,48,China/Taipei
+0f1fb4a0f4ae,路缘石 ＋ 山地 ＋ 电线,pedestrian+terrain+utility,3,1,48,Portugal/Lisbon
+521b9ab45f38,高层建筑 ＋ 路缘石 ＋ 道路,building+pedestrian+road,3,1,48,Korea/Seoul
+572019a4720f,混凝土建筑 ＋ 人行道 ＋ 广告牌,building+pedestrian+sign,3,1,48,Korea/Seoul
+8fd6f777af55,混凝土建筑 ＋ 人行道 ＋ 桥梁 ＋ 电线,building+pedestrian+transport_structure+utility,4,1,48,Korea/Seoul
+03232a596484,木栅栏 ＋ 台阶与楼梯 ＋ 广告牌,barrier+pedestrian+sign,3,1,47,Korea/Seoul
+51f1c55173ed,垃圾桶 ＋ 电线,furniture+utility,2,1,47,Portugal/Lisbon
+64421ff37c98,人行道 ＋ 铁路 ＋ 路灯,pedestrian+transport_structure+utility,3,1,47,Austria/Vienna
+64ebb0c4bb3a,围栏 ＋ 建筑 ＋ 桥梁 ＋ 电线,barrier+building+transport_structure+utility,4,1,47,Korea/Seoul
+7a2adf4fe9c6,住宅建筑 ＋ 道路,building+road,2,1,47,Belgium/Antwerp
+7ddfe16db3a8,围栏 ＋ 台阶与楼梯 ＋ 桥梁 ＋ 电线,barrier+pedestrian+transport_structure+utility,4,1,47,Korea/Seoul
+93b98f3b04d4,草地 ＋ 人行道 ＋ 铁路,low_vegetation+pedestrian+transport_structure,3,1,47,Belgium/Antwerp
+afcb3972f508,路缘石 ＋ 山地 ＋ 桥梁,pedestrian+terrain+transport_structure,3,1,47,China/Taipei
+b7e9afcbce35,木栅栏 ＋ 建筑 ＋ 广告牌 ＋ 电线,barrier+building+sign+utility,4,1,47,Korea/Seoul
+c282fc697708,路缘石 ＋ 桥梁 ＋ 电线,pedestrian+transport_structure+utility,3,1,47,Korea/Seoul
+da56512f53ca,围墙 ＋ 路缘石 ＋ 道路 ＋ 电线,barrier+pedestrian+road+utility,4,1,47,Portugal/Lisbon
+04d222952eaf,广告牌 ＋ 桥梁 ＋ 路灯,sign+transport_structure+utility,3,1,46,Korea/Seoul
+397973ee2359,木栅栏 ＋ 电线杆,barrier+utility,2,1,46,Korea/Seoul
+54fec7a569b8,护栏 ＋ 台阶与楼梯 ＋ 广告牌,barrier+pedestrian+sign,3,1,46,Korea/Seoul
+5c9dd13dac42,围栏 ＋ 建筑 ＋ 灌木 ＋ 树木,barrier+building+low_vegetation+tree,4,1,46,Austria/Vienna
+7a0ec4fa7986,台阶与楼梯 ＋ 广告牌 ＋ 电线杆,pedestrian+sign+utility,3,1,46,Korea/Seoul
+7cc7e0132793,铁路 ＋ 水体,transport_structure+water,2,1,46,Korea/Seoul
+2054155ace43,人行横道 ＋ 广告牌 ＋ 电线杆,pedestrian+sign+utility,3,1,45,Korea/Seoul
+5d4ddb7fdee2,传统建筑 ＋ 电线,building+utility,2,1,45,Korea/Seoul
+90b331cf762b,人行道 ＋ 广告牌 ＋ 桥梁,pedestrian+sign+transport_structure,3,1,45,Korea/Seoul
+3d25995ede43,围栏 ＋ 台阶与楼梯 ＋ 广告牌 ＋ 电线,barrier+pedestrian+sign+utility,4,1,44,Korea/Seoul
+6546b08a456a,围栏 ＋ 广告牌 ＋ 桥梁 ＋ 电线,barrier+sign+transport_structure+utility,4,1,44,Korea/Seoul
+83f586a8117e,道路 ＋ 铁路 ＋ 水体,road+transport_structure+water,3,1,44,Korea/Seoul
+8c1f0ebd1036,建筑 ＋ 人行横道 ＋ 道路 ＋ 路灯,building+pedestrian+road+utility,4,1,44,Korea/Seoul
+93e36b759733,围栏 ＋ 灌木 ＋ 人行道,barrier+low_vegetation+pedestrian,3,1,44,Austria/Vienna
+b4d5a2479a90,高层建筑 ＋ 人行横道 ＋ 广告牌,building+pedestrian+sign,3,1,44,Korea/Seoul
+c1495fe35d90,护栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 桥梁,barrier+building+pedestrian+transport_structure,4,1,44,Korea/Seoul
+d813b0f628cc,建筑 ＋ 道路 ＋ 交通标志,building+road+sign,3,1,44,Austria/Vienna
+d96f6bdbcd09,广告牌 ＋ 公交站台,sign+transport_structure,2,1,44,Korea/Seoul
+f5910785ef32,建筑 ＋ 人行道 ＋ 交通标志,building+pedestrian+sign,3,1,44,Austria/Vienna
+328c8d72be10,建筑 ＋ 人行道 ＋ 桥梁 ＋ 电线,building+pedestrian+transport_structure+utility,4,1,43,Korea/Seoul
+46d8cc3b6d07,台阶与楼梯 ＋ 桥梁 ＋ 电线杆,pedestrian+transport_structure+utility,3,1,43,Korea/Seoul
+7fe72fec7869,围墙 ＋ 混凝土建筑 ＋ 桥梁 ＋ 电线,barrier+building+transport_structure+utility,4,1,43,Korea/Seoul
+85c2f1b79184,混凝土建筑 ＋ 树木,building+tree,2,1,43,Korea/Seoul
+9422104be07c,建筑 ＋ 人行道 ＋ 道路 ＋ 路灯,building+pedestrian+road+utility,4,1,43,Austria/Vienna
+d0d045ae8a76,芦苇 ＋ 山地 ＋ 树木,low_vegetation+terrain+tree,3,1,43,China/Taipei
+d978341710ca,玻璃幕墙建筑 ＋ 人行横道 ＋ 道路,building+pedestrian+road,3,1,43,Korea/Seoul
+dcf32ceff8f4,建筑 ＋ 道路 ＋ 广告牌 ＋ 路灯,building+road+sign+utility,4,1,43,Korea/Seoul
+ecb9dc5bcdb1,道路 ＋ 广告牌 ＋ 电线杆,road+sign+utility,3,1,43,Korea/Seoul
+1218da67f492,建筑 ＋ 铁路 ＋ 路灯,building+transport_structure+utility,3,1,42,Austria/Vienna
+13f5c24a71fd,护栏 ＋ 草地 ＋ 输电塔,barrier+low_vegetation+utility,3,1,42,Belgium/Antwerp
+619a6e6a77ec,护栏 ＋ 路缘石 ＋ 道路 ＋ 路灯,barrier+pedestrian+road+utility,4,1,42,Korea/Seoul
+69a28a1b2a69,护栏 ＋ 芦苇,barrier+low_vegetation,2,1,42,Spain/Barcelona
+cfa63f058d0a,广告牌 ＋ 桥梁 ＋ 电线杆,sign+transport_structure+utility,3,1,42,Korea/Seoul
+ebf61b8ada60,台阶与楼梯 ＋ 道路 ＋ 桥梁 ＋ 路灯,pedestrian+road+transport_structure+utility,4,1,42,Austria/Vienna
+efe84d5ef06f,护栏 ＋ 桥梁 ＋ 树木,barrier+transport_structure+tree,3,1,42,Korea/Seoul
+f625bd980fd2,交通标志 ＋ 铁路,sign+transport_structure,2,1,42,Austria/Vienna
+fca1912dae66,护栏 ＋ 建筑 ＋ 电线杆,barrier+building+utility,3,1,42,Korea/Seoul
+1bc7c576bd43,混凝土建筑 ＋ 广告牌 ＋ 电线杆,building+sign+utility,3,1,41,Korea/Seoul
+25be54ff8877,围栏 ＋ 人行道 ＋ 路灯,barrier+pedestrian+utility,3,1,41,Austria/Vienna
+4aefd043ea80,围栏 ＋ 人行横道 ＋ 广告牌,barrier+pedestrian+sign,3,1,41,Korea/Seoul
+633ce693c424,工业建筑 ＋ 灌木 ＋ 树木,building+low_vegetation+tree,3,1,41,Germany/Hamburg
+7c4289d627d1,混凝土建筑 ＋ 管道,building+utility,2,1,41,Korea/Seoul
+b3d8ef0f28b1,护栏 ＋ 人行横道 ＋ 桥梁,barrier+pedestrian+transport_structure,3,1,41,Korea/Seoul
+d72529bf2f1a,围墙 ＋ 人行道 ＋ 桥梁,barrier+pedestrian+transport_structure,3,1,41,Korea/Seoul
+e719e4c3168b,围栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 广告牌,barrier+building+pedestrian+sign,4,1,41,Korea/Seoul
+296b9b8c0429,围墙 ＋ 传统建筑,barrier+building,2,1,40,Korea/Seoul
+395adc2bc307,护栏 ＋ 混凝土建筑 ＋ 广告牌,barrier+building+sign,3,1,40,Korea/Seoul
+51eb74bad30d,广告牌 ＋ 桥梁 ＋ 管道,sign+transport_structure+utility,3,1,40,China/Taipei
+993ec638e8e9,建筑 ＋ 人行道 ＋ 广告牌 ＋ 铁路,building+pedestrian+sign+transport_structure,4,1,40,Austria/Vienna
+bf597510c612,建筑 ＋ 人行横道 ＋ 广告牌 ＋ 桥梁,building+pedestrian+sign+transport_structure,4,1,40,China/Taipei
+d42bb669e525,路缘石 ＋ 山地 ＋ 铁路,pedestrian+terrain+transport_structure,3,1,40,China/Taipei
+fb1b1c5ee41a,住宅建筑 ＋ 树木,building+tree,2,1,40,Belgium/Antwerp
+008736abc340,围栏 ＋ 道路 ＋ 桥梁,barrier+road+transport_structure,3,1,39,Korea/Seoul
+2c1e16ff88ec,护栏 ＋ 混凝土建筑 ＋ 桥梁 ＋ 电线,barrier+building+transport_structure+utility,4,1,39,Korea/Seoul
+9f1c169883df,路缘石 ＋ 广告牌 ＋ 桥梁,pedestrian+sign+transport_structure,3,1,39,Korea/Seoul
+bfe6d4451cd5,围墙 ＋ 混凝土建筑 ＋ 台阶与楼梯,barrier+building+pedestrian,3,1,39,Korea/Seoul
+cb8d2999aac9,围墙 ＋ 建筑 ＋ 台阶与楼梯 ＋ 广告牌,barrier+building+pedestrian+sign,4,1,39,Korea/Seoul
+e144c5230508,建筑 ＋ 人行横道 ＋ 铁路,building+pedestrian+transport_structure,3,1,39,Austria/Vienna
+11b50e550425,护栏 ＋ 草地 ＋ 道路 ＋ 输电塔,barrier+low_vegetation+road+utility,4,1,38,Belgium/Antwerp
+2a30c1ff44ec,木栅栏 ＋ 建筑 ＋ 道路,barrier+building+road,3,1,38,Germany/Hamburg
+43142f59b44c,护栏 ＋ 建筑 ＋ 路缘石 ＋ 树木,barrier+building+pedestrian+tree,4,1,38,Korea/Seoul
+b7450fddadb1,护栏 ＋ 建筑 ＋ 人行横道 ＋ 广告牌,barrier+building+pedestrian+sign,4,1,38,Korea/Seoul
+ce238e622c46,护栏 ＋ 铁路 ＋ 路灯,barrier+transport_structure+utility,3,1,38,Korea/Seoul
+1d670254664b,护栏 ＋ 高层建筑 ＋ 路缘石,barrier+building+pedestrian,3,1,37,Korea/Seoul
+25b6d88c3993,木栅栏 ＋ 混凝土建筑,barrier+building,2,1,37,Korea/Seoul
+5d435369c4a4,路缘石 ＋ 交通标志,pedestrian+sign,2,1,37,Korea/Seoul
+7b2cc775bf83,道路 ＋ 山地 ＋ 铁路,road+terrain+transport_structure,3,1,37,China/Taipei
+8a816d582146,围墙 ＋ 路缘石 ＋ 桥梁,barrier+pedestrian+transport_structure,3,1,37,Korea/Seoul
+a9f720fa133b,护栏 ＋ 建筑 ＋ 道路 ＋ 路灯,barrier+building+road+utility,4,1,37,Korea/Seoul
+d08fbab7fa0c,建筑 ＋ 人行横道 ＋ 电线杆,building+pedestrian+utility,3,1,36,Korea/Seoul
+d6a889f3a18f,建筑 ＋ 广告牌 ＋ 桥梁 ＋ 管道,building+sign+transport_structure+utility,4,1,36,China/Taipei
+4d12fe0f65da,护栏 ＋ 路缘石 ＋ 道路 ＋ 树木,barrier+pedestrian+road+tree,4,1,35,Korea/Seoul
+7bab3a34e2aa,建筑 ＋ 路缘石 ＋ 道路 ＋ 桥梁,building+pedestrian+road+transport_structure,4,1,35,China/Taipei
+e23da4f04dc2,交通标志 ＋ 电线,sign+utility,2,1,35,Korea/Seoul
+ef00abcf2444,高层建筑 ＋ 人行横道 ＋ 道路 ＋ 广告牌,building+pedestrian+road+sign,4,1,35,Korea/Seoul
+306dd3cd9ca2,混凝土护栏 ＋ 路缘石 ＋ 树木,barrier+pedestrian+tree,3,1,34,China/Taipei
+37fe4e3a3ce9,围栏 ＋ 建筑 ＋ 路缘石 ＋ 树木,barrier+building+pedestrian+tree,4,1,34,Austria/Vienna
+c9ff1d13bb65,围栏 ＋ 混凝土建筑 ＋ 广告牌 ＋ 桥梁,barrier+building+sign+transport_structure,4,1,34,Korea/Seoul
+4cea0c46e629,人行横道 ＋ 道路 ＋ 铁路,pedestrian+road+transport_structure,3,1,32,Austria/Vienna
+69fb47849375,建筑 ＋ 人行横道 ＋ 道路 ＋ 桥梁,building+pedestrian+road+transport_structure,4,1,32,China/Taipei
+e7600333256c,围栏 ＋ 建筑 ＋ 树木 ＋ 路灯,barrier+building+tree+utility,4,1,32,Austria/Vienna
+eb54dbaf732a,工业建筑 ＋ 桥梁,building+transport_structure,2,1,32,China/Taipei
+3d4a1b6dfcdd,路缘石 ＋ 桥梁 ＋ 树木,pedestrian+transport_structure+tree,3,1,30,China/Taipei
+6d9923ff9117,围栏 ＋ 建筑 ＋ 台阶与楼梯 ＋ 树木,barrier+building+pedestrian+tree,4,1,30,Austria/Vienna

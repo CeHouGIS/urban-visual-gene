@@ -69,6 +69,7 @@ def test_publication_rejects_changed_vlm_records_before_copying_images(tmp_path,
     put(reports / 'masked/dimension_interpretations.json', {'dimensions': ['changed']})
     monkeypatch.setattr(element_hierarchy, 'EXPERIMENT', experiment)
     monkeypatch.setattr(element_hierarchy, 'REPORTS', reports)
+    monkeypatch.setattr(element_hierarchy, 'SPATIAL_FEATURES', frozenset())
     with pytest.raises(ValueError, match='VLM evidence changed'):
         element_hierarchy.install(tmp_path / 'site', None, 'today')
     assert not (tmp_path / 'site').exists()
@@ -80,7 +81,7 @@ def test_category_graph_covers_every_main_experiment_dimension():
     graph = element_hierarchy.build_category_graph(source)
     assert graph['total'] == 4096
     assert graph['family_count'] == 21
-    assert graph['label_count'] == 439
+    assert graph['label_count'] == 280
     assert sorted(feature for family in graph['families']
                   for label in family['labels'] for feature in label['features']) == list(range(4096))
     unresolved = next(family for family in graph['families'] if family['id'] == 'unresolved')
