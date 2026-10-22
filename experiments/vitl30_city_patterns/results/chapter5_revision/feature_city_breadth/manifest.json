@@ -1,0 +1,203 @@
+{
+  "dimensions_total": 4096,
+  "candidate_ready_dimensions": 1535,
+  "boxplot_dimensions": 2626,
+  "boxplot_excluded_dimensions": {
+    "unresolved": 1264,
+    "spatial_encoding": 17,
+    "person": 46,
+    "vehicle": 143
+  },
+  "tree_dimensions": 280,
+  "source_cities": 30,
+  "heatmap_cities": 30,
+  "semantic_classes": 18,
+  "boxplot_family_counts": {
+    "road": 239,
+    "sign": 61,
+    "sky": 207,
+    "barrier": 57,
+    "utility": 50,
+    "ground_unspecified": 526,
+    "low_vegetation": 93,
+    "construction": 25,
+    "water": 18,
+    "pedestrian": 28,
+    "furniture": 22,
+    "vegetation_unspecified": 172,
+    "material_unspecified": 118,
+    "transport_structure": 54,
+    "building": 542,
+    "terrain": 30,
+    "tree": 300,
+    "scene_context": 84
+  },
+  "boxplot_status_counts": {
+    "candidate_ready": 1377,
+    "context_or_material": 853,
+    "needs_review": 396
+  },
+  "source_sha256": "710799fd0da95ebc71bdfad9e6ee1f7dcda5fe8b9fb4a70a50c64aed1042f61f",
+  "boxplot_breadth_definition": "inverse Simpson effective city count: 1 / sum((city_mass_share / feature total across cities)^2)",
+  "heatmap_definition": "original 30-city panel A: within-tree city share, then log2 fold relative to each feature equal-city mean (epsilon 1e-6)",
+  "heatmap_palette": [
+    [
+      0.0,
+      "#78909E"
+    ],
+    [
+      0.3333333333333333,
+      "#C7D2D4"
+    ],
+    [
+      0.6666666666666666,
+      "#F5F4F0"
+    ],
+    [
+      0.8333333333333334,
+      "#DEC8BE"
+    ],
+    [
+      1.0,
+      "#B98779"
+    ]
+  ],
+  "heatmap_color_limits": {
+    "vmin": -6.0,
+    "vcenter": 0,
+    "vmax": 3.0
+  },
+  "display_order": "original panel A hierarchical row and column leaf order, with dendrograms and cluster annotations omitted",
+  "boxplot_family_order": [
+    "road",
+    "sign",
+    "sky",
+    "barrier",
+    "utility",
+    "ground_unspecified",
+    "low_vegetation",
+    "construction",
+    "water",
+    "pedestrian",
+    "furniture",
+    "vegetation_unspecified",
+    "material_unspecified",
+    "transport_structure",
+    "building",
+    "terrain",
+    "tree",
+    "scene_context"
+  ],
+  "boxplot_membership": "Use the existing family assignment for every dimension except unresolved, spatial_encoding, person, and vehicle; no status-based filtering or within-class selection.",
+  "category_heatmaps": [
+    {
+      "family": "road",
+      "class_label": "Roads",
+      "dimensions": 239,
+      "stem": "Fig_ViTL30_Class_Heatmap_road"
+    },
+    {
+      "family": "sign",
+      "class_label": "Signs",
+      "dimensions": 61,
+      "stem": "Fig_ViTL30_Class_Heatmap_sign"
+    },
+    {
+      "family": "sky",
+      "class_label": "Sky",
+      "dimensions": 207,
+      "stem": "Fig_ViTL30_Class_Heatmap_sky"
+    },
+    {
+      "family": "barrier",
+      "class_label": "Barriers",
+      "dimensions": 57,
+      "stem": "Fig_ViTL30_Class_Heatmap_barrier"
+    },
+    {
+      "family": "utility",
+      "class_label": "Utilities",
+      "dimensions": 50,
+      "stem": "Fig_ViTL30_Class_Heatmap_utility"
+    },
+    {
+      "family": "ground_unspecified",
+      "class_label": "Unspecified ground",
+      "dimensions": 526,
+      "stem": "Fig_ViTL30_Class_Heatmap_ground_unspecified"
+    },
+    {
+      "family": "low_vegetation",
+      "class_label": "Low vegetation",
+      "dimensions": 93,
+      "stem": "Fig_ViTL30_Class_Heatmap_low_vegetation"
+    },
+    {
+      "family": "construction",
+      "class_label": "Construction",
+      "dimensions": 25,
+      "stem": "Fig_ViTL30_Class_Heatmap_construction"
+    },
+    {
+      "family": "water",
+      "class_label": "Water",
+      "dimensions": 18,
+      "stem": "Fig_ViTL30_Class_Heatmap_water"
+    },
+    {
+      "family": "pedestrian",
+      "class_label": "Pedestrian space",
+      "dimensions": 28,
+      "stem": "Fig_ViTL30_Class_Heatmap_pedestrian"
+    },
+    {
+      "family": "furniture",
+      "class_label": "Street furniture",
+      "dimensions": 22,
+      "stem": "Fig_ViTL30_Class_Heatmap_furniture"
+    },
+    {
+      "family": "vegetation_unspecified",
+      "class_label": "Unspecified vegetation",
+      "dimensions": 172,
+      "stem": "Fig_ViTL30_Class_Heatmap_vegetation_unspecified"
+    },
+    {
+      "family": "material_unspecified",
+      "class_label": "Unspecified materials",
+      "dimensions": 118,
+      "stem": "Fig_ViTL30_Class_Heatmap_material_unspecified"
+    },
+    {
+      "family": "transport_structure",
+      "class_label": "Transport structures",
+      "dimensions": 54,
+      "stem": "Fig_ViTL30_Class_Heatmap_transport_structure"
+    },
+    {
+      "family": "building",
+      "class_label": "Buildings",
+      "dimensions": 542,
+      "stem": "Fig_ViTL30_Class_Heatmap_building"
+    },
+    {
+      "family": "terrain",
+      "class_label": "Terrain",
+      "dimensions": 30,
+      "stem": "Fig_ViTL30_Class_Heatmap_terrain"
+    },
+    {
+      "family": "tree",
+      "class_label": "Trees",
+      "dimensions": 300,
+      "stem": "Fig_ViTL30_Class_Heatmap_tree"
+    },
+    {
+      "family": "scene_context",
+      "class_label": "Scene context",
+      "dimensions": 84,
+      "stem": "Fig_ViTL30_Class_Heatmap_scene_context"
+    }
+  ],
+  "interpretation_limit": "effective cities measures response evenness among the 30 sampled study cities, not the number of observed positive activations"
+}

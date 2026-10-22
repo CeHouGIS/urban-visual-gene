@@ -97,6 +97,28 @@ The original queue completion and all audits documented below refer to their
 historical input snapshots; their numerical results have not been recomputed
 with the screened vocabulary and must not be presented as current findings.
 
+### Feature breadth and category heatmaps
+
+`code/render_feature_city_breadth.py` renders the 30-city tree-feature heatmap,
+the semantic-class breadth boxplot, and 18 category-specific heatmaps from the
+saved city-feature response tables. Run it from the repository root with:
+
+```bash
+python -m experiments.vitl30_city_patterns.code.render_feature_city_breadth
+```
+
+Outputs are in `results/chapter5_revision/feature_city_breadth/`. The 18
+category heatmaps are also collected in
+`category_heatmaps/Fig_ViTL30_All_Class_Heatmaps.pdf`. They retain all 2,626
+dimensions assigned to those categories; only 1,264 unresolved, 17 spatial
+encoding, 46 people, and 143 vehicle dimensions are excluded. Category
+membership comes from the saved assignments, without status-based filtering.
+All heatmaps share a 30-city column order and a muted color scale. The tree
+heatmap reproduces the original panel A row and column order; the category
+heatmaps order rows by response-profile similarity. The boxplot's effective
+city count measures evenness across sampled cities, not the number of cities
+with any positive response. Labels remain provisional.
+
 ## Historical local composition audit (older semantic snapshot)
 
 `code/local_composition_audit.py` retrieves the 185 compositions from the

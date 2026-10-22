@@ -1,0 +1,2627 @@
+family,class_label,display_row_from_top,feature
+road,Roads,1,1383
+road,Roads,2,1172
+road,Roads,3,2322
+road,Roads,4,1719
+road,Roads,5,1454
+road,Roads,6,1208
+road,Roads,7,3061
+road,Roads,8,3166
+road,Roads,9,3469
+road,Roads,10,992
+road,Roads,11,2030
+road,Roads,12,3493
+road,Roads,13,3278
+road,Roads,14,87
+road,Roads,15,1997
+road,Roads,16,990
+road,Roads,17,2822
+road,Roads,18,2862
+road,Roads,19,1995
+road,Roads,20,3127
+road,Roads,21,3255
+road,Roads,22,684
+road,Roads,23,2675
+road,Roads,24,3752
+road,Roads,25,257
+road,Roads,26,3615
+road,Roads,27,460
+road,Roads,28,1319
+road,Roads,29,827
+road,Roads,30,3078
+road,Roads,31,658
+road,Roads,32,2459
+road,Roads,33,752
+road,Roads,34,611
+road,Roads,35,2001
+road,Roads,36,3175
+road,Roads,37,4075
+road,Roads,38,2115
+road,Roads,39,3856
+road,Roads,40,2392
+road,Roads,41,820
+road,Roads,42,2896
+road,Roads,43,4021
+road,Roads,44,3206
+road,Roads,45,697
+road,Roads,46,1921
+road,Roads,47,690
+road,Roads,48,1169
+road,Roads,49,3957
+road,Roads,50,158
+road,Roads,51,3273
+road,Roads,52,2265
+road,Roads,53,1830
+road,Roads,54,4090
+road,Roads,55,1266
+road,Roads,56,2240
+road,Roads,57,2098
+road,Roads,58,2842
+road,Roads,59,371
+road,Roads,60,1000
+road,Roads,61,405
+road,Roads,62,673
+road,Roads,63,561
+road,Roads,64,2194
+road,Roads,65,3325
+road,Roads,66,796
+road,Roads,67,958
+road,Roads,68,1263
+road,Roads,69,3331
+road,Roads,70,3881
+road,Roads,71,3475
+road,Roads,72,2262
+road,Roads,73,4074
+road,Roads,74,2191
+road,Roads,75,527
+road,Roads,76,1483
+road,Roads,77,1364
+road,Roads,78,2963
+road,Roads,79,3542
+road,Roads,80,514
+road,Roads,81,2698
+road,Roads,82,3589
+road,Roads,83,437
+road,Roads,84,1432
+road,Roads,85,801
+road,Roads,86,1622
+road,Roads,87,1430
+road,Roads,88,4044
+road,Roads,89,565
+road,Roads,90,3390
+road,Roads,91,1497
+road,Roads,92,2885
+road,Roads,93,3597
+road,Roads,94,1841
+road,Roads,95,1732
+road,Roads,96,253
+road,Roads,97,785
+road,Roads,98,512
+road,Roads,99,474
+road,Roads,100,1591
+road,Roads,101,3690
+road,Roads,102,2560
+road,Roads,103,24
+road,Roads,104,3596
+road,Roads,105,1007
+road,Roads,106,2834
+road,Roads,107,2624
+road,Roads,108,2171
+road,Roads,109,3366
+road,Roads,110,1807
+road,Roads,111,157
+road,Roads,112,715
+road,Roads,113,1993
+road,Roads,114,2238
+road,Roads,115,435
+road,Roads,116,2132
+road,Roads,117,3285
+road,Roads,118,2931
+road,Roads,119,1938
+road,Roads,120,3269
+road,Roads,121,3796
+road,Roads,122,160
+road,Roads,123,284
+road,Roads,124,1974
+road,Roads,125,917
+road,Roads,126,1320
+road,Roads,127,5
+road,Roads,128,3226
+road,Roads,129,1215
+road,Roads,130,398
+road,Roads,131,2755
+road,Roads,132,1363
+road,Roads,133,2564
+road,Roads,134,1076
+road,Roads,135,609
+road,Roads,136,2661
+road,Roads,137,2285
+road,Roads,138,2690
+road,Roads,139,1082
+road,Roads,140,399
+road,Roads,141,2421
+road,Roads,142,2899
+road,Roads,143,2141
+road,Roads,144,3848
+road,Roads,145,939
+road,Roads,146,3480
+road,Roads,147,707
+road,Roads,148,2005
+road,Roads,149,964
+road,Roads,150,1243
+road,Roads,151,4089
+road,Roads,152,3805
+road,Roads,153,3581
+road,Roads,154,3896
+road,Roads,155,2815
+road,Roads,156,3231
+road,Roads,157,63
+road,Roads,158,139
+road,Roads,159,1295
+road,Roads,160,3771
+road,Roads,161,424
+road,Roads,162,1889
+road,Roads,163,1627
+road,Roads,164,3681
+road,Roads,165,1528
+road,Roads,166,3075
+road,Roads,167,82
+road,Roads,168,3952
+road,Roads,169,1151
+road,Roads,170,803
+road,Roads,171,3818
+road,Roads,172,957
+road,Roads,173,1177
+road,Roads,174,217
+road,Roads,175,4003
+road,Roads,176,2183
+road,Roads,177,1595
+road,Roads,178,119
+road,Roads,179,233
+road,Roads,180,1631
+road,Roads,181,1978
+road,Roads,182,693
+road,Roads,183,391
+road,Roads,184,2148
+road,Roads,185,3911
+road,Roads,186,3766
+road,Roads,187,3552
+road,Roads,188,420
+road,Roads,189,2497
+road,Roads,190,2982
+road,Roads,191,1694
+road,Roads,192,948
+road,Roads,193,361
+road,Roads,194,3672
+road,Roads,195,2307
+road,Roads,196,754
+road,Roads,197,1928
+road,Roads,198,2939
+road,Roads,199,3505
+road,Roads,200,1255
+road,Roads,201,3735
+road,Roads,202,3062
+road,Roads,203,570
+road,Roads,204,3620
+road,Roads,205,1842
+road,Roads,206,783
+road,Roads,207,1067
+road,Roads,208,2637
+road,Roads,209,2643
+road,Roads,210,1911
+road,Roads,211,982
+road,Roads,212,2987
+road,Roads,213,3814
+road,Roads,214,3682
+road,Roads,215,1022
+road,Roads,216,2707
+road,Roads,217,4000
+road,Roads,218,1268
+road,Roads,219,3055
+road,Roads,220,1625
+road,Roads,221,47
+road,Roads,222,3487
+road,Roads,223,2043
+road,Roads,224,2215
+road,Roads,225,446
+road,Roads,226,3289
+road,Roads,227,1863
+road,Roads,228,2793
+road,Roads,229,2368
+road,Roads,230,2088
+road,Roads,231,2017
+road,Roads,232,3858
+road,Roads,233,2432
+road,Roads,234,2536
+road,Roads,235,4033
+road,Roads,236,3949
+road,Roads,237,448
+road,Roads,238,3798
+road,Roads,239,1590
+sign,Signs,1,590
+sign,Signs,2,2329
+sign,Signs,3,211
+sign,Signs,4,2737
+sign,Signs,5,1856
+sign,Signs,6,19
+sign,Signs,7,4008
+sign,Signs,8,2844
+sign,Signs,9,711
+sign,Signs,10,2679
+sign,Signs,11,2413
+sign,Signs,12,2382
+sign,Signs,13,3183
+sign,Signs,14,2730
+sign,Signs,15,793
+sign,Signs,16,3689
+sign,Signs,17,1722
+sign,Signs,18,1232
+sign,Signs,19,3020
+sign,Signs,20,2373
+sign,Signs,21,1451
+sign,Signs,22,577
+sign,Signs,23,1683
+sign,Signs,24,4058
+sign,Signs,25,928
+sign,Signs,26,3288
+sign,Signs,27,496
+sign,Signs,28,2577
+sign,Signs,29,412
+sign,Signs,30,1310
+sign,Signs,31,2445
+sign,Signs,32,94
+sign,Signs,33,3842
+sign,Signs,34,1010
+sign,Signs,35,2441
+sign,Signs,36,1992
+sign,Signs,37,293
+sign,Signs,38,889
+sign,Signs,39,432
+sign,Signs,40,2197
+sign,Signs,41,4019
+sign,Signs,42,755
+sign,Signs,43,445
+sign,Signs,44,1713
+sign,Signs,45,3005
+sign,Signs,46,3837
+sign,Signs,47,3122
+sign,Signs,48,2006
+sign,Signs,49,275
+sign,Signs,50,1950
+sign,Signs,51,2270
+sign,Signs,52,327
+sign,Signs,53,449
+sign,Signs,54,166
+sign,Signs,55,3768
+sign,Signs,56,342
+sign,Signs,57,187
+sign,Signs,58,566
+sign,Signs,59,3981
+sign,Signs,60,2163
+sign,Signs,61,598
+sky,Sky,1,3723
+sky,Sky,2,2994
+sky,Sky,3,276
+sky,Sky,4,3478
+sky,Sky,5,311
+sky,Sky,6,927
+sky,Sky,7,3905
+sky,Sky,8,254
+sky,Sky,9,2051
+sky,Sky,10,202
+sky,Sky,11,1276
+sky,Sky,12,782
+sky,Sky,13,1146
+sky,Sky,14,1948
+sky,Sky,15,2475
+sky,Sky,16,3733
+sky,Sky,17,1857
+sky,Sky,18,167
+sky,Sky,19,3704
+sky,Sky,20,1644
+sky,Sky,21,3728
+sky,Sky,22,111
+sky,Sky,23,2069
+sky,Sky,24,381
+sky,Sky,25,3481
+sky,Sky,26,3470
+sky,Sky,27,3049
+sky,Sky,28,2954
+sky,Sky,29,2504
+sky,Sky,30,1832
+sky,Sky,31,2444
+sky,Sky,32,356
+sky,Sky,33,2181
+sky,Sky,34,269
+sky,Sky,35,1204
+sky,Sky,36,3425
+sky,Sky,37,1899
+sky,Sky,38,377
+sky,Sky,39,3152
+sky,Sky,40,3479
+sky,Sky,41,3820
+sky,Sky,42,709
+sky,Sky,43,2426
+sky,Sky,44,3739
+sky,Sky,45,1641
+sky,Sky,46,29
+sky,Sky,47,333
+sky,Sky,48,1006
+sky,Sky,49,208
+sky,Sky,50,106
+sky,Sky,51,2515
+sky,Sky,52,368
+sky,Sky,53,3590
+sky,Sky,54,3512
+sky,Sky,55,375
+sky,Sky,56,3441
+sky,Sky,57,3342
+sky,Sky,58,3961
+sky,Sky,59,965
+sky,Sky,60,920
+sky,Sky,61,2621
+sky,Sky,62,68
+sky,Sky,63,737
+sky,Sky,64,3135
+sky,Sky,65,3134
+sky,Sky,66,3989
+sky,Sky,67,743
+sky,Sky,68,3484
+sky,Sky,69,173
+sky,Sky,70,1894
+sky,Sky,71,1039
+sky,Sky,72,4092
+sky,Sky,73,2669
+sky,Sky,74,1743
+sky,Sky,75,2728
+sky,Sky,76,3362
+sky,Sky,77,3636
+sky,Sky,78,2875
+sky,Sky,79,1337
+sky,Sky,80,299
+sky,Sky,81,3356
+sky,Sky,82,765
+sky,Sky,83,99
+sky,Sky,84,3568
+sky,Sky,85,2401
+sky,Sky,86,1047
+sky,Sky,87,644
+sky,Sky,88,186
+sky,Sky,89,2584
+sky,Sky,90,1777
+sky,Sky,91,3080
+sky,Sky,92,3242
+sky,Sky,93,3076
+sky,Sky,94,3847
+sky,Sky,95,373
+sky,Sky,96,1836
+sky,Sky,97,3781
+sky,Sky,98,1870
+sky,Sky,99,1574
+sky,Sky,100,458
+sky,Sky,101,1809
+sky,Sky,102,1411
+sky,Sky,103,1583
+sky,Sky,104,78
+sky,Sky,105,1200
+sky,Sky,106,815
+sky,Sky,107,353
+sky,Sky,108,842
+sky,Sky,109,2117
+sky,Sky,110,3099
+sky,Sky,111,2959
+sky,Sky,112,1099
+sky,Sky,113,703
+sky,Sky,114,2639
+sky,Sky,115,97
+sky,Sky,116,618
+sky,Sky,117,1567
+sky,Sky,118,576
+sky,Sky,119,3504
+sky,Sky,120,1343
+sky,Sky,121,3304
+sky,Sky,122,2266
+sky,Sky,123,2124
+sky,Sky,124,2696
+sky,Sky,125,3361
+sky,Sky,126,2765
+sky,Sky,127,289
+sky,Sky,128,2034
+sky,Sky,129,2271
+sky,Sky,130,1014
+sky,Sky,131,51
+sky,Sky,132,1530
+sky,Sky,133,1718
+sky,Sky,134,4010
+sky,Sky,135,3271
+sky,Sky,136,826
+sky,Sky,137,555
+sky,Sky,138,3343
+sky,Sky,139,692
+sky,Sky,140,831
+sky,Sky,141,661
+sky,Sky,142,888
+sky,Sky,143,0
+sky,Sky,144,498
+sky,Sky,145,771
+sky,Sky,146,2134
+sky,Sky,147,1205
+sky,Sky,148,1415
+sky,Sky,149,3514
+sky,Sky,150,1050
+sky,Sky,151,2067
+sky,Sky,152,3141
+sky,Sky,153,1489
+sky,Sky,154,1579
+sky,Sky,155,3875
+sky,Sky,156,1521
+sky,Sky,157,1868
+sky,Sky,158,986
+sky,Sky,159,3528
+sky,Sky,160,2414
+sky,Sky,161,628
+sky,Sky,162,2151
+sky,Sky,163,3851
+sky,Sky,164,207
+sky,Sky,165,975
+sky,Sky,166,1288
+sky,Sky,167,4060
+sky,Sky,168,3315
+sky,Sky,169,1855
+sky,Sky,170,481
+sky,Sky,171,2020
+sky,Sky,172,3060
+sky,Sky,173,3507
+sky,Sky,174,902
+sky,Sky,175,3584
+sky,Sky,176,911
+sky,Sky,177,2611
+sky,Sky,178,3405
+sky,Sky,179,2782
+sky,Sky,180,316
+sky,Sky,181,1025
+sky,Sky,182,2079
+sky,Sky,183,3663
+sky,Sky,184,1725
+sky,Sky,185,1761
+sky,Sky,186,3240
+sky,Sky,187,3931
+sky,Sky,188,2316
+sky,Sky,189,2833
+sky,Sky,190,1565
+sky,Sky,191,2849
+sky,Sky,192,950
+sky,Sky,193,2168
+sky,Sky,194,1917
+sky,Sky,195,3838
+sky,Sky,196,2326
+sky,Sky,197,1043
+sky,Sky,198,1744
+sky,Sky,199,3190
+sky,Sky,200,2461
+sky,Sky,201,968
+sky,Sky,202,3845
+sky,Sky,203,1569
+sky,Sky,204,4078
+sky,Sky,205,3398
+sky,Sky,206,1011
+sky,Sky,207,4076
+barrier,Barriers,1,540
+barrier,Barriers,2,1185
+barrier,Barriers,3,1613
+barrier,Barriers,4,2418
+barrier,Barriers,5,636
+barrier,Barriers,6,2102
+barrier,Barriers,7,1757
+barrier,Barriers,8,3395
+barrier,Barriers,9,1529
+barrier,Barriers,10,4079
+barrier,Barriers,11,1663
+barrier,Barriers,12,4048
+barrier,Barriers,13,1765
+barrier,Barriers,14,2739
+barrier,Barriers,15,3160
+barrier,Barriers,16,3903
+barrier,Barriers,17,1982
+barrier,Barriers,18,559
+barrier,Barriers,19,959
+barrier,Barriers,20,1304
+barrier,Barriers,21,2829
+barrier,Barriers,22,3934
+barrier,Barriers,23,2808
+barrier,Barriers,24,581
+barrier,Barriers,25,1201
+barrier,Barriers,26,2554
+barrier,Barriers,27,2127
+barrier,Barriers,28,2568
+barrier,Barriers,29,2570
+barrier,Barriers,30,2519
+barrier,Barriers,31,3442
+barrier,Barriers,32,1893
+barrier,Barriers,33,1892
+barrier,Barriers,34,656
+barrier,Barriers,35,413
+barrier,Barriers,36,3889
+barrier,Barriers,37,1875
+barrier,Barriers,38,3940
+barrier,Barriers,39,2821
+barrier,Barriers,40,3815
+barrier,Barriers,41,234
+barrier,Barriers,42,1558
+barrier,Barriers,43,710
+barrier,Barriers,44,2912
+barrier,Barriers,45,274
+barrier,Barriers,46,2668
+barrier,Barriers,47,2972
+barrier,Barriers,48,343
+barrier,Barriers,49,1102
+barrier,Barriers,50,3994
+barrier,Barriers,51,4005
+barrier,Barriers,52,794
+barrier,Barriers,53,4049
+barrier,Barriers,54,149
+barrier,Barriers,55,2775
+barrier,Barriers,56,777
+barrier,Barriers,57,1164
+utility,Utilities,1,1634
+utility,Utilities,2,2120
+utility,Utilities,3,1920
+utility,Utilities,4,2726
+utility,Utilities,5,2423
+utility,Utilities,6,14
+utility,Utilities,7,2850
+utility,Utilities,8,3360
+utility,Utilities,9,2783
+utility,Utilities,10,3040
+utility,Utilities,11,2901
+utility,Utilities,12,1290
+utility,Utilities,13,662
+utility,Utilities,14,1008
+utility,Utilities,15,3396
+utility,Utilities,16,3623
+utility,Utilities,17,2800
+utility,Utilities,18,2920
+utility,Utilities,19,1697
+utility,Utilities,20,1052
+utility,Utilities,21,865
+utility,Utilities,22,3914
+utility,Utilities,23,2767
+utility,Utilities,24,739
+utility,Utilities,25,1688
+utility,Utilities,26,1592
+utility,Utilities,27,681
+utility,Utilities,28,2109
+utility,Utilities,29,2172
+utility,Utilities,30,2509
+utility,Utilities,31,1258
+utility,Utilities,32,2947
+utility,Utilities,33,2204
+utility,Utilities,34,4056
+utility,Utilities,35,1747
+utility,Utilities,36,1860
+utility,Utilities,37,615
+utility,Utilities,38,144
+utility,Utilities,39,2388
+utility,Utilities,40,3573
+utility,Utilities,41,2988
+utility,Utilities,42,891
+utility,Utilities,43,300
+utility,Utilities,44,2629
+utility,Utilities,45,1324
+utility,Utilities,46,2221
+utility,Utilities,47,1699
+utility,Utilities,48,3610
+utility,Utilities,49,1514
+utility,Utilities,50,3308
+ground_unspecified,Unspecified ground,1,1062
+ground_unspecified,Unspecified ground,2,2384
+ground_unspecified,Unspecified ground,3,1339
+ground_unspecified,Unspecified ground,4,2440
+ground_unspecified,Unspecified ground,5,3574
+ground_unspecified,Unspecified ground,6,2292
+ground_unspecified,Unspecified ground,7,2310
+ground_unspecified,Unspecified ground,8,1691
+ground_unspecified,Unspecified ground,9,2650
+ground_unspecified,Unspecified ground,10,3418
+ground_unspecified,Unspecified ground,11,3582
+ground_unspecified,Unspecified ground,12,317
+ground_unspecified,Unspecified ground,13,867
+ground_unspecified,Unspecified ground,14,1494
+ground_unspecified,Unspecified ground,15,3451
+ground_unspecified,Unspecified ground,16,3073
+ground_unspecified,Unspecified ground,17,4086
+ground_unspecified,Unspecified ground,18,620
+ground_unspecified,Unspecified ground,19,392
+ground_unspecified,Unspecified ground,20,3059
+ground_unspecified,Unspecified ground,21,3357
+ground_unspecified,Unspecified ground,22,3686
+ground_unspecified,Unspecified ground,23,2572
+ground_unspecified,Unspecified ground,24,3017
+ground_unspecified,Unspecified ground,25,2704
+ground_unspecified,Unspecified ground,26,95
+ground_unspecified,Unspecified ground,27,2313
+ground_unspecified,Unspecified ground,28,672
+ground_unspecified,Unspecified ground,29,307
+ground_unspecified,Unspecified ground,30,1727
+ground_unspecified,Unspecified ground,31,2660
+ground_unspecified,Unspecified ground,32,504
+ground_unspecified,Unspecified ground,33,15
+ground_unspecified,Unspecified ground,34,1963
+ground_unspecified,Unspecified ground,35,638
+ground_unspecified,Unspecified ground,36,766
+ground_unspecified,Unspecified ground,37,2268
+ground_unspecified,Unspecified ground,38,4091
+ground_unspecified,Unspecified ground,39,1696
+ground_unspecified,Unspecified ground,40,3833
+ground_unspecified,Unspecified ground,41,1046
+ground_unspecified,Unspecified ground,42,1729
+ground_unspecified,Unspecified ground,43,934
+ground_unspecified,Unspecified ground,44,1877
+ground_unspecified,Unspecified ground,45,3585
+ground_unspecified,Unspecified ground,46,4001
+ground_unspecified,Unspecified ground,47,3943
+ground_unspecified,Unspecified ground,48,199
+ground_unspecified,Unspecified ground,49,3579
+ground_unspecified,Unspecified ground,50,814
+ground_unspecified,Unspecified ground,51,2763
+ground_unspecified,Unspecified ground,52,2395
+ground_unspecified,Unspecified ground,53,2818
+ground_unspecified,Unspecified ground,54,2725
+ground_unspecified,Unspecified ground,55,1686
+ground_unspecified,Unspecified ground,56,999
+ground_unspecified,Unspecified ground,57,976
+ground_unspecified,Unspecified ground,58,2363
+ground_unspecified,Unspecified ground,59,191
+ground_unspecified,Unspecified ground,60,799
+ground_unspecified,Unspecified ground,61,3746
+ground_unspecified,Unspecified ground,62,1548
+ground_unspecified,Unspecified ground,63,2863
+ground_unspecified,Unspecified ground,64,2173
+ground_unspecified,Unspecified ground,65,2107
+ground_unspecified,Unspecified ground,66,2002
+ground_unspecified,Unspecified ground,67,1058
+ground_unspecified,Unspecified ground,68,3886
+ground_unspecified,Unspecified ground,69,1048
+ground_unspecified,Unspecified ground,70,597
+ground_unspecified,Unspecified ground,71,627
+ground_unspecified,Unspecified ground,72,3769
+ground_unspecified,Unspecified ground,73,390
+ground_unspecified,Unspecified ground,74,3034
+ground_unspecified,Unspecified ground,75,2419
+ground_unspecified,Unspecified ground,76,1140
+ground_unspecified,Unspecified ground,77,1618
+ground_unspecified,Unspecified ground,78,3791
+ground_unspecified,Unspecified ground,79,2777
+ground_unspecified,Unspecified ground,80,1733
+ground_unspecified,Unspecified ground,81,3260
+ground_unspecified,Unspecified ground,82,2569
+ground_unspecified,Unspecified ground,83,170
+ground_unspecified,Unspecified ground,84,1607
+ground_unspecified,Unspecified ground,85,3558
+ground_unspecified,Unspecified ground,86,3213
+ground_unspecified,Unspecified ground,87,1467
+ground_unspecified,Unspecified ground,88,3156
+ground_unspecified,Unspecified ground,89,2610
+ground_unspecified,Unspecified ground,90,2525
+ground_unspecified,Unspecified ground,91,847
+ground_unspecified,Unspecified ground,92,689
+ground_unspecified,Unspecified ground,93,401
+ground_unspecified,Unspecified ground,94,2779
+ground_unspecified,Unspecified ground,95,3640
+ground_unspecified,Unspecified ground,96,33
+ground_unspecified,Unspecified ground,97,423
+ground_unspecified,Unspecified ground,98,2242
+ground_unspecified,Unspecified ground,99,665
+ground_unspecified,Unspecified ground,100,3588
+ground_unspecified,Unspecified ground,101,1985
+ground_unspecified,Unspecified ground,102,388
+ground_unspecified,Unspecified ground,103,18
+ground_unspecified,Unspecified ground,104,2687
+ground_unspecified,Unspecified ground,105,542
+ground_unspecified,Unspecified ground,106,2812
+ground_unspecified,Unspecified ground,107,2394
+ground_unspecified,Unspecified ground,108,2052
+ground_unspecified,Unspecified ground,109,3525
+ground_unspecified,Unspecified ground,110,2616
+ground_unspecified,Unspecified ground,111,3223
+ground_unspecified,Unspecified ground,112,3453
+ground_unspecified,Unspecified ground,113,2097
+ground_unspecified,Unspecified ground,114,864
+ground_unspecified,Unspecified ground,115,2548
+ground_unspecified,Unspecified ground,116,1772
+ground_unspecified,Unspecified ground,117,1300
+ground_unspecified,Unspecified ground,118,3139
+ground_unspecified,Unspecified ground,119,226
+ground_unspecified,Unspecified ground,120,3892
+ground_unspecified,Unspecified ground,121,301
+ground_unspecified,Unspecified ground,122,1143
+ground_unspecified,Unspecified ground,123,3277
+ground_unspecified,Unspecified ground,124,3264
+ground_unspecified,Unspecified ground,125,1637
+ground_unspecified,Unspecified ground,126,3225
+ground_unspecified,Unspecified ground,127,2453
+ground_unspecified,Unspecified ground,128,4046
+ground_unspecified,Unspecified ground,129,1975
+ground_unspecified,Unspecified ground,130,1373
+ground_unspecified,Unspecified ground,131,2962
+ground_unspecified,Unspecified ground,132,2144
+ground_unspecified,Unspecified ground,133,727
+ground_unspecified,Unspecified ground,134,2781
+ground_unspecified,Unspecified ground,135,653
+ground_unspecified,Unspecified ground,136,3153
+ground_unspecified,Unspecified ground,137,222
+ground_unspecified,Unspecified ground,138,1498
+ground_unspecified,Unspecified ground,139,1878
+ground_unspecified,Unspecified ground,140,2244
+ground_unspecified,Unspecified ground,141,3959
+ground_unspecified,Unspecified ground,142,3761
+ground_unspecified,Unspecified ground,143,3329
+ground_unspecified,Unspecified ground,144,2602
+ground_unspecified,Unspecified ground,145,2582
+ground_unspecified,Unspecified ground,146,2370
+ground_unspecified,Unspecified ground,147,3147
+ground_unspecified,Unspecified ground,148,3832
+ground_unspecified,Unspecified ground,149,3651
+ground_unspecified,Unspecified ground,150,2900
+ground_unspecified,Unspecified ground,151,2786
+ground_unspecified,Unspecified ground,152,1606
+ground_unspecified,Unspecified ground,153,875
+ground_unspecified,Unspecified ground,154,1822
+ground_unspecified,Unspecified ground,155,2128
+ground_unspecified,Unspecified ground,156,1791
+ground_unspecified,Unspecified ground,157,2010
+ground_unspecified,Unspecified ground,158,1100
+ground_unspecified,Unspecified ground,159,1783
+ground_unspecified,Unspecified ground,160,2940
+ground_unspecified,Unspecified ground,161,1566
+ground_unspecified,Unspecified ground,162,46
+ground_unspecified,Unspecified ground,163,3784
+ground_unspecified,Unspecified ground,164,1218
+ground_unspecified,Unspecified ground,165,2406
+ground_unspecified,Unspecified ground,166,3097
+ground_unspecified,Unspecified ground,167,2443
+ground_unspecified,Unspecified ground,168,278
+ground_unspecified,Unspecified ground,169,2234
+ground_unspecified,Unspecified ground,170,1256
+ground_unspecified,Unspecified ground,171,669
+ground_unspecified,Unspecified ground,172,3944
+ground_unspecified,Unspecified ground,173,751
+ground_unspecified,Unspecified ground,174,3561
+ground_unspecified,Unspecified ground,175,1145
+ground_unspecified,Unspecified ground,176,3445
+ground_unspecified,Unspecified ground,177,2412
+ground_unspecified,Unspecified ground,178,720
+ground_unspecified,Unspecified ground,179,1600
+ground_unspecified,Unspecified ground,180,1649
+ground_unspecified,Unspecified ground,181,663
+ground_unspecified,Unspecified ground,182,667
+ground_unspecified,Unspecified ground,183,2224
+ground_unspecified,Unspecified ground,184,383
+ground_unspecified,Unspecified ground,185,2738
+ground_unspecified,Unspecified ground,186,1132
+ground_unspecified,Unspecified ground,187,2784
+ground_unspecified,Unspecified ground,188,772
+ground_unspecified,Unspecified ground,189,3795
+ground_unspecified,Unspecified ground,190,1522
+ground_unspecified,Unspecified ground,191,4011
+ground_unspecified,Unspecified ground,192,2685
+ground_unspecified,Unspecified ground,193,2074
+ground_unspecified,Unspecified ground,194,1096
+ground_unspecified,Unspecified ground,195,132
+ground_unspecified,Unspecified ground,196,3716
+ground_unspecified,Unspecified ground,197,1035
+ground_unspecified,Unspecified ground,198,666
+ground_unspecified,Unspecified ground,199,1557
+ground_unspecified,Unspecified ground,200,3045
+ground_unspecified,Unspecified ground,201,4072
+ground_unspecified,Unspecified ground,202,117
+ground_unspecified,Unspecified ground,203,1125
+ground_unspecified,Unspecified ground,204,1079
+ground_unspecified,Unspecified ground,205,3184
+ground_unspecified,Unspecified ground,206,2531
+ground_unspecified,Unspecified ground,207,2824
+ground_unspecified,Unspecified ground,208,1560
+ground_unspecified,Unspecified ground,209,352
+ground_unspecified,Unspecified ground,210,1126
+ground_unspecified,Unspecified ground,211,3757
+ground_unspecified,Unspecified ground,212,237
+ground_unspecified,Unspecified ground,213,941
+ground_unspecified,Unspecified ground,214,393
+ground_unspecified,Unspecified ground,215,1316
+ground_unspecified,Unspecified ground,216,3857
+ground_unspecified,Unspecified ground,217,3591
+ground_unspecified,Unspecified ground,218,196
+ground_unspecified,Unspecified ground,219,2297
+ground_unspecified,Unspecified ground,220,1679
+ground_unspecified,Unspecified ground,221,1441
+ground_unspecified,Unspecified ground,222,894
+ground_unspecified,Unspecified ground,223,415
+ground_unspecified,Unspecified ground,224,3877
+ground_unspecified,Unspecified ground,225,767
+ground_unspecified,Unspecified ground,226,266
+ground_unspecified,Unspecified ground,227,1173
+ground_unspecified,Unspecified ground,228,436
+ground_unspecified,Unspecified ground,229,1871
+ground_unspecified,Unspecified ground,230,1196
+ground_unspecified,Unspecified ground,231,887
+ground_unspecified,Unspecified ground,232,632
+ground_unspecified,Unspecified ground,233,1408
+ground_unspecified,Unspecified ground,234,3187
+ground_unspecified,Unspecified ground,235,1237
+ground_unspecified,Unspecified ground,236,1229
+ground_unspecified,Unspecified ground,237,2588
+ground_unspecified,Unspecified ground,238,1286
+ground_unspecified,Unspecified ground,239,2571
+ground_unspecified,Unspecified ground,240,1066
+ground_unspecified,Unspecified ground,241,3483
+ground_unspecified,Unspecified ground,242,1654
+ground_unspecified,Unspecified ground,243,3251
+ground_unspecified,Unspecified ground,244,2470
+ground_unspecified,Unspecified ground,245,2601
+ground_unspecified,Unspecified ground,246,880
+ground_unspecified,Unspecified ground,247,2587
+ground_unspecified,Unspecified ground,248,1194
+ground_unspecified,Unspecified ground,249,2706
+ground_unspecified,Unspecified ground,250,1274
+ground_unspecified,Unspecified ground,251,713
+ground_unspecified,Unspecified ground,252,3935
+ground_unspecified,Unspecified ground,253,2323
+ground_unspecified,Unspecified ground,254,956
+ground_unspecified,Unspecified ground,255,40
+ground_unspecified,Unspecified ground,256,2649
+ground_unspecified,Unspecified ground,257,3711
+ground_unspecified,Unspecified ground,258,1147
+ground_unspecified,Unspecified ground,259,2484
+ground_unspecified,Unspecified ground,260,759
+ground_unspecified,Unspecified ground,261,3808
+ground_unspecified,Unspecified ground,262,1739
+ground_unspecified,Unspecified ground,263,1273
+ground_unspecified,Unspecified ground,264,2055
+ground_unspecified,Unspecified ground,265,2248
+ground_unspecified,Unspecified ground,266,3864
+ground_unspecified,Unspecified ground,267,21
+ground_unspecified,Unspecified ground,268,1491
+ground_unspecified,Unspecified ground,269,442
+ground_unspecified,Unspecified ground,270,3819
+ground_unspecified,Unspecified ground,271,2689
+ground_unspecified,Unspecified ground,272,1685
+ground_unspecified,Unspecified ground,273,1198
+ground_unspecified,Unspecified ground,274,2071
+ground_unspecified,Unspecified ground,275,306
+ground_unspecified,Unspecified ground,276,2038
+ground_unspecified,Unspecified ground,277,3163
+ground_unspecified,Unspecified ground,278,292
+ground_unspecified,Unspecified ground,279,1346
+ground_unspecified,Unspecified ground,280,819
+ground_unspecified,Unspecified ground,281,1721
+ground_unspecified,Unspecified ground,282,3201
+ground_unspecified,Unspecified ground,283,2641
+ground_unspecified,Unspecified ground,284,2673
+ground_unspecified,Unspecified ground,285,235
+ground_unspecified,Unspecified ground,286,2502
+ground_unspecified,Unspecified ground,287,2517
+ground_unspecified,Unspecified ground,288,1745
+ground_unspecified,Unspecified ground,289,1740
+ground_unspecified,Unspecified ground,290,1334
+ground_unspecified,Unspecified ground,291,2236
+ground_unspecified,Unspecified ground,292,580
+ground_unspecified,Unspecified ground,293,904
+ground_unspecified,Unspecified ground,294,946
+ground_unspecified,Unspecified ground,295,3096
+ground_unspecified,Unspecified ground,296,536
+ground_unspecified,Unspecified ground,297,1282
+ground_unspecified,Unspecified ground,298,1307
+ground_unspecified,Unspecified ground,299,2970
+ground_unspecified,Unspecified ground,300,1828
+ground_unspecified,Unspecified ground,301,2407
+ground_unspecified,Unspecified ground,302,4073
+ground_unspecified,Unspecified ground,303,488
+ground_unspecified,Unspecified ground,304,967
+ground_unspecified,Unspecified ground,305,1676
+ground_unspecified,Unspecified ground,306,3037
+ground_unspecified,Unspecified ground,307,2592
+ground_unspecified,Unspecified ground,308,3947
+ground_unspecified,Unspecified ground,309,3510
+ground_unspecified,Unspecified ground,310,3660
+ground_unspecified,Unspecified ground,311,4028
+ground_unspecified,Unspecified ground,312,3354
+ground_unspecified,Unspecified ground,313,3925
+ground_unspecified,Unspecified ground,314,3282
+ground_unspecified,Unspecified ground,315,3468
+ground_unspecified,Unspecified ground,316,3232
+ground_unspecified,Unspecified ground,317,3645
+ground_unspecified,Unspecified ground,318,2835
+ground_unspecified,Unspecified ground,319,3385
+ground_unspecified,Unspecified ground,320,1462
+ground_unspecified,Unspecified ground,321,858
+ground_unspecified,Unspecified ground,322,1303
+ground_unspecified,Unspecified ground,323,270
+ground_unspecified,Unspecified ground,324,3987
+ground_unspecified,Unspecified ground,325,3109
+ground_unspecified,Unspecified ground,326,487
+ground_unspecified,Unspecified ground,327,1602
+ground_unspecified,Unspecified ground,328,3100
+ground_unspecified,Unspecified ground,329,271
+ground_unspecified,Unspecified ground,330,1280
+ground_unspecified,Unspecified ground,331,3227
+ground_unspecified,Unspecified ground,332,3089
+ground_unspecified,Unspecified ground,333,2598
+ground_unspecified,Unspecified ground,334,2000
+ground_unspecified,Unspecified ground,335,482
+ground_unspecified,Unspecified ground,336,3420
+ground_unspecified,Unspecified ground,337,3662
+ground_unspecified,Unspecified ground,338,2040
+ground_unspecified,Unspecified ground,339,3978
+ground_unspecified,Unspecified ground,340,421
+ground_unspecified,Unspecified ground,341,1485
+ground_unspecified,Unspecified ground,342,1110
+ground_unspecified,Unspecified ground,343,1851
+ground_unspecified,Unspecified ground,344,1541
+ground_unspecified,Unspecified ground,345,2188
+ground_unspecified,Unspecified ground,346,3776
+ground_unspecified,Unspecified ground,347,1447
+ground_unspecified,Unspecified ground,348,2772
+ground_unspecified,Unspecified ground,349,929
+ground_unspecified,Unspecified ground,350,1094
+ground_unspecified,Unspecified ground,351,2986
+ground_unspecified,Unspecified ground,352,3123
+ground_unspecified,Unspecified ground,353,747
+ground_unspecified,Unspecified ground,354,1656
+ground_unspecified,Unspecified ground,355,2921
+ground_unspecified,Unspecified ground,356,1036
+ground_unspecified,Unspecified ground,357,3624
+ground_unspecified,Unspecified ground,358,3692
+ground_unspecified,Unspecified ground,359,882
+ground_unspecified,Unspecified ground,360,1793
+ground_unspecified,Unspecified ground,361,3527
+ground_unspecified,Unspecified ground,362,2374
+ground_unspecified,Unspecified ground,363,1961
+ground_unspecified,Unspecified ground,364,110
+ground_unspecified,Unspecified ground,365,763
+ground_unspecified,Unspecified ground,366,3688
+ground_unspecified,Unspecified ground,367,2716
+ground_unspecified,Unspecified ground,368,3653
+ground_unspecified,Unspecified ground,369,397
+ground_unspecified,Unspecified ground,370,427
+ground_unspecified,Unspecified ground,371,197
+ground_unspecified,Unspecified ground,372,3403
+ground_unspecified,Unspecified ground,373,2804
+ground_unspecified,Unspecified ground,374,3887
+ground_unspecified,Unspecified ground,375,3777
+ground_unspecified,Unspecified ground,376,1323
+ground_unspecified,Unspecified ground,377,853
+ground_unspecified,Unspecified ground,378,674
+ground_unspecified,Unspecified ground,379,619
+ground_unspecified,Unspecified ground,380,3962
+ground_unspecified,Unspecified ground,381,733
+ground_unspecified,Unspecified ground,382,161
+ground_unspecified,Unspecified ground,383,3641
+ground_unspecified,Unspecified ground,384,3715
+ground_unspecified,Unspecified ground,385,2059
+ground_unspecified,Unspecified ground,386,1137
+ground_unspecified,Unspecified ground,387,2663
+ground_unspecified,Unspecified ground,388,2477
+ground_unspecified,Unspecified ground,389,3830
+ground_unspecified,Unspecified ground,390,3657
+ground_unspecified,Unspecified ground,391,3902
+ground_unspecified,Unspecified ground,392,1114
+ground_unspecified,Unspecified ground,393,1031
+ground_unspecified,Unspecified ground,394,2993
+ground_unspecified,Unspecified ground,395,2915
+ground_unspecified,Unspecified ground,396,2077
+ground_unspecified,Unspecified ground,397,705
+ground_unspecified,Unspecified ground,398,3500
+ground_unspecified,Unspecified ground,399,1296
+ground_unspecified,Unspecified ground,400,1615
+ground_unspecified,Unspecified ground,401,3726
+ground_unspecified,Unspecified ground,402,394
+ground_unspecified,Unspecified ground,403,588
+ground_unspecified,Unspecified ground,404,3235
+ground_unspecified,Unspecified ground,405,836
+ground_unspecified,Unspecified ground,406,2472
+ground_unspecified,Unspecified ground,407,2672
+ground_unspecified,Unspecified ground,408,1502
+ground_unspecified,Unspecified ground,409,346
+ground_unspecified,Unspecified ground,410,3639
+ground_unspecified,Unspecified ground,411,2545
+ground_unspecified,Unspecified ground,412,3014
+ground_unspecified,Unspecified ground,413,2996
+ground_unspecified,Unspecified ground,414,1523
+ground_unspecified,Unspecified ground,415,2859
+ground_unspecified,Unspecified ground,416,2764
+ground_unspecified,Unspecified ground,417,3265
+ground_unspecified,Unspecified ground,418,3496
+ground_unspecified,Unspecified ground,419,459
+ground_unspecified,Unspecified ground,420,1564
+ground_unspecified,Unspecified ground,421,3909
+ground_unspecified,Unspecified ground,422,2198
+ground_unspecified,Unspecified ground,423,3312
+ground_unspecified,Unspecified ground,424,3706
+ground_unspecified,Unspecified ground,425,2239
+ground_unspecified,Unspecified ground,426,1080
+ground_unspecified,Unspecified ground,427,712
+ground_unspecified,Unspecified ground,428,2882
+ground_unspecified,Unspecified ground,429,2032
+ground_unspecified,Unspecified ground,430,2125
+ground_unspecified,Unspecified ground,431,2529
+ground_unspecified,Unspecified ground,432,3065
+ground_unspecified,Unspecified ground,433,1971
+ground_unspecified,Unspecified ground,434,2916
+ground_unspecified,Unspecified ground,435,1107
+ground_unspecified,Unspecified ground,436,282
+ground_unspecified,Unspecified ground,437,37
+ground_unspecified,Unspecified ground,438,3744
+ground_unspecified,Unspecified ground,439,2514
+ground_unspecified,Unspecified ground,440,811
+ground_unspecified,Unspecified ground,441,2142
+ground_unspecified,Unspecified ground,442,3202
+ground_unspecified,Unspecified ground,443,3570
+ground_unspecified,Unspecified ground,444,1927
+ground_unspecified,Unspecified ground,445,625
+ground_unspecified,Unspecified ground,446,100
+ground_unspecified,Unspecified ground,447,1064
+ground_unspecified,Unspecified ground,448,477
+ground_unspecified,Unspecified ground,449,2676
+ground_unspecified,Unspecified ground,450,2831
+ground_unspecified,Unspecified ground,451,1186
+ground_unspecified,Unspecified ground,452,3438
+ground_unspecified,Unspecified ground,453,2209
+ground_unspecified,Unspecified ground,454,3859
+ground_unspecified,Unspecified ground,455,272
+ground_unspecified,Unspecified ground,456,2251
+ground_unspecified,Unspecified ground,457,376
+ground_unspecified,Unspecified ground,458,804
+ground_unspecified,Unspecified ground,459,3725
+ground_unspecified,Unspecified ground,460,841
+ground_unspecified,Unspecified ground,461,454
+ground_unspecified,Unspecified ground,462,3897
+ground_unspecified,Unspecified ground,463,440
+ground_unspecified,Unspecified ground,464,1056
+ground_unspecified,Unspecified ground,465,3948
+ground_unspecified,Unspecified ground,466,3400
+ground_unspecified,Unspecified ground,467,906
+ground_unspecified,Unspecified ground,468,848
+ground_unspecified,Unspecified ground,469,1439
+ground_unspecified,Unspecified ground,470,547
+ground_unspecified,Unspecified ground,471,1404
+ground_unspecified,Unspecified ground,472,3904
+ground_unspecified,Unspecified ground,473,3661
+ground_unspecified,Unspecified ground,474,1879
+ground_unspecified,Unspecified ground,475,1845
+ground_unspecified,Unspecified ground,476,3406
+ground_unspecified,Unspecified ground,477,1723
+ground_unspecified,Unspecified ground,478,1212
+ground_unspecified,Unspecified ground,479,3924
+ground_unspecified,Unspecified ground,480,3217
+ground_unspecified,Unspecified ground,481,3910
+ground_unspecified,Unspecified ground,482,1427
+ground_unspecified,Unspecified ground,483,2217
+ground_unspecified,Unspecified ground,484,3901
+ground_unspecified,Unspecified ground,485,3293
+ground_unspecified,Unspecified ground,486,2774
+ground_unspecified,Unspecified ground,487,2845
+ground_unspecified,Unspecified ground,488,2415
+ground_unspecified,Unspecified ground,489,3742
+ground_unspecified,Unspecified ground,490,3762
+ground_unspecified,Unspecified ground,491,1931
+ground_unspecified,Unspecified ground,492,2385
+ground_unspecified,Unspecified ground,493,3553
+ground_unspecified,Unspecified ground,494,3348
+ground_unspecified,Unspecified ground,495,2014
+ground_unspecified,Unspecified ground,496,320
+ground_unspecified,Unspecified ground,497,3324
+ground_unspecified,Unspecified ground,498,721
+ground_unspecified,Unspecified ground,499,2981
+ground_unspecified,Unspecified ground,500,2866
+ground_unspecified,Unspecified ground,501,2275
+ground_unspecified,Unspecified ground,502,1059
+ground_unspecified,Unspecified ground,503,4047
+ground_unspecified,Unspecified ground,504,4062
+ground_unspecified,Unspecified ground,505,3656
+ground_unspecified,Unspecified ground,506,1240
+ground_unspecified,Unspecified ground,507,3628
+ground_unspecified,Unspecified ground,508,245
+ground_unspecified,Unspecified ground,509,1504
+ground_unspecified,Unspecified ground,510,1244
+ground_unspecified,Unspecified ground,511,3668
+ground_unspecified,Unspecified ground,512,511
+ground_unspecified,Unspecified ground,513,3659
+ground_unspecified,Unspecified ground,514,2816
+ground_unspecified,Unspecified ground,515,2973
+ground_unspecified,Unspecified ground,516,3879
+ground_unspecified,Unspecified ground,517,450
+ground_unspecified,Unspecified ground,518,3928
+ground_unspecified,Unspecified ground,519,169
+ground_unspecified,Unspecified ground,520,1180
+ground_unspecified,Unspecified ground,521,3967
+ground_unspecified,Unspecified ground,522,1098
+ground_unspecified,Unspecified ground,523,812
+ground_unspecified,Unspecified ground,524,1789
+ground_unspecified,Unspecified ground,525,1402
+ground_unspecified,Unspecified ground,526,2619
+low_vegetation,Low vegetation,1,2841
+low_vegetation,Low vegetation,2,49
+low_vegetation,Low vegetation,3,462
+low_vegetation,Low vegetation,4,1458
+low_vegetation,Low vegetation,5,2186
+low_vegetation,Low vegetation,6,3999
+low_vegetation,Low vegetation,7,1976
+low_vegetation,Low vegetation,8,3854
+low_vegetation,Low vegetation,9,1259
+low_vegetation,Low vegetation,10,1754
+low_vegetation,Low vegetation,11,2420
+low_vegetation,Low vegetation,12,3788
+low_vegetation,Low vegetation,13,1155
+low_vegetation,Low vegetation,14,1756
+low_vegetation,Low vegetation,15,2306
+low_vegetation,Low vegetation,16,3828
+low_vegetation,Low vegetation,17,1864
+low_vegetation,Low vegetation,18,1804
+low_vegetation,Low vegetation,19,3148
+low_vegetation,Low vegetation,20,635
+low_vegetation,Low vegetation,21,1881
+low_vegetation,Low vegetation,22,685
+low_vegetation,Low vegetation,23,1352
+low_vegetation,Low vegetation,24,3509
+low_vegetation,Low vegetation,25,866
+low_vegetation,Low vegetation,26,3823
+low_vegetation,Low vegetation,27,654
+low_vegetation,Low vegetation,28,1626
+low_vegetation,Low vegetation,29,1144
+low_vegetation,Low vegetation,30,2175
+low_vegetation,Low vegetation,31,53
+low_vegetation,Low vegetation,32,3945
+low_vegetation,Low vegetation,33,341
+low_vegetation,Low vegetation,34,1452
+low_vegetation,Low vegetation,35,952
+low_vegetation,Low vegetation,36,1311
+low_vegetation,Low vegetation,37,3985
+low_vegetation,Low vegetation,38,3884
+low_vegetation,Low vegetation,39,1812
+low_vegetation,Low vegetation,40,2625
+low_vegetation,Low vegetation,41,345
+low_vegetation,Low vegetation,42,1165
+low_vegetation,Low vegetation,43,2327
+low_vegetation,Low vegetation,44,993
+low_vegetation,Low vegetation,45,2112
+low_vegetation,Low vegetation,46,1242
+low_vegetation,Low vegetation,47,1449
+low_vegetation,Low vegetation,48,2583
+low_vegetation,Low vegetation,49,3727
+low_vegetation,Low vegetation,50,863
+low_vegetation,Low vegetation,51,227
+low_vegetation,Low vegetation,52,2422
+low_vegetation,Low vegetation,53,54
+low_vegetation,Low vegetation,54,1134
+low_vegetation,Low vegetation,55,1129
+low_vegetation,Low vegetation,56,3535
+low_vegetation,Low vegetation,57,2356
+low_vegetation,Low vegetation,58,1063
+low_vegetation,Low vegetation,59,2757
+low_vegetation,Low vegetation,60,3998
+low_vegetation,Low vegetation,61,3229
+low_vegetation,Low vegetation,62,3131
+low_vegetation,Low vegetation,63,190
+low_vegetation,Low vegetation,64,1106
+low_vegetation,Low vegetation,65,2888
+low_vegetation,Low vegetation,66,876
+low_vegetation,Low vegetation,67,1481
+low_vegetation,Low vegetation,68,2458
+low_vegetation,Low vegetation,69,309
+low_vegetation,Low vegetation,70,3907
+low_vegetation,Low vegetation,71,3575
+low_vegetation,Low vegetation,72,1901
+low_vegetation,Low vegetation,73,467
+low_vegetation,Low vegetation,74,2253
+low_vegetation,Low vegetation,75,2840
+low_vegetation,Low vegetation,76,294
+low_vegetation,Low vegetation,77,3580
+low_vegetation,Low vegetation,78,3114
+low_vegetation,Low vegetation,79,2309
+low_vegetation,Low vegetation,80,3399
+low_vegetation,Low vegetation,81,932
+low_vegetation,Low vegetation,82,3621
+low_vegetation,Low vegetation,83,954
+low_vegetation,Low vegetation,84,1563
+low_vegetation,Low vegetation,85,134
+low_vegetation,Low vegetation,86,1987
+low_vegetation,Low vegetation,87,2213
+low_vegetation,Low vegetation,88,3862
+low_vegetation,Low vegetation,89,3407
+low_vegetation,Low vegetation,90,3341
+low_vegetation,Low vegetation,91,718
+low_vegetation,Low vegetation,92,2892
+low_vegetation,Low vegetation,93,3087
+construction,Construction,1,1780
+construction,Construction,2,3010
+construction,Construction,3,2928
+construction,Construction,4,3501
+construction,Construction,5,194
+construction,Construction,6,1792
+construction,Construction,7,3966
+construction,Construction,8,1709
+construction,Construction,9,3283
+construction,Construction,10,2617
+construction,Construction,11,3256
+construction,Construction,12,2507
+construction,Construction,13,1092
+construction,Construction,14,1906
+construction,Construction,15,2402
+construction,Construction,16,651
+construction,Construction,17,2919
+construction,Construction,18,1074
+construction,Construction,19,1081
+construction,Construction,20,2494
+construction,Construction,21,1639
+construction,Construction,22,2701
+construction,Construction,23,4085
+construction,Construction,24,3946
+construction,Construction,25,3336
+water,Water,1,1260
+water,Water,2,195
+water,Water,3,1197
+water,Water,4,2933
+water,Water,5,3444
+water,Water,6,2090
+water,Water,7,633
+water,Water,8,2126
+water,Water,9,27
+water,Water,10,1028
+water,Water,11,1986
+water,Water,12,357
+water,Water,13,3427
+water,Water,14,1507
+water,Water,15,2227
+water,Water,16,2941
+water,Water,17,531
+water,Water,18,2573
+pedestrian,Pedestrian space,1,3129
+pedestrian,Pedestrian space,2,2734
+pedestrian,Pedestrian space,3,3066
+pedestrian,Pedestrian space,4,2355
+pedestrian,Pedestrian space,5,3380
+pedestrian,Pedestrian space,6,1482
+pedestrian,Pedestrian space,7,869
+pedestrian,Pedestrian space,8,3492
+pedestrian,Pedestrian space,9,193
+pedestrian,Pedestrian space,10,2164
+pedestrian,Pedestrian space,11,3559
+pedestrian,Pedestrian space,12,2362
+pedestrian,Pedestrian space,13,3430
+pedestrian,Pedestrian space,14,1413
+pedestrian,Pedestrian space,15,1956
+pedestrian,Pedestrian space,16,2379
+pedestrian,Pedestrian space,17,2476
+pedestrian,Pedestrian space,18,141
+pedestrian,Pedestrian space,19,2283
+pedestrian,Pedestrian space,20,3028
+pedestrian,Pedestrian space,21,840
+pedestrian,Pedestrian space,22,3960
+pedestrian,Pedestrian space,23,3732
+pedestrian,Pedestrian space,24,3489
+pedestrian,Pedestrian space,25,2174
+pedestrian,Pedestrian space,26,147
+pedestrian,Pedestrian space,27,7
+pedestrian,Pedestrian space,28,3439
+furniture,Street furniture,1,1614
+furniture,Street furniture,2,1292
+furniture,Street furniture,3,829
+furniture,Street furniture,4,1479
+furniture,Street furniture,5,1717
+furniture,Street furniture,6,562
+furniture,Street furniture,7,246
+furniture,Street furniture,8,1700
+furniture,Street furniture,9,3747
+furniture,Street furniture,10,3039
+furniture,Street furniture,11,2089
+furniture,Street furniture,12,2267
+furniture,Street furniture,13,768
+furniture,Street furniture,14,2096
+furniture,Street furniture,15,1773
+furniture,Street furniture,16,4064
+furniture,Street furniture,17,1611
+furniture,Street furniture,18,1379
+furniture,Street furniture,19,2140
+furniture,Street furniture,20,2766
+furniture,Street furniture,21,2434
+furniture,Street furniture,22,2293
+vegetation_unspecified,Unspecified vegetation,1,121
+vegetation_unspecified,Unspecified vegetation,2,1552
+vegetation_unspecified,Unspecified vegetation,3,1844
+vegetation_unspecified,Unspecified vegetation,4,408
+vegetation_unspecified,Unspecified vegetation,5,138
+vegetation_unspecified,Unspecified vegetation,6,3257
+vegetation_unspecified,Unspecified vegetation,7,56
+vegetation_unspecified,Unspecified vegetation,8,509
+vegetation_unspecified,Unspecified vegetation,9,818
+vegetation_unspecified,Unspecified vegetation,10,3855
+vegetation_unspecified,Unspecified vegetation,11,3295
+vegetation_unspecified,Unspecified vegetation,12,568
+vegetation_unspecified,Unspecified vegetation,13,2324
+vegetation_unspecified,Unspecified vegetation,14,1302
+vegetation_unspecified,Unspecified vegetation,15,535
+vegetation_unspecified,Unspecified vegetation,16,2684
+vegetation_unspecified,Unspecified vegetation,17,2264
+vegetation_unspecified,Unspecified vegetation,18,3560
+vegetation_unspecified,Unspecified vegetation,19,4080
+vegetation_unspecified,Unspecified vegetation,20,1406
+vegetation_unspecified,Unspecified vegetation,21,3674
+vegetation_unspecified,Unspecified vegetation,22,1619
+vegetation_unspecified,Unspecified vegetation,23,1162
+vegetation_unspecified,Unspecified vegetation,24,3397
+vegetation_unspecified,Unspecified vegetation,25,3750
+vegetation_unspecified,Unspecified vegetation,26,225
+vegetation_unspecified,Unspecified vegetation,27,1369
+vegetation_unspecified,Unspecified vegetation,28,2733
+vegetation_unspecified,Unspecified vegetation,29,1670
+vegetation_unspecified,Unspecified vegetation,30,3207
+vegetation_unspecified,Unspecified vegetation,31,2547
+vegetation_unspecified,Unspecified vegetation,32,3950
+vegetation_unspecified,Unspecified vegetation,33,1943
+vegetation_unspecified,Unspecified vegetation,34,2714
+vegetation_unspecified,Unspecified vegetation,35,3449
+vegetation_unspecified,Unspecified vegetation,36,3595
+vegetation_unspecified,Unspecified vegetation,37,2205
+vegetation_unspecified,Unspecified vegetation,38,2481
+vegetation_unspecified,Unspecified vegetation,39,2736
+vegetation_unspecified,Unspecified vegetation,40,2604
+vegetation_unspecified,Unspecified vegetation,41,2257
+vegetation_unspecified,Unspecified vegetation,42,198
+vegetation_unspecified,Unspecified vegetation,43,3698
+vegetation_unspecified,Unspecified vegetation,44,1538
+vegetation_unspecified,Unspecified vegetation,45,3736
+vegetation_unspecified,Unspecified vegetation,46,1742
+vegetation_unspecified,Unspecified vegetation,47,2312
+vegetation_unspecified,Unspecified vegetation,48,505
+vegetation_unspecified,Unspecified vegetation,49,2881
+vegetation_unspecified,Unspecified vegetation,50,1827
+vegetation_unspecified,Unspecified vegetation,51,2073
+vegetation_unspecified,Unspecified vegetation,52,3806
+vegetation_unspecified,Unspecified vegetation,53,2747
+vegetation_unspecified,Unspecified vegetation,54,1024
+vegetation_unspecified,Unspecified vegetation,55,1815
+vegetation_unspecified,Unspecified vegetation,56,2280
+vegetation_unspecified,Unspecified vegetation,57,3900
+vegetation_unspecified,Unspecified vegetation,58,2045
+vegetation_unspecified,Unspecified vegetation,59,2710
+vegetation_unspecified,Unspecified vegetation,60,548
+vegetation_unspecified,Unspecified vegetation,61,988
+vegetation_unspecified,Unspecified vegetation,62,2346
+vegetation_unspecified,Unspecified vegetation,63,1698
+vegetation_unspecified,Unspecified vegetation,64,3594
+vegetation_unspecified,Unspecified vegetation,65,753
+vegetation_unspecified,Unspecified vegetation,66,1275
+vegetation_unspecified,Unspecified vegetation,67,3792
+vegetation_unspecified,Unspecified vegetation,68,1885
+vegetation_unspecified,Unspecified vegetation,69,1367
+vegetation_unspecified,Unspecified vegetation,70,676
+vegetation_unspecified,Unspecified vegetation,71,2066
+vegetation_unspecified,Unspecified vegetation,72,3874
+vegetation_unspecified,Unspecified vegetation,73,671
+vegetation_unspecified,Unspecified vegetation,74,1775
+vegetation_unspecified,Unspecified vegetation,75,3803
+vegetation_unspecified,Unspecified vegetation,76,80
+vegetation_unspecified,Unspecified vegetation,77,2957
+vegetation_unspecified,Unspecified vegetation,78,2158
+vegetation_unspecified,Unspecified vegetation,79,203
+vegetation_unspecified,Unspecified vegetation,80,130
+vegetation_unspecified,Unspecified vegetation,81,1368
+vegetation_unspecified,Unspecified vegetation,82,3138
+vegetation_unspecified,Unspecified vegetation,83,3699
+vegetation_unspecified,Unspecified vegetation,84,682
+vegetation_unspecified,Unspecified vegetation,85,1095
+vegetation_unspecified,Unspecified vegetation,86,523
+vegetation_unspecified,Unspecified vegetation,87,3447
+vegetation_unspecified,Unspecified vegetation,88,3895
+vegetation_unspecified,Unspecified vegetation,89,1105
+vegetation_unspecified,Unspecified vegetation,90,1433
+vegetation_unspecified,Unspecified vegetation,91,3917
+vegetation_unspecified,Unspecified vegetation,92,3676
+vegetation_unspecified,Unspecified vegetation,93,1651
+vegetation_unspecified,Unspecified vegetation,94,1084
+vegetation_unspecified,Unspecified vegetation,95,2178
+vegetation_unspecified,Unspecified vegetation,96,3046
+vegetation_unspecified,Unspecified vegetation,97,205
+vegetation_unspecified,Unspecified vegetation,98,103
+vegetation_unspecified,Unspecified vegetation,99,1414
+vegetation_unspecified,Unspecified vegetation,100,728
+vegetation_unspecified,Unspecified vegetation,101,1023
+vegetation_unspecified,Unspecified vegetation,102,3145
+vegetation_unspecified,Unspecified vegetation,103,2898
+vegetation_unspecified,Unspecified vegetation,104,484
+vegetation_unspecified,Unspecified vegetation,105,3035
+vegetation_unspecified,Unspecified vegetation,106,3821
+vegetation_unspecified,Unspecified vegetation,107,3450
+vegetation_unspecified,Unspecified vegetation,108,823
+vegetation_unspecified,Unspecified vegetation,109,3412
+vegetation_unspecified,Unspecified vegetation,110,2019
+vegetation_unspecified,Unspecified vegetation,111,252
+vegetation_unspecified,Unspecified vegetation,112,1344
+vegetation_unspecified,Unspecified vegetation,113,3334
+vegetation_unspecified,Unspecified vegetation,114,3165
+vegetation_unspecified,Unspecified vegetation,115,1199
+vegetation_unspecified,Unspecified vegetation,116,3186
+vegetation_unspecified,Unspecified vegetation,117,786
+vegetation_unspecified,Unspecified vegetation,118,913
+vegetation_unspecified,Unspecified vegetation,119,943
+vegetation_unspecified,Unspecified vegetation,120,3616
+vegetation_unspecified,Unspecified vegetation,121,1019
+vegetation_unspecified,Unspecified vegetation,122,4016
+vegetation_unspecified,Unspecified vegetation,123,3142
+vegetation_unspecified,Unspecified vegetation,124,457
+vegetation_unspecified,Unspecified vegetation,125,2471
+vegetation_unspecified,Unspecified vegetation,126,2170
+vegetation_unspecified,Unspecified vegetation,127,3773
+vegetation_unspecified,Unspecified vegetation,128,2041
+vegetation_unspecified,Unspecified vegetation,129,3287
+vegetation_unspecified,Unspecified vegetation,130,2999
+vegetation_unspecified,Unspecified vegetation,131,2811
+vegetation_unspecified,Unspecified vegetation,132,3259
+vegetation_unspecified,Unspecified vegetation,133,1279
+vegetation_unspecified,Unspecified vegetation,134,250
+vegetation_unspecified,Unspecified vegetation,135,2116
+vegetation_unspecified,Unspecified vegetation,136,696
+vegetation_unspecified,Unspecified vegetation,137,1762
+vegetation_unspecified,Unspecified vegetation,138,290
+vegetation_unspecified,Unspecified vegetation,139,607
+vegetation_unspecified,Unspecified vegetation,140,1217
+vegetation_unspecified,Unspecified vegetation,141,153
+vegetation_unspecified,Unspecified vegetation,142,3346
+vegetation_unspecified,Unspecified vegetation,143,3179
+vegetation_unspecified,Unspecified vegetation,144,324
+vegetation_unspecified,Unspecified vegetation,145,61
+vegetation_unspecified,Unspecified vegetation,146,2169
+vegetation_unspecified,Unspecified vegetation,147,1040
+vegetation_unspecified,Unspecified vegetation,148,1448
+vegetation_unspecified,Unspecified vegetation,149,3204
+vegetation_unspecified,Unspecified vegetation,150,835
+vegetation_unspecified,Unspecified vegetation,151,2076
+vegetation_unspecified,Unspecified vegetation,152,45
+vegetation_unspecified,Unspecified vegetation,153,1388
+vegetation_unspecified,Unspecified vegetation,154,3274
+vegetation_unspecified,Unspecified vegetation,155,1044
+vegetation_unspecified,Unspecified vegetation,156,1909
+vegetation_unspecified,Unspecified vegetation,157,1341
+vegetation_unspecified,Unspecified vegetation,158,1318
+vegetation_unspecified,Unspecified vegetation,159,1593
+vegetation_unspecified,Unspecified vegetation,160,646
+vegetation_unspecified,Unspecified vegetation,161,2386
+vegetation_unspecified,Unspecified vegetation,162,3916
+vegetation_unspecified,Unspecified vegetation,163,3929
+vegetation_unspecified,Unspecified vegetation,164,2364
+vegetation_unspecified,Unspecified vegetation,165,2150
+vegetation_unspecified,Unspecified vegetation,166,3169
+vegetation_unspecified,Unspecified vegetation,167,2177
+vegetation_unspecified,Unspecified vegetation,168,2487
+vegetation_unspecified,Unspecified vegetation,169,3459
+vegetation_unspecified,Unspecified vegetation,170,808
+vegetation_unspecified,Unspecified vegetation,171,2543
+vegetation_unspecified,Unspecified vegetation,172,3822
+material_unspecified,Unspecified materials,1,172
+material_unspecified,Unspecified materials,2,409
+material_unspecified,Unspecified materials,3,3532
+material_unspecified,Unspecified materials,4,3764
+material_unspecified,Unspecified materials,5,4051
+material_unspecified,Unspecified materials,6,2977
+material_unspecified,Unspecified materials,7,560
+material_unspecified,Unspecified materials,8,3111
+material_unspecified,Unspecified materials,9,495
+material_unspecified,Unspecified materials,10,365
+material_unspecified,Unspecified materials,11,3205
+material_unspecified,Unspecified materials,12,1118
+material_unspecified,Unspecified materials,13,279
+material_unspecified,Unspecified materials,14,2033
+material_unspecified,Unspecified materials,15,979
+material_unspecified,Unspecified materials,16,1325
+material_unspecified,Unspecified materials,17,182
+material_unspecified,Unspecified materials,18,2381
+material_unspecified,Unspecified materials,19,516
+material_unspecified,Unspecified materials,20,2130
+material_unspecified,Unspecified materials,21,2389
+material_unspecified,Unspecified materials,22,1473
+material_unspecified,Unspecified materials,23,1469
+material_unspecified,Unspecified materials,24,3116
+material_unspecified,Unspecified materials,25,916
+material_unspecified,Unspecified materials,26,2166
+material_unspecified,Unspecified materials,27,148
+material_unspecified,Unspecified materials,28,3737
+material_unspecified,Unspecified materials,29,3216
+material_unspecified,Unspecified materials,30,3458
+material_unspecified,Unspecified materials,31,1551
+material_unspecified,Unspecified materials,32,3551
+material_unspecified,Unspecified materials,33,66
+material_unspecified,Unspecified materials,34,1293
+material_unspecified,Unspecified materials,35,2653
+material_unspecified,Unspecified materials,36,851
+material_unspecified,Unspecified materials,37,617
+material_unspecified,Unspecified materials,38,1586
+material_unspecified,Unspecified materials,39,2483
+material_unspecified,Unspecified materials,40,2250
+material_unspecified,Unspecified materials,41,3516
+material_unspecified,Unspecified materials,42,1340
+material_unspecified,Unspecified materials,43,3888
+material_unspecified,Unspecified materials,44,3868
+material_unspecified,Unspecified materials,45,1988
+material_unspecified,Unspecified materials,46,1914
+material_unspecified,Unspecified materials,47,188
+material_unspecified,Unspecified materials,48,2508
+material_unspecified,Unspecified materials,49,229
+material_unspecified,Unspecified materials,50,3180
+material_unspecified,Unspecified materials,51,3410
+material_unspecified,Unspecified materials,52,3068
+material_unspecified,Unspecified materials,53,2756
+material_unspecified,Unspecified materials,54,485
+material_unspecified,Unspecified materials,55,2042
+material_unspecified,Unspecified materials,56,2627
+material_unspecified,Unspecified materials,57,3474
+material_unspecified,Unspecified materials,58,3281
+material_unspecified,Unspecified materials,59,3488
+material_unspecified,Unspecified materials,60,3001
+material_unspecified,Unspecified materials,61,3377
+material_unspecified,Unspecified materials,62,465
+material_unspecified,Unspecified materials,63,2746
+material_unspecified,Unspecified materials,64,641
+material_unspecified,Unspecified materials,65,2801
+material_unspecified,Unspecified materials,66,1771
+material_unspecified,Unspecified materials,67,131
+material_unspecified,Unspecified materials,68,243
+material_unspecified,Unspecified materials,69,1166
+material_unspecified,Unspecified materials,70,2219
+material_unspecified,Unspecified materials,71,1668
+material_unspecified,Unspecified materials,72,3383
+material_unspecified,Unspecified materials,73,2563
+material_unspecified,Unspecified materials,74,3118
+material_unspecified,Unspecified materials,75,898
+material_unspecified,Unspecified materials,76,1338
+material_unspecified,Unspecified materials,77,3984
+material_unspecified,Unspecified materials,78,1874
+material_unspecified,Unspecified materials,79,933
+material_unspecified,Unspecified materials,80,1704
+material_unspecified,Unspecified materials,81,2287
+material_unspecified,Unspecified materials,82,3515
+material_unspecified,Unspecified materials,83,3177
+material_unspecified,Unspecified materials,84,2122
+material_unspecified,Unspecified materials,85,1847
+material_unspecified,Unspecified materials,86,3606
+material_unspecified,Unspecified materials,87,3048
+material_unspecified,Unspecified materials,88,3702
+material_unspecified,Unspecified materials,89,3608
+material_unspecified,Unspecified materials,90,314
+material_unspecified,Unspecified materials,91,1953
+material_unspecified,Unspecified materials,92,2538
+material_unspecified,Unspecified materials,93,1690
+material_unspecified,Unspecified materials,94,2511
+material_unspecified,Unspecified materials,95,770
+material_unspecified,Unspecified materials,96,3482
+material_unspecified,Unspecified materials,97,1120
+material_unspecified,Unspecified materials,98,995
+material_unspecified,Unspecified materials,99,1778
+material_unspecified,Unspecified materials,100,2967
+material_unspecified,Unspecified materials,101,729
+material_unspecified,Unspecified materials,102,2530
+material_unspecified,Unspecified materials,103,2478
+material_unspecified,Unspecified materials,104,2296
+material_unspecified,Unspecified materials,105,3572
+material_unspecified,Unspecified materials,106,1174
+material_unspecified,Unspecified materials,107,3578
+material_unspecified,Unspecified materials,108,1178
+material_unspecified,Unspecified materials,109,2129
+material_unspecified,Unspecified materials,110,591
+material_unspecified,Unspecified materials,111,105
+material_unspecified,Unspecified materials,112,960
+material_unspecified,Unspecified materials,113,2693
+material_unspecified,Unspecified materials,114,1496
+material_unspecified,Unspecified materials,115,3600
+material_unspecified,Unspecified materials,116,129
+material_unspecified,Unspecified materials,117,3112
+material_unspecified,Unspecified materials,118,2028
+transport_structure,Transport structures,1,1519
+transport_structure,Transport structures,2,1576
+transport_structure,Transport structures,3,35
+transport_structure,Transport structures,4,584
+transport_structure,Transport structures,5,1817
+transport_structure,Transport structures,6,1570
+transport_structure,Transport structures,7,3520
+transport_structure,Transport structures,8,2053
+transport_structure,Transport structures,9,1508
+transport_structure,Transport structures,10,3173
+transport_structure,Transport structures,11,3012
+transport_structure,Transport structures,12,1209
+transport_structure,Transport structures,13,3824
+transport_structure,Transport structures,14,444
+transport_structure,Transport structures,15,3601
+transport_structure,Transport structures,16,1034
+transport_structure,Transport structures,17,2846
+transport_structure,Transport structures,18,3318
+transport_structure,Transport structures,19,3307
+transport_structure,Transport structures,20,1332
+transport_structure,Transport structures,21,3198
+transport_structure,Transport structures,22,146
+transport_structure,Transport structures,23,1160
+transport_structure,Transport structures,24,3194
+transport_structure,Transport structures,25,2872
+transport_structure,Transport structures,26,3174
+transport_structure,Transport structures,27,2506
+transport_structure,Transport structures,28,832
+transport_structure,Transport structures,29,1808
+transport_structure,Transport structures,30,120
+transport_structure,Transport structures,31,3191
+transport_structure,Transport structures,32,3054
+transport_structure,Transport structures,33,1609
+transport_structure,Transport structures,34,1687
+transport_structure,Transport structures,35,3239
+transport_structure,Transport structures,36,1555
+transport_structure,Transport structures,37,732
+transport_structure,Transport structures,38,1073
+transport_structure,Transport structures,39,2751
+transport_structure,Transport structures,40,854
+transport_structure,Transport structures,41,3081
+transport_structure,Transport structures,42,2450
+transport_structure,Transport structures,43,113
+transport_structure,Transport structures,44,2914
+transport_structure,Transport structures,45,1852
+transport_structure,Transport structures,46,546
+transport_structure,Transport structures,47,1707
+transport_structure,Transport structures,48,3643
+transport_structure,Transport structures,49,2665
+transport_structure,Transport structures,50,3170
+transport_structure,Transport structures,51,3158
+transport_structure,Transport structures,52,2825
+transport_structure,Transport structures,53,745
+transport_structure,Transport structures,54,2375
+building,Buildings,1,1236
+building,Buildings,2,3026
+building,Buildings,3,3497
+building,Buildings,4,2208
+building,Buildings,5,1525
+building,Buildings,6,761
+building,Buildings,7,3463
+building,Buildings,8,1915
+building,Buildings,9,1089
+building,Buildings,10,1004
+building,Buildings,11,483
+building,Buildings,12,4037
+building,Buildings,13,2145
+building,Buildings,14,2022
+building,Buildings,15,4002
+building,Buildings,16,1562
+building,Buildings,17,3077
+building,Buildings,18,2926
+building,Buildings,19,4067
+building,Buildings,20,2347
+building,Buildings,21,1488
+building,Buildings,22,3680
+building,Buildings,23,1429
+building,Buildings,24,2555
+building,Buildings,25,223
+building,Buildings,26,3498
+building,Buildings,27,2430
+building,Buildings,28,1434
+building,Buildings,29,3162
+building,Buildings,30,520
+building,Buildings,31,319
+building,Buildings,32,3176
+building,Buildings,33,3101
+building,Buildings,34,3364
+building,Buildings,35,1405
+building,Buildings,36,2527
+building,Buildings,37,426
+building,Buildings,38,2425
+building,Buildings,39,3720
+building,Buildings,40,3936
+building,Buildings,41,1041
+building,Buildings,42,1297
+building,Buildings,43,417
+building,Buildings,44,2463
+building,Buildings,45,905
+building,Buildings,46,1980
+building,Buildings,47,2950
+building,Buildings,48,238
+building,Buildings,49,3534
+building,Buildings,50,3353
+building,Buildings,51,1345
+building,Buildings,52,384
+building,Buildings,53,4095
+building,Buildings,54,1862
+building,Buildings,55,1291
+building,Buildings,56,192
+building,Buildings,57,2902
+building,Buildings,58,251
+building,Buildings,59,1886
+building,Buildings,60,4024
+building,Buildings,61,4027
+building,Buildings,62,2799
+building,Buildings,63,602
+building,Buildings,64,3545
+building,Buildings,65,2065
+building,Buildings,66,1189
+building,Buildings,67,3228
+building,Buildings,68,3785
+building,Buildings,69,3321
+building,Buildings,70,1038
+building,Buildings,71,749
+building,Buildings,72,2579
+building,Buildings,73,533
+building,Buildings,74,3779
+building,Buildings,75,730
+building,Buildings,76,2439
+building,Buildings,77,406
+building,Buildings,78,2305
+building,Buildings,79,870
+building,Buildings,80,3031
+building,Buildings,81,2521
+building,Buildings,82,1823
+building,Buildings,83,127
+building,Buildings,84,1545
+building,Buildings,85,1816
+building,Buildings,86,2111
+building,Buildings,87,310
+building,Buildings,88,704
+building,Buildings,89,2396
+building,Buildings,90,1768
+building,Buildings,91,1540
+building,Buildings,92,2284
+building,Buildings,93,332
+building,Buildings,94,140
+building,Buildings,95,2731
+building,Buildings,96,2533
+building,Buildings,97,73
+building,Buildings,98,3146
+building,Buildings,99,2047
+building,Buildings,100,262
+building,Buildings,101,456
+building,Buildings,102,3565
+building,Buildings,103,4055
+building,Buildings,104,3557
+building,Buildings,105,2943
+building,Buildings,106,3149
+building,Buildings,107,3432
+building,Buildings,108,1705
+building,Buildings,109,2479
+building,Buildings,110,239
+building,Buildings,111,1138
+building,Buildings,112,1037
+building,Buildings,113,2455
+building,Buildings,114,2026
+building,Buildings,115,244
+building,Buildings,116,3632
+building,Buildings,117,1115
+building,Buildings,118,2870
+building,Buildings,119,1958
+building,Buildings,120,1285
+building,Buildings,121,3491
+building,Buildings,122,3631
+building,Buildings,123,3381
+building,Buildings,124,2807
+building,Buildings,125,219
+building,Buildings,126,503
+building,Buildings,127,337
+building,Buildings,128,286
+building,Buildings,129,3254
+building,Buildings,130,3126
+building,Buildings,131,3979
+building,Buildings,132,554
+building,Buildings,133,402
+building,Buildings,134,1425
+building,Buildings,135,3310
+building,Buildings,136,1902
+building,Buildings,137,184
+building,Buildings,138,3802
+building,Buildings,139,3612
+building,Buildings,140,600
+building,Buildings,141,742
+building,Buildings,142,2874
+building,Buildings,143,1787
+building,Buildings,144,1224
+building,Buildings,145,2995
+building,Buildings,146,1547
+building,Buildings,147,4069
+building,Buildings,148,2597
+building,Buildings,149,1271
+building,Buildings,150,2303
+building,Buildings,151,3671
+building,Buildings,152,3731
+building,Buildings,153,114
+building,Buildings,154,1226
+building,Buildings,155,2405
+building,Buildings,156,1682
+building,Buildings,157,1960
+building,Buildings,158,25
+building,Buildings,159,115
+building,Buildings,160,2185
+building,Buildings,161,4094
+building,Buildings,162,1518
+building,Buildings,163,379
+building,Buildings,164,85
+building,Buildings,165,1455
+building,Buildings,166,1669
+building,Buildings,167,2705
+building,Buildings,168,3654
+building,Buildings,169,571
+building,Buildings,170,3933
+building,Buildings,171,2830
+building,Buildings,172,3193
+building,Buildings,173,1093
+building,Buildings,174,3807
+building,Buildings,175,434
+building,Buildings,176,155
+building,Buildings,177,3547
+building,Buildings,178,2473
+building,Buildings,179,1786
+building,Buildings,180,2856
+building,Buildings,181,3280
+building,Buildings,182,3340
+building,Buildings,183,403
+building,Buildings,184,1825
+building,Buildings,185,3428
+building,Buildings,186,4039
+building,Buildings,187,1799
+building,Buildings,188,2867
+building,Buildings,189,213
+building,Buildings,190,2075
+building,Buildings,191,1994
+building,Buildings,192,1456
+building,Buildings,193,369
+building,Buildings,194,1854
+building,Buildings,195,2354
+building,Buildings,196,108
+building,Buildings,197,2249
+building,Buildings,198,1706
+building,Buildings,199,1680
+building,Buildings,200,553
+building,Buildings,201,873
+building,Buildings,202,2591
+building,Buildings,203,2008
+building,Buildings,204,3330
+building,Buildings,205,3392
+building,Buildings,206,6
+building,Buildings,207,2727
+building,Buildings,208,2457
+building,Buildings,209,2644
+building,Buildings,210,2179
+building,Buildings,211,1269
+building,Buildings,212,181
+building,Buildings,213,125
+building,Buildings,214,3365
+building,Buildings,215,652
+building,Buildings,216,1737
+building,Buildings,217,1939
+building,Buildings,218,4014
+building,Buildings,219,1315
+building,Buildings,220,2143
+building,Buildings,221,1384
+building,Buildings,222,2449
+building,Buildings,223,3669
+building,Buildings,224,4057
+building,Buildings,225,1945
+building,Buildings,226,451
+building,Buildings,227,973
+building,Buildings,228,3250
+building,Buildings,229,1738
+building,Buildings,230,326
+building,Buildings,231,3253
+building,Buildings,232,1940
+building,Buildings,233,1182
+building,Buildings,234,518
+building,Buildings,235,258
+building,Buildings,236,2699
+building,Buildings,237,1646
+building,Buildings,238,1445
+building,Buildings,239,2965
+building,Buildings,240,551
+building,Buildings,241,3021
+building,Buildings,242,3345
+building,Buildings,243,3607
+building,Buildings,244,1577
+building,Buildings,245,2350
+building,Buildings,246,659
+building,Buildings,247,3853
+building,Buildings,248,925
+building,Buildings,249,675
+building,Buildings,250,3991
+building,Buildings,251,323
+building,Buildings,252,543
+building,Buildings,253,3880
+building,Buildings,254,2467
+building,Buildings,255,2214
+building,Buildings,256,1760
+building,Buildings,257,3866
+building,Buildings,258,2924
+building,Buildings,259,1981
+building,Buildings,260,2907
+building,Buildings,261,1141
+building,Buildings,262,428
+building,Buildings,263,983
+building,Buildings,264,530
+building,Buildings,265,1087
+building,Buildings,266,678
+building,Buildings,267,3009
+building,Buildings,268,1012
+building,Buildings,269,1712
+building,Buildings,270,1924
+building,Buildings,271,3684
+building,Buildings,272,2029
+building,Buildings,273,3997
+building,Buildings,274,2869
+building,Buildings,275,3562
+building,Buildings,276,3722
+building,Buildings,277,557
+building,Buildings,278,506
+building,Buildings,279,60
+building,Buildings,280,3299
+building,Buildings,281,1782
+building,Buildings,282,1123
+building,Buildings,283,2622
+building,Buildings,284,4053
+building,Buildings,285,122
+building,Buildings,286,1900
+building,Buildings,287,639
+building,Buildings,288,1824
+building,Buildings,289,2165
+building,Buildings,290,1002
+building,Buildings,291,610
+building,Buildings,292,1112
+building,Buildings,293,1903
+building,Buildings,294,741
+building,Buildings,295,3440
+building,Buildings,296,3755
+building,Buildings,297,3391
+building,Buildings,298,443
+building,Buildings,299,1349
+building,Buildings,300,779
+building,Buildings,301,3730
+building,Buildings,302,3423
+building,Buildings,303,1253
+building,Buildings,304,1736
+building,Buildings,305,1412
+building,Buildings,306,1190
+building,Buildings,307,2136
+building,Buildings,308,1133
+building,Buildings,309,2748
+building,Buildings,310,3927
+building,Buildings,311,3644
+building,Buildings,312,2410
+building,Buildings,313,4081
+building,Buildings,314,2837
+building,Buildings,315,2486
+building,Buildings,316,2526
+building,Buildings,317,735
+building,Buildings,318,3518
+building,Buildings,319,2442
+building,Buildings,320,340
+building,Buildings,321,2948
+building,Buildings,322,813
+building,Buildings,323,3222
+building,Buildings,324,764
+building,Buildings,325,1442
+building,Buildings,326,98
+building,Buildings,327,330
+building,Buildings,328,716
+building,Buildings,329,3932
+building,Buildings,330,1890
+building,Buildings,331,2011
+building,Buildings,332,2081
+building,Buildings,333,3316
+building,Buildings,334,871
+building,Buildings,335,283
+building,Buildings,336,3941
+building,Buildings,337,3030
+building,Buildings,338,1895
+building,Buildings,339,3291
+building,Buildings,340,3042
+building,Buildings,341,2620
+building,Buildings,342,1213
+building,Buildings,343,1632
+building,Buildings,344,3272
+building,Buildings,345,2416
+building,Buildings,346,508
+building,Buildings,347,3533
+building,Buildings,348,3071
+building,Buildings,349,1487
+building,Buildings,350,3301
+building,Buildings,351,4012
+building,Buildings,352,1509
+building,Buildings,353,3517
+building,Buildings,354,2155
+building,Buildings,355,1181
+building,Buildings,356,2490
+building,Buildings,357,2277
+building,Buildings,358,2216
+building,Buildings,359,2255
+building,Buildings,360,2261
+building,Buildings,361,2549
+building,Buildings,362,1500
+building,Buildings,363,2843
+building,Buildings,364,2039
+building,Buildings,365,1314
+building,Buildings,366,2321
+building,Buildings,367,2613
+building,Buildings,368,228
+building,Buildings,369,2717
+building,Buildings,370,1284
+building,Buildings,371,642
+building,Buildings,372,708
+building,Buildings,373,3630
+building,Buildings,374,3317
+building,Buildings,375,1078
+building,Buildings,376,4013
+building,Buildings,377,3793
+building,Buildings,378,2231
+building,Buildings,379,3694
+building,Buildings,380,3899
+building,Buildings,381,903
+building,Buildings,382,781
+building,Buildings,383,1446
+building,Buildings,384,2703
+building,Buildings,385,3951
+building,Buildings,386,20
+building,Buildings,387,2311
+building,Buildings,388,2078
+building,Buildings,389,1524
+building,Buildings,390,1409
+building,Buildings,391,3013
+building,Buildings,392,3067
+building,Buildings,393,1033
+building,Buildings,394,2709
+building,Buildings,395,1672
+building,Buildings,396,2951
+building,Buildings,397,2451
+building,Buildings,398,1659
+building,Buildings,399,3082
+building,Buildings,400,1026
+building,Buildings,401,2576
+building,Buildings,402,1925
+building,Buildings,403,2640
+building,Buildings,404,830
+building,Buildings,405,2086
+building,Buildings,406,1490
+building,Buildings,407,2304
+building,Buildings,408,3
+building,Buildings,409,216
+building,Buildings,410,3782
+building,Buildings,411,1869
+building,Buildings,412,2905
+building,Buildings,413,2794
+building,Buildings,414,1517
+building,Buildings,415,2823
+building,Buildings,416,1650
+building,Buildings,417,2949
+building,Buildings,418,1278
+building,Buildings,419,2092
+building,Buildings,420,2252
+building,Buildings,421,2603
+building,Buildings,422,582
+building,Buildings,423,624
+building,Buildings,424,2979
+building,Buildings,425,1389
+building,Buildings,426,2149
+building,Buildings,427,3120
+building,Buildings,428,1475
+building,Buildings,429,2218
+building,Buildings,430,2740
+building,Buildings,431,2878
+building,Buildings,432,883
+building,Buildings,433,951
+building,Buildings,434,3103
+building,Buildings,435,2123
+building,Buildings,436,1395
+building,Buildings,437,2101
+building,Buildings,438,1247
+building,Buildings,439,856
+building,Buildings,440,452
+building,Buildings,441,3614
+building,Buildings,442,2358
+building,Buildings,443,1358
+building,Buildings,444,3799
+building,Buildings,445,776
+building,Buildings,446,230
+building,Buildings,447,3003
+building,Buildings,448,382
+building,Buildings,449,695
+building,Buildings,450,1580
+building,Buildings,451,1305
+building,Buildings,452,4022
+building,Buildings,453,1753
+building,Buildings,454,438
+building,Buildings,455,1495
+building,Buildings,456,3415
+building,Buildings,457,528
+building,Buildings,458,2044
+building,Buildings,459,970
+building,Buildings,460,2056
+building,Buildings,461,914
+building,Buildings,462,3214
+building,Buildings,463,760
+building,Buildings,464,2503
+building,Buildings,465,1438
+building,Buildings,466,3267
+building,Buildings,467,3422
+building,Buildings,468,3349
+building,Buildings,469,3499
+building,Buildings,470,2397
+building,Buildings,471,3878
+building,Buildings,472,1265
+building,Buildings,473,4063
+building,Buildings,474,1312
+building,Buildings,475,1666
+building,Buildings,476,1840
+building,Buildings,477,2983
+building,Buildings,478,1853
+building,Buildings,479,3920
+building,Buildings,480,936
+building,Buildings,481,1638
+building,Buildings,482,107
+building,Buildings,483,937
+building,Buildings,484,59
+building,Buildings,485,1684
+building,Buildings,486,3368
+building,Buildings,487,1806
+building,Buildings,488,1677
+building,Buildings,489,947
+building,Buildings,490,3033
+building,Buildings,491,556
+building,Buildings,492,1887
+building,Buildings,493,175
+building,Buildings,494,3953
+building,Buildings,495,4017
+building,Buildings,496,3215
+building,Buildings,497,10
+building,Buildings,498,3053
+building,Buildings,499,2
+building,Buildings,500,4061
+building,Buildings,501,3461
+building,Buildings,502,3424
+building,Buildings,503,3305
+building,Buildings,504,3025
+building,Buildings,505,3379
+building,Buildings,506,2009
+building,Buildings,507,468
+building,Buildings,508,1520
+building,Buildings,509,3247
+building,Buildings,510,583
+building,Buildings,511,2743
+building,Buildings,512,3417
+building,Buildings,513,3007
+building,Buildings,514,3675
+building,Buildings,515,631
+building,Buildings,516,908
+building,Buildings,517,1755
+building,Buildings,518,367
+building,Buildings,519,1542
+building,Buildings,520,1277
+building,Buildings,521,3786
+building,Buildings,522,645
+building,Buildings,523,2314
+building,Buildings,524,3963
+building,Buildings,525,510
+building,Buildings,526,2904
+building,Buildings,527,1466
+building,Buildings,528,3376
+building,Buildings,529,1251
+building,Buildings,530,4038
+building,Buildings,531,1843
+building,Buildings,532,1561
+building,Buildings,533,852
+building,Buildings,534,386
+building,Buildings,535,3867
+building,Buildings,536,385
+building,Buildings,537,2827
+building,Buildings,538,1996
+building,Buildings,539,2961
+building,Buildings,540,16
+building,Buildings,541,2927
+building,Buildings,542,1967
+terrain,Terrain,1,38
+terrain,Terrain,2,670
+terrain,Terrain,3,1796
+terrain,Terrain,4,613
+terrain,Terrain,5,2353
+terrain,Terrain,6,855
+terrain,Terrain,7,677
+terrain,Terrain,8,899
+terrain,Terrain,9,2046
+terrain,Terrain,10,860
+terrain,Terrain,11,1866
+terrain,Terrain,12,994
+terrain,Terrain,13,969
+terrain,Terrain,14,569
+terrain,Terrain,15,606
+terrain,Terrain,16,515
+terrain,Terrain,17,802
+terrain,Terrain,18,2462
+terrain,Terrain,19,2258
+terrain,Terrain,20,2759
+terrain,Terrain,21,643
+terrain,Terrain,22,807
+terrain,Terrain,23,348
+terrain,Terrain,24,2887
+terrain,Terrain,25,1220
+terrain,Terrain,26,2460
+terrain,Terrain,27,1184
+terrain,Terrain,28,263
+terrain,Terrain,29,563
+terrain,Terrain,30,2929
+tree,Trees,1,189
+tree,Trees,2,698
+tree,Trees,3,3188
+tree,Trees,4,1798
+tree,Trees,5,1730
+tree,Trees,6,3993
+tree,Trees,7,3894
+tree,Trees,8,4009
+tree,Trees,9,447
+tree,Trees,10,2498
+tree,Trees,11,2031
+tree,Trees,12,339
+tree,Trees,13,3052
+tree,Trees,14,2858
+tree,Trees,15,11
+tree,Trees,16,2691
+tree,Trees,17,961
+tree,Trees,18,380
+tree,Trees,19,3524
+tree,Trees,20,2057
+tree,Trees,21,429
+tree,Trees,22,3794
+tree,Trees,23,1575
+tree,Trees,24,2223
+tree,Trees,25,3495
+tree,Trees,26,2259
+tree,Trees,27,3537
+tree,Trees,28,1017
+tree,Trees,29,3695
+tree,Trees,30,1621
+tree,Trees,31,809
+tree,Trees,32,2925
+tree,Trees,33,2027
+tree,Trees,34,2955
+tree,Trees,35,1045
+tree,Trees,36,4041
+tree,Trees,37,649
+tree,Trees,38,3754
+tree,Trees,39,2338
+tree,Trees,40,833
+tree,Trees,41,3130
+tree,Trees,42,3778
+tree,Trees,43,3263
+tree,Trees,44,2540
+tree,Trees,45,798
+tree,Trees,46,470
+tree,Trees,47,313
+tree,Trees,48,2334
+tree,Trees,49,2908
+tree,Trees,50,2060
+tree,Trees,51,298
+tree,Trees,52,3767
+tree,Trees,53,418
+tree,Trees,54,1270
+tree,Trees,55,1354
+tree,Trees,56,261
+tree,Trees,57,91
+tree,Trees,58,1128
+tree,Trees,59,2741
+tree,Trees,60,221
+tree,Trees,61,2674
+tree,Trees,62,336
+tree,Trees,63,3696
+tree,Trees,64,2991
+tree,Trees,65,1904
+tree,Trees,66,185
+tree,Trees,67,3891
+tree,Trees,68,3218
+tree,Trees,69,1142
+tree,Trees,70,3300
+tree,Trees,71,2286
+tree,Trees,72,3988
+tree,Trees,73,3161
+tree,Trees,74,1371
+tree,Trees,75,1424
+tree,Trees,76,915
+tree,Trees,77,3083
+tree,Trees,78,3748
+tree,Trees,79,2945
+tree,Trees,80,180
+tree,Trees,81,738
+tree,Trees,82,3268
+tree,Trees,83,62
+tree,Trees,84,486
+tree,Trees,85,400
+tree,Trees,86,2108
+tree,Trees,87,1601
+tree,Trees,88,3918
+tree,Trees,89,268
+tree,Trees,90,773
+tree,Trees,91,2095
+tree,Trees,92,329
+tree,Trees,93,2634
+tree,Trees,94,4084
+tree,Trees,95,3455
+tree,Trees,96,2936
+tree,Trees,97,1377
+tree,Trees,98,1403
+tree,Trees,99,2683
+tree,Trees,100,3262
+tree,Trees,101,123
+tree,Trees,102,2614
+tree,Trees,103,2671
+tree,Trees,104,26
+tree,Trees,105,1573
+tree,Trees,106,2331
+tree,Trees,107,2589
+tree,Trees,108,3011
+tree,Trees,109,3825
+tree,Trees,110,1356
+tree,Trees,111,3462
+tree,Trees,112,895
+tree,Trees,113,4043
+tree,Trees,114,2652
+tree,Trees,115,1131
+tree,Trees,116,3236
+tree,Trees,117,890
+tree,Trees,118,981
+tree,Trees,119,1689
+tree,Trees,120,1470
+tree,Trees,121,96
+tree,Trees,122,1088
+tree,Trees,123,1077
+tree,Trees,124,3635
+tree,Trees,125,2300
+tree,Trees,126,2712
+tree,Trees,127,3942
+tree,Trees,128,101
+tree,Trees,129,2798
+tree,Trees,130,2496
+tree,Trees,131,2645
+tree,Trees,132,2795
+tree,Trees,133,2615
+tree,Trees,134,2686
+tree,Trees,135,3313
+tree,Trees,136,2228
+tree,Trees,137,2607
+tree,Trees,138,3813
+tree,Trees,139,1536
+tree,Trees,140,2944
+tree,Trees,141,3414
+tree,Trees,142,159
+tree,Trees,143,1846
+tree,Trees,144,1005
+tree,Trees,145,1113
+tree,Trees,146,2435
+tree,Trees,147,378
+tree,Trees,148,3852
+tree,Trees,149,714
+tree,Trees,150,1407
+tree,Trees,151,622
+tree,Trees,152,2952
+tree,Trees,153,1594
+tree,Trees,154,2847
+tree,Trees,155,4068
+tree,Trees,156,2729
+tree,Trees,157,3703
+tree,Trees,158,366
+tree,Trees,159,2431
+tree,Trees,160,2635
+tree,Trees,161,1984
+tree,Trees,162,3593
+tree,Trees,163,1393
+tree,Trees,164,3221
+tree,Trees,165,2623
+tree,Trees,166,3309
+tree,Trees,167,242
+tree,Trees,168,1130
+tree,Trees,169,3108
+tree,Trees,170,2119
+tree,Trees,171,3882
+tree,Trees,172,3592
+tree,Trees,173,940
+tree,Trees,174,2500
+tree,Trees,175,116
+tree,Trees,176,1486
+tree,Trees,177,3448
+tree,Trees,178,593
+tree,Trees,179,806
+tree,Trees,180,1952
+tree,Trees,181,1983
+tree,Trees,182,3658
+tree,Trees,183,3261
+tree,Trees,184,102
+tree,Trees,185,1907
+tree,Trees,186,1966
+tree,Trees,187,404
+tree,Trees,188,3452
+tree,Trees,189,1616
+tree,Trees,190,1170
+tree,Trees,191,315
+tree,Trees,192,3373
+tree,Trees,193,3816
+tree,Trees,194,3790
+tree,Trees,195,118
+tree,Trees,196,3602
+tree,Trees,197,1248
+tree,Trees,198,1262
+tree,Trees,199,3359
+tree,Trees,200,2551
+tree,Trees,201,1605
+tree,Trees,202,3721
+tree,Trees,203,79
+tree,Trees,204,2058
+tree,Trees,205,2518
+tree,Trees,206,362
+tree,Trees,207,3677
+tree,Trees,208,2677
+tree,Trees,209,3006
+tree,Trees,210,1665
+tree,Trees,211,3697
+tree,Trees,212,354
+tree,Trees,213,828
+tree,Trees,214,3968
+tree,Trees,215,3849
+tree,Trees,216,2093
+tree,Trees,217,857
+tree,Trees,218,1908
+tree,Trees,219,2433
+tree,Trees,220,57
+tree,Trees,221,2848
+tree,Trees,222,84
+tree,Trees,223,3486
+tree,Trees,224,2789
+tree,Trees,225,3693
+tree,Trees,226,3115
+tree,Trees,227,1492
+tree,Trees,228,464
+tree,Trees,229,574
+tree,Trees,230,350
+tree,Trees,231,3508
+tree,Trees,232,2352
+tree,Trees,233,89
+tree,Trees,234,2723
+tree,Trees,235,2510
+tree,Trees,236,1350
+tree,Trees,237,1214
+tree,Trees,238,3912
+tree,Trees,239,4050
+tree,Trees,240,4070
+tree,Trees,241,2182
+tree,Trees,242,178
+tree,Trees,243,1821
+tree,Trees,244,1951
+tree,Trees,245,3157
+tree,Trees,246,1453
+tree,Trees,247,822
+tree,Trees,248,2380
+tree,Trees,249,612
+tree,Trees,250,2873
+tree,Trees,251,1480
+tree,Trees,252,1957
+tree,Trees,253,1512
+tree,Trees,254,1820
+tree,Trees,255,748
+tree,Trees,256,3057
+tree,Trees,257,784
+tree,Trees,258,1418
+tree,Trees,259,817
+tree,Trees,260,605
+tree,Trees,261,3836
+tree,Trees,262,430
+tree,Trees,263,2084
+tree,Trees,264,3429
+tree,Trees,265,630
+tree,Trees,266,334
+tree,Trees,267,3665
+tree,Trees,268,1779
+tree,Trees,269,3351
+tree,Trees,270,3707
+tree,Trees,271,355
+tree,Trees,272,2903
+tree,Trees,273,1061
+tree,Trees,274,3554
+tree,Trees,275,2682
+tree,Trees,276,3144
+tree,Trees,277,3386
+tree,Trees,278,2541
+tree,Trees,279,1171
+tree,Trees,280,2399
+tree,Trees,281,3749
+tree,Trees,282,3298
+tree,Trees,283,2749
+tree,Trees,284,1009
+tree,Trees,285,545
+tree,Trees,286,3473
+tree,Trees,287,3306
+tree,Trees,288,3526
+tree,Trees,289,1674
+tree,Trees,290,2063
+tree,Trees,291,1111
+tree,Trees,292,2735
+tree,Trees,293,1168
+tree,Trees,294,2658
+tree,Trees,295,419
+tree,Trees,296,1913
+tree,Trees,297,2897
+tree,Trees,298,179
+tree,Trees,299,3203
+tree,Trees,300,1463
+scene_context,Scene context,1,2558
+scene_context,Scene context,2,1070
+scene_context,Scene context,3,220
+scene_context,Scene context,4,4026
+scene_context,Scene context,5,2438
+scene_context,Scene context,6,2015
+scene_context,Scene context,7,1375
+scene_context,Scene context,8,3753
+scene_context,Scene context,9,387
+scene_context,Scene context,10,1587
+scene_context,Scene context,11,2153
+scene_context,Scene context,12,4018
+scene_context,Scene context,13,3982
+scene_context,Scene context,14,886
+scene_context,Scene context,15,2715
+scene_context,Scene context,16,2522
+scene_context,Scene context,17,2958
+scene_context,Scene context,18,1187
+scene_context,Scene context,19,3930
+scene_context,Scene context,20,564
+scene_context,Scene context,21,3092
+scene_context,Scene context,22,3137
+scene_context,Scene context,23,1849
+scene_context,Scene context,24,4020
+scene_context,Scene context,25,2876
+scene_context,Scene context,26,1016
+scene_context,Scene context,27,1238
+scene_context,Scene context,28,810
+scene_context,Scene context,29,953
+scene_context,Scene context,30,3238
+scene_context,Scene context,31,2732
+scene_context,Scene context,32,926
+scene_context,Scene context,33,3996
+scene_context,Scene context,34,4059
+scene_context,Scene context,35,1610
+scene_context,Scene context,36,2376
+scene_context,Scene context,37,1287
+scene_context,Scene context,38,1054
+scene_context,Scene context,39,1667
+scene_context,Scene context,40,1450
+scene_context,Scene context,41,3977
+scene_context,Scene context,42,1511
+scene_context,Scene context,43,137
+scene_context,Scene context,44,3872
+scene_context,Scene context,45,534
+scene_context,Scene context,46,2325
+scene_context,Scene context,47,1708
+scene_context,Scene context,48,1397
+scene_context,Scene context,49,1391
+scene_context,Scene context,50,255
+scene_context,Scene context,51,145
+scene_context,Scene context,52,1726
+scene_context,Scene context,53,1872
+scene_context,Scene context,54,3350
+scene_context,Scene context,55,1710
+scene_context,Scene context,56,1465
+scene_context,Scene context,57,358
+scene_context,Scene context,58,921
+scene_context,Scene context,59,2832
+scene_context,Scene context,60,1675
+scene_context,Scene context,61,1944
+scene_context,Scene context,62,3700
+scene_context,Scene context,63,3091
+scene_context,Scene context,64,1426
+scene_context,Scene context,65,1597
+scene_context,Scene context,66,2187
+scene_context,Scene context,67,2513
+scene_context,Scene context,68,2226
+scene_context,Scene context,69,616
+scene_context,Scene context,70,2246
+scene_context,Scene context,71,726
+scene_context,Scene context,72,1752
+scene_context,Scene context,73,3751
+scene_context,Scene context,74,2788
+scene_context,Scene context,75,971
+scene_context,Scene context,76,1989
+scene_context,Scene context,77,850
+scene_context,Scene context,78,3189
+scene_context,Scene context,79,3775
+scene_context,Scene context,80,4034
+scene_context,Scene context,81,790
+scene_context,Scene context,82,174
+scene_context,Scene context,83,90
+scene_context,Scene context,84,2708

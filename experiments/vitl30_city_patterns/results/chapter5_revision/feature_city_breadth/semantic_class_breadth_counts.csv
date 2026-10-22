@@ -1,0 +1,19 @@
+family,dimensions,class_label
+road,239,Roads
+sign,61,Signs
+sky,207,Sky
+barrier,57,Barriers
+utility,50,Utilities
+ground_unspecified,526,Unspecified ground
+low_vegetation,93,Low vegetation
+construction,25,Construction
+water,18,Water
+pedestrian,28,Pedestrian space
+furniture,22,Street furniture
+vegetation_unspecified,172,Unspecified vegetation
+material_unspecified,118,Unspecified materials
+transport_structure,54,Transport structures
+building,542,Buildings
+terrain,30,Terrain
+tree,300,Trees
+scene_context,84,Scene context

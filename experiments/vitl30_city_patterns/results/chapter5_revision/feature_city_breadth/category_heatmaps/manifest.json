@@ -1,0 +1,181 @@
+{
+  "status": "complete",
+  "classes": [
+    {
+      "family": "road",
+      "class_label": "Roads",
+      "dimensions": 239,
+      "stem": "Fig_ViTL30_Class_Heatmap_road"
+    },
+    {
+      "family": "sign",
+      "class_label": "Signs",
+      "dimensions": 61,
+      "stem": "Fig_ViTL30_Class_Heatmap_sign"
+    },
+    {
+      "family": "sky",
+      "class_label": "Sky",
+      "dimensions": 207,
+      "stem": "Fig_ViTL30_Class_Heatmap_sky"
+    },
+    {
+      "family": "barrier",
+      "class_label": "Barriers",
+      "dimensions": 57,
+      "stem": "Fig_ViTL30_Class_Heatmap_barrier"
+    },
+    {
+      "family": "utility",
+      "class_label": "Utilities",
+      "dimensions": 50,
+      "stem": "Fig_ViTL30_Class_Heatmap_utility"
+    },
+    {
+      "family": "ground_unspecified",
+      "class_label": "Unspecified ground",
+      "dimensions": 526,
+      "stem": "Fig_ViTL30_Class_Heatmap_ground_unspecified"
+    },
+    {
+      "family": "low_vegetation",
+      "class_label": "Low vegetation",
+      "dimensions": 93,
+      "stem": "Fig_ViTL30_Class_Heatmap_low_vegetation"
+    },
+    {
+      "family": "construction",
+      "class_label": "Construction",
+      "dimensions": 25,
+      "stem": "Fig_ViTL30_Class_Heatmap_construction"
+    },
+    {
+      "family": "water",
+      "class_label": "Water",
+      "dimensions": 18,
+      "stem": "Fig_ViTL30_Class_Heatmap_water"
+    },
+    {
+      "family": "pedestrian",
+      "class_label": "Pedestrian space",
+      "dimensions": 28,
+      "stem": "Fig_ViTL30_Class_Heatmap_pedestrian"
+    },
+    {
+      "family": "furniture",
+      "class_label": "Street furniture",
+      "dimensions": 22,
+      "stem": "Fig_ViTL30_Class_Heatmap_furniture"
+    },
+    {
+      "family": "vegetation_unspecified",
+      "class_label": "Unspecified vegetation",
+      "dimensions": 172,
+      "stem": "Fig_ViTL30_Class_Heatmap_vegetation_unspecified"
+    },
+    {
+      "family": "material_unspecified",
+      "class_label": "Unspecified materials",
+      "dimensions": 118,
+      "stem": "Fig_ViTL30_Class_Heatmap_material_unspecified"
+    },
+    {
+      "family": "transport_structure",
+      "class_label": "Transport structures",
+      "dimensions": 54,
+      "stem": "Fig_ViTL30_Class_Heatmap_transport_structure"
+    },
+    {
+      "family": "building",
+      "class_label": "Buildings",
+      "dimensions": 542,
+      "stem": "Fig_ViTL30_Class_Heatmap_building"
+    },
+    {
+      "family": "terrain",
+      "class_label": "Terrain",
+      "dimensions": 30,
+      "stem": "Fig_ViTL30_Class_Heatmap_terrain"
+    },
+    {
+      "family": "tree",
+      "class_label": "Trees",
+      "dimensions": 300,
+      "stem": "Fig_ViTL30_Class_Heatmap_tree"
+    },
+    {
+      "family": "scene_context",
+      "class_label": "Scene context",
+      "dimensions": 84,
+      "stem": "Fig_ViTL30_Class_Heatmap_scene_context"
+    }
+  ],
+  "city_order": [
+    "Russia/Moscow",
+    "Sweden/Stockholm",
+    "US/NewYork",
+    "US/Chicago",
+    "Germany/Hamburg",
+    "Austria/Vienna",
+    "Belgium/Antwerp",
+    "Belgium/Brussels",
+    "France/Paris",
+    "Korea/Seoul",
+    "Bangladesh/Dhaka",
+    "Indonesia/Yogyakarta",
+    "Nigeria/Lagos",
+    "Brazil/Brasília",
+    "Brazil/SaoPaulo",
+    "Brazil/RiodeJaneiro",
+    "Singapore/Singapore",
+    "China/Taipei",
+    "Mexico/Monterrey",
+    "Argentina/BuenosAires",
+    "SouthAfrica/Johannesburg",
+    "SouthAfrica/CapeTown",
+    "Spain/Barcelona",
+    "Portugal/Lisbon",
+    "Italy/Naples",
+    "Australia/Perth",
+    "Australia/Sydney",
+    "Australia/Melbourne",
+    "US/Phoenix",
+    "UAE/Dubai"
+  ],
+  "atlas_pdf": "Fig_ViTL30_All_Class_Heatmaps.pdf",
+  "feature_order": "spectral seriation of square-root-normalized within-category city response profiles; no clustering labels or trees",
+  "heatmap_definition": "within each city normalize feature response across the retained class, then log2 relative to each feature equal-city mean (epsilon 1e-6)",
+  "palette": [
+    [
+      0.0,
+      "#78909E"
+    ],
+    [
+      0.3333333333333333,
+      "#C7D2D4"
+    ],
+    [
+      0.6666666666666666,
+      "#F5F4F0"
+    ],
+    [
+      0.8333333333333334,
+      "#DEC8BE"
+    ],
+    [
+      1.0,
+      "#B98779"
+    ]
+  ],
+  "color_limits": {
+    "vmin": -6.0,
+    "vcenter": 0,
+    "vmax": 3.0
+  },
+  "excluded_families": [
+    "person",
+    "spatial_encoding",
+    "unresolved",
+    "vehicle"
+  ]
+}
