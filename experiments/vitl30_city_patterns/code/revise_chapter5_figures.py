@@ -21,7 +21,7 @@ from PIL import Image
 from scipy.cluster.hierarchy import linkage, leaves_list, dendrogram
 from sklearn.metrics.pairwise import cosine_similarity
 from .semantic_22_figures import CLASSES, LABELS, STAGE
-from .semantic_city_figures import ROOT, name, UNIT_NAMES, PARENTS
+from .semantic_city_figures import ROOT, name, UNIT_NAMES, PARENTS, city_similarity_figure
 from .followup import FOLLOWUP
 
 OUT = ROOT/'experiments/vitl30_city_patterns/results/chapter5_revision'
@@ -128,12 +128,9 @@ def city_plots(cells):
                fontsize=12,columnspacing=1.,handlelength=1.3)
     save(fig,'Fig_ViTL30_Semantic_City_Composition')
 
-    fig,ax=plt.subplots(figsize=(8.1,7.8))
-    im=ax.imshow(cosine_similarity(core),vmin=0,vmax=1,cmap='viridis')
-    ax.set_xticks(range(30),city_labels(cities),rotation=90)
-    ax.set_yticks(range(30),city_labels(cities))
-    fig.colorbar(im,ax=ax,fraction=.035,pad=.025,label='Cosine similarity')
-    save(fig,'Fig_ViTL30_Semantic_City_Similarity')
+    city_similarity_figure(cities, core, OUT)
+    shutil.copy2(OUT/'Fig_ViTL30_Semantic_City_Similarity.pdf',
+                 ASSETS/'Fig_ViTL30_Semantic_City_Similarity.pdf')
 
 def pattern_plots():
     key=pd.read_csv(OLD/'selected_composition_key.csv')

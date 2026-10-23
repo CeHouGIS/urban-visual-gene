@@ -15,6 +15,9 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 import numpy as np
 import pandas as pd
 from PIL import Image
+from scipy.cluster.hierarchy import linkage
+from scipy.spatial.distance import pdist
+import seaborn as sns
 from sklearn.metrics.pairwise import cosine_similarity
 
 from .candidate_combinations import ELEMENTS
@@ -70,6 +73,28 @@ def save(fig, output, stem):
         fig.savefig(output / f'{stem}.{extension}', dpi=240, facecolor='white',
                     bbox_inches='tight', pad_inches=.12)
     plt.close(fig)
+
+
+def city_similarity_figure(cities, core, output):
+    tree = linkage(pdist(core, metric='cosine'), method='average', optimal_ordering=True)
+    labels = [name(city) for city in cities]
+    similarity = pd.DataFrame(cosine_similarity(core), index=labels, columns=labels)
+    cluster = sns.clustermap(
+        similarity, row_linkage=tree, col_linkage=tree,
+        cmap='cividis', vmin=.75, vmax=1, figsize=(12.5, 10.2),
+        dendrogram_ratio=(.13, .13),
+        cbar_pos=(.94, .28, .018, .44),
+        cbar_kws={'label': 'Cosine similarity',
+                  'ticks': [.75, .80, .85, .90, .95, 1.0]},
+        tree_kws={'colors': '#737d7b', 'linewidths': .8},
+    )
+    cluster.gs.update(right=.82)
+    cluster.ax_cbar.set_position((.94, .28, .018, .44))
+    cluster.ax_heatmap.tick_params(axis='x', labelrotation=90, labelsize=7, length=0)
+    cluster.ax_heatmap.tick_params(axis='y', labelrotation=0, labelsize=7, length=0)
+    cluster.ax_cbar.tick_params(labelsize=8)
+    cluster.ax_cbar.set_ylabel('Cosine similarity', fontsize=9)
+    save(cluster.fig, output, 'Fig_ViTL30_Semantic_City_Similarity')
 
 
 def load(folder):
@@ -181,12 +206,7 @@ def city_figures(cells, families, output, labels=None, colors=None, residuals=No
     fig.colorbar(im, ax=ax, label='Difference from other-city mean (percentage points)')
     save(fig, output, 'Fig_ViTL30_Semantic_City_Excess')
 
-    fig, ax = plt.subplots(figsize=(9.5, 8), layout='constrained')
-    im = ax.imshow(cosine_similarity(core), cmap='viridis', vmin=0, vmax=1)
-    ax.set_xticks(range(30), [name(c) for c in cities], rotation=90, fontsize=7)
-    ax.set_yticks(range(30), [name(c) for c in cities], fontsize=7)
-    fig.colorbar(im, ax=ax, label='Cosine similarity of semantic-class mass')
-    save(fig, output, 'Fig_ViTL30_Semantic_City_Similarity')
+    city_similarity_figure(cities, core, output)
 
     joint = np.zeros((len(families), len(families)))
     marginal = np.zeros(len(families))
