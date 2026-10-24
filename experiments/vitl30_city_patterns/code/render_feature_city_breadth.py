@@ -249,11 +249,10 @@ def breadth_boxplot(breadth):
                        capprops={'color': '#7C8D8E', 'linewidth': 1},
                        boxprops={'edgecolor': '#74898A', 'linewidth': .8})
     rng = np.random.default_rng(42)
-    for index, (family, values, box) in enumerate(zip(families, data, boxes['boxes'])):
-        tree = family == 'tree'
-        box.set_facecolor('#74A392' if tree else '#CEDCD8')
+    for index, (values, box) in enumerate(zip(data, boxes['boxes'])):
+        box.set_facecolor('#CEDCD8')
         jitter = rng.uniform(-.22, .22, size=len(values))
-        ax.scatter(values, index + jitter, s=7, color='#3F786D' if tree else '#718F90',
+        ax.scatter(values, index + jitter, s=7, color='#718F90',
                    alpha=.22, linewidths=0, rasterized=True, zorder=2)
     ax.set_yticks(np.arange(len(families)),
                   [f'{CLASS_NAMES[family]}   (n={class_stats.loc[family, "count"]})'
@@ -271,11 +270,6 @@ def breadth_boxplot(breadth):
     fig.text(.27, .924,
              'Each point is one previously classified dimension (n=2,626); boxes show the median and interquartile range',
              va='top', fontsize=11, color=MUTED)
-    fig.text(.27, .048,
-             'Breadth = 1 / Σ(city response share)². City response is averaged equally over observed 1-km cells. '
-             'Whiskers mark the 5th–95th percentiles. Excludes 1,264 unresolved dimensions, 17 spatial-encoding dimensions, '
-             'and all people (46) and vehicle (143) features; all other prior class assignments and review statuses are retained.',
-             va='bottom', fontsize=9.2, color=MUTED)
     for extension in ('png', 'pdf'):
         fig.savefig(OUTPUT / f'{BOX_STEM}.{extension}', dpi=260,
                     bbox_inches='tight', pad_inches=.1, facecolor='white')
