@@ -76,6 +76,8 @@ def save(fig, output, stem):
 
 
 def city_similarity_figure(cities, core, output):
+    plt.rcParams.update({'font.family': 'Liberation Sans', 'pdf.fonttype': 42,
+                         'ps.fonttype': 42})
     tree = linkage(pdist(core, metric='cosine'), method='average', optimal_ordering=True)
     labels = [name(city) for city in cities]
     similarity = pd.DataFrame(cosine_similarity(core), index=labels, columns=labels)

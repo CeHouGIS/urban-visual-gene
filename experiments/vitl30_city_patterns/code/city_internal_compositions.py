@@ -196,7 +196,8 @@ def parent_overlap(kept: pd.DataFrame, cities: list[str]) -> pd.DataFrame:
 
 
 def plot_overview(rows: pd.DataFrame, overlap: pd.DataFrame, path: Path):
-    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 14,
+    plt.rcParams.update({'font.family': 'Liberation Sans', 'font.size': 14,
+                         'pdf.fonttype': 42, 'ps.fonttype': 42,
                          'axes.spines.top': False, 'axes.spines.right': False})
     cities = list(overlap.index)
     labels = [re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', city.split('/')[-1])
