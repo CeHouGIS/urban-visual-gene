@@ -90,10 +90,10 @@ def city_similarity_figure(cities, core, output):
     )
     cluster.gs.update(right=.82)
     cluster.ax_cbar.set_position((.94, .28, .018, .44))
-    cluster.ax_heatmap.tick_params(axis='x', labelrotation=90, labelsize=7, length=0)
-    cluster.ax_heatmap.tick_params(axis='y', labelrotation=0, labelsize=7, length=0)
-    cluster.ax_cbar.tick_params(labelsize=8)
-    cluster.ax_cbar.set_ylabel('Cosine similarity', fontsize=9)
+    cluster.ax_heatmap.tick_params(axis='x', labelrotation=90, labelsize=16, length=0)
+    cluster.ax_heatmap.tick_params(axis='y', labelrotation=0, labelsize=16, length=0)
+    cluster.ax_cbar.tick_params(labelsize=15)
+    cluster.ax_cbar.set_ylabel('Cosine similarity', fontsize=16)
     save(cluster.fig, output, 'Fig_ViTL30_Semantic_City_Similarity')
 
 

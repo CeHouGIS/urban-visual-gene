@@ -12,6 +12,7 @@ import hashlib
 import itertools
 import json
 from pathlib import Path
+import re
 
 import matplotlib
 matplotlib.use('Agg')
@@ -195,32 +196,37 @@ def parent_overlap(kept: pd.DataFrame, cities: list[str]) -> pd.DataFrame:
 
 
 def plot_overview(rows: pd.DataFrame, overlap: pd.DataFrame, path: Path):
-    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8,
+    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 14,
                          'axes.spines.top': False, 'axes.spines.right': False})
     cities = list(overlap.index)
-    labels = [city.split('/')[-1] for city in cities]
+    labels = [re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', city.split('/')[-1])
+              for city in cities]
     totals = rows[rows.replicated].groupby(['city', 'cross_city_status']).size().unstack(fill_value=0)
     totals = totals.reindex(cities, fill_value=0)
     shared = totals.get('shared', pd.Series(0, index=cities))
     single = totals.get('single_city_detected', pd.Series(0, index=cities))
-    fig, (ax, heat) = plt.subplots(1, 2, figsize=(17, 9), gridspec_kw={'width_ratios': [1, 1.25]})
+    fig, (ax, heat) = plt.subplots(1, 2, figsize=(21, 15), gridspec_kw={'width_ratios': [1, 1.25]})
+    fig.subplots_adjust(left=.14, right=.97, bottom=.22, top=.86, wspace=.38)
     y = np.arange(len(cities))
     ax.barh(y, shared, color='#397d76', label='Detected in multiple cities')
     ax.barh(y, single, left=shared, color='#b26e4e', label='Detected in one city')
-    ax.set_yticks(y, labels, fontsize=7)
+    ax.set_yticks(y, labels, fontsize=16)
     ax.invert_yaxis()
     ax.set_xlabel('Spatially replicated within-city combinations')
-    ax.legend(frameon=False, fontsize=7, loc='lower right')
-    ax.set_title('a  Within-city candidates', loc='left', fontweight='bold')
+    ax.legend(frameon=False, fontsize=15, loc='upper center',
+              bbox_to_anchor=(.5, -.16), ncol=1)
+    ax.set_title('a  Within-city candidates', loc='left', fontweight='bold', fontsize=22)
     image = heat.imshow(overlap.to_numpy(), vmin=0, vmax=1, cmap='YlGnBu')
-    heat.set_xticks(y, labels, rotation=90, fontsize=6)
-    heat.set_yticks(y, labels, fontsize=6)
-    heat.set_title('b  Exact subtype overlap (Jaccard)', loc='left', fontweight='bold')
-    fig.colorbar(image, ax=heat, shrink=.55, label='Jaccard index')
-    fig.suptitle('City-internal SAE-response combinations', x=.06, ha='left', fontsize=14)
-    fig.text(.06, .012, 'One globally calibrated unit per semantic family; 5-km-block holdout. '
-             'Single-city detection is sample-specific and does not prove exclusivity.', fontsize=8)
-    fig.tight_layout(rect=(0, .025, 1, .96))
+    heat.set_xticks(y, labels, rotation=90, fontsize=15)
+    heat.set_yticks(y, labels, fontsize=15)
+    heat.set_title('b  Exact subtype overlap (Jaccard)', loc='left', fontweight='bold', fontsize=22)
+    colorbar = fig.colorbar(image, ax=heat, shrink=.55, label='Jaccard index')
+    colorbar.ax.tick_params(labelsize=15)
+    colorbar.set_label('Jaccard index', fontsize=17)
+    fig.suptitle('City-internal SAE-response combinations', x=.06, y=.97,
+                 ha='left', fontsize=27)
+    fig.text(.17, .045, 'One globally calibrated unit per semantic family; 5-km-block holdout. '
+             'Single-city detection is sample-specific and does not prove exclusivity.', fontsize=15)
     fig.savefig(path, dpi=200, facecolor='white')
     fig.savefig(path.with_suffix('.pdf'), facecolor='white')
     plt.close(fig)
