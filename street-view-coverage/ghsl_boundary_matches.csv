@@ -1,301 +1,301 @@
 city,status,ghsl_id,ghsl_name,ghsl_country_un,ghsl_country_gad,ghsl_area_km2,ghsl_population_2025,match_method,center_lat,center_lon,center_boundary_distance_km,nearest_ghsl_name,nearest_boundary_distance_km,boundary_area_km2
-Argentina/BuenosAires,matched,4443,Buenos Aires,Argentina,Argentina,2186,14179912.05,GeoNames centre covered by GHSL UCDB polygon,-34.62176222522149,-58.4843034023439,0.0,Buenos Aires,0.0,2186.0
-Argentina/Cordoba,matched,2335,Cordoba,Argentina,Argentina,320,1468196.585,GeoNames centre covered by GHSL UCDB polygon,-31.399385633214923,-64.20161386747832,0.0,Cordoba,0.0,320.0
-Argentina/MardelPlata,matched,4879,Mar del Plata,Argentina,Argentina,124,627742.6664,GeoNames centre covered by GHSL UCDB polygon,-38.01236281866832,-57.571205013448996,0.0,Mar del Plata,0.0,124.0
-Argentina/Resistencia,matched,3280,Resistencia,Argentina,Argentina,87,416874.6149,GeoNames centre covered by GHSL UCDB polygon,-27.45470309605831,-58.986859689903056,0.0,Resistencia,0.0,87.0
-Argentina/Rosario,matched,3547,Rosario,Argentina,Argentina,199,1187381.863,GeoNames centre covered by GHSL UCDB polygon,-32.925455778999314,-60.70062319239517,0.0,Rosario,0.0,199.0
-Argentina/Salta,matched,526,Salta,Argentina,Argentina,117,633196.1256,GeoNames centre covered by GHSL UCDB polygon,-24.803703057036607,-65.41916400214463,0.0,Salta,0.0,117.0
-Argentina/SanMigueldeTucumán,matched,1476,San Miguel de Tucumán,Argentina,Argentina,170,986266.9288,GeoNames centre covered by GHSL UCDB polygon,-26.82225913411601,-65.22112968678857,0.0,San Miguel de Tucumán,0.0,170.0
-Australia/Adelaide,matched,1029,Adelaide,Australia,Australia,493,938328.4515,GeoNames centre covered by GHSL UCDB polygon,-34.92866,138.59863,0.0,Adelaide,0.0,493.0
-Australia/Brisbane,matched,2734,Brisbane,Australia,Australia,701,1359104.504,GeoNames centre covered by GHSL UCDB polygon,-27.46794,153.02809,0.0,Brisbane,0.0,701.0
-Australia/Canberra,matched,1922,North Canberra [Canberra],Australia,Australia,21,55457.69694,GeoNames centre covered by GHSL UCDB polygon,-35.28346,149.12807,0.0,North Canberra [Canberra],0.0,21.0
+Argentina/BuenosAires,matched,4443,Buenos Aires,Argentina,Argentina,2186,14179912.05,Study city centre covered by GHSL UCDB polygon,-34.62176222522149,-58.4843034023439,0.0,Buenos Aires,0.0,2186.0
+Argentina/Cordoba,matched,2335,Cordoba,Argentina,Argentina,320,1468196.585,Study city centre covered by GHSL UCDB polygon,-31.399385633214923,-64.20161386747832,0.0,Cordoba,0.0,320.0
+Argentina/MardelPlata,matched,4879,Mar del Plata,Argentina,Argentina,124,627742.6664,Study city centre covered by GHSL UCDB polygon,-38.01236281866832,-57.571205013448996,0.0,Mar del Plata,0.0,124.0
+Argentina/Resistencia,matched,3280,Resistencia,Argentina,Argentina,87,416874.6149,Study city centre covered by GHSL UCDB polygon,-27.45470309605831,-58.986859689903056,0.0,Resistencia,0.0,87.0
+Argentina/Rosario,matched,3547,Rosario,Argentina,Argentina,199,1187381.863,Study city centre covered by GHSL UCDB polygon,-32.925455778999314,-60.70062319239517,0.0,Rosario,0.0,199.0
+Argentina/Salta,matched,526,Salta,Argentina,Argentina,117,633196.1256,Study city centre covered by GHSL UCDB polygon,-24.803703057036607,-65.41916400214463,0.0,Salta,0.0,117.0
+Argentina/SanMigueldeTucumán,matched,1476,San Miguel de Tucumán,Argentina,Argentina,170,986266.9288,Study city centre covered by GHSL UCDB polygon,-26.82225913411601,-65.22112968678857,0.0,San Miguel de Tucumán,0.0,170.0
+Australia/Adelaide,matched,1029,Adelaide,Australia,Australia,493,938328.4515,Study city centre covered by GHSL UCDB polygon,-34.92866,138.59863,0.0,Adelaide,0.0,493.0
+Australia/Brisbane,matched,2734,Brisbane,Australia,Australia,701,1359104.504,Study city centre covered by GHSL UCDB polygon,-27.46794,153.02809,0.0,Brisbane,0.0,701.0
+Australia/Canberra,matched,1922,North Canberra [Canberra],Australia,Australia,21,55457.69694,Study city centre covered by GHSL UCDB polygon,-35.28346,149.12807,0.0,North Canberra [Canberra],0.0,21.0
 Australia/Darwin,unmatched,,,,,,,,-12.46113,130.84185,,Dili,634.819,
-Australia/Geelong,matched,1254,Geelong,Australia,Australia,104,165824.5736,GeoNames centre covered by GHSL UCDB polygon,-38.14711,144.36069,0.0,Geelong,0.0,104.0
-Australia/GoldCoast,matched,2798,Gold Coast,Australia,Australia,168,279191.0015,GeoNames centre covered by GHSL UCDB polygon,-28.00029,153.43088,0.0,Gold Coast,0.0,168.0
-Australia/Hobart,matched,781,Hobart,Australia,Australia,46,69906.07557,GeoNames centre covered by GHSL UCDB polygon,-42.87936,147.32941,0.0,Hobart,0.0,46.0
-Australia/Melbourne,matched,1747,Melbourne,Australia,Australia,1611,4010658.252,GeoNames centre covered by GHSL UCDB polygon,-37.814,144.96332,0.0,Melbourne,0.0,1611.0
-Australia/Newcastle,matched,2399,Newcastle,Australia,Australia,126,205366.156,GeoNames centre covered by GHSL UCDB polygon,-32.92953,151.7801,0.0,Newcastle,0.0,126.0
-Australia/Perth,matched,498,Perth,Australia,Australia,784,1357381.728,GeoNames centre covered by GHSL UCDB polygon,-31.95224,115.8614,0.0,Perth,0.0,784.0
-Australia/Sydney,matched,2324,Sydney,Australia,Australia,1378,4375394.497,GeoNames centre covered by GHSL UCDB polygon,-33.86785,151.20732,0.0,Sydney,0.0,1378.0
-Australia/Toowoomba,matched,2470,Toowoomba,Australia,Australia,55,92940.7309,GeoNames centre covered by GHSL UCDB polygon,-27.56056,151.95386,0.0,Toowoomba,0.0,55.0
-Australia/Wollongong,matched,2006,Wollongong,Australia,Australia,108,149057.1476,GeoNames centre covered by GHSL UCDB polygon,-34.424,150.89345,0.0,Wollongong,0.0,108.0
-Austria/Graz,matched,961,Graz,Austria,Austria,76,306742.2013,GeoNames centre covered by GHSL UCDB polygon,47.06733,15.44197,0.0,Graz,0.0,76.0
-Austria/Linz,matched,701,Linz,Austria,Austria,67,243242.7563,GeoNames centre covered by GHSL UCDB polygon,48.30639,14.28611,0.0,Linz,0.0,67.0
-Austria/Vienna,matched,1081,Vienna,Austria,Austria,325,2056564.784,GeoNames centre covered by GHSL UCDB polygon,48.20849,16.37208,0.0,Vienna,0.0,325.0
-Bangladesh/Chattogram,matched,7439,Chattogram,Bangladesh,Bangladesh,519,5175717.307,GeoNames centre covered by GHSL UCDB polygon,22.3384,91.83168,0.0,Chattogram,0.0,519.0
-Bangladesh/Comilla,matched,6090,Dhaka,Bangladesh,Bangladesh,6611,37307159.73,GeoNames centre covered by GHSL UCDB polygon,23.46186,91.18503,0.0,Dhaka,0.0,6611.0
-Bangladesh/Dhaka,matched,6090,Dhaka,Bangladesh,Bangladesh,6611,37307159.73,GeoNames centre covered by GHSL UCDB polygon,23.7104,90.40744,0.0,Dhaka,0.0,6611.0
-Bangladesh/Rajshahi,matched,2155,Rajshahi,Bangladesh,Bangladesh,139,805559.7922,GeoNames centre covered by GHSL UCDB polygon,24.374,88.60114,0.0,Rajshahi,0.0,139.0
-Bangladesh/Saidpur,matched,1447,Saidpur,Bangladesh,Bangladesh,23,235477.1508,GeoNames centre covered by GHSL UCDB polygon,25.77769,88.89169,0.0,Saidpur,0.0,23.0
-Belgium/Antwerp,matched,1069,Antwerp,Belgium,Belgium,327,767652.2233,GeoNames centre covered by GHSL UCDB polygon,51.22047,4.40026,0.0,Antwerp,0.0,327.0
-Belgium/Brussels,matched,1290,Brussels,Belgium,Belgium,235,1468753.608,GeoNames centre covered by GHSL UCDB polygon,50.85045,4.34878,0.0,Brussels,0.0,235.0
-Belgium/Charleroi,matched,1393,Charleroi,Belgium,Belgium,86,222465.2314,GeoNames centre covered by GHSL UCDB polygon,50.41136,4.44448,0.0,Charleroi,0.0,86.0
-Belgium/Liège,matched,1778,Liège,Belgium,Belgium,126,373661.8985,GeoNames centre covered by GHSL UCDB polygon,50.63373,5.56749,0.0,Liège,0.0,126.0
-Bolivia/Cochabamba,matched,666,Cochabamba,Bolivia (Plurinational State of),Bolivia,293,1357547.955,GeoNames centre covered by GHSL UCDB polygon,-17.38195,-66.15995,0.0,Cochabamba,0.0,293.0
-Brazil/BeloHorizonte,matched,7676,Belo Horizonte,Brazil,Brazil,609,4376746.588,GeoNames centre covered by GHSL UCDB polygon,-19.92083,-43.93778,0.0,Belo Horizonte,0.0,609.0
-Brazil/Belém,matched,4593,Belém,Brazil,Brazil,273,2192374.924,GeoNames centre covered by GHSL UCDB polygon,-1.45583,-48.50444,0.0,Belém,0.0,273.0
-Brazil/Brasília,matched,5855,Brasilia,Brazil,Brazil,283,1799120.619,GeoNames centre covered by GHSL UCDB polygon,-15.77972,-47.92972,0.0,Brasilia,0.0,283.0
-Brazil/Campinas,matched,7078,Campinas,Brazil,Brazil,434,1834451.428,GeoNames centre covered by GHSL UCDB polygon,-22.90556,-47.06083,0.0,Campinas,0.0,434.0
-Brazil/Curitiba,matched,6350,Curitiba,Brazil,Brazil,566,2512876.6,GeoNames centre covered by GHSL UCDB polygon,-25.42778,-49.27306,0.0,Curitiba,0.0,566.0
-Brazil/Fortaleza,matched,8154,Fortaleza,Brazil,Brazil,413,3324148.631,GeoNames centre covered by GHSL UCDB polygon,-3.71722,-38.54306,0.0,Fortaleza,0.0,413.0
-Brazil/Goiânia,matched,4945,Goiânia,Brazil,Brazil,531,2457483.108,GeoNames centre covered by GHSL UCDB polygon,-16.67861,-49.25389,0.0,Goiânia,0.0,531.0
-Brazil/Maceio,matched,8353,Maceió,Brazil,Brazil,163,1046071.456,GeoNames centre covered by GHSL UCDB polygon,-9.66583,-35.73528,0.0,Maceió,0.0,163.0
-Brazil/Manaus,matched,1377,Manaus,Brazil,Brazil,272,2368804.754,GeoNames centre covered by GHSL UCDB polygon,-3.10194,-60.025,0.0,Manaus,0.0,272.0
-Brazil/PortoAlegre,matched,5971,Porto Alegre,Brazil,Brazil,599,2763349.624,GeoNames centre covered by GHSL UCDB polygon,-30.03283,-51.23019,0.0,Porto Alegre,0.0,599.0
-Brazil/Recife,matched,8388,Recife,Brazil,Brazil,491,3847557.992,GeoNames centre covered by GHSL UCDB polygon,-8.05389,-34.88111,0.0,Recife,0.0,491.0
-Brazil/RiodeJaneiro,matched,7799,Rio de Janeiro,Brazil,Brazil,1285,9853692.802,GeoNames centre covered by GHSL UCDB polygon,-22.90642,-43.18223,0.0,Rio de Janeiro,0.0,1285.0
-Brazil/Salvador,matched,8238,Salvador,Brazil,Brazil,323,3305395.539,GeoNames centre covered by GHSL UCDB polygon,-12.97563,-38.49096,0.0,Salvador,0.0,323.0
-Brazil/SaoPaulo,matched,7277,São Paulo,Brazil,Brazil,2111,19485157.73,GeoNames centre covered by GHSL UCDB polygon,-23.5475,-46.63611,0.0,São Paulo,0.0,2111.0
-Brazil/SãoLuís,matched,7365,São Luís,Brazil,Brazil,242,1272247.118,GeoNames centre covered by GHSL UCDB polygon,-2.52972,-44.30278,0.0,São Luís,0.0,242.0
-Bulgaria/Sofia,matched,109,Sofia,Bulgaria,Bulgaria,201,1068056.502,GeoNames centre covered by GHSL UCDB polygon,42.68215957279099,23.324847176190318,0.0,Sofia,0.0,201.0
-Cambodia/PhnomPenh,matched,1741,Phnom Penh,Cambodia,Cambodia,354,2419130.754,GeoNames centre covered by GHSL UCDB polygon,11.56245,104.91601,0.0,Phnom Penh,0.0,354.0
-Canada/Barrie,matched,3110,Barrie,Canada,Canada,71,139402.353,GeoNames centre covered by GHSL UCDB polygon,44.40011,-79.66634,0.0,Barrie,0.0,71.0
-Canada/Calgary,matched,1262,Calgary,Canada,Canada,533,1524648.523,GeoNames centre covered by GHSL UCDB polygon,51.05011,-114.08529,0.0,Calgary,0.0,533.0
-Canada/Edmonton,matched,1564,Edmonton,Canada,Canada,435,1144485.708,GeoNames centre covered by GHSL UCDB polygon,53.55014,-113.46871,0.0,Edmonton,0.0,435.0
-Canada/Guelph,matched,2615,Guelph,Canada,Canada,55,118287.7541,GeoNames centre covered by GHSL UCDB polygon,43.54594,-80.25599,0.0,Guelph,0.0,55.0
-Canada/Halifax,matched,4055,Halifax,Canada,Canada,103,227622.3687,GeoNames centre covered by GHSL UCDB polygon,44.64269,-63.57688,0.0,Halifax,0.0,103.0
-Canada/Kitchener,matched,2408,Kitchener,Canada,Canada,147,388026.6619,GeoNames centre covered by GHSL UCDB polygon,43.42537,-80.5112,0.0,Kitchener,0.0,147.0
-Canada/London,matched,2255,London,Canada,Canada,150,365269.0491,GeoNames centre covered by GHSL UCDB polygon,42.98339,-81.23304,0.0,London,0.0,150.0
-Canada/Oshawa,matched,3223,Oshawa,Canada,Canada,127,311499.7659,GeoNames centre covered by GHSL UCDB polygon,43.90012,-78.84957,0.0,Oshawa,0.0,127.0
-Canada/Ottawa,matched,3494,Ottawa,Canada,Canada,208,604618.1703,GeoNames centre covered by GHSL UCDB polygon,45.41117,-75.69812,0.0,Ottawa,0.0,208.0
-Canada/Quebec,matched,4012,Quebec,Canada,Canada,275,619035.9201,GeoNames centre covered by GHSL UCDB polygon,46.81228,-71.21454,0.0,Quebec,0.0,275.0
-Canada/Regina,matched,1753,Regina,Canada,Canada,91,241948.588,GeoNames centre covered by GHSL UCDB polygon,50.45008,-104.6178,0.0,Regina,0.0,91.0
-Canada/Saskatoon,matched,1841,Saskatoon,Canada,Canada,114,286314.9234,GeoNames centre covered by GHSL UCDB polygon,52.13238,-106.66892,0.0,Saskatoon,0.0,114.0
-Canada/Trois-Rivières,matched,3970,Trois-Rivières,Canada,Canada,55,97591.30653,GeoNames centre covered by GHSL UCDB polygon,46.34515,-72.5477,0.0,Trois-Rivières,0.0,55.0
-Canada/Vancouver,matched,358,Vancouver,Canada,Canada,649,2198106.667,GeoNames centre covered by GHSL UCDB polygon,49.24966,-123.11934,0.0,Vancouver,0.0,649.0
-Canada/Winnipeg,matched,2013,Winnipeg,Canada,Canada,287,752807.6451,GeoNames centre covered by GHSL UCDB polygon,49.8844,-97.14704,0.0,Winnipeg,0.0,287.0
-Chile/Concepción,matched,1668,Concepción,Chile,Chile,102,508454.7209,GeoNames centre covered by GHSL UCDB polygon,-36.79106103058088,-73.07361602871887,0.0,Concepción,0.0,102.0
-China/HongKong,matched,11185,Hong Kong,China,China,220,4807599.362,GeoNames centre covered by GHSL UCDB polygon,22.27832,114.17469,0.0,Hong Kong,0.0,220.0
-China/Taipei,matched,1142,Taipei,"China, Taiwan Province of China",Taiwan,972,9686521.352,GeoNames centre covered by GHSL UCDB polygon,25.05306,121.52639,0.0,Taipei,0.0,972.0
-Colombia/Barranquilla,matched,3968,Barranquilla,Colombia,Colombia,157,2166638.375,GeoNames centre covered by GHSL UCDB polygon,10.96854,-74.78132,0.0,Barranquilla,0.0,157.0
-Colombia/Bogota,matched,3881,Bogota,Colombia,Colombia,534,10419360.65,GeoNames centre covered by GHSL UCDB polygon,4.60971,-74.08175,0.0,Bogota,0.0,534.0
-Colombia/Bucaramanga,matched,4701,Bucaramanga,Colombia,Colombia,67,893662.2264,GeoNames centre covered by GHSL UCDB polygon,7.125,-73.11895,0.0,Bucaramanga,0.0,67.0
-Colombia/Cali,matched,1158,Cali,Colombia,Colombia,186,2691615.942,GeoNames centre covered by GHSL UCDB polygon,3.43054,-76.5199,0.0,Cali,0.0,186.0
-Colombia/Cartagena,matched,3275,Cartagena,Colombia,Colombia,114,925945.2183,GeoNames centre covered by GHSL UCDB polygon,10.39817,-75.49328,0.0,Cartagena,0.0,114.0
-Colombia/Medellín,matched,2676,Medellín,Colombia,Colombia,233,3215457.351,GeoNames centre covered by GHSL UCDB polygon,6.245,-75.57151,0.0,Medellín,0.0,233.0
-CzechRepublic/Brno,matched,1194,Brno,Czechia,Czechia,81,313581.6171,GeoNames centre covered by GHSL UCDB polygon,49.19739294863731,16.6112701486704,0.0,Brno,0.0,81.0
-CzechRepublic/Ostrava,matched,1404,Ostrava,Czechia,Czechia,45,150765.9702,GeoNames centre covered by GHSL UCDB polygon,49.82060316267961,18.26804670844947,0.0,Ostrava,0.0,45.0
-CzechRepublic/Prague,matched,560,Prague,Czechia,Czechia,263,1201277.711,GeoNames centre covered by GHSL UCDB polygon,50.06540698708415,14.447614910647266,0.0,Prague,0.0,263.0
-DominicanRepublic/SantoDomingo,matched,1667,Santo Domingo,Dominican Republic,Dominican Republic,483,4593163.695,GeoNames centre covered by GHSL UCDB polygon,18.47186,-69.89232,0.0,Santo Domingo,0.0,483.0
-Ecuador/Guayaquil,matched,792,Guayaquil,Ecuador,Ecuador,314,3247674.482,GeoNames centre covered by GHSL UCDB polygon,-2.19616,-79.88621,0.0,Guayaquil,0.0,314.0
-Estonia/Tallinn,matched,99,Tallinn,Estonia,Estonia,121,449860.9731,GeoNames centre covered by GHSL UCDB polygon,59.43696,24.75353,0.0,Tallinn,0.0,121.0
-Finland/Helsinki,matched,572,Helsinki,Finland,Finland,381,1001124.665,GeoNames centre covered by GHSL UCDB polygon,60.16952,24.93545,0.0,Helsinki,0.0,381.0
-Finland/Tampere,matched,425,Tampere,Finland,Finland,69,153566.9399,GeoNames centre covered by GHSL UCDB polygon,61.49911,23.78712,0.0,Tampere,0.0,69.0
-France/Bordeaux,matched,1285,Bordeaux,France,France,208,642755.5421,GeoNames centre covered by GHSL UCDB polygon,44.84124,-0.58046,0.0,Bordeaux,0.0,208.0
-France/Lille,matched,3449,Lille,France,France,228,907122.8382,GeoNames centre covered by GHSL UCDB polygon,50.63391,3.05512,0.0,Lille,0.0,228.0
-France/Lyon,matched,3978,Lyon,France,France,256,1194741.478,GeoNames centre covered by GHSL UCDB polygon,45.74906,4.84789,0.0,Lyon,0.0,256.0
-France/Marseille,matched,4182,Marseille,France,France,185,911933.9794,GeoNames centre covered by GHSL UCDB polygon,43.29695,5.38107,0.0,Marseille,0.0,185.0
-France/Montpellier,matched,3801,Montpellier,France,France,86,337380.5398,GeoNames centre covered by GHSL UCDB polygon,43.61093,3.87635,0.0,Montpellier,0.0,86.0
-France/Nantes,matched,818,Nantes,France,France,144,472261.9187,GeoNames centre covered by GHSL UCDB polygon,47.21725,-1.55336,0.0,Nantes,0.0,144.0
-France/Nice,matched,4746,Nice,France,France,108,393492.4329,GeoNames centre covered by GHSL UCDB polygon,43.70313,7.26608,0.0,Nice,0.0,108.0
-France/Paris,matched,2878,Paris,France,France,1421,9328384.716,GeoNames centre covered by GHSL UCDB polygon,48.85341,2.3488,0.0,Paris,0.0,1421.0
-France/Reims,matched,3756,Reims,France,France,50,190718.1834,GeoNames centre covered by GHSL UCDB polygon,49.26526,4.02853,0.0,Reims,0.0,50.0
-France/Rennes,matched,685,Rennes,France,France,57,251923.8291,GeoNames centre covered by GHSL UCDB polygon,48.11109,-1.67431,0.0,Rennes,0.0,57.0
-France/Strasbourg,matched,4782,Strasbourg,France,France,114,419245.0208,GeoNames centre covered by GHSL UCDB polygon,48.58392,7.74553,0.0,Strasbourg,0.0,114.0
-France/Toulouse,matched,2268,Toulouse,France,France,252,712881.9928,GeoNames centre covered by GHSL UCDB polygon,43.60426,1.44367,0.0,Toulouse,0.0,252.0
-Germany/Dortmund,matched,1779,Dortmund,Germany,Germany,254,709614.9434,GeoNames centre covered by GHSL UCDB polygon,51.51494,7.466,0.0,Dortmund,0.0,254.0
-Germany/FrankfurtamMain,matched,3400,Frankfurt,Germany,Germany,193,916259.4734,GeoNames centre covered by GHSL UCDB polygon,50.11552,8.68417,0.0,Frankfurt,0.0,193.0
-Germany/Hamburg,matched,4184,Hamburg,Germany,Germany,478,1733897.731,GeoNames centre covered by GHSL UCDB polygon,53.55073,9.99302,0.0,Hamburg,0.0,478.0
-Germany/Stuttgart,matched,4022,Stuttgart,Germany,Germany,257,909231.6837,GeoNames centre covered by GHSL UCDB polygon,48.78232,9.17702,0.0,Stuttgart,0.0,257.0
-Germany/Wuppertal,matched,1293,Wuppertal,Germany,Germany,220,650877.1736,GeoNames centre covered by GHSL UCDB polygon,51.25627,7.14816,0.0,Wuppertal,0.0,220.0
-India/Ahmedabad,matched,6143,Ahmedabad,India,India,365,7898649.803,GeoNames centre covered by GHSL UCDB polygon,23.02579,72.58727,0.0,Ahmedabad,0.0,365.0
-India/Bengaluru,matched,9558,Bengaluru,India,India,1008,15178532.9,GeoNames centre covered by GHSL UCDB polygon,12.97194,77.59369,0.0,Bengaluru,0.0,1008.0
-India/Chandigarh,matched,7151,Chandigarh,India,India,344,2417872.088,GeoNames centre covered by GHSL UCDB polygon,30.73629,76.7884,0.0,Chandigarh,0.0,344.0
-India/Chennai,matched,10300,Chennai,India,India,1052,11466400.34,GeoNames centre covered by GHSL UCDB polygon,13.08784,80.27847,0.0,Chennai,0.0,1052.0
-India/Coimbatore,matched,9510,Coimbatore,India,India,407,2360321.836,GeoNames centre covered by GHSL UCDB polygon,11.00555,76.96612,0.0,Coimbatore,0.0,407.0
-India/Indore,matched,8565,Indore,India,India,281,3598874.472,GeoNames centre covered by GHSL UCDB polygon,22.71792,75.8333,0.0,Indore,0.0,281.0
-India/Kochi,matched,9386,Kochi,India,India,1266,5069022.409,GeoNames centre covered by GHSL UCDB polygon,9.93988,76.26022,0.0,Kochi,0.0,1266.0
-India/Kolkata,matched,11352,Kolkata,India,India,2482,23314585.33,GeoNames centre covered by GHSL UCDB polygon,22.56263,88.36304,0.0,Kolkata,0.0,2482.0
-India/Kollam,matched,9464,Kollam,India,India,710,3463935.416,GeoNames centre covered by GHSL UCDB polygon,8.88113,76.58469,0.0,Kollam,0.0,710.0
-India/Lucknow,matched,9346,Lucknow,India,India,513,5214964.391,GeoNames centre covered by GHSL UCDB polygon,26.83928,80.92313,0.0,Lucknow,0.0,513.0
-India/Ludhiana,matched,6229,Ludhiana,India,India,226,2323217.464,GeoNames centre covered by GHSL UCDB polygon,30.91204,75.85379,0.0,Ludhiana,0.0,226.0
-India/Nagpur,matched,9410,Nagpur,India,India,286,3399891.104,GeoNames centre covered by GHSL UCDB polygon,21.14631,79.08491,0.0,Nagpur,0.0,286.0
-India/Surat,matched,6913,Surat,India,India,296,7100723.104,GeoNames centre covered by GHSL UCDB polygon,21.19594,72.83023,0.0,Surat,0.0,296.0
-India/Thiruvananthapuram,matched,9612,Thiruvananthapuram,India,India,361,3166824.705,GeoNames centre covered by GHSL UCDB polygon,8.4855,76.94924,0.0,Thiruvananthapuram,0.0,361.0
-India/Varanasi,matched,10008,Varanasi,India,India,381,3812495.5,GeoNames centre covered by GHSL UCDB polygon,25.31668,83.01041,0.0,Varanasi,0.0,381.0
-Indonesia/Balikpapan,matched,7944,Balikpapan,Indonesia,Indonesia,116,702530.8161,GeoNames centre covered by GHSL UCDB polygon,-1.26753,116.82887,0.0,Balikpapan,0.0,116.0
-Indonesia/BandarLampung,matched,5181,Bandar Lampung,Indonesia,Indonesia,176,1257827.767,GeoNames centre covered by GHSL UCDB polygon,-5.42917,105.26111,0.0,Bandar Lampung,0.0,176.0
-Indonesia/Bandung,matched,5748,Bandung,Indonesia,Indonesia,988,8691180.858,GeoNames centre covered by GHSL UCDB polygon,-6.92222,107.60694,0.0,Bandung,0.0,988.0
-Indonesia/Banjarmasin,matched,7790,Banjarmasin,Indonesia,Indonesia,113,924566.4405,GeoNames centre covered by GHSL UCDB polygon,-3.31987,114.59075,0.0,Banjarmasin,0.0,113.0
-Indonesia/Cilegon,matched,5398,Cilegon,Indonesia,Indonesia,188,686540.2712,GeoNames centre covered by GHSL UCDB polygon,-6.0144,106.0542,0.0,Cilegon,0.0,188.0
-Indonesia/Denpasar,matched,7783,Denpasar,Indonesia,Indonesia,388,2005949.592,GeoNames centre covered by GHSL UCDB polygon,-8.65,115.21667,0.0,Denpasar,0.0,388.0
-Indonesia/Makassar,matched,8035,Makassar,Indonesia,Indonesia,343,2241888.193,GeoNames centre covered by GHSL UCDB polygon,-5.14861,119.43194,0.0,Makassar,0.0,343.0
-Indonesia/Manado,matched,8284,Manado,Indonesia,Indonesia,94,483103.7926,GeoNames centre covered by GHSL UCDB polygon,1.48218,124.84892,0.0,Manado,0.0,94.0
-Indonesia/Mataram,matched,7867,Mataram,Indonesia,Indonesia,195,1009676.861,GeoNames centre covered by GHSL UCDB polygon,-8.58333,116.11667,0.0,Mataram,0.0,195.0
-Indonesia/Padang,matched,3096,Padang,Indonesia,Indonesia,216,1210988.395,GeoNames centre covered by GHSL UCDB polygon,-0.94924,100.35427,0.0,Padang,0.0,216.0
-Indonesia/Pekanbaru,matched,3586,Pekanbaru,Indonesia,Indonesia,234,1226040.608,GeoNames centre covered by GHSL UCDB polygon,0.51667,101.44167,0.0,Pekanbaru,0.0,234.0
-Indonesia/Samarinda,matched,7958,Samarinda,Indonesia,Indonesia,157,1225373.203,GeoNames centre covered by GHSL UCDB polygon,-0.49167,117.14583,0.0,Samarinda,0.0,157.0
-Indonesia/Semarang,matched,6785,Semarang,Indonesia,Indonesia,603,3274359.572,GeoNames centre covered by GHSL UCDB polygon,-6.99306,110.42083,0.0,Semarang,0.0,603.0
-Indonesia/Surabaya,matched,7459,Surabaya,Indonesia,Indonesia,1304,6856993.107,GeoNames centre covered by GHSL UCDB polygon,-7.24917,112.75083,0.0,Surabaya,0.0,1304.0
-Indonesia/Tasikmalaya,matched,5985,Tasikmalaya,Indonesia,Indonesia,546,2923169.401,GeoNames centre covered by GHSL UCDB polygon,-7.3274,108.2207,0.0,Tasikmalaya,0.0,546.0
-Ireland/Cork,matched,233,Cork,Ireland,Ireland,52,137272.0917,GeoNames centre covered by GHSL UCDB polygon,51.89797,-8.47061,0.0,Cork,0.0,52.0
-Ireland/Dublin,matched,394,Dublin,Ireland,Ireland,301,1124519.535,GeoNames centre covered by GHSL UCDB polygon,53.33306,-6.24889,0.0,Dublin,0.0,301.0
-Italy/Bari,matched,5194,Bari,Italy,Italy,80,311280.0539,GeoNames centre covered by GHSL UCDB polygon,41.12066,16.86982,0.0,Bari,0.0,80.0
-Italy/Bologna,matched,3065,Bologna,Italy,Italy,114,456780.0897,GeoNames centre covered by GHSL UCDB polygon,44.49381,11.33875,0.0,Bologna,0.0,114.0
-Italy/Catania,matched,4820,Catania,Italy,Italy,109,455595.1543,GeoNames centre covered by GHSL UCDB polygon,37.49223,15.07041,0.0,Catania,0.0,109.0
-Italy/Florence,matched,3005,Florence,Italy,Italy,196,711105.1703,GeoNames centre covered by GHSL UCDB polygon,43.77925,11.24626,0.0,Florence,0.0,196.0
-Italy/Genoa,matched,1074,Genoa,Italy,Italy,98,523194.2257,GeoNames centre covered by GHSL UCDB polygon,44.40478,8.94439,0.0,Genoa,0.0,98.0
-Italy/Messina,matched,4919,Messina,Italy,Italy,45,178836.2622,GeoNames centre covered by GHSL UCDB polygon,38.19394,15.55256,0.0,Messina,0.0,45.0
-Italy/Milan,matched,1498,Milan,Italy,Italy,785,3135553.23,GeoNames centre covered by GHSL UCDB polygon,45.46427,9.18951,0.0,Milan,0.0,785.0
-Italy/Naples,matched,4490,Naples,Italy,Italy,618,2885079.239,GeoNames centre covered by GHSL UCDB polygon,40.85216,14.26811,0.0,Naples,0.0,618.0
-Italy/Padua,matched,3347,Padua,Italy,Italy,89,244498.4849,GeoNames centre covered by GHSL UCDB polygon,45.40797,11.88586,0.0,Padua,0.0,89.0
-Italy/Parma,matched,2352,Parma,Italy,Italy,33,148518.4509,GeoNames centre covered by GHSL UCDB polygon,44.79935,10.32618,0.0,Parma,0.0,33.0
-Italy/Taranto,matched,5222,Taranto,Italy,Italy,58,136105.0941,GeoNames centre covered by GHSL UCDB polygon,40.46438,17.24707,0.0,Taranto,0.0,58.0
-Italy/Turin,matched,70,Turin,Italy,Italy,212,1243448.069,GeoNames centre covered by GHSL UCDB polygon,45.07049,7.68682,0.0,Turin,0.0,212.0
-Italy/Verona,matched,2694,Verona,Italy,Italy,49,216582.4882,GeoNames centre covered by GHSL UCDB polygon,45.43854,10.9938,0.0,Verona,0.0,49.0
-Japan/Fukuyama,matched,3487,Fukuyama,Japan,Japan,136,355565.6717,GeoNames centre covered by GHSL UCDB polygon,34.48333,133.36667,0.0,Fukuyama,0.0,136.0
-Japan/Hamamatsu,matched,5831,Hamamatsu,Japan,Japan,254,267033.0184,GeoNames centre covered by GHSL UCDB polygon,34.7,137.73333,0.0,Hamamatsu,0.0,254.0
-Japan/Hiroshima,matched,2921,Hiroshima,Japan,Japan,338,1150147.517,GeoNames centre covered by GHSL UCDB polygon,34.4,132.45,0.0,Hiroshima,0.0,338.0
-Japan/Kagoshima,matched,3381,Kagoshima,Japan,Japan,134,453832.6175,GeoNames centre covered by GHSL UCDB polygon,31.56667,130.55,0.0,Kagoshima,0.0,134.0
-Japan/Kanazawa,matched,4323,Kanazawa,Japan,Japan,173,527097.3964,GeoNames centre covered by GHSL UCDB polygon,36.6,136.61667,0.0,Kanazawa,0.0,173.0
+Australia/Geelong,matched,1254,Geelong,Australia,Australia,104,165824.5736,Study city centre covered by GHSL UCDB polygon,-38.14711,144.36069,0.0,Geelong,0.0,104.0
+Australia/GoldCoast,matched,2798,Gold Coast,Australia,Australia,168,279191.0015,Study city centre covered by GHSL UCDB polygon,-28.00029,153.43088,0.0,Gold Coast,0.0,168.0
+Australia/Hobart,matched,781,Hobart,Australia,Australia,46,69906.07557,Study city centre covered by GHSL UCDB polygon,-42.87936,147.32941,0.0,Hobart,0.0,46.0
+Australia/Melbourne,matched,1747,Melbourne,Australia,Australia,1611,4010658.252,Study city centre covered by GHSL UCDB polygon,-37.814,144.96332,0.0,Melbourne,0.0,1611.0
+Australia/Newcastle,matched,2399,Newcastle,Australia,Australia,126,205366.156,Study city centre covered by GHSL UCDB polygon,-32.92953,151.7801,0.0,Newcastle,0.0,126.0
+Australia/Perth,matched,498,Perth,Australia,Australia,784,1357381.728,Study city centre covered by GHSL UCDB polygon,-31.95224,115.8614,0.0,Perth,0.0,784.0
+Australia/Sydney,matched,2324,Sydney,Australia,Australia,1378,4375394.497,Study city centre covered by GHSL UCDB polygon,-33.86785,151.20732,0.0,Sydney,0.0,1378.0
+Australia/Toowoomba,matched,2470,Toowoomba,Australia,Australia,55,92940.7309,Study city centre covered by GHSL UCDB polygon,-27.56056,151.95386,0.0,Toowoomba,0.0,55.0
+Australia/Wollongong,matched,2006,Wollongong,Australia,Australia,108,149057.1476,Study city centre covered by GHSL UCDB polygon,-34.424,150.89345,0.0,Wollongong,0.0,108.0
+Austria/Graz,matched,961,Graz,Austria,Austria,76,306742.2013,Study city centre covered by GHSL UCDB polygon,47.06733,15.44197,0.0,Graz,0.0,76.0
+Austria/Linz,matched,701,Linz,Austria,Austria,67,243242.7563,Study city centre covered by GHSL UCDB polygon,48.30639,14.28611,0.0,Linz,0.0,67.0
+Austria/Vienna,matched,1081,Vienna,Austria,Austria,325,2056564.784,Study city centre covered by GHSL UCDB polygon,48.20849,16.37208,0.0,Vienna,0.0,325.0
+Bangladesh/Chattogram,matched,7439,Chattogram,Bangladesh,Bangladesh,519,5175717.307,Study city centre covered by GHSL UCDB polygon,22.3384,91.83168,0.0,Chattogram,0.0,519.0
+Bangladesh/Comilla,matched,6090,Dhaka,Bangladesh,Bangladesh,6611,37307159.73,Study city centre covered by GHSL UCDB polygon,23.46186,91.18503,0.0,Dhaka,0.0,6611.0
+Bangladesh/Dhaka,matched,6090,Dhaka,Bangladesh,Bangladesh,6611,37307159.73,Study city centre covered by GHSL UCDB polygon,23.7104,90.40744,0.0,Dhaka,0.0,6611.0
+Bangladesh/Rajshahi,matched,2155,Rajshahi,Bangladesh,Bangladesh,139,805559.7922,Study city centre covered by GHSL UCDB polygon,24.374,88.60114,0.0,Rajshahi,0.0,139.0
+Bangladesh/Saidpur,matched,1447,Saidpur,Bangladesh,Bangladesh,23,235477.1508,Study city centre covered by GHSL UCDB polygon,25.77769,88.89169,0.0,Saidpur,0.0,23.0
+Belgium/Antwerp,matched,1069,Antwerp,Belgium,Belgium,327,767652.2233,Study city centre covered by GHSL UCDB polygon,51.22047,4.40026,0.0,Antwerp,0.0,327.0
+Belgium/Brussels,matched,1290,Brussels,Belgium,Belgium,235,1468753.608,Study city centre covered by GHSL UCDB polygon,50.85045,4.34878,0.0,Brussels,0.0,235.0
+Belgium/Charleroi,matched,1393,Charleroi,Belgium,Belgium,86,222465.2314,Study city centre covered by GHSL UCDB polygon,50.41136,4.44448,0.0,Charleroi,0.0,86.0
+Belgium/Liège,matched,1778,Liège,Belgium,Belgium,126,373661.8985,Study city centre covered by GHSL UCDB polygon,50.63373,5.56749,0.0,Liège,0.0,126.0
+Bolivia/Cochabamba,matched,666,Cochabamba,Bolivia (Plurinational State of),Bolivia,293,1357547.955,Study city centre covered by GHSL UCDB polygon,-17.38195,-66.15995,0.0,Cochabamba,0.0,293.0
+Brazil/BeloHorizonte,matched,7676,Belo Horizonte,Brazil,Brazil,609,4376746.588,Study city centre covered by GHSL UCDB polygon,-19.92083,-43.93778,0.0,Belo Horizonte,0.0,609.0
+Brazil/Belém,matched,4593,Belém,Brazil,Brazil,273,2192374.924,Study city centre covered by GHSL UCDB polygon,-1.45583,-48.50444,0.0,Belém,0.0,273.0
+Brazil/Brasília,matched,5855,Brasilia,Brazil,Brazil,283,1799120.619,Study city centre covered by GHSL UCDB polygon,-15.77972,-47.92972,0.0,Brasilia,0.0,283.0
+Brazil/Campinas,matched,7078,Campinas,Brazil,Brazil,434,1834451.428,Study city centre covered by GHSL UCDB polygon,-22.90556,-47.06083,0.0,Campinas,0.0,434.0
+Brazil/Curitiba,matched,6350,Curitiba,Brazil,Brazil,566,2512876.6,Study city centre covered by GHSL UCDB polygon,-25.42778,-49.27306,0.0,Curitiba,0.0,566.0
+Brazil/Fortaleza,matched,8154,Fortaleza,Brazil,Brazil,413,3324148.631,Study city centre covered by GHSL UCDB polygon,-3.71722,-38.54306,0.0,Fortaleza,0.0,413.0
+Brazil/Goiânia,matched,4945,Goiânia,Brazil,Brazil,531,2457483.108,Study city centre covered by GHSL UCDB polygon,-16.67861,-49.25389,0.0,Goiânia,0.0,531.0
+Brazil/Maceio,matched,8353,Maceió,Brazil,Brazil,163,1046071.456,Study city centre covered by GHSL UCDB polygon,-9.66583,-35.73528,0.0,Maceió,0.0,163.0
+Brazil/Manaus,matched,1377,Manaus,Brazil,Brazil,272,2368804.754,Study city centre covered by GHSL UCDB polygon,-3.10194,-60.025,0.0,Manaus,0.0,272.0
+Brazil/PortoAlegre,matched,5971,Porto Alegre,Brazil,Brazil,599,2763349.624,Study city centre covered by GHSL UCDB polygon,-30.03283,-51.23019,0.0,Porto Alegre,0.0,599.0
+Brazil/Recife,matched,8388,Recife,Brazil,Brazil,491,3847557.992,Study city centre covered by GHSL UCDB polygon,-8.05389,-34.88111,0.0,Recife,0.0,491.0
+Brazil/RiodeJaneiro,matched,7799,Rio de Janeiro,Brazil,Brazil,1285,9853692.802,Study city centre covered by GHSL UCDB polygon,-22.90642,-43.18223,0.0,Rio de Janeiro,0.0,1285.0
+Brazil/Salvador,matched,8238,Salvador,Brazil,Brazil,323,3305395.539,Study city centre covered by GHSL UCDB polygon,-12.97563,-38.49096,0.0,Salvador,0.0,323.0
+Brazil/SaoPaulo,matched,7277,São Paulo,Brazil,Brazil,2111,19485157.73,Study city centre covered by GHSL UCDB polygon,-23.5475,-46.63611,0.0,São Paulo,0.0,2111.0
+Brazil/SãoLuís,matched,7365,São Luís,Brazil,Brazil,242,1272247.118,Study city centre covered by GHSL UCDB polygon,-2.52972,-44.30278,0.0,São Luís,0.0,242.0
+Bulgaria/Sofia,matched,109,Sofia,Bulgaria,Bulgaria,201,1068056.502,Study city centre covered by GHSL UCDB polygon,42.68215957279099,23.324847176190318,0.0,Sofia,0.0,201.0
+Cambodia/PhnomPenh,matched,1741,Phnom Penh,Cambodia,Cambodia,354,2419130.754,Study city centre covered by GHSL UCDB polygon,11.56245,104.91601,0.0,Phnom Penh,0.0,354.0
+Canada/Barrie,matched,3110,Barrie,Canada,Canada,71,139402.353,Study city centre covered by GHSL UCDB polygon,44.40011,-79.66634,0.0,Barrie,0.0,71.0
+Canada/Calgary,matched,1262,Calgary,Canada,Canada,533,1524648.523,Study city centre covered by GHSL UCDB polygon,51.05011,-114.08529,0.0,Calgary,0.0,533.0
+Canada/Edmonton,matched,1564,Edmonton,Canada,Canada,435,1144485.708,Study city centre covered by GHSL UCDB polygon,53.55014,-113.46871,0.0,Edmonton,0.0,435.0
+Canada/Guelph,matched,2615,Guelph,Canada,Canada,55,118287.7541,Study city centre covered by GHSL UCDB polygon,43.54594,-80.25599,0.0,Guelph,0.0,55.0
+Canada/Halifax,matched,4055,Halifax,Canada,Canada,103,227622.3687,Study city centre covered by GHSL UCDB polygon,44.64269,-63.57688,0.0,Halifax,0.0,103.0
+Canada/Kitchener,matched,2408,Kitchener,Canada,Canada,147,388026.6619,Study city centre covered by GHSL UCDB polygon,43.42537,-80.5112,0.0,Kitchener,0.0,147.0
+Canada/London,matched,2255,London,Canada,Canada,150,365269.0491,Study city centre covered by GHSL UCDB polygon,42.98339,-81.23304,0.0,London,0.0,150.0
+Canada/Oshawa,matched,3223,Oshawa,Canada,Canada,127,311499.7659,Study city centre covered by GHSL UCDB polygon,43.90012,-78.84957,0.0,Oshawa,0.0,127.0
+Canada/Ottawa,matched,3494,Ottawa,Canada,Canada,208,604618.1703,Study city centre covered by GHSL UCDB polygon,45.41117,-75.69812,0.0,Ottawa,0.0,208.0
+Canada/Quebec,matched,4012,Quebec,Canada,Canada,275,619035.9201,Study city centre covered by GHSL UCDB polygon,46.81228,-71.21454,0.0,Quebec,0.0,275.0
+Canada/Regina,matched,1753,Regina,Canada,Canada,91,241948.588,Study city centre covered by GHSL UCDB polygon,50.45008,-104.6178,0.0,Regina,0.0,91.0
+Canada/Saskatoon,matched,1841,Saskatoon,Canada,Canada,114,286314.9234,Study city centre covered by GHSL UCDB polygon,52.13238,-106.66892,0.0,Saskatoon,0.0,114.0
+Canada/Trois-Rivières,matched,3970,Trois-Rivières,Canada,Canada,55,97591.30653,Study city centre covered by GHSL UCDB polygon,46.34515,-72.5477,0.0,Trois-Rivières,0.0,55.0
+Canada/Vancouver,matched,358,Vancouver,Canada,Canada,649,2198106.667,Study city centre covered by GHSL UCDB polygon,49.24966,-123.11934,0.0,Vancouver,0.0,649.0
+Canada/Winnipeg,matched,2013,Winnipeg,Canada,Canada,287,752807.6451,Study city centre covered by GHSL UCDB polygon,49.8844,-97.14704,0.0,Winnipeg,0.0,287.0
+Chile/Concepción,matched,1668,Concepción,Chile,Chile,102,508454.7209,Study city centre covered by GHSL UCDB polygon,-36.79106103058088,-73.07361602871887,0.0,Concepción,0.0,102.0
+China/HongKong,matched,11185,Hong Kong,China,China,220,4807599.362,Study city centre covered by GHSL UCDB polygon,22.27832,114.17469,0.0,Hong Kong,0.0,220.0
+China/Taipei,matched,1142,Taipei,"China, Taiwan Province of China",Taiwan,972,9686521.352,Study city centre covered by GHSL UCDB polygon,25.05306,121.52639,0.0,Taipei,0.0,972.0
+Colombia/Barranquilla,matched,3968,Barranquilla,Colombia,Colombia,157,2166638.375,Study city centre covered by GHSL UCDB polygon,10.96854,-74.78132,0.0,Barranquilla,0.0,157.0
+Colombia/Bogota,matched,3881,Bogota,Colombia,Colombia,534,10419360.65,Study city centre covered by GHSL UCDB polygon,4.60971,-74.08175,0.0,Bogota,0.0,534.0
+Colombia/Bucaramanga,matched,4701,Bucaramanga,Colombia,Colombia,67,893662.2264,Study city centre covered by GHSL UCDB polygon,7.125,-73.11895,0.0,Bucaramanga,0.0,67.0
+Colombia/Cali,matched,1158,Cali,Colombia,Colombia,186,2691615.942,Study city centre covered by GHSL UCDB polygon,3.43054,-76.5199,0.0,Cali,0.0,186.0
+Colombia/Cartagena,matched,3275,Cartagena,Colombia,Colombia,114,925945.2183,Study city centre covered by GHSL UCDB polygon,10.39817,-75.49328,0.0,Cartagena,0.0,114.0
+Colombia/Medellín,matched,2676,Medellín,Colombia,Colombia,233,3215457.351,Study city centre covered by GHSL UCDB polygon,6.245,-75.57151,0.0,Medellín,0.0,233.0
+CzechRepublic/Brno,matched,1194,Brno,Czechia,Czechia,81,313581.6171,Study city centre covered by GHSL UCDB polygon,49.19739294863731,16.6112701486704,0.0,Brno,0.0,81.0
+CzechRepublic/Ostrava,matched,1404,Ostrava,Czechia,Czechia,45,150765.9702,Study city centre covered by GHSL UCDB polygon,49.82060316267961,18.26804670844947,0.0,Ostrava,0.0,45.0
+CzechRepublic/Prague,matched,560,Prague,Czechia,Czechia,263,1201277.711,Study city centre covered by GHSL UCDB polygon,50.06540698708415,14.447614910647266,0.0,Prague,0.0,263.0
+DominicanRepublic/SantoDomingo,matched,1667,Santo Domingo,Dominican Republic,Dominican Republic,483,4593163.695,Study city centre covered by GHSL UCDB polygon,18.47186,-69.89232,0.0,Santo Domingo,0.0,483.0
+Ecuador/Guayaquil,matched,792,Guayaquil,Ecuador,Ecuador,314,3247674.482,Study city centre covered by GHSL UCDB polygon,-2.19616,-79.88621,0.0,Guayaquil,0.0,314.0
+Estonia/Tallinn,matched,99,Tallinn,Estonia,Estonia,121,449860.9731,Study city centre covered by GHSL UCDB polygon,59.43696,24.75353,0.0,Tallinn,0.0,121.0
+Finland/Helsinki,matched,572,Helsinki,Finland,Finland,381,1001124.665,Study city centre covered by GHSL UCDB polygon,60.16952,24.93545,0.0,Helsinki,0.0,381.0
+Finland/Tampere,matched,425,Tampere,Finland,Finland,69,153566.9399,Study city centre covered by GHSL UCDB polygon,61.49911,23.78712,0.0,Tampere,0.0,69.0
+France/Bordeaux,matched,1285,Bordeaux,France,France,208,642755.5421,Study city centre covered by GHSL UCDB polygon,44.84124,-0.58046,0.0,Bordeaux,0.0,208.0
+France/Lille,matched,3449,Lille,France,France,228,907122.8382,Study city centre covered by GHSL UCDB polygon,50.63391,3.05512,0.0,Lille,0.0,228.0
+France/Lyon,matched,3978,Lyon,France,France,256,1194741.478,Study city centre covered by GHSL UCDB polygon,45.74906,4.84789,0.0,Lyon,0.0,256.0
+France/Marseille,matched,4182,Marseille,France,France,185,911933.9794,Study city centre covered by GHSL UCDB polygon,43.29695,5.38107,0.0,Marseille,0.0,185.0
+France/Montpellier,matched,3801,Montpellier,France,France,86,337380.5398,Study city centre covered by GHSL UCDB polygon,43.61093,3.87635,0.0,Montpellier,0.0,86.0
+France/Nantes,matched,818,Nantes,France,France,144,472261.9187,Study city centre covered by GHSL UCDB polygon,47.21725,-1.55336,0.0,Nantes,0.0,144.0
+France/Nice,matched,4746,Nice,France,France,108,393492.4329,Study city centre covered by GHSL UCDB polygon,43.70313,7.26608,0.0,Nice,0.0,108.0
+France/Paris,matched,2878,Paris,France,France,1421,9328384.716,Study city centre covered by GHSL UCDB polygon,48.85341,2.3488,0.0,Paris,0.0,1421.0
+France/Reims,matched,3756,Reims,France,France,50,190718.1834,Study city centre covered by GHSL UCDB polygon,49.26526,4.02853,0.0,Reims,0.0,50.0
+France/Rennes,matched,685,Rennes,France,France,57,251923.8291,Study city centre covered by GHSL UCDB polygon,48.11109,-1.67431,0.0,Rennes,0.0,57.0
+France/Strasbourg,matched,4782,Strasbourg,France,France,114,419245.0208,Study city centre covered by GHSL UCDB polygon,48.58392,7.74553,0.0,Strasbourg,0.0,114.0
+France/Toulouse,matched,2268,Toulouse,France,France,252,712881.9928,Study city centre covered by GHSL UCDB polygon,43.60426,1.44367,0.0,Toulouse,0.0,252.0
+Germany/Dortmund,matched,1779,Dortmund,Germany,Germany,254,709614.9434,Study city centre covered by GHSL UCDB polygon,51.51494,7.466,0.0,Dortmund,0.0,254.0
+Germany/FrankfurtamMain,matched,3400,Frankfurt,Germany,Germany,193,916259.4734,Study city centre covered by GHSL UCDB polygon,50.11552,8.68417,0.0,Frankfurt,0.0,193.0
+Germany/Hamburg,matched,4184,Hamburg,Germany,Germany,478,1733897.731,Study city centre covered by GHSL UCDB polygon,53.55073,9.99302,0.0,Hamburg,0.0,478.0
+Germany/Stuttgart,matched,4022,Stuttgart,Germany,Germany,257,909231.6837,Study city centre covered by GHSL UCDB polygon,48.78232,9.17702,0.0,Stuttgart,0.0,257.0
+Germany/Wuppertal,matched,1293,Wuppertal,Germany,Germany,220,650877.1736,Study city centre covered by GHSL UCDB polygon,51.25627,7.14816,0.0,Wuppertal,0.0,220.0
+India/Ahmedabad,matched,6143,Ahmedabad,India,India,365,7898649.803,Study city centre covered by GHSL UCDB polygon,23.02579,72.58727,0.0,Ahmedabad,0.0,365.0
+India/Bengaluru,matched,9558,Bengaluru,India,India,1008,15178532.9,Study city centre covered by GHSL UCDB polygon,12.97194,77.59369,0.0,Bengaluru,0.0,1008.0
+India/Chandigarh,matched,7151,Chandigarh,India,India,344,2417872.088,Study city centre covered by GHSL UCDB polygon,30.73629,76.7884,0.0,Chandigarh,0.0,344.0
+India/Chennai,matched,10300,Chennai,India,India,1052,11466400.34,Study city centre covered by GHSL UCDB polygon,13.08784,80.27847,0.0,Chennai,0.0,1052.0
+India/Coimbatore,matched,9510,Coimbatore,India,India,407,2360321.836,Study city centre covered by GHSL UCDB polygon,11.00555,76.96612,0.0,Coimbatore,0.0,407.0
+India/Indore,matched,8565,Indore,India,India,281,3598874.472,Study city centre covered by GHSL UCDB polygon,22.71792,75.8333,0.0,Indore,0.0,281.0
+India/Kochi,matched,9386,Kochi,India,India,1266,5069022.409,Study city centre covered by GHSL UCDB polygon,9.93988,76.26022,0.0,Kochi,0.0,1266.0
+India/Kolkata,matched,11352,Kolkata,India,India,2482,23314585.33,Study city centre covered by GHSL UCDB polygon,22.56263,88.36304,0.0,Kolkata,0.0,2482.0
+India/Kollam,matched,9464,Kollam,India,India,710,3463935.416,Study city centre covered by GHSL UCDB polygon,8.88113,76.58469,0.0,Kollam,0.0,710.0
+India/Lucknow,matched,9346,Lucknow,India,India,513,5214964.391,Study city centre covered by GHSL UCDB polygon,26.83928,80.92313,0.0,Lucknow,0.0,513.0
+India/Ludhiana,matched,6229,Ludhiana,India,India,226,2323217.464,Study city centre covered by GHSL UCDB polygon,30.91204,75.85379,0.0,Ludhiana,0.0,226.0
+India/Nagpur,matched,9410,Nagpur,India,India,286,3399891.104,Study city centre covered by GHSL UCDB polygon,21.14631,79.08491,0.0,Nagpur,0.0,286.0
+India/Surat,matched,6913,Surat,India,India,296,7100723.104,Study city centre covered by GHSL UCDB polygon,21.19594,72.83023,0.0,Surat,0.0,296.0
+India/Thiruvananthapuram,matched,9612,Thiruvananthapuram,India,India,361,3166824.705,Study city centre covered by GHSL UCDB polygon,8.4855,76.94924,0.0,Thiruvananthapuram,0.0,361.0
+India/Varanasi,matched,10008,Varanasi,India,India,381,3812495.5,Study city centre covered by GHSL UCDB polygon,25.31668,83.01041,0.0,Varanasi,0.0,381.0
+Indonesia/Balikpapan,matched,7944,Balikpapan,Indonesia,Indonesia,116,702530.8161,Study city centre covered by GHSL UCDB polygon,-1.26753,116.82887,0.0,Balikpapan,0.0,116.0
+Indonesia/BandarLampung,matched,5181,Bandar Lampung,Indonesia,Indonesia,176,1257827.767,Study city centre covered by GHSL UCDB polygon,-5.42917,105.26111,0.0,Bandar Lampung,0.0,176.0
+Indonesia/Bandung,matched,5748,Bandung,Indonesia,Indonesia,988,8691180.858,Study city centre covered by GHSL UCDB polygon,-6.92222,107.60694,0.0,Bandung,0.0,988.0
+Indonesia/Banjarmasin,matched,7790,Banjarmasin,Indonesia,Indonesia,113,924566.4405,Study city centre covered by GHSL UCDB polygon,-3.31987,114.59075,0.0,Banjarmasin,0.0,113.0
+Indonesia/Cilegon,matched,5398,Cilegon,Indonesia,Indonesia,188,686540.2712,Study city centre covered by GHSL UCDB polygon,-6.0144,106.0542,0.0,Cilegon,0.0,188.0
+Indonesia/Denpasar,matched,7783,Denpasar,Indonesia,Indonesia,388,2005949.592,Study city centre covered by GHSL UCDB polygon,-8.65,115.21667,0.0,Denpasar,0.0,388.0
+Indonesia/Makassar,matched,8035,Makassar,Indonesia,Indonesia,343,2241888.193,Study city centre covered by GHSL UCDB polygon,-5.14861,119.43194,0.0,Makassar,0.0,343.0
+Indonesia/Manado,matched,8284,Manado,Indonesia,Indonesia,94,483103.7926,Study city centre covered by GHSL UCDB polygon,1.48218,124.84892,0.0,Manado,0.0,94.0
+Indonesia/Mataram,matched,7867,Mataram,Indonesia,Indonesia,195,1009676.861,Study city centre covered by GHSL UCDB polygon,-8.58333,116.11667,0.0,Mataram,0.0,195.0
+Indonesia/Padang,matched,3096,Padang,Indonesia,Indonesia,216,1210988.395,Study city centre covered by GHSL UCDB polygon,-0.94924,100.35427,0.0,Padang,0.0,216.0
+Indonesia/Pekanbaru,matched,3586,Pekanbaru,Indonesia,Indonesia,234,1226040.608,Study city centre covered by GHSL UCDB polygon,0.51667,101.44167,0.0,Pekanbaru,0.0,234.0
+Indonesia/Samarinda,matched,7958,Samarinda,Indonesia,Indonesia,157,1225373.203,Study city centre covered by GHSL UCDB polygon,-0.49167,117.14583,0.0,Samarinda,0.0,157.0
+Indonesia/Semarang,matched,6785,Semarang,Indonesia,Indonesia,603,3274359.572,Study city centre covered by GHSL UCDB polygon,-6.99306,110.42083,0.0,Semarang,0.0,603.0
+Indonesia/Surabaya,matched,7459,Surabaya,Indonesia,Indonesia,1304,6856993.107,Study city centre covered by GHSL UCDB polygon,-7.24917,112.75083,0.0,Surabaya,0.0,1304.0
+Indonesia/Tasikmalaya,matched,5985,Tasikmalaya,Indonesia,Indonesia,546,2923169.401,Study city centre covered by GHSL UCDB polygon,-7.3274,108.2207,0.0,Tasikmalaya,0.0,546.0
+Ireland/Cork,matched,233,Cork,Ireland,Ireland,52,137272.0917,Study city centre covered by GHSL UCDB polygon,51.89797,-8.47061,0.0,Cork,0.0,52.0
+Ireland/Dublin,matched,394,Dublin,Ireland,Ireland,301,1124519.535,Study city centre covered by GHSL UCDB polygon,53.33306,-6.24889,0.0,Dublin,0.0,301.0
+Italy/Bari,matched,5194,Bari,Italy,Italy,80,311280.0539,Study city centre covered by GHSL UCDB polygon,41.12066,16.86982,0.0,Bari,0.0,80.0
+Italy/Bologna,matched,3065,Bologna,Italy,Italy,114,456780.0897,Study city centre covered by GHSL UCDB polygon,44.49381,11.33875,0.0,Bologna,0.0,114.0
+Italy/Catania,matched,4820,Catania,Italy,Italy,109,455595.1543,Study city centre covered by GHSL UCDB polygon,37.49223,15.07041,0.0,Catania,0.0,109.0
+Italy/Florence,matched,3005,Florence,Italy,Italy,196,711105.1703,Study city centre covered by GHSL UCDB polygon,43.77925,11.24626,0.0,Florence,0.0,196.0
+Italy/Genoa,matched,1074,Genoa,Italy,Italy,98,523194.2257,Study city centre covered by GHSL UCDB polygon,44.40478,8.94439,0.0,Genoa,0.0,98.0
+Italy/Messina,matched,4919,Messina,Italy,Italy,45,178836.2622,Study city centre covered by GHSL UCDB polygon,38.19394,15.55256,0.0,Messina,0.0,45.0
+Italy/Milan,matched,1498,Milan,Italy,Italy,785,3135553.23,Study city centre covered by GHSL UCDB polygon,45.46427,9.18951,0.0,Milan,0.0,785.0
+Italy/Naples,matched,4490,Naples,Italy,Italy,618,2885079.239,Study city centre covered by GHSL UCDB polygon,40.85216,14.26811,0.0,Naples,0.0,618.0
+Italy/Padua,matched,3347,Padua,Italy,Italy,89,244498.4849,Study city centre covered by GHSL UCDB polygon,45.40797,11.88586,0.0,Padua,0.0,89.0
+Italy/Parma,matched,2352,Parma,Italy,Italy,33,148518.4509,Study city centre covered by GHSL UCDB polygon,44.79935,10.32618,0.0,Parma,0.0,33.0
+Italy/Taranto,matched,5222,Taranto,Italy,Italy,58,136105.0941,Study city centre covered by GHSL UCDB polygon,40.46438,17.24707,0.0,Taranto,0.0,58.0
+Italy/Turin,matched,70,Turin,Italy,Italy,212,1243448.069,Study city centre covered by GHSL UCDB polygon,45.07049,7.68682,0.0,Turin,0.0,212.0
+Italy/Verona,matched,2694,Verona,Italy,Italy,49,216582.4882,Study city centre covered by GHSL UCDB polygon,45.43854,10.9938,0.0,Verona,0.0,49.0
+Japan/Fukuyama,matched,3487,Fukuyama,Japan,Japan,136,355565.6717,Study city centre covered by GHSL UCDB polygon,34.48333,133.36667,0.0,Fukuyama,0.0,136.0
+Japan/Hamamatsu,matched,5831,Hamamatsu,Japan,Japan,254,267033.0184,Study city centre covered by GHSL UCDB polygon,34.7,137.73333,0.0,Hamamatsu,0.0,254.0
+Japan/Hiroshima,matched,2921,Hiroshima,Japan,Japan,338,1150147.517,Study city centre covered by GHSL UCDB polygon,34.4,132.45,0.0,Hiroshima,0.0,338.0
+Japan/Kagoshima,matched,3381,Kagoshima,Japan,Japan,134,453832.6175,Study city centre covered by GHSL UCDB polygon,31.56667,130.55,0.0,Kagoshima,0.0,134.0
+Japan/Kanazawa,matched,4323,Kanazawa,Japan,Japan,173,527097.3964,Study city centre covered by GHSL UCDB polygon,36.6,136.61667,0.0,Kanazawa,0.0,173.0
 Japan/Kitakyushu,matched,1027,Kitakyushu,Japan,Japan,388,1208934.612,exact normalized name and centre within 10 km of GHSL UCDB polygon,33.85181,130.85034,0.405,Kitakyushu,0.405,388.0
-Japan/Kumamoto,matched,2732,Kumamoto,Japan,Japan,166,624647.9432,GeoNames centre covered by GHSL UCDB polygon,32.80589,130.69181,0.0,Kumamoto,0.0,166.0
-Japan/Matsuyama,matched,3642,Matsuyama,Japan,Japan,140,421736.146,GeoNames centre covered by GHSL UCDB polygon,33.83916,132.76574,0.0,Matsuyama,0.0,140.0
-Japan/Niigata,matched,4907,Niigata,Japan,Japan,153,437871.2881,GeoNames centre covered by GHSL UCDB polygon,37.92259,139.04125,0.0,Niigata,0.0,153.0
-Japan/Sapporo,matched,351,Sapporo,Japan,Japan,353,1931423.54,GeoNames centre covered by GHSL UCDB polygon,43.06667,141.35,0.0,Sapporo,0.0,353.0
-Japan/Sendai,matched,5500,Sendai,Japan,Japan,298,1269674.844,GeoNames centre covered by GHSL UCDB polygon,38.26667,140.86667,0.0,Sendai,0.0,298.0
-Japan/Shizuoka,matched,6040,Shizuoka,Japan,Japan,139,233904.3686,GeoNames centre covered by GHSL UCDB polygon,34.98333,138.38333,0.0,Shizuoka,0.0,139.0
-Japan/Takamatsu,matched,4247,Takamatsu,Japan,Japan,148,314296.087,GeoNames centre covered by GHSL UCDB polygon,34.33333,134.05,0.0,Takamatsu,0.0,148.0
-Japan/Utsunomiya,matched,5871,Utsunomiya,Japan,Japan,105,337161.2254,GeoNames centre covered by GHSL UCDB polygon,36.56667,139.88333,0.0,Utsunomiya,0.0,105.0
-Japan/Ōita,matched,3215,Oita,Japan,Japan,155,363331.9904,GeoNames centre covered by GHSL UCDB polygon,33.23333,131.6,0.0,Oita,0.0,155.0
-Kazakhstan/Almaty,matched,2847,Almaty,Kazakhstan,Kazakhstan,331,2315538.314,GeoNames centre covered by GHSL UCDB polygon,43.25249,76.9115,0.0,Almaty,0.0,331.0
-Korea/Seoul,matched,348,Seoul,Republic of Korea,South Korea,2282,22261691.61,GeoNames centre covered by GHSL UCDB polygon,37.566,126.9784,0.0,Seoul,0.0,2282.0
-Latvia/Riga,matched,102,Riga,Latvia,Latvia,147,516896.7559,GeoNames centre covered by GHSL UCDB polygon,56.946,24.10589,0.0,Riga,0.0,147.0
-Lebanon/Beirut,matched,458,Beirut,Lebanon,Lebanon,199,1538385.522,GeoNames centre covered by GHSL UCDB polygon,33.89332,35.50157,0.0,Beirut,0.0,199.0
-Lithuania/Vilnius,matched,578,Vilnius,Lithuania,Lithuania,89,339420.3462,GeoNames centre covered by GHSL UCDB polygon,54.68916,25.2798,0.0,Vilnius,0.0,89.0
-Malaysia/AlorSetar,matched,343,Alor Setar,Malaysia,Malaysia,70,248043.1278,GeoNames centre covered by GHSL UCDB polygon,6.12104,100.36014,0.0,Alor Setar,0.0,70.0
-Malaysia/BukitMertajam,matched,495,Bukit Mertajam,Malaysia,Malaysia,164,497722.4993,GeoNames centre covered by GHSL UCDB polygon,5.36301,100.4667,0.0,Bukit Mertajam,0.0,164.0
-Malaysia/GeorgeTown,matched,176,George Town,Malaysia,Malaysia,134,756640.6066,GeoNames centre covered by GHSL UCDB polygon,5.41123,100.33543,0.0,George Town,0.0,134.0
-Malaysia/Ipoh,matched,1351,Ipoh,Malaysia,Malaysia,227,861932.7849,GeoNames centre covered by GHSL UCDB polygon,4.5841,101.0829,0.0,Ipoh,0.0,227.0
-Malaysia/KotaBharu,matched,2160,Kota Bharu,Malaysia,Malaysia,129,420612.7065,GeoNames centre covered by GHSL UCDB polygon,6.12361,102.24333,0.0,Kota Bharu,0.0,129.0
-Malaysia/KotaKinabalu,matched,3380,Kota Kinabalu,Malaysia,Malaysia,171,810842.9574,GeoNames centre covered by GHSL UCDB polygon,5.9749,116.0724,0.0,Kota Kinabalu,0.0,171.0
-Malaysia/Kuching,matched,3040,Kuching,Malaysia,Malaysia,131,587986.3854,GeoNames centre covered by GHSL UCDB polygon,1.55,110.33333,0.0,Kuching,0.0,131.0
-Malaysia/Seremban,matched,2080,Seremban,Malaysia,Malaysia,120,402053.085,GeoNames centre covered by GHSL UCDB polygon,2.7297,101.9381,0.0,Seremban,0.0,120.0
-Malaysia/SungaiPetani,matched,637,Sungai Petani,Malaysia,Malaysia,93,299735.6292,GeoNames centre covered by GHSL UCDB polygon,5.647,100.48772,0.0,Sungai Petani,0.0,93.0
-Mexico/Aguascalientes,matched,4212,Aguascalientes,Mexico,MÃ©xico,142,878454.5583,GeoNames centre covered by GHSL UCDB polygon,21.88262,-102.2843,0.0,Aguascalientes,0.0,142.0
-Mexico/Cancún,matched,6959,Cancún,Mexico,MÃ©xico,84,610780.9469,GeoNames centre covered by GHSL UCDB polygon,21.17429,-86.84656,0.0,Cancún,0.0,84.0
-Mexico/Chihuahua,matched,4134,Chihuahua,Mexico,MÃ©xico,192,832219.698,GeoNames centre covered by GHSL UCDB polygon,28.63528,-106.08889,0.0,Chihuahua,0.0,192.0
-Mexico/CiudadJuárez,matched,5157,Ciudad Juárez,Mexico,MÃ©xico,298,1214948.819,GeoNames centre covered by GHSL UCDB polygon,31.72024,-106.46084,0.0,Ciudad Juárez,0.0,298.0
-Mexico/Culiacán,matched,2401,Culiacán,Mexico,MÃ©xico,137,671458.5658,GeoNames centre covered by GHSL UCDB polygon,24.80209,-107.39421,0.0,Culiacán,0.0,137.0
-Mexico/Hermosillo,matched,1924,Hermosillo,Mexico,MÃ©xico,162,778882.36,GeoNames centre covered by GHSL UCDB polygon,29.08874,-110.96677,0.0,Hermosillo,0.0,162.0
-Mexico/Mexicali,matched,1362,Mexicali,Mexico,MÃ©xico,161,736551.6306,GeoNames centre covered by GHSL UCDB polygon,32.62781,-115.45446,0.0,Mexicali,0.0,161.0
-Mexico/Monterrey,matched,6131,Monterrey,Mexico,MÃ©xico,685,4011151.011,GeoNames centre covered by GHSL UCDB polygon,25.68435,-100.31721,0.0,Monterrey,0.0,685.0
-Mexico/Morelia,matched,4364,Morelia,Mexico,MÃ©xico,110,635587.9012,GeoNames centre covered by GHSL UCDB polygon,19.70078,-101.18443,0.0,Morelia,0.0,110.0
-Mexico/Mérida,matched,6875,Mérida,Mexico,MÃ©xico,182,852925.9482,GeoNames centre covered by GHSL UCDB polygon,20.967,-89.62318,0.0,Mérida,0.0,182.0
-Mexico/Puebla,matched,5853,Puebla,Mexico,MÃ©xico,375,1949859.502,GeoNames centre covered by GHSL UCDB polygon,19.04778,-98.20723,0.0,Puebla,0.0,375.0
-Mexico/Saltillo,matched,5873,Saltillo,Mexico,MÃ©xico,151,735829.0286,GeoNames centre covered by GHSL UCDB polygon,25.42595,-100.97963,0.0,Saltillo,0.0,151.0
-Mexico/SanLuisPotosí,matched,5215,San Luis Potosí,Mexico,MÃ©xico,173,1005068.069,GeoNames centre covered by GHSL UCDB polygon,22.15234,-100.97135,0.0,San Luis Potosí,0.0,173.0
-Mexico/Toluca,matched,5243,Toluca,Mexico,MÃ©xico,395,1594046.479,GeoNames centre covered by GHSL UCDB polygon,19.28786,-99.65324,0.0,Toluca,0.0,395.0
-Mexico/Torreon,matched,4773,Torreón,Mexico,MÃ©xico,233,1363775.688,GeoNames centre covered by GHSL UCDB polygon,25.54389,-103.41898,0.0,Torreón,0.0,233.0
-NewZealand/Christchurch,matched,353,Christchurch,New Zealand,New Zealand,124,278356.3117,GeoNames centre covered by GHSL UCDB polygon,-43.53333,172.63333,0.0,Christchurch,0.0,124.0
-NewZealand/Hamilton,matched,1031,Hamilton,New Zealand,New Zealand,80,176223.1159,GeoNames centre covered by GHSL UCDB polygon,-37.78333,175.28333,0.0,Hamilton,0.0,80.0
-NewZealand/Tauranga,matched,1256,Tauranga,New Zealand,New Zealand,105,122546.4076,GeoNames centre covered by GHSL UCDB polygon,-37.68611,176.16667,0.0,Tauranga,0.0,105.0
-Nigeria/Abuja,matched,7471,Abuja,Nigeria,Nigeria,319,1322229.41,GeoNames centre covered by GHSL UCDB polygon,9.05785,7.49508,0.0,Abuja,0.0,319.0
-Nigeria/BeninCity,matched,5935,Benin City,Nigeria,Nigeria,386,1912370.433,GeoNames centre covered by GHSL UCDB polygon,6.33815,5.62575,0.0,Benin City,0.0,386.0
-Nigeria/Ibadan,matched,2880,Ibadan,Nigeria,Nigeria,574,4043954.957,GeoNames centre covered by GHSL UCDB polygon,7.37756,3.90591,0.0,Ibadan,0.0,574.0
-Nigeria/Kano,matched,8125,Kano,Nigeria,Nigeria,419,5110616.249,GeoNames centre covered by GHSL UCDB polygon,12.00012,8.51672,0.0,Kano,0.0,419.0
-Nigeria/Lagos,matched,1289,Lagos,Nigeria,Nigeria,1199,12846045.23,GeoNames centre covered by GHSL UCDB polygon,6.45407,3.39467,0.0,Lagos,0.0,1199.0
-Norway/Bergen,matched,66,Bergen,Norway,Norway,50,138237.0852,GeoNames centre covered by GHSL UCDB polygon,60.39299,5.32415,0.0,Bergen,0.0,50.0
-Norway/Oslo,matched,828,Oslo,Norway,Norway,244,889573.2617,GeoNames centre covered by GHSL UCDB polygon,59.91273,10.74609,0.0,Oslo,0.0,244.0
-Norway/Trondheim,matched,554,Trondheim,Norway,Norway,57,142103.7318,GeoNames centre covered by GHSL UCDB polygon,63.43049,10.39506,0.0,Trondheim,0.0,57.0
-Paraguay/CiudaddelEste,matched,2872,Foz do Iguaçu,Brazil,Brazil,71,219138.6881,GeoNames centre covered by GHSL UCDB polygon,-25.52320329559874,-54.557053414814135,0.0,Foz do Iguaçu,0.0,71.0
-Peru/Arequipa,matched,3440,Arequipa,Peru,Peru,166,1004835.002,GeoNames centre covered by GHSL UCDB polygon,-16.39899,-71.53747,0.0,Arequipa,0.0,166.0
-Peru/Chiclayo,matched,1040,Chiclayo,Peru,Peru,50,642224.9615,GeoNames centre covered by GHSL UCDB polygon,-6.77008,-79.85495,0.0,Chiclayo,0.0,50.0
-Peru/Trujillo,matched,1156,Trujillo,Peru,Peru,94,991426.9265,GeoNames centre covered by GHSL UCDB polygon,-8.11599,-79.02998,0.0,Trujillo,0.0,94.0
-Philippines/Dagupan,matched,645,Dagupan [Lingayen],Philippines,Philippines,359,973315.6161,GeoNames centre covered by GHSL UCDB polygon,16.04313,120.33325,0.0,Dagupan [Lingayen],0.0,359.0
-Poland/Bydgoszcz,matched,1874,Bydgoszcz,Poland,Poland,55,269010.5501,GeoNames centre covered by GHSL UCDB polygon,53.1235,18.00762,0.0,Bydgoszcz,0.0,55.0
-Poland/Częstochowa,matched,3068,Częstochowa,Poland,Poland,47,163595.1619,GeoNames centre covered by GHSL UCDB polygon,50.79646,19.12409,0.0,Częstochowa,0.0,47.0
-Poland/Gdansk,matched,2198,Gdansk,Poland,Poland,108,398019.1673,GeoNames centre covered by GHSL UCDB polygon,54.35227,18.64912,0.0,Gdansk,0.0,108.0
-Poland/Katowice,matched,3008,Katowice,Poland,Poland,265,879406.2828,GeoNames centre covered by GHSL UCDB polygon,50.2597,19.02173,0.0,Katowice,0.0,265.0
-Poland/Krakow,matched,3662,Krakow,Poland,Poland,176,723413.2294,GeoNames centre covered by GHSL UCDB polygon,50.06143,19.93658,0.0,Krakow,0.0,176.0
-Poland/Lublin,matched,4339,Lublin,Poland,Poland,72,304641.189,GeoNames centre covered by GHSL UCDB polygon,51.25058,22.57009,0.0,Lublin,0.0,72.0
-Poland/Poznan,matched,1402,Poznan,Poland,Poland,168,531735.5492,GeoNames centre covered by GHSL UCDB polygon,52.40692,16.92993,0.0,Poznan,0.0,168.0
-Poland/Szczecin,matched,80,Szczecin,Poland,Poland,78,311037.1241,GeoNames centre covered by GHSL UCDB polygon,53.42894,14.55302,0.0,Szczecin,0.0,78.0
-Portugal/Lisbon,matched,231,Lisbon,Portugal,Portugal,426,1974573.68,GeoNames centre covered by GHSL UCDB polygon,38.72509,-9.1498,0.0,Lisbon,0.0,426.0
-Portugal/Porto,matched,1058,Porto,Portugal,Portugal,324,1060250.077,GeoNames centre covered by GHSL UCDB polygon,41.1627048027019,-8.619464453583419,0.0,Porto,0.0,324.0
-Qatar/Doha,matched,153,Doha,Qatar,Qatar,392,1980416.128,GeoNames centre covered by GHSL UCDB polygon,25.28545,51.53096,0.0,Doha,0.0,392.0
-Romania/Bucharest,matched,2359,Bucharest,Romania,Romania,260,1971350.247,GeoNames centre covered by GHSL UCDB polygon,44.43225,26.10626,0.0,Bucharest,0.0,260.0
-Romania/Cluj-Napoca,matched,972,Cluj-Napoca,Romania,Romania,47,321094.5322,GeoNames centre covered by GHSL UCDB polygon,46.76667,23.6,0.0,Cluj-Napoca,0.0,47.0
-Romania/Timișoara,matched,276,Timișoara,Romania,Romania,64,335524.6954,GeoNames centre covered by GHSL UCDB polygon,45.75372,21.22571,0.0,Timișoara,0.0,64.0
-Russia/Chelyabinsk,matched,7174,Chelyabinsk,Russian Federation,Russia,228,809268.499,GeoNames centre covered by GHSL UCDB polygon,55.1611,61.42877,0.0,Chelyabinsk,0.0,228.0
-Russia/Kazan,matched,5901,Kazan,Russian Federation,Russia,248,1127086.347,GeoNames centre covered by GHSL UCDB polygon,55.78874,49.12214,0.0,Kazan,0.0,248.0
-Russia/Krasnodar,matched,5080,Krasnodar,Russian Federation,Russia,223,753687.7014,GeoNames centre covered by GHSL UCDB polygon,45.04534,38.98178,0.0,Krasnodar,0.0,223.0
-Russia/Krasnoyarsk,matched,7499,Krasnoyarsk,Russian Federation,Russia,105,559535.3204,GeoNames centre covered by GHSL UCDB polygon,56.03742,92.93136,0.0,Krasnoyarsk,0.0,105.0
-Russia/Moscow,matched,2576,Moscow,Russian Federation,Russia,1545,14384081.55,GeoNames centre covered by GHSL UCDB polygon,55.75204,37.61781,0.0,Moscow,0.0,1545.0
-Russia/Novosibirsk,matched,7358,Novosibirsk,Russian Federation,Russia,281,1342710.773,GeoNames centre covered by GHSL UCDB polygon,55.02259,82.93175,0.0,Novosibirsk,0.0,281.0
-Russia/Omsk,matched,7336,Omsk,Russian Federation,Russia,225,869414.9253,GeoNames centre covered by GHSL UCDB polygon,54.99244,73.36859,0.0,Omsk,0.0,225.0
+Japan/Kumamoto,matched,2732,Kumamoto,Japan,Japan,166,624647.9432,Study city centre covered by GHSL UCDB polygon,32.80589,130.69181,0.0,Kumamoto,0.0,166.0
+Japan/Matsuyama,matched,3642,Matsuyama,Japan,Japan,140,421736.146,Study city centre covered by GHSL UCDB polygon,33.83916,132.76574,0.0,Matsuyama,0.0,140.0
+Japan/Niigata,matched,4907,Niigata,Japan,Japan,153,437871.2881,Study city centre covered by GHSL UCDB polygon,37.92259,139.04125,0.0,Niigata,0.0,153.0
+Japan/Sapporo,matched,351,Sapporo,Japan,Japan,353,1931423.54,Study city centre covered by GHSL UCDB polygon,43.06667,141.35,0.0,Sapporo,0.0,353.0
+Japan/Sendai,matched,5500,Sendai,Japan,Japan,298,1269674.844,Study city centre covered by GHSL UCDB polygon,38.26667,140.86667,0.0,Sendai,0.0,298.0
+Japan/Shizuoka,matched,6040,Shizuoka,Japan,Japan,139,233904.3686,Study city centre covered by GHSL UCDB polygon,34.98333,138.38333,0.0,Shizuoka,0.0,139.0
+Japan/Takamatsu,matched,4247,Takamatsu,Japan,Japan,148,314296.087,Study city centre covered by GHSL UCDB polygon,34.33333,134.05,0.0,Takamatsu,0.0,148.0
+Japan/Utsunomiya,matched,5871,Utsunomiya,Japan,Japan,105,337161.2254,Study city centre covered by GHSL UCDB polygon,36.56667,139.88333,0.0,Utsunomiya,0.0,105.0
+Japan/Ōita,matched,3215,Oita,Japan,Japan,155,363331.9904,Study city centre covered by GHSL UCDB polygon,33.23333,131.6,0.0,Oita,0.0,155.0
+Kazakhstan/Almaty,matched,2847,Almaty,Kazakhstan,Kazakhstan,331,2315538.314,Study city centre covered by GHSL UCDB polygon,43.25249,76.9115,0.0,Almaty,0.0,331.0
+Korea/Seoul,matched,348,Seoul,Republic of Korea,South Korea,2282,22261691.61,Study city centre covered by GHSL UCDB polygon,37.566,126.9784,0.0,Seoul,0.0,2282.0
+Latvia/Riga,matched,102,Riga,Latvia,Latvia,147,516896.7559,Study city centre covered by GHSL UCDB polygon,56.946,24.10589,0.0,Riga,0.0,147.0
+Lebanon/Beirut,matched,458,Beirut,Lebanon,Lebanon,199,1538385.522,Study city centre covered by GHSL UCDB polygon,33.89332,35.50157,0.0,Beirut,0.0,199.0
+Lithuania/Vilnius,matched,578,Vilnius,Lithuania,Lithuania,89,339420.3462,Study city centre covered by GHSL UCDB polygon,54.68916,25.2798,0.0,Vilnius,0.0,89.0
+Malaysia/AlorSetar,matched,343,Alor Setar,Malaysia,Malaysia,70,248043.1278,Study city centre covered by GHSL UCDB polygon,6.12104,100.36014,0.0,Alor Setar,0.0,70.0
+Malaysia/BukitMertajam,matched,495,Bukit Mertajam,Malaysia,Malaysia,164,497722.4993,Study city centre covered by GHSL UCDB polygon,5.36301,100.4667,0.0,Bukit Mertajam,0.0,164.0
+Malaysia/GeorgeTown,matched,176,George Town,Malaysia,Malaysia,134,756640.6066,Study city centre covered by GHSL UCDB polygon,5.41123,100.33543,0.0,George Town,0.0,134.0
+Malaysia/Ipoh,matched,1351,Ipoh,Malaysia,Malaysia,227,861932.7849,Study city centre covered by GHSL UCDB polygon,4.5841,101.0829,0.0,Ipoh,0.0,227.0
+Malaysia/KotaBharu,matched,2160,Kota Bharu,Malaysia,Malaysia,129,420612.7065,Study city centre covered by GHSL UCDB polygon,6.12361,102.24333,0.0,Kota Bharu,0.0,129.0
+Malaysia/KotaKinabalu,matched,3380,Kota Kinabalu,Malaysia,Malaysia,171,810842.9574,Study city centre covered by GHSL UCDB polygon,5.9749,116.0724,0.0,Kota Kinabalu,0.0,171.0
+Malaysia/Kuching,matched,3040,Kuching,Malaysia,Malaysia,131,587986.3854,Study city centre covered by GHSL UCDB polygon,1.55,110.33333,0.0,Kuching,0.0,131.0
+Malaysia/Seremban,matched,2080,Seremban,Malaysia,Malaysia,120,402053.085,Study city centre covered by GHSL UCDB polygon,2.7297,101.9381,0.0,Seremban,0.0,120.0
+Malaysia/SungaiPetani,matched,637,Sungai Petani,Malaysia,Malaysia,93,299735.6292,Study city centre covered by GHSL UCDB polygon,5.647,100.48772,0.0,Sungai Petani,0.0,93.0
+Mexico/Aguascalientes,matched,4212,Aguascalientes,Mexico,MÃ©xico,142,878454.5583,Study city centre covered by GHSL UCDB polygon,21.88262,-102.2843,0.0,Aguascalientes,0.0,142.0
+Mexico/Cancún,matched,6959,Cancún,Mexico,MÃ©xico,84,610780.9469,Study city centre covered by GHSL UCDB polygon,21.17429,-86.84656,0.0,Cancún,0.0,84.0
+Mexico/Chihuahua,matched,4134,Chihuahua,Mexico,MÃ©xico,192,832219.698,Study city centre covered by GHSL UCDB polygon,28.63528,-106.08889,0.0,Chihuahua,0.0,192.0
+Mexico/CiudadJuárez,matched,5157,Ciudad Juárez,Mexico,MÃ©xico,298,1214948.819,Study city centre covered by GHSL UCDB polygon,31.72024,-106.46084,0.0,Ciudad Juárez,0.0,298.0
+Mexico/Culiacán,matched,2401,Culiacán,Mexico,MÃ©xico,137,671458.5658,Study city centre covered by GHSL UCDB polygon,24.80209,-107.39421,0.0,Culiacán,0.0,137.0
+Mexico/Hermosillo,matched,1924,Hermosillo,Mexico,MÃ©xico,162,778882.36,Study city centre covered by GHSL UCDB polygon,29.08874,-110.96677,0.0,Hermosillo,0.0,162.0
+Mexico/Mexicali,matched,1362,Mexicali,Mexico,MÃ©xico,161,736551.6306,Study city centre covered by GHSL UCDB polygon,32.62781,-115.45446,0.0,Mexicali,0.0,161.0
+Mexico/Monterrey,matched,6131,Monterrey,Mexico,MÃ©xico,685,4011151.011,Study city centre covered by GHSL UCDB polygon,25.68435,-100.31721,0.0,Monterrey,0.0,685.0
+Mexico/Morelia,matched,4364,Morelia,Mexico,MÃ©xico,110,635587.9012,Study city centre covered by GHSL UCDB polygon,19.70078,-101.18443,0.0,Morelia,0.0,110.0
+Mexico/Mérida,matched,6875,Mérida,Mexico,MÃ©xico,182,852925.9482,Study city centre covered by GHSL UCDB polygon,20.967,-89.62318,0.0,Mérida,0.0,182.0
+Mexico/Puebla,matched,5853,Puebla,Mexico,MÃ©xico,375,1949859.502,Study city centre covered by GHSL UCDB polygon,19.04778,-98.20723,0.0,Puebla,0.0,375.0
+Mexico/Saltillo,matched,5873,Saltillo,Mexico,MÃ©xico,151,735829.0286,Study city centre covered by GHSL UCDB polygon,25.42595,-100.97963,0.0,Saltillo,0.0,151.0
+Mexico/SanLuisPotosí,matched,5215,San Luis Potosí,Mexico,MÃ©xico,173,1005068.069,Study city centre covered by GHSL UCDB polygon,22.15234,-100.97135,0.0,San Luis Potosí,0.0,173.0
+Mexico/Toluca,matched,5243,Toluca,Mexico,MÃ©xico,395,1594046.479,Study city centre covered by GHSL UCDB polygon,19.28786,-99.65324,0.0,Toluca,0.0,395.0
+Mexico/Torreon,matched,4773,Torreón,Mexico,MÃ©xico,233,1363775.688,Study city centre covered by GHSL UCDB polygon,25.54389,-103.41898,0.0,Torreón,0.0,233.0
+NewZealand/Christchurch,matched,353,Christchurch,New Zealand,New Zealand,124,278356.3117,Study city centre covered by GHSL UCDB polygon,-43.53333,172.63333,0.0,Christchurch,0.0,124.0
+NewZealand/Hamilton,matched,1031,Hamilton,New Zealand,New Zealand,80,176223.1159,Study city centre covered by GHSL UCDB polygon,-37.78333,175.28333,0.0,Hamilton,0.0,80.0
+NewZealand/Tauranga,matched,1256,Tauranga,New Zealand,New Zealand,105,122546.4076,Study city centre covered by GHSL UCDB polygon,-37.68611,176.16667,0.0,Tauranga,0.0,105.0
+Nigeria/Abuja,matched,7471,Abuja,Nigeria,Nigeria,319,1322229.41,Study city centre covered by GHSL UCDB polygon,9.05785,7.49508,0.0,Abuja,0.0,319.0
+Nigeria/BeninCity,matched,5935,Benin City,Nigeria,Nigeria,386,1912370.433,Study city centre covered by GHSL UCDB polygon,6.33815,5.62575,0.0,Benin City,0.0,386.0
+Nigeria/Ibadan,matched,2880,Ibadan,Nigeria,Nigeria,574,4043954.957,Study city centre covered by GHSL UCDB polygon,7.37756,3.90591,0.0,Ibadan,0.0,574.0
+Nigeria/Kano,matched,8125,Kano,Nigeria,Nigeria,419,5110616.249,Study city centre covered by GHSL UCDB polygon,12.00012,8.51672,0.0,Kano,0.0,419.0
+Nigeria/Lagos,matched,1289,Lagos,Nigeria,Nigeria,1199,12846045.23,Study city centre covered by GHSL UCDB polygon,6.45407,3.39467,0.0,Lagos,0.0,1199.0
+Norway/Bergen,matched,66,Bergen,Norway,Norway,50,138237.0852,Study city centre covered by GHSL UCDB polygon,60.39299,5.32415,0.0,Bergen,0.0,50.0
+Norway/Oslo,matched,828,Oslo,Norway,Norway,244,889573.2617,Study city centre covered by GHSL UCDB polygon,59.91273,10.74609,0.0,Oslo,0.0,244.0
+Norway/Trondheim,matched,554,Trondheim,Norway,Norway,57,142103.7318,Study city centre covered by GHSL UCDB polygon,63.43049,10.39506,0.0,Trondheim,0.0,57.0
+Paraguay/CiudaddelEste,matched,2872,Foz do Iguaçu,Brazil,Brazil,71,219138.6881,Study city centre covered by GHSL UCDB polygon,-25.52320329559874,-54.557053414814135,0.0,Foz do Iguaçu,0.0,71.0
+Peru/Arequipa,matched,3440,Arequipa,Peru,Peru,166,1004835.002,Study city centre covered by GHSL UCDB polygon,-16.39899,-71.53747,0.0,Arequipa,0.0,166.0
+Peru/Chiclayo,matched,1040,Chiclayo,Peru,Peru,50,642224.9615,Study city centre covered by GHSL UCDB polygon,-6.77008,-79.85495,0.0,Chiclayo,0.0,50.0
+Peru/Trujillo,matched,1156,Trujillo,Peru,Peru,94,991426.9265,Study city centre covered by GHSL UCDB polygon,-8.11599,-79.02998,0.0,Trujillo,0.0,94.0
+Philippines/Dagupan,matched,645,Dagupan [Lingayen],Philippines,Philippines,359,973315.6161,Study city centre covered by GHSL UCDB polygon,16.04313,120.33325,0.0,Dagupan [Lingayen],0.0,359.0
+Poland/Bydgoszcz,matched,1874,Bydgoszcz,Poland,Poland,55,269010.5501,Study city centre covered by GHSL UCDB polygon,53.1235,18.00762,0.0,Bydgoszcz,0.0,55.0
+Poland/Częstochowa,matched,3068,Częstochowa,Poland,Poland,47,163595.1619,Study city centre covered by GHSL UCDB polygon,50.79646,19.12409,0.0,Częstochowa,0.0,47.0
+Poland/Gdansk,matched,2198,Gdansk,Poland,Poland,108,398019.1673,Study city centre covered by GHSL UCDB polygon,54.35227,18.64912,0.0,Gdansk,0.0,108.0
+Poland/Katowice,matched,3008,Katowice,Poland,Poland,265,879406.2828,Study city centre covered by GHSL UCDB polygon,50.2597,19.02173,0.0,Katowice,0.0,265.0
+Poland/Krakow,matched,3662,Krakow,Poland,Poland,176,723413.2294,Study city centre covered by GHSL UCDB polygon,50.06143,19.93658,0.0,Krakow,0.0,176.0
+Poland/Lublin,matched,4339,Lublin,Poland,Poland,72,304641.189,Study city centre covered by GHSL UCDB polygon,51.25058,22.57009,0.0,Lublin,0.0,72.0
+Poland/Poznan,matched,1402,Poznan,Poland,Poland,168,531735.5492,Study city centre covered by GHSL UCDB polygon,52.40692,16.92993,0.0,Poznan,0.0,168.0
+Poland/Szczecin,matched,80,Szczecin,Poland,Poland,78,311037.1241,Study city centre covered by GHSL UCDB polygon,53.42894,14.55302,0.0,Szczecin,0.0,78.0
+Portugal/Lisbon,matched,231,Lisbon,Portugal,Portugal,426,1974573.68,Study city centre covered by GHSL UCDB polygon,38.72509,-9.1498,0.0,Lisbon,0.0,426.0
+Portugal/Porto,matched,1058,Porto,Portugal,Portugal,324,1060250.077,Study city centre covered by GHSL UCDB polygon,41.1627048027019,-8.619464453583419,0.0,Porto,0.0,324.0
+Qatar/Doha,matched,153,Doha,Qatar,Qatar,392,1980416.128,Study city centre covered by GHSL UCDB polygon,25.28545,51.53096,0.0,Doha,0.0,392.0
+Romania/Bucharest,matched,2359,Bucharest,Romania,Romania,260,1971350.247,Study city centre covered by GHSL UCDB polygon,44.43225,26.10626,0.0,Bucharest,0.0,260.0
+Romania/Cluj-Napoca,matched,972,Cluj-Napoca,Romania,Romania,47,321094.5322,Study city centre covered by GHSL UCDB polygon,46.76667,23.6,0.0,Cluj-Napoca,0.0,47.0
+Romania/Timișoara,matched,276,Timișoara,Romania,Romania,64,335524.6954,Study city centre covered by GHSL UCDB polygon,45.75372,21.22571,0.0,Timișoara,0.0,64.0
+Russia/Chelyabinsk,matched,7174,Chelyabinsk,Russian Federation,Russia,228,809268.499,Study city centre covered by GHSL UCDB polygon,55.1611,61.42877,0.0,Chelyabinsk,0.0,228.0
+Russia/Kazan,matched,5901,Kazan,Russian Federation,Russia,248,1127086.347,Study city centre covered by GHSL UCDB polygon,55.78874,49.12214,0.0,Kazan,0.0,248.0
+Russia/Krasnodar,matched,5080,Krasnodar,Russian Federation,Russia,223,753687.7014,Study city centre covered by GHSL UCDB polygon,45.04534,38.98178,0.0,Krasnodar,0.0,223.0
+Russia/Krasnoyarsk,matched,7499,Krasnoyarsk,Russian Federation,Russia,105,559535.3204,Study city centre covered by GHSL UCDB polygon,56.03742,92.93136,0.0,Krasnoyarsk,0.0,105.0
+Russia/Moscow,matched,2576,Moscow,Russian Federation,Russia,1545,14384081.55,Study city centre covered by GHSL UCDB polygon,55.75204,37.61781,0.0,Moscow,0.0,1545.0
+Russia/Novosibirsk,matched,7358,Novosibirsk,Russian Federation,Russia,281,1342710.773,Study city centre covered by GHSL UCDB polygon,55.02259,82.93175,0.0,Novosibirsk,0.0,281.0
+Russia/Omsk,matched,7336,Omsk,Russian Federation,Russia,225,869414.9253,Study city centre covered by GHSL UCDB polygon,54.99244,73.36859,0.0,Omsk,0.0,225.0
 Russia/Perm,unmatched,,,,,,,,58.01046,56.25017,,Кондратово,6.643,
-Russia/Rostov-on-Don,matched,4987,Rostov-on-Don,Russian Federation,Russia,190,1028671.913,GeoNames centre covered by GHSL UCDB polygon,47.21997,39.70769,0.0,Rostov-on-Don,0.0,190.0
-Russia/SaintPetersburg,matched,586,Saint Petersburg,Russian Federation,Russia,550,4878965.549,GeoNames centre covered by GHSL UCDB polygon,59.93863,30.31413,0.0,Saint Petersburg,0.0,550.0
-Russia/Samara,matched,6418,Samara,Russian Federation,Russia,146,942553.304,GeoNames centre covered by GHSL UCDB polygon,53.20767,50.13553,0.0,Samara,0.0,146.0
-Russia/Ufa,matched,6937,Ufa,Russian Federation,Russia,123,872394.6235,GeoNames centre covered by GHSL UCDB polygon,54.74306,55.96779,0.0,Ufa,0.0,123.0
-Russia/Volgograd,matched,5958,Volgograd,Russian Federation,Russia,154,632649.5527,GeoNames centre covered by GHSL UCDB polygon,48.71378,44.4976,0.0,Volgograd,0.0,154.0
-Russia/Voronezh,matched,4382,Voronezh,Russian Federation,Russia,183,863683.7203,GeoNames centre covered by GHSL UCDB polygon,51.66833,39.19204,0.0,Voronezh,0.0,183.0
-Russia/Yekaterinburg,matched,7057,Yekaterinburg,Russian Federation,Russia,207,1102144.619,GeoNames centre covered by GHSL UCDB polygon,56.85733,60.61529,0.0,Yekaterinburg,0.0,207.0
-Senegal/Dakar,matched,39,Dakar,Senegal,Senegal,277,3970201.794,GeoNames centre covered by GHSL UCDB polygon,14.6937,-17.44406,0.0,Dakar,0.0,277.0
-Singapore/Singapore,matched,178,Singapore,Singapore,Singapore,438,5117758.838,GeoNames centre covered by GHSL UCDB polygon,1.28967,103.85007,0.0,Singapore,0.0,438.0
-Slovakia/Bratislava,matched,89,Bratislava,Slovakia,Slovakia,84,310203.9225,GeoNames centre covered by GHSL UCDB polygon,48.14816,17.10674,0.0,Bratislava,0.0,84.0
-SouthAfrica/Bloemfontein,matched,2436,Bloemfontein,South Africa,South Africa,132,482751.3551,GeoNames centre covered by GHSL UCDB polygon,-29.12107,26.214,0.0,Bloemfontein,0.0,132.0
-SouthAfrica/CapeTown,matched,431,Cape Town,South Africa,South Africa,695,4338251.176,GeoNames centre covered by GHSL UCDB polygon,-33.92584,18.42322,0.0,Cape Town,0.0,695.0
-SouthAfrica/Centurion,matched,3986,Centurion,South Africa,South Africa,135,358903.2959,GeoNames centre covered by GHSL UCDB polygon,-25.85891,28.18577,0.0,Centurion,0.0,135.0
-SouthAfrica/Durban,matched,4787,Durban,South Africa,South Africa,807,3270867.743,GeoNames centre covered by GHSL UCDB polygon,-29.8579,31.0292,0.0,Durban,0.0,807.0
-SouthAfrica/Johannesburg,matched,3512,Johannesburg,South Africa,South Africa,1756,8592842.571,GeoNames centre covered by GHSL UCDB polygon,-26.20227,28.04363,0.0,Johannesburg,0.0,1756.0
-SouthAfrica/Pretoria,matched,3943,Pretoria,South Africa,South Africa,477,1826231.895,GeoNames centre covered by GHSL UCDB polygon,-25.74486,28.18783,0.0,Pretoria,0.0,477.0
-SouthKorea/Busan,matched,3920,Busan,Republic of Korea,South Korea,355,3263408.049,GeoNames centre covered by GHSL UCDB polygon,35.10168,129.03004,0.0,Busan,0.0,355.0
-SouthKorea/Daegu,matched,2920,Daegu,Republic of Korea,South Korea,287,2300085.2,GeoNames centre covered by GHSL UCDB polygon,35.87028,128.59111,0.0,Daegu,0.0,287.0
-SouthKorea/Daejeon,matched,2241,Daejeon,Republic of Korea,South Korea,204,1504228.783,GeoNames centre covered by GHSL UCDB polygon,36.34913,127.38493,0.0,Daejeon,0.0,204.0
-Spain/ACoruña,matched,1059,A Coruña,Spain,Spain,49,271212.3439,GeoNames centre covered by GHSL UCDB polygon,43.37135,-8.396,0.0,A Coruña,0.0,49.0
-Spain/Barcelona,matched,5071,Barcelona,Spain,Spain,438,3908361.824,GeoNames centre covered by GHSL UCDB polygon,41.40907528398302,2.123694007965644,0.0,Barcelona,0.0,438.0
-Spain/Bilbao,matched,3974,Bilbao,Spain,Spain,106,729221.8602,GeoNames centre covered by GHSL UCDB polygon,43.26271,-2.92528,0.0,Bilbao,0.0,106.0
-Spain/Córdoba,matched,2812,Córdoba,Spain,Spain,32,239915.6164,GeoNames centre covered by GHSL UCDB polygon,37.89155,-4.77275,0.0,Córdoba,0.0,32.0
-Spain/Gijón,matched,2556,Gijón,Spain,Spain,51,258570.821,GeoNames centre covered by GHSL UCDB polygon,43.53573,-5.66152,0.0,Gijón,0.0,51.0
-Spain/Granada,matched,3446,Granada,Spain,Spain,80,362800.4477,GeoNames centre covered by GHSL UCDB polygon,37.18817,-3.60667,0.0,Granada,0.0,80.0
-Spain/LasPalmasdeGranCanaria,matched,672,Las Palmas de Gran Canaria,Spain,Spain,51,378493.8292,GeoNames centre covered by GHSL UCDB polygon,28.10178,-15.41573,0.0,Las Palmas de Gran Canaria,0.0,51.0
-Spain/Murcia,matched,4257,Murcia,Spain,Spain,79,341431.024,GeoNames centre covered by GHSL UCDB polygon,37.98704,-1.13004,0.0,Murcia,0.0,79.0
-Spain/Málaga,matched,3115,Málaga,Spain,Spain,75,522826.643,GeoNames centre covered by GHSL UCDB polygon,36.72016,-4.42034,0.0,Málaga,0.0,75.0
-Spain/Oviedo,matched,2263,Oviedo / Uviéu,Spain,Spain,21,219998.8177,GeoNames centre covered by GHSL UCDB polygon,43.36029,-5.84476,0.0,Oviedo / Uviéu,0.0,21.0
-Spain/SantaCruzdeTenerife,matched,382,Santa Cruz de Tenerife,Spain,Spain,59,364849.4155,GeoNames centre covered by GHSL UCDB polygon,28.46824,-16.25462,0.0,Santa Cruz de Tenerife,0.0,59.0
-Spain/Valencia,matched,4522,Valencia,Spain,Spain,223,1404208.285,GeoNames centre covered by GHSL UCDB polygon,39.47391,-0.37966,0.0,Valencia,0.0,223.0
-Spain/Valladolid,matched,2997,Valladolid,Spain,Spain,54,309896.4594,GeoNames centre covered by GHSL UCDB polygon,41.65541,-4.72353,0.0,Valladolid,0.0,54.0
-Spain/Vigo,matched,939,Vigo,Spain,Spain,67,291791.9252,GeoNames centre covered by GHSL UCDB polygon,42.23282,-8.72264,0.0,Vigo,0.0,67.0
-Spain/Zaragoza,matched,4333,Zaragoza,Spain,Spain,76,624270.7076,GeoNames centre covered by GHSL UCDB polygon,41.65606,-0.87734,0.0,Zaragoza,0.0,76.0
-SriLanka/Colombo,matched,632,Colombo [Sri Jayawardenepura Kotte],Sri Lanka,Sri Lanka,1206,4720932.972,GeoNames centre covered by GHSL UCDB polygon,6.910402382479231,79.95250371412845,0.0,Colombo [Sri Jayawardenepura Kotte],0.0,1206.0
-Sweden/Gothenburg,matched,75,Gothenburg,Sweden,Sweden,191,599675.2527,GeoNames centre covered by GHSL UCDB polygon,57.70716,11.96679,0.0,Gothenburg,0.0,191.0
-Sweden/Malmö,matched,558,Malmo,Sweden,Sweden,84,339006.7437,GeoNames centre covered by GHSL UCDB polygon,55.60587,13.00073,0.0,Malmo,0.0,84.0
-Sweden/Stockholm,matched,1693,Stockholm,Sweden,Sweden,339,1543891.723,GeoNames centre covered by GHSL UCDB polygon,59.32951559531858,18.041061756276058,0.0,Stockholm,0.0,339.0
-Switzerland/Zurich,matched,1689,Zurich,Switzerland,Switzerland,187,689208.0731,GeoNames centre covered by GHSL UCDB polygon,47.36667,8.55,0.0,Zurich,0.0,187.0
-Thailand/Chonburi,matched,2790,Chon Buri,Thailand,Thailand,170,263105.7563,GeoNames centre covered by GHSL UCDB polygon,13.3622,100.98345,0.0,Chon Buri,0.0,170.0
-Thailand/HatYai,matched,3429,Hat Yai,Thailand,Thailand,81,436776.6838,GeoNames centre covered by GHSL UCDB polygon,7.00836,100.47668,0.0,Hat Yai,0.0,81.0
-Thailand/Lampang,matched,635,Lampang,Thailand,Thailand,43,186293.6132,GeoNames centre covered by GHSL UCDB polygon,18.29232,99.49277,0.0,Lampang,0.0,43.0
-Thailand/UdonThani,matched,3320,Udon Thani,Thailand,Thailand,33,95392.18628,GeoNames centre covered by GHSL UCDB polygon,17.41567,102.78589,0.0,Udon Thani,0.0,33.0
-Turkey/Adana,matched,5628,Adana,Turkey,Turkey,128,523157.8865,GeoNames centre covered by GHSL UCDB polygon,36.98615,35.32531,0.0,Adana,0.0,128.0
-Turkey/Ankara,matched,4921,Ankara,Turkey,Turkey,357,3695989.495,GeoNames centre covered by GHSL UCDB polygon,39.91987,32.85427,0.0,Ankara,0.0,357.0
-Turkey/Antalya,matched,4529,Antalya,Turkey,Turkey,258,1372672.143,GeoNames centre covered by GHSL UCDB polygon,36.90812,30.69556,0.0,Antalya,0.0,258.0
-Turkey/Bursa,matched,3130,Bursa,Turkey,Turkey,216,2366447.919,GeoNames centre covered by GHSL UCDB polygon,40.19559,29.06013,0.0,Bursa,0.0,216.0
-Turkey/Denizli,matched,3666,Denizli,Turkey,Turkey,81,501993.6759,GeoNames centre covered by GHSL UCDB polygon,37.77417,29.0875,0.0,Denizli,0.0,81.0
-Turkey/Eskisehir,matched,4150,Eskisehir,Turkey,Turkey,70,608473.8761,GeoNames centre covered by GHSL UCDB polygon,39.77667,30.52056,0.0,Eskisehir,0.0,70.0
-Turkey/Gaziantep,matched,6173,Gaziantep,Turkey,Turkey,134,1681269.631,GeoNames centre covered by GHSL UCDB polygon,37.05944,37.3825,0.0,Gaziantep,0.0,134.0
-Turkey/Izmir,matched,1094,Izmir,Turkey,Turkey,307,2457529.398,GeoNames centre covered by GHSL UCDB polygon,38.41273,27.13838,0.0,Izmir,0.0,307.0
-Turkey/Kayseri,matched,5559,Kayseri,Turkey,Turkey,160,893375.5148,GeoNames centre covered by GHSL UCDB polygon,38.73222,35.48528,0.0,Kayseri,0.0,160.0
-Turkey/Konya,matched,5077,Konya,Turkey,Turkey,240,1017329.388,GeoNames centre covered by GHSL UCDB polygon,37.87135,32.48464,0.0,Konya,0.0,240.0
-Turkey/Mersin,matched,5436,Mersin,Turkey,Turkey,110,654657.4295,GeoNames centre covered by GHSL UCDB polygon,36.81196,34.63886,0.0,Mersin,0.0,110.0
-Turkey/Samsun,matched,5511,Samsun,Turkey,Turkey,77,643551.8453,GeoNames centre covered by GHSL UCDB polygon,41.27976,36.3361,0.0,Samsun,0.0,77.0
-Turkey/İzmit,matched,3563,Kocaeli,Turkey,Turkey,150,746536.2234,GeoNames centre covered by GHSL UCDB polygon,40.76499,29.92928,0.0,Kocaeli,0.0,150.0
+Russia/Rostov-on-Don,matched,4987,Rostov-on-Don,Russian Federation,Russia,190,1028671.913,Study city centre covered by GHSL UCDB polygon,47.21997,39.70769,0.0,Rostov-on-Don,0.0,190.0
+Russia/SaintPetersburg,matched,586,Saint Petersburg,Russian Federation,Russia,550,4878965.549,Study city centre covered by GHSL UCDB polygon,59.93863,30.31413,0.0,Saint Petersburg,0.0,550.0
+Russia/Samara,matched,6418,Samara,Russian Federation,Russia,146,942553.304,Study city centre covered by GHSL UCDB polygon,53.20767,50.13553,0.0,Samara,0.0,146.0
+Russia/Ufa,matched,6937,Ufa,Russian Federation,Russia,123,872394.6235,Study city centre covered by GHSL UCDB polygon,54.74306,55.96779,0.0,Ufa,0.0,123.0
+Russia/Volgograd,matched,5958,Volgograd,Russian Federation,Russia,154,632649.5527,Study city centre covered by GHSL UCDB polygon,48.71378,44.4976,0.0,Volgograd,0.0,154.0
+Russia/Voronezh,matched,4382,Voronezh,Russian Federation,Russia,183,863683.7203,Study city centre covered by GHSL UCDB polygon,51.66833,39.19204,0.0,Voronezh,0.0,183.0
+Russia/Yekaterinburg,matched,7057,Yekaterinburg,Russian Federation,Russia,207,1102144.619,Study city centre covered by GHSL UCDB polygon,56.85733,60.61529,0.0,Yekaterinburg,0.0,207.0
+Senegal/Dakar,matched,39,Dakar,Senegal,Senegal,277,3970201.794,Study city centre covered by GHSL UCDB polygon,14.6937,-17.44406,0.0,Dakar,0.0,277.0
+Singapore/Singapore,matched,178,Singapore,Singapore,Singapore,438,5117758.838,Study city centre covered by GHSL UCDB polygon,1.28967,103.85007,0.0,Singapore,0.0,438.0
+Slovakia/Bratislava,matched,89,Bratislava,Slovakia,Slovakia,84,310203.9225,Study city centre covered by GHSL UCDB polygon,48.14816,17.10674,0.0,Bratislava,0.0,84.0
+SouthAfrica/Bloemfontein,matched,2436,Bloemfontein,South Africa,South Africa,132,482751.3551,Study city centre covered by GHSL UCDB polygon,-29.12107,26.214,0.0,Bloemfontein,0.0,132.0
+SouthAfrica/CapeTown,matched,431,Cape Town,South Africa,South Africa,695,4338251.176,Study city centre covered by GHSL UCDB polygon,-33.92584,18.42322,0.0,Cape Town,0.0,695.0
+SouthAfrica/Centurion,matched,3986,Centurion,South Africa,South Africa,135,358903.2959,Study city centre covered by GHSL UCDB polygon,-25.85891,28.18577,0.0,Centurion,0.0,135.0
+SouthAfrica/Durban,matched,4787,Durban,South Africa,South Africa,807,3270867.743,Study city centre covered by GHSL UCDB polygon,-29.8579,31.0292,0.0,Durban,0.0,807.0
+SouthAfrica/Johannesburg,matched,3512,Johannesburg,South Africa,South Africa,1756,8592842.571,Study city centre covered by GHSL UCDB polygon,-26.20227,28.04363,0.0,Johannesburg,0.0,1756.0
+SouthAfrica/Pretoria,matched,3943,Pretoria,South Africa,South Africa,477,1826231.895,Study city centre covered by GHSL UCDB polygon,-25.74486,28.18783,0.0,Pretoria,0.0,477.0
+SouthKorea/Busan,matched,3920,Busan,Republic of Korea,South Korea,355,3263408.049,Study city centre covered by GHSL UCDB polygon,35.10168,129.03004,0.0,Busan,0.0,355.0
+SouthKorea/Daegu,matched,2920,Daegu,Republic of Korea,South Korea,287,2300085.2,Study city centre covered by GHSL UCDB polygon,35.87028,128.59111,0.0,Daegu,0.0,287.0
+SouthKorea/Daejeon,matched,2241,Daejeon,Republic of Korea,South Korea,204,1504228.783,Study city centre covered by GHSL UCDB polygon,36.34913,127.38493,0.0,Daejeon,0.0,204.0
+Spain/ACoruña,matched,1059,A Coruña,Spain,Spain,49,271212.3439,Study city centre covered by GHSL UCDB polygon,43.37135,-8.396,0.0,A Coruña,0.0,49.0
+Spain/Barcelona,matched,5071,Barcelona,Spain,Spain,438,3908361.824,Study city centre covered by GHSL UCDB polygon,41.40907528398302,2.123694007965644,0.0,Barcelona,0.0,438.0
+Spain/Bilbao,matched,3974,Bilbao,Spain,Spain,106,729221.8602,Study city centre covered by GHSL UCDB polygon,43.26271,-2.92528,0.0,Bilbao,0.0,106.0
+Spain/Córdoba,matched,2812,Córdoba,Spain,Spain,32,239915.6164,Study city centre covered by GHSL UCDB polygon,37.89155,-4.77275,0.0,Córdoba,0.0,32.0
+Spain/Gijón,matched,2556,Gijón,Spain,Spain,51,258570.821,Study city centre covered by GHSL UCDB polygon,43.53573,-5.66152,0.0,Gijón,0.0,51.0
+Spain/Granada,matched,3446,Granada,Spain,Spain,80,362800.4477,Study city centre covered by GHSL UCDB polygon,37.18817,-3.60667,0.0,Granada,0.0,80.0
+Spain/LasPalmasdeGranCanaria,matched,672,Las Palmas de Gran Canaria,Spain,Spain,51,378493.8292,Study city centre covered by GHSL UCDB polygon,28.10178,-15.41573,0.0,Las Palmas de Gran Canaria,0.0,51.0
+Spain/Murcia,matched,4257,Murcia,Spain,Spain,79,341431.024,Study city centre covered by GHSL UCDB polygon,37.98704,-1.13004,0.0,Murcia,0.0,79.0
+Spain/Málaga,matched,3115,Málaga,Spain,Spain,75,522826.643,Study city centre covered by GHSL UCDB polygon,36.72016,-4.42034,0.0,Málaga,0.0,75.0
+Spain/Oviedo,matched,2263,Oviedo / Uviéu,Spain,Spain,21,219998.8177,Study city centre covered by GHSL UCDB polygon,43.36029,-5.84476,0.0,Oviedo / Uviéu,0.0,21.0
+Spain/SantaCruzdeTenerife,matched,382,Santa Cruz de Tenerife,Spain,Spain,59,364849.4155,Study city centre covered by GHSL UCDB polygon,28.46824,-16.25462,0.0,Santa Cruz de Tenerife,0.0,59.0
+Spain/Valencia,matched,4522,Valencia,Spain,Spain,223,1404208.285,Study city centre covered by GHSL UCDB polygon,39.47391,-0.37966,0.0,Valencia,0.0,223.0
+Spain/Valladolid,matched,2997,Valladolid,Spain,Spain,54,309896.4594,Study city centre covered by GHSL UCDB polygon,41.65541,-4.72353,0.0,Valladolid,0.0,54.0
+Spain/Vigo,matched,939,Vigo,Spain,Spain,67,291791.9252,Study city centre covered by GHSL UCDB polygon,42.23282,-8.72264,0.0,Vigo,0.0,67.0
+Spain/Zaragoza,matched,4333,Zaragoza,Spain,Spain,76,624270.7076,Study city centre covered by GHSL UCDB polygon,41.65606,-0.87734,0.0,Zaragoza,0.0,76.0
+SriLanka/Colombo,matched,632,Colombo [Sri Jayawardenepura Kotte],Sri Lanka,Sri Lanka,1206,4720932.972,Study city centre covered by GHSL UCDB polygon,6.910402382479231,79.95250371412845,0.0,Colombo [Sri Jayawardenepura Kotte],0.0,1206.0
+Sweden/Gothenburg,matched,75,Gothenburg,Sweden,Sweden,191,599675.2527,Study city centre covered by GHSL UCDB polygon,57.70716,11.96679,0.0,Gothenburg,0.0,191.0
+Sweden/Malmö,matched,558,Malmo,Sweden,Sweden,84,339006.7437,Study city centre covered by GHSL UCDB polygon,55.60587,13.00073,0.0,Malmo,0.0,84.0
+Sweden/Stockholm,matched,1693,Stockholm,Sweden,Sweden,339,1543891.723,Study city centre covered by GHSL UCDB polygon,59.32951559531858,18.041061756276058,0.0,Stockholm,0.0,339.0
+Switzerland/Zurich,matched,1689,Zurich,Switzerland,Switzerland,187,689208.0731,Study city centre covered by GHSL UCDB polygon,47.36667,8.55,0.0,Zurich,0.0,187.0
+Thailand/Chonburi,matched,2790,Chon Buri,Thailand,Thailand,170,263105.7563,Study city centre covered by GHSL UCDB polygon,13.3622,100.98345,0.0,Chon Buri,0.0,170.0
+Thailand/HatYai,matched,3429,Hat Yai,Thailand,Thailand,81,436776.6838,Study city centre covered by GHSL UCDB polygon,7.00836,100.47668,0.0,Hat Yai,0.0,81.0
+Thailand/Lampang,matched,635,Lampang,Thailand,Thailand,43,186293.6132,Study city centre covered by GHSL UCDB polygon,18.29232,99.49277,0.0,Lampang,0.0,43.0
+Thailand/UdonThani,matched,3320,Udon Thani,Thailand,Thailand,33,95392.18628,Study city centre covered by GHSL UCDB polygon,17.41567,102.78589,0.0,Udon Thani,0.0,33.0
+Turkey/Adana,matched,5628,Adana,Turkey,Turkey,128,523157.8865,Study city centre covered by GHSL UCDB polygon,36.98615,35.32531,0.0,Adana,0.0,128.0
+Turkey/Ankara,matched,4921,Ankara,Turkey,Turkey,357,3695989.495,Study city centre covered by GHSL UCDB polygon,39.91987,32.85427,0.0,Ankara,0.0,357.0
+Turkey/Antalya,matched,4529,Antalya,Turkey,Turkey,258,1372672.143,Study city centre covered by GHSL UCDB polygon,36.90812,30.69556,0.0,Antalya,0.0,258.0
+Turkey/Bursa,matched,3130,Bursa,Turkey,Turkey,216,2366447.919,Study city centre covered by GHSL UCDB polygon,40.19559,29.06013,0.0,Bursa,0.0,216.0
+Turkey/Denizli,matched,3666,Denizli,Turkey,Turkey,81,501993.6759,Study city centre covered by GHSL UCDB polygon,37.77417,29.0875,0.0,Denizli,0.0,81.0
+Turkey/Eskisehir,matched,4150,Eskisehir,Turkey,Turkey,70,608473.8761,Study city centre covered by GHSL UCDB polygon,39.77667,30.52056,0.0,Eskisehir,0.0,70.0
+Turkey/Gaziantep,matched,6173,Gaziantep,Turkey,Turkey,134,1681269.631,Study city centre covered by GHSL UCDB polygon,37.05944,37.3825,0.0,Gaziantep,0.0,134.0
+Turkey/Izmir,matched,1094,Izmir,Turkey,Turkey,307,2457529.398,Study city centre covered by GHSL UCDB polygon,38.41273,27.13838,0.0,Izmir,0.0,307.0
+Turkey/Kayseri,matched,5559,Kayseri,Turkey,Turkey,160,893375.5148,Study city centre covered by GHSL UCDB polygon,38.73222,35.48528,0.0,Kayseri,0.0,160.0
+Turkey/Konya,matched,5077,Konya,Turkey,Turkey,240,1017329.388,Study city centre covered by GHSL UCDB polygon,37.87135,32.48464,0.0,Konya,0.0,240.0
+Turkey/Mersin,matched,5436,Mersin,Turkey,Turkey,110,654657.4295,Study city centre covered by GHSL UCDB polygon,36.81196,34.63886,0.0,Mersin,0.0,110.0
+Turkey/Samsun,matched,5511,Samsun,Turkey,Turkey,77,643551.8453,Study city centre covered by GHSL UCDB polygon,41.27976,36.3361,0.0,Samsun,0.0,77.0
+Turkey/İzmit,matched,3563,Kocaeli,Turkey,Turkey,150,746536.2234,Study city centre covered by GHSL UCDB polygon,40.76499,29.92928,0.0,Kocaeli,0.0,150.0
 UAE/Dubai,matched,1007,Dubai,United Arab Emirates,United Arab Emirates,854,4565477.615,exact normalized name and centre within 10 km of GHSL UCDB polygon,25.07725,55.30927,5.964,Dubai,5.964,854.0
-US/Austin,matched,5951,Austin,United States of America,United States,628,1580153.318,GeoNames centre covered by GHSL UCDB polygon,30.337603223611055,-97.74923708129317,0.0,Austin,0.0,628.0
-US/Charlotte,matched,7707,Charlotte,United States of America,United States,131,229305.4845,GeoNames centre covered by GHSL UCDB polygon,35.23212221426286,-80.80780723437589,0.0,Charlotte,0.0,131.0
-US/Chicago,matched,7532,Chicago,United States of America,United States,2046,5318734.586,GeoNames centre covered by GHSL UCDB polygon,41.852408529967484,-87.83324063191039,0.0,Chicago,0.0,2046.0
-US/Columbus_OH,matched,7735,Columbus,United States of America,United States,442,875004.3611,GeoNames centre covered by GHSL UCDB polygon,39.96118,-82.99879,0.0,Columbus,0.0,442.0
-US/Dallas,matched,6397,Dallas,United States of America,United States,1237,2577308.218,GeoNames centre covered by GHSL UCDB polygon,32.78306,-96.80667,0.0,Dallas,0.0,1237.0
-US/Houston,matched,6167,Houston,United States of America,United States,1859,4301460.936,GeoNames centre covered by GHSL UCDB polygon,29.76328,-95.36327,0.0,Houston,0.0,1859.0
-US/Indianapolis,matched,7559,Indianapolis,United States of America,United States,254,418056.6458,GeoNames centre covered by GHSL UCDB polygon,39.76838,-86.15804,0.0,Indianapolis,0.0,254.0
-US/Jacksonville_FL,matched,7353,Jacksonville,United States of America,United States,291,379642.6937,GeoNames centre covered by GHSL UCDB polygon,30.271045320574977,-81.64043461435018,0.0,Jacksonville,0.0,291.0
-US/LosAngeles,matched,2007,Los Angeles,United States of America,United States,4498,13474332.62,GeoNames centre covered by GHSL UCDB polygon,34.014674509193085,-118.19180737228403,0.0,Los Angeles,0.0,4498.0
-US/NewYork,matched,8099,New York City,United States of America,United States,3031,14197658.75,GeoNames centre covered by GHSL UCDB polygon,40.71851223497521,-73.93541079183873,0.0,New York City,0.0,3031.0
-US/Philadelphia,matched,8029,Philadelphia,United States of America,United States,654,2286396.408,GeoNames centre covered by GHSL UCDB polygon,39.9740310030891,-75.23576198556752,0.0,Philadelphia,0.0,654.0
-US/Phoenix,matched,4699,Phoenix,United States of America,United States,1304,2608874.085,GeoNames centre covered by GHSL UCDB polygon,33.49110276770817,-112.00176940250591,0.0,Phoenix,0.0,1304.0
-US/SanAntonio,matched,5794,San Antonio,United States of America,United States,640,1513874.436,GeoNames centre covered by GHSL UCDB polygon,29.494009434685495,-98.49346469216592,0.0,San Antonio,0.0,640.0
+US/Austin,matched,5951,Austin,United States of America,United States,628,1580153.318,Study city centre covered by GHSL UCDB polygon,30.337603223611055,-97.74923708129317,0.0,Austin,0.0,628.0
+US/Charlotte,matched,7707,Charlotte,United States of America,United States,131,229305.4845,Study city centre covered by GHSL UCDB polygon,35.23212221426286,-80.80780723437589,0.0,Charlotte,0.0,131.0
+US/Chicago,matched,7532,Chicago,United States of America,United States,2046,5318734.586,Study city centre covered by GHSL UCDB polygon,41.852408529967484,-87.83324063191039,0.0,Chicago,0.0,2046.0
+US/Columbus_OH,matched,7735,Columbus,United States of America,United States,442,875004.3611,Study city centre covered by GHSL UCDB polygon,39.96118,-82.99879,0.0,Columbus,0.0,442.0
+US/Dallas,matched,6397,Dallas,United States of America,United States,1237,2577308.218,Study city centre covered by GHSL UCDB polygon,32.78306,-96.80667,0.0,Dallas,0.0,1237.0
+US/Houston,matched,6167,Houston,United States of America,United States,1859,4301460.936,Study city centre covered by GHSL UCDB polygon,29.76328,-95.36327,0.0,Houston,0.0,1859.0
+US/Indianapolis,matched,7559,Indianapolis,United States of America,United States,254,418056.6458,Study city centre covered by GHSL UCDB polygon,39.76838,-86.15804,0.0,Indianapolis,0.0,254.0
+US/Jacksonville_FL,matched,7353,Jacksonville,United States of America,United States,291,379642.6937,Study city centre covered by GHSL UCDB polygon,30.271045320574977,-81.64043461435018,0.0,Jacksonville,0.0,291.0
+US/LosAngeles,matched,2007,Los Angeles,United States of America,United States,4498,13474332.62,Study city centre covered by GHSL UCDB polygon,34.014674509193085,-118.19180737228403,0.0,Los Angeles,0.0,4498.0
+US/NewYork,matched,8099,New York City,United States of America,United States,3031,14197658.75,Study city centre covered by GHSL UCDB polygon,40.71851223497521,-73.93541079183873,0.0,New York City,0.0,3031.0
+US/Philadelphia,matched,8029,Philadelphia,United States of America,United States,654,2286396.408,Study city centre covered by GHSL UCDB polygon,39.9740310030891,-75.23576198556752,0.0,Philadelphia,0.0,654.0
+US/Phoenix,matched,4699,Phoenix,United States of America,United States,1304,2608874.085,Study city centre covered by GHSL UCDB polygon,33.49110276770817,-112.00176940250591,0.0,Phoenix,0.0,1304.0
+US/SanAntonio,matched,5794,San Antonio,United States of America,United States,640,1513874.436,Study city centre covered by GHSL UCDB polygon,29.494009434685495,-98.49346469216592,0.0,San Antonio,0.0,640.0
 US/SanDiego,matched,2471,San Diego,United States of America,United States,778,1977278.929,exact normalized name and centre within 10 km of GHSL UCDB polygon,32.8700383136269,-117.13515511267705,3.202,San Diego,3.202,778.0
-US/SanJose,matched,1461,San Francisco,United States of America,United States,1614,4718348.828,GeoNames centre covered by GHSL UCDB polygon,37.33939,-121.89496,0.0,San Francisco,0.0,1614.0
-Ukraine/Kharkiv,matched,3811,Kharkiv,Ukraine,Ukraine,232,1284379.986,GeoNames centre covered by GHSL UCDB polygon,49.98177,36.25475,0.0,Kharkiv,0.0,232.0
-UnitedKingdom/Northampton,matched,5455,Northampton,United Kingdom,United Kingdom,65,219781.2778,GeoNames centre covered by GHSL UCDB polygon,52.2391214046136,-0.8843040086095045,0.0,Northampton,0.0,65.0
+US/SanJose,matched,1461,San Francisco,United States of America,United States,1614,4718348.828,Study city centre covered by GHSL UCDB polygon,37.33939,-121.89496,0.0,San Francisco,0.0,1614.0
+Ukraine/Kharkiv,matched,3811,Kharkiv,Ukraine,Ukraine,232,1284379.986,Study city centre covered by GHSL UCDB polygon,49.98177,36.25475,0.0,Kharkiv,0.0,232.0
+UnitedKingdom/Northampton,matched,5455,Northampton,United Kingdom,United Kingdom,65,219781.2778,Study city centre covered by GHSL UCDB polygon,52.2391214046136,-0.8843040086095045,0.0,Northampton,0.0,65.0
