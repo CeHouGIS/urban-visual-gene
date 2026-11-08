@@ -1,0 +1,641 @@
+platform,city,province,raw_records,eligible_records,unique_eligible_panoids,disk_image_files,unique_disk_panoids,eligible_on_disk,count_basis
+GoogleSV,Spain/ACoruña,,6022,6022,6022,,,,metadata availability flag; four images when #images exists
+GoogleSV,Nigeria/Abuja,,5766,5766,5766,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Adana,,6548,6548,6548,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Adelaide,,1045619,1045619,1045619,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Mexico/Aguascalientes,,16988,16988,16988,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Ahmedabad,,5244,5244,5244,,,,metadata availability flag; four images when #images exists
+GoogleSV,Kazakhstan/Almaty,,3315,3315,3315,,,,metadata availability flag; four images when #images exists
+GoogleSV,Malaysia/AlorSetar,,4692,4692,4692,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Ankara,,20078,20078,20078,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Antalya,,11299,11299,11299,,,,metadata availability flag; four images when #images exists
+GoogleSV,Belgium/Antwerp,,163652,163612,163612,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Peru/Arequipa,,5332,5332,5332,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/Austin,,527559,527474,527474,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Balikpapan,,4005,4005,4005,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/BandarLampung,,11597,11597,11597,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Bandung,,41085,41085,41085,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Banjarmasin,,5243,5243,5243,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Barcelona,,883673,883626,883626,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Bari,,10104,10104,10104,,,,metadata availability flag; four images when #images exists
+GoogleSV,Colombia/Barranquilla,,9228,9228,9228,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Barrie,,4566,4566,4566,,,,metadata availability flag; four images when #images exists
+GoogleSV,Lebanon/Beirut,,3604,3604,3604,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/BeloHorizonte,,441189,441189,441189,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Brazil/Belém,,13198,13198,13198,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Bengaluru,,15355,15355,15355,,,,metadata availability flag; four images when #images exists
+GoogleSV,Nigeria/BeninCity,,3243,3243,3243,,,,metadata availability flag; four images when #images exists
+GoogleSV,Norway/Bergen,,5658,5658,5658,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Bilbao,,15108,15108,15108,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthAfrica/Bloemfontein,,4405,4405,4405,,,,metadata availability flag; four images when #images exists
+GoogleSV,Colombia/Bogota,,47076,47076,47076,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Bologna,,15539,15539,15539,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Bordeaux,,85470,85470,85470,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Brazil/Brasília,,992885,992885,992885,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Slovakia/Bratislava,,6082,6082,6082,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Brisbane,,752350,752350,752350,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,CzechRepublic/Brno,,5229,5229,5229,,,,metadata availability flag; four images when #images exists
+GoogleSV,Belgium/Brussels,,48265,48258,48258,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Colombia/Bucaramanga,,4999,4999,4999,,,,metadata availability flag; four images when #images exists
+GoogleSV,Romania/Bucharest,,20477,20477,20477,,,,metadata availability flag; four images when #images exists
+GoogleSV,Argentina/BuenosAires,,666494,666482,666482,,,,metadata availability flag; four images when #images exists
+GoogleSV,Malaysia/BukitMertajam,,9154,9154,9154,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Bursa,,15178,15178,15178,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthKorea/Busan,,6958,6958,6958,,,,metadata availability flag; four images when #images exists
+GoogleSV,Poland/Bydgoszcz,,4291,4291,4291,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Calgary,,56823,56823,56823,,,,metadata availability flag; four images when #images exists
+GoogleSV,Colombia/Cali,,11430,11430,11430,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/Campinas,,29712,29712,29712,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Canberra,,349262,349262,349262,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Mexico/Cancún,,7599,7599,7599,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthAfrica/CapeTown,,33824,33824,33824,,,,metadata availability flag; four images when #images exists
+GoogleSV,Colombia/Cartagena,,4824,4824,4824,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Catania,,10978,10978,10978,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthAfrica/Centurion,,4006,4006,4006,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Chandigarh,,4089,4089,4089,,,,metadata availability flag; four images when #images exists
+GoogleSV,Belgium/Charleroi,,8599,8599,8599,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/Charlotte,,1308418,1307833,1307833,,,,metadata availability flag; four images when #images exists
+GoogleSV,Bangladesh/Chattogram,,4106,4106,4106,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Chelyabinsk,,5668,5668,5668,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Chennai,,14609,14609,14609,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/Chicago,,1949805,1948838,1945044,,,,metadata availability flag; four images when #images exists
+GoogleSV,Peru/Chiclayo,,3389,3389,3389,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Chihuahua,,14169,14169,14169,,,,metadata availability flag; four images when #images exists
+GoogleSV,Thailand/Chonburi,,10761,10761,10761,,,,metadata availability flag; four images when #images exists
+GoogleSV,NewZealand/Christchurch,,9126,9126,9126,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Cilegon,,5418,5418,5418,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/CiudadJuárez,,32307,32307,32307,,,,metadata availability flag; four images when #images exists
+GoogleSV,Paraguay/CiudaddelEste,,3849,3849,3849,,,,metadata availability flag; four images when #images exists
+GoogleSV,Romania/Cluj-Napoca,,3335,3335,3335,,,,metadata availability flag; four images when #images exists
+GoogleSV,Bolivia/Cochabamba,,58559,58551,58551,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,India/Coimbatore,,4250,4250,4250,,,,metadata availability flag; four images when #images exists
+GoogleSV,SriLanka/Colombo,,18629,18629,18629,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/Columbus_OH,,1087804,1087804,1087804,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Bangladesh/Comilla,,5334,5334,5334,,,,metadata availability flag; four images when #images exists
+GoogleSV,Chile/Concepción,,5078,5078,5078,,,,metadata availability flag; four images when #images exists
+GoogleSV,Argentina/Cordoba,,22478,22478,22478,,,,metadata availability flag; four images when #images exists
+GoogleSV,Ireland/Cork,,3655,3655,3655,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Culiacán,,5041,5041,5041,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/Curitiba,,430878,430878,430878,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Poland/Częstochowa,,3483,3483,3483,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Córdoba,,4189,4189,4189,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthKorea/Daegu,,7577,7577,7577,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthKorea/Daejeon,,3811,3811,3811,,,,metadata availability flag; four images when #images exists
+GoogleSV,Philippines/Dagupan,,3364,3364,3364,,,,metadata availability flag; four images when #images exists
+GoogleSV,Senegal/Dakar,,8803,8803,8803,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/Dallas,,0,0,0,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Darwin,,51855,51855,51855,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Turkey/Denizli,,4995,4995,4995,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Denpasar,,27705,27705,27705,,,,metadata availability flag; four images when #images exists
+GoogleSV,Bangladesh/Dhaka,,1010439,1008819,1008819,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Qatar/Doha,,6649,6649,6649,,,,metadata availability flag; four images when #images exists
+GoogleSV,Germany/Dortmund,,19947,19947,19947,,,,metadata availability flag; four images when #images exists
+GoogleSV,UAE/Dubai,,350266,350266,350266,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Ireland/Dublin,,31321,31321,31321,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthAfrica/Durban,,19700,19700,19700,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Edmonton,,50414,50414,50414,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Eskisehir,,4679,4679,4679,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Florence,,14589,14589,14589,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/Fortaleza,,37576,37576,37576,,,,metadata availability flag; four images when #images exists
+GoogleSV,Germany/FrankfurtamMain,,4802,4802,4802,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Fukuyama,,6572,6572,6572,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Gaziantep,,6531,6531,6531,,,,metadata availability flag; four images when #images exists
+GoogleSV,Poland/Gdansk,,11600,11600,11600,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Geelong,,5044,5044,5044,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Genoa,,10868,10868,10868,,,,metadata availability flag; four images when #images exists
+GoogleSV,Malaysia/GeorgeTown,,6385,6385,6385,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Gijón,,4579,4579,4579,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/Goiânia,,37486,37486,37486,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/GoldCoast,,12887,12887,12887,,,,metadata availability flag; four images when #images exists
+GoogleSV,Sweden/Gothenburg,,18193,18193,18193,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Granada,,8106,8106,8106,,,,metadata availability flag; four images when #images exists
+GoogleSV,Austria/Graz,,4128,4128,4128,,,,metadata availability flag; four images when #images exists
+GoogleSV,Ecuador/Guayaquil,,7091,7091,7091,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Guelph,,3681,3681,3681,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Halifax,,6941,6941,6941,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Hamamatsu,,32469,32469,32469,,,,metadata availability flag; four images when #images exists
+GoogleSV,Germany/Hamburg,,5696,5696,5696,,,,metadata availability flag; four images when #images exists
+GoogleSV,NewZealand/Hamilton,,4936,4936,4936,,,,metadata availability flag; four images when #images exists
+GoogleSV,Thailand/HatYai,,5235,5235,5235,,,,metadata availability flag; four images when #images exists
+GoogleSV,Finland/Helsinki,,26293,26293,26293,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Hermosillo,,14626,14626,14626,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Hiroshima,,29988,29988,29988,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Hobart,,4139,4139,4139,,,,metadata availability flag; four images when #images exists
+GoogleSV,China/HongKong,,20046,20046,20046,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,US/Houston,,0,0,0,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Nigeria/Ibadan,,4232,4232,4232,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/Indianapolis,,0,0,0,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Indore,,3740,3740,3740,,,,metadata availability flag; four images when #images exists
+GoogleSV,Malaysia/Ipoh,,10526,10526,10526,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Izmir,,17925,17925,17925,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/Jacksonville_FL,,1655022,1654789,1654789,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthAfrica/Johannesburg,,547157,547157,547157,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Japan/Kagoshima,,12747,12747,12747,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Kanazawa,,16611,16611,16611,,,,metadata availability flag; four images when #images exists
+GoogleSV,Nigeria/Kano,,4796,4796,4796,,,,metadata availability flag; four images when #images exists
+GoogleSV,Poland/Katowice,,28895,28895,28895,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Kayseri,,7266,7266,7266,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Kazan,,7765,7765,7765,,,,metadata availability flag; four images when #images exists
+GoogleSV,Ukraine/Kharkiv,,3438,3438,3438,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Kitakyushu,,37641,37641,37641,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Kitchener,,11368,11368,11368,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Kochi,,6981,6981,6981,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Kolkata,,17421,17421,17421,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Kollam,,7387,7387,7387,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Konya,,8843,8843,8843,,,,metadata availability flag; four images when #images exists
+GoogleSV,Malaysia/KotaBharu,,4029,4029,4029,,,,metadata availability flag; four images when #images exists
+GoogleSV,Malaysia/KotaKinabalu,,5160,5160,5160,,,,metadata availability flag; four images when #images exists
+GoogleSV,Poland/Krakow,,13636,13636,13636,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Krasnodar,,8615,8615,8615,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Krasnoyarsk,,4711,4711,4711,,,,metadata availability flag; four images when #images exists
+GoogleSV,Malaysia/Kuching,,5972,5972,5972,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Kumamoto,,23816,23816,23816,,,,metadata availability flag; four images when #images exists
+GoogleSV,Nigeria/Lagos,,155509,155509,155509,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Thailand/Lampang,,3660,3660,3660,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/LasPalmasdeGranCanaria,,5724,5724,5724,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Lille,,28780,28780,28780,,,,metadata availability flag; four images when #images exists
+GoogleSV,Austria/Linz,,3627,3627,3627,,,,metadata availability flag; four images when #images exists
+GoogleSV,Portugal/Lisbon,,40679,40679,40679,,,,metadata availability flag; four images when #images exists
+GoogleSV,Belgium/Liège,,12600,12600,12600,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/London,,10517,10517,10517,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/LosAngeles,,1149645,1149410,1149410,,,,metadata availability flag; four images when #images exists
+GoogleSV,Poland/Lublin,,4267,4267,4267,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Lucknow,,6537,6537,6537,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Ludhiana,,4757,4757,4757,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Lyon,,94098,94098,94098,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Brazil/Maceio,,7246,7246,7246,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Makassar,,17497,17497,17497,,,,metadata availability flag; four images when #images exists
+GoogleSV,Sweden/Malmö,,7124,7124,7124,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Manado,,4543,4543,4543,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/Manaus,,10991,10991,10991,,,,metadata availability flag; four images when #images exists
+GoogleSV,Argentina/MardelPlata,,5420,5420,5420,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Marseille,,215900,215900,215900,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Indonesia/Mataram,,6813,6813,6813,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Matsuyama,,14203,14203,14203,,,,metadata availability flag; four images when #images exists
+GoogleSV,Colombia/Medellín,,14611,14611,14611,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Melbourne,,3215487,3215487,3215487,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Turkey/Mersin,,5728,5728,5728,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Messina,,3717,3717,3717,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Mexicali,,8765,8765,8765,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Milan,,40831,40831,40831,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Mexico/Monterrey,,64364,64364,64364,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Montpellier,,11565,11565,11565,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Morelia,,6820,6820,6820,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Moscow,,74744,74744,74744,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Murcia,,13062,13062,13062,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Málaga,,18642,18642,18642,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Mérida,,26898,26898,26898,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Nagpur,,4794,4794,4794,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Nantes,,18533,18533,18533,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Naples,,71552,71552,71552,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/NewYork,,2727461,2727420,2722394,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Newcastle,,7973,7973,7973,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Nice,,28458,28458,28458,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Niigata,,21951,21951,21951,,,,metadata availability flag; four images when #images exists
+GoogleSV,UnitedKingdom/Northampton,,6380,6380,6380,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Novosibirsk,,6815,6815,6815,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Omsk,,4523,4523,4523,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Oshawa,,10011,10011,10011,,,,metadata availability flag; four images when #images exists
+GoogleSV,Norway/Oslo,,22186,22186,22186,,,,metadata availability flag; four images when #images exists
+GoogleSV,CzechRepublic/Ostrava,,4195,4195,4195,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Ottawa,,31384,31384,31384,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Oviedo,,4257,4257,4257,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Padang,,7916,7916,7916,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Padua,,9320,9320,9320,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Paris,,272752,272752,272752,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Italy/Parma,,4427,4427,4427,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Pekanbaru,,13217,13217,13217,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Perm,,4370,4370,4370,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Perth,,1599522,1599522,1599522,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,US/Philadelphia,,1087719,1085728,1085728,,,,metadata availability flag; four images when #images exists
+GoogleSV,Cambodia/PhnomPenh,,5192,5192,5192,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/Phoenix,,2878739,2878738,2878738,,,,metadata availability flag; four images when #images exists
+GoogleSV,Portugal/Porto,,61102,61102,61102,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/PortoAlegre,,316454,316454,316454,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Poland/Poznan,,10889,10889,10889,,,,metadata availability flag; four images when #images exists
+GoogleSV,CzechRepublic/Prague,,25002,25002,25002,,,,metadata availability flag; four images when #images exists
+GoogleSV,SouthAfrica/Pretoria,,18499,18499,18499,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Puebla,,45174,45174,45174,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Quebec,,27808,27808,27808,,,,metadata availability flag; four images when #images exists
+GoogleSV,Bangladesh/Rajshahi,,410695,409789,409789,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Brazil/Recife,,33505,33505,33505,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Regina,,6621,6621,6621,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Reims,,8044,8044,8044,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Rennes,,8694,8694,8694,,,,metadata availability flag; four images when #images exists
+GoogleSV,Argentina/Resistencia,,3740,3740,3740,,,,metadata availability flag; four images when #images exists
+GoogleSV,Latvia/Riga,,11440,11440,11440,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/RiodeJaneiro,,711677,711677,711677,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Argentina/Rosario,,13046,13046,13046,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Rostov-on-Don,,7015,7015,7015,,,,metadata availability flag; four images when #images exists
+GoogleSV,Bangladesh/Saidpur,,5093,5093,5093,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Russia/SaintPetersburg,,31825,31825,31825,,,,metadata availability flag; four images when #images exists
+GoogleSV,Argentina/Salta,,4574,4574,4574,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Saltillo,,9127,9127,9127,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/Salvador,,18111,18111,18111,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Samara,,4705,4705,4705,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Samarinda,,6301,6301,6301,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/Samsun,,3647,3647,3647,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/SanAntonio,,1488466,1488398,1488398,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/SanDiego,,2178161,2176006,2176006,,,,metadata availability flag; four images when #images exists
+GoogleSV,US/SanJose,,2152536,2152536,2152536,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Mexico/SanLuisPotosí,,17967,17967,17967,,,,metadata availability flag; four images when #images exists
+GoogleSV,Argentina/SanMigueldeTucumán,,7769,7769,7769,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/SantaCruzdeTenerife,,4731,4731,4731,,,,metadata availability flag; four images when #images exists
+GoogleSV,DominicanRepublic/SantoDomingo,,4733,4733,4733,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/SaoPaulo,,1568531,1568531,1568531,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Japan/Sapporo,,54552,54552,54552,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Saskatoon,,10083,10083,10083,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Semarang,,41575,41575,41575,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Sendai,,37531,37531,37531,,,,metadata availability flag; four images when #images exists
+GoogleSV,Korea/Seoul,,354136,354136,354136,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Malaysia/Seremban,,6587,6587,6587,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Shizuoka,,16944,16944,16944,,,,metadata availability flag; four images when #images exists
+GoogleSV,Singapore/Singapore,,953992,953992,953992,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Bulgaria/Sofia,,10160,10160,10160,,,,metadata availability flag; four images when #images exists
+GoogleSV,Sweden/Stockholm,,167021,167021,167021,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Strasbourg,,12473,12473,12473,,,,metadata availability flag; four images when #images exists
+GoogleSV,Germany/Stuttgart,,5099,5099,5099,,,,metadata availability flag; four images when #images exists
+GoogleSV,Malaysia/SungaiPetani,,5094,5094,5094,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Surabaya,,85845,85845,85845,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Surat,,3834,3834,3834,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Sydney,,2380331,2380331,2380331,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Poland/Szczecin,,3476,3476,3476,,,,metadata availability flag; four images when #images exists
+GoogleSV,Brazil/SãoLuís,,225033,225033,225033,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,China/Taipei,,292646,292646,292646,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Japan/Takamatsu,,18606,18606,18606,,,,metadata availability flag; four images when #images exists
+GoogleSV,Estonia/Tallinn,,7417,7417,7417,,,,metadata availability flag; four images when #images exists
+GoogleSV,Finland/Tampere,,4987,4987,4987,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Taranto,,3333,3333,3333,,,,metadata availability flag; four images when #images exists
+GoogleSV,Indonesia/Tasikmalaya,,12450,12450,12450,,,,metadata availability flag; four images when #images exists
+GoogleSV,NewZealand/Tauranga,,4745,4745,4745,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Thiruvananthapuram,,4024,4024,4024,,,,metadata availability flag; four images when #images exists
+GoogleSV,Romania/Timișoara,,3870,3870,3870,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Toluca,,25996,25996,25996,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Toowoomba,,4087,4087,4087,,,,metadata availability flag; four images when #images exists
+GoogleSV,Mexico/Torreon,,12929,12929,12929,,,,metadata availability flag; four images when #images exists
+GoogleSV,France/Toulouse,,33064,33064,33064,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Trois-Rivières,,4441,4441,4441,,,,metadata availability flag; four images when #images exists
+GoogleSV,Norway/Trondheim,,5252,5252,5252,,,,metadata availability flag; four images when #images exists
+GoogleSV,Peru/Trujillo,,5456,5456,5456,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Turin,,34234,34234,34234,,,,metadata availability flag; four images when #images exists
+GoogleSV,Thailand/UdonThani,,3913,3913,3913,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Ufa,,3534,3534,3534,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Utsunomiya,,15314,15314,15314,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Valencia,,35577,35577,35577,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Valladolid,,5693,5693,5693,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Vancouver,,73449,73449,73449,,,,metadata availability flag; four images when #images exists
+GoogleSV,India/Varanasi,,5320,5320,5320,,,,metadata availability flag; four images when #images exists
+GoogleSV,Italy/Verona,,6834,6834,6834,,,,metadata availability flag; four images when #images exists
+GoogleSV,Austria/Vienna,,300545,300545,300545,,,,metadata availability flag; four images when #images exists; four-image presence not independently verified
+GoogleSV,Spain/Vigo,,9004,9004,9004,,,,metadata availability flag; four images when #images exists
+GoogleSV,Lithuania/Vilnius,,6427,6427,6427,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Volgograd,,4985,4985,4985,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Voronezh,,5709,5709,5709,,,,metadata availability flag; four images when #images exists
+GoogleSV,Canada/Winnipeg,,30669,30669,30669,,,,metadata availability flag; four images when #images exists
+GoogleSV,Australia/Wollongong,,6032,6032,6032,,,,metadata availability flag; four images when #images exists
+GoogleSV,Germany/Wuppertal,,3506,3506,3506,,,,metadata availability flag; four images when #images exists
+GoogleSV,Russia/Yekaterinburg,,8464,8464,8464,,,,metadata availability flag; four images when #images exists
+GoogleSV,Spain/Zaragoza,,12614,12614,12614,,,,metadata availability flag; four images when #images exists
+GoogleSV,Switzerland/Zurich,,4112,4112,4112,,,,metadata availability flag; four images when #images exists
+GoogleSV,Turkey/İzmit,,6325,6325,6325,,,,metadata availability flag; four images when #images exists
+GoogleSV,Japan/Ōita,,9661,9661,9661,,,,metadata availability flag; four images when #images exists
+BaiduSV,China/Anhui/Anqing,Anhui,4609,4609,4609,4626,4609,4608,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Bengbu,Anhui,4244,4244,4244,4275,4244,4244,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Bozhou,Anhui,2866,2866,2866,2866,2866,2866,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Chizhou,Anhui,1687,1687,1687,1687,1687,1687,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Chuzhou,Anhui,5115,5115,5115,5122,5115,5115,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Fuyang,Anhui,5171,5171,5171,5172,5171,5171,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Hefei,Anhui,15735,15735,15735,15767,15734,15716,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Huaibei,Anhui,3480,3480,3480,3490,3480,3480,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Huainan,Anhui,2172,2172,2172,2203,2172,2172,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Huangshan,Anhui,2393,2393,2393,2394,2393,2393,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Liuan,Anhui,4694,4694,4694,4701,4694,4694,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Maanshan,Anhui,3322,3322,3322,3314,3312,3312,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Suzhou,Anhui,0,0,0,2495,2495,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Tongling,Anhui,1871,1871,1871,1906,1871,1871,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Wuhu,Anhui,6553,6553,6553,6558,6553,6553,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Anhui/Xuancheng,Anhui,3832,3832,3832,3832,3832,3832,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Aomen/Macao,Aomen,10,10,10,10,10,10,non-mainland; one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Beijing/Beijing,Beijing,76458,76458,76458,76469,76458,76458,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Chongqing/Chongqing,Chongqing,15599,15599,15599,15604,15599,15598,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Fuzhou,Fujian,9221,9221,9221,9292,9286,9220,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Longyan,Fujian,2737,2737,2737,2737,2737,2737,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Nanping,Fujian,3093,3093,3093,3093,3093,3093,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Ningde,Fujian,2163,2163,2163,2163,2163,2163,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Putian,Fujian,2862,2862,2862,2864,2862,2862,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Quanzhou,Fujian,12027,12027,12027,12032,12027,12027,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Sanming,Fujian,2451,2451,2451,2825,2451,2451,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Xiamen,Fujian,10149,10149,10149,10153,10149,10148,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Fujian/Zhangzhou,Fujian,4544,4544,4544,4546,4544,4544,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Baiyin,Gansu,1562,1562,1562,1564,1562,1562,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Dingxi,Gansu,948,948,948,948,948,948,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Gannanzangzu,Gansu,408,408,408,408,408,408,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Jiayuguan,Gansu,975,975,975,975,975,975,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Jinchang,Gansu,649,649,649,649,649,649,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Jiuquan,Gansu,2679,2679,2679,2679,2679,2679,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Lanzhou,Gansu,8464,8464,8464,8973,8464,8464,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Linxiahuizu,Gansu,1016,1016,1016,1016,1016,1016,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Longnan,Gansu,899,899,899,899,899,899,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Pingliang,Gansu,1036,1036,1036,1036,1036,1036,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Qingyang,Gansu,1499,1499,1499,1499,1499,1499,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Tianshui,Gansu,2506,2506,2506,2506,2506,2506,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Wuwei,Gansu,1140,1140,1140,1140,1140,1140,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Gansu/Zhangye,Gansu,1217,1217,1217,1217,1217,1217,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Chaozhou,Guangdong,3057,3057,3057,3060,3057,3057,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Dongguan,Guangdong,22530,22530,22530,22529,22529,22517,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Foshan,Guangdong,14387,14387,14387,14377,14377,14341,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Guangzhou,Guangdong,25681,25681,25681,25694,25681,25671,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Heyuan,Guangdong,2921,2921,2921,2924,2921,2921,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Huizhou,Guangdong,6578,6578,6578,6576,6575,6344,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Jiangmen,Guangdong,8859,8859,8859,8861,8857,8780,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Jieyang,Guangdong,6556,6556,6556,6557,6556,6556,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Maoming,Guangdong,2233,2233,2233,2233,2233,2233,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Meizhou,Guangdong,3251,3251,3251,3253,3251,3251,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Qingyuan,Guangdong,2937,2937,2937,2939,2937,2937,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Shantou,Guangdong,8335,8335,8335,8338,8334,8329,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Shanwei,Guangdong,1476,1476,1476,1476,1476,1476,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Shaoguan,Guangdong,2753,2753,2753,2754,2753,2753,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Shenzhen,Guangdong,17385,17385,17378,17386,17376,17330,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Yangjiang,Guangdong,2505,2505,2505,2505,2505,2505,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Yunfu,Guangdong,1705,1705,1705,1705,1705,1705,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Zhanjiang,Guangdong,4538,4538,4538,4539,4538,4536,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Zhaoqing,Guangdong,2841,2841,2841,2835,2835,2766,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Zhongshan,Guangdong,14406,14406,14406,14404,14404,14383,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangdong/Zhuhai,Guangdong,4230,4230,4230,4230,4230,4169,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Baise,Guangxi,1603,1603,1603,1603,1603,1603,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Beihai,Guangxi,2101,2101,2101,2112,2101,2101,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Chongzuo,Guangxi,1465,1465,1465,1465,1465,1465,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Fangchenggang,Guangxi,1301,1301,1301,1301,1301,1301,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Guigang,Guangxi,2296,2296,2296,2297,2296,2296,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Guilin,Guangxi,4361,4361,4361,4377,4359,4267,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Hechi,Guangxi,1461,1461,1461,1461,1461,1458,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Hezhou,Guangxi,1114,1114,1114,1115,1114,1114,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Laibin,Guangxi,699,699,699,699,699,699,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Liuzhou,Guangxi,4189,4189,4189,4196,4189,4189,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Nanning,Guangxi,7278,7278,7278,7534,7278,7184,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Qinzhou,Guangxi,1546,1546,1546,1546,1546,1546,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Wuzhou,Guangxi,1634,1634,1634,1634,1634,1634,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guangxi/Yulin,Guangxi,1284,1284,1284,1296,1296,1284,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Anshun,Guizhou,900,900,900,900,900,900,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Bijie,Guizhou,300,300,300,300,300,300,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Guiyang,Guizhou,9113,9113,9113,9124,9113,9113,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Liupanshui,Guizhou,1334,1334,1334,1336,1334,1334,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Qiandongnanmiaozudongzu,Guizhou,1525,1525,1525,1525,1525,1525,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Qiannanbuyizumiaozu,Guizhou,1362,1362,1362,1362,1362,1362,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Qianxinanbuyizumiaozu,Guizhou,1038,1038,1038,1038,1038,1038,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Tongren,Guizhou,1279,1279,1279,1279,1279,1279,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Guizhou/Zunyi,Guizhou,2828,2828,2828,2830,2828,2828,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hainan/Danzhou,Hainan,660,660,660,659,659,657,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hainan/Haikou,Hainan,4621,4621,4621,4628,4615,4599,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hainan/Hainan,Hainan,0,0,0,3822,3822,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hainan/Sanya,Hainan,3941,3941,3941,3942,3941,3941,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Baoding,Hebei,12085,12085,12085,12120,12085,12085,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Cangzhou,Hebei,9993,9993,9993,10011,9983,9983,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Chengde,Hebei,3653,3653,3653,3653,3653,3653,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Handan,Hebei,8591,8591,8305,8304,8302,8302,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Hengshui,Hebei,5336,5336,5336,5336,5336,5336,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Langfang,Hebei,8583,8583,8583,8644,8583,8583,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Qinhuangdao,Hebei,6891,6891,6891,6898,6891,6891,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Shijiazhuang,Hebei,17922,17922,17922,17950,17922,17922,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Tangshan,Hebei,9712,9712,9712,9652,9635,9471,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Xingtai,Hebei,9262,9262,8942,8959,8940,8898,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hebei/Zhangjiakou,Hebei,5389,5389,5389,5390,5389,5387,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Daqing,Heilongjiang,7000,7000,7000,7002,6999,6996,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Daxinganling,Heilongjiang,485,485,485,485,485,485,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Haerbin,Heilongjiang,16933,16933,16933,16952,16931,16923,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Hegang,Heilongjiang,755,755,755,778,755,755,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Heihe,Heilongjiang,858,858,858,858,858,858,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Jiamusi,Heilongjiang,1376,1376,1376,1378,1376,1376,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Jixi,Heilongjiang,706,706,706,706,706,706,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Mudanjiang,Heilongjiang,1348,1348,1348,1365,1348,1348,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Qiqihaer,Heilongjiang,2672,2672,2672,2675,2672,2672,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Qitaihe,Heilongjiang,615,615,615,615,615,615,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Shuangyashan,Heilongjiang,360,360,360,360,360,360,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Suihua,Heilongjiang,2041,2041,2041,2041,2041,2041,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Heilongjiang/Yichun,Heilongjiang,0,0,0,1721,1721,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Anyang,Henan,7578,7578,7578,7847,7581,7488,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Hebi,Henan,1126,1126,1126,1126,1126,1126,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Henan,Henan,0,0,0,230,230,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Jiaozuo,Henan,4993,4993,4993,4994,4993,4993,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Kaifeng,Henan,7065,7065,7065,7071,7065,7065,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Luohe,Henan,1770,1770,1770,1770,1770,1770,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Luoyang,Henan,9768,9768,9768,10256,9757,9672,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Nanyang,Henan,8878,8878,8878,8874,8874,8714,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Pingdingshan,Henan,4661,4661,4661,4664,4661,4661,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Puyang,Henan,3341,3341,3341,3352,3346,3341,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Sanmenxia,Henan,1333,1333,1333,1333,1333,1333,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Shangqiu,Henan,7076,7076,7076,7076,7076,7076,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Xinxiang,Henan,9955,9955,9955,9956,9955,9955,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Xinyang,Henan,4766,4766,4766,4766,4766,4766,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Xuchang,Henan,3314,3314,3314,3315,3314,3314,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Zhengzhou,Henan,30524,30524,30524,30524,30524,30517,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Zhoukou,Henan,6130,6130,6130,6130,6130,6130,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Henan/Zhumadian,Henan,4420,4420,4420,4420,4420,4420,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Enshitujiazumiaozu,Hubei,1239,1239,1239,1239,1239,1239,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Ezhou,Hubei,1202,1202,1202,1202,1202,1202,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Huanggang,Hubei,4891,4891,4891,4891,4891,4891,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Huangshi,Hubei,3219,3219,3219,3219,3219,3219,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Hubei,Hubei,0,0,0,4112,4112,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Jingmen,Hubei,2182,2182,2182,2182,2182,2182,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Jingzhou,Hubei,3991,3991,3991,3983,3983,3978,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Shiyan,Hubei,2820,2820,2820,2820,2820,2820,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Suizhou,Hubei,1299,1299,1299,1299,1299,1299,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Wuhan,Hubei,27520,27520,27520,27520,27520,27520,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Xiangyang,Hubei,4280,4280,4280,4280,4280,4280,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Xianning,Hubei,1363,1363,1363,1363,1363,1363,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Xiaogan,Hubei,2686,2686,2686,2686,2686,2686,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hubei/Yichang,Hubei,4970,4970,4970,4970,4970,4970,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Changde,Hunan,3671,3671,3671,3671,3671,3671,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Changsha,Hunan,11422,11422,11422,11429,11429,11422,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Chenzhou,Hunan,2941,2941,2941,2941,2941,2941,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Hengyang,Hunan,4494,4494,4494,4494,4494,4494,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Huaihua,Hunan,817,817,817,817,817,817,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Loudi,Hunan,1662,1662,1662,1662,1662,1662,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Shaoyang,Hunan,3463,3463,3463,3463,3463,3463,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Xiangtan,Hunan,3313,3313,3313,3313,3313,3313,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Xiangxitujiazumiaozu,Hunan,1518,1518,1518,1517,1517,1510,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Yiyang,Hunan,1824,1824,1824,1824,1824,1824,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Yongzhou,Hunan,2085,2085,2085,2085,2085,2085,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Yueyang,Hunan,3179,3179,3179,3179,3179,3171,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Zhangjiajie,Hunan,1617,1617,1617,1509,1509,1328,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Hunan/Zhuzhou,Hunan,3632,3632,3632,3632,3632,3632,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Changzhou,Jiangsu,18752,18752,18752,18752,18752,18750,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Huaian,Jiangsu,10334,10334,10334,10349,10349,10334,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Lianyungang,Jiangsu,9186,9186,9186,9186,9186,9186,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Nanjing,Jiangsu,22578,22578,22578,22578,22578,22578,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Nantong,Jiangsu,18187,18187,18187,18187,18187,18187,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Suqian,Jiangsu,11728,11728,11728,11728,11728,11728,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Suzhou,Jiangsu,56352,56352,56351,56771,56771,56340,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Taizhou,Jiangsu,6594,6594,6594,6627,6627,6458,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Wuxi,Jiangsu,24218,24218,24213,24189,24189,23858,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Xuzhou,Jiangsu,13289,13289,13289,13289,13289,13289,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Yancheng,Jiangsu,17058,17058,17058,17058,17058,17057,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Yangzhou,Jiangsu,11265,11265,11265,11265,11265,11253,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangsu/Zhenjiang,Jiangsu,10077,10077,10077,10063,10063,9917,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Fuzhou,Jiangxi,0,0,0,3621,3621,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Ganzhou,Jiangxi,7165,7165,7165,7162,7162,7138,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Jian,Jiangxi,3014,3014,3014,3014,3014,3014,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Jingdezhen,Jiangxi,1715,1715,1715,1715,1715,1715,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Jiujiang,Jiangxi,5631,5631,5631,5631,5631,5631,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Nanchang,Jiangxi,11725,11725,11725,11727,11727,11725,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Pingxiang,Jiangxi,1438,1438,1438,1438,1438,1438,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Shangrao,Jiangxi,5054,5054,5054,5054,5054,5054,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Xinyu,Jiangxi,1287,1287,1287,1287,1287,1287,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Yichun,Jiangxi,1311,1311,1311,1334,1334,1311,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jiangxi/Yingtan,Jiangxi,1512,1512,1512,1512,1512,1512,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Baicheng,Jilin,1939,1939,1939,1939,1939,1939,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Baishan,Jilin,735,735,735,735,735,735,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Changchun,Jilin,14434,14434,14434,14434,14434,14433,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Jilin,Jilin,4758,4758,4758,4758,4758,4758,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Liaoyuan,Jilin,694,694,694,694,694,694,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Siping,Jilin,941,941,941,941,941,941,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Songyuan,Jilin,1482,1482,1482,1480,1480,1477,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Tonghua,Jilin,1994,1994,1994,1994,1994,1994,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Jilin/Yanbianchaoxianzu,Jilin,3059,3059,3059,3059,3059,3059,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Anshan,Liaoning,8066,8066,8066,8054,8054,7884,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Benxi,Liaoning,1526,1526,1526,1526,1526,1526,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Chaoyang,Liaoning,1672,1672,1672,1673,1673,1672,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Dalian,Liaoning,22017,22017,22017,22017,22017,22017,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Dandong,Liaoning,2633,2633,2633,2633,2633,2633,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Fushun,Liaoning,2866,2866,2866,2866,2866,2866,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Fuxin,Liaoning,2990,2990,2990,2990,2990,2990,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Huludao,Liaoning,3083,3083,3083,3083,3083,3083,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Jinzhou,Liaoning,3172,3172,3172,3172,3172,3172,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Liaoyang,Liaoning,2739,2739,2739,2739,2739,2739,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Panjin,Liaoning,4532,4532,4532,4532,4532,4532,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Shenyang,Liaoning,23888,23888,23888,23888,23888,23888,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Tieling,Liaoning,1639,1639,1639,1639,1639,1639,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Liaoning/Yingkou,Liaoning,6513,6513,6513,6513,6513,6513,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Alashan,Neimenggu,1051,1051,1051,1051,1051,1051,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Baotou,Neimenggu,6514,6514,6514,6514,6514,6514,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Bayannaoer,Neimenggu,1760,1760,1760,1760,1760,1760,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Chifeng,Neimenggu,2201,2201,2201,2201,2201,2201,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Eerduosi,Neimenggu,6565,6565,6565,6565,6565,6565,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Huhehaote,Neimenggu,8769,8769,8769,8769,8769,8769,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Hulunbeier,Neimenggu,4646,4646,4646,4646,4646,4646,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Tongliao,Neimenggu,1681,1681,1681,1681,1681,1681,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Wuhai,Neimenggu,1224,1224,1224,1224,1224,1224,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Wulanchabu,Neimenggu,2677,2677,2677,2677,2677,2677,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Xilinguole,Neimenggu,1866,1866,1866,1866,1866,1866,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Neimenggu/Xingan,Neimenggu,1865,1865,1865,1865,1865,1865,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Ningxia/Guyuan,Ningxia,1321,1321,1321,1321,1321,1321,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Ningxia/Shizuishan,Ningxia,2316,2316,2316,2316,2316,2316,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Ningxia/Wuzhong,Ningxia,1817,1817,1817,1817,1817,1817,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Ningxia/Yinchuan,Ningxia,13053,13053,13053,13053,13053,13053,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Ningxia/Zhongwei,Ningxia,1547,1547,1547,1547,1547,1547,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Qinghai/Guoluozangzu,Qinghai,368,368,368,368,368,368,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Qinghai/Haibeizangzu,Qinghai,459,459,459,459,459,459,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Qinghai/Haidong,Qinghai,720,720,720,720,720,720,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Qinghai/Hainanzangzu,Qinghai,578,578,578,578,578,578,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Qinghai/Haiximengguzuzangzu,Qinghai,1816,1816,1816,1816,1816,1816,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Qinghai/Huangnanzangzu,Qinghai,283,283,283,283,283,283,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Qinghai/Xining,Qinghai,4628,4628,4628,4628,4628,4628,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Qinghai/Yushuzangzu,Qinghai,559,559,559,559,559,559,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Ankang,Shaanxi,781,781,781,781,781,781,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Baoji,Shaanxi,3726,3726,3726,3726,3726,3726,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Hanzhong,Shaanxi,1912,1912,1912,1912,1912,1912,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Shangluo,Shaanxi,686,686,686,686,686,686,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Tongchuan,Shaanxi,984,984,984,984,984,984,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Weinan,Shaanxi,4323,4323,4323,4323,4323,4322,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Xian,Shaanxi,14584,14584,14584,14583,14583,14565,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Xianyang,Shaanxi,4593,4593,4593,4593,4593,4593,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Yanan,Shaanxi,2293,2293,2293,2293,2293,2293,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shaanxi/Yulin,Shaanxi,0,0,0,4307,4307,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Binzhou,Shandong,2403,2403,2403,2403,2403,2403,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Dezhou,Shandong,10733,10733,10733,10655,10655,10370,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Dongying,Shandong,12051,12051,12051,12441,12441,11642,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Heze,Shandong,6544,6544,6544,6544,6544,6544,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Jinan,Shandong,25008,25008,25008,25003,25003,24996,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Jining,Shandong,11046,11046,11046,11046,11046,11046,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Liaocheng,Shandong,4568,4568,4568,4568,4568,4568,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Linyi,Shandong,21987,21987,21987,21987,21987,21987,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Qingdao,Shandong,24298,24298,24298,24298,24298,24298,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Rizhao,Shandong,5057,5057,5057,5057,5057,5057,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Taian,Shandong,6466,6466,6466,6466,6466,6466,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Weifang,Shandong,21846,21846,21845,21845,21845,21845,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Weihai,Shandong,11963,11963,11963,11962,11962,11957,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Yantai,Shandong,21099,21099,21099,21099,21099,21099,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Zaozhuang,Shandong,4669,4669,4669,4669,4669,4669,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shandong/Zibo,Shandong,14280,14280,14280,14280,14280,14280,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanghai/Shanghai,Shanghai,85114,85114,85114,85114,85114,85113,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Changzhi,Shanxi,4545,4545,4545,4545,4545,4545,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Datong,Shanxi,7686,7686,7686,7686,7686,7686,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Jincheng,Shanxi,3498,3498,3498,3498,3498,3498,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Jinzhong,Shanxi,4956,4956,4956,4953,4953,4951,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Linfen,Shanxi,5877,5877,5877,5877,5877,5877,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Lüliang,Shanxi,3266,3266,3266,3266,3266,3266,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Shuozhou,Shanxi,2046,2046,2046,2044,2044,2032,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Taiyuan,Shanxi,9834,9834,9834,9834,9834,9834,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Xinzhou,Shanxi,3549,3549,3549,3549,3549,3549,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Yangquan,Shanxi,1076,1076,1076,1076,1076,1076,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Shanxi/Yuncheng,Shanxi,2926,2926,2926,2926,2926,2926,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Abazangzuqiangzu,Sichuan,869,869,869,869,869,869,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Bazhong,Sichuan,265,265,265,265,265,265,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Chengdu,Sichuan,22814,22814,22814,22811,22811,22790,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Dazhou,Sichuan,1081,1081,1081,1081,1081,1081,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Deyang,Sichuan,3383,3383,3383,3383,3383,3382,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Ganzizangzu,Sichuan,831,831,831,831,831,831,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Guangan,Sichuan,959,959,959,959,959,959,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Guangyuan,Sichuan,559,559,559,559,559,559,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Leshan,Sichuan,2257,2257,2257,2257,2257,2257,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Liangshanyizu,Sichuan,1321,1321,1321,1321,1321,1321,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Luzhou,Sichuan,2525,2525,2524,2524,2524,2524,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Meishan,Sichuan,1316,1316,1316,1316,1316,1316,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Mianyang,Sichuan,3121,3121,3121,3121,3121,3121,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Nanchong,Sichuan,3061,3061,3061,3061,3061,3061,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Neijiang,Sichuan,848,848,848,848,848,848,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Panzhihua,Sichuan,1220,1220,1220,1220,1220,1220,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Suining,Sichuan,1288,1288,1288,1288,1288,1288,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Yaan,Sichuan,893,893,893,893,893,893,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Yibin,Sichuan,2269,2269,2269,2269,2269,2269,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Zigong,Sichuan,1762,1762,1762,1762,1762,1762,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Sichuan/Ziyang,Sichuan,1145,1145,1145,1145,1145,1145,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Tianjin/Tianjin,Tianjin,27691,27691,27691,27690,27690,27688,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Akesu,Xinjiang,759,759,759,759,759,759,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Aletai,Xinjiang,672,672,672,672,672,672,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Bayinguolengmenggu,Xinjiang,887,887,887,887,887,887,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Boertalamenggu,Xinjiang,434,434,434,434,434,434,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Changjihuizu,Xinjiang,1778,1778,1778,1778,1778,1778,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Hami,Xinjiang,848,848,848,848,848,848,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Hetian,Xinjiang,888,888,888,888,888,888,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Kashi,Xinjiang,855,855,855,855,855,855,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Kelamayi,Xinjiang,1678,1678,1678,1678,1678,1678,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Kezilesukeerkezi,Xinjiang,494,494,494,493,493,483,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Tacheng,Xinjiang,1014,1014,1014,1014,1014,1014,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Tulufan,Xinjiang,707,707,707,707,707,707,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Wulumuqi,Xinjiang,9369,9369,9369,9369,9369,9368,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Xinjiang,Xinjiang,0,0,0,1758,1758,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xinjiang/Yilihasake,Xinjiang,903,903,903,903,903,903,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xizang/Changdu,Xizang,296,296,296,296,296,296,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xizang/Lasa,Xizang,2611,2611,2611,2611,2611,2610,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xizang/Linzhi,Xizang,200,200,200,200,200,189,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xizang/Naqu,Xizang,458,458,458,458,458,454,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xizang/Rikaze,Xizang,535,535,535,535,535,535,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Xizang/Shannan,Xizang,367,367,367,365,365,364,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Baoshan,Yunnan,1206,1206,1206,1206,1206,1206,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Chuxiongyizu,Yunnan,670,670,670,670,670,670,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Dalibaizu,Yunnan,3375,3375,3375,3375,3375,3375,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Dehongdaizujingpozu,Yunnan,1110,1110,1110,1110,1110,1110,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Diqingzangzu,Yunnan,496,496,496,496,496,496,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Honghehanizuyizu,Yunnan,3506,3506,3506,3506,3506,3506,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Kunming,Yunnan,11808,11808,11808,11808,11808,11808,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Lijiang,Yunnan,1521,1521,1521,1521,1521,1521,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Lincang,Yunnan,1063,1063,1063,1063,1063,1063,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Nujianglisuzu,Yunnan,249,249,249,249,249,249,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Puer,Yunnan,1288,1288,1288,1288,1288,1288,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Qujing,Yunnan,2892,2892,2892,2892,2892,2892,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Wenshanzhuangzumiaozu,Yunnan,1215,1215,1215,1215,1215,1215,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Xishuangbannadaizu,Yunnan,1105,1105,1105,1105,1105,1105,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Yuxi,Yunnan,1962,1962,1962,1961,1961,1961,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Yunnan/Zhaotong,Yunnan,1493,1493,1493,1493,1493,1493,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Hangzhou,Zhejiang,24620,24620,24620,24620,24620,24618,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Huzhou,Zhejiang,7398,7398,7397,7397,7397,7358,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Jiaxing,Zhejiang,9895,9895,9895,9889,9889,9803,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Jinhua,Zhejiang,17973,17973,17973,17971,17971,17887,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Lishui,Zhejiang,2292,2292,2292,2292,2292,2292,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Ningbo,Zhejiang,22797,22797,22797,22797,22797,22797,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Quzhou,Zhejiang,3538,3538,3538,3538,3538,3538,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Shaoxing,Zhejiang,9346,9346,9346,9343,9342,9291,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Taizhou,Zhejiang,0,0,0,7477,7477,0,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Wenzhou,Zhejiang,10456,10456,10456,10455,10455,10437,one equirectangular file per panoid; indexed intersection has coordinates
+BaiduSV,China/Zhejiang/Zhoushan,Zhejiang,1889,1889,1889,1889,1889,1889,one equirectangular file per panoid; indexed intersection has coordinates
