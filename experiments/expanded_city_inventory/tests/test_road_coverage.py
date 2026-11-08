@@ -3,9 +3,9 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy.spatial import cKDTree
-from shapely.geometry import LineString, box
+from shapely.geometry import LineString, Polygon, box
 
-from render_google_coverage import write_report
+from render_google_coverage import footprint, write_report
 from render_google_road_coverage import classify_geometry, split_line
 
 
@@ -30,6 +30,26 @@ def test_road_sections_use_nearest_geolocated_panorama():
         lambda point: (int(point[0]), 10),
     )
     assert totals == (1, 1, 1, 50.0, 50.0)
+
+
+def test_image_coverage_is_clipped_to_supplied_polygon():
+    boundary = Polygon([(0, 0), (100, 0), (100, 100), (0, 100)])
+    covered, extent, cell_m, area = footprint(
+        np.array([50.0, 250.0]), np.array([50.0, 250.0]),
+        study_boundary=boundary, radius_m=50)
+    assert extent == boundary.bounds
+    assert cell_m == 10
+    assert area <= boundary.area / 1_000_000
+    assert covered.any()
+
+
+def test_empty_in_boundary_points_produce_an_empty_clipped_coverage_mask():
+    boundary = Polygon([(0, 0), (100, 0), (100, 100), (0, 100)])
+    covered, extent, _, area = footprint(
+        np.array([]), np.array([]), study_boundary=boundary, radius_m=50)
+    assert extent == boundary.bounds
+    assert not covered.any()
+    assert area == 0
 
 
 def test_gallery_copies_road_map_and_opens_returnable_viewer(tmp_path: Path):

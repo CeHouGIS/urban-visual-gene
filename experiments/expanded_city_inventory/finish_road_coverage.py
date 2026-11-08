@@ -11,14 +11,18 @@ import sys
 import time
 from pathlib import Path
 
-from render_google_coverage import CITY_MAP, OUTPUT as COVERAGE_OUTPUT
-from render_google_road_coverage import OUTPUT as ROAD_OUTPUT
+from render_google_coverage import CITY_MAP
+from render_google_road_coverage import OUTPUT as ROAD_OUTPUT, WEB_OUTPUT as COVERAGE_OUTPUT
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 
 def live(pid: int) -> bool:
+    process_stat = Path(f"/proc/{pid}/stat")
+    if process_stat.exists():
+        state = process_stat.read_text().rsplit(")", 1)[-1].strip().split()[0]
+        return state != "Z"
     try:
         os.kill(pid, 0)
     except ProcessLookupError:
@@ -32,7 +36,9 @@ def complete_report(expected: int) -> bool:
         return False
     with report.open(newline="", encoding="utf-8") as stream:
         rows = list(csv.DictReader(stream))
-    return len(rows) == expected and all((ROAD_OUTPUT / row["image"]).is_file() for row in rows)
+    return (len(rows) == expected and all((ROAD_OUTPUT / row["image"]).is_file() and
+                                          (COVERAGE_OUTPUT / row["image"]).is_file()
+                                          for row in rows))
 
 
 def publish(site_worktree: Path) -> None:
@@ -56,15 +62,20 @@ def publish(site_worktree: Path) -> None:
         "--road-report", str(ROAD_OUTPUT / "city_road_coverage.csv"),
         "--refresh-site-only",
     ], check=True)
-    for name in ("index.html", "city_road_coverage.csv"):
+    for name in ("index.html", "city_coverage.csv", "city_road_coverage.csv",
+                 "ghsl_boundary_matches.csv"):
         shutil.copy2(COVERAGE_OUTPUT / name, site_folder / name)
-    destination = site_folder / "road-maps"
-    destination.mkdir(exist_ok=True)
-    for source in (COVERAGE_OUTPUT / "road-maps").glob("*.png"):
-        shutil.copy2(source, destination / source.name)
+    for name in ("maps", "road-maps"):
+        destination = site_folder / name
+        destination.mkdir(exist_ok=True)
+        for source in (COVERAGE_OUTPUT / name).glob("*.png"):
+            shutil.copy2(source, destination / source.name)
     subprocess.run(["git", "add", "street-view-coverage/index.html",
                     "street-view-coverage/city_road_coverage.csv",
-                    "street-view-coverage/road-maps"], cwd=site_worktree, check=True)
+                    "street-view-coverage/city_coverage.csv",
+                    "street-view-coverage/ghsl_boundary_matches.csv",
+                    "street-view-coverage/maps", "street-view-coverage/road-maps"],
+                   cwd=site_worktree, check=True)
     staged = subprocess.check_output(["git", "diff", "--cached", "--name-only", "--",
                                       "street-view-coverage"],
                                      cwd=site_worktree, text=True)

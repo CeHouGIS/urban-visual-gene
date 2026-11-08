@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import math
 import subprocess
 import time
@@ -19,21 +20,25 @@ import pyarrow.parquet as pq
 from PIL import Image, ImageDraw
 from pyproj import Transformer
 from scipy.spatial import cKDTree
+from shapely import contains_xy
 from shapely import wkb
-from shapely.geometry import LineString, MultiLineString, box
+from shapely.geometry import LineString, MultiLineString
 from shapely.ops import transform
 
 from render_google_coverage import (CITY_MAP, DISK_COUNTS, IMAGE_H, IMAGE_W,
                                     MAP_BOX, RECOVERY, combined_locations,
-                                    font, nice_distance, projection_for)
-import json
+                                    font, nice_distance, projection_for,
+                                    render_locations)
+from study_area import (BOUNDARY_METHOD, GHSL_VERSION, boundary_bbox_wgs84,
+                        boundary_for, boundary_info, center_for)
 
 
 RELEASE = "2026-10-21.0"
-OUTPUT = Path(__file__).resolve().parent / "results/google_road_coverage"
+OUTPUT = Path(__file__).resolve().parent / "results/google_road_coverage_ghsl"
+WEB_OUTPUT = Path(__file__).resolve().parent / "results/google_50m_coverage_ghsl"
+PRIOR_ROADS = Path(__file__).resolve().parent / "results/google_road_coverage/overture"
 SECTION_M = 50.0
 SEARCH_RADIUS_M = 50.0
-BOUNDARY_PAD_M = 150.0
 DRIVEABLE = {
     "motorway", "motorway_link", "trunk", "trunk_link", "primary",
     "primary_link", "secondary", "secondary_link", "tertiary",
@@ -43,16 +48,13 @@ DRIVEABLE = {
 FIELDS = ["city", "status", "road_source", "located_panoids", "disk_panoids",
           "road_segments", "sections", "covered_sections", "uncovered_sections",
           "covered_road_km", "uncovered_road_km", "covered_road_percent",
-          "section_m", "radius_m", "image"]
-
-
-def bbox_from_points(lat, lon):
-    # 150 m pad avoids cutting roads exactly at the outermost panorama point.
-    midlat = float(np.median(lat))
-    dy = BOUNDARY_PAD_M / 111_320
-    dx = BOUNDARY_PAD_M / (111_320 * max(0.1, math.cos(math.radians(midlat))))
-    return (float(lon.min() - dx), float(lat.min() - dy),
-            float(lon.max() + dx), float(lat.max() + dy))
+          "section_m", "radius_m", "center_lat", "center_lon",
+          "boundary_source", "boundary_match_method", "boundary_area_km2",
+          "boundary_method", "image", "disk_jpg_files",
+          "located_to_disk_ratio", "coverage_km2_estimate", "raster_cell_m",
+          "boundary_located_panoids", "raster_width", "raster_height", "epsg",
+          "coverage_status", "protocol_version"]
+PROTOCOL_VERSION = f"{GHSL_VERSION}; only in-boundary panoids for road and raster coverage"
 
 
 def download_roads(city: str, bbox, output: Path):
@@ -76,6 +78,24 @@ def download_roads(city: str, bbox, output: Path):
             raise RuntimeError(f"Overture download failed for {city}: {message}")
         time.sleep(900)
     raise AssertionError("unreachable")
+
+
+def prior_roads_covering(city: str, bbox) -> Path | None:
+    source = PRIOR_ROADS / (city.replace("/", "__") + ".parquet")
+    state = Path(str(source) + ".state")
+    if not source.is_file() or not state.is_file():
+        return None
+    metadata = json.loads(state.read_text(encoding="utf-8"))
+    prior_bbox = metadata.get("bbox", {})
+    xmin, ymin, xmax, ymax = bbox
+    if (metadata.get("last_release") == RELEASE and
+            prior_bbox.get("xmin", float("inf")) <= xmin and
+            prior_bbox.get("ymin", float("inf")) <= ymin and
+            prior_bbox.get("xmax", float("-inf")) >= xmax and
+            prior_bbox.get("ymax", float("-inf")) >= ymax):
+        pq.ParquetFile(source)
+        return source
+    return None
 
 
 def split_line(line: LineString):
@@ -120,7 +140,8 @@ def classify_geometry(lines, projector, clip, tree, draw_red, draw_green, pixel)
             starts = np.asarray(starts)
             ends = np.asarray(ends)
             midpoints = (starts + ends) / 2
-            distances = tree.query(midpoints, k=1, workers=1)[0]
+            distances = (tree.query(midpoints, k=1, workers=1)[0]
+                         if tree is not None else np.full(len(midpoints), np.inf))
             lengths = np.linalg.norm(ends - starts, axis=1)
             matched = distances <= SEARCH_RADIUS_M
             covered_m += float(lengths[matched].sum())
@@ -134,29 +155,37 @@ def classify_geometry(lines, projector, clip, tree, draw_red, draw_green, pixel)
 
 
 def render_roads(city: str, path: Path, lat: np.ndarray, lon: np.ndarray,
-                 disk_count: int, network: Path):
-    epsg = projection_for(lat, lon)
+                 disk_count: int, network: Path,
+                 center_lat: float, center_lon: float):
+    epsg = projection_for(np.asarray([center_lat]), np.asarray([center_lon]))
     projector = Transformer.from_crs("EPSG:4326", f"EPSG:{epsg}", always_xy=True)
-    x, y = projector.transform(lon, lat)
-    tree = cKDTree(np.column_stack([x, y]))
-    xmin, ymin, xmax, ymax = (float(x.min() - BOUNDARY_PAD_M), float(y.min() - BOUNDARY_PAD_M),
-                              float(x.max() + BOUNDARY_PAD_M), float(y.max() + BOUNDARY_PAD_M))
-    clip = box(xmin, ymin, xmax, ymax)
+    x, y = projector.transform(lon, lat) if len(lat) else (np.array([]), np.array([]))
+    tree = cKDTree(np.column_stack([x, y])) if len(x) else None
+    boundary = boundary_for(city, f"EPSG:{epsg}")
+    if tree is not None:
+        inside = contains_xy(boundary, x, y)
+        x, y = x[inside], y[inside]
+        tree = cKDTree(np.column_stack([x, y])) if len(x) else None
+    xmin, ymin, xmax, ymax = boundary.bounds
+    clip = boundary
+    pad = max(xmax - xmin, ymax - ymin) * 0.02
+    view = (xmin - pad, ymin - pad, xmax + pad, ymax + pad)
+    vxmin, vymin, vxmax, vymax = view
     canvas = Image.new("RGB", (IMAGE_W, IMAGE_H), "#fff")
     green = Image.new("RGBA", (IMAGE_W, IMAGE_H))
     base = ImageDraw.Draw(canvas)
     base.text((65, 30), city.replace("/", "  /  "), font=font(30, True), fill="#253039")
-    base.text((65, 77), f"50 m road sections  /  {len(lat):,} located panoids", font=font(18), fill="#54646D")
+    base.text((65, 77), f"GHSL urban centre  /  {len(lat):,} located panoids", font=font(18), fill="#54646D")
     left, top, right, bottom = MAP_BOX
     base.rectangle(MAP_BOX, fill="#F3F5F4", outline="#D5DEDE", width=2)
-    scale = min((right - left - 30) / (xmax - xmin), (bottom - top - 30) / (ymax - ymin))
-    map_w = (xmax - xmin) * scale
-    map_h = (ymax - ymin) * scale
+    scale = min((right - left - 30) / (vxmax - vxmin), (bottom - top - 30) / (vymax - vymin))
+    map_w = (vxmax - vxmin) * scale
+    map_h = (vymax - vymin) * scale
     px0 = left + (right - left - map_w) / 2
     py0 = top + (bottom - top - map_h) / 2
     def pixel(point):
-        return (round(px0 + (point[0] - xmin) * scale),
-                round(py0 + (ymax - point[1]) * scale))
+        return (round(px0 + (point[0] - vxmin) * scale),
+                round(py0 + (vymax - point[1]) * scale))
     red_draw, green_draw = ImageDraw.Draw(canvas), ImageDraw.Draw(green)
     totals = np.zeros(5, dtype=np.float64)
     parquet = pq.ParquetFile(network)
@@ -168,7 +197,11 @@ def render_roads(city: str, path: Path, lat: np.ndarray, lon: np.ndarray,
         totals += classify_geometry(lines, projector, clip, tree, red_draw, green_draw, pixel)
     canvas = Image.alpha_composite(canvas.convert("RGBA"), green).convert("RGB")
     draw = ImageDraw.Draw(canvas)
-    scale_m = nice_distance((xmax - xmin) * 0.18)
+    polygons = (boundary.geoms if boundary.geom_type == "MultiPolygon" else [boundary])
+    for polygon in polygons:
+        draw.line([pixel(point) for point in polygon.exterior.coords],
+                  fill="#687A7E", width=2)
+    scale_m = nice_distance((vxmax - vxmin) * 0.18)
     px = round(scale_m * scale)
     sy = bottom - 35
     draw.line((left + 25, sy, left + 25 + px, sy), fill="#303B42", width=3)
@@ -180,7 +213,7 @@ def render_roads(city: str, path: Path, lat: np.ndarray, lon: np.ndarray,
     draw.text((425, 769), "no located image within 50 m", font=font(17), fill="#35444A")
     covered_m, uncovered_m = totals[3:]
     share = covered_m / (covered_m + uncovered_m) if covered_m + uncovered_m else 0
-    draw.text((65, 811), f"Mapped road length: {share:.1%} covered  |  Overture Maps {RELEASE}  |  Study-area extent",
+    draw.text((65, 811), f"Mapped road length: {share:.1%} covered  |  Overture Maps {RELEASE}  |  GHSL {GHSL_VERSION}",
               font=font(14), fill="#64737A")
     path.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(path, optimize=True)
@@ -195,23 +228,53 @@ def process_city(city: str, disk_row: dict, output: Path):
     count = int(disk_row["disk_panoids_any_image"])
     lat, lon = combined_locations(city, count, RECOVERY)
     image = "maps/" + city.replace("/", "__") + ".png"
+    center_lat, center_lon = center_for(city)
+    boundary_record = boundary_info(city)
     row = {key: "" for key in FIELDS}
     row.update({"city": city, "road_source": f"Overture Maps {RELEASE}",
                 "located_panoids": len(lat), "disk_panoids": count,
+                "disk_jpg_files": disk_row["actual_jpg_files"],
+                "located_to_disk_ratio": round(len(lat) / count, 6) if count else 0,
                 "section_m": SECTION_M, "radius_m": SEARCH_RADIUS_M,
+                "center_lat": center_lat, "center_lon": center_lon,
+                "boundary_source": f"GHSL {GHSL_VERSION}",
+                "boundary_method": BOUNDARY_METHOD,
+                "protocol_version": PROTOCOL_VERSION,
                 "image": image})
-    if len(lat) / count < .01:
-        row["status"] = "insufficient_coordinates"
+    coverage_row = render_locations(city, disk_row, WEB_OUTPUT, lat, lon)
+    row.update({key: coverage_row[key] for key in
+                ("coverage_km2_estimate", "raster_cell_m", "raster_width",
+                 "boundary_located_panoids", "raster_height", "epsg",
+                 "boundary_match_method", "boundary_area_km2")})
+    row["coverage_status"] = coverage_row["status"]
+    if boundary_record is None:
+        blank = Image.new("RGB", (IMAGE_W, IMAGE_H), "#F3F5F4")
+        draw = ImageDraw.Draw(blank)
+        draw.text((65, 30), city.replace("/", "  /  "), font=font(30, True), fill="#253039")
+        draw.text((95, 300), "GHSL urban-centre boundary not matched",
+                  font=font(22), fill="#57636c")
+        draw.text((95, 340), "No road extent is drawn without a GHSL boundary.",
+                  font=font(17), fill="#687680")
         (output / image).parent.mkdir(parents=True, exist_ok=True)
-        Image.new("RGB", (IMAGE_W, IMAGE_H), "#F3F5F4").save(output / image)
-    else:
-        source = download_roads(city, bbox_from_points(lat, lon), output)
-        row.update(render_roads(city, output / image, lat, lon, count, source))
-        row["status"] = "mapped" if row["sections"] else "no_roads"
+        blank.save(output / image, optimize=True)
+        row["status"] = "unmatched_ghsl_boundary"
+        return row
+    row["boundary_match_method"] = boundary_record["match_method"]
+    bbox = boundary_bbox_wgs84(city)
+    source = download_roads(city, bbox, output)
+    row.update(render_roads(city, output / image, lat, lon, count, source,
+                            center_lat, center_lon))
+    if not row["sections"]:
+        prior_source = prior_roads_covering(city, bbox)
+        if prior_source is not None and prior_source != source:
+            row.update(render_roads(city, output / image, lat, lon, count,
+                                    prior_source, center_lat, center_lon))
+    row["status"] = "mapped" if row["sections"] else "no_roads"
     return row
 
 
-def run(output: Path = OUTPUT, only: str | None = None, workers: int = 3):
+def run(output: Path = OUTPUT, only: str | None = None, workers: int = 3,
+        force: bool = False):
     if workers < 1:
         raise ValueError("workers must be positive")
     cities = sorted(set(json.loads(CITY_MAP.read_text()).values()))
@@ -224,13 +287,23 @@ def run(output: Path = OUTPUT, only: str | None = None, workers: int = 3):
     output.mkdir(parents=True, exist_ok=True)
     progress = output / "progress.csv"
     prior = {}
+    reset_progress = not progress.exists()
     if progress.exists():
         with progress.open(newline="", encoding="utf-8") as stream:
-            prior = {r["city"]: r for r in csv.DictReader(stream)}
-    remaining = [city for city in cities if city not in prior or not (output / prior[city]["image"]).is_file()]
+            reader = csv.DictReader(stream)
+            if "protocol_version" in (reader.fieldnames or []):
+                prior = {r["city"]: r for r in reader
+                         if r.get("protocol_version") == PROTOCOL_VERSION}
+            else:
+                reset_progress = True
+        if not prior:
+            reset_progress = True
+    remaining = [city for city in cities if force or city not in prior or
+                 not (output / prior[city]["image"]).is_file() or
+                 not (WEB_OUTPUT / prior[city]["image"]).is_file()]
     failed = []
-    with progress.open("a", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=FIELDS)
+    with progress.open("w" if reset_progress else "a", newline="", encoding="utf-8") as stream:
+        writer = csv.DictWriter(stream, fieldnames=FIELDS, lineterminator="\n")
         if not prior:
             writer.writeheader()
         with ProcessPoolExecutor(max_workers=workers) as pool:
@@ -250,7 +323,7 @@ def run(output: Path = OUTPUT, only: str | None = None, workers: int = 3):
                 print(f"{len(prior)}/{len(set(json.loads(CITY_MAP.read_text()).values()))} "
                       f"{city}: {row['status']}, {row['sections']} sections", flush=True)
     with (output / "city_road_coverage.csv").open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=FIELDS)
+        writer = csv.DictWriter(stream, fieldnames=FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(sorted(prior.values(), key=lambda r: r["city"]))
     if failed:
@@ -261,6 +334,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=OUTPUT)
     parser.add_argument("--city")
+    parser.add_argument("--force", action="store_true", help="Recompute the selected city")
     parser.add_argument("--workers", type=int, default=3)
     args = parser.parse_args()
-    run(args.output, args.city, args.workers)
+    if args.force and not args.city:
+        parser.error("--force requires --city")
+    run(args.output, args.city, args.workers, args.force)
